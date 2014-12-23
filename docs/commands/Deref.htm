@@ -13,7 +13,10 @@
 
 <h1>Deref <span class="ver">[v2]</span></h1>
 <p>Expands variable references and <a href="../misc/EscapeChar.htm">escape sequences</a> contained inside other variables.</p>
-<pre class="Syntax">Deref, OutputVar, String</pre>
+<pre class="Syntax"><b>OutPutVar</b> := Deref(String)</pre>
+<pre><em>Example:</em> <b>value</b> := Deref("The time now is %A_Hour%:%A_Min%:%A_Sec%")</pre>
+Deref, <b>OutPutVar</b>, String
+<pre><em>Example:</em> Deref, <b>value</b>,% "The time now is %A_Hour%:%A_Min%:%A_Sec%"</pre>
 
 <h3>Parameters</h3>
 <dl>

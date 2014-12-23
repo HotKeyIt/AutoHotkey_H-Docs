@@ -15,8 +15,12 @@
 <h1>ControlGetFocus</h1>
 
 <p>Retrieves which control of the target window has input focus, if any.</p>
+<pre class="Syntax">ControlGetFocus, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]</pre>
+<pre><em>Example:</em> <b>Control</b> := ControlGetFocus("MyGui ahk_class AutoHotkeyGUI"</pre>
+ControlGetFocus, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle,
+ExcludeText]
+<pre><em>Example:</em> ControlGetFocus, <b>Control</b>, MyGui ahk_class AutoHotkeyGUI</pre>
 
-<pre class="Syntax">ControlGetFocus, OutputVar [, WinTitle, WinText, ExcludeTitle, ExcludeText]</pre>
 <h3>Parameters</h3>
 <dl>
 

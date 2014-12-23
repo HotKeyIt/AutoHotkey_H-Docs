@@ -15,9 +15,11 @@
 <h1>ControlSend / ControlSendRaw</h1>
 
 <p>Sends simulated keystrokes to a window or control.</p>
+<pre class="Syntax">ControlSend( [Control,] Keys [, WinTitle, WinText, ExcludeTitle, ExcludeText])
+<pre><em>Example:</em> ControlSend("Edit1", "Test", "MyGui ahk_class AutoHotkeyGUI")</pre>
+ControlSend [, Control], Keys [, WinTitle, WinText, ExcludeTitle, ExcludeText] 
+<pre><em>Example:</em> ControlSend, Edit1, Test, MyGui ahk_class AutoHotkeyGUI</pre></pre>
 
-<pre class="Syntax">ControlSend [, Control, Keys, WinTitle, WinText, ExcludeTitle, ExcludeText]
-ControlSendRaw: Same parameters as above.</pre>
 <h3>Parameters</h3>
 <dl>
 

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>ResGet</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>ResGet</h1>
+
+<p>Reads a resource from executable file (dll or exe).</p>
+<pre class="Syntax">ResGet, <b>OutPutVar</b>, Data, Name [, Type, Language]
+<pre><em>Command  Example:</em> ResGet, <b>Size</b>, Data, %A_AhkPath%, &#62;AHK_SCRIPT&#60;<br><em>Function Example:</em> <b>Size</b> := ResGet(Data, A_AhkPath, "&#62;AHK_SCRIPT&#60;")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutPutVar</b></dt>
+    <dd><p>The name of the variable in which to store the size of read data.</p>
+    </dd>
+  <dt>Data (ByRef)</dt>
+    <dd><p><a href="../Functions.htm#param">ByRef variable</a> in which to store read data.</p>
+    </dd>
+  <dt>Executable</dt>
+    <dd><p>Full path to executable file (dll or exe).</p>
+    </dd>
+  <dt>Name</dt>
+    <dd><p>The name of resource.</p>
+    </dd>
+  <dt>Type (optional)</dt>
+    <dd><p>Type of resource. Default is RCDATA (10).<br>See <a href="http://msdn.microsoft.com/en-us/library/ms648009.aspx">MSDN</a> for default resource types.</p>
+    </dd>
+  <dt>Language (optional)</dt>
+    <dd><p>The <a href="http://www.microsoft.com/resources/msdn/goglobal/default.mspx">language</a> of resource.</p>
+    </dd>
+</dl>
+
+
+<h3>Remarks</h3>
+
+<p>If resource data is compressed or encrypted you can use <a href="UnZipRawMemory.htm">UnZipRawMemory</a> to decrypt and unzip it.</p>
+
+<h3>Related</h3>
+
+<p><a href="ResGetEx.htm">ResGetEx</a>,<a href="ResPut.htm">ResPut</a>, <a
+href="ResFile.htm">ResFile</a>, <a href="ResFiles.htm">ResFiles</a>,
+<a href="ResExist.htm">ResExist</a>, <a href="ResDelete.htm">ResDelete</a>, <a
+href="ResDll.htm">ResDll</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+
+<h3>Example</h3>
+<pre class="NoIndent">ResGet(data,A_AhkPath,"RESGET.AHK","LIB")
+UnZipRawMemory(&data,var)
+MsgBox % StrGet(&var,"UTF-8")</pre>
+</body>
+</html>

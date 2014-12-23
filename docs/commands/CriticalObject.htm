@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>CriticalObject</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>CriticalObject</h1>
+<p>Built-in function to enwrap an object for multi-thread use.
+Such objects can be used from multiple threads without causing a crash.</p>
+<br>
+<pre class="Syntax">CriticalObject, <b>OutPutVar</b> [, Object, lpCriticalSection] 
+<pre><em>Command  Example:</em> CriticalObject, <b>obj</b>,%MyCriticalObject%<br><em>Function Example:</em> <b>obj</b> := CriticalObject(MyCriticalObject)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt>Object</dt>
+<dd>
+<p>Existing Object or CriticalObject to use, this can be also a pointer.<br>
+When CriticalObject is given, its <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">CriticalSection</a> 
+will be used and second parameter will be ignored.<br>
+When this parameter is empty new object will be created and used.</p>
+</dd>
+<dt>lpCriticalSection</dt>
+<dd>
+<p>Pointer to a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">CriticalSection</a>
+to use. When this parameter is omitted new CriticalSection will be created unless CriticalObject was given in first parameter,
+then its CriticalSection will be used.</p>
+</dd>
+</dl>
+<dl>
+<h3>Return Value</h3>
+<dd>
+<p>A special object that uses CriticalSection internally for multi-threading environment. CriticalObject() can also return the pointer to stored CriticalSection and Obect.</p>
+</dd>
+</dl>
+<dl>
+<h3>General Remarks</h3>
+<dd>
+<p><span style="font-weight: bold;">How does it work</span>:<br>
+</p>
+<ul>
+<li>First the CriticalSection is loced so the object cannot
+be used in other threads</li>
+<li>Then the referenced object is invoked</li>
+<li>Afterwards critical section is unlocked so other
+threads can use the object again</li>
+</ul>
+<p>To retrieve the original object from CriticalObject use:</p>
+<pre>object := CriticalObject(CriticalObject,1)</pre>
+<p>To retrieve the pointer to CriticalSection use:</p>
+<pre>lpCriticalSection := CriticalObject(CriticalObject,2)</pre>
+<p>When last reference to internal object is deleted, CrticalSection is deleted as well.<br>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="objects/Object.htm">Object</a></p>
+<h3>Examples</h3>
+<pre class="NoIndent">obj := CriticalObject() <em>; Create new critical object</em><br>Loop, 4 <em>; Create 4 Threads.</em><br> AhkThread%A_Index% := AhkMini("obj:=CriticalObject(" <span style="font-weight: bold;">(&obj)</span> ")`nLoop`nobj[" A_Index "]:= A_Index")<br><br>Loop <em>; Show current content of object.</em><br> ToolTip, % obj.1 "`n" obj.2 "`n" obj.3 "`n" obj.4<br>Esc::ExitApp<br></pre>
+</body></html>

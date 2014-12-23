@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ComObjFlags()</title>
+<title>ComObjFlags</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,24 +13,23 @@
 <body>
 
 
-<h1>ComObjFlags()</h1>
+<h1>ComObjFlags</h1>
 <p>Retrieves or changes flags which control a COM wrapper object's behaviour.</p>
-<pre class="Syntax">Flags := ComObjFlags(ComObject [, NewFlags, Mask])</pre>
+<pre class="Syntax"><b>OutPutVar</b> := ComObjFlags(ComObject [, NewFlags, Mask])<pre><em>Example:</em> <b>flags</b> := ComObjFlags(ComObject)</pre>ComObjFlags, <b>OutPutVar</b> [, NewFlags, Mask]<pre><em>Example:</em> ComObjFlags, <b>flags</b>, %ComObject%</pre>
 
 <h3>Parameters</h3>
 <dl>
-
+  <dt>OutPutVar</dt>
+  <dd><p>The name of the variable in which to store all <i>ComObject</i>'s flags (after applying <i>NewFlags</i>, if specified).
   <dt>ComObject</dt>
   <dd><p>A COM wrapper object.</p></dd>
 
-  <dt>NewFlags</dt>
+  <dt>NewFlags (optional)</dt>
   <dd><p>New values for the flags identified by <i>Mask</i>, or flags to add or remove.</p></dd>
 
-  <dt>Mask</dt>
+  <dt>Mask (optional)</dt>
   <dd><p>A bitmask of flags to change.</p></dd>
 
-  <dt>Flags</dt>
-  <dd><p>All of <i>ComObject</i>'s flags (after applying <i>NewFlags</i>, if specified).</p></dd>
 
 </dl>
 

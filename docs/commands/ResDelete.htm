@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>ResDelete</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>ResDelete</h1>
+
+<p>Deletes a resource from executable file (dll or exe).</p>
+<pre class="Syntax">ResGet, <b>OutPutVar</b>, Data, Name [, Type, Language]
+<pre><em>Example:</em><b>Success</b> := ResDelete(A_AhkPath, "MYRES.RES")<br><em>Example:</em> ResDelete, <b>Success</b>, %A_AhkPath%, MYRES.RES</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutPutVar</b></dt>
+    <dd><p>The name of the variable in which to store the result.</p>
+    </dd>
+  <dt>Executable</dt>
+    <dd><p>Full path to executable file (dll or exe).</p>
+    </dd>
+  <dt>Name</dt>
+    <dd><p>The name of resource.</p>
+    </dd>
+  <dt>Type (optional)</dt>
+    <dd><p>Type of resource. Default is RCDATA (10).<br>See <a href="http://msdn.microsoft.com/en-us/library/ms648009.aspx">MSDN</a> for default resource types.</p>
+    </dd>
+  <dt>Language</dt>
+    <dd><p>Resource language, default 1033 (en-us).</p>
+    </dd>
+</dl>
+
+
+<h3>Remarks</h3>
+
+<p>Remarks.</p>
+
+<h3>Related</h3>
+
+<p><a href="ResPut.htm">ResPut</a>,<a href="ResGet.htm">ResGet</a>,<a href="ResGetEx.htm">ResGetEx</a>, <a
+href="ResFile.htm">ResFile</a>, <a href="ResFiles.htm">ResFiles</a>,
+<a href="ResExist.htm">ResExist</a>, <a href="ResDelete.htm">ResDelete</a>, <a
+href="ResDll.htm">ResDll</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+
+<h3>Example</h3>
+<pre class="NoIndent">ResGet(data,A_AhkPath,"RESGET.AHK","LIB")
+UnZipRawMemory(&data,var)
+MsgBox % StrGet(&var,"UTF-8")</pre>
+</body>
+</html>

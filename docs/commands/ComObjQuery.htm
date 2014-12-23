@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ComObjQuery()</title>
+<title>ComObjQuery</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,13 +12,15 @@
 </head>
 <body>
 
-<h1>ComObjQuery()</h1>
+<h1>ComObjQuery</h1>
 <p>Queries a COM object for an interface or service.</p>
-<pre class="Syntax">InterfacePointer := ComObjQuery(ComObject, [SID,] IID)</pre>
+<pre class="Syntax"><b>OutPutVar</b> := ComObjQuery(ComObject, [SID,] IID)<pre><em>Example:</em> <b>InterfacePointer</b> := ComObjQuery(ComObject,"{332C4427-26CB-11D0-B483-00C04FD90119}","{332C4427-26CB-11D0-B483-00C04FD90119}")</pre>ComObjQuery, <b>OutPutvar</b> [, SID], IID<pre><em>Example:</em> ComObjQuery, <b>InterfacePointer</b>, {332C4427-26CB-11D0-B483-00C04FD90119}, {332C4427-26CB-11D0-B483-00C04FD90119}</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
-
+  <dt>OutPutVar</dt>
+    <dd><p>The name of the variable in which to store the interface pointer.</p>
+    </dd>
   <dt>ComObject</dt>
   <dd><p>A COM wrapper object or raw interface pointer.</p></dd>
 

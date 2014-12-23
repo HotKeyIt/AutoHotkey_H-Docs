@@ -30,8 +30,12 @@
 		<param name="Local" value="docs/scripts/index.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Changes &amp; New Features">
-		<param name="Local" value="docs/ChangeLog.htm">
+		<param name="Name" value="Recent AutoHotkey_L Changes">
+		<param name="Local" value="docs/AHKL_ChangeLog.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Recent AutoHotkey_H Changes">
+		<param name="Local" value="docs\AHKH_ChangeLog.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Basic Usage and Syntax">
@@ -113,6 +117,133 @@
 		</UL>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Moving to AutoHotkey_L/H">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="AutoHotkey_L New Features">
+			<param name="Local" value="docs/AHKL_Features.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="AutoHotkey_H New Features">
+			<param name="Local" value="docs\AHKH_Features.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Script Compatibility">
+			<param name="Local" value="docs/Compat.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="AutoHotkey Module">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="About AutoHotkey Module">
+			<param name="Local" value="docs/AutoHotkeyDll.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="AutoHotkey COM Interface">
+			<param name="Local" value="docs/COMInterface.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Create Thread">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkdll">
+				<param name="Local" value="docs\commands\ahkdll.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahktextdll">
+				<param name="Local" value="docs\commands\ahktextdll.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Working with threads">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkgetvar">
+				<param name="Local" value="docs\commands\ahkgetvar.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkassign">
+				<param name="Local" value="docs\commands\ahkassign.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkLabel">
+				<param name="Local" value="docs\commands\ahkLabel.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkFunction">
+				<param name="Local" value="docs\commands\ahkFunction.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkPostFunction">
+				<param name="Local" value="docs\commands\ahkPostFunction.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Add or Execute New Code">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkExec">
+				<param name="Local" value="docs\commands\ahkExec.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="addScript">
+				<param name="Local" value="docs\commands\addScript.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="addFile">
+				<param name="Local" value="docs\commands\addFile.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Control Thread">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkPause">
+				<param name="Local" value="docs\commands\ahkPause.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkReady">
+				<param name="Local" value="docs\commands\ahkReady.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkReload">
+				<param name="Local" value="docs\commands\ahkReload.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkTerminate">
+				<param name="Local" value="docs\commands\ahkTerminate.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Low Level / Advanced">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkFindLabel">
+				<param name="Local" value="docs\commands\ahkFindLabel.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkFindFunc">
+				<param name="Local" value="docs\commands\ahkFindFunc.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkExecuteLine">
+				<param name="Local" value="docs\commands\ahkExecuteLine.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ahkgetvar">
+				<param name="Local" value="docs\commands\ahkgetvar.htm">
+				</OBJECT>
+		</UL>
+	</UL>
+  <LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Environment Management">
 		</OBJECT>
 	<UL>
@@ -142,6 +273,14 @@
 			<param name="Local" value="docs/commands/DllCall.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="DynaCall">
+			<param name="Local" value="docs\commands\DynaCall.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="WinApi">
+			<param name="Local" value="docs\commands\WinApi.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="NumGet">
 			<param name="Local" value="docs/commands/NumGet.htm">
 			</OBJECT>
@@ -154,8 +293,12 @@
 			<param name="Local" value="docs/commands/RegisterCallback.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="StrPut()/StrGet()">
-			<param name="Local" value="docs/commands/StrPutGet.htm">
+			<param name="Name" value="StrGet">
+			<param name="Local" value="docs\commands\StrGet.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="StrPut">
+			<param name="Local" value="docs\commands\StrPut.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="COM">
@@ -208,6 +351,14 @@
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="ObjAddRef / ObjRelease">
 				<param name="Local" value="docs/commands/ObjAddRef.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ComObjDll">
+				<param name="Local" value="docs/commands/ComObjDll.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ComVar">
+				<param name="Local" value="docs/commands/ComVar.htm">
 				</OBJECT>
 		</UL>
 	</UL>
@@ -292,7 +443,7 @@
 			<param name="Local" value="docs/commands/FileMove.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="FileOpen()">
+			<param name="Name" value="FileOpen">
 			<param name="Local" value="docs/commands/FileOpen.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
@@ -489,8 +640,24 @@
 		</OBJECT>
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Alias">
+			<param name="Local" value="docs\commands\Alias.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CacheEnable">
+			<param name="Local" value="docs\commands\CacheEnable.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CriticalObject">
+			<param name="Local" value="docs\commands\CriticalObject.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Chr">
 			<param name="Local" value="docs/Functions.htm#Chr">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="DynaCall">
+			<param name="Local" value="docs\commands\DynaCall.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="FileExist">
@@ -499,6 +666,10 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="GetKeyName/VK/SC">
 			<param name="Local" value="docs/Functions.htm#GetKeyName">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="GetTokenValue">
+			<param name="Local" value="docs\commands\GetTokenValue.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="InStr">
@@ -549,8 +720,16 @@
 			<param name="Local" value="docs/Functions.htm#StrLen">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="StrPut()/StrGet()">
-			<param name="Local" value="docs/commands/StrPutGet.htm">
+			<param name="Name" value="sizeof">
+			<param name="Local" value="docs\commands\sizeof.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="StrGet">
+			<param name="Local" value="docs\commands\StrGet.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="StrPut">
+			<param name="Local" value="docs\commands\StrPut.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="StrSplit">
@@ -559,6 +738,10 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="SubStr">
 			<param name="Local" value="docs/Functions.htm#SubStr">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Struct">
+			<param name="Local" value="docs\commands\Struct.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="VarSetCapacity">
@@ -977,9 +1160,34 @@
 			<param name="Name" value="RegWrite">
 			<param name="Local" value="docs/commands/RegWrite.htm">
 			</OBJECT>
+	</UL>
+  <LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Resource Management">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ResExist">
+			<param name="Local" value="docs/commands/ResExist.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ResGet">
+			<param name="Local" value="docs/commands/ResGet.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ResPut">
+			<param name="Local" value="docs/commands/ResPut.htm">
+			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="SetRegView">
 			<param name="Local" value="docs/commands/SetRegView.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ResDelete">
+			<param name="Local" value="docs/commands/ResDelete.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ResDllCreate">
+			<param name="Local" value="docs/commands/ResDllCreate.htm">
 			</OBJECT>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">
@@ -1012,19 +1220,19 @@
 			<param name="Local" value="docs/commands/FormatTime.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="InStr()">
-			<param name="Local" value="docs/Functions.htm#InStr">
+			<param name="Name" value="InStr">
+			<param name="Local" value="docs/Functions.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Loop (parse a string)">
 			<param name="Local" value="docs/commands/LoopParse.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="RegExMatch()">
+			<param name="Name" value="RegExMatch">
 			<param name="Local" value="docs/commands/RegExMatch.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="RegExReplace()">
+			<param name="Name" value="RegExReplace">
 			<param name="Local" value="docs/commands/RegExReplace.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
@@ -1036,16 +1244,24 @@
 			<param name="Local" value="docs/commands/StringCaseSense.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="StrLen()">
+			<param name="Name" value="StrLen">
 			<param name="Local" value="docs/Functions.htm#StrLen">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="StrLower/StrUpper">
+			<param name="Name" value="StrLower">
 			<param name="Local" value="docs/commands/StrLower.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="StrPut()/StrGet()">
-			<param name="Local" value="docs/commands/StrPutGet.htm">
+			<param name="Name" value="StrUpper">
+			<param name="Local" value="docs/commands/StrUpper.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="StrGet">
+			<param name="Local" value="docs\commands\StrGet.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="StrPut">
+			<param name="Local" value="docs\commands\StrPut.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="StrReplace">
@@ -1056,12 +1272,29 @@
 			<param name="Local" value="docs/commands/StrSplit.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="SubStr()">
+			<param name="Name" value="SubStr">
 			<param name="Local" value="docs/Functions.htm#SubStr">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Trim()">
+			<param name="Name" value="Trim">
 			<param name="Local" value="docs/commands/Trim.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Structure Management">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Struct">
+			<param name="Local" value="docs/commands/Struct.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="sizeof">
+			<param name="Local" value="docs/commands/sizeof.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Built-in Data types">
+			<param name="Local" value="docs/StructTypes.htm">
 			</OBJECT>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">
@@ -1263,6 +1496,47 @@
 			<param name="Local" value="docs/commands/WinWaitClose.htm">
 			</OBJECT>
 	</UL>
+  <LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Memory Module">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="About Memory Module">
+			<param name="Local" value="docs/MemoryModule.htm">
+			</OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MemoryLoadLibrary">
+			<param name="Local" value="docs/commands/MemoryLoadLibrary.htm">
+			</OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ResourceLoadLibrary">
+			<param name="Local" value="docs/commands/ResourceLoadLibrary.htm">
+			</OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MemoryGetProcAddress">
+			<param name="Local" value="docs/commands/MemoryGetProcAddress.htm">
+			</OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MemoryFreeLibrary">
+			<param name="Local" value="docs/commands/MemoryFreeLibrary.htm">
+			</OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MemoryFindResource">
+			<param name="Local" value="docs/commands/MemoryFindResource.htm">
+			</OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MemorySizeofResource">
+			<param name="Local" value="docs/commands/MemorySizeofResource.htm">
+			</OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MemoryLoadResource">
+			<param name="Local" value="docs/commands/MemoryLoadResource.htm">
+			</OBJECT>
+    <LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MemoryLoadString">
+			<param name="Local" value="docs/commands/MemoryLoadString.htm">
+			</OBJECT>
+  </UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="#Directives">
 		</OBJECT>
@@ -1270,6 +1544,10 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="#ClipboardTimeout">
 			<param name="Local" value="docs/commands/_ClipboardTimeout.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="#DllImport">
+			<param name="Local" value="docs/commands/_DllImport.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="#ErrorStdOut">

@@ -10,6 +10,10 @@
 		<param name="Local" value="docs/commands/_ClipboardTimeout.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="#DllImport">
+		<param name="Local" value="docs/commands/_DllImport.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="#ErrorStdOut">
 		<param name="Local" value="docs/commands/_ErrorStdOut.htm">
 		</OBJECT>
@@ -670,6 +674,66 @@
 		<param name="Local" value="docs/Scripts.htm#ahk2exe">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkdll">
+		<param name="Local" value="docs/commands/ahkdll.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahktextdll">
+		<param name="Local" value="docs/commands/ahktextdll.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkReady">
+		<param name="Local" value="docs/commands/ahkReady.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkPause">
+		<param name="Local" value="docs/commands/ahkPause.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkTerminate">
+		<param name="Local" value="docs/commands/ahkTerminate.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkExec">
+		<param name="Local" value="docs/commands/ahkExec.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="addFile">
+		<param name="Local" value="docs/commands/addFile.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="addScript">
+		<param name="Local" value="docs/commands/addScript.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkgetvar">
+		<param name="Local" value="docs/commands/ahkgetvar.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkassign">
+		<param name="Local" value="docs/commands/ahkassign.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkFunction">
+		<param name="Local" value="docs/commands/ahkFunction.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkPostFunction">
+		<param name="Local" value="docs/commands/ahkPostFunction.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkLabel">
+		<param name="Local" value="docs/commands/ahkLabel.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkFindFunc">
+		<param name="Local" value="docs/commands/ahkFindFunc.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkFindLabel">
+		<param name="Local" value="docs/commands/ahkFindLabel.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ahk_class">
 		<param name="Local" value="docs/misc/WinTitle.htm#ahk_class">
 		</OBJECT>
@@ -688,6 +752,10 @@
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ahk_pid">
 		<param name="Local" value="docs/misc/WinTitle.htm#ahk_pid">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Alias">
+		<param name="Local" value="docs/commands/Alias.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="AltGr">
@@ -778,6 +846,10 @@
 		<param name="Local" value="docs/Variables.htm#BuiltIn">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="built-in structure types">
+		<param name="Local" value="docs/StructTypes.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Button controls (GUI)">
 		<param name="Local" value="docs/commands/GuiControls.htm#Button">
 		</OBJECT>
@@ -811,7 +883,7 @@
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Changelog">
-		<param name="Local" value="docs/ChangeLog.htm">
+		<param name="Local" value="docs/AHKL_ChangeLog.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Checkbox controls (GUI)">
@@ -942,6 +1014,10 @@
 		<param name="Local" value="docs/commands/ComObjValue.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ComVar">
+		<param name="Local" value="docs/commands/ComVar.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Compatibility">
 		<param name="Local" value="docs/Compat.htm">
 		</OBJECT>
@@ -1054,6 +1130,10 @@
 		<param name="Local" value="docs/commands/Critical.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="CrtiticalObject">
+		<param name="Local" value="docs/commands/CriticalObject.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="current directory">
 		<param name="Local" value="docs/commands/SetWorkingDir.htm">
 		</OBJECT>
@@ -1162,7 +1242,7 @@
 		<param name="Local" value="docs/Variables.htm#divide">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="DllCall()">
+		<param name="Name" value="DllCall">
 		<param name="Local" value="docs/commands/DllCall.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
@@ -1192,6 +1272,10 @@
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="DropDownList controls (GUI)">
 		<param name="Local" value="docs/commands/GuiControls.htm#DropDownList">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="DynaCall">
+		<param name="Local" value="docs/commands/DynaCall.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Edit">
@@ -2098,6 +2182,10 @@
 		<param name="Local" value="docs/commands/_NoTrayIcon.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Null">
+		<param name="Local" value="docs/Variables.htm#Boolean">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="NumGet">
 		<param name="Local" value="docs/commands/NumGet.htm">
 		</OBJECT>
@@ -2638,6 +2726,10 @@
 		<param name="Local" value="docs/commands/WinGetPos.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="sizeof">
+		<param name="Local" value="docs/commands/sizeof.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Sleep">
 		<param name="Local" value="docs/commands/Sleep.htm">
 		</OBJECT>
@@ -2707,7 +2799,7 @@
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="StrGet">
-		<param name="Local" value="docs/commands/StrPutGet.htm">
+		<param name="Local" value="docs/commands/StrGet.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="string (search for)">
@@ -2734,8 +2826,8 @@
 		<param name="Local" value="docs/Functions.htm#StrLen">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="StrPut()">
-		<param name="Local" value="docs/commands/StrPutGet.htm">
+		<param name="Name" value="StrPut">
+		<param name="Local" value="docs/commands/StrPut.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="StrReplace">
@@ -2744,6 +2836,10 @@
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="StrSplit">
 		<param name="Local" value="docs/commands/StrSplit.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Struct">
+		<param name="Local" value="docs/commands/Struct.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="StrUpper">

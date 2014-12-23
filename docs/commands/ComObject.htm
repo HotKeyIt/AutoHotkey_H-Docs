@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ComObject()</title>
+<title>ComObject</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1>ComObject()</h1>
+<h1>ComObject</h1>
 
 <p>Wraps a value, SafeArray or COM object for use by the script or for passing to a COM method.</p>
 <pre class="Syntax">ComObject := ComObject(VarType, Value [, Flags])</pre>
@@ -87,11 +87,11 @@ ComVar(Type:=0xC)
     return { ref: ComObject(0x4000|Type, arr_data), _: arr, base: base }
 }
 ComVarGet(cv, <a href="../Functions.htm#Variadic">p*</a>) { <em>; Called when script accesses an unknown field.</em>
-    if !p.Length  <em>; No name/parameters, i.e. cv[]</em>
+    if !p.Length()  <em>; No name/parameters, i.e. cv[]</em>
         return cv._[0]
 }
 ComVarSet(cv, v, p*) { <em>; Called when script sets an unknown field.</em>
-    if !p.Length  <em>; No name/parameters, i.e. cv[]:=v</em>
+    if !p.Length()  <em>; No name/parameters, i.e. cv[]:=v</em>
         return cv._[0] := v
 }
 ComVarDel(cv) { <em>; Called when the object is being freed.

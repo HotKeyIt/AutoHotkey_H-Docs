@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>ahkPause</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ahkPause</h1>
+<p>Exported function that allows calling a function in script
+currently executed by&nbsp;AutoHotkey module.<br>
+Paramenters can be strings only as well as return value.<br>
+</p>
+<br>
+<pre class="Syntax">DllCall, <b>OutPutVar</b>, Module\ahkPause, Str, OnOff, Int
+<pre><em>Command  Example:</em> DllCall, <b>OutPutVar</b>, AutoHotkey.<b>dll</b>\ahkPause, PTR, 1, Int
+                  DllCall, <b>OutPutVar</b>, AutoHotkey.<b>exe</b>\ahkPause, PTR, 0, Int
+<br><em>Function Example:</em> <b>OutPutVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkPause", "Str", "On", "Int")
+                  <b>OutPutVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkPause", "Str", "Off", "Int")</pre></pre>
+<pre class="Syntax">
+<br><br></pre>
+<h3>Parameters</h3>
+<dl>
+<dt>OutPutVar</dt>
+<dd>
+<p>The name of the variable to store 1 / true if script is paused or 0 / false otherwise.</p>
+</dd>
+<dt>On / Off / TRUE / FALSE / 1 / 0</dt>
+<dd>
+<p>Parameter can be string for On / Off or PTR for TRUE / FALSE / NULL / 1 / 0 where 1 (true) means On.</p>
+</dd>
+</dl>
+<dl>
+</dl>
+<h3>Related</h3>
+<p><a href="ahkPostFunction.htm">ahkPostFunction</a>,
+<a href="ahkFindFunc.htm">ahkFindFunc</a>, <a href="DllCall.htm">DllCall()</a>
+</p>
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","<br>(<br>~VKFF::Return<br>MyLabel:<br>MsgBox `% A_ThisLabel<br>Return<br>)","Str","") <em>; start a new thread, just the function.</em><br>DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0) <em>; jump to label and wait for it to finish / return.</em><em></em><em></em><br></pre>
+</body></html>

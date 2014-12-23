@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>MemoryLoadLibrary</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>MemoryLoadLibrary</h1>
+
+<p>Loads the specified <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>
+into the process. Similar to <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx">LoadLibrary</a> but loads the module from memory rather than disk and allows loading a module multiple times.</p>
+<br>
+
+<pre class="Syntax">MemoryLoadLibrary, <b>OutPutVar</b>, PathToDll
+<pre><em>Command  Example:</em> MemoryLoadLibrary, <b>ahkdllModule</b>, %A_ScriptDir%\AutoHotkey.dll<br><em>Function Example:</em> <b>ahkdllModule</b> := MemoryLoadLibrary(A_ScriptDir "\AutoHotkey.dll"))</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt>OutPutVar</dt>
+    <dd><p>The name of the variable in which to store the handle of loaded
+      module. </p>
+    </dd>
+  <dt>PathToDll</dt>
+    <dd><p>Path to a <a
+      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>
+      file saved on disk or network.</p>
+    </dd>
+</dl>
+
+<h3>Related</h3>
+
+<p><a href="../MemoryModule.htm">MemoryModule</a>, <a
+href="MemoryGetProcAddress.htm">MemoryGetProcAddress</a>, <a
+href="MemoryFreeLibrary.htm">MemoryFreeLibrary</a>, <a
+href="MemoryFindResource.htm">MemoryFindResource</a>, <a
+href="MemorySizeofResource.htm">MemorySizeofResource</a>, <a
+href="MemoryLoadResource.htm">MemoryLoadResource</a>, <a
+href="MemoryLoadString.htm">MemoryLoadString</a>, <a
+href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
+
+<h3>Examples</h3>
+<pre class="NoIndent">MemoryLoadLibrary, ahkdllModule, %A_ScriptDir%\AutoHotkey.dll <em>; Load the AutoHotkey module.</em><br>MemoryGetProcAddress, ahkdll, %ahkdllModule%, ahkdll <em>; get address of ahkdll function.</em><br>MemoryGetProcAddress, ahkReady, %ahkdllModule%, ahkReady <em>; get address of ahkReady function.</em><br>DllCall(ahkdll,"Str","NewScript.ahk","Str","") <em>; start new thread</em><br>While DllCall(ahkReady)<br>  Sleep 100<br>MemoryFreeLibrary(ahkdllModule)</pre>
+</body>
+</html>

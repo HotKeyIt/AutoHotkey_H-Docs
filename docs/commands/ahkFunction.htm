@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>ahkFunction</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>ahkFunction</h1>
+<p>Exported function that allows calling a function in script
+currently executed by&nbsp;AutoHotkey module.<br>
+Paramenters can be strings only as well as return value.<br>
+</p>
+<br>
+<pre class="Syntax">ahkFunction, <b>OutPutVar</b>, FuncName, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10
+<pre><em>Command  Example:</em> DllCall, <b>OutPutVar</b>, AutoHotkey.<b>dll</b>\ahkFunction, Str, FuncName[, Str, Arg1 , ..., Str,Arg10], Str
+                  DllCall, <b>OutPutVar</b>, AutoHotkey.<b>exe</b>\ahkFunction, Str, FuncName[, Str, Arg1 , ..., Str,Arg10], Str
+<br><em>Function Example:</em> <b>OutPutVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkFunction", "Str", "FuncName"[, "Str", Arg1 , ..., "Str",Arg10], "Str")
+                  <b>OutPutVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkFunction", "Str", "FuncName"[, "Str", Arg1 , ..., "Str",Arg10], "Str")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+<dt>OutPutVar</dt>
+<dd>
+<p>The name of the variable to store the functions returned value as string, on failure empty string is stored.</p>
+</dd>
+<dt>FuncName</dt>
+<dd>
+<p>The name of the function to call.</p>
+</dd>
+<dt>Arg1, ..., Arg10</dt>
+<dd>
+<p>You can pass up to 10 parameters to the function. Note all
+parameters need to be Strings or NULL / 0 if you want to omit parameter (use function default parameters)</p>
+</dd>
+</dl>
+<dl>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="ahkPostFunction.htm">ahkPostFunction</a>,
+<a href="ahkFindFunc.htm">ahkFindFunc</a>, <a href="DllCall.htm">DllCall()</a>
+</p>
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","~VKFF::Return`nMyFunc(param){`nSleep 10000`nMsgBox `% param`n}","Str","") <em>; start a new thread, just the function.</em><br>DllCall(dllpath "\ahkFunction","Str","MyFunc","Str","Hello World!","Str") <em>; call the function.</em>ret := ahkFunction("MyFunc","1","test") <em>; call function in current thread</em></pre>
+</body></html>

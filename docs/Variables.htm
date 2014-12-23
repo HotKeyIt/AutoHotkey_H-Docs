@@ -59,9 +59,10 @@ MsgBox % <span class="red">&apos;</span>She said, &quot;An apple a day.&quot;<sp
 <p>Operators such as NOT/&gt;/=/&lt; automatically produce a true or false value: they yield 1 for true and 0 for false. However, the AND/OR operators always produce one of the input values. For example, in the following expression, the variable <em>Done</em> is assigned 1 if A_Index is greater than 5 or the value of <em>FoundIt</em> in all other cases:</p>
 <pre>Done := A_Index &gt; 5 or FoundIt</pre>
 <p>As hinted above, a variable can be used to hold a false value simply by making it blank or assigning 0 to it. To take advantage of this, the shorthand statement <code>if Done</code> can be used to check whether the variable Done is true or false.</p>
-<p><a name="True"></a><a name="False"></a>In an expression, the keywords <em>true</em> and <em>false</em> resolve to 1 and 0. They can be used to make a script more readable as in these examples:</p>
+<p><a name="True"></a><a name="False"></a>In an expression, the keywords <em>true</em>, <em>false</em> and <em>null</em> resolve to 1, 0 and 0. They can be used to make a script more readable as in these examples:</p>
 <pre>CaseSensitive := false
-ContinueSearch := true</pre>
+ContinueSearch := true
+hWindow := null</pre>
 <p><strong>Integers and floating point</strong>: Within an expression, numbers are considered to be floating point if they contain a decimal point or scientific notation; otherwise, they are integers. For most operators -- such as addition and multiplication -- if either of the inputs is a floating point number, the result will also be a floating point number.</p>
 <p>Within expressions and non-expressions alike, integers may be written in either hexadecimal or decimal format. Hexadecimal numbers all start with the prefix 0x. For example, <code>Sleep 0xFF</code> is equivalent to <code>Sleep 255</code>. Floating point numbers can optionally be written in scientific notation, with or without a decimal point (e.g. <code>1e4</code> or <code>-2.1E-4</code>).</p>
 <p>Within expressions, unquoted literal numbers such as <code>128</code>, <code>0x7F</code> and <code>1.0</code> are converted to pure numbers before the script begins executing, so converting the number to a string may produce a value different to the original literal value. For example:</p>
@@ -327,6 +328,19 @@ MsgBox(1.00)  <em>; Shows 1.0</em></pre>
     <td>A_AhkPath</td>
     <td><p>For non-compiled scripts: The full path and name of the EXE file that is actually running the current script. For example: C:\Program Files\AutoHotkey\AutoHotkey.exe</p>
     <p>For <a href="Scripts.htm#ahk2exe">compiled scripts</a>: The same as the above except the AutoHotkey directory is discovered via the registry entry <em>HKEY_LOCAL_MACHINE\SOFTWARE\AutoHotkey\InstallDir</em>. If there is no such entry, A_AhkPath is blank.</p></td>
+  </tr>
+  <tr id="DllPath">
+    <td>A_DllPath</td>
+    <td><p>The full path and name of the DLL file that is actually running the current script. For example: C:\Program Files\AutoHotkey\AutoHotkey.dll. If the script is executed by EXE, it contains the path of EXE</p></td>
+  </tr>
+  <tr id="AhkDir">
+    <td>A_AhkDir</td>
+        <td><p>For non-compiled scripts: The full path and name of the directory of EXE file that is actually running the current script. For example: C:\Program Files\AutoHotkey</p>
+    <p>For <a href="Scripts.htm#ahk2exe">compiled scripts</a>: The same as the above except the AutoHotkey directory is discovered via the registry entry <em>HKEY_LOCAL_MACHINE\SOFTWARE\AutoHotkey\InstallDir</em>. If there is no such entry, A_AhkPath is blank.</p></td>
+  </tr>
+  <tr id="DllDir">
+    <td>A_AhkDir</td>
+        <td><p>The full path and name of the directory of DLL file that is actually running the current script. For example: C:\Program Files\AutoHotkey, if the script is executed by EXE it contains the directory of EXE.</p></td>
   </tr>
   <!--tr id="IsUnicode">
     <td>A_IsUnicode</td>
@@ -769,6 +783,30 @@ return
   <tr>
     <td>A_LoopField</td>
     <td>See <a href="commands/LoopParse.htm">parsing loop</a>.</td>
+  </tr>
+</table>
+
+<h3 id="loop">Structures (low level)</h3>
+<table class="info">
+  <tr id="Index">
+    <td>A_ScriptStruct</td>
+    <td>Returns a pointer to g_Script structure of current script.</td>
+  </tr>
+  <tr>
+    <td>A_GlobalStruct</td>
+    <td>Returns a pointer to g structure of current script.</td>
+  </tr>
+</table>
+
+<h3 id="loop">AutoHotkey.dll specific</h3>
+<table class="info">
+  <tr id="Index">
+    <td>A_IsDll</td>
+    <td>Returns true if sript is executed in a dll.</td>
+  </tr>
+  <tr>
+    <td>A_IsMini</td>
+    <td>Returns true if script is executed in AutoHotkeyMini.dll.</td>
   </tr>
 </table>
 

@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ComObjValue()</title>
+<title>ComObjValue</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,17 +12,17 @@
 </head>
 <body>
 
-<h1>ComObjValue()</h1>
+<h1>ComObjValue</h1>
 
 <p>Retrieves the value or pointer stored in a COM wrapper object.</p>
 
-<pre class="Syntax">Value := ComObjValue(ComObject)</pre>
+<pre class="Syntax"><b>OutPutVar</b> := ComObjValue(ComObject)<pre><em>Example:</em> <b>Value</b> := ComObjValue(ComObject)</pre>ComObjValue, <b>OutPutVar</b>, ComObject<pre><em>Example:</em> ComObjValue, Value, %ComObject%</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
-  <dt>Value</dt>
-  <dd><p>A 64-bit signed integer.</p></dd>
+  <dt>OutPutVar</dt>
+  <dd><p>The name of the variable in which to store the 64-bit signed integer.</p></dd>
 
   <dt>ComObject</dt>
   <dd><p>A wrapper object containing a COM object or typed value.</p></dd>

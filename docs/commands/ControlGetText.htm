@@ -15,8 +15,12 @@
 <h1>ControlGetText</h1>
 
 <p>Retrieves text from a control.</p>
+<pre class="Syntax"><b>OutPutVar</b> := ControlGetText([, Control, WinTitle, WinText, ExcludeTitle, ExcludeText])</pre>
+<pre><em>Example:</em> <b>Text</b> := ControlGetText("Edit1", "MyGui ahk_class AutoHotkeyGUI")</pre>
+ControlGetText, <b>OutPutVar</b> [, Control, WinTitle, WinText, ExcludeTitle,
+ExcludeText]
+<pre><em>Example:</em> ControlGetText, <b>Text</b>, Edit1, MyGui ahk_class AutoHotkeyGUI</pre>
 
-<pre class="Syntax">ControlGetText, OutputVar [, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]</pre>
 <h3>Parameters</h3>
 <dl>
 

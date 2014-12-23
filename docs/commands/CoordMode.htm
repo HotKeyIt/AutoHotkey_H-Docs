@@ -15,8 +15,11 @@
 <h1>CoordMode</h1>
 
 <p>Sets coordinate mode for various commands to be relative to either the active window or the screen.</p>
+<pre class="Syntax">CoordMode(Command [, Mode])</pre>
+<pre><em>Example:</em> CoordMode("ToolTip","Screen")</pre>
+CoordMode, Command [, Mode] 
+<pre><em>Example:</em> CoordMode, ToolTip, Screen</pre>
 
-<pre class="Syntax">CoordMode, ToolTip|Pixel|Mouse|Caret|Menu [, Screen|Window|Client]</pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -29,10 +32,9 @@
 
   <dt>Param2</dt>
   <dd><p>If <em>Param2</em> is omitted, it defaults to Screen.</p>
-      <p><strong>Screen</strong>: Coordinates are relative to the desktop (entire screen).</p>
-      <p><strong>Relative</strong>: Coordinates are relative to the active window.</p>
-      <p><strong>Window</strong>: Synonymous with <em>Relative</em> and recommended for clarity.</p>
-      <p id="Client"><strong>Client</strong>: Coordinates are relative to the active window's client area, which excludes the window's title bar, menu (if it has a standard one) and borders.  Client coordinates are less dependent on OS version and theme.</p>
+      <p><strong>Screen / 2</strong>: Coordinates are relative to the desktop (entire screen).</p>
+      <p><strong>Window / Relative / 1</strong>: Coordinates are relative to the active window.</p>
+      <p id="Client"><strong>Client / 0</strong>: Coordinates are relative to the active window's client area, which excludes the window's title bar, menu (if it has a standard one) and borders.  Client coordinates are less dependent on OS version and theme.</p>
       </dd>
 
 </dl>

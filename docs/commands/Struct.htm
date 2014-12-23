@@ -1,0 +1,459 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Struct</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>Struct</h1>
+
+<p>Struct() is a build-in function that creates and returns a special
+structure object.<br>
+This special object can be used to access the stucture its fields using object
+syntax. </p>
+<br>
+
+<pre class="Syntax"><b>OutPutVar</b>:= Struct("Definition"[, AddressToStructure, InitObject])
+<pre><b>POINT</b> := Struct("int x,y;",{x:10,y:20})</pre>
+Struct, <b>OutPutVar</b>, Definition[,%AddressToStructure%, % InitObject := {x:1,y:2}]
+<pre>Struct, <b>POINT</b>, int x;y,% obj:={x:10,y:20}</pre></pre>
+
+<h3>Parameters<br>
+</h3>
+<dl>
+<dt>OutPutVar</dt>
+    <dd><p>The name of the variable in which to store the Structure Object.</p></dd>
+  <dt id="Definition">Definition</dt>
+    <dd><p>This parameter must be a string containing the structure definition.
+      <br>
+      Definition is similar to C so most structures can be transformed very
+      easily, also <a href="StructTypes.htm">default data types</a> can be
+      used.<br>
+      Either semicolon (;) or comma (,) can be used to separate fields, even
+      mixed. <br>
+      If no type for first field is given UInt will be used, otherwise
+      previouse type will be used, e.g. in <b>"a,Int x,y,Char c,d"</b>, a will
+      be UInt, y Int and d Char.<br>
+      If only one type/key is given, e.g. <b>"UInt"</b>, it is assumed to be a
+      structure definition that resolves to default type or a variable that
+      describes the structure.<br>
+      <b>Note!</b> <b>"Int;"</b> or <b>"MyVar,"</b> are interpreted as <b>"UInt
+      Int"</b> and <b>"UInt MyVar"</b>. <br>
+      So for <b>Struct("MyVar")</b>, MyVar must define a structure, e.g.
+      <b>MyVar := "Int x, Int y"</b> and <b>Struct("MyVar;")</b> will be same
+      as <b>Struct("UInt MyVar")</b>. </p>
+      <pre>_POINT:="(<br>        Int x; // also comments in C style are supported<br>        // empty lines will be simply ignored.<br>        Int y; // last ; is optional and can be omitted.<br>)"</pre>
+      New lines can be omitted too. This way the definition can be written much
+      more compact. 
+      <pre>_POINT:="Int x,Int y"</pre>
+      UInt is default type so it can be omitted too if negative values are not
+      wanted (for negative values Int must be used).<br>
+
+      <pre>_POINT:="x,y"</pre>
+      <span style="font-weight: bold;">UNION AND STRUCT</span><br>
+      Struct supports unions and structures in structures, note such structures
+      do not have a name so you can't use same name for a field in main
+      structure and sub-structure.<br>
+
+      <pre>_MyUnion=<br>(<br> union {<br>     UInt int;<br>     struct {<br>       UShort x;<br>       UShort y;<br>     };<br>     struct {<br>       Byte a;<br>       Byte b;<br>       Byte c;<br>       Byte d;<br>     };<br> };<br>)<br>mys:=Struct(_MyUnion)<br>mys.int:=0xFFFFFFFF<br>MsgBox % mys.int "`n" mys.x " " mys.y "`n" mys.a " " mys.b " " mys.c " " mys.d</pre>
+      Create structure from a string containing the structure definition.<br>
+
+      <pre>pt:=Struct("UInt x,UInt y")</pre>
+      The definition can be saved in a variable. Struct will also resolve the
+      given string to the variable if necessary.<br>
+
+      <pre>POINT:="UInt x,UInt y"<br>pt:=Struct(POINT)<br>pt:=Struct("POINT")</pre>
+      An existing structure object can be used too.<br>
+
+      <pre>POINT:=Struct("x,y")<br>pt:= Struct(POINT)</pre>
+      <span style="font-weight: bold;">Global / Static / Local
+      variables</span><br>
+      <br>
+      Inside a function you can also use local and static variables for
+      structure definition.<br>
+      <br>
+      Even when this objects are returned the static variable refference in
+      definition can be resolved dynamically.<br>
+      <br>
+      It is also possible to create a structure from a static variable even if
+      you are not inside the function. Therefore include the name of the
+      function and enclose variable in brackets. This is also necessary if you
+      create a static structure from a static variable like in MyFunc here.<br>
+
+      <pre>MyFunc() <em>; using this method we can create static structures</em><br>AnotherFunc() <em>; this method can be used anywhere to adccess the variable</em><br>pt:=Struct("MyFunc(POINT)",{x:100,y:200}) <em>; even outside the function we can access the definition variable</em><br>MsgBox % pt.x "-" pt.y<br>MyFunc(){<br>        static POINT:="UInt x,UInt y"<br>        , pt:=Struct("MyFunc(POINT)",{x:10,y:20})<br>        MsgBox(pt.x "-" pt.y)<br>}<br>AnotherFunc(){<br>        static pt:=Struct("MyFunc(POINT)",{x:10,y:20})<br>        MsgBox(pt.x "-" pt.y)<br>}</pre>
+    </dd>
+  <dt>AddressToStructure</dt>
+    <dd><p>Address of memory representing the structure. This variable is used
+      to access an existing structure in memory.<br>
+      For example here we would use the memory of variable <span
+      style="font-weight: bold;">pointMem</span> for the structure.<br>
+      </p>
+      <pre>VarSetCapacity(pointMem,8)<br>pt:=Struct("x,y",&amp;pointMem)<br>pt.x:=10<br>MsgBox % pt[] " = " (&amp;pointMem) "`n" pt.x " = " NumGet(pointMem)</pre>
+    </dd>
+  <dt>InitObject</dt>
+    <dd><p>Initialize your structure right away. To initialize the structure
+      you will need to pass an object with keys and values.<br>
+      The order of keys and values is not relevant because it will be
+      enumerated in alphabetical order anyway<br>
+      </p>
+      <pre>pt:=Struct("x,y",{x:100,y:200}) <em>; When no AddressOfStructure is given, initobject must be the second parameter.</em><br>MsgBox % pt.x "`n" pt.y</pre>
+    </dd>
+
+  <h3>Return Value</h3>
+    <dd><p>Struct returs a special structure object.<br>
+      It behaves very similar to objects but works different internally.<br>
+      </p>
+    </dd>
+</dl>
+
+<h2>Methods</h2>
+
+<div class="methodShort">
+<h3>Size</h3>
+
+<p>Returns the size in bytes of a structure or its field.</p>
+<pre class="Syntax">OutPutVar := Struct.Size([field])</pre>
+
+<table style="width: 800px; height: 80px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of existing field within the structure, if omitted the size of
+        structure is returned.</td>
+    </tr>
+    <tr>
+      <td><b>Returns</b></td>
+      <td>If field is given, its size in bytes will be returned, otherwise the
+        total size of structure will be returned.</td>
+    </tr>
+  </tbody>
+</table>
+<pre>pt:=Struct("x,y")<br>Msgbox % pt.Size() <em>; returns 8</em></pre>
+<pre>struct:=Struct("Int64 x,y")<br>Msgbox % struct.Size("y") <em>; returns 8</em></pre>
+If structure is an array you will needle to pass a digit to retrieve the size
+of a field.<br>
+
+<pre>struct:=Struct("Int64[2]")<br>Msgbox % struct.Size(1) <em>; returns 8</em></pre>
+</div>
+
+<div class="methodShort">
+<h3>Offset</h3>
+
+<p>Returns offset for a field.</p>
+<pre class="Syntax">Struct.Offset(field)</pre>
+
+<table style="width: 800px; height: 40px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of existing field within the structure, if omitted the size of
+        structure is returned.</td>
+    </tr>
+  </tbody>
+</table>
+<pre>pt:=Struct("x,y")<br>MsgBox % pt.Offset("y") <em>; returns 4</em></pre>
+</div>
+
+<div class="methodShort">
+<h3>CountOf</h3>
+
+<p>Returns size of array or 0 if structure or field is not an array.</p>
+<pre class="Syntax">Struct.CountOf([field])</pre>
+
+<table style="width: 800px; height: 40px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of existing field within the structure, if omitted the size of
+        structure is returned.</td>
+    </tr>
+  </tbody>
+</table>
+<pre>uint:=Struct("UInt[10]")<br>MsgBox % uint.CountOf() <em>; returns 10</em><br>pt:=Struct("UInt x[2],UInt y[2]")<br>MsgBox % pt.CountOf("x") <em>; returns 2</em></pre>
+</div>
+
+<div class="methodShort">
+<h3>Fill</h3>
+
+<p>Fills the structure with given value.</p>
+<pre class="Syntax">Struct.Fill([value])</pre>
+
+<table style="width: 800px; height: 40px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">value</td>
+      <td>A digit value or character that will fill the structure. Mainly used
+        to set a structure empty. </td>
+    </tr>
+  </tbody>
+</table>
+<pre>pt:=Struct("x,y",{x:10,y:20})<br>MsgBox % pt.x<br>pt.Fill() <em>; same as pt.Fill(0)</em><br>MsgBox % pt.x<br>s:=Struct("Byte[10]")<br>s.Fill("A")<br>MsgBox % StrGet(s[],10,"CP0")</pre>
+</div>
+
+<div class="methodShort">
+<h3>GetAddress</h3>
+
+<p>Returns address of field or structure.</p>
+<pre class="Syntax">Struct.GetAddress([field])</pre>
+
+<table style="width: 800px; height: 40px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of existing field within the structure. When omitted, returns
+        address of structure itself. To get the address for structure you can
+        also use [] or [""] for structure objects and [""] for its fields.
+        <b>Note</b> you cannot use [] for fields. </td>
+    </tr>
+  </tbody>
+</table>
+<pre>pt:=Struct("x,y")<br>MsgBox % pt.GetAddress() " = " pt[]<br>MsgBox % pt.GetAddress("x") " = " pt.x[""]</pre>
+</div>
+
+<div class="methodShort">
+<h3>Encoding</h3>
+
+<p>Returns encoding for field or structure.</p>
+<pre class="Syntax">Struct.Encoding([field])</pre>
+
+<table style="width: 800px; height: 40px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of existing field within the structure. When omitted, Encoding
+        of structure itself will be returned.</td>
+    </tr>
+  </tbody>
+</table>
+If type of field or structure is not one of String types (TCHAR, CHAR, UCHAR,
+LPTSTR...) -1 is returned. Otherwise it returns 0 for CP0 and 1200 for UTF-16
+... <br>
+Other encoding types have to use StrGet and StrSet to retrieve correct text. 
+<pre>str1:=Struct("LPTSTR name")<br>str2:=Struct("LPTSTR")<br>MsgBox % str1.Encoding("name") " = " str2.Encoding()</pre>
+</div>
+
+<div class="methodShort">
+<h3>IsPointer</h3>
+<pre>Returns true if the field or structure is a pointer.</pre>
+<pre class="Syntax">Struct.IsPointer([field])</pre>
+
+<table style="width: 800px; height: 40px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of existing field within the structure. When omitted, returns
+        true if structure itself is a pointer.</td>
+    </tr>
+  </tbody>
+</table>
+<pre>s:=Struct("UInt *a,UInt b")<br>MsgBox % s.IsPointer("a") "`n" s.IsPointer("b")<br>s:=Struct("UInt*")<br>MsgBox % s.IsPointer()</pre>
+</div>
+
+<div class="methodShort">
+<h3>GetPointer</h3>
+
+<p>Returns pointer saved in structure or field.</p>
+<pre class="Syntax">Struct.GetPointer([field])</pre>
+
+<table style="width: 800px; height: 40px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of existing field within the structure. When omitted, reads and
+        returns pointer of first array item in our structure.</td>
+    </tr>
+  </tbody>
+</table>
+<pre>str:=Struct("LPTSTR name",{name:"AutoHotkey"})<br>MsgBox % str.GetPointer("name") "`n" StrGet(str.GetPointer("name"))</pre>
+
+<p>You can also use "" to read the pointer. So [""] returns address and ["",""]
+returns the pointer, ["","",""] pointer to pointer and so on. </p>
+<pre>str:=Struct("LPTSTR name",{name:"AutoHotkey"})<br>MsgBox % str.name["",""] "`n" StrGet(str.name["",""]))</pre>
+</div>
+
+<div class="methodShort">
+<h3>SetCapacity</h3>
+
+<p>Set new size for our structure or pointer, returns true if new memory was
+allocated.</p>
+<pre class="Syntax">Struct.SetCapacity([field,] newsize)</pre>
+
+<table style="width: 800px; height: 80px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of the field where capacity should be set, if omitted structure
+        capacity will be set. This is mainly used for arrays to shrink or
+        increase the size. When setting capacity for main structure, its old
+        memory will be freed if necessary and new memory will be zero-filled.
+      </td>
+    </tr>
+    <tr>
+      <td>new size</td>
+      <td>Must be a digit or a variable containing a digit that represents new
+        size of our field or structure. </td>
+    </tr>
+  </tbody>
+</table>
+<pre>str:=Struct("LPTSTR name")<br>str.SetCapacity("name",2000)<br>previous_pointer := str.GetPointer("name")<br>str.name:="AutoHotkey"<br>MsgBox % previous_pointer " = " str.GetPointer("name") "`n" str.name <em>; as you can see pointer did not change.</em></pre>
+
+<p>You can allocate and use memory as you like, for example here we will store
+a String and the pointer in same memory block. Of course when you allocate new
+memory here you will loose contents.</p>
+<pre>str:=Struct("LPTSTR")<br>str.SetCapacity(2000)<br>str.1[""]:=str[]+A_PtrSize<br>str.1:="AutoHotkey"<br>MsgBox % str.1</pre>
+</div>
+
+<div class="methodShort">
+<h3>GetCapacity</h3>
+
+<p>Returns Capacity previously set using .SetCapacity() or via asigning a
+string.</p>
+<pre>Struct.GetCapacity([field])</pre>
+
+<table style="width: 800px; height: 80px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">field</td>
+      <td>Name of existing field in our structure, if omitted returns structure
+        capacity. </td>
+    </tr>
+  </tbody>
+</table>
+<pre>str:=Struct("LPTSTR name")<br>str.SetCapacity("name",2000)<br>MsgBox % str.GetCapacity("name")</pre>
+</div>
+
+<div class="methodShort">
+<h3>Clone</h3>
+
+<p>Returns new structure object of same type.</p>
+<pre class="Syntax">Struct.Clone([AddressOfStructure,InitObject])</pre>
+
+<table style="width: 800px; height: 80px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%">AddressOfStructure</td>
+      <td>Address to memory for this structure. When omitted, memory will be
+        reserved and set internally. </td>
+    </tr>
+    <tr>
+      <td width="15%">InitObject</td>
+      <td>An object used to initialize the structure. </td>
+    </tr>
+  </tbody>
+</table>
+<pre>pt:=Struct("x,y")<br>pt1:=pt.Clone({x:10,y:20})<br>MsgBox % pt1.x "-" pt1.y</pre>
+     You can do the same using the new operator<br>
+
+<pre>pt:=Struct("x,y")<br>pt1:= new pt({x:10,y:20})<br>MsgBox pt1.x "-" pt1.y</pre>
+</div>
+<br>
+<br>
+
+<dl>
+  <dt>Features and Remarks</dt>
+    <dd>Some remarks about structure objects and more features. </dd>
+  <br>
+    <dd>A structure object cannot be altered, so you cannot add more fields to
+      it. The only exeption are arrays, here items are resolved dynamically.<br>
+      You can receive the address of structure or key using empty key (e.g. struct.item[""]).
+      For structure objects also [] can be used (e.g. struct[] or struct[""]). </dd>
+  <br>
+    <dd>When a key is not given a type, e.g. <b>"LPTSTR key1,key2"</b>, previous type is used. If the first key lacks a type, Uint is used,
+		so <b>"key1,key2"</b> is equivalent to <b>"UInt key1,key2"</b> or <b>"UInt key1,UInt key2"</b>.<br>
+		<br>Note: pointer needs to be specified for each element, so <b>"*UInt key1,key2"</b> is equivalent to <b>"UInt *key1,UInt key2"</b>. If both elements are pointers <b>"UInt *key1,*key2"</b> must be used.</dd>
+  <br>
+    <dd>To access a pointer in pointer you can specify empty key several times,
+      e.g. object["",""] would get the pointer at address of object[].<br>
+      Same is valid for keys, so here you'll receive the pointer.<br>
+
+      <pre>s:=Struct("LPTSTR str")<br>s.str:="Hello World!"<br>MsgBox % StrGet(s.str["",""])</pre>
+      <span style="font-weight: bold;">TYPE ONLY DEFINITION</span></dd>
+    <dd>Struct supports type only definition for all default types like
+      Int,Byte,Char... .<br>
+      To access fields of such structures you will allways need to use digits
+      like in arrays.<br>
+
+      <pre>u:=Struct("UInt") <em>; this is similar to UInt[1]</em><br>u.1:=10<br>MsgBox % u.1</pre>
+      <span style="font-weight: bold;">ARRAYS</span></dd>
+    <dd>Same way arrays are supported.<br>
+
+      <pre>u:=Struct("UInt[10]")<br>u.10:=100<br>MsgBox % u.10</pre>
+      <span style="font-weight: bold;">ARRAYS OF UNKNOWN SIZE</span></dd>
+    <dd> Any structure can be used as array.<br>
+      However be careful, accessing memory that does not belong to the
+      structure may crash your application.<br>
+
+      <pre>pt:=Struct("x,y")<br>pt.SetCapacity(16) <em>; increase capacity to hold 2 structures</em><br>pt.x := 1 <em>; we can access the first field right away, similar to pt.1.x := 1</em><br>pt.2.x := 2 <em>; here we access the second structure</em><br>MsgBox % pt.2.x " != " pt.x</pre>
+      <span style="font-weight: bold;">ENUMERATING A STRUCTURE</span></dd>
+    <dd>Using a for loop we can enumerate the structure to retrieve field names
+      and their values.<br>
+      Enumeration will be executed in same order as the structure was defined,
+      not alphabetically like for simple objects.<br>
+
+      <pre>s:=Struct("Byte x,Int u,LPTSTR str")<br>s.x:=10<br>s.u:=1000<br>s.str:="AutoHotkey"<br>for k,v in s<br>MsgBox % k ": " v</pre>
+      Also dedicated Arrays can be enumerated same way.<br>
+
+      <pre>x:=Struct("UInt[10]",[0,9,8,7,6,5,4,3,2,1])<br>for k, v In x<br>MsgBox % k ": " v</pre>
+      <span style="font-weight: bold;">DYNAMIC AND STATIC FIELDS AND
+      STRUCTURES</span></dd>
+    <dd>Struct supports calling dynamic structures and fields, such that are
+      defined but do not exist as an object/field.<br>
+      These objects/fields are created dynamically whenever needed and
+      invoked/called automatically internally.<br>
+      A static field on the other hand is defined directly in structure
+      object.<br>
+      For Example, here x and y are static fields.<br>
+
+      <pre>myStruct:=Struct("Int x, Int y")</pre>
+      Dynamic fields and structures are little different to static, they use
+      refference to the definition to create the structure internally.<br>
+      So here x and y fields will be created dynamically only when
+      necessary.<br>
+
+      <pre>POINT:="Int x, Int y"<br>pt:=Struct("POINT p", { p: { x:10, y:20 } } ) <em>; same structure as above but POINT structure is resoved dynamically.</em><br>MsgBox % pt.p.x " , " pt.p.y</pre>
+      Furthermore, you can allocate memory for static fields
+      using .SetCapacity() method, see below. This memory will be managed
+      internally and freed whenever the object is deleted (last<br>
+      reference is released).<br>
+      This feature allows assigning a string without initializing memory
+      manually before.<br>
+
+      <pre>s:=Struct("LPTSTR string")<br>s.string:="Hello World!"<br>MsgBox % s.string</pre>
+      The size of allocated memory is backed up internally and can be retrieved
+      with .GetCapacity() method<br>
+
+      <pre>MsgBox % s.GetCapacity("string")</pre>
+      Whenever a new string is assigned, memory will be only reallocated if a
+      larger memory is needed.<br>
+      To free the memory manually use .SetCapacity() method.<br>
+
+      <pre>s.SetCapacity("string",0)<br>MsgBox % s.GetCapacity("string")</pre>
+      You can manually allocate memory to fields using .SetCapacity()
+      method.<br>
+
+      <pre>s:=Struct("LPTSTR string")<br>s.SetCapacity("string",260)</pre>
+      <span style="font-weight: bold;">NOTE</span></dd>
+    <dd>You cannot allocate memory for dynamic fields.<br>
+      Calling .GetCapacity() method on dynamic field will return -1.<br>
+      Also calling .SetCapacity() method will simply fail.<br>
+    </dd>
+
+
+  <h3>Related</h3>
+
+  <p><a href="sizeof.htm">sizeof</a>, <a
+  href="../StructTypes.htm">StructTypes</a> , <a
+  href="DllCall.htm">DllCall</a>, <a href="NumGet.htm">NumGet</a>, <a
+  href="NumPut.htm">NumPut</a> </p>
+
+  <h3>Examples</h3>
+  <pre class="NoIndent"> <em>; SIMPLE STRUCTURE</em><br>pt:=Struct("x,y")<br> <em>; SAME STRUCTURE CREATED FROM VARIABLE</em><br>_POINT:="x,y"<br>pt:=Struct(_POINT)<br> <em>; ARRAY OF POINTS</em><br>pt:=Struct("_POINT[10]")<br> <em>; ARRAY OF POINTS OF UNKNOWN SIZE</em><br>pt:=Struct("*_POINT")<br><br> <em>; TO CREATE ARRAY FROM POINTER</em><br>_POINT:="x,y", VarSetCapacity(pt1,8)<br>pt:=Struct("*_POINT") <em>; similar to "*_POINT[1]"</em><br>pt["",""]:=&amp;<em>;pt1 ; assign pointer to fist item</em><br>pt.x:=1 <em>; same as pt.1.x</em><br>MsgBox % pt.x<br><br> <em>; Create a structure from structure</em><br>pt1:= new pt<br>pt1:= pt.Clone()<br><br><em>; 				More examples</em><br>pt:=Struct("x,y") <em>;POINT structure</em><br>pt.x:=100<br>MsgBox % pt.x<br>rc:=Struct("left,top,right,bottom") <em>; RECT structure</em><br>Gui,Show,w100 h100,Test<br>Gui,+LastFound<br>DllCall("GetWindowRect","PTR",WinExist(),"PTR",rc[])<br>MsgBox % "left: " rc.left "`ntop: " rc.top "`nright: " rc.right "`nbottom: " rc.bottom<br><br><br><em>; 				Array Examples<br>; Simple array structures.<br>; Array is always accessed using integer</em><br>array:=Struct("Uint[10]")<br>array.5:=10<br>MsgBox % array.5<br>MyArray:="a,b"<br>array:=Struct("MyArray[10]")<br>array.1.a:=1<br>array.2.b:=2<br>MsgBox % array.1.a "`n" array.2.b<br><br><br><br><em>;				Pointer Examples</em><br> <em>; SIMPLE POINTER*</em><br>int:=Struct("*UInt"), VarSetCapacity(mem,100)<br>int["",""]:=&amp;mem<br>int.1:=100 <em>; automatically resolves to pointer.</em><br>MsgBox % int.1 <em>; again pointer is resolved automatically</em><br> <em>; POINTER TO ARRAY OF POINTERS</em><br>VarSetCapacity(Arr,10*A_PtrSize,0)<br>Loop 10 <em>; create 10 arrays to hold 10 integers</em><br>VarSetCapacity(Arr%A_Index%,10*sizeof("UInt"),0)<br>,NumPut(&amp;Arr%A_Index%,&amp;arr,(A_Index-1)*A_PtrSize,"PTR")<br>s:=Struct("**UInt")<br>s["",""]:=&amp;Arr<br>s.1.1:=10<br>s.2.10:=20<br>MsgBox % s.1.1 "-" s.2.10<br> <em>; ARRAY OF POINTERS</em><br>VarSetCapacity(Arr,10*A_PtrSize,0)<br>Loop 10 <em>; create 10 arrays to hold 10 integers</em><br>VarSetCapacity(Arr%A_Index%,10*sizeof("UInt"),0)<br>,NumPut(&amp;Arr%A_Index%,&amp;arr,(A_Index-1)*A_PtrSize,"PTR")<br>s:=Struct("*UInt[10]",&amp;Arr)<br>s.1.1:=30<br>s.2.10:=40<br>MsgBox % s.1.1 "-" s.2.10<br> <em>; ARRAY OF POINTERS TO POINTERS</em><br>VarSetCapacity(Arr,10*A_PtrSize,0)<br>Loop 10 <em>; create 10 arrays to hold 10 arrays of 10 integers</em><br>{<br> i:=A_Index<br> VarSetCapacity(Arr%i%,10*A_PtrSize,0)<br> ,NumPut(&amp;Arr%i%,&amp;arr,(i-1)*4,"PTR")<br> Loop 10<br> VarSetCapacity(Arr%i%_%A_Index%,10*sizeof("UInt"),0)<br> ,NumPut(&amp;Arr%i%_%A_Index%,&amp;arr%i%,(A_Index-1)*4,"PTR")<br>}<br>s:=Struct("**UInt[10]",&amp;Arr)<br>s.1.1.1:=50, s.2.3.10:=60<br>MsgBox % s.1.1.1 "-" s.2.3.10<br><br><br><br><em>; 				String Examples</em><br>String structures examples.<br> <em>; SIMPLE USER DEFINED STRUCTURE</em><br>user:="UInt Id, LPTSTR Name"<br>users := Struct("user[2]") <em>; array of structs</em><br><em>; here no automatic String allocation can be done because users is evaluated dynamically so we use own memory</em><br>Loop 2<br> VarSetCapacity(Str%A_Index%,256)<br>users.1.name[""]:=&amp;Str1 ,users.2.name[""]:=&amp;Str2<br><em>; above assignment can be assigned via object too</em><br><em>; users:=[{name:{"":&amp;Str1}},{name:{"":&amp;Str2}}]</em><br>users.1.Id := 1 ,users.2.Id := 2<br>users.1.Name := "Admin" ,users.2.Name := "User"<br><em>; same here, we could use an object to assign values</em><br><em>; users:=[{id:1,name:"Admin"},{id:2,name:"User"}]</em><br>MsgBox % users.1.Id "`t" users.1.Name "`n" users.2.Id "`t" users.2.Name<br><em>; Now to do the same with automatic String memory we would need to use non dynamic structure</em><br><em>; Therefore we define the structure completely and we can initialize it directly</em><br>users := Struct("UInt id1, LPTSTR Name1,UInt id2,LPTSTR Name2",{id1:1,name1:"Admin",id2:2,name2:"User"})<br>MsgBox % users.id1 "`t" users.name1 "`n" users.id2 "`t" users.name2<br> <em>; CHAR ARRAY</em><br>String:=Struct("TCHAR char[26]")<br>Loop 26<br> string["char"][A_Index]:=Chr(A_Index+64)<br>Loop 3<br> MsgBox % String["char"][A_Index*2] <em>;show some characters</em><br>MsgBox % StrGet(string[],26) <em>;get complete string</em><br><br><br><br><em>; 				RECT EXAMPLE</em><br>Gui,+LastFound<br>hwnd:=WinExist() <em>;get window handle</em><br>_RECT:="left,top,right,bottom"<br>RC:=Struct(_RECT) <em>;create structure</em><br>Gui,Add,Text,,Press Escape to continue<br>Gui,Show,w200 h100 <em>;show window</em><br>DllCall("GetWindowRect","PTR",hwnd,"PTR",rc[]) <em>;get window position</em><br>rc.right := rc.right - rc.left <em>;Set rc.right to be the width</em><br>rc.bottom := rc.bottom - rc.top <em>;Set rc.bottom to be the height</em><br>While DllCall("GetCursorPos","PTR",rc[])<br> &amp;&amp; DllCall("MoveWindow","PTR",hwnd,"int",rc.left,"int",rc.top,"int",rc.right,"int",rc.bottom,"Int",1)<br> If GetKeyState("Escape","P")<br> break<br>Gui,Destroy<br><br><br><br><em>; 				FINDFIRSTFILE EXAMPLE</em><br>_FILETIME := "dwLowDateTime,dwHighDateTime"<br>_SYSTEMTIME := "WORD wYear,WORD wMonth,WORD wDayOfWeek,WORD wDay,WORD wHour,WORD wMinute,WORD wSecond,WORD Milliseconds"<br>_WIN32_FIND_DATA := "dwFileAttributes,_FILETIME ftCreationTime,_FILETIME ftLastAccessTime,_FILETIME ftLastWriteTime,"<br>. "nFileSizeHigh,nFileSizeLow,dwReserved0,dwReserved1,TCHAR cFileName[260],TCHAR cAlternateFileName[14]"<br>file:=Struct("_WIN32_FIND_DATA[2]")<br>time:=Struct("_SYSTEMTIME")<br>DllCall("FindFirstFile","Str",A_ScriptFullPath,"Uint",file.1[""])<br>DllCall("FindFirstFile","Str",A_AhkPath,"UInt",file.2[""])<br>MsgBox % StrGet(file.1.cFileName[""])<br>MsgBox % "A_ScriptFullPath:`t" StrGet(file.1.cFileName[""]) "`t" StrGet(file.1.cAlternateFileName[""]) "`nA_AhkPath:`t" . StrGet(file.2.cFileName[""]) "`t" StrGet(file.2.cAlternateFileName[""])<br>handle:=DllCall("FindFirstFile","Str","C:\*","Uint",file.2[""])<br>Loop {<br> If !DllCall("FindNextFile","Uint",handle,"Uint",file.2[""])<br> break<br> DllCall("FileTimeToSystemTime","Uint",file.2.ftLastWriteTime[""],"Uint",time[""])<br> ToolTip % StrGet(file.2.cFileName[""]) "`n" StrGet(file.2.cAlternateFileName[""]) "`n" file.2.nFileSizeHigh " - " file.2.nFileSizeLow<br> . "`n" time.wYear . "-" time.wMonth . "-" time.wDay<br> . "`n" time.wDayOfWeek<br> . "`n" time.wHour . ":" time.wMinute . ":" time.wSecond . ":" time.Milliseconds<br> Sleep, 200<br>}<br>ToolTip<br>DllCall("CloseHandle","Uint",handle)<br><br><br><em>; 				PROCESS32FIRST EXAMPLE</em><br>MAX_PATH:=260<br>_PROCESSENTRY32:="<br>(<br> DWORD dwSize;<br> DWORD cntUsage;<br> DWORD th32ProcessID;<br> ULONG_PTR th32DefaultHeapID;<br> DWORD th32ModuleID;<br> DWORD cntThreads;<br> DWORD th32ParentProcessID;<br> LONG pcPriClassBase;<br> DWORD dwFlags;<br> TCHAR szExeFile[" MAX_PATH "];<br>)"<br>VarSetCapacity(string,260)<br>pEntry:= Struct(_PROCESSENTRY32)<br>pEntry.dwSize := sizeof(_PROCESSENTRY32)<br>hSnapshot:=DllCall("CreateToolhelp32Snapshot","UInt",TH32CS_SNAPALL:=0x0000001F,"PTR",0)<br>DllCall("Process32First" (A_IsUnicode?"W":""),"PTR",hSnapshot,"PTR",pEntry[""])<br>While % (A_Index=1 || DllCall("Process32Next" (A_IsUnicode?"W":""),"PTR",hSnapshot,"PTR",pEntry[""])) {<br>        ToolTip % pEntry.cntUsage "`n" pEntry.th32ProcessID<br>        . "`n" pEntry.th32DefaultHeapID "`n" pEntry.th32ModuleID<br> . "`n" pEntry.cntThreads "`n" pEntry.th32ParentProcessID<br> . "`n" pEntry.pcPriClassBase "`n" pEntry.dwFlags "`n" StrGet(pEntry.szExeFile[""])<br> Sleep, 200<br>}<br><br><br><em>; 				LISTPROCESSMODULES EXAMPLE</em><br>MAX_PATH:=260<br>MAX_MODULE_NAME32:=255<br>_MODULEENTRY32:="<br>(<br> DWORD dwSize;<br> DWORD th32ModuleID;<br> DWORD th32ProcessID;<br> DWORD GlblcntUsage;<br> DWORD ProccntUsage;<br> BYTE *modBaseAddr;<br> DWORD modBaseSize;<br> HMODULE hModule;<br> TCHAR szModule[" MAX_MODULE_NAME32 + 1 "];<br> TCHAR szExePath[" MAX_PATH "];<br>)"<br>ListProcessModules(DllCall("GetCurrentProcessId"))<br>ListProcessModules(dwPID)<br>{<br> global _Struct<br> static TH32CS_SNAPMODULE:=0x00000008,INVALID_HANDLE_VALUE:=-1<br> hModuleSnap := Struct("HANDLE")<br> me32 := Struct("_MODULEENTRY32")<br> <em>; Take a snapshot of all modules in the specified process.</em><br> hModuleSnap := DllCall("CreateToolhelp32Snapshot","UInt", TH32CS_SNAPMODULE,"PTR", dwPID )<br> if( hModuleSnap = INVALID_HANDLE_VALUE )<br> {<br> MsgBox % "CreateToolhelp32Snapshot (of modules)"<br> return FALSE<br> }<br> <em>; Set the size of the structure before using it.</em><br> me32.dwSize := sizeof("_MODULEENTRY32")<br> <em>; Retrieve information about the first module,</em><br> <em>; and exit if unsuccessful</em><br> if( !DllCall("Module32First" (A_IsUnicode?"W":""),"PTR", hModuleSnap,"PTR", me32[""] ) )<br> {<br> MsgBox % "Module32First" <em>; Show cause of failure</em><br> DllCall("CloseHandle","PTR", hModuleSnap ) <em>; // Must clean up the snapshot object!</em><br> return FALSE<br> }<br> <em>; Now walk the module list of the process,</em><br> <em>; and display information about each module</em><br> while(A_Index=1 || DllCall("Module32Next" (A_IsUnicode?"W":""),"PTR",hModuleSnap,"PTR", me32[""] ) )<br> {<br> ToolTip % "MODULE NAME`t=`t" StrGet(me32.szModule[""])<br> . "`nexecutable`t=`t" StrGet(me32.szExePath[""])<br> . "`nprocess ID`t=`t" me32.th32ProcessID<br> . "`nref count (g)`t=`t" me32.GlblcntUsage<br> . "`nref count (p)`t=`t" me32.ProccntUsage<br> . "`nbase address`t=`t" me32.modBaseAddr[""]<br> . "`nbase size`t=`t" me32.modBaseSize<br> Sleep, 200<br> }<br> <em>; Do not forget to clean up the snapshot object.</em><br> DllCall("CloseHandle","PTR",hModuleSnap)<br> return TRUE<br>}<br><br><br><br><em>; Enumerate a structure.</em><br> <em>; ENUMERATE SIMPLE STRUCTURE</em><br>MyStruct:="a,b,c"<br>s:=Struct(MyStruct,{a:1,b:2,c:3})<br>for k, v in s<br>MsgBox % k ": " v<br> <em>; ENUMERATE ARRAY OF STRUCTURES</em><br>MyStruct:="a,b,c"<br>s:=Struct("MyStruct[3]",[{a:1,b:2,c:3},{a:4,b:5,c:6},{a:7,b:8,c:9}])<br>for k, v in s<br>        for key,value in v<br> 		MsgBox % key ": " value<br> <em>; ENUMERATE DYNAMIC STRUCTURE</em><br>MyStruct:="a,b,c"<br>s:=Struct("Short size,LPTSTR name,MyStruct ms",{size:sizeof(MyStruct),name:"MyStruct",ms:{a:1,b:2,c:3}})<br>for k, v in s<br> if !IsObject(v)<br> 	MsgBox % k ": " v<br> else<br> 	for key,value in v<br> 		MsgBox % key ": " value<br></pre>
+</dl>
+</body>
+</html>

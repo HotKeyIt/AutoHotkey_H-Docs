@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>ahkgetvar</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ahkgetvar</h1>
+<p>Built in function to retrieve the value of a variable as string.</p>
+<br>
+<pre class="Syntax">DllCall, <b>OutPutVar</b>, Module\ahkgetvar, Str, VarName, UInt, GetVarPointer, CDECL UInt
+<pre><em>Command  Example:</em> DllCall, <b>OutPutVar</b>, AutoHotkey.<b>dll</b>\ahkgetvar, Str, MyVar, UInt, 0, CDECL UInt
+                  DllCall, <b>OutPutVar</b>, AutoHotkey.<b>exe</b>\ahkgetvar, Str, MyVar, UInt, 0, UInt
+<br><em>Function Example:</em> <b>OutPutVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkgetvar", "Str", "MyVar", "Str", 0 ,"CDECL UInt")
+                  <b>OutPutVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkgetvar", "Str", "MyVar", "Str", 0, "CDECL UInt")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+<dt>OutPutVar</dt>
+<dd>
+<p>The name of variable in which to store the value of variable as string or variable pointer if GetvarPointer is 1 / true.</p>
+</dd>
+<dt>VarName</dt>
+<dd>
+<p>The name of the variable to get pointer or contents from.</p>
+</dd>
+<dt>GetVarPointer</dt>
+<dd>
+<p>1 / true to receive a pointer to variable, FALSE / NULL /
+0 to receive content of variable.</p>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="Struct.htm">Struct</a>,
+<a href="DllCall.htm">DllCall()</a>
+</p>
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","","Str","") <em>; start a new thread, just the function.</em><br>DllCall(dllpath "\ahkassign","Str","MyVar","Str","Hello World!") <em>; Assign value to variable<br></em>MsgBox % DllCall(dllpath "\ahkgetvar","Str","MyVar","UInt",0,"STR") <em>; Retrieve value from variable</em></pre>
+</body></html>

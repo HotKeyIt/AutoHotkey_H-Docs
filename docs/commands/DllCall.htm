@@ -15,13 +15,14 @@
 <h1>DllCall()</h1>
 
 <p>Calls a function inside a DLL, such as a standard Windows API function.</p>
+<pre class="Syntax">DllCall, <b>OutPutVar</b>, &quot;[DllFile\]Function&quot; [, Type1, Arg1, Type2, Arg2, &quot;Cdecl ReturnType&quot;]
+<pre><em>Command  Example:</em> DllCall, <b>hLib</b>, LoadLibrary, Str, %A_AhkPath%<br><em>Function Example:</em> <b>hLib</b> := DllCall("LoadLibrary", "Str", A_AhkPath)</pre></pre>
 
-<pre class="Syntax">Result := DllCall(&quot;[DllFile\]Function&quot; [, Type1, Arg1, Type2, Arg2, &quot;Cdecl ReturnType&quot;])</pre>
 <h3>Parameters</h3>
 <dl>
 
-  <dt>Result</dt>
-  <dd><p>DllCall returns the actual value returned by the function. If the function is of a type that does not return a value, the result is an undefined integer. If the function cannot be called due to an <a href="#error">error</a>, the return value is blank (an empty string).</p></dd>
+  <dt>OutPutVar</dt>
+  <dd><p>The name of the variable in which to store the the actual value returned by the function. If the function is of a type that does not return a value, the result is an undefined integer. If the function cannot be called due to an <a href="#error">error</a>, the return value is blank (an empty string) and ErrorLevel is set.</p></dd>
 
   <dt>[DllFile\]Function</dt>
   <dd><p>The DLL or EXE file name followed by a backslash and the name of the function. For example: <code>&quot;MyDLL\MyFunction&quot;</code> (the file extension &quot;.dll&quot; is the default when omitted). If an absolute path isn't specified, <em>DllFile</em> is assumed to be in the system's PATH or <a href="../Variables.htm#WorkingDir">A_WorkingDir</a>.</p>
@@ -172,7 +173,7 @@ result := DllCall(&quot;CharLower&quot;, <strong><u>str</u></strong>, DllCall(&q
 </p>
 
 <h3>Related</h3>
-<p><a href="../Compat.htm#DllCall">Script Compatibility</a>, <a href="PostMessage.htm">PostMessage</a>, <a href="OnMessage.htm">OnMessage()</a>, <a href="RegisterCallback.htm">RegisterCallback()</a>, <a href="Run.htm">Run</a>, <a href="VarSetCapacity.htm">VarSetCapacity</a>, <a href="../Functions.htm">Functions</a>, <a href="SysGet.htm">SysGet</a>, <a href="http://msdn.microsoft.com/library/">MSDN Library</a></p>
+<p><a href="../Compat.htm#DllCall">Script Compatibility</a>, <a href="DynaCall.htm">DynaCall</a>, <a href="_DllImport.htm">#DllImport</a>, <a href="WinApi.htm">WinApi</a>, <a href="OnMessage.htm">OnMessage()</a>, <a href="RegisterCallback.htm">RegisterCallback()</a>, <a href="Run.htm">Run</a>, <a href="VarSetCapacity.htm">VarSetCapacity</a>, <a href="../Functions.htm">Functions</a>, <a href="SysGet.htm">SysGet</a>, <a href="http://msdn.microsoft.com/library/">MSDN Library</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent"><em>; Example: Calls the Windows API function &quot;MessageBox&quot; and report which button the user presses.</em>
 
@@ -275,13 +276,12 @@ MsgBox The following string was read from the file: %TestString%</pre>
 <pre class="NoIndent"><a name="HideCursor"></a><em>; Example: Hides the mouse cursor when you press Win+C. To later show the cursor, press Win+C again.
 ; This script is from <a href="http://www.autohotkey.com/forum/topic6107.html">www.autohotkey.com/forum/topic6107.html</a></em>
 
-OnExit("ShowCursor")  <em>; Ensure the cursor is made visible when the script exits.</em>
+OnExit, ShowCursor  <em>; Ensure the cursor is made visible when the script exits.</em>
 return
 
-ShowCursor()
-{
-    SystemCursor(&quot;On&quot;)
-}
+ShowCursor:
+SystemCursor(&quot;On&quot;)
+ExitApp
 
 #c::SystemCursor(&quot;Toggle&quot;)  <em>; Win+C hotkey to toggle the cursor on and off.</em>
 

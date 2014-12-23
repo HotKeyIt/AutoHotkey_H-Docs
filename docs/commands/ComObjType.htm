@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ComObjType()</title>
+<title>ComObjType</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,35 +12,30 @@
 </head>
 <body>
 
-<h1>ComObjType()</h1>
+<h1>ComObjType</h1>
 
 <p>Retrieves type information from a COM object.</p>
-
-<pre class="Syntax">VarType := ComObjType(ComObject)
-Name    := ComObjType(ComObject, "Name")
-IID     := ComObjType(ComObject, "IID")</pre>
+<pre class="Syntax">VarType := ComObjType(ComObject [, Value])<pre><em>Example:</em> <b>IID</b> := ComObjType(ComObject,"IID")</pre>ComObjType, <b>OutPutVar</b>, ComObject [, Value])<pre><em>Example:</em> ComObjType, <b>Name</b>, %ComObject%, Name</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
+  <dt>OutPutVar</dt>
+    <dd><p>The name of the variable in which to store the result depending on Parameter, see <b>Value</b>.</p>
+    </dd>
   <dt>ComObject</dt>
-  <dd><p>A wrapper object containing a COM object or typed value.</p></dd>
-
-  <dt>VarType</dt>
-  <dd><p>An integer indicating the type of value. See below.</p></dd>
-
-  <dt>Name</dt>
-  <dd><p>An interface type name.</p></dd>
-
-  <dt>IID</dt>
-  <dd><p>A globally unique identifier (GUID) representing the interface type.</p></dd>
-
+    <dd><p>A wrapper object containing a COM object or typed value.</p>
+    </dd>
+  <dt>Value (optional)</dt>
+    <dd><p>The result will differ depending on this parameter:<li><b>VarType</b> - Omitt the <b>Value</b> parameter to retrieve the type of value.</li><li><b>Name</b> - Pass "Name" in <b>Value</b> parameter to retrieve the interface type name.</li><li><b>IID</b> - Pass "IID" in <b>Value</b> parameter to retrieve a globally unique identifier (GUID) representing the interface type.</li>.</p>
+    </dd>
 </dl>
 
-<h3>Return Value</h3>
-<p>If the second parameter is omitted, the variant type of the value contained by the wrapper object is returned.</p>
-<p>If the second parameter is "Name" or "IID" and the wrapper object contains a COM object (variant type VT_DISPATCH), the COM object's type name or the identifier of its primary interface is returned.</p>
-<p>In the parameters are invalid or an error occurs, an empty string is returned.</p>
+
+
+
+
+
 
 <h3 id="vt">Variant Type Constants</h3>
 <pre>
@@ -67,7 +62,7 @@ VT_I8        =   0x14  <em>; 64-bit signed int</em>
 VT_UI8       =   0x15  <em>; 64-bit unsigned int</em>
 VT_INT       =   0x16  <em>; Signed machine int</em>
 VT_UINT      =   0x17  <em>; Unsigned machine int</em>
-VT_RECORD    =   0x24  <em>; User-defined type -- NOT SUPPORTED</em>
+VT_RECORD    =   0x24  <em>; User-defined type</em>
 VT_ARRAY     = 0x2000  <em>; <a href="http://msdn.microsoft.com/en-us/library/ms221482.aspx">SAFEARRAY</a></em>
 VT_BYREF     = 0x4000  <em>; Pointer to another type of value</em>
 <em>/*

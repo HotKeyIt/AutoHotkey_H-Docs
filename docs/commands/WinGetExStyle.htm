@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>WinGetExStyle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>WinGetExStyle</h1>
+
+<p>Retrieves an 8-digit hexadecimal number representing exstyle or extended style (respectively) of a window.</p>
+
+<pre class="Syntax"><b>OutPutVar</b> := WinGetExStyle([WinTitle, WinText, ExcludeTitle, ExcludeText])
+<pre><em>Example:</em> <b>Style</b> := WinGetExStyle("ahk_class Notepad")</pre>
+WinGetExStyle, <b>OutPutVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
+<pre><em>Example:</em> WinGetExStyle, <b>Style</b>, ahk_class Notepad</pre></pre>
+<h3>Parameters</h3>
+<dl>
+
+  <dt>OutPutVar</dt>
+  <dd><p>The name of the variable in which to store the 8-digit hexadecimal number representing exstyle of a window. <em>OutputVar</em> is made blank if there are no matching windows.</p></dd>
+
+  <dt>WinTitle</dt>
+  <dd><p>The title or partial title of the target window (the matching behavior is determined by <a href="SetTitleMatchMode.htm">SetTitleMatchMode</a>). If this and the other 3 window parameters are blank or omitted, the <a href="../LastFoundWindow.htm">Last Found Window</a> will be used. To use a window class, specify ahk_class ExactClassName (shown by Window Spy). To use a <a href="Process.htm">process identifier (PID)</a>, specify ahk_pid %VarContainingPID%. To use a <a href="GroupAdd.htm">window group</a>, specify ahk_group GroupName. To use a window's <a href="WinGet.htm">unique ID number</a>,
+specify ahk_id %VarContainingID%. The search can be narrowed
+by specifying <a href="../LastFoundWindow.htm#multi">multiple criteria</a>. For example: <em>My File.txt ahk_class Notepad</em>. The use correct child window when multiple window with same criteria exist specify ahk_parent %VarContainingID%. For example: <em>ahk_class #32770 ahk_parent %MyWinID%</em></p></dd>
+
+  
+   <dt>WinText</dt>
+  <dd><p>If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if <a href="DetectHiddenText.htm">DetectHiddenText</a> is ON.</p></dd>
+
+  <dt>ExcludeTitle</dt>
+  <dd><p>Windows whose titles include this value will not be considered.</p></dd>
+
+  <dt>ExcludeText</dt>
+  <dd><p>Windows whose text include this value will not be considered.</p></dd>
+
+</dl>
+
+<h3>Remarks</h3>
+<p>See the <a href="../misc/Styles.htm">styles table</a> for a partial listing of styles. Hidden windows are included only if <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> has been turned on.</p>
+
+<h3>Examples</h3>
+<pre class="NoIndent">WinGet, ExStyle, ExStyle, My Window Title
+if (ExStyle & 0x8)  <em>; 0x8 is WS_EX_TOPMOST.
+  ... the window is always-on-top, so perform appropriate action.</em>
+</pre>
+
+</body>
+</html>

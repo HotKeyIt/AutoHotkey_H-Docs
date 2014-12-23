@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ComObjArray()</title>
+<title>ComObjArray</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,14 +12,17 @@
 </head>
 <body>
 
-<h1>ComObjArray()</h1>
+<h1>ComObjArray</h1>
 
 <p>Creates a SafeArray for use with COM.</p>
-
-<pre class="Syntax">ArrayObj := ComObjArray(VarType, Count1 [, Count2, ... Count8])</pre>
+<pre class="Syntax">ComObjArray, <b>OutPutVar</b>, VarType, Count1 [, Count2, ... Count8]
+<pre><em>Command  Example:</em> ComObjArray, <b>arr</b>, 8, 10, 10, 10<br><em>Function Example:</em> <b>arr</b> := ComObjArray(VT_BSTR := 8,10,10,10)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
+
+  <dt>OutPutVar</dt>
+  <dd><p>The name of the variable in which to store the wrapper object containing the SafeArray.</p></dd>
 
   <dt>VarType</dt>
   <dd>The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal.

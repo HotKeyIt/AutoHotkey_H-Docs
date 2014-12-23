@@ -1,4 +1,4 @@
-if (!IsInsideCHM())
+if (!IsInsideCHM() && !IsSearchBot())
 {
   BuildStructure();
   AddContent();
@@ -80,14 +80,14 @@ function AddContent()
     //
 
     $('.header #search-btn').on('click', function() {
-      var query = $(".header #q").val();
+      var query = encodeURIComponent( $(".header #q").val() );
       document.location = eval(sessionStorage.getItem("hdSearchLnk"));
     });
 
     $('.header #search-form').on('submit', function(event) {
-        event.preventDefault();
-        var query = $(".header #q").val();
-        document.location = eval(sessionStorage.getItem("hdSearchLnk"));
+      event.preventDefault();
+      var query = encodeURIComponent( $(".header #q").val() );
+      document.location = eval(sessionStorage.getItem("hdSearchLnk"));
     });
 
     //
@@ -345,4 +345,9 @@ function ShowIndex()
 function IsInsideCHM()
 {
   return (location.href.search(/::/) > 0) ? 1 : 0;
+}
+
+function IsSearchBot()
+{
+  return navigator.userAgent.match(/googlebot|bingbot|slurp/i);
 }

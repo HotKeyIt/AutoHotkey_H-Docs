@@ -438,8 +438,13 @@ if A_GuiEvent &lt;&gt; DoubleClick
 ; So fall through to the next label.</em>
 ButtonOK:
 GuiControlGet, MyListBox  <em>; Retrieve the ListBox's current selection.</em>
+<<<<<<< HEAD
 MsgBox, 4,, Would you you like to launch the file or document below?`n`n%MyListBox%
 if A_MsgBoxResult = "No"
+=======
+MsgBox, 4,, Would you like to launch the file or document below?`n`n%MyListBox%
+IfMsgBox, No
+>>>>>>> 708397468e13086c637ed7d0f299e11b2e6e43a6
     return
 <em>; Otherwise, try to launch it:</em>
 Run, %MyListBox%,, UseErrorLevel

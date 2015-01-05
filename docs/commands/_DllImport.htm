@@ -66,7 +66,10 @@ Ox999(w:=0,l:=0,m:=0,h:=0){
   return 1
 }
 
-<em>; Import RGB_TO_BGR function as hex</em>
+<em>; Import RGB_TO_BGR function as hex, first hex is 32-bit and second hex 64-bit version.
+; DWORD RGB_TO_BGR(COLORREF rgb){
+; 	return ((rgb & 255) << 16) | (((rgb >> 8) & 255) << 8) | (rgb >> 16);
+; }</em>
 #DllImport,RGB_TO_BGR,8B4C24040FB6C18BD1C1E01081E200FF00000BC2C1E9100BC1C3:0FB6C18BD1C1E910C1E01081E200FF00000BC20BC1C3,UInt,,CDecl UInt
 </pre>
 

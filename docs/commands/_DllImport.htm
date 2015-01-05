@@ -71,6 +71,7 @@ Ox999(w:=0,l:=0,m:=0,h:=0){
 ; 	return ((rgb & 255) << 16) | (((rgb >> 8) & 255) << 8) | (rgb >> 16);
 ; }</em>
 #DllImport,RGB_TO_BGR,8B4C24040FB6C18BD1C1E01081E200FF00000BC2C1E9100BC1C3:0FB6C18BD1C1E910C1E01081E200FF00000BC20BC1C3,UInt,,CDecl UInt
+MsgBox % format("0x{1:X}",RGB_TO_BGR(0xAABBCC))
 </pre>
 
 </body>

@@ -27,5 +27,5 @@
 <h3>Related</h3>
 <p><a href="NumGet.htm">NumGet</a>, <a href="DllCall.htm">DllCall</a>, <a href="VarSetCapacity.htm">VarSetCapacity</a></p>
 <h3>Example</h3>
-<pre>Fun(varname,ByRef value := ""){<br> If IsByRef(value){<br> Static(varname)<br> %varname%:=value<br> }<br> return %varname%<br>}<br>fun("myVar","Hello World!")<br>MsgBox % fun("myVar")<br>MsgBox</pre>
+<pre>var:="Hello World!"<br>Alias(refvar,var)<br>MsgBox % refvar<br>var:="AutoHotkey"<br>MsgBox % refvar</pre>
 </body></html>

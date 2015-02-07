@@ -28,10 +28,10 @@
       <p>If no function can be found by the given name, a "W" (Unicode) suffix is automatically appended. For example, <code>"MessageBox"</code> is the same as <code>"MessageBoxW"</code>.</p>
     <p>This parameter may also consist solely of an an integer, which is interpreted as the address of the function to call. Sources of such addresses include <a href="#COM">COM</a> and <a href="RegisterCallback.htm">RegisterCallback()</a>.
 		<br><b>Note:</b> 9MyFunction or 0MyDll.dll\Function are not supported because they will be assumed integers and will cause an exception to be trown.</p>
-	<p>This parameter may also be a hex string that represends the code.<br>Hex code for 64-bit can be appended after 32-bit code separated using colon (:) [32-bit hex]:[64-bit hex]. See also examples below.</p></dd>
+	<p>This parameter may also be a hex string that represents the code.<br>Hex code for 64-bit can be appended after 32-bit code separated using colon (:) [32-bit hex]:[64-bit hex]. See also examples below.</p></dd>
 
   <dt>Type1, Arg1 (optional)</dt>
-  <dd><p>Each of these pairs represents a single parameter to be passed to the function. The number of pairs is unlimited. For <em>Type</em>, see the <a href="DllCall.htm#types">types table</a>. Type can be specified without quotes.</p><p>For <em>Arg</em>, specify the default value to be passed to the function. This parameters will be only used if correspoinding parameter is omitted by function call. If Arg is a string it must be enclosed in quotes ("") and all parameters starting with integer will be converted to digits, hexadecimal values are supported too.</p></dd>
+  <dd><p>Each of these pairs represents a single parameter to be passed to the function. The number of pairs is unlimited. For <em>Type</em>, see the <a href="DllCall.htm#types">types table</a>. Type can be specified without quotes.</p><p>For <em>Arg</em>, specify the default value to be passed to the function. This parameters will be only used if correspoinding parameter is omitted by function call. If Arg is a string it must not be enclosed in quotes ("") and all parameters starting with integer will be converted to digits, hexadecimal values are supported too.</p></dd>
 
   <dt>Cdecl ReturnType (optional)</dt>
   <dd><p><a name="cdecl"></a>The word <em>Cdecl</em> is normally omitted because most functions use the standard calling convention rather than the &quot;C&quot; calling convention (functions such as wsprintf that accept a varying number of arguments are one exception to this). Note that most object-oriented C++ functions use the <i>thiscall</i> convention, which is not supported.</p>
@@ -66,7 +66,7 @@ Ox999(w:=0,l:=0,m:=0,h:=0){
   return 1
 }
 
-<em>; Import RGB_TO_BGR function as hex, first hex is 32-bit and second hex 64-bit version.
+<em>; Import RGB_TO_BGR function as hex (separated by :), first hex is 32-bit and second hex 64-bit version.
 ; DWORD RGB_TO_BGR(COLORREF rgb){
 ; 	return ((rgb & 255) << 16) | (((rgb >> 8) & 255) << 8) | (rgb >> 16);
 ; }</em>

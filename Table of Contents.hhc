@@ -668,6 +668,10 @@
 			<param name="Local" value="docs/Functions.htm#GetKeyName">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="GetVar">
+			<param name="Local" value="docs/commands/GetVar.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="GetTokenValue">
 			<param name="Local" value="docs\commands\GetTokenValue.htm">
 			</OBJECT>

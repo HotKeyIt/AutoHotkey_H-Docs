@@ -35,10 +35,10 @@
 <table class="info">
   <tr><th style="width:4em">&nbsp;</th><th style="width:4em">&nbsp;</th><th style="text-align:left">Access modes (mutually-exclusive)</th></tr>
   <tr><td class="fopt">r</td><td class="fnum">0</td><td><i>Read:</i> Fails if the file doesn't exist.</td></tr>
-  <tr><td class="fopt">w</td><td class="fnum">1</td><td><i>Write:</i> Creates a new file, <b style="color:red">overwriting any existing file</b>.</td></tr>
+  <tr><td class="fopt">w</td><td class="fnum">1</td><td><i>Write:</i> Creates a new file, <b style="color:red">overwriting any existing file</strong>.</td></tr>
   <tr><td class="fopt">a</td><td class="fnum">2</td><td><i>Append:</i> Creates a new file if the file didn't exist, otherwise moves the file pointer to the end of the file.</td></tr>
   <tr><td class="fopt">rw</td><td class="fnum">3</td><td><i>Read/Write:</i> Creates a new file if the file didn't exist.</td></tr>
-  <tr><td class="fopt">h</td><td>&nbsp;</td><td>Indicates that <i>Filename</i> is a file handle to wrap in an object. Sharing mode flags are ignored. The file handle is <b>not</b> closed automatically when the file object is destroyed and calling <a href="../objects/File.htm#Close">Close</a> has no effect. Note that <a href="../objects/File.htm#Seek">Seek</a>, <a href="../objects/File.htm#Tell">Tell</a> and <a href="../objects/File.htm#Length">Length</a> should not be used if <i>Filename</i> is a handle to a nonseeking device such as a pipe or a communications device.</td></tr>
+  <tr><td class="fopt">h</td><td>&nbsp;</td><td>Indicates that <i>Filename</i> is a file handle to wrap in an object. Sharing mode flags are ignored. The file handle is <strong>not</strong> closed automatically when the file object is destroyed and calling <a href="../objects/File.htm#Close">Close</a> has no effect. Note that <a href="../objects/File.htm#Seek">Seek</a>, <a href="../objects/File.htm#Tell">Tell</a> and <a href="../objects/File.htm#Length">Length</a> should not be used if <i>Filename</i> is a handle to a nonseeking device such as a pipe or a communications device.</td></tr>
   <tr><th>&nbsp;</th><th>&nbsp;</th><th style="text-align:left">Sharing mode flags</th></tr>
   <tr><td class="fopt" style="white-space:nowrap">-rwd</td><td>&nbsp;</td><td>Locks the file for read, write and/or delete access. Any combination of <code>r</code>, <code>w</code> and <code>d</code> may be used. Specifying <code>-</code> is the same as specifying <code>-rwd</code>. If omitted entirely, the default is to share all access.</td></tr>
   <tr><td>&nbsp;</td><td class="fnum">0</td><td>If <i>Flags</i> is numeric, the absence of sharing mode flags causes the file to be locked.</td></tr>
@@ -57,7 +57,7 @@
 <p>Use <code>if file</code> or <code>IsObject(file)</code> to check if the function succeeded.</p>
 
 <h3>Remarks</h3>
-<p>When a UTF-8 or UTF-16 file is created, a byte order mark is written to the file <b>unless</b> <i>Encoding</i> (or <a href="FileEncoding.htm">A_FileEncoding</a> if <i>Encoding</i> is omitted) contains "UTF-8-RAW" or "UTF-16-RAW".</p>
+<p>When a UTF-8 or UTF-16 file is created, a byte order mark is written to the file <strong>unless</strong> <i>Encoding</i> (or <a href="FileEncoding.htm">A_FileEncoding</a> if <i>Encoding</i> is omitted) contains "UTF-8-RAW" or "UTF-16-RAW".</p>
 <p>When a file containing a UTF-8 or UTF-16 byte order mark (BOM) is opened with read access, the BOM is excluded from the output by positioning the file pointer after it. Therefore, <code>File.Position</code> may report 3 or 2 immediately after opening the file.</p>
 
 <h3>Related</h3>

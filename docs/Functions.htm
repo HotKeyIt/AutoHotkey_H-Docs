@@ -132,7 +132,7 @@ returnObject() {
 </pre>
 <h2 id="Variadic">Variadic Functions</h2>
 <p>When defining a function, write an asterisk after the final parameter to mark the function as variadic, allowing it to receive a variable number of parameters:</p>
-<pre>Join(sep, <b class="blue">params*</b>) {
+<pre>Join(sep, <b class="blue">params*</strong>) {
     for index,param in params
         str .= param . sep
     return SubStr(str, 1, -StrLen(sep))
@@ -148,7 +148,7 @@ MsgBox % Join("`n", "one", "two", "three")</pre>
 <h3 id="VariadicCall">Variadic Function Calls</h3>
 <p>While variadic functions can <i>accept</i> a variable number of parameters, an array of parameters can be passed to <i>any</i> function by applying the same syntax to a function-call:</p>
 <pre>substrings := ["one", "two", "three"]
-MsgBox % Join("`n", <b class="blue">substrings*</b>)</pre>
+MsgBox % Join("`n", <b class="blue">substrings*</strong>)</pre>
 <p>Notes:</p>
 <ul>
   <li>Numbering of parameters within the source array begins at 1.</li>
@@ -264,9 +264,11 @@ static TotalAttempts := 0, PrevResult</pre>
 <p>A script may call a function in an external file without having to use <a href="commands/_Include.htm">#Include</a>. For this to work, a file of the same name as the function must exist in one of the following library directories:</p>
 <pre><a href="Variables.htm#ScriptDir">%A_ScriptDir%</a>\Lib\  <em>; Local library.</em>
 <a href="Variables.htm#MyDocuments">%A_MyDocuments%</a>\AutoHotkey\Lib\  <em>; User library.</em>
-path-to-the-currently-running-AutoHotkey.exe\Lib\  <em>; Standard library.</em></pre>
+path-to-the-currently-running-AutoHotkey.exe\Lib\  <em>; Standard library.</em>
+path-to-the-currently-running-AutoHotkey.exe\Lib.lnk  <em>; Shortcut to any folder that serves additional library.</em>
+path-to-the-currently-running-AutoHotkey.exe\LIB\  <em>; Resource library saved in resources of executable.</em></pre>
 <p>For example, if a script calls a nonexistent function <code>MyFunc()</code>, the program searches for a file named &quot;MyFunc.ahk&quot; in the user library. If not found there, it searches for it in the standard library. If a match is still not found and the function's name contains an underscore (e.g. <code>MyPrefix_MyFunc</code>), the program searches both libraries for a file named <code>MyPrefix.ahk</code> and loads it if it exists. This allows <code>MyPrefix.ahk</code> to contain both the function <code>MyPrefix_MyFunc</code> and other related functions whose names start with <code>MyPrefix_</code>.</p>
-<p>The local library is searched before the user library and standard library.</p>
+<p>The local library is searched before the user library, standard library, lib.lnk library and resource library.</p>
 <p>Although a library file generally contains only a single function of the same name as its filename, it may also contain private functions and subroutines that are called only by it. However, such functions should have fairly distinct names because they will still be in the global namespace; that is, they will be callable from anywhere in the script.</p>
 <p>If a library file uses <a href="commands/_Include.htm">#Include</a>, the working directory for #Include is the library file's own directory. This can be used to create a redirect to a larger library file that contains that function and others related to it.</p>
 <p>The <a href="Scripts.htm#ahk2exe">script compiler (ahk2exe)</a> also supports library functions. However, it requires that a copy of AutoHotkey.exe exist in the directory above the compiler directory (which is normally the case). If AutoHotkey.exe is absent, the compiler still works but library functions are not automatically included.</p>

@@ -16,11 +16,11 @@ If a thread is already executed it will terminated before new thread
 starts.<br>
 Note you will need to load AutoHotkey.dll module using LoadLibrary
 before you can use this function, see Example.<br>
-<b>This function is only available in AutoHotkey[Mini].dll</b></p>
+<strong>This function is only available in AutoHotkey[Mini].dll</strong></p>
 <br>
-<pre class="Syntax">DllCall, <b>OutPutVar</b>, AutoHotkey.dll<b>\ahktextdll</b>, Str, Script, Str, Parameters, CDecl UPTR
-<pre><em>Command  Example:</em> DllCall, <b>hThread</b>, AutoHotkey.dll\ahktextdll, Str, MsgBox From Thread, Str,, CDecl UPTR
-<em>Function Example:</em> <b>hThread</b> := DllCall("AutoHotkey.dll\ahktextdll", "Str", "MsgBox From Thread" ,"Str", "", "PTR")
+<pre class="Syntax">DllCall, <strong>OutPutVar</strong>, AutoHotkey.dll<strong>\ahktextdll</strong>, Str, Script, Str, Parameters, CDecl UPTR
+<pre><em>Command  Example:</em> DllCall, <strong>hThread</strong>, AutoHotkey.dll\ahktextdll, Str, MsgBox From Thread, Str,, CDecl UPTR
+<em>Function Example:</em> <strong>hThread</strong> := DllCall("AutoHotkey.dll\ahktextdll", "Str", "MsgBox From Thread" ,"Str", "", "PTR")
 </pre></pre>
 <h3>Parameters</h3>
 <dl>
@@ -35,7 +35,7 @@ executed in AutoHotkey[Mini].dll. When omitted, following script is used: <pre>#
 <dt>Parameters (optional)</dt>
 <dd>
 <p>Command line
-parameters that will be availabe in built in <b><a href="Variables.htm#CommandLine">A_Args</a></b>
+parameters that will be availabe in built in <strong><a href="Variables.htm#CommandLine">A_Args</a></strong>
 object.</p>
 </dd>
 </dl>

@@ -15,8 +15,8 @@
 <h1>DllCall()</h1>
 
 <p>Calls a function inside a DLL, such as a standard Windows API function.</p>
-<pre class="Syntax">DllCall, <b>OutPutVar</b>, &quot;[DllFile\]Function&quot; [, Type1, Arg1, Type2, Arg2, &quot;Cdecl ReturnType&quot;]
-<pre><em>Command  Example:</em> DllCall, <b>hLib</b>, LoadLibrary, Str, %A_AhkPath%<br><em>Function Example:</em> <b>hLib</b> := DllCall("LoadLibrary", "Str", A_AhkPath)</pre></pre>
+<pre class="Syntax">DllCall, <strong>OutPutVar</strong>, &quot;[DllFile\]Function&quot; [, Type1, Arg1, Type2, Arg2, &quot;Cdecl ReturnType&quot;]
+<pre><em>Command  Example:</em> DllCall, <strong>hLib</strong>, LoadLibrary, Str, %A_AhkPath%<br><em>Function Example:</em> <strong>hLib</strong> := DllCall("LoadLibrary", "Str", A_AhkPath)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -29,11 +29,7 @@
       <p><em><a name="std"></a>DllFile</em> may be omitted when calling a function that resides in User32.dll, Kernel32.dll, ComCtl32.dll, or Gdi32.dll. For example, <code>&quot;User32\IsWindowVisible&quot;</code> produces the same result as <code>&quot;IsWindowVisible&quot;</code>.</p>
       <p>If no function can be found by the given name, a "W" (Unicode) suffix is automatically appended. For example, <code>"MessageBox"</code> is the same as <code>"MessageBoxW"</code>.</p>
       <p>Performance can be dramatically improved when making <em>repeated</em> calls to a DLL by <a href="#load">loading it beforehand</a>.</p>
-<<<<<<< HEAD
     <p>This parameter may also consist solely of an an integer, which is interpreted as the address of the function to call. Sources of such addresses include <a href="#COM">COM</a> and <a href="RegisterCallback.htm">RegisterCallback()</a>.</p></dd>
-=======
-    <p>In v1.0.46.08+, this parameter may also consist solely of an integer, which is interpreted as the address of the function to call. Sources of such addresses include <a href="#COM">COM</a> and <a href="RegisterCallback.htm">RegisterCallback()</a>.</p></dd>
->>>>>>> 708397468e13086c637ed7d0f299e11b2e6e43a6
 
   <dt>Type1, Arg1</dt>
   <dd><p>Each of these pairs represents a single parameter to be passed to the function. The number of pairs is unlimited. For <em>Type</em>, see the <a href="#types">types table</a> below. For <em>Arg</em>, specify the value to be passed to the function.</p></dd>

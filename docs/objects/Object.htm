@@ -41,12 +41,12 @@ MsgBox % ObjLength(array) " = " array.Length()</pre>
 <pre class="Syntax" style="margin-top:15px">Object.Remove(Key)</pre>
 <table class="info">
   <tr><td width="15%">Key</td><td width="85%">Any valid key.</td></tr>
-  <tr><td><b>Returns</b></td><td>The value which was removed, if any; otherwise an empty string.</td></tr>
+  <tr><td><strong>Returns</strong></td><td>The value which was removed, if any; otherwise an empty string.</td></tr>
 </table>
 <pre class="Syntax">Object.Remove(FirstKey, LastKey)</pre>
 <table class="info">
   <tr><td width="15%">FirstKey, LastKey</td><td width="85%">A range of integer or string keys to remove.  Both keys must be the same type (integer or string).</td></tr>
-  <tr><td><b>Returns</b></td><td>The actual number of key-value pairs which were removed.</td></tr>
+  <tr><td><strong>Returns</strong></td><td>The actual number of key-value pairs which were removed.</td></tr>
 </table>
 </div>
 
@@ -71,13 +71,13 @@ MsgBox % x[1] "," x[2] "," x[3]  <em>; ,2,3</em></pre>
 <pre class="Syntax" style="margin-top:15px">Object.RemoveAt(Index)</pre>
 <table class="info">
   <tr><td width="15%">Index</td><td width="85%">The index (integer key) of the element to remove.</td></tr>
-  <tr><td><b>Returns</b></td><td>The value which was removed, if any; otherwise an empty string.</td></tr>
+  <tr><td><strong>Returns</strong></td><td>The value which was removed, if any; otherwise an empty string.</td></tr>
 </table>
 <pre class="Syntax">Object.RemoveAt(Index, VirtualCount)</pre>
 <table class="info">
   <tr><td width="15%">Index</td><td width="85%">The index (integer key) of the first element to remove.</td></tr>
   <tr><td>VirtualCount</td><td>The number of elements to remove. The index of the last element to be removed is always <code>Index + VirtualCount - 1</code>, even for sparse arrays (where some elements are left unassigned).</td></tr>
-  <tr><td><b>Returns</b></td><td>The actual number of key-value pairs which were removed.</td></tr>
+  <tr><td><strong>Returns</strong></td><td>The actual number of key-value pairs which were removed.</td></tr>
 </table>
 <h3>Remarks</h3>
 <p>This method should only be used when each integer key within the object represents a position with an array. The remaining elements have their keys adjusted as necessary to reflect their new positions within the array.</p>
@@ -88,7 +88,7 @@ MsgBox % x[1] "," x[2] "," x[3]  <em>; ,2,3</em></pre>
 <pre class="Syntax">Object.Push([ Value, Value2, ..., Value<i>N</i> ])</pre>
 <table class="info">
   <tr><td width="15%">Value</td><td width="85%">A string, number or object.</td></tr>
-  <tr><td><b>Returns</b></td><td>The new <a href="#Length">array length</a>. Can be negative if the array only contained elements at negative indices.</td></tr>
+  <tr><td><strong>Returns</strong></td><td>The new <a href="#Length">array length</a>. Can be negative if the array only contained elements at negative indices.</td></tr>
 </table>
 <h3>Remarks</h3>
 <p>The first value is inserted at index <code>Object.Length() + 1</code>, so index 1 if the array is empty.</p>
@@ -118,7 +118,7 @@ Object.SetCapacity(Key, ByteSize)</pre>
   <tr><td width="15%">MaxItems</td><td width="85%">The maximum number of key-value pairs the object should be able to contain before it must be automatically expanded.  If less than the current number of key-value pairs, that number is used instead, and any unused space is freed.</td></tr>
   <tr><td>Key</td><td>Any valid key.</td></tr>
   <tr><td>ByteSize</td><td>The new size in bytes of the field's string buffer, excluding the null-terminator.  If the field does not exist, it is created.  If <i>ByteSize</i> is zero, the buffer is freed but the empty field is not removed.  If <i>ByteSize</i> is less than the current size, excess data is truncated; otherwise all existing data is preserved.</td></tr>
-  <tr><td><b>Returns</b></td><td>The new capacity. No return value is reserved to indicate failure; an exception is thrown in that case.</td></tr>
+  <tr><td><strong>Returns</strong></td><td>The new capacity. No return value is reserved to indicate failure; an exception is thrown in that case.</td></tr>
 </table></div>
 
 <div class="methodShort" id="GetCapacity"><h2>GetCapacity</h2>

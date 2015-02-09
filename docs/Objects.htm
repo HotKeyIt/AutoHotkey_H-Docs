@@ -26,12 +26,12 @@ ul.list_of_p li { margin: 1em 0; }
 </ul>
 <p>An object <i>reference</i> is a pointer or "handle" to a particular object. Like strings and numbers, object references can be stored in variables, passed to or returned from functions and stored in objects. After copying a reference from one variable to another as in <code>x := y</code>, both variables refer to the same object.</p>
 
-<p><b>IsObject</b> can be used to determine if a value is an object:</p>
+<p><strong>IsObject</strong> can be used to determine if a value is an object:</p>
 <pre>Result := IsObject(<i>expression</i>)</pre>
 
 <p>Types of objects include:</p>
 <ul>
-  <li><a href="objects/Object.htm"><b>Object</b></a> - scriptable associative array.</li>
+  <li><a href="objects/Object.htm"><strong>Object</strong></a> - scriptable associative array.</li>
   <li><a href="objects/File.htm">File</a> - provides an interface for file input/output.</li>
   <li><a href="objects/Func.htm">Func</a> - a function.</li>
   <li><a href="commands/ComObjCreate.htm">ComObject</a> - wraps an IDispatch interface (a COM or "Automation" object).</li>
@@ -112,7 +112,7 @@ Count := Array.<a href="objects/Object.htm#Remove">Remove</a>(FirstKey, LastKey)
 <pre>Value := Object.Property[Parameters]
 Object.Property[Parameters] := Value</pre>
 <p><strong>Related:</strong> <a href="objects/Object.htm">Object</a>, <a href="objects/File.htm">File Object</a>, <a href="objects/Func.htm">Func Object</a>, <a href="commands/ComObjCreate.htm">COM object</a></p>
-<p><b>Known limitation:</b></p>
+<p><strong>Known limitation:</strong></p>
 <ul><li>Currently <code><span class="dull">x</span>.y[z]<span class="dull">()</span></code> is treated as <code><span class="dull">x</span>["y", z]<span class="dull">()</span></code>, which is not supported. As a workaround, <code><span class="red">(</span><span class="dull">x.y</span><span class="red">)</span>[z]()</code> evaluates <code>x.y</code> first, then uses the result as the target of the method call. Note that <code>x.y[z].()</code> does not have this limitation since it is evaluated the same as <code>(x.y[z]).()</code>.</li></ul>
 
 <h3 id="Usage_Freeing_Objects">Freeing Objects</h3>
@@ -165,7 +165,7 @@ obj.item[x] := y</pre>
 <p>To call a function by reference, the following syntax must be used:</p>
 <pre>RetVal := Func.(<i>Params</i>)</pre>
 <p>For details about additional properties of function references, see <a href="objects/Func.htm">Func Object</a>.</p>
-<p><a name="ExitLimitation"></a><b>Known limitation:</b></p>
+<p><a name="ExitLimitation"></a><strong>Known limitation:</strong></p>
 
 <h3 id="Usage_Arrays_of_Arrays"><a name="JaggedArrays"></a>Arrays of Arrays</h3>
 <p>AutoHotkey supports "multi-dimensional" arrays by transparently storing arrays inside other arrays. For example, a table could be represented as an array of rows, where each row is itself an array of columns. In that case, the content of column <code>y</code> of row <code>x</code> can be set using either of the methods below:</p>
@@ -280,14 +280,14 @@ other.test()</pre>
 <p>An <em>instance variable</em> is one that each instance of the class (that is, each object derived from the class) has its own copy of. They are declared like normal assignments, but the <code>this.</code> prefix is omitted (only directly within the class body):</p>
 <pre>InstanceVar := Expression</pre>
 <p>These declarations are evaluated each time a new instance of the class is created with the <a href="#Custom_NewDelete">new</a> keyword. The method name <code>__Init</code> is reserved for this purpose, and should not be used by the script. The <a href="#Custom_NewDelete">__New()</a> method is called after all such declarations have been evaluated, including those defined in base classes. <em>Expression</em> can access other instance variables and methods via <code>this</code>, but all other variable references are assumed to be global.</p>
-<p>To access an instance variable (even within a method), always specify the target object; for example, <code><b>this</b>.InstanceVar</code>.</p>
+<p>To access an instance variable (even within a method), always specify the target object; for example, <code><strong>this</strong>.InstanceVar</code>.</p>
 <p>Declarations like <code>x.y := z</code> are also supported, provided that <code>x</code> was previously declared in this class. For example, <code>x := {}, x.y := 42</code> declares <code>x</code> and also initializes <code>this.x.y</code>.</p>
 
 <h4 id="Custom_Classes_staticvar">Static/Class Variables</h4>
 <p>Static/class variables belong to the class itself, but can be inherited by derived objects (including sub-classes). They are declared like instance variables, but using the static keyword:</p>
 <pre>static ClassVar := Expression</pre>
 <p>Static declarations are evaluated only once, before the <a href="Scripts.htm#auto">auto-execute section</a>, in the order they appear in the script. Each declaration stores a value in the class object. Any variable references in <i>Expression</i> are assumed to be global.</p>
-<p>To access a class variable, always specify the class or derived object; for example, <code><b>ClassName</b>.ClassVar</code>.</p>
+<p>To access a class variable, always specify the class or derived object; for example, <code><strong>ClassName</strong>.ClassVar</code>.</p>
 <p>Declarations like <code>static x.y := z</code> are also supported, provided that <code>x</code> was previously declared in this class. For example, <code>static x := {}, x.y := 42</code> declares <code>x</code> and also initializes <code><i>ClassName</i>.x.y</code>.</p>
 
 <h4 id="Custom_Classes_class">Nested Classes</h4>
@@ -401,7 +401,7 @@ class <i>ClassName</i> {
 
 </ul>
     
-<p><b>Known limitations:</b></p>
+<p><strong>Known limitations:</strong></p>
 <ul><li>Using <code>return</code> without a value is equivalent to <code>return ""</code>. This may be changed in a future version so that <code>return</code> can be used to "escape" from a meta-function without overriding the default behaviour.</li>
 <li>See <a href="#ExitLimitation">Exit limitation</a>.</li></ul>
 
@@ -612,7 +612,7 @@ ObjRelease(address)
 <p>However, ObjAddRef does not need to be used when converting an address to a reference via <code><a href="#AddressCast">Object(address)</a></code>.</p>
 <p>Generally each new copy of an object's address should be treated as an object reference, except that the script is responsible for calling ObjAddRef and/or ObjRelease as appropriate. For example, whenever an address is copied via something like <code>x := address</code>, ObjAddRef should be called to increment the reference count. Similarly, whenever the script is finished with a particular copy of the object's address, it should call ObjRelease. This ensures the object is freed when the last reference to it is lost - and not before then.</p>
 <p>To run code when the last reference to an object is being released, implement the <a href="#Custom_NewDelete">__Delete</a> meta-function.</p>
-<p><b>Known Limitations:</b></p>
+<p><strong>Known Limitations:</strong></p>
 <ul>
   <li>Circular references must be broken before an object can be freed. For details and an example, see <a href="#Circular_References">Freeing Objects</a>.</li>
   <li>Although references in static and global variables are released automatically when the program exits, references in non-static local variables or on the expression evaluation stack are not.  These references are only released if the function or expression is allowed to complete normally.</li>

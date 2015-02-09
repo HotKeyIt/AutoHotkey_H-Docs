@@ -23,7 +23,7 @@ threads in a multi-thread environment.</td>
 </tr>
 <tr>
 <td><a href="commands/_DllImport.htm">#DllImport</a></td>
-<td>Create an alias function for a dll function that allows to omit parameters and use default values.</td>
+<td>Create an alias function for a dll function that allows to omit parameters and use default values.<br>It can also load pure machine code supplied as hex string, see example.</td>
 </tr>
 <tr>
 <td><a href="commands/Send.htm">Send</a></td>
@@ -51,7 +51,7 @@ definition</a>, for example MsgBox % sizeof("TCHAR").</td>
 running the variable will be updated instantly and will be available to
 script. Use SetTimer or AutoHotkey.dll to get content of variable while
 Input is running.<br>
-New option <b>A</b> is available to append input to variable, otherwise the variable will be set empty before Input starts.</td>
+New option <strong>A</strong> is available to append input to variable, otherwise the variable will be set empty before Input starts.</td>
 </tr>
 <tr>
 <td><a href="commands/CriticalSection.htm">CriticalSection</a></td>
@@ -137,11 +137,6 @@ for MemoryModule.</td>
 <td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648042.aspx">FindResource</a>.</td>
 </tr>
 <tr>
-<td><a href="commands/MemoryFindResourceEx.htm">MemoryFindResourceEx</a></td>
-<td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648043.aspx">FindResourceEx</a>
-for MemoryModule.</td>
-</tr>
-<tr>
 <td><a href="commands/MemorySizeofResource%20.htm">MemorySizeofResource
 </a></td>
 <td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648048.aspx">SizeOfResource</a>
@@ -156,11 +151,6 @@ for MemoryModuel.</td>
 <td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms647486.aspx">LoadString</a>.</td>
 </tr>
 <tr>
-<td><a href="commands/MemoryLoadStringEx.htm">MemoryLoadStringEx</a></td>
-<td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms647486.aspx">LoadString</a>
-but allows specifying language.</td>
-</tr>
-<tr>
 <th id="vars">Variables</th>
 <th></th>
 </tr>
@@ -170,26 +160,13 @@ but allows specifying language.</td>
 to 0.</td>
 </tr>
 <tr>
+<td><a href="DllPath">A_AhkDir</a></td>
+<td>returns the path of current exe.</td>
+</tr>
+<tr>
 <td><a href="IsDll">A_IsDll</a></td>
-<td>returns 1 (true) if called from AutoHotkey.dll and
+<td>returns 1 (true) if called from AutoHotkey[Mini].dll and
 FALSE/NULL/0 otherwise.</td>
-</tr>
-<tr>
-<td><a href="DllPath">A_DllPath</a></td>
-<td>returns the path of current module (dll or exe).</td>
-</tr>
-<tr>
-<td><a href="ModuleHandle">A_ModuleHandle</a></td>
-<td>Equivalent to GetModuleHandle(NULL) but returns the
-correct ModuleHandle for AutoHotkey.dll when using <a href="commands/MemoryModule.htm">MemoryModule</a></td>
-</tr>
-<tr>
-<td><a href="ScriptStruct">A_ScriptStruct</a></td>
-<td>returns pointer to internal g_script structure.</td>
-</tr>
-<tr>
-<td><a href="GlobalStruct">A_GlobalStruct</a></td>
-<td>returns pointer to internal g structure.</td>
 </tr>
 <tr>
 <td><a href="Variables#CoordMode...">A_CoordModeToolTip</a></td>
@@ -220,6 +197,27 @@ Window | 2
 <td>returns current CoordMode for Menu, 0 = Client | 1 =
 Window | 2
 = Screen.</td>
+</tr>
+<tr>
+<td><a href="DllPath">A_DllPath</a></td>
+<td>returns the path of current module (dll or exe).</td>
+</tr>
+<tr>
+<td><a href="DllPath">A_DllDir</a></td>
+<td>returns the path of current module (dll or exe).</td>
+</tr>
+<tr>
+<td><a href="ModuleHandle">A_ModuleHandle</a></td>
+<td>Equivalent to GetModuleHandle(NULL) but returns the
+correct ModuleHandle for AutoHotkey.dll when using <a href="commands/MemoryModule.htm">MemoryModule</a></td>
+</tr>
+<tr>
+<td><a href="ScriptStruct">A_ScriptStruct</a></td>
+<td>returns pointer to internal g_script structure.</td>
+</tr>
+<tr>
+<td><a href="GlobalStruct">A_GlobalStruct</a></td>
+<td>returns pointer to internal g structure.</td>
 </tr>
 <tr>
 <th id="types">Compiling</th>
@@ -261,7 +259,7 @@ can be used to decompress and decrypt resources in Script.</td>
 <th></th>
 </tr>
 <tr>
-<td><a href="commands/AutoHotkeyDll.htm">AutoHotkey.dll</a></td>
+<td><a href="AutoHotkeyDll.htm">AutoHotkey.dll</a></td>
 <td>AutoHotkey
 Module with COM support that can be used for multi-threading and allows
 AutoHotkey to be embedded into another applications. It provides
@@ -269,7 +267,7 @@ AutoHotkey functionality that might be more difficult to implement in
 another language.</td>
 </tr>
 <tr>
-<td><a href="commands/AutoHotkey.dll.htm#Mini">AutoHotkeyMini.dll</a></td>
+<td><a href="AutoHotkeyDll.htm#AutoHotkeyMini">AutoHotkeyMini.dll</a></td>
 <td>Mini AutoHotkey Module for less memory usage and faster
 load.</td>
 </tr>

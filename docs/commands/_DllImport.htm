@@ -27,7 +27,7 @@
       <p><em><a name="std"></a>DllFile</em> may be omitted when calling a function that resides in User32.dll, Kernel32.dll, ComCtl32.dll, or Gdi32.dll. For example, <code>&quot;User32\IsWindowVisible&quot;</code> produces the same result as <code>&quot;IsWindowVisible&quot;</code>.</p>
       <p>If no function can be found by the given name, a "W" (Unicode) suffix is automatically appended. For example, <code>"MessageBox"</code> is the same as <code>"MessageBoxW"</code>.</p>
     <p>This parameter may also consist solely of an an integer, which is interpreted as the address of the function to call. Sources of such addresses include <a href="#COM">COM</a> and <a href="RegisterCallback.htm">RegisterCallback()</a>.
-		<br><b>Note:</b> 9MyFunction or 0MyDll.dll\Function are not supported because they will be assumed integers and will cause an exception to be trown.</p>
+		<br><strong>Note:</strong> 9MyFunction or 0MyDll.dll\Function are not supported because they will be assumed integers and will cause an exception to be trown.</p>
 	<p>This parameter may also be a hex string that represents the code.<br>Hex code for 64-bit can be appended after 32-bit code separated using colon (:) [32-bit hex]:[64-bit hex]. See also examples below.</p></dd>
 
   <dt>Type1, Arg1 (optional)</dt>

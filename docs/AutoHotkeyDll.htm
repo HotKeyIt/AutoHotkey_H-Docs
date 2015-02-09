@@ -18,11 +18,9 @@ AutoHotkey Module</a></li>
 <li><a href="#OtherPrograms">Using AutoHotkey
 Module in other programs</a></li>
 <li><a href="#COMInterface">COM Interface</a></li>
-<li><a href="#ReloadNoExit">Reload script but keep
-Process running.</a></li>
+<li><a href="#Reload">Reload script but keep Process running.</a></li>
 <li><a href="#AutoHotkeyMini">AutoHotkeyMini and
 why do we need it.</a></li>
-<li><a href="#cap">Variable Capacity and Memory</a></li>
 </ul>
 <h2 id="Reasons"><a name="Reasons"></a>Why
 do we need an AutoHotkey Module</h2>
@@ -64,8 +62,9 @@ using <a href="commands/ComObjDll.html">ComObjDll</a>.</p>
 new thread, this allows loading the same module multiple times.
 AutoHotkey.dll automatically frees the module when&nbsp;COM object
 is released.</p>
-<p id="#ReloadNoExit"><strong>Reload script but
-keepProcess running</strong>: Using AutoHotkey Module we can
+<p id="Reload"><strong>Reload script but
+keepProcess running</strong><p>
+<p>Using AutoHotkey Module we can
 share
 variables/objects/memory between thread. For example we can create all
 reqiured variables in main thread and share them to AutoHotkey Module
@@ -73,7 +72,7 @@ using <a href="commands/Alias.html">Alias</a>
 function. Whenever a reload is required (e.g to accept new
 hotstrings and hotkeys) we can reload the AutoHotkey module only and
 share the variables again.</p>
-<p id="#AutoHotkeyMini"><strong>AutoHotkeyMini and
+<p id="AutoHotkeyMini"><strong>AutoHotkeyMini and
 why do we need it.</strong>: AutoHotkeyMini.dll excludes many
 commands to support much faster load/reload and less memory usage. It
 is usefull when a thread&nbsp;needs

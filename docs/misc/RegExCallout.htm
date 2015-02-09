@@ -32,19 +32,19 @@
 }</pre>
 <p>Callout functions may define up to 5 parameters:</p>
 <ul>
-  <li><b>Match</b>: Equivalent to the <em>UnquotedOutputVar</em> of RegExMatch, including the creation of array variables if appropriate.</li>
-  <li><b>CalloutNumber</b>: Receives the <em>Number</em> of the callout.</li>
-  <li><b>FoundPos</b>: Receives the position of the current potential match.</li>
-  <li><b>Haystack</b>: Receives the <em>Haystack</em> passed to RegExMatch or RegExReplace.</li>
-  <li><b>NeedleRegEx</b>: Receives the <em>NeedleRegEx</em> passed to RegExMatch or RegExReplace.</li>
+  <li><strong>Match</strong>: Equivalent to the <em>UnquotedOutputVar</em> of RegExMatch, including the creation of array variables if appropriate.</li>
+  <li><strong>CalloutNumber</strong>: Receives the <em>Number</em> of the callout.</li>
+  <li><strong>FoundPos</strong>: Receives the position of the current potential match.</li>
+  <li><strong>Haystack</strong>: Receives the <em>Haystack</em> passed to RegExMatch or RegExReplace.</li>
+  <li><strong>NeedleRegEx</strong>: Receives the <em>NeedleRegEx</em> passed to RegExMatch or RegExReplace.</li>
 </ul>
 <p>These names are suggestive only. Actual names may vary.</p>
 
 <p>Pattern-matching may proceed or fail depending on the return value of the callout function:</p>
 <ul>
-  <li>If the function returns <b>0</b> or does not return a numeric value, matching proceeds as normal.</li>
-  <li>If the function returns <b>1</b> or greater, matching fails at the current point, but the testing of other matching possibilities goes ahead.</li>
-  <li>If the function returns <b>-1</b>, matching is abandoned.</li>
+  <li>If the function returns <strong>0</strong> or does not return a numeric value, matching proceeds as normal.</li>
+  <li>If the function returns <strong>1</strong> or greater, matching fails at the current point, but the testing of other matching possibilities goes ahead.</li>
+  <li>If the function returns <strong>-1</strong>, matching is abandoned.</li>
   <li>If the function returns a value less than -1, it is treated as a PCRE error code and matching is abandoned. RegExMatch returns a blank string, while RegExReplace returns the original <em>Haystack</em>. In either case, ErrorLevel contains the error code.</li>
 </ul>
 
@@ -59,7 +59,7 @@ Callout(m) {
 
 <h3 id="EventInfo">EventInfo</h3>
 
-<p>Additional information is available by accessing the pcre_callout_block structure via <b>A_EventInfo</b>.</p>
+<p>Additional information is available by accessing the pcre_callout_block structure via <strong>A_EventInfo</strong>.</p>
 <pre>version           := NumGet(A_EventInfo,  0, "Int")
 callout_number    := NumGet(A_EventInfo,  4, "Int")
 offset_vector     := NumGet(A_EventInfo,  8)

@@ -16,241 +16,7 @@
 <p>This changelog only concerns AutoHotkey_L. Read <a href="ChangeLogHelp.htm">AutoHotkey's changelog</a>.</p>
 
 <!--new revisions go here-->
-<<<<<<< HEAD
 <h2>1.1.06.02 - February 13, 2012</h2>
-=======
-<h2 id="v1.1.16.05">1.1.16.05 - September 28, 2014</h2>
-<p>Fixed x.y/[]/{} sometimes falsely being flagged as variadic.</p>
-
-<h2 id="v1.1.16.04">1.1.16.04 - September 16, 2014</h2>
-<p>Fixed a crash which occurred when overwriting a non-writable property.</p>
-<p>Fixed a crash which occurred when a RegExMatch object is created with uncaptured subpatterns during a regex callout.</p>
-
-<h2 id="v1.1.16.03">1.1.16.03 - September 11, 2014</h2>
-<p>Fixed some bad behaviour in Abs() and Mod() caused by a broken bug-fix in v1.1.16.01.</p>
-
-<h2 id="v1.1.16.02">1.1.16.02 - September 11, 2014</h2>
-<p>Fixed parser to allow #include inside a class (broken by a6ea27f).</p>
-<p>Fixed Clipboard returning binary CF_HDROP data in some instances.</p>
-<p>Improved accuracy of FileGetSize on files which are still open.</p>
-<p>Improved for-loop compatibility with COM objects.</p>
-
-<h2 id="v1.1.16.01">1.1.16.01 - September 10, 2014</h2>
-<p>Added syntax for defining dynamic <a href="Objects.htm#Custom_Classes_property">properties</a> in classes.</p>
-<p>Added x+m and y+m options for Gui control positioning.</p>
-<p>Added the #InputLevel of each hotkey to ListHotkeys (when non-zero).</p>
-<p>Optimized RegExMatch with the O (object) option; capturing part of a long string is much faster than before in some cases.</p>
-<p>Fixed objects to check for new methods after __Call completes (consistent with __Set and __Get).</p>
-<p>Fixed some undefined behaviour occurring after VarSetCapacity fails.</p>
-<p>Fixed FileRead to correctly report an error with files over 4GB, instead of truncating even when it wasn't requested.</p>
-<p>Fixed FileRead *c to null-terminate correctly when byte length is odd.</p>
-<p>Fixed some ClipboardAll issues and changed behaviour:</p>
-<ul>
-  <li><a href="commands/_ClipboardTimeout.htm">#ClipboardTimeout</a> is ignored for GetClipboardData(), since it never actually worked and it caused problems. This fixes timeouts and lost data when a file is on the clipboard (any file on Windows 8, or any file in a zip file or similar).</li>
-  <li>Zero-length clipboard items are allocated 1 byte upon restoring to the clipboard, since setting a zero-length item seems to always fail.</li>
-  <li>The presence of MSDEVColumnSelect/MSDEVLineSelect is now preserved when set by Scintilla, though any data set by VS is discarded.</li>
-  <li>When writing ClipboardAll directly to file, it now prefers Unicode (other usages of ClipboardAll have had this behaviour since v1.1.08).</li>
-  <li>ClipboardAll and FileRead *c on Unicode builds now round length up when odd. This increases the reported StrLen by 1, potentially avoiding truncation of the last byte.</li>
-</ul>
-<p>Fixed A_EventInfo for TreeView items with negative screen coords.</p>
-<p>Fixed a possible ListView/TreeView message filtering issue.</p>
-<p>Fixed A_LineFile/A_LineNumber in #If expressions.</p>
-<p>Fixed #If to add itself to ListLines (though as "If").</p>
-<p>Fixed <code>Abs(["-"]*)</code> and similar crashing the program.</p>
-<p>Fixed <code>} funcdef(){</code> globally and <code>}}</code> ending a method/property/class.</p>
-<h2 id="v1.1.15.04">1.1.15.04 - August 12, 2014</h2>
-<p>Fixed a performance issue with <code>&amp;var_containing_long_string_of_digits</code>.</p>
-<p>Fixed built-in variables corrupting memory when an object is assigned.</p>
-<p>Fixed parser to disallow <code>continue</code> where appropriate even if the current function is defined inside a Loop.</p>
-<p>Fixed <code>File.Encoding := x "-RAW"</code> breaking encoding/decoding of non-ASCII characters. The <code>-RAW</code> suffix is now ignored.</p>
-
-<h2 id="v1.1.15.03">1.1.15.03 - August 2, 2014</h2>
-<p>Fixed meta-functions to exit the thread correctly after using Exit or Throw.</p>
-<p>Fixed FileInstall to use A_WorkingDir when Dest is relative in a non-compiled script.</p>
-
-<h2 id="v1.1.15.02">1.1.15.02 - July 7, 2014</h2>
-<p>Fixed debugging negative integer keys in objects.</p>
-
-<h2 id="v1.1.15.01">1.1.15.01 - June 30, 2014</h2>
-<p>Changed built-in error and warning dialogs to be always-on-top.</p>
-<p>Fixed <code>Until</code> not breaking out of recursive file/registry loops.</p>
-
-<h2 id="v1.1.15.00">1.1.15.00 - May 4, 2014</h2>
-<p>Added A_OSVersion value <code>WIN_8.1</code>.</p>
-<p>Changed the Hotkey command to apply/remove passthrough behavior on existing hotkey variants depending on whether the <a href="Hotkeys.htm#Tilde">tilde (~) prefix</a> is present.</p>
-<p>Changed exe manifest to allow <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms724439">GetVersion</a>/<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms724451">GetVersionEx</a> to detect Windows 8.1.</p>
-
-<h2 id="v1.1.14.04">1.1.14.04 - April 25, 2014</h2>
-<p>Fixed DllCall() crashing the script when <em>Function</em> is pure integer 0.</p>
-<p>Fixed <code>IsFunc("ComObj(")</code> to return false instead of throwing an exception.</p>
-<p>Fixed ControlClick to send XButton1/XButton2 correctly.</p>
-
-<h2 id="v1.1.14.03">1.1.14.03 - February 14, 2014</h2>
-<p>Fixed a memory leak in <code>new X</code> when <code>X.__Init</code> aborts the thread.</p>
-<p>Fixed breakpoints shifting onto class var initializers when they are interspersed with method definitions.</p>
-
-<h2 id="v1.1.14.02">1.1.14.02 - January 30, 2014</h2>
-<p>Fixed <code>x::</code> and <code>x up::</code> both firing on key-up if the state of the modifier keys prevented x from firing on key-down.  The intended behaviour as of v1.1.14 is for both hotkeys to fire on key-up if x is also used in a custom combination like <code>x &amp; y::</code>.</p>
-
-<h2 id="v1.1.14.01">1.1.14.01 - January 15, 2014</h2>
-<p>Fixed Try without Catch/Finally crashing if no exception was thrown.</p>
-
-<h2 id="v1.1.14.00">1.1.14.00 - January 15, 2014</h2>
-<p>Added <a href="commands/Finally.htm">Finally</a> statement for performing cleanup after try/catch. [fincs]</p>
-<p><b>Changed behaviour</b> of <a href="Hotkeys.htm#Tilde">~ prefix</a> with custom combos to be more intuitive.</p>
-<p>Fixed <code>x &amp; y::</code> to fire both <code>x::</code> and <code>x up::</code> when x is released.</p>
-<p>Fixed ImageSearch to set ErrorLevel=2, not 0, when a GDI call fails.</p>
-<p>Fixed EnvGet crashing the program when the var exceeds 32767 chars.</p>
-<p>Fixed a minor error-handling bug with StatusBarWait's ErrorLevel.</p>
-<p>Fixed a cause of heap corruption with FileRead *c on ANSI builds.</p>
-<p>Fixed passing of local vars in recursive calls to variadic functions.</p>
-<p>Fixed script failing to load if the first line is an expression in parentheses.</p>
-<p>Fixed PixelSearch Fast mode to set OutputVarX/Y only on success.</p>
-
-<h2 id="v1.1.13.01">1.1.13.01 - October 11, 2013</h2>
-<p>Fixed variadic function calls with named values for required parameters.</p>
-
-<h2 id="v1.1.13.00">1.1.13.00 - August 27, 2013</h2>
-<p>Ported <a href="commands/StringSplit.htm">StrSplit()</a> from v2 alpha.</p>
-
-<h2 id="v1.1.12.00">1.1.12.00 - August 14, 2013</h2>
-<p>Optional parameters can be omitted by writing two consecutive commas, as in <code>InStr(a, b,, 2)</code>.  Unlike previous versions, this now works for objects (including COM objects) and built-in functions.  <code>[a,,b]</code> can be used to create a sparse array.</p>
-<p>Object properties can now be set using variadic syntax, as in <code>x[y*]:=z</code>, where y contains an array of keys/indices or parameters.</p>
-
-<h2 id="v1.1.11.02">1.1.11.02 - July 28, 2013</h2>
-<p>Fixed GuiControl/Get to accept the ClassNN of a ComboBox's child Edit.  Specifying the HWND of a ComboBox's child Edit was already supported as a means of identifying the ComboBox.</p>
-
-<h2 id="v1.1.11.01">1.1.11.01 - June 25, 2013</h2>
-<p>Fixed InputBox default width/height (broken by v1.1.11.00 - commit <a href="https://github.com/Lexikos/AutoHotkey_L/commit/7373cc6443">7373cc6443</a>).</p>
-<p>Fixed DllCall arg type validation to handle SYM_OBJECT safely, and to respect #Warn UseUnset (when var name is not a valid type).</p>
-<p>Changed VarSetCapacity(var) to never warn about uninitialized vars.</p>
-
-<h2 id="v1.1.11.00">1.1.11.00 - June 21, 2013</h2>
-<p>Added support for <code>%A_LineFile%</code> in <a href="commands/_Include.htm">#Include</a>.</p>
-<p>Reduced the file size of AutoHotkeySC.bin by reducing the resolution of the (rarely used) filetype icon.</p>
-<p>Fixed <code>class X extends Y</code> to allow Y to be defined after X.</p>
-<p>Developed by fincs: AutoHotkey is now DPI-aware. The Gui commands automatically compensate when DPI is not 96. See <a href="commands/Gui.htm#DPIScale">Gui -DPIScale</a>.</p>
-<h2 id="v1.1.10.01">1.1.10.01 - May 17, 2013</h2>
-<p>Improved RegRead to support REG_BINARY values larger than 64K.</p>
-<p>Improved RegWrite to support REG_BINARY/REG_MULTI_SZ values larger than 64K.</p>
-<p>Fixed Process Close (and possibly other things) on Windows XP.</p>
-
-<h2 id="v1.1.10.00">1.1.10.00 - May 11, 2013</h2>
-<p>Added basic support for <a href="commands/GuiControls.htm#Custom">custom Gui control types</a>.</p>
-<p>Revised <a href="commands/SoundSet.htm">SoundSet</a>, <a href="commands/SoundGet.htm">SoundGet</a> and 'WaveVolume commands to better support Windows Vista and later.</p>
-<p>Fixed <code>Run "&lt;file&gt;" &lt;args&gt;</code> to not pass the space as part of the args.</p>
-<p>Fixed some issues with reading from console input (CONIN$).</p>
-
-<h2 id="v1.1.09.04">1.1.09.04 - March 14, 2013</h2>
-<p>Fixed Gui menu accelerator keys not working when the Gui itself (not a control) has focus.</p>
-
-<h2 id="v1.1.09.03">1.1.09.03 - February 9, 2013</h2>
-<p>Fixed <a href="http://www.autohotkey.com/board/index.php?showtopic=89624">two bugs</a> which affected certain assignments where the target variable contains an unflushed binary number but has zero capacity.</p>
-<p>Fixed GuiControl and GuiControlGet acting on the wrong control when given a HWND which does not belong to the current Gui. Instead, the condition is treated as an error.</p>
-<p>Fixed OnMessage functions to set A_Gui and A_GuiControl correctly when the target Gui is a child window.</p>
-
-<h2 id="v1.1.09.02">1.1.09.02 - December 24, 2012</h2>
-<p>Fixed MsgBox to show an error message when given invalid Options, instead of silently exiting the thread.</p>
-<p>Fixed syntax errors in class var initializers causing the program to crash without the proper error message.</p>
-
-<h2 id="v1.1.09.01">1.1.09.01 - December 15, 2012</h2>
-<p>Fixed AND/OR following a multi-statement comma, like <code>((x, y) and z)</code>.</p>
-<p>Fixed RegExReplace to support duplicate subpattern names correctly.</p>
-<p>Fixed Object.Remove() not freeing string keys.</p>
-<p>Fixed base.Invoke() to not depend on dynamic variable resolution.</p>
-
-<h2 id="v1.1.09.00">1.1.09.00 - November 7, 2012</h2>
-
-<h4>Breaking changes:</h4>
-<p>Removed <a href="misc/AutoIt2Compat.htm">.aut file compatibility</a> and #AllowSameLineComments.</p>
-<p>Removed undocumented AutoIt v2 commands.</p>
-
-<h4>Backward-compatible changes:</h4>
-<p>Allow optional parameters to be declared with <code>:=</code> instead of <code>=</code>, for consistency with variable declarations and expressions.</p>
-<p>Allow non-ASCII characters in unquoted keys (<code>{<b>key</b>: x}</code> and <code>obj.<b>key</b></code>).</p>
-<p>Changed name in version info from "AutoHotkey_L" to "AutoHotkey".</p>
-
-<h4>Bug-fixes:</h4>
-<p>Fixed instability caused by warning dialogs appearing part-way through evaluation of a command's args.</p>
-<p>Fixed PixelSearch Fast mode treating "not found" as an error.</p>
-<p>Fixed ahk_exe to allow other ahk_ criteria after it.</p>
-<p>Fixed <code>else continue 2</code> and similar requiring braces around the loop.</p>
-<p>Fixed RegRead indicating failure after successfully reading binary data.</p>
-<p>Fixed <code>File.Length</code> to compensate for or flush any buffered data.</p>
-<p>Fixed Gui sizing to account for scrollbars when present.</p>
-
-<h4>Debugger:</h4>
-<p>Added support for asynchronous commands.</p>
-<p>Improved handling of breakpoints on lines like <code>else foo()</code> or <code>{ bar()</code> so that the debugger will actually break when appropriate.</p>
-<p>Optimized code size, fixed several bugs and made the debugger generally more robust.</p>
-
-
-<h2 id="v1.1.08.01">1.1.08.01 - August 3, 2012</h2>
-<p>Debugger: Fixed max_depth being either half the intended limit or unlimited.</p>
-
-<h2 id="v1.1.08.00">1.1.08.00 - July 14, 2012</h2>
-
-<h4>Breaking changes:</h4>
-<p>Changed the default script codepage to ANSI, as the previous behaviour was a common source of confusion. UTF-8 files must now have a byte order mark (BOM) to be recognized correctly. Notepad adds a BOM to any file saved as UTF-8.</p>
-<p>Changed <code>return x</code> to preserve formatting of numeric strings; it is now equivalent to <code>return (x)</code>.</p>
-<p>Changed <code>Gui, Name: New</code> to set the new GUI as the default.</p>
-
-<h4>Other changes:</h4>
-<p>Changed ClipboardAll to prefer CF_UNICODETEXT over other text formats.</p>
-<p>Changed Gui Show to allow floating-point numbers.</p>
-<p>Changed A_OSVersion to return WIN_8 on Windows 8.</p>
-<p>Changed AutoHotkey.exe file description to include "ANSI/Unicode 32/64-bit".</p>
-<p>Changed the parser to allow lines like <code>new MyObject()</code> with no assignment.</p>
-<p>Upgraded PCRE to 8.30.</p>
-<p>Improved wording of some <a href="commands/_Warn.htm">warnings</a> and added a pointer to the documentation at the bottom of the warning dialog.</p>
-<p>Improvements to the debugger:</p>
-<ul>
-  <li>Added basic support for inspecting Func, ComObject and RegExMatchObject objects.</li>
-  <li>Fixed the "attach debugger" message being ignored in some situations. See commit <a href="https://github.com/Lexikos/AutoHotkey_L/commit/83f0a0e39a0f69fc8861f8c4234690557c4ab347">83f0a0e</a>.</li>
-</ul>
-
-<h4>New features:</h4>
-<p>Added support for the PCRE construct <code>(*MARK:NAME)</code> via <code>RegExMatchObject.Mark</code>.</p>
-<p>Added support for <code>classvar.x := y</code> assignments in class definitions (after declaring <em>classvar</em>).</p>
-<p>Added <a href="Variables.htm#Is64bitOS">A_Is64bitOS</a>.</p>
-<p>Added <a href="commands/SetRegView.htm">SetRegView</a> and <a href="Variables.htm#RegView">A_RegView</a>.</p>
-
-<h4>Fixes:</h4>
-<p>Fixed <code>Func.()</code> to merely skip the function call if mandatory parameters were omitted instead of causing the thread to silently exit.</p>
-<p>Fixed <code>Object.Remove()</code> not releasing object keys.</p>
-<p>Fixed key-down/key-up hotkey pairs to suppress input correctly when only one hotkey in the pair is enabled.</p>
-<p>Fixed <code>#Include &lt;Lib&gt;</code> to not affect the working directory used by subsequent #include directives.</p>
-<p>Fixed <code>objaddref()</code> acting like <code>ObjRelease()</code> when called with a lower-case 'a'.</p>
-<p>Fixed A_AhkPath in 32-bit compiled scripts to detect 64-bit AutoHotkey installations and vice versa.</p>
-<p>Fixed TreeView controls with <code>-Background</code> option rendering incorrectly on older OSes.</p>
-<p>Fixed error messages shown during execution of While/Until to identify the appropriate line.</p>
-
-<h2 id="v1.1.07.03">1.1.07.03 - March 25, 2012</h2>
-<p>Fixed Ctrl/Alt/Shift key-down hotkey breaking any corresponding key-up hotkey defined before it.</p>
-<p>Fixed key-down hotkeys to always use the hook if defined after a key-up hotkey of the same key. If the key-down hotkey used the "reg" method, the hook would block the key-down event and trigger only the key-up hotkey.</p>
-<p>Fixed load-time checks interpreting expressions with no derefs as raw text. For example, <code>gosub % "foo"</code> resolved to <code>"foo":</code> at load-time. Similarly, <code>% ""</code> was seen as invalid in various cases even if an empty string should be allowed.</p>
-
-<h2 id="v1.1.07.02">1.1.07.02 - March 22, 2012</h2>
-<p>Fixed a rare crash which can occur when GetClipboardData() fails.</p>
-<p>Fixed ComObjArray() to return an empty string on failure instead of an arbitrary integer.</p>
-<p>Fixed <code>Object.Remove(i, "")</code> affecting integer keys when <code>!Object.HasKey(i)</code>.</p>
-
-<h2 id="v1.1.07.01">1.1.07.01 - March 2, 2012</h2>
-<p>Fixed FileRead to ignore #MaxMem when reading UTF-16 on Unicode builds.</p>
-<p>Fixed dynamic function calls with built-in vars such as <code>%A_ThisLabel%()</code>.</p>
-
-<h2 id="v1.1.07.00">1.1.07.00 - February 27, 2012</h2>
-<p>Enhanced <code><a href="Functions.htm#DynCall">%var%()</a></code> to support <a href="objects/Func.htm">function references</a>, <a href="Objects.htm#Objects_as_Functions">objects imitating functions</a> and the <a href="Objects.htm#Default_Base_Object">default __Call meta-function</a>.</p>
-<p>Fixed <a href="commands/ControlGet.htm#List">ControlGet List</a> to work for ListViews where the script and the target process aren't both 32-bit or both 64-bit.</p>
-<p>Fixed <a href="commands/Send.htm#SendEvent">SendEvent</a> with a key delay of 0; a change introduced by v1.1.05.04 caused it to be slower than intended.</p>
-<p>Fixed <a href="objects/Object.htm#Remove">Object.Remove(i)</a> not adjusting keys if Object[i] doesn't exist.</p>
-<p>Fixed an error in <a href="commands/ComObjType.htm">ComObjType()</a> which may have caused unpredictable behaviour when it is called via an <a href="commands/ComObjActive.htm#Remarks">alternative name</a>.</p>
-<p>Fixed <a href="commands/ExitApp.htm">ExitApp</a> to exit the thread if an <a href="commands/OnExit.htm">OnExit</a> subroutine prevents the script from terminating, instead of resuming execution after the <a href="commands/Block.htm">block</a> which contained ExitApp.</p>
-<p>Calling a function via an object no longer acts as a barrier to exiting the thread. Consequently, if <a href="commands/Exit.htm">Exit</a> is used or a runtime error occurs within a <a href="Objects.htm#Custom_Classes_method">class method</a>, the entire thread exits instead of just the function.</p>
-<p>Calling a base-class method using <a href="Objects.htm#Custom_Classes_base">base.Method()</a> or similar inside a class definition no longer causes a <a href="commands/_Warn.htm">UseUnset</a> warning if the method doesn't exist. Consequently, instantiating an object which has <a href="Objects.htm#Custom_Classes_var">instance variables</a> no longer causes a warning about the internal <code>base.__Init</code> method if the base class has no instance variables.</p>
-
-<h2 id="v1.1.06.02">1.1.06.02 - February 13, 2012</h2>
->>>>>>> 708397468e13086c637ed7d0f299e11b2e6e43a6
 <p>Fixed IniRead crashing when Section is omitted but Key isn't.</p>
 <p>Fixed accuracy of FileGetSize with files which are 4GB or larger.</p>
 
@@ -384,7 +150,7 @@
 <p>Added support for ActiveX controls via the Gui command.</p>
 <p>Fixed: Empty hotkey control returned "vk00".</p>
 <p>Fixed: Crashes and memory leaks related to COM events/ComObjConnect.</p>
-<p>Fixed: <code>GuiControlGet OutputVar, Subcmd, <b>%OutputVar%</b></code> always failed.</p>
+<p>Fixed: <code>GuiControlGet OutputVar, Subcmd, <strong>%OutputVar%</strong></code> always failed.</p>
 <p>Changed "Missing (/[/{" error messages to "Unexpected )/]/}" for greater clarity.</p>
 <p>Changed ListLines to display While and Until lines which are executed each iteration.</p>
 <p>Changed ~= to have higher precedence than =/!=/&lt;/&gt;/&lt;=/&gt;= but lower than concat, and added it to the documentation.</p>
@@ -411,7 +177,7 @@
 
 <h2>1.1.01.00 - July 30, 2011</h2>
 <p>Added support for instance variables in class definitions, using simple assignment syntax.</p>
-<p><b>Removed</b> <code>var</code> keyword used in class definitions; use <code>static</code> instead.</p>
+<p><strong>Removed</strong> <code>var</code> keyword used in class definitions; use <code>static</code> instead.</p>
 <p>Added new built-in variables: A_ScriptHwnd and A_PriorKey.</p>
 <p>Added new built-in functions: GetKeyName(), GetKeyVK(), GetKeySC() and IsByRef().</p>
 <p>Added new sub-command: WinGet, OutputVar, ProcessPath.</p>
@@ -474,19 +240,19 @@
 <p>Fixed hotkey parser to treat <code>x & ^y</code> as an error instead of ignoring <code>^</code>.</p>
 
 <h2>1.0.96.00 - March 21, 2011</h2>
-<h4><b>New features:</b></h4>
+<h4><strong>New features:</strong></h4>
 <p><a href="commands/ComObjQuery.htm">ComObjQuery</a>: Queries a COM object for an interface or service.</p>
 <p><a href="commands/ComObjFlags.htm">ComObjFlags</a>: Retrieves or changes flags which control a COM wrapper object's behaviour.</p>
 <p><a href="commands/ComObjCreate.htm">ComObjCreate</a> allows non-dispatch objects to be created if an interface identifier (IID) is given.</p>
 <p><a href="commands/ComObjArray.htm">COM arrays</a> support for-loops and the Clone() method.</p>
 <p>ListVars shows the inner variant type and value of each COM wrapper object, in addition to the wrapper's address.</p>
-<h4><b>Changes:</b></h4>
+<h4><strong>Changes:</strong></h4>
 <p>When a literal integer or variable containing both a numeric string and cached binary integer is assigned to a field of an object, an integer is stored instead of a string. This particularly benefits scripts calling COM methods which accept integers but not strings, or have different behaviour depending on the type of value.</p>
 <p>NULL values are now allowed with ComObjParameter for the VT_UNKNOWN and VT_DISPATCH types.</p>
 <p>Improved support for Common Language Runtime (.NET) objects via COM.</p>
 <p>FileRecycle should now warn before deleting a file which is too large to recycle.</p>
 <p>When a SafeArray created with ComObjArray is assigned to an element of another SafeArray, a separate copy is created. This prevents the script from crashing due to a second attempt at "destroying" the array. ComObjFlags allows this behaviour to be avoided.</p>
-<h4><b>Fixes:</b></h4>
+<h4><strong>Fixes:</strong></h4>
 <p>Assigning to a COM array of VT_DISPATCH or VT_UNKNOWN crashed the script.</p>
 <p>Break and Continue were tolerated outside of loops in some cases.</p>
 <p>Standalone carriage-return (`r) was not correctly interpreted as end-of-line.</p>
@@ -500,7 +266,7 @@
 <p>By default, if <i>name_var</i> contains a function name, <code>name_var.()</code> calls the function. This can be overidden via the <a href="Objects.htm#Default_Base_Object">default base object</a>, as before.</p>
 <p>Run supports verbs with parameters, such as <code>Run *RunAs %A_ScriptFullPath% /Param</code>.</p>
 <p>If an operator which can accept either one operand (<code>&x</code>) or two <i>numeric</i> operands (<code>x & y</code>) follows a quoted literal string, auto-concat occurs and the operator is applied only to the right-hand operand. This is because quoted literal strings are always considered non-numeric and are therefore not valid input for numeric operators. For example, expressions like <code>"x" &y</code> and <code>"x" ++y</code> now work.</p>
-<p><b>Fixed:</b></p>
+<p><strong>Fixed:</strong></p>
 <ul>
 <li>Wildcard hotkeys were not respecting modifiers such as <code>^!+</code> in specific cases.</li>
 <li>File.Pos returned garbage for non-seeking file types; now it returns -1.</li>
@@ -612,7 +378,7 @@
 <p>Added: <code>Loop .. <a href="commands/Until.htm">Until</a> <i>expression</i></code>, usable with any Loop or For-loop.</p>
 <p>Added: Named loops; <code><a href="commands/Continue.htm">continue</a> outer_loop</code>, <code><a href="commands/Break.htm">break</a> 2</code>, etc.</p>
 <p>Debugger: Encode stdout and stderr packets as UTF-8.</p>
-<p>Debugger: Allow user to Abort, <b>Retry</b> or Ignore when the initial connection fails.</p>
+<p>Debugger: Allow user to Abort, <strong>Retry</strong> or Ignore when the initial connection fails.</p>
 <p>Debugger: Allow <a href="Scripts.htm#debug_attach">attaching a debugger client</a> by sending the script a registered window message.</p>
 <p>Debugger: Allow detaching debugger client by sending the "detach" DBGp command.</p>
 
@@ -679,15 +445,15 @@
 
 <h2>Revision 53 - August 8, 2010</h2>
 
-<p><b>Merged AutoHotkey64</b> - COM support and x64 compatibility.</p>
-<p><b>x64</b> (<i>changes since AutoHotkey64</i>):</p>
+<p><strong>Merged AutoHotkey64</strong> - COM support and x64 compatibility.</p>
+<p><strong>x64</strong> (<i>changes since AutoHotkey64</i>):</p>
 <ul>
   <li>Fixed floating-point return values and exception handling for DllCall.</li>
   <li>Fixed RegEx callouts.</li>
   <li>Re-enabled GetProcAddress optimisation for DllCall.</li>
   <li>NumPut and NumGet default to "Int64" in x64 builds.</li>
 </ul>
-<p><b>COM</b> (<i>changes since AutoHotkey64</i>):</p>
+<p><strong>COM</strong> (<i>changes since AutoHotkey64</i>):</p>
 <ul>
   <li>Allow ComObjParameter to wrap 64-bit values in 32-bit builds.</li>
   <li>Implemented more standard ref counting conventions in ComObjActive.</li>
@@ -702,8 +468,8 @@
 </ul>
 <p>Implemented common syntax validation code for enumerators. <code>Enum[]</code> and <code>Enum.Next()</code> are now supported with or without parameters. <code>Enum[]:=val</code> and similar obscure forms which worked in AutoHotkey_COM/AutoHotkey64 are not allowed.</p>
 <p>"Ptr" type is still signed (unlike AutoHotkey64), for maximum flexibility and consistency.</p>
-<p><b>Other changes:</b></p>
-<p>Added: <code>Object.<b>HasKey</b>(key)</code>.</p>
+<p><strong>Other changes:</strong></p>
+<p>Added: <code>Object.<strong>HasKey</strong>(key)</code>.</p>
 <p>Added: <code>Object(obj)</code> increments obj's reference count and returns its address.</p>
 <p>Added: <code>ObjAddRef()</code> and <code>ObjRelease()</code>.</p>
 <p>Fixed: A_ThisHotkey now has the expected value when used with #If.</p>

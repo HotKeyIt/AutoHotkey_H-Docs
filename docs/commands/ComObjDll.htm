@@ -14,13 +14,13 @@
 
 <h1>ComObjDll</h1>
 <p>Creates a COM object from a dll.</p>
-<pre class="Syntax">ComObjDll, <b>OutPutVar</b>, hModule, CLSID [, IID]<pre><em>Command  Example:</em> ComObjDll, <b>ahk</b>, %hModule%, {C00BCC8C-5A04-4392-870F-20AAE1B926B2}<br><em>Function Example:</em> <b>ahk</b> := ComObjDll(hModule,"{C00BCC8C-5A04-4392-870F-20AAE1B926B2}")</pre></pre>
+<pre class="Syntax">ComObjDll, <strong>OutPutVar</strong>, hModule, CLSID [, IID]<pre><em>Command  Example:</em> ComObjDll, <strong>ahk</strong>, %hModule%, {C00BCC8C-5A04-4392-870F-20AAE1B926B2}<br><em>Function Example:</em> <strong>ahk</strong> := ComObjDll(hModule,"{C00BCC8C-5A04-4392-870F-20AAE1B926B2}")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
   <dt>OutPutVar</dt>
-<dd><p>The name of the variable in which to store the result. The result is different when IID parameter is used:<li>If <b>IID</b> is not specified a wrapper object supporting <a href="../Objects.htm#Usage_Objects">object syntax</a> is returned.</li><li>When <b>IID</b> is specified, interface pointer is returned. The script must typically call <a href="ObjAddRef.htm">ObjRelease</a> when it is finished with the pointer.</li><br>If an error occurs, an empty string is returned.</p></dd>
+<dd><p>The name of the variable in which to store the result. The result is different when IID parameter is used:<li>If <strong>IID</strong> is not specified a wrapper object supporting <a href="../Objects.htm#Usage_Objects">object syntax</a> is returned.</li><li>When <strong>IID</strong> is specified, interface pointer is returned. The script must typically call <a href="ObjAddRef.htm">ObjRelease</a> when it is finished with the pointer.</li><br>If an error occurs, an empty string is returned.</p></dd>
 
   <dt>hModule</dt>
   <dd><p>Dll Module handle, loaded via <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx">LoadLibrary</a> or <a href="MemoryLoadLibrary.htm">MemoryLoadLibrary</a>.</p></dd>
@@ -39,7 +39,7 @@
 <h3>Examples</h3>
 <p>For a constantly growing list of examples, see the following forum topic: <a href="http://www.autohotkey.com/forum/topic61509.html">http://www.autohotkey.com/forum/topic61509.html</a>.</p>
 <pre class="NoIndent">
-ie := <b>ComObjCreate</b>("InternetExplorer.Application")
+ie := <strong>ComObjCreate</strong>("InternetExplorer.Application")
 ie.Visible := true  <em>; This is known to work incorrectly on IE7.</em>
 ie.Navigate("http://l.autohotkey.net/")
 </pre>

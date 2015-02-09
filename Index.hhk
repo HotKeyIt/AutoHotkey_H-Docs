@@ -1582,6 +1582,10 @@
 		<param name="Local" value="docs/Functions.htm#Global">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="GetVar">
+		<param name="Local" value="docs/commands/GetVar.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Gosub">
 		<param name="Local" value="docs/commands/Gosub.htm">
 		</OBJECT>

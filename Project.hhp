@@ -160,6 +160,7 @@ docs\commands\GetKeyState.htm
 docs\commands\CacheEnable.htm
 docs\commands\CriticalObject.htm
 docs\commands\GetTokenValue.htm
+docs\commands\GetVar.htm
 docs\commands\Gosub.htm
 docs\commands\Goto.htm
 docs\commands\GroupActivate.htm

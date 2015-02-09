@@ -14,8 +14,8 @@
 
 <h1>ComObjGet</h1>
 <p>Returns a reference to an object provided by a COM component.</p>
-<pre class="Syntax"><b>OutPutVar</b> := ComObjGet(Name)
-<pre><em>Example:</em> <b>wmi</b> := ComObjGet("winmgmts:")</pre>ComObjGet, <b>OutPutVar</b>, Name<pre><em>Example:</em> ComObjGet, <b>wmi</b>, winmgmts:</pre></pre>
+<pre class="Syntax"><strong>OutPutVar</strong> := ComObjGet(Name)
+<pre><em>Example:</em> <strong>wmi</strong> := ComObjGet("winmgmts:")</pre>ComObjGet, <strong>OutPutVar</strong>, Name<pre><em>Example:</em> ComObjGet, <strong>wmi</strong>, winmgmts:</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -39,7 +39,7 @@
 +Esc::
     WinGet pid, PID, A
     <em>; Get WMI service object.</em>
-    wmi := <b>ComObjGet</b>("winmgmts:")
+    wmi := <strong>ComObjGet</strong>("winmgmts:")
     <em>; Run query to retrieve matching process(es).</em>
     queryEnum := wmi.ExecQuery(""
         . "Select * from Win32_Process where ProcessId=" . pid)

@@ -261,6 +261,7 @@ MsgBox(1.00)  <em>; Shows 1.0</em></pre>
   <li>Operating System and User Info: <a href="#OSVersion">A_OSVersion</a>, <a href="#Screen">A_ScreenWidth</a>, <a href="#Screen">A_ScreenHeight</a>, <a href="#os">(...more...)</a></li>
   <li>Misc: <a href="#Cursor">A_Cursor</a>, <a href="#Caret">A_CaretX</a>, <a href="#Caret">A_CaretY</a>, <a href="misc/Clipboard.htm">Clipboard</a>, <a href="misc/Clipboard.htm#ClipboardAll">ClipboardAll</a>, <a href="misc/ErrorLevel.htm">ErrorLevel</a></li>
   <li>Loop: <a href="#Index">A_Index</a>, <a href="#loop">(...more...)</a></li>
+  <li>Other: <a href="#other">A_ScriptStruct, A_GlobalStruct, A_IsDll (...more...)</a></li>
 </ul>
 <h3>Special Characters</h3>
 <table class="info">
@@ -786,7 +787,7 @@ return
   </tr>
 </table>
 
-<h3 id="loop">Structures (low level)</h3>
+<h3 id="other">Structures (low level)</h3>
 <table class="info">
   <tr id="Index">
     <td>A_ScriptStruct</td>
@@ -798,7 +799,7 @@ return
   </tr>
 </table>
 
-<h3 id="loop">AutoHotkey.dll specific</h3>
+<h3>AutoHotkey.dll specific</h3>
 <table class="info">
   <tr id="Index">
     <td>A_IsDll</td>
@@ -807,6 +808,18 @@ return
   <tr>
     <td>A_IsMini</td>
     <td>Returns true if script is executed in AutoHotkeyMini.dll.</td>
+  </tr>
+</table>
+
+<h3>Other</h3>
+<table class="info">
+  <tr id="Index">
+    <td>A_ModuleHandle</td>
+    <td>Returns handle of module, same as GetModuleHandle(NULL) but returns correct handle for <a href="commands/MemoryLoadLibrary.htm">MemoryModule</a>.</td>
+  </tr>
+  <tr>
+    <td>A_MemoryModule</td>
+    <td>Returns address of href="commands/MemoryLoadLibrary.htm">MemoryModule</a> or 0 if current scripts module was not loaded by MemoryModule.</td>
   </tr>
 </table>
 

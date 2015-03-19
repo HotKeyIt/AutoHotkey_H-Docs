@@ -9,16 +9,16 @@
 </head>
 <body>
 <h1>ahkassign</h1>
-<p>Exported function that assins a string value to a variable in
+<p>Exported function that assigns a string value to a variable in
 currently executed
 script.
 </p>
 <br>
-<pre class="Syntax">ahkassign, <strong>OutPutVar</strong>, VarName, Value
-<pre><em>Command  Example:</em> DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>dll</strong>\ahkassign, Str, Variable, Str, 100, UInt
-                  DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\ahkassign, Str, Variable, Str, 100, Int
-<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkassign", "Str", "Variable", "Str", "100" ,"Int")
-                  <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkassign", "Str", "Variable", "Str", "100", "UInt")</pre></pre>
+<pre class="Syntax">DllCall, <strong>OutPutVar</strong>, Module\ahkassign, Str, VarName, Str, Value, CDecl UInt
+<pre><em>Command  Example:</em> DllCall, <strong>Result</strong>, AutoHotkey.<strong>dll</strong>\ahkassign, Str, Variable, Str, 100, CDecl UInt
+                  DllCall, <strong>Result</strong>, AutoHotkey.<strong>exe</strong>\ahkassign, Str, Variable, Str, 100, CDecl UInt
+<br><em>Function Example:</em> <strong>Result</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkassign", "Str", "Variable", "Str", "100" ,"CDecl UInt")
+                  <strong>Result</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkassign", "Str", "Variable", "Str", "100", "CDecl UInt")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -38,9 +38,9 @@ script.
 <h3>Related</h3>
 <p><a href="ahkFindFunc.htm">ahkFindFunc</a>,
 <a href="ahkFindLabel.htm">ahkFindLabel</a>,
-<a href="ahkassign.htm">ahkassign</a>,
+<a href="ahkgetvar.htm">ahkgetvar</a>,
 <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","","Str","") <em>; start a new thread, just the function.</em><br>DllCall(dllpath "\ahkassign","Str","MyVar","Str","Hello World!") <em>; Assign value to variable<br></em>MsgBox % DllCall(dllpath "\ahkgetvar","Str","MyVar","UInt",0,"STR") <em>; Retrieve value from variable</em></pre>
+<pre class="NoIndent">ahkdll:=AhkThread() <em>; Load the AutoHotkey module and start empty thread.</em><br>ahkdll.ahkassign("var","value") <em>; Assign value to variable<br></em>MsgBox % ahkdll.ahkgetvar.var <em>; Retrieve value from variable</em></pre>
 </body></html>

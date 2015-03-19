@@ -9,13 +9,13 @@
 </head>
 <body>
 <h1>ahkgetvar</h1>
-<p>Built in function to retrieve the value of a variable as string.</p>
+<p>Exported function to retrieve the value of a variable as string.</p>
 <br>
-<pre class="Syntax">DllCall, <strong>OutPutVar</strong>, Module\ahkgetvar, Str, VarName, UInt, GetVarPointer, CDECL UInt
-<pre><em>Command  Example:</em> DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>dll</strong>\ahkgetvar, Str, MyVar, UInt, 0, CDECL UInt
-                  DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\ahkgetvar, Str, MyVar, UInt, 0, UInt
-<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkgetvar", "Str", "MyVar", "Str", 0 ,"CDECL UInt")
-                  <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkgetvar", "Str", "MyVar", "Str", 0, "CDECL UInt")</pre></pre>
+<pre class="Syntax">DllCall, <strong>OutPutVar</strong>, Module\ahkgetvar, Str, VarName, UInt, GetVarPointer, CDecl Str
+<pre><em>Command  Example:</em> DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>dll</strong>\ahkgetvar, Str, MyVar, UInt, 0, CDecl Str
+                  DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\ahkgetvar, Str, MyVar, UInt, 0, Str
+<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkgetvar", "Str", "MyVar", "UInt", 0 ,"CDecl Str")
+                  <strong>Resu</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkgetvar", "Str", "MyVar", "UInt", 0, "CDecl Str")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt>OutPutVar</dt>
@@ -29,11 +29,12 @@
 <dt>GetVarPointer</dt>
 <dd>
 <p>1 / true to receive a pointer to variable, FALSE / NULL /
-0 to receive content of variable.</p>
+0 to receive content of variable, similar to <a href="GetVar.htm">GetVar</a>.</p>
 </dd>
 </dl>
 <h3>Related</h3>
 <p><a href="Struct.htm">Struct</a>,
+<a href="GetVar.htm">GetVar</a>,
 <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>

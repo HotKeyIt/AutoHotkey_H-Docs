@@ -10,7 +10,7 @@
 <body>
 <h1>ObjDump</h1>
 <p>Dump an object to memory or save to file for later use.</p>
-<pre class="Syntax">ObjDump, <strong>OutPutVar</strong>, ObjectOrPath, DumpToVar, DumpBuffer
+<pre class="Syntax">ObjDump, <strong>OutPutVar</strong>, ObjectOrPath [, DumpToVar, DumpBuffer]
 <pre><em>Command  Example:</em> ObjDump, <strong>size</strong>, %obj%, %var%<br><em>Function Example:</em> <strong>size</strong> := ObjDump(obj, var)</pre></pre>
 
 <h3>Parameters</h3>
@@ -26,7 +26,7 @@
 <dd>
 <p>The name of the variable in which to store the dumped memory. When this parameter is omitted only the size will be returned.<br>When saving the object to a file this parameter will be the obect and ObjOrPath the filepath.</p>
 </dd>
-<dt>DumpBuffer</dt>
+<dt>DumpBuffer (optional)</dt>
 <dd>
 <p>This parameter has effect on values of type string only.<br>When DumpBuffer is true, complete memory is saved using obj.GetCapacity(key). Otherwise only the actual string including terminating character is saved.</p>
 </dd>

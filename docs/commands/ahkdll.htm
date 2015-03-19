@@ -35,15 +35,8 @@ executed in AutoHotkey[Mini].dll. When omitted, following script is used: <pre>#
 <dt>Parameters (optional)</dt>
 <dd>
 <p>Command line
-parameters that will be availabe in built in <strong><a href="Variables.htm#CommandLine">A_Args</a></strong>
+parameters that will be available in built-in variable <strong><a href="Variables.htm#CommandLine">A_Args</a></strong>
 object.</p>
-</dd>
-</dl>
-<dl>
-<h3>Return Value</h3>
-<dd>
-<p>If a thread was created, the return value is a handle to
-the new thread, otherwise 0.</p>
 </dd>
 </dl>
 <dl>
@@ -55,7 +48,7 @@ empty string or 0 is passed:<br>
 <ul>
 <li>If AutoHotkey.dll is compiled, the compiled script is
 executed.</li>
-<li>Otherwise an empty, presistent Script will be started.</li>
+<li>Otherwise an empty, persistent Script will be started.</li>
 </ul>
 <br>When exe was started with command line parameters, the dll will be
 able to grab the parameters and use same library as well as A_ScriptDir
@@ -64,7 +57,7 @@ the path of the executable will be used.
 </dd>
 </dl>
 <h3>Related</h3>
-<p><a href="ahktextdll.htm">ahktextdll()</a>, <a href="AutoHotkey.dll.htm">AutoHotkey.dll</a>, <a href="AutoHotkey.htm#Mini">OnClipboardChange</a>, <a href="PostMessage.htm">Post/SendMessage</a>, <a href="../Functions.htm">Functions</a>, <a href="../misc/SendMessageList.htm">List of Windows Messages</a>,
+<p><a href="ahktextdll.htm">ahktextdll()</a>, <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="AutoHotkey.htm#Mini">OnClipboardChange</a>, <a href="PostMessage.htm">Post/SendMessage</a>, <a href="../Functions.htm">Functions</a>, <a href="../misc/SendMessageList.htm">List of Windows Messages</a>,
 <a href="../misc/Threads.htm">Threads</a>, <a href="Critical.htm">Critical</a>, <a href="DllCall.htm">DllCall()</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahkdll","Str",A_ScriptDir "\MyDllScript.ahk","Str","") <em>; start a new thread from file.</em><br>While DllCall(dllpath "\ahkReady")<br>Sleep 100 <em>; wait for the thread to exit</em><br>DllCall(dllpath "\ahktextdll","Str","MsgBox Another Hello World MsgBox!","Str","") <em>; Automatically exits current thread and starts a new thread from string.</em>

@@ -17,10 +17,12 @@
 </p>
 <br>
 
-<pre class="Syntax">addFile, <strong>OutPutVar</strong>, FilePath, WaitExecute
-<pre><em>Command  Example:</em> DllCall, <strong>LinePTR</strong>, AutoHotkey.<strong>dll</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
+<pre class="Syntax">addFile, <strong>OutPutVar</strong>, FilePath [, WaitExecute]
+<pre><em>Command  Example:</em> AddFile, <strong>LinePtr</strong>, %A_ScriptDir%\MyScript.ahk, 1
+                   DllCall, <strong>LinePTR</strong>, AutoHotkey.<strong>dll</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
                   DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
-<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")
+<br><em>Function Example:</em> <strong>LinePtr</strong> := AddFile(A_ScriptDir "\MyScript.ahk", 1)
+                  <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")
                   <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")</pre></pre>
 
 <h3>Parameters</h3>
@@ -32,7 +34,7 @@
     <dd><p>New AutoHotkey script saved on disk or network to be added to
       currently running script.</p>
     </dd>
-  <dt>WaitExecute</dt>
+  <dt>WaitExecute (optional)</dt>
     <dd><p>0 = add code but do not execute it.<br>
       1 = add code, execute it and wait for it to finish execution.<br>
       2 = add code, execute it and return immediately (does not wait until
@@ -43,10 +45,11 @@
 <h3>Related</h3>
 
 <p><a href="ahkFindFunc.htm">ahkFindFunc</a>, <a
+href="addScript.htm">addScript</a>, <a
 href="ahkFindLabel.htm">ahkFindLabel</a>, <a
 href="ahkassign.htm">ahkassign</a>, <a href="DllCall.htm">DllCall()</a> </p>
 
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","","Str","") <em>; start new empty thread.</em><br>DllCall(dllpath "\addFile","Str","NewScript.ahk","Int",1) <em>; add and execute code</em><br><br>addFile("NewScript.ahk",1) <em>; call addFile in current thread.</em></pre>
+<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","","Str","") <em>; start new, empty thread.</em><br>DllCall(dllpath "\addFile","Str","NewScript.ahk","Int",1) <em>; add and execute code</em><br><br>addFile("NewScript.ahk",1) <em>; call addFile in current thread.</em></pre>
 </body>
 </html>

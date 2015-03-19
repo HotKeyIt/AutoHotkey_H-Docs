@@ -678,8 +678,16 @@
 		<param name="Local" value="docs/commands/ahkdll.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="AhkThread">
+		<param name="Local" value="docs/commands/AhkThread.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ahktextdll">
 		<param name="Local" value="docs/commands/ahktextdll.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="AhkMini">
+		<param name="Local" value="docs/commands/AhkMini.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ahkReady">
@@ -694,16 +702,16 @@
 		<param name="Local" value="docs/commands/ahkTerminate.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="ahkExec">
-		<param name="Local" value="docs/commands/ahkExec.htm">
+		<param name="Name" value="AhkExec">
+		<param name="Local" value="docs/commands/AhkExec.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="addFile">
-		<param name="Local" value="docs/commands/addFile.htm">
+		<param name="Name" value="AddFile">
+		<param name="Local" value="docs/commands/AddFile.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="addScript">
-		<param name="Local" value="docs/commands/addScript.htm">
+		<param name="Name" value="AddScript">
+		<param name="Local" value="docs/commands/AddScript.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ahkgetvar">
@@ -1012,10 +1020,6 @@
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ComObjValue()">
 		<param name="Local" value="docs/commands/ComObjValue.htm">
-		</OBJECT>
-	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="ComVar">
-		<param name="Local" value="docs/commands/ComVar.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Compatibility">

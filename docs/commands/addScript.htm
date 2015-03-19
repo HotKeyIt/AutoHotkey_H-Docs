@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><title>addScript</title>
+<html><head><title>AddScript</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +9,17 @@
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
-<h1>addScript</h1>
+<h1>AddScript</h1>
 <p>Exported function that adds new code from string to currently executed
 script.
 </p>
 <br>
-<pre class="Syntax">addScript, <strong>OutPutVar</strong>, NewCode, WaitExecute
-<pre><em>Command  Example:</em> DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>dll</strong>\addScript, Str, %NewCode%, Int, %WaitExecute%, UPTR
-                  DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\addScript, Str, %NewCode%, Int, %WaitExecute%, UPTR<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\addScript", "Str", NewCode, "Int", WaitExecute, "UPTR")
-                  <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\addScript", "Str", NewCode, "Int", WaitExecute, "UPTR")</pre></pre>
+<pre class="Syntax">AddScript, <strong>OutPutVar</strong>, NewCode [, WaitExecute]
+<pre><em>Command  Example:</em> AddScript, <strong>LinePtr</strong>, MsgBox `% A_Now, 1
+                  DllCall, <strong>LinePtr</strong>, AutoHotkey.<strong>dll</strong>\addScript, Str, MsgBox `% A_Now, Int, 1, UPTR
+                  DllCall, <strong>LinePtr</strong>, AutoHotkey.<strong>exe</strong>\addScript, Str, MsgBox `% A_Now, Int, 1, UPTR<br><em>Function Example:</em> <strong>LinePtr</strong> := AddScript("MsgBox `% A_Now", 1)
+                  <strong>LinePtr</strong> := DllCall("AutoHotkey.<strong>dll</strong>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")
+                  <strong>LinePtr</strong> := DllCall("AutoHotkey.<strong>exe</strong>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")</pre></pre>
 <h3>Parameters</h3>
 <dl>
   <dt>OutPutVar</dt>
@@ -27,7 +29,7 @@ script.
 	<dd>
 	<p>New Code to add to currently running script.</p>
 	</dd>
-	<dt>WaitExecute</dt>
+	<dt>WaitExecute (optional)</dt>
 	<dd>
 <p>0 = add code but do not execute.<br>
 1 = add code, execute and wait for return.<br>
@@ -37,10 +39,11 @@ end execution).</p>
 </dl>
 <h3>Related</h3>
 <p><a href="ahkFindFunc.htm">ahkFindFunc</a>,
+<a href="ahkFindLabel.htm">addFile</a>,
 <a href="ahkFindLabel.htm">ahkFindLabel</a>,
 <a href="ahkassign.htm">ahkassign</a>,
 <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","","Str","") <em>; start a new thread.</em><br>DllCall(dllpath "\addScript","Str","MsgBox Hello World!","Int",1) <em>; add and execute code</em><br><br>addScript("MsgBox Test",1) <em>; call addScript in current thread.</em></pre>
+<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","","Str","") <em>; start new, empty thread.</em><br>DllCall(dllpath "\addScript","Str","MsgBox Hello World!","Int",1) <em>; add and execute code</em><br><br>addScript("MsgBox Test",1) <em>; call addScript in current thread.</em></pre>
 </body></html>

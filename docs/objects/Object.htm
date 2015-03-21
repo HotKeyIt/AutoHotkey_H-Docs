@@ -139,8 +139,28 @@ ByteSize := Object.GetCapacity(Key)</pre>
 <p>Returns true if <i>Key</i> is associated with a value (even "") within <i>Object</i>, otherwise false.</p></div>
 
 <div class="methodShort" id="Clone"><h2>Clone</h2>
-<pre class="Syntax">Clone := Object.Clone()</pre>
-<p>Returns a shallow copy of the object.</p></div>
+<pre class="Syntax">Clone := Object.Clone([From, To])</pre>
+<table class="info">
+  <tr><td width="15%">From (optional)</td><td width="85%">The lowest key (integer or string) to include in cloned object. When this parameter is missing all strings and integers lower than To will be included.</td></tr>
+  <tr><td>To (optional)</td><td>The highest key to include in cloned object.When this parameter is empty all integers and strings higher than From will be included.</td></tr>
+</table>
+<p>Note, the order of From integers To strings.</p>
+<pre>obj:={1:1,2:2,3:3,4:4,5:5,test:"test",ahk:"ahk",var:"var",(""):"empty",([]):"object"}
+for k,v in obj.Clone(,obj.Length()) ; clone all integer keys
+  out1.=k "=" v "`n"
+MsgBox % out1
+for k,v in obj.Clone("") ; clone all string keys
+  out2.=k "=" v "`n"
+MsgBox % out2
+for k,v in obj.Clone("t","x") ; only string keys from t - x
+  out3.=k "=" v "`n"
+MsgBox % out3
+for k,v in obj.Clone(2,4) ; only integer keys from 2,4
+  out4.=k "=" v "`n"
+MsgBox % out4
+for k,v in obj.Clone() ; clone all
+  out4.=k "=" v "`n"
+MsgBox % out4</pre></div>
 
 <div class="methodShort" id="RawSet"><h2>ObjRawSet</h2>
 <p>Stores or overwrites a key-value pair in the object.</p>

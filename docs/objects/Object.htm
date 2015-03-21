@@ -141,8 +141,8 @@ ByteSize := Object.GetCapacity(Key)</pre>
 <div class="methodShort" id="Clone"><h2>Clone</h2>
 <pre class="Syntax">Clone := Object.Clone([From, To])</pre>
 <table class="info">
-  <tr><td width="15%">From (optional)</td><td width="85%">The lowest key (integer or string) to include in cloned object. When this parameter is missing all strings and integers lower than To will be included.</td></tr>
-  <tr><td>To (optional)</td><td>The highest key to include in cloned object.When this parameter is missing all integers and strings higher than From will be included.</td></tr>
+  <tr><td width="15%">From (optional)</td><td width="85%">The lowest key (integer or string) to include in cloned object. When this parameter is missing, all strings and integers lower than <b>To</b> will be included.</td></tr>
+  <tr><td>To (optional)</td><td>The highest key to include in cloned object.When this parameter is missing, all integers and strings higher than <b>From</b> will be included.</td></tr>
 </table>
 <p>Note, the order of From integers To strings.</p>
 <pre>obj:={1:1,2:2,3:3,4:4,5:5,test:"test",ahk:"ahk",var:"var",(""):"empty",([]):"object"}

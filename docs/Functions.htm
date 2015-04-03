@@ -132,7 +132,7 @@ returnObject() {
 </pre>
 <h2 id="Variadic">Variadic Functions</h2>
 <p>When defining a function, write an asterisk after the final parameter to mark the function as variadic, allowing it to receive a variable number of parameters:</p>
-<pre>Join(sep, <b class="blue">params*</strong>) {
+<pre>Join(sep, <strong class="blue">params*</strong>) {
     for index,param in params
         str .= param . sep
     return SubStr(str, 1, -StrLen(sep))
@@ -148,7 +148,7 @@ MsgBox % Join("`n", "one", "two", "three")</pre>
 <h3 id="VariadicCall">Variadic Function Calls</h3>
 <p>While variadic functions can <i>accept</i> a variable number of parameters, an array of parameters can be passed to <i>any</i> function by applying the same syntax to a function-call:</p>
 <pre>substrings := ["one", "two", "three"]
-MsgBox % Join("`n", <b class="blue">substrings*</strong>)</pre>
+MsgBox % Join("`n", <strong class="blue">substrings*</strong>)</pre>
 <p>Notes:</p>
 <ul>
   <li>Numbering of parameters within the source array begins at 1.</li>

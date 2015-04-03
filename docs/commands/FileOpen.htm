@@ -35,7 +35,7 @@
 <table class="info">
   <tr><th style="width:4em">&nbsp;</th><th style="width:4em">&nbsp;</th><th style="text-align:left">Access modes (mutually-exclusive)</th></tr>
   <tr><td class="fopt">r</td><td class="fnum">0</td><td><i>Read:</i> Fails if the file doesn't exist.</td></tr>
-  <tr><td class="fopt">w</td><td class="fnum">1</td><td><i>Write:</i> Creates a new file, <b style="color:red">overwriting any existing file</strong>.</td></tr>
+  <tr><td class="fopt">w</td><td class="fnum">1</td><td><i>Write:</i> Creates a new file, <strong style="color:red">overwriting any existing file</strong>.</td></tr>
   <tr><td class="fopt">a</td><td class="fnum">2</td><td><i>Append:</i> Creates a new file if the file didn't exist, otherwise moves the file pointer to the end of the file.</td></tr>
   <tr><td class="fopt">rw</td><td class="fnum">3</td><td><i>Read/Write:</i> Creates a new file if the file didn't exist.</td></tr>
   <tr><td class="fopt">h</td><td>&nbsp;</td><td>Indicates that <i>Filename</i> is a file handle to wrap in an object. Sharing mode flags are ignored. The file handle is <strong>not</strong> closed automatically when the file object is destroyed and calling <a href="../objects/File.htm#Close">Close</a> has no effect. Note that <a href="../objects/File.htm#Seek">Seek</a>, <a href="../objects/File.htm#Tell">Tell</a> and <a href="../objects/File.htm#Length">Length</a> should not be used if <i>Filename</i> is a handle to a nonseeking device such as a pipe or a communications device.</td></tr>

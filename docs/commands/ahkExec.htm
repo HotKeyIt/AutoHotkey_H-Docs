@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><title>AhkExec</title>
+<html><head><title>ahkExec</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -8,18 +8,18 @@
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
-<h1>AhkExec</h1>
+<h1>ahkExec</h1>
 <p>Exported function that executes some code temporarily from
 string in currently
 executed
 script.
 </p>
 <br>
-<pre class="Syntax">AhkExec, <strong>OutPutVar</strong>, Code
-<pre><em>Command  Example:</em> AhkExec, <strong>Result</strong>, MsgBox `% A_Now
+<pre class="Syntax">ahkExec, <strong>OutPutVar</strong>, Code
+<pre><em>Command  Example:</em> ahkExec, <strong>Result</strong>, MsgBox `% A_Now
                   DllCall, <strong>Result</strong>, AutoHotkey.<strong>dll</strong>\ahkExec, Str, MsgBox `% A_Now, Char
                   DllCall, <strong>Result</strong>, AutoHotkey.<strong>exe</strong>\ahkExec, Str, MsgBox `% A_Now, Char
-<br><em>Function Example:</em> <strong>Result</strong> := AhkExec("MsgBox `% A_Now")
+<br><em>Function Example:</em> <strong>Result</strong> := ahkExec("MsgBox `% A_Now")
                   <strong>Result</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkExec", "Str", "MsgBox `% A_Now", "Char")
                   <strong>Result</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkExec", "Str", "MsgBox `% A_Now", "Char")</pre></pre>
 <h3>Parameters</h3>

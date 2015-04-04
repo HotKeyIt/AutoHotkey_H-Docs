@@ -200,12 +200,12 @@
 				<param name="Local" value="docs\commands\ahkExec.htm">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="AddScript">
-				<param name="Local" value="docs\commands\AddScript.htm">
+				<param name="Name" value="addScript">
+				<param name="Local" value="docs\commands\addScript.htm">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="AddFile">
-				<param name="Local" value="docs\commands\AddFile.htm">
+				<param name="Name" value="addFile">
+				<param name="Local" value="docs\commands\addFile.htm">
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">

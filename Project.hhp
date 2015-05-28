@@ -127,6 +127,7 @@ docs\commands\DllCall.htm
 docs\commands\Drive.htm
 docs\commands\DriveGet.htm
 docs\commands\DynaCall.htm
+docs\commands\DynaRun.htm
 docs\commands\Edit.htm
 docs\commands\Else.htm
 docs\commands\EnvGet.htm

@@ -706,6 +706,10 @@
 		<param name="Local" value="docs/commands/ahkExec.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ahkExecuteLine">
+		<param name="Local" value="docs\commands\ahkExecuteLine.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="addFile">
 		<param name="Local" value="docs/commands/addFile.htm">
 		</OBJECT>
@@ -729,10 +733,6 @@
 		<param name="Name" value="ahkPostFunction">
 		<param name="Local" value="docs/commands/ahkPostFunction.htm">
 		</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="ahkExecuteLine">
-			<param name="Local" value="docs\commands\ahkExecuteLine.htm">
-			</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ahkLabel">
 		<param name="Local" value="docs/commands/ahkLabel.htm">
@@ -2572,6 +2572,10 @@
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Run">
 		<param name="Local" value="docs/commands/Run.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="DynaRun">
+		<param name="Local" value="docs/commands/DynaRun.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="RunAs">

@@ -17,8 +17,9 @@
 <p>AutoHotkey's basic object datatype is an associative array with features which allow its behaviour to be <a href="../Objects.htm#Custom_Objects">customized</a>.  By default, all objects created by <code>{}</code>, <code>[]</code>, <code>Object()</code> and <code>Array()</code> support the following methods and functions:</p>
 <ul>
 	<li><a href="#Clone">Clone</a></li>
-	<li><a href="#GetCapacity">GetCapacity</a></li>
+	<li><a href="#Count">Count</a></li>
 	<li><a href="#GetAddress">GetAddress</a></li>
+	<li><a href="#GetCapacity">GetCapacity</a></li>
 	<li><a href="#HasKey">HasKey</a></li>
 	<li><a href="#InsertAt">InsertAt</a></li>
 	<li><a href="#Length">Length</a></li>
@@ -106,9 +107,12 @@ MsgBox % x[1] "," x[2] "," x[3]  <em>; 1,,3</em></pre>
 </div>
 
 <div class="methodShort" id="Length"><h2>Length</h2>
-<pre class="Syntax">Length := Object.Length()
-Length := Object.Length</pre>
+<pre class="Syntax">Length := Object.Length()</pre>
 <p>Returns the array's length; that is, the highest integer key contained by the object, or 0 if there aren't any.</p></div>
+
+<div class="methodShort" id="Count"><h2>Count</h2>
+<pre class="Syntax">ItemsCount := Object.Count()</pre>
+<p>Returns the total amount of items in an array or 0 if array is empty.</p></div>
 
 <div class="methodShort" id="SetCapacity"><h2>SetCapacity</h2>
 <p>Adjusts the capacity of an object or one of its fields.</p>

@@ -1140,6 +1140,10 @@
 			<param name="Local" value="docs/commands/Run.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="DynaRun">
+			<param name="Local" value="docs/commands/DynaRun.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="RunAs">
 			<param name="Local" value="docs/commands/RunAs.htm">
 			</OBJECT>

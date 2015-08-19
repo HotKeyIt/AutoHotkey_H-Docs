@@ -110,6 +110,10 @@
 		<param name="Local" value="docs/commands/_Warn.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="#WarnContinuableException">
+		<param name="Local" value="docs/commands/_WarnContinuableException.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="#WinActivateForce">
 		<param name="Local" value="docs/commands/_WinActivateForce.htm">
 		</OBJECT>

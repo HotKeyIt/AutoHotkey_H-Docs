@@ -251,7 +251,7 @@
 				</OBJECT>
 		</UL>
 	</UL>
-  <LI> <OBJECT type="text/sitemap">
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Environment Management">
 		</OBJECT>
 	<UL>
@@ -559,10 +559,10 @@
 			<param name="Name" value="Goto">
 			<param name="Local" value="docs/commands/Goto.htm">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
-            <param name="Name" value="If (expression)">
-            <param name="Local" value="docs/commands/IfExpression.htm">
-            </OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="If (expression)">
+			<param name="Local" value="docs/commands/IfExpression.htm">
+			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Loop commands">
 			<param name="Local" value="docs/commands/Loop.htm">
@@ -1091,6 +1091,10 @@
 			<param name="Local" value="docs/commands/_Warn.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="#WarnContinuableException">
+			<param name="Local" value="docs/commands/_WarnContinuableException.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Deref">
 			<param name="Local" value="docs/commands/Deref.htm">
 			</OBJECT>
@@ -1173,7 +1177,7 @@
 			<param name="Local" value="docs/commands/RegWrite.htm">
 			</OBJECT>
 	</UL>
-  <LI> <OBJECT type="text/sitemap">
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Resource Management">
 		</OBJECT>
 	<UL>
@@ -1508,7 +1512,7 @@
 			<param name="Local" value="docs/commands/WinWaitClose.htm">
 			</OBJECT>
 	</UL>
-  <LI> <OBJECT type="text/sitemap">
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Memory Module">
 		</OBJECT>
 	<UL>
@@ -1516,39 +1520,39 @@
 			<param name="Name" value="About Memory Module">
 			<param name="Local" value="docs/MemoryModule.htm">
 			</OBJECT>
-    <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="MemoryLoadLibrary">
 			<param name="Local" value="docs/commands/MemoryLoadLibrary.htm">
 			</OBJECT>
-    <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="ResourceLoadLibrary">
 			<param name="Local" value="docs/commands/ResourceLoadLibrary.htm">
 			</OBJECT>
-    <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="MemoryGetProcAddress">
 			<param name="Local" value="docs/commands/MemoryGetProcAddress.htm">
 			</OBJECT>
-    <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="MemoryFreeLibrary">
 			<param name="Local" value="docs/commands/MemoryFreeLibrary.htm">
 			</OBJECT>
-    <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="MemoryFindResource">
 			<param name="Local" value="docs/commands/MemoryFindResource.htm">
 			</OBJECT>
-    <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="MemorySizeofResource">
 			<param name="Local" value="docs/commands/MemorySizeofResource.htm">
 			</OBJECT>
-    <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="MemoryLoadResource">
 			<param name="Local" value="docs/commands/MemoryLoadResource.htm">
 			</OBJECT>
-    <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="MemoryLoadString">
 			<param name="Local" value="docs/commands/MemoryLoadString.htm">
 			</OBJECT>
-  </UL>
+	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="#Directives">
 		</OBJECT>
@@ -1644,6 +1648,10 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="#Warn">
 			<param name="Local" value="docs/commands/_Warn.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="#WarnContinuableException">
+			<param name="Local" value="docs\commands\_WarnContinuableException.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="#WinActivateForce">

@@ -13,17 +13,17 @@
 <body>
 <h1>ResDelete</h1>
 
-<p>Deletes a resource from executable file (dll or exe).</p>
-<pre class="Syntax">ResGet, <strong>OutPutVar</strong>, Data, Name [, Type, Language]
-<pre><em>Example:</em><strong>Success</strong> := ResDelete(A_AhkPath, "MYRES.RES")<br><em>Example:</em> ResDelete, <strong>Success</strong>, %A_AhkPath%, MYRES.RES</pre></pre>
+<p>Deletes a resource in executable file (dll or exe).</p>
+<pre class="Syntax">ResDelete, <strong>OutPutVar</strong>, Executable, Name [, Type, Language]
+<pre><em>Command  Example:</em> ResDelete, <strong>success</strong>, %A_AhkPath%, MYRESOURCE<br><em>Function Example:</em> <strong>success</strong> := ResDelete(A_AhkPath, "MYRESOURCE")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
   <dt><strong>OutPutVar</strong></dt>
-    <dd><p>The name of the variable in which to store the result.</p>
+    <dd><p>The name of the variable in which to store true / 1 if resource was deleted or does not exist or false / 0 otherwise.</p>
     </dd>
   <dt>Executable</dt>
-    <dd><p>Full path to executable file (dll or exe).</p>
+    <dd><p>Path to the executable file (dll or exe).</p>
     </dd>
   <dt>Name</dt>
     <dd><p>The name of resource.</p>
@@ -31,26 +31,20 @@
   <dt>Type (optional)</dt>
     <dd><p>Type of resource. Default is RCDATA (10).<br>See <a href="http://msdn.microsoft.com/en-us/library/ms648009.aspx">MSDN</a> for default resource types.</p>
     </dd>
-  <dt>Language</dt>
+  <dt>Language (optional)</dt>
     <dd><p>Resource language, default 1033 (en-us).</p>
     </dd>
 </dl>
 
 
-<h3>Remarks</h3>
-
-<p>Remarks.</p>
-
 <h3>Related</h3>
 
-<p><a href="ResPut.htm">ResPut</a>,<a href="ResGet.htm">ResGet</a>,<a href="ResGetEx.htm">ResGetEx</a>, <a
-href="ResFile.htm">ResFile</a>, <a href="ResFiles.htm">ResFiles</a>,
+<p><a href="ResPut.htm">ResPut</a>,<a href="ResGet.htm">ResGet</a>, <a
+href="ResPutFile.htm">ResPutFile</a>,
 <a href="ResExist.htm">ResExist</a>, <a href="ResDelete.htm">ResDelete</a>, <a
-href="ResDll.htm">ResDll</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
 
 <h3>Example</h3>
-<pre class="NoIndent">ResGet(data,A_AhkPath,"RESGET.AHK","LIB")
-UnZipRawMemory(&data,var)
-MsgBox % StrGet(&var,"UTF-8")</pre>
+<pre class="NoIndent">ResDelete(A_AhkPath,"MYRESOURCE")</pre>
 </body>
 </html>

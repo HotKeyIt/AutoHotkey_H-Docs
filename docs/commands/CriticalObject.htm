@@ -17,6 +17,10 @@ Such objects can be used from multiple threads without causing a crash.</p>
 
 <h3>Parameters</h3>
 <dl>
+  <dt>OutPutVar</dt>
+    <dd><p>The name of the variable in which to store the created object. </p>
+    </dd>
+		
 <dt>Object</dt>
 <dd>
 <p>Existing Object or CriticalObject to use, this can be also a pointer.<br>
@@ -29,12 +33,6 @@ When this parameter is empty new object will be created and used.</p>
 <p>Pointer to a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">CriticalSection</a>
 to use. When this parameter is omitted new CriticalSection will be created unless CriticalObject was given in first parameter,
 then its CriticalSection will be used.</p>
-</dd>
-</dl>
-<dl>
-<h3>Return Value</h3>
-<dd>
-<p>A special object that uses CriticalSection internally for multi-threading environment. CriticalObject() can also return the pointer to stored CriticalSection and Obect.</p>
 </dd>
 </dl>
 <dl>
@@ -53,11 +51,11 @@ threads can use the object again</li>
 <pre>object := CriticalObject(CriticalObject,1)</pre>
 <p>To retrieve the pointer to CriticalSection use:</p>
 <pre>lpCriticalSection := CriticalObject(CriticalObject,2)</pre>
-<p>When last reference to internal object is deleted, CrticalSection is deleted as well.<br>
+<p>When last reference to internal object is deleted, CrticalSection is deleted as well.</p>
 </dd>
 </dl>
 <h3>Related</h3>
-<p><a href="objects/Object.htm">Object</a></p>
+<p><a href="../objects/Object.htm">Object</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">obj := CriticalObject() <em>; Create new critical object</em><br>Loop, 4 <em>; Create 4 Threads.</em><br> AhkThread%A_Index% := AhkMini("obj:=CriticalObject(" <span style="font-weight: bold;">(&obj)</span> ")`nLoop`nobj[" A_Index "]:= A_Index")<br><br>Loop <em>; Show current content of object.</em><br> ToolTip, % obj.1 "`n" obj.2 "`n" obj.3 "`n" obj.4<br>Esc::ExitApp<br></pre>
 </body></html>

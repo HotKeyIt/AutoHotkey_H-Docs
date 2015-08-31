@@ -15,8 +15,7 @@
 
 <p>Copies a string to or from a memory address, optionally converting to or
 from a given code page.</p>
-<pre class="Syntax">OutPutVar := StrGet(Address [, Length, Encoding = <i>None</i> ] )</pre>
-<pre><em>Example:</em> string := StrGet(stringAddr, 10, "UTF-8")</pre>
+<pre class="Syntax">StrGet, <strong>OutPutVar</strong>, Address [, Length, Encoding = <i>None</i>]<pre><em>Command  Example:</em> StrGet, <strong>string</strong>, %stringAddr%, 10, UTF-8<br><em>Function Example:</em> <strong>string</strong> := StrGet(stringAddr, 10, "UTF-8")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

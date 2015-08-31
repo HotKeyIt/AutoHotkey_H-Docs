@@ -14,22 +14,22 @@
 <h1>ResPut</h1>
 
 <p>Updates a resource in executable file (dll or exe).</p>
-<pre class="Syntax">ResPut, <strong>OutPutVar</strong>, Data, Size, Name [, Type, Language]
-<pre><em>Command  Example:</em> ResPut, <strong>Success</strong>, Data,% VarsetCapacity(data), %A_AhkPath%, MYRESOURCE<br><em>Function Example:</em> <strong>Success</strong> := ResPut(Data, VarsetCapacity(data), A_AhkPath, "MYRESOURCE")</pre></pre>
+<pre class="Syntax">ResPut, <strong>OutPutVar</strong>, Data, Size, Executable, Name [, Type, Language]
+<pre><em>Command  Example:</em> ResPut, <strong>Success</strong>, Data,% VarsetCapacity(data), %A_ScriptDir%\MyDll.dll, MYRESOURCE<br><em>Function Example:</em> <strong>Success</strong> := ResPut(Data, VarsetCapacity(data), A_ScriptDir "\MyDll.dll", "MYRESOURCE")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
   <dt><strong>OutPutVar</strong></dt>
-    <dd><p>The name of the variable in which to store true if resource was written and false otherwise.</p>
+    <dd><p>The name of the variable in which to store true / 1 if resource was written and false / 0 otherwise.</p>
     </dd>
-  <dt>Data</dt>
+  <dt>Data (ByRef)</dt>
     <dd><p><a href="../Functions.htm#param">ByRef variable</a> or a pointer to data to be written.</p>
     </dd>
   <dt>Size</dt>
     <dd><p>Size of data to be written in bytes.</p>
     </dd>
   <dt>Executable</dt>
-    <dd><p>Full path to executable file (dll or exe).</p>
+    <dd><p>Path to the executable file (dll or exe).</p>
     </dd>
   <dt>Name</dt>
     <dd><p>The name of resource.</p>
@@ -49,10 +49,10 @@
 
 <h3>Related</h3>
 
-<p><a href="ResGet.htm">ResGet</a>,<a href="ResGetEx.htm">ResGetEx</a>, <a
-href="ResFile.htm">ResFile</a>, <a href="ResFiles.htm">ResFiles</a>,
+<p><a href="ResGet.htm">ResGet</a>, <a
+href="ResPutFile.htm">ResPutFile</a>,
 <a href="ResExist.htm">ResExist</a>, <a href="ResDelete.htm">ResDelete</a>, <a
-href="ResDll.htm">ResDll</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
 
 <h3>Example</h3>
 <pre class="NoIndent">FileRead,Data,*c %A_ScriptDir%\MYRES.RES

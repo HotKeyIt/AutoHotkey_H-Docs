@@ -13,16 +13,17 @@
 <body>
 <h1>ResDllCreate</h1>
 
-<p>Creates a resource only dll. Such dll will not have any executable code but can be loaded into programms to access the resouces.</p>
-<pre class="Syntax">ResDllCreate(DllPath)
-<pre><em>Example:</em>ResDllCreate(A_ScriptDir "\MyDll.dll")</pre>
-ResDllCreate, DllPath
-<pre><em>Example:</em> ResDllCreate, %A_ScriptDir%\MyDll.dll</pre></pre>
+<p>Creates a resource only dll. Such dll will not have any executable code but can be loaded into programs to access resources.</p>
+<pre class="Syntax">ResDllCreate, <strong>OutPutVar</strong>, DllPath<pre><em>Command  Example:</em> ResDllCreate, %A_ScriptDir%\MyDll.dll<br><em>Function Example:</em> ResDllCreate(A_ScriptDir "\MyDll.dll")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
+	<dt>OutPutVar</dt>
+	<dd>
+	<p>The name of the variable to store true / 1 if the dll was written successfully or 0 / false otherwise.</p>
+	</dd>
   <dt>DllPath</dt>
-    <dd><p>Path for created dll.</p>
+    <dd><p>Path for the dll to be created.</p>
     </dd>
 </dl>
 
@@ -30,14 +31,14 @@ ResDllCreate, DllPath
 <p>ErrorLevel will be set to 1 (true) if the file could not be created, otherwise it will be 0 (false).</p>
 <h3>Related</h3>
 
-<p><a href="ResGet.htm">ResGet</a>, <a href="ResGetEx.htm">ResGetEx</a>, <a href="ResPut.htm">ResPut</a>, <a
-href="ResFile.htm">ResFile</a>, <a href="ResFiles.htm">ResFiles</a>,
+<p><a href="ResGet.htm">ResGet</a>, <a href="ResPut.htm">ResPut</a>, <a
+href="ResPutFile.htm">ResPutFile</a>,
 <a href="ResExist.htm">ResExist</a>, <a href="ResDelete.htm">ResDelete</a>, <a
-href="ResDll.htm">ResDll</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
 
 <h3>Example</h3>
-<pre class="NoIndent">ResDllCreate, %A_ScriptDir%\MyDll.dll
-If ErrorLevel
+<pre class="NoIndent">ResDllCreate, success, %A_ScriptDir%\MyDll.dll
+If !success
 	MsgBox The dll could not be created.</pre>
 </body>
 </html>

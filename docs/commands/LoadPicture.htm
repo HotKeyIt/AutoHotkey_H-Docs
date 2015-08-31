@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>LoadPicture</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>LoadPicture</h1>
+
+<p>Loads a JPG/GIF/BMP/ICO/etc. and returns an HBITMAP or HICON.</p>
+<pre class="Syntax">LoadPicture, <strong>OutPutVar</strong>, FilePath, [Width, Height, ImageType, IconNumber, UseGdiIfAvailable]<pre><em>Command  Example:</em> LoadPicture, <strong>hBitmap</strong>, %A_SciptDir%\MyPicture.jpg, 300, 200<br><em>Function Example:</em> <strong>hBitmap</strong> := LoadPicture(A_ScriptDir "\MyPicture.jpg", 300, 200)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><strong>OutPutVar</strong></dt>
+    <dd><p>The name of the variable in which to store the picture handle.</p>
+    </dd>
+  <dt>FilePath</dt>
+    <dd><p>Path to the file, this can be the image file or an executable (dll or exe).</p>
+    </dd>
+  <dt>Width (optional)</dt>
+    <dd><p>Width of image or icon. 0 by default = use actual size.</p>
+    </dd>
+  <dt>Height (optional)</dt>
+    <dd><p>Height of image or icon. 0 by default = use actual size.</p>
+    </dd>
+  <dt>ImageType (ByRef optional)</dt>
+    <dd><p>Pass a variable to receive the type of image (IMAGE_BITMAP:=0, IMAGE_ICON:=1, IMAGE_CURSOR:=2).</p>
+    </dd>
+  <dt>IconNumber (optional)</dt>
+    <dd><p>The number of icon to extract, if IconNumber is 0 (default) it load icon or bitmap, whichever is most appropriate.<br>Use negative IconNumber to indicate an icon's integer resource ID.</p>
+    </dd>
+  <dt>UseGdiIfAvailable (optional)</dt>
+    <dd><p>Specify true / 1 (default) to use Gdi or 0 otherwise.</p>
+    </dd>
+</dl>
+<dl>
+<h3>Remarks</h3>
+<p>If -1 is specified for width or height, that dimension will be kept proportional to the other dimension's size so that the original aspect ratio is retained.</p>
+</dl>
+<h3>Related</h3>
+
+<p><a href="ExtractIconFromExecutable.htm">ExtractIconFromExecutable</a>, <a
+href="ResDllCreate.htm">ResDllCreate</a></p>
+
+<h3>Example</h3>
+<pre class="NoIndent">Gui,+LastFound
+DetectHiddenWindows,On
+hIcon := LoadPicture(A_AhkPath,32,32,,2)
+SendMessage, 0x80, 0,% hIcon
+SendMessage, 0x80, 1,% hIcon
+Gui,Show, w400 h300
+MsgBox
+ExitApp
+</pre>
+</body>
+</html>

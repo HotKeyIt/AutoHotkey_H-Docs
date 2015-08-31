@@ -14,8 +14,9 @@
 <h1>ResGet</h1>
 
 <p>Reads a resource from executable file (dll or exe).</p>
-<pre class="Syntax">ResGet, <strong>OutPutVar</strong>, Data, Name [, Type, Language]
-<pre><em>Command  Example:</em> ResGet, <strong>Size</strong>, Data, %A_AhkPath%, &#62;AHK_SCRIPT&#60;<br><em>Function Example:</em> <strong>Size</strong> := ResGet(Data, A_AhkPath, "&#62;AHK_SCRIPT&#60;")</pre></pre>
+
+<pre class="Syntax">ResGet, <strong>OutPutVar</strong>, Data, Executable, Name [, Type, Language]
+<pre><em>Command  Example:</em> ResGet, <strong>Size</strong>, Data, %A_AhkPath%, MYRESOURCE<br><em>Function Example:</em> <strong>Size</strong> := ResGet(Data, A_AhkPath, "MYRESOURCE")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -26,7 +27,7 @@
     <dd><p><a href="../Functions.htm#param">ByRef variable</a> in which to store read data.</p>
     </dd>
   <dt>Executable</dt>
-    <dd><p>Full path to executable file (dll or exe).</p>
+    <dd><p>Path to the executable file (dll or exe).</p>
     </dd>
   <dt>Name</dt>
     <dd><p>The name of resource.</p>
@@ -46,10 +47,10 @@
 
 <h3>Related</h3>
 
-<p><a href="ResGetEx.htm">ResGetEx</a>,<a href="ResPut.htm">ResPut</a>, <a
-href="ResFile.htm">ResFile</a>, <a href="ResFiles.htm">ResFiles</a>,
+<p><a href="ResPut.htm">ResPut</a>, <a
+href="ResPutFile.htm">ResPutFile</a>
 <a href="ResExist.htm">ResExist</a>, <a href="ResDelete.htm">ResDelete</a>, <a
-href="ResDll.htm">ResDll</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
 
 <h3>Example</h3>
 <pre class="NoIndent">ResGet(data,A_AhkPath,"RESGET.AHK","LIB")

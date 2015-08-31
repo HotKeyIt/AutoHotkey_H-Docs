@@ -15,12 +15,13 @@
 <h1>Trim</h1>
 
 <p>Trims characters from the beginning and/or end of a string.</p>
+<pre class="Syntax">Trim, <strong>OutPutVar</strong>, String, OmitChars<br>LTrim, <strong>OutPutVar</strong>, String, OmitChars<br>RTrim, <strong>OutPutVar</strong>, String, OmitChars<pre><em>Command  Example:</em> Trim, <strong>result</strong>, %text%, `n`r<br><em>Function Example:</em> <strong>result</strong> := Trim(text,"`n`r")</pre></pre>
 
-<pre class="Syntax">Result :=  Trim(String, OmitChars = " `t")
-Result := LTrim(String, OmitChars = " `t")
-Result := RTrim(String, OmitChars = " `t")</pre>
 <h3>Parameters</h3>
 <dl>
+
+  <dt>OutputVar</dt>
+  <dd><p>The name of the variable in which to store the new string.</p></dd>
 
   <dt>String</dt>
   <dd><p>Any string value or variable.  Numbers are not supported.</p></dd>

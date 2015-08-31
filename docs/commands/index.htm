@@ -42,6 +42,78 @@
     <td>Returns the absolute value of <em>Number</em>.</td>
   </tr>
   <tr>
+    <td><a href="addFile.htm">addFile()</a></td>
+    <td>Adds new code from a file on disk or network in currently executed script.</td>
+  </tr>
+  <tr>
+    <td><a href="addScript.htm">addScript()</a></td>
+    <td>Exported function that adds new code from string to currently executed script.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkassign.htm">ahkassign</a></td>
+    <td>Exported function that assigns a string value to a variable in currently executed script.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkExec.htm">ahkExec()</a></td>
+    <td>Exported function that executes some code temporarily from string in currently executed script.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkFunction.htm">ahkFunction</a></td>
+    <td>Exported function that allows calling a function in script currently executed by AutoHotkey module.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkExecuteLine.htm">ahkExecuteLine</a></td>
+    <td>Exported function that executes script from given line pointer.</td>
+  </tr>
+  <tr>
+    <td><a href="AhkExported.htm">AhkExported()</a></td>
+    <td>Retrieves an object to control main thread (AutoHotkey.exe) same way as in <a href="AhkThread.htm">AhkThread()</a>.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkFindFunc.htm">ahkFindFunc</a></td>
+    <td>Exported function that finds a function in currently executed script and returns a pointer to it</td>
+  </tr>
+  <tr>
+    <td><a href="ahkFindLabel.htm">ahkFindLabel</a></td>
+    <td>Exported function that finds a label in currently executed script and returns a pointer to it</td>
+  </tr>
+  <tr>
+    <td><a href="ahkgetvar.htm">ahkgetvar</a></td>
+    <td>Exported function to retrieve the value of a variable as string.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkLabel.htm">ahkLabel</a></td>
+    <td>Exported function that allows calling a Label in script currently executed by AutoHotkey module.</td>
+  </tr>
+  <tr>
+    <td><a href="AhkMini.htm">AhkMini()</a></td>
+    <td>Create a real additional <a href="../AutoHotkeyDll.htm#AutoHotkeyMini">AutoHotkeyMini</a> thread in current process.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkPause.htm">ahkPause</a></td>
+    <td>Exported function used to pause or un-pause AutoHotkey module.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkPostFunction.htm">ahkPostFunction</a></td>
+    <td>Exported function that allows calling a function in script currently executed by AutoHotkey module without waiting for the function to return.</td>
+  </tr>
+  <tr>
+    <td><a href="ahkReady.htm">ahkReady</a></td>
+    <td>Exported function to check if a script is currently executed by AutoHotkey module (AutoHotkey[Mini].dll only).</td>
+  </tr>
+  <tr>
+    <td><a href="ahkTerminate.htm">ahkTerminate</a></td>
+    <td>Exported function that exits script currently executed by AutoHotkey module (AutoHotkey[Mini].dll only).</td>
+  </tr>
+  <tr>
+    <td><a href="Alias.htm">Alias()</a></td>
+    <td>Convert a local variable to an alias to represent a different variable for example in another thread.</td>
+  </tr>
+  <tr>
+    <td><a href="AhkThread.htm">AhkThread()</a></td>
+    <td>Create a real additional AutoHotkey thread in current process.</td>
+  </tr>
+  <tr>
     <td><a href="../Functions.htm#ASin">ASin()</a></td>
     <td>Returns the arcsine (the number whose sine is <em>Number</em>) in radians.</td>
   </tr>
@@ -52,6 +124,18 @@
   <tr>
     <td><a href="../Functions.htm#ATan">ATan()</a></td>
     <td>Returns the arctangent (the number whose tangent is <em>Number</em>) in radians.</td>
+  </tr>
+  <tr>
+    <td><a href="BetWeen.htm">Between()</a></td>
+    <td>Checks whether a variable's contents are numerically or alphabetically between two values (inclusive).</td>
+  </tr>
+  <tr>
+    <td><a href="BinRun.htm">BinRun()</a></td>
+    <td>Run a executable file (.exe) from memory.</td>
+  </tr>
+  <tr>
+    <td><a href="BinToHex.htm">BinToHex()</a></td>
+    <td>Convert binary memory to hex string.</td>
   </tr>
   <tr>
     <td><a href="BlockInput.htm">BlockInput</a></td>
@@ -68,6 +152,10 @@
   <tr>
     <td><a href="../Functions.htm#Ceil">Ceil()</a></td>
     <td>Returns <em>Number</em> rounded up to the nearest integer (without any .00 suffix).</td>
+  </tr>
+  <tr>
+    <td><a href="../Functions.htm#Chr">Chr()</a></td>
+    <td>Returns the character corresponding to the Unicode character code indicated by Number.</td>
   </tr>
   <tr>
     <td class="larger"><a href="Click.htm">Click</a></td>
@@ -92,6 +180,10 @@
   <tr>
     <td class="larger"><a href="ComObjCreate.htm">ComObjCreate()</a></td>
     <td>Creates a COM object.</td>
+  </tr>
+  <tr>
+    <td class="larger"><a href="ComObjDll.htm">ComObjDll()</a></td>
+    <td>Creates a COM object from a dll.</td>
   </tr>
   <tr>
     <td><a href="ComObject.htm">ComObject()</a></td>
@@ -120,6 +212,10 @@
   <tr>
     <td><a href="ComObjValue.htm">ComObjValue()</a></td>
     <td>Retrieves the value or pointer stored in a COM wrapper object.</td>
+  </tr>
+  <tr>
+    <td><a href="ComVar.htm">ComVar()</a></td>
+    <td>Creates an object which can be used to pass a value ByRef.</td>
   </tr>
   <tr>
     <td><a href="Continue.htm">Continue</a></td>
@@ -174,8 +270,20 @@
     <td>Returns the trigonometric cosine of <em>Number</em>.</td>
   </tr>
   <tr>
+    <td><a href="CreateScript.htm">CreateScript</a></td>
+    <td>Creates a script from main script that can be passed to <a href="./AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="BinRun.htm">BinRun</a> or <a href="DynaRun.htm">DynaRun</a>.</td>
+  </tr>
+  <tr>
     <td><a href="Critical.htm">Critical</a></td>
     <td>Prevents the <a href="../misc/Threads.htm">current thread</a> from being interrupted by other threads.</td>
+  </tr>
+  <tr>
+    <td><a href="CriticalObject.htm">CriticalObject</a></td>
+    <td>Built-in function to enwrap an object for multi-thread use. Such objects can be used from multiple threads without causing a crash./td>
+  </tr>
+  <tr>
+    <td><a href="CriticalSection.htm">CriticalSection</a></td>
+    <td>Included function to create and initialize a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">Critical Section Object</a>.</td>
   </tr>
   <tr>
     <td><a href="DateAdd.htm">DateAdd</a></td>
@@ -210,9 +318,17 @@
     <td>Deletes a folder.</td>
   </tr>
   <tr>
-    <td><a href="DirMove.htm">DirMove</a></td>
-    <td> Moves a folder along with all its sub-folders and files. It can also rename a folder.</td>
+    <td><a href="DirDelete.htm">DirGetParent</a></td>
+    <td>Retrieve parent directory for a file or folder.</td>
   </tr>
+  <tr>
+    <td><a href="DirMove.htm">DirMove</a></td>
+    <td>Moves a folder along with all its sub-folders and files. It can also rename a folder.</td>
+  </tr>
+  <tr>
+    <td><a href="DirSelect.htm">DirSelect</a></td>
+    <td>Displays a standard dialog that allows the user to select a folder.</td>
+  </tr>		
   <tr>
     <td class="larger"><a href="DllCall.htm">DllCall()</a></td>
     <td>Calls a function inside a DLL, such as a standard Windows API function.</td>
@@ -224,6 +340,14 @@
   <tr>
     <td><a href="Drive.htm">Drive</a></td>
     <td>Ejects/retracts the tray in a CD or DVD drive, or sets a drive's volume label.</td>
+  </tr>
+  <tr>
+    <td><a href="DynaCall.htm">DynaCall</a></td>
+    <td>Build in function, similar to DllCall but works with DllCall structures and uses Object syntax. It is often faster than DllCall, easier to use and it saves a lot of typing and code.</td>
+  </tr>
+  <tr>
+    <td><a href="DynaRun.htm">DynaRun</a></td>
+    <td>Run code dynamically in new AutoHotkey process.</td>
   </tr>
   <tr>
     <td><a href="DriveGet.htm">DriveGet</a></td>
@@ -248,6 +372,14 @@
   <tr>
     <td><a href="EnvUpdate.htm">EnvUpdate</a></td>
     <td>Notifies the OS and all running applications that <a href="../Variables.htm">environment variable(s)</a> have changed.</td>
+  </tr>
+  <tr>
+    <td><a href="ErrorMessage.ErrorMessage">Exit</a></td>
+    <td>Retrieve the error message from <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms681381.aspx">system message table</a> resources.</td>
+  </tr>
+  <tr>
+    <td><a href="Throw.htm#Exception">Exception</a></td>
+    <td>Creates an <a href="Catch.htm#RuntimeErrors">Exception</a> object.</td>
   </tr>
   <tr>
     <td><a href="Exit.htm">Exit</a></td>
@@ -282,10 +414,6 @@
     <td>Sets the default encoding for <a href="FileRead.htm">FileRead</a>, <a href="LoopReadFile.htm">Loop Read</a>, <a href="FileAppend.htm">FileAppend</a>, and <a href="FileOpen.htm">FileOpen</a>.</td>
   </tr>
   <tr>
-    <td><a href="FileInstall.htm">FileInstall</a></td>
-    <td>Includes the specified file inside the <a href="../Scripts.htm#ahk2exe">compiled version</a> of the script.</td>
-  </tr>
-  <tr>
     <td><a href="FileGetAttrib.htm">FileGetAttrib</a></td>
     <td>Reports whether a file or folder is read-only, hidden, etc.</td>
   </tr>
@@ -304,6 +432,10 @@
   <tr>
     <td><a href="FileGetVersion.htm">FileGetVersion</a></td>
     <td>Retrieves the version of a file.</td>
+  </tr>
+  <tr>
+    <td><a href="FileInstall.htm">FileInstall</a></td>
+    <td>Includes the specified file inside the <a href="../Scripts.htm#ahk2exe">compiled version</a> of the script.</td>
   </tr>
   <tr>
     <td><a href="FileMove.htm">FileMove</a></td>
@@ -326,12 +458,12 @@
     <td>Empties the recycle bin.</td>
   </tr>
   <tr>
-    <td height="14" class="larger"><a href="FileSelect.htm">FileSelect</a></td>
-    <td height="14">Displays a standard dialog that allows the user to open or save file(s).</td>
+    <td height="14" class="larger"><a href="FileReplace.htm">FileReplace</a></td>
+    <td height="14">Deletes the file and writes text to the file after creating it.</td>
   </tr>
   <tr>
-    <td><a href="DirSelect.htm">DirSelect</a></td>
-    <td><p>Displays a standard dialog that allows the user to select a folder.</p></td>
+    <td height="14" class="larger"><a href="FileSelect.htm">FileSelect</a></td>
+    <td height="14">Displays a standard dialog that allows the user to open or save file(s).</td>
   </tr>
   <tr>
     <td><a href="FileSetAttrib.htm">FileSetAttrib</a></td>
@@ -344,6 +476,14 @@
   <tr>
     <td class="larger"><a href="Finally.htm">Finally</a></td>
     <td>Ensures that a block of code is always executed after a <a href="Try.htm">Try</a> statement finishes.</td>
+  </tr>
+  <tr>
+    <td><a href="FindFunc.htm">FindFunc</a></td>
+    <td>Finds a function in currently executed script and returns a pointer to it.</td>
+  </tr>
+  <tr>
+    <td><a href="FindLabel.htm">FindLabel</a></td>
+    <td>Finds a label in currently executed script and returns a pointer to it.</td>
   </tr>
   <tr>
     <td><a href="../Functions.htm#Floor">Floor()</a></td>
@@ -366,8 +506,20 @@
     <td>Retrieves the name or text, virtual key code or scan code of a key.</td>
   </tr>
   <tr>
+    <td><a href="GetKeySC.htm">GetKeySC</a></td>
+    <td>Retrieves the name/text, scan code of a key.</td>
+  </tr>
+  <tr>
     <td><a href="GetKeyState.htm">GetKeyState</a></td>
     <td>Checks if a keyboard key or mouse/joystick button is down or up. Also retrieves joystick status.</td>
+  </tr>
+  <tr>
+    <td><a href="GetVar.htm">GetVar>/a></td>
+    <td>Retrieves a pointer to a variable.</td>
+  </tr>
+  <tr>
+    <td><a href="GetKeyVK.htm">GetKeyVK</a></td>
+    <td>Retrieves the name/text, virtual key code of a key.</td>
   </tr>
   <tr>
     <td class="larger"><a href="Gosub.htm">Gosub</a></td>
@@ -406,6 +558,14 @@
     <td>Retrieves various types of information about a control in a GUI window.</td>
   </tr>
   <tr>
+    <td><a href="HIBYTE.htm">HIBYTE</a></td>
+    <td>Retrieves the high-order byte from the given value.</td>
+  </tr>
+  <tr>
+    <td><a href="HIWORD.htm">HIWORD</a></td>
+    <td>Retrieves the high-order word from the given value.</td>
+  </tr>
+  <tr>
     <td><a href="Hotkey.htm">Hotkey</a></td>
     <td>Creates, modifies, enables, or disables a hotkey while the script is running.</td>
   </tr>
@@ -442,8 +602,16 @@
     <td>Searches for a given <em>occurrence</em> of a string, from the left or the right.</td>
   </tr>
   <tr>
+    <td><a href="IsBOM.htm">IsBOM()</a></td>
+    <td>Returns true if given address contains a byte order mark.</td>
+  </tr>
+  <tr>
     <td><a href="../Functions.htm#IsByRef">IsByRef()</a></td>
     <td>Determines whether a ByRef parameter was supplied with a variable.</td>
+  </tr>
+  <tr>
+    <td><a href="../Functions.htm#IsLabel">IsFileInUse()</a></td>
+    <td>Returns true / 1 if FilePattern is in use and cannot be read / deleted / written.</td>
   </tr>
   <tr>
     <td><a href="../Functions.htm#IsFunc">IsFunc()</a></td>
@@ -478,8 +646,20 @@
     <td>Displays the script's <a href="../Variables.htm">variables</a>: their names and current contents.</td>
   </tr>
   <tr>
+    <td><a href="LoadPicture.htm">LoadPicture()</a></td>
+    <td>Loads a JPG/GIF/BMP/ICO/etc. and returns an HBITMAP or HICON.</td>
+  </tr>
+  <tr>
+    <td><a href="LOBYTE.htm">LOBYTE()</a></td>
+    <td>Retrieves the low-order byte from the given value.</td>
+  </tr>
+  <tr>
     <td><a href="../Functions.htm#Log">Log()</a></td>
     <td>Returns the logarithm (base 10) of <em>Number</em>.</td>
+  </tr>
+  <tr>
+    <td><a href="LOWORD.htm">LOWORD()</a></td>
+    <td>Retrieves the low-order word from the given value.</td>
   </tr>
   <tr>
     <td><a href="../Functions.htm#Ln">Ln()</a></td>
@@ -504,6 +684,38 @@
   <tr>
     <td><a href="LoopReg.htm">Loop (registry)</a></td>
     <td>Retrieves the contents of the specified registry subkey, one item at a time.</td>
+  </tr>
+  <tr>
+    <td><a href="MAKELCID.htm">MAKELANGID</a></td>
+    <td>Creates a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318691.aspx">language identifier</a> from a primary language identifier and a sublanguage identifier.</td>
+  </tr>
+  <tr>
+    <td><a href="MAKELANGID.htm">MAKELCID</a></td>
+    <td>Creates a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd373763.aspx">locale identifier</a> from a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318691.aspx">language identifier</a> and a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd374060.aspx">sort order identifier</a>.</td>
+  </tr>
+  <tr>
+    <td><a href="MAKELONG.htm">MAKELONG</a></td>
+    <td>Creates a LONG value by concatenating the specified values.</td>
+  </tr>
+  <tr>
+    <td><a href="MAKELPARAM.htm">MAKELPARAM</a></td>
+    <td>Creates a value for use as an lParam parameter in a message.</td>
+  </tr>
+  <tr>
+    <td><a href="MAKELRESULT.htm">MAKELRESULT</a></td>
+    <td>Creates a value for use as a return value from a window procedure.</td>
+  </tr>
+  <tr>
+    <td><a href="MAKEWORD.htm">MAKEWORD</a></td>
+    <td>Creates a value for use as a return value from a window procedure.</td>
+  </tr>
+  <tr>
+    <td><a href="MAKEWPARAM.htm">MAKEWPARAM</a></td>
+    <td>Creates a value for use as an wParam parameter in a message.</td>
+  </tr>
+  <tr>
+    <td><a href="MAKEWPARAM.htm">MCODEH</a></td>
+    <td>Creates a <a href="DynaCall.htm">DynaCall</a> object for machine code function.</td>
   </tr>
   <tr>
     <td><a href="Menu.htm">Menu</a></td>
@@ -550,6 +762,82 @@
     <td>Stores a number in binary format at the specified address+offset.</td>
   </tr>
   <tr>
+    <td><a href="ObjAddRef.htm">ObjAddRef</a></td>
+    <td>Increments an object's reference count.</td>
+  </tr>
+  <tr>
+    <td><a href="ObjByRef.htm">ObjByRef</a></td>
+    <td>Creates an object containing <a href="../../docs/Functions.htm#ByRef">ByRef</a> variables, obj.var returns actual variable content and obj.var := value will assign new value to variable.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#Clone">ObjClone</a></td>
+    <td>Creates a new object copying key and value items from given object (no deep copy is performed).</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#GetAddress">ObjGetAddress</a></td>
+    <td>Returns the current address of the field's string buffer, if it has one.</td>
+  </tr>
+  <tr>
+    <td><a href="ObjDump.htm">ObjDump</a></td>
+    <td>Dump an object to memory or save to file for later use.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#GetCapacity">ObjGetCapacity</a></td>
+    <td>Returns the current capacity of an object or one of its fields.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#GetAddress">ObjGetAddress</a></td>
+    <td>Returns the current address of the field's string buffer, if it has one.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#HasKey">ObjHasKey</a></td>
+    <td>Returns true if Key is associated with a value (even "") within Object, otherwise false.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#InsertAt">ObjInsertAt</a></td>
+    <td>Inserts values into an array.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#Length">ObjLength</a></td>
+    <td>Returns the array's length; that is, the highest integer key contained by the object, or 0 if there aren't any.</td>
+  </tr>
+  <tr>
+    <td><a href="ObjLoad.htm">ObjLoad</a></td>
+    <td>Load a <a href="ObjDump.htm">dumped</a> object from memory or file.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#NewEnum">ObjNewEnum</a></td>
+    <td>Returns a new enumerator to enumerate this object's key-value pairs. This method is usually not called directly, but by the for-loop.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#Pop">ObjPop</a></td>
+    <td>Removes and returns the last array element.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#Push">ObjPush</a></td>
+    <td>Appends values to the end of an array.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#RawSet">ObjRawSet</a></td>
+    <td>Stores or overwrites a key-value pair in the object.</td>
+  </tr>
+  <tr>
+    <td><a href="ObjAddRef.htm">ObjRelease</a></td>
+    <td>Decrements an object's reference count.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#Delete">ObjDelete</a></td>
+    <td>Deletes key-value pairs from an object.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#RemoveAt">ObjRemoveAt</a></td>
+    <td>Removes elements from an array.</td>
+  </tr>
+  <tr>
+    <td><a href="../objects/Object.htm#SetCapacity">ObjSetCapacity</a></td>
+    <td>Adjusts the capacity of an object or one of its fields.</td>
+  </tr>
+  <tr>
     <td><a href="OnExit.htm">OnExit</a></td>
     <td>Specifies a <a href="../Functions.htm">function</a> to call automatically when the script exits.</td>
   </tr>
@@ -582,6 +870,10 @@
     <td>Performs one of the following operations on a process: checks if it exists; changes its priority; closes it; waits for it to close.</td>
   </tr>
   <tr>
+    <td><a href="Process.htm">Progress</a></td>
+    <td>Creates or updates a window containing a progress bar.</td>
+  </tr>
+  <tr>
     <td><a href="Random.htm">Random</a></td>
     <td>Generates a pseudo-random number.</td>
   </tr>
@@ -612,6 +904,30 @@
   <tr>
     <td><a href="Reload.htm">Reload</a></td>
     <td>Replaces the currently running instance of the script with a new one.</td>
+  </tr>
+  <tr>
+    <td><a href="ResDelete.htm">ResDelete</a></td>
+    <td>Deletes a resource in executable file (dll or exe).</td>
+  </tr>
+  <tr>
+    <td><a href="ResDllCreate.htm">ResDllCreate</a></td>
+    <td>Creates a resource only dll. Such dll will not have any executable code but can be loaded into programs to access resources.</td>
+  </tr>
+  <tr>
+    <td><a href="ResExist.htm">ResExist</a></td>
+    <td>Check whether resource exists in the executable file (dll or exe).</td>
+  </tr>
+  <tr>
+    <td><a href="ResGet.htm">ResGet</a></td>
+    <td>Reads a resource from executable file (dll or exe).</td>
+  </tr>
+  <tr>
+    <td><a href="ResPut.htm">ResPut</a></td>
+    <td>Updates a resource in executable file (dll or exe).</td>
+  </tr>
+  <tr>
+    <td><a href="ResPutFile.htm">ResPutFile</a></td>
+    <td>Updates a resource in executable file (dll or exe).</td>
   </tr>
   <tr>
     <td class="larger"><a href="Return.htm">Return</a></td>
@@ -743,6 +1059,14 @@
     <td>Returns the square root of <em>Number</em>.</td>
   </tr>
   <tr>
+    <td><a href="SplashImage.htm">SplashImage</a></td>
+    <td>Creates or updates a window containing an image.</td>
+  </tr>
+  <tr>
+    <td><a href="SplashTextOn.htm">SplashTextOn</a></td>
+    <td>Creates a customizable text popup window.</td>
+  </tr>
+  <tr>
     <td><a href="StatusBarGetText.htm">StatusBarGetText</a></td>
     <td>Retrieves the text from a standard status bar control.</td>
   </tr>
@@ -751,8 +1075,16 @@
     <td>Waits until a window's status bar contains the specified string.</td>
   </tr>
   <tr>
-    <td><a href="StrPutGet.htm">StrPut() / StrGet()</a></td>
-    <td>Copies a string to or from a memory address, optional converting it between code pages.</td>
+    <td><a href="StrGet.htm">StrGet()</a></td>
+    <td>Reads a string from a memory address, optional converting it between code pages.</td>
+  </tr>
+  <tr>
+    <td><a href="StrPut.htm">StrPut()</a></td>
+    <td>Copies a string to a memory address, optional converting it between code pages.</td>
+  </tr>
+  <tr>
+    <td><a href="StrPutVar.htm">StrPutVar()</a></td>
+    <td>Copies a string to a variable, optionally converting to or from a given code page.</td>
   </tr>
   <tr>
     <td><a href="StringCaseSense.htm">StringCaseSense</a></td>
@@ -773,6 +1105,10 @@
   <tr>
     <td><a href="StrSplit.htm">StrSplit</a></td>
     <td>Separates a string into an array of substrings using the specified delimiters.</td>
+  </tr>
+  <tr>
+    <td><a href="Struct.htm">Struct</a></td>
+    <td>Struct() is a build-in function that creates and returns a special structure object.</td>
   </tr>
   <tr>
     <td><a href="StrLower.htm">StrUpper</a></td>
@@ -803,8 +1139,32 @@
     <td>Signals the occurrence of an error. This signal can be caught by a <a href="Try.htm">try</a>-<a href="Catch.htm">catch</a> statement.</td>
   </tr>
   <tr>
+    <td><a href="ToChar.htm">ToChar</a></td>
+    <td>Convert an integer to signed char type.</td>
+  </tr>
+  <tr>
+    <td><a href="ToInt.htm">ToInt</a></td>
+    <td>Convert an integer to signed int type.</td>
+  </tr>
+  <tr>
     <td><a href="ToolTip.htm">ToolTip</a></td>
     <td>Creates an always-on-top window anywhere on the screen.</td>
+  </tr>
+  <tr>
+    <td><a href="ToShort.htm">ToShort</a></td>
+    <td>Convert an integer to signed short type.</td>
+  </tr>
+  <tr>
+    <td><a href="ToUChar.htm">ToUChar</a></td>
+    <td>Convert an integer to unsigned char type.</td>
+  </tr>
+  <tr>
+    <td><a href="ToUInt.htm">ToUInt</a></td>
+    <td>Convert an integer to unsigned int type.</td>
+  </tr>
+  <tr>
+    <td><a href="ToUShort.htm">ToUShort</a></td>
+    <td>Convert an integer to unsigned short type.</td>
   </tr>
   <tr>
     <td><a href="TrayTip.htm">TrayTip</a></td>
@@ -825,6 +1185,10 @@
   <tr>
     <td class="larger"><a href="Until.htm">Until</a></td>
     <td>Applies a condition to the continuation of a Loop or For-loop.</td>
+  </tr>
+  <tr>
+    <td class="larger"><a href="UnZipRawMemory.htm">UnZipRawMemory</a></td>
+    <td>This function is used to unzip and decrypt raw memory, for example from resource.</td>
   </tr>
   <tr>
     <td class="larger"><a href="SetExpression.htm">Var := expression</a></td>
@@ -863,12 +1227,60 @@
     <td>Retrieves the specified window's class name.</td>
   </tr>
   <tr>
-    <td><a href="WinGet.htm">WinGet</a></td>
-    <td>Retrieves the specified window's unique ID, process ID, process name, or a list of its controls. It can also retrieve a list of all windows matching the specified criteria.</td>
+    <td><a href="WinGetClass.htm">WinGetControls</a></td>
+    <td>Retrieves the control names for all controls in a window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetClass.htm">WinGetControlsHWND</a></td>
+    <td>Retrieves the control handles for all controls in a window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetClass.htm">WinGetCount</a></td>
+    <td>Retrieves the count of matching windows.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetClass.htm">WinGetExStyle</a></td>
+    <td>Retrieves an 8-digit hexadecimal number representing extended style (respectively) of a window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGet.htm">WinGetID</a></td>
+    <td>Retrieves the unique ID number (HWND/handle) of a window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGet.htm">WinGetIDLast</a></td>
+    <td>Retrieves the unique ID number (HWND/handle) of the last/bottommost window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGet.htm">WinGetList</a></td>
+    <td>Retrieves the unique ID numbers of all matching windows.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetPos.htm">WinGetMinMax</a></td>
+    <td>Retrieves the minimized/maximized state for a window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetPos.htm">WinGetPID</a></td>
+    <td>Retrieves the <a href="Process.htm">Process ID (PID)</a> of a window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetPos.htm">WinGetPIDList</a></td>
+    <td>Retrieves the <a href="Process.htm">Process IDs (PID)</a> of all matching windows.</td>
   </tr>
   <tr>
     <td><a href="WinGetPos.htm">WinGetPos</a></td>
     <td>Retrieves the position and size of the specified window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetPos.htm">WinGetProcessName</a></td>
+    <td>Retrieves the name of the process (e.g. notepad.exe) that owns a window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetPos.htm">WinGetProcessPath</a></td>
+    <td>Retrieves the full path and name of the process (e.g. C:\Windows\notepad.exe) that owns a window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinGetPos.htm">WinGetStyle</a></td>
+    <td>Retrieves an 8-digit hexadecimal number representing the style (respectively) of a window.</td>
   </tr>
   <tr>
     <td><a href="WinGetText.htm">WinGetText</a></td>
@@ -877,6 +1289,14 @@
   <tr>
     <td class="larger"><a href="WinGetTitle.htm">WinGetTitle</a></td>
     <td>Retrieves the title of the specified window.</td>
+  </tr>
+  <tr>
+    <td class="larger"><a href="WinGetTitle.htm">WinGetTransColor</a></td>
+    <td>Retrieves the color that is marked transparent in a window.</td>
+  </tr>
+  <tr>
+    <td class="larger"><a href="WinGetTitle.htm">WinGetTransparent</a></td>
+    <td> Retrieves the degree of transparency of a window.</td>
   </tr>
   <tr>
     <td class="larger"><a href="WinHide.htm">WinHide</a></td>
@@ -907,16 +1327,44 @@
     <td>Changes the position and/or size of the specified window.</td>
   </tr>
   <tr>
+    <td><a href="WinRestore.htm">WinRedraw</a></td>
+    <td>Attempts to update the appearance/contents of a window by informing the OS that the window's rectangle needs to be redrawn.</td>
+  </tr>
+  <tr>
     <td><a href="WinRestore.htm">WinRestore</a></td>
     <td>Unminimizes or unmaximizes the specified window if it is minimized or maximized.</td>
   </tr>
   <tr>
-    <td><a href="WinSet.htm">WinSet</a></td>
-    <td>Makes a variety of changes to the specified window, such as &quot;always on top&quot; and transparency.</td>
+    <td><a href="WinSetAlwaysOnTop.htm">WinSetAlwaysOnTop</a></td>
+    <td>Makes a window stay on top of all other windows.</td>
+  </tr>
+  <tr>
+    <td><a href="WinSetEnabled.htm">WinSetEnabled</a></td>
+    <td>Disables or enables a window (respectively).</td>
+  </tr>
+  <tr>
+    <td><a href="WinSetExStyle.htm">WinSetExStyle</a></td>
+    <td>Changes the extended style of a window, respectively.</td>
+  </tr>
+  <tr>
+    <td><a href="WinSetRegion.htm">WinSetRegion</a></td>
+    <td>Changes the shape of a window to be the specified rectangle, ellipse, or polygon.</td>
+  </tr>
+  <tr>
+    <td><a href="WinSetStyle.htm">WinSetStyle</a></td>
+    <td>Changes the style of a window, respectively.</td>
   </tr>
   <tr>
     <td><a href="WinSetTitle.htm">WinSetTitle</a></td>
     <td>Changes the title of the specified window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinSetTransColor.htm">WinSetTransColor</a></td>
+    <td>Makes all pixels of the chosen color invisible inside the target window.</td>
+  </tr>
+  <tr>
+    <td><a href="WinSetTransparent.htm">WinSetTransparent</a></td>
+    <td>Makes a window semi-transparent.</td>
   </tr>
   <tr>
     <td><a href="WinShow.htm">WinShow</a></td>

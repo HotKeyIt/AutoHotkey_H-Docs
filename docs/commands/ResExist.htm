@@ -13,17 +13,17 @@
 <body>
 <h1>ResExist</h1>
 
-<p>Check whether resource exists in the specified executable (dll or exe).</p>
-<pre class="Syntax">ResExist, <strong>OutPutVar</strong>, Name [, Type]
-<pre><em>Command  Example:</em> ResExist, <strong>IsScriptCompiled</strong>, %A_AhkPath%, &#62;AHK_SCRIPT&#60;<br><em>Function Example:</em> <strong>IsScriptCompiled</strong> := ResExist(A_AhkPath, "&#62;AHK_SCRIPT&#60;")</pre></pre>
+<p>Check whether resource exists in the executable file (dll or exe).</p>
+<pre class="Syntax">ResExist, <strong>OutPutVar</strong>, Executable, Name [, Type, Language]
+<pre><em>Command  Example:</em> ResExist, <strong>Exist</strong>, %A_AhkPath%, MYRESOURCE<br><em>Function Example:</em> <strong>Exist</strong> := ResExist(A_AhkPath, "MYRESOURCE")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
   <dt><strong>OutPutVar</strong></dt>
-    <dd><p>The name of the variable in which to store 1 (true) if the resource exist or 0 (false) otherwise.</p>
+    <dd><p>The name of the variable in which to store true / 1 if the resource exist or false / 0 otherwise.</p>
     </dd>
   <dt>Executable</dt>
-    <dd><p>Full path to executable file (dll or exe).</p>
+    <dd><p>Path to the executable file (dll or exe).</p>
     </dd>
   <dt>Name</dt>
     <dd><p>The name of resource.</p>
@@ -31,14 +31,17 @@
   <dt>Type (optional)</dt>
     <dd><p>Type of resource. Default is RCDATA (10).<br>See <a href="http://msdn.microsoft.com/en-us/library/ms648009.aspx">MSDN</a> for default resource types.</p>
     </dd>
+  <dt>Language (optional)</dt>
+    <dd><p>Language of resource. Default is 1033.</p>
+    </dd>
 </dl>
 
 <h3>Related</h3>
 
-<p><a href="ResGet.htm">ResGet</a>, <a href="ResGetEx.htm">ResGetEx</a>, <a href="ResPut.htm">ResPut</a>, <a
-href="ResFile.htm">ResFile</a>, <a href="ResFiles.htm">ResFiles</a>,
+<p><a href="ResGet.htm">ResGet</a>, <a href="ResPut.htm">ResPut</a>, <a
+href="ResPutFile.htm">ResPutFile</a>,
 <a href="ResExist.htm">ResExist</a>, <a href="ResDelete.htm">ResDelete</a>, <a
-href="ResDll.htm">ResDll</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
 
 <h3>Example</h3>
 <pre class="NoIndent">If !ResExist(A_AhkPath,"RESEXIST.AHK","LIB")

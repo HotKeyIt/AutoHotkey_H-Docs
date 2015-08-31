@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>ErrorMessage</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ErrorMessage</h1>
+<p>Retrieve the error message from <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms681381.aspx">system message table</a> resources.</p>
+<br>
+<pre class="Syntax">ErrorMessage, <strong>OutPutVar</strong> [, MessageId]
+<pre><em>Command  Example:</em> ErrorMessage, <strong>Error</strong>,% A_LastError<br><em>Function Example:</em> <strong>Error</strong> := ErrorMessage(A_LastError)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt>OutPutVar</dt>
+    <dd><p>The name of the variable in which to store the error message.</p>
+    </dd>
+  <dt>MessageID</dt>
+    <dd><p>The message identifier (A_LastError).</p>
+    </dd>
+</dl>
+<h3>Examples</h3>
+<pre class="NoIndent">MsgBox % ErrorMessage(87)</pre>
+</body></html>

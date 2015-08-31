@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>WinSetTransColor</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>WinSetTransColor</h1>
+
+<p>Makes all pixels of the chosen color invisible inside the target window, which allows the contents of the window behind it to show through. If the user clicks on an invisible pixel, the click will &quot;fall through&quot; to the window behind it.</p>
+
+<pre class="Syntax">WinSetTransColor, Color [N] [, WinTitle, WinText,  ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> WinSetTransColor, White, A<br><em>Function Example:</em> WinSetTransColor("White", "A")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+
+  <dt>Color [N]</dt>
+  <dd><p>Specify a color name or RGB value (see the <a href="../misc/Colors.htm">color chart</a> for guidance, or use <a href="PixelGetColor.htm">PixelGetColor</a> in its RGB mode). To additionally make the visible part of the window partially transparent, append a space (not a comma) followed by the transparency level (0-255). For example: <code>WinSet, TransColor, EEAA99 150, WinTitle</code>.</p></dd>
+
+  <dt>WinTitle</dt>
+  <dd><p>A window title or other criteria identifying the target window. See <a href="../misc/WinTitle.htm">WinTitle</a>.</p></dd>
+
+  <dt>WinText</dt>
+  <dd><p>If present, this parameter must be a substring from a single text element of the target window (as revealed by the included Window Spy utility). Hidden text elements are detected if <a href="DetectHiddenText.htm">DetectHiddenText</a> is ON.</p></dd>
+
+  <dt>ExcludeTitle</dt>
+  <dd><p>Windows whose titles include this value will not be considered.</p></dd>
+
+  <dt>ExcludeText</dt>
+  <dd><p>Windows whose text include this value will not be considered.</p></dd>
+
+</dl>
+<p><strong>Known Limitations for Transparent and TransColor</strong>:</p>
+<ul>
+  <li>They have no effect on a window that lacks a caption (title bar) and lacks the <a href="#AlwaysOnTop">always-on-top</a> property. For <a href="Gui.htm">GUI windows</a>, this can be solved by removing the caption only after making the window transparent. Alternatively, the following properties allow transparency to take effect: <code><a href="Gui.htm#Options">Gui -Caption +ToolWindow</a></code>.</li>
+  <li>Setting &quot;Transparent&quot; to 255 prior to turning it off might avoid window redrawing problems such as a black background. If the window still fails to be redrawn correctly, see <a href="#Redraw">Redraw</a> for a possible workaround.</li>
+  <li>To change a window's existing <a href="#TransColor">TransColor</a>, it may be necessary to turn off transparency before making the change.</li>
+</ul>
+<p><strong>Tip</strong>: To make the task bar transparent, use <code>WinSet, Transparent, 150, ahk_class Shell_TrayWnd</code>. Similarly, to make the Start Menu transparent, follow this example:</p>
+<pre>DetectHiddenWindows, on
+WinSet, Transparent, 150, ahk_class BaseBar  <em>; To make the Start Menu's submenus transparent, also include the script below.</em></pre>
+<p>To make all or selected menus on the entire system transparent, keep a script such as the following always running. Note that although such a script cannot make its own menus transparent, it can make those of other scripts transparent:</p>
+<pre>#Persistent
+SetTimer, WatchForMenu, 5
+return  <em>; End of auto-execute section.</em>
+
+WatchForMenu:
+DetectHiddenWindows, on  <em>; Might allow detection of menu sooner.</em>
+IfWinExist, ahk_class #32768
+    WinSet, Transparent, 150  <em>; Uses the window found by the above line.</em>
+return</pre>
+<h3>Remarks</h3>
+<p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is not changed by this command except where indicated above.</p>
+<p>Although transparency is supported on Windows 2000/XP or later, retrieving the current transparency settings of a window is possible only on Windows XP or later (via <a href="WinGet.htm">WinGet</a>).</p>
+<p>Window titles and text are case sensitive. Hidden windows are not detected unless <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> has been turned on.</p>
+
+<h3>Related</h3>
+<p><a href="WinGet.htm">WinGet</a>, <a href="WinHide.htm">WinHide</a>, <a href="WinSetTitle.htm">WinSetTitle</a>, <a href="WinMove.htm">WinMove</a>, <a href="WinActivate.htm">WinActivate</a>, <a href="Control.htm">Control</a></p>
+<h3>Examples</h3>
+<pre class="NoIndent">WinSetTransColor, White, Untitled - Notepad <em>; Make all white pixels invisible.</em></pre>
+
+</body>
+</html>

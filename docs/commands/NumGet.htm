@@ -13,10 +13,13 @@
 
 <h1>NumGet</h1>
 <p>Returns the binary number stored at the specified address+offset.</p>
-<pre class="Syntax">Number := NumGet(VarOrAddress [, Offset = 0][, Type = &quot;UPtr&quot;])</pre>
+<pre class="Syntax">NumGet, <strong>OutPutVar</strong>, VarOrAddress [, Offset = 0][, Type = &quot;UPtr&quot;]<pre><em>Command  Example:</em> NumGet, <strong>val</strong>,% MyVar, UInt<br><em>Function Example:</em> <strong>val</strong> := NumGet(MyVar,"UInt") </pre></pre>
 
 <h3>Parameters</h3>
 <dl>
+
+  <dt>OutputVar</dt>
+  <dd><p>The name of the variable in which to store the read value.</p></dd>
 
   <dt>VarOrAddress</dt>
   <dd><p>A memory address or variable. If <em>VarOrAddress</em> is a variable such as <code>MyVar</code> and the variable does not contain a pure number or an object, it is equivalent to passing <code>&amp;MyVar</code>. However, omitting the &quot;&amp;&quot; performs better and ensures that the target address + offset is <a href="VarSetCapacity.htm">valid</a>.</p></dd>

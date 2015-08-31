@@ -15,10 +15,13 @@
 <h1>WinExist</h1>
 
 <p>Checks if a matching window exists. <em>WinExist()</em> returns the <a href="WinGet.htm">Unique ID (HWND)</a> of the first matching window.</p>
+<pre class="Syntax">WinExist, <strong>OutPutVar</strong> [, &quot;WinTitle&quot;, &quot;WinText&quot;, &quot;ExcludeTitle&quot;, &quot;ExcludeText&quot;]<pre><em>Command  Example:</em> WinExist, <strong>id</strong>, A<br><em>Function Example:</em> <strong>id</strong> := WinExist("A")</pre></pre>
 
-<pre class="Syntax"><a href="WinGet.htm">UniqueID</a> := WinExist(&quot;WinTitle&quot;, &quot;WinText&quot;, &quot;ExcludeTitle&quot;, &quot;ExcludeText&quot;)</pre>
 <h3>Parameters</h3>
 <dl>
+
+  <dt>OutputVar</dt>
+  <dd><p>The name of the variable in which to store the retrieved <a href="WinGet.htm">UniquieID</a>.</p></dd>
 
   <dt>UniqueID</dt>
   <dd><p><a href="WinGet.htm">Unique ID (HWND)</a> (as hexadecimal integer) of the first window matching the given criteria.</p></dd>

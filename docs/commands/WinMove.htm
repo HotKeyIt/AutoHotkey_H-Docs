@@ -16,8 +16,7 @@
 
 <p>Changes the position and/or size of the specified window.</p>
 
-<pre class="Syntax">WinMove, X, Y
-WinMove, WinTitle, WinText, X, Y [, Width, Height, ExcludeTitle, ExcludeText]</pre>
+<pre class="Syntax">WinMove, X, Y<br>WinMove, WinTitle, WinText, X, Y [, Width, Height, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> WinMove, 100, 200<br><em>Function Example:</em> WinMove(100, 200)</pre></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -50,7 +49,7 @@ WinMove, WinTitle, WinText, X, Y [, Width, Height, ExcludeTitle, ExcludeText]</p
 <p>The speed of WinMove is affected by <a href="SetWinDelay.htm">SetWinDelay</a>.</p>
 <p>Window titles and text are case sensitive. Hidden windows are not detected unless <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> has been turned on.</p>
 <h3>Related</h3>
-<p><a href="ControlMove.htm">ControlMove</a>, <a href="WinGetPos.htm">WinGetPos</a>, <a href="WinHide.htm">WinHide</a>, <a href="WinMinimize.htm">WinMinimize</a>, <a href="WinMaximize.htm">WinMaximize</a>, <a href="WinSet.htm">WinSet</a></p>
+<p><a href="ControlMove.htm">ControlMove</a>, <a href="WinGetPos.htm">WinGetPos</a>, <a href="WinHide.htm">WinHide</a>, <a href="WinMinimize.htm">WinMinimize</a>, <a href="WinMaximize.htm">WinMaximize</a></p>
 <h3>Example</h3>
 <pre class="NoIndent">Run, calc.exe
 WinWait, Calculator

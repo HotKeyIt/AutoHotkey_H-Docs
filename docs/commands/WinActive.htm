@@ -15,10 +15,13 @@
 <h1>WinActive</h1>
 
 <p>Checks if the specified window exists and is currently active (foremost). If it is, <em>WinActive()</em> returns its Unique ID (HWND).</p>
+<pre class="Syntax">WinActive, <strong>OutPutVar</strong> [, &quot;WinTitle&quot;, &quot;WinText&quot;, &quot;ExcludeTitle&quot;, &quot;ExcludeText&quot;]<pre><em>Command  Example:</em> WinActive, <strong>id</strong>, A<br><em>Function Example:</em> <strong>id</strong> := WinActive("A")</pre></pre>
 
-<pre class="Syntax"><a href="WinGet.htm">UniqueID</a> := WinActive(&quot;WinTitle&quot;, &quot;WinText&quot;, &quot;ExcludeTitle&quot;, &quot;ExcludeText&quot;)</pre>
 <h3>Parameters</h3>
 <dl>
+
+  <dt>OutputVar</dt>
+  <dd><p>The name of the variable in which to store the retrieved <a href="WinGet.htm">UniqueID</a>.</p></dd>
 
   <dt>WinTitle</dt>
   <dd><p>A window title or other criteria identifying the target window. See <a href="../misc/WinTitle.htm">WinTitle</a>.</p></dd>

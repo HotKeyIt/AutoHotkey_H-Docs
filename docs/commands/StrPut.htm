@@ -15,10 +15,7 @@
 
 <p>Copies a string to or from a memory address, optionally converting to or
 from a given code page.</p>
-<pre class="Syntax"><strong>OutPutVar</strong> := StrPut(String [, Address, Length, Encoding = <i>None</i> ] )
-<pre><em>Example:</em> <strong>ChrCount</strong> := StrPut("Hello World!", &amp;string, 10, "UTF-8")</pre>
-StrPut, <strong>OutPutVar</strong>, String [, Address, Length, Encoding = None ] 
-<pre><em>Example:</em> StrPut, <strong>ChrCount</strong>, Hello World!,% &amp;string, 10, UTF-8</pre></pre>
+<pre class="Syntax">StrPut, <strong>OutPutVar</strong>, String [, Address, Length, Encoding = None ]<pre><em>Command  Example:</em> StrPut, <strong>ChrCount</strong>, Hello World!,% &amp;string, 10, UTF-8<br><em>Function Example:</em> <strong>ChrCount</strong> := StrPut("Hello World!", &amp;string, 10, "UTF-8")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -78,6 +75,8 @@ href="http://www.autohotkey.com/forum/">AutoHotkey Community Forum</a>.</p>
 <h3>Related</h3>
 
 <p><a href="../Compat.htm">Script Compatibility</a>, <a
+href="StrGet.htm">StrGet</a>,, <a
+href="StrPutVar.htm">StrPutVar</a>,, <a
 href="FileEncoding.htm">FileEncoding</a>, <a
 href="VarSetCapacity.htm">VarSetCapacity()</a></p>
 

@@ -42,7 +42,7 @@
 <h3><em>Related</em></h3>
 <p><em><a href="ObjLoad.htm">ObjLoad</a></em></p>
 <h3>Examples</h3>
-<pre><em>; Create a simple object</em><br>obj := {key:"value",1:"test",2:10}<br><br><em>; Dump an object to variable.</em><br>sz := ObjDump(obj, var)
+<pre class="NoIndent"><em>; Create a simple object</em><br>obj := {key:"value",1:"test",2:10}<br><br><em>; Dump an object to variable.</em><br>sz := ObjDump(obj, var)
 <br><em>; Restore an object from variable</em><br>obj := ObjLoad(&var)
 <br><em>; Dump an object to file</em><br>sz := ObjDump(A_ScriptDir "\MyDump.bin", obj)
 <br><em>; Restore an object from file</em><br>obj := ObjLoad(A_ScriptDir "\MyDump.bin")

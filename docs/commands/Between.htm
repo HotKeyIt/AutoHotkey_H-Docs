@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>Between</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>Between</h1>
+<p>Checks whether a variable's contents are numerically or alphabetically between two values (inclusive).</p>
+<pre class="Syntax">Between, <strong>OutPutVar</strong>, VariableOrValue, LowerBound, UpperBound
+<pre><em>Command  Example:</em> Between, <strong>result</strong>,% var, 10, 100<br><em>Function Example:</em> Between(var, 10, 100)</pre></pre>
+<h3>Parameters</h3>
+<dl>
+  <dt>OutPutVar</dt>
+    <dd><p>The name of the variable in which to store true/1 if variable is within the range or false/0 otherwise.</p>
+    </dd>
+<dt>VariableOrValue</dt>
+<dd>
+<p>The variable name whose contents will be checked.</p>
+</dd>
+<dt>LowerBound</dt>
+<dd>
+<p>To be within the specified range, Var must be greater than or equal to this string or number.</p>
+</dd>
+<dt>UpperBound</dt>
+<dd>
+<p>To be within the specified range, Var must be less than or equal to this string or number.</p>
+</dd>
+</dl>
+<h3>Example</h3>
+<pre class="NoIndent">if between(var, 1, 5)
+    MsgBox, %var% is in the range 1 to 5, inclusive.
+
+if !between(var, 0.0, 1.0)
+    MsgBox %var% is not in the range 0.0 to 1.0, inclusive.
+
+if between(var, VarLow, VarHigh)
+    MsgBox %var% is between %VarLow% and %VarHigh%.
+
+if between(var, "blue", "red")
+    MsgBox %var% is alphabetically between the words blue and red.
+
+LowerLimit := 1
+UpperLimit := 10
+InputBox, UserInput, Enter a number between %LowerLimit% and %UpperLimit%
+if !between(UserInput, LowerLimit, UpperLimit)
+    MsgBox Your input is not within the valid range.</pre>
+</body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>BinRun</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>BinRun</h1>
+<p>Run a executable file (.exe) from memory.</p>
+<pre class="Syntax">BinRun, <strong>OutPutVar</strong>, AddressOrPath [, CommandLineParams, ScriptCommandLineParams, Hide, ExeToUse]
+<pre><em>Command  Example:</em> BinRun, <strong>PID</strong>,% &MyExe, `nMsgBox `% A_Args.a,% {a:"Hello World!"}<br><em>Function Example:</em> <strong>PID</strong> := BinRun(&MyExe, "`nMsgBox `% A_Args.a", {a:"Hello World!"})</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt>OutPutVar</dt>
+  <dd><p>The name of the variable in which to store the process identifier (PID) of new process.</p></dd>
+
+<dt>AddressOrPath</dt>
+<dd>
+<p>The address of a variable or a pointer to memory of the executable file (.exe).<br>This can be also a filepath or resource name, when both resource and filepath exist, resource takes precedence.</p>
+</dd>
+
+<dt>CommandLineParams (optional)</dt>
+<dd>
+<p>Command line parameters for the executable file (.exe).</p>
+</dd>
+
+<dt>ScriptCommandLineParams (optional)</dt>
+<dd>
+<p>Command line parameters for the script. This parameter can be an object as well. The object will be passed to new executable via <a href="ObjDump.htm">ObjDump</a> / <a href="ObjLoad.htm">ObjLoad</a>.</p>
+</dd>
+
+<dt>Hide (optional)</dt>
+<dd>
+<p>True/1 to start process hidden otherwise 0/false/NULL.</p>
+</dd>
+
+<dt>ExeToUse</dt>
+<dd>
+<p>Executable to use as base for new process.<br>By default the executable of current process is taken and <strong>%A_WinDir% \Microsoft.NET\Framework\v2.0.50727\vbc.exe</strong> to launch 32-bit exe from 64-bit process.</p>
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre class="NoIndent">FileRead,file,*c %A_AhkPath%
+BinRun(&file,"`nMsgBox `% A_Args.a",{a:"Hello World!"})
+
+<em>; same as above</em>
+BinRun(A_AhkPath,"`nMsgBox `% A_Args.a",{a:"Hello World!"})</pre>
+</body></html>

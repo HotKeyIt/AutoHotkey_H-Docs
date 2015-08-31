@@ -11,8 +11,8 @@
 <body>
 <h1>Alias</h1>
 <p>Convert a local variable to an alias to represent a different variable for example in another thread.</p>
-<pre class="Syntax">Alias,VariableOrName,VariableOrPointer
-<pre><em>Command  Example:</em> Alias,MyVar,%VariableOrPointer%<br><em>Function Example:</em> Alias("MyVar",VariableOrPointer)</pre></pre>
+<pre class="Syntax">Alias, VariableOrName, VariableOrPointer
+<pre><em>Command  Example:</em> Alias, MyVar, %VariableOrPointer%<br><em>Function Example:</em> Alias("MyVar", VariableOrPointer)</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt>VariableOrName</dt>
@@ -27,5 +27,5 @@
 <h3>Related</h3>
 <p><a href="NumGet.htm">NumGet</a>, <a href="DllCall.htm">DllCall</a>, <a href="VarSetCapacity.htm">VarSetCapacity</a></p>
 <h3>Example</h3>
-<pre>var:="Hello World!"<br>Alias(refvar,var)<br>MsgBox % refvar<br>var:="AutoHotkey"<br>MsgBox % refvar<br><br><em>; Same example using variable pointer</em><br>var:="Hello World!"<br>Alias(refvar,getvar(var))<br>MsgBox % refvar<br>var:="AutoHotkey"<br>MsgBox % refvar</pre>
+<pre>var:="Hello World!"<br>Alias(refvar, var)<br>MsgBox % refvar<br>var:="AutoHotkey"<br>MsgBox % refvar<br><br><em>; Same example using variable pointer</em><br>var:="Hello World!"<br>Alias(refvar, getvar(var))<br>MsgBox % refvar<br>var:="AutoHotkey"<br>MsgBox % refvar</pre>
 </body></html>

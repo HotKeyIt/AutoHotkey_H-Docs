@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>FindFunc</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>FindFunc</h1>
+<p>Finds a function in currently executed script and returns a pointer to it.</p>
+<br>
+<pre class="Syntax">FindFunc, <strong>OutPutVar</strong>, FuncName<pre><em>Command  Example:</em> FindFunc, <strong>MyFuncPtr</strong>, MyFunc<br><em>Function Example:</em> <strong>MyFuncPtr</strong> := FindFunc("MyFunc")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+<dt>OutPutVar</dt>
+<dd>
+<p>The name of the variable to store the function pointer in or 0 if the function was not found.</p>
+</dd>
+<dt>FuncName</dt>
+<dd>
+<p>The name of the function to find.</p>
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre class="NoIndent">; AHK Structures
+global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func,_AHKDerefType *next,UInt symbol},BYTE type,param_count,WORD length"
+global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKDerefType *deref,_AHKVar *var,LPTSTR marker},{LPTSTR buf,size_t marker_length}}},UINT symbol,{_AHKExprTokenType *circuit_token,LPTSTR mem_to_free}"
+global _AHKArgStruct := "BYTE type,bool is_expression,WORD length,LPTSTR text,_AHKDerefType *deref,_AHKExprTokenType *postfix"
+global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
+global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"
+global _AHKLabel := "PTR vTable,LPTSTR mName,_AHKLine *mJumpToLine,_AHKLabel *mPrevLabel,*mNextLabel"
+global _AHKFuncParam := "_AHKVar *var,WORD is_byref,default_type,{LPTSTR default_str,Int64 default_int64,Double default_double}"
+If (A_PtrSize = 8)
+	global _AHKRCCallbackFunc := "UINT64 data1,data2,PTR stub,UINT_PTR callfuncptr,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
+else
+	global _AHKRCCallbackFunc := "ULONG data1,data2,data3,PTR stub,UINT_PTR callfuncptr,ULONG data4,data5,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
+global _AHKFunc := "PTR vTable,LPTSTR mName,{struct{_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass},struct{PTR mBIF,UCHAR *mOutputVars,PTR mID}},Int mParamCount,MinParams,_AHKLabel *mFirstLabel,*mLastLabel,_AHKVar **mGlobalvar,**mVar,**mLazyVar,**mStaticVar,**mStaticLazyVar,Int mGlobalVarCount,mVarCount,mVarCountMax,mLazyVarCount,mStaticVarCount,mStaticLazyVarCount,Instances,UCHAR mDefaultVarType,bool mIsBuiltIn,mIsVariadic,mHasReturn"
+global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor},{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
+MyFunc:=Struct(_AHKFunc,FindFunc("MyFunc"))
+MsgBox % "Name:`t`t" MyFunc.mName "`nParamCount:`t" MyFunc.mParamCount "`nStaticVarCount:`t" MyFunc.mStaticVarcount
+MyFunc(p1,p2){
+	static var1,var2,var3
+}</pre>
+</body></html>

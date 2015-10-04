@@ -17,7 +17,8 @@ Paramenters can be strings only as well as return value.<br>
 <pre class="Syntax">DllCall, <strong>OutPutVar</strong>, Module\ahkLabel, Str, LabelName, UInt, DoNotWait, CDECL CHAR
 <pre><em>Command  Example:</em> DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>dll</strong>\ahkLabel, Str, MyLabel, UInt, 0, CDECL CHAR
                   DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\ahkLabel, Str, MyLabel, Uint, 0, CHAR
-<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkLabel", "Str", "MyLabel", "UInt", 0, "CDECL CHAR")
+
+<em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkLabel", "Str", "MyLabel", "UInt", 0, "CDECL CHAR")
                   <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkLabel", "Str", "MyLabel", "UInt", 0, "CDECL CHAR")</pre></pre>
 <h3>Parameters</h3>
 <dl>
@@ -40,5 +41,24 @@ Paramenters can be strings only as well as return value.<br>
 <a href="ahkFindFunc.htm">ahkFindFunc</a>, <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","<br>(<br>~VKFF::Return<br>MyLabel:<br>MsgBox `% A_ThisLabel<br>Return<br>)","Str","") <em>; start a new thread, just the function.</em><br>DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0) <em>; jump to label and wait for it to finish / return.</em><em></em><em></em><br></pre>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","
+(
+#Persistent
+MyLabel:
+MsgBox `% A_ThisLabel
+Return
+)","Str","","CDecl") <em>; start a new thread, just the function.</em>
+DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0,"CDecl") <em>; jump to label and wait for it to finish / return.</em>
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread("
+(
+#Persistent
+MyLabel:
+MsgBox `% A_ThisLabel
+Return
+)")
+dll.ahkLabel["MyLabel"]</pre>
 </body></html>

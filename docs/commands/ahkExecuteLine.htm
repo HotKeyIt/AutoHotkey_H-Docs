@@ -14,7 +14,8 @@
 <pre class="Syntax">ahkExecuteLine, <strong>OutPutVar</strong>, LinePointer, Mode, Wait
 <pre><em>Command  Example:</em> DllCall, <strong>VarPointer</strong>, AutoHotkey.<strong>dll</strong>\ahkExecuteLine, PTR, %LinePointer%, UInt, 0, UInt, 0, PTR
                   DllCall, <strong>VarPointer</strong>, AutoHotkey.<strong>exe</strong>\ahkExecuteLine, PTR, %LinePointer%, UInt, 0, UInt, 0, PTR
-<br><em>Function Example:</em> <strong>LinePointer</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkExecuteLine", "PTR", LinePointer, "UInt", 0, "UInt", 0, "PTR")
+
+<em>Function Example:</em> <strong>LinePointer</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkExecuteLine", "PTR", LinePointer, "UInt", 0, "UInt", 0, "PTR")
                   <strong>VarPointer</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkExecuteLine", "PTR", LinePointer, "UInt", 0, "UInt", 0, "PTR")</pre></pre>
 <h3>Parameters</h3>
 <dl>
@@ -48,5 +49,37 @@ FALSE / NULL / 0.</p>
 <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyVar:=`"Hello World!`"`nReturn`nMsgBox `% MyVar","Str","") <em>; start a new thread and set MyVar variable.</em><br>hLine:=0<br>Loop 4 <em>; Retrieve pointer to 4-th line.</em><br> hLine := DllCall(dllpath "\ahkExecuteLine","PTR",hLine,"UInt",0,"UInt",0,"PTR")<br>DllCall(dllpath "\ahkExecuteLine","Ptr",hLine,"UInt",1,"UInt",1)<em> ; execute from the 4-th line</em><br>ahkExecuteLine(hLine,1,1) <em>; execute line in current thread</em></pre>
+<pre class="NoIndent">MsgBox first Line %A_TickCount%
+dll:=AhkThread("#Persistent`nMyVar:=`"Hello World!`"`nReturn`nMsgBox `% MyVar") <em>; start a new thread and set MyVar variable.</em>
+hLine:=0
+Loop 3 <em>; Retrieve pointer to 4-th executable line.</em>
+ hLine := dll.ahkExecuteLine[hLine]
+dll.ahkExecuteLine[hLine,1,1] <em>; execute from the 4-th line</em>
+
+
+
+<em>; ---------------- Advanced Exaple ----------------</em>
+
+<em>; AHK Structures</em>
+global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func,_AHKDerefType *next,UInt symbol},BYTE type,param_count,WORD length"
+global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKDerefType *deref,_AHKVar *var,LPTSTR marker},{LPTSTR buf,size_t marker_length}}},UINT symbol,{_AHKExprTokenType *circuit_token,LPTSTR mem_to_free}"
+global _AHKArgStruct := "BYTE type,bool is_expression,WORD length,LPTSTR text,_AHKDerefType *deref,_AHKExprTokenType *postfix"
+global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
+global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"
+global _AHKLabel := "PTR vTable,LPTSTR mName,_AHKLine *mJumpToLine,_AHKLabel *mPrevLabel,*mNextLabel"
+global _AHKFuncParam := "_AHKVar *var,WORD is_byref,default_type,{LPTSTR default_str,Int64 default_int64,Double default_double}"
+If (A_PtrSize = 8)
+	global _AHKRCCallbackFunc := "UINT64 data1,data2,PTR stub,UINT_PTR callfuncptr,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
+else
+	global _AHKRCCallbackFunc := "ULONG data1,data2,data3,PTR stub,UINT_PTR callfuncptr,ULONG data4,data5,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
+global _AHKFunc := "PTR vTable,LPTSTR mName,{struct{_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass},struct{PTR mBIF,UCHAR *mOutputVars,PTR mID}},Int mParamCount,MinParams,_AHKLabel *mFirstLabel,*mLastLabel,_AHKVar **mGlobalvar,**mVar,**mLazyVar,**mStaticVar,**mStaticLazyVar,Int mGlobalVarCount,mVarCount,mVarCountMax,mLazyVarCount,mStaticVarCount,mStaticLazyVarCount,Instances,UCHAR mDefaultVarType,bool mIsBuiltIn,mIsVariadic,mHasReturn"
+global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor},{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
+
+hLine:=ahkExecuteLine() <em>; get pointer to first line in current script</em>
+mLine:=Struct(_AHKLine,hLine)
+
+<em>; Check if this is our script and correct line number as it might be included file or static line that is executes before script starts</em>
+While mLine.mFileIndex!=0 || mLine.mLineNumber!=1
+  mLine[] := hLine := ahkExecuteLine(hLine) <em>; reassign next line and update Structure</em>
+ahkExecuteLine(hLine,3,1) <em>; execute first line in current thread</em></pre>
 </body></html>

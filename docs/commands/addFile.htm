@@ -19,9 +19,10 @@
 
 <pre class="Syntax">addFile, <strong>OutPutVar</strong>, FilePath [, WaitExecute]
 <pre><em>Command  Example:</em> addFile, <strong>LinePtr</strong>, %A_ScriptDir%\MyScript.ahk, 1
-                   DllCall, <strong>LinePTR</strong>, AutoHotkey.<strong>dll</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
+                  DllCall, <strong>LinePTR</strong>, AutoHotkey.<strong>dll</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
                   DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
-<br><em>Function Example:</em> <strong>LinePtr</strong> := addFile(A_ScriptDir "\MyScript.ahk", 1)
+
+<em>Function Example:</em> <strong>LinePtr</strong> := addFile(A_ScriptDir "\MyScript.ahk", 1)
                   <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")
                   <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")</pre></pre>
 
@@ -50,6 +51,16 @@ href="ahkFindLabel.htm">ahkFindLabel</a>, <a
 href="ahkassign.htm">ahkassign</a>, <a href="DllCall.htm">DllCall()</a> </p>
 
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","","Str","") <em>; start new, empty thread.</em><br>DllCall(dllpath "\addFile","Str","NewScript.ahk","Int",1) <em>; add and execute code</em><br><br>addFile("NewScript.ahk",1) <em>; call addFile in current thread.</em></pre>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","","Str","","Cdecl") <em>; start new, empty thread.</em>
+DllCall(dllpath "\addFile","Str","NewScript.ahk","Int",1,"Cdecl") <em>; add and execute code</em>
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread()
+dll.addFile["NewScript.ahk",1]
+
+<em>; Add new script to current thread</em>
+addFile("NewScript.ahk",1)</pre>
 </body>
 </html>

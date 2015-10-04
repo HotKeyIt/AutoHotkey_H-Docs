@@ -20,7 +20,8 @@ href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms647486.aspx">Loa
 <br>
 
 <pre class="Syntax">MemoryLoadString, <strong>OutPutVar</strong>, Handle, Id [, BufferPointer, Length] 
-<pre><em>Command  Example:</em> MemoryLoadString, <strong>StringLength</strong>, %ahkdllModule%, 2,% &amp;var, 10<br><em>Function Example:</em> <strong>StringLength</strong> := MemoryLoadString(ahkdllModule,2, &amp;var, 10)</pre></pre>
+<pre><em>Command  Example:</em> MemoryLoadString, <strong>StringLength</strong>, %ahkdllModule%, 2,% &amp;var, 10
+<em>Function Example:</em> <strong>StringLength</strong> := MemoryLoadString(ahkdllModule,2, &amp;var, 10)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -65,6 +66,7 @@ href="MemoryLoadResource.htm">MemoryLoadResource</a>, <a
 href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
 
 <h3>Examples</h3>
-<pre>lib:=MemoryLoadLibrary(A_ScriptDir "\LiteZip.dll")<br>MsgBox % StrGet(MemoryLoadString(lib,1))</pre>
+<pre>lib:=MemoryLoadLibrary(A_ScriptDir "\LiteZip.dll")
+MsgBox % StrGet(MemoryLoadString(lib,1))</pre>
 </body>
 </html>

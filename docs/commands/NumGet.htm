@@ -13,13 +13,15 @@
 
 <h1>NumGet</h1>
 <p>Returns the binary number stored at the specified address+offset.</p>
-<pre class="Syntax">NumGet, <strong>OutPutVar</strong>, VarOrAddress [, Offset = 0][, Type = &quot;UPtr&quot;]<pre><em>Command  Example:</em> NumGet, <strong>val</strong>,% MyVar, UInt<br><em>Function Example:</em> <strong>val</strong> := NumGet(MyVar,"UInt") </pre></pre>
+<pre class="Syntax">NumGet, <strong>OutPutVar</strong>, VarOrAddress [, Offset = 0][, Type = UPtr]<pre><em>Command  Example:</em> NumGet, <strong>val</strong>,% MyVar, UInt
+<em>Function Example:</em> <strong>val</strong> := NumGet(MyVar,"UInt") </pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
   <dt>OutputVar</dt>
-  <dd><p>The name of the variable in which to store the read value.</p></dd>
+  <dd><p>The name of the variable in which to store the number at the specified address+offset.</p>
+	<p>If the target address is invalid, an empty string is returned. However, some invalid addresses cannot be detected as such and may cause unpredictable behaviour.</p></dd>
 
   <dt>VarOrAddress</dt>
   <dd><p>A memory address or variable. If <em>VarOrAddress</em> is a variable such as <code>MyVar</code> and the variable does not contain a pure number or an object, it is equivalent to passing <code>&amp;MyVar</code>. However, omitting the &quot;&amp;&quot; performs better and ensures that the target address + offset is <a href="VarSetCapacity.htm">valid</a>.</p></dd>
@@ -36,10 +38,6 @@
     </dd>
 
 </dl>
-
-<h3>Return Value</h3>
-<p>If the target address is invalid, an empty string is returned. However, some invalid addresses cannot be detected as such and may cause unpredictable behaviour.</p>
-<p>Otherwise, the number at the specified address+offset is returned.</p>
 
 <h3>General Remarks</h3>
 <p>If only three parameters are present, the third parameter can be either <em>Offset</em> or <em>Type</em>. For example, <code>NumPut(x, var, "int")</code> is valid.</p>

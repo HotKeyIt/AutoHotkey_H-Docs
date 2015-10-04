@@ -16,7 +16,7 @@ by AutoHotkey module.<br>
 <br>
 <pre class="Syntax">DllCall, <strong>OutPutVar</strong>, AutoHotkey.dll\ahkReady
 <pre><em>Command  Example:</em> DllCall, <strong>IsPaused</strong>, AutoHotkey.<strong>dll</strong>\ahkReady
-<br><em>Function Example:</em> <strong>IsPaused</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkReady")</pre></pre>
+<em>Function Example:</em> <strong>IsPaused</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkReady")</pre></pre>
 <dl>
 <dt>OutPutVar</dt>
 <dd>
@@ -28,5 +28,16 @@ by AutoHotkey module.<br>
 <a href="ahkFindFunc.htm">ahkFindFunc</a>, <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","~VKFF::Return`nMyFunc(param){`nSleep 10000`nMsgBox `% param`n}","Str","") <em>; start a new thread, just the function.</em><br>DllCall(dllpath "\ahkFunction","Str","MyFunc","Str","Hello World!","Str") <em>; call the function.</em><em></em><em></em><br></pre>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","Sleep 2000","Str","","CDecl") <em>; start a new thread, just the function.</em>
+While DllCall(dllpath "\ahkReady") <em>; wait until AutoHotkey.dll exits.</em>
+  Sleep 100
+MsgBox End
+
+<em>; Same example like above using included Autohotkey.dll</em>
+dll:=AhkThread("Sleep 2000")
+while dll.ahkReady()
+  Sleep 100
+MsgBox End</pre>
 </body></html>

@@ -15,7 +15,8 @@
 <h1>Drive</h1>
 
 <p>Ejects/retracts the tray in a CD or DVD drive, or sets a drive's volume label.</p>
-<pre class="Syntax">Drive, Sub-command [, Drive , Value]<pre><em>Command  Example:</em> Drive,Eject,D:<br><em>Function Example:</em> Drive("Eject","D:")</pre></pre>
+<pre class="Syntax">Drive, Sub-command [, Drive , Value]<pre><em>Command  Example:</em> Drive,Eject,D:
+<em>Function Example:</em> Drive("Eject","D:")</pre></pre>
 
 <p>The sub-command, drive, and value parameters are dependent upon each other and their usage is described below.</p>
 <p><strong>Label, Drive [, NewLabel]</strong>: Changes <em>Drive</em>'s volume label to be <em>NewLabel</em> (if <em>NewLabel</em> is omitted, the drive will have no label). <em>Drive</em> is the drive letter followed by a colon and an optional backslash (might also work on UNCs and mapped drives). For example: <code>Drive, Label, C:, Seagate200</code>.</p>

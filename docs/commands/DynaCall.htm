@@ -13,7 +13,9 @@
 structures and uses Object syntax. It is often faster than DllCall,
 easier to use and it saves a lot of typing and code.</p>
 <pre class="Syntax">DynaCall, <strong>DynaCallObject</strong>, [DllFile\]Function, ParameterDefinition, Default1, Default2, Default3, ...
-<pre><em>Command  Example:</em> DynaCall, <strong>TrueSleep</strong>, kernel32\Sleep, ui, 100<br><em>Function Example:</em> <strong>TrueSleep</strong> := DynaCall("kernel32\Sleep", "ui", 100)<br><em>Calling the Func:</em> TrueSleep[1000], %TrueSleep%(1000)</pre></pre>
+<pre><em>Command  Example:</em> DynaCall, <strong>TrueSleep</strong>, kernel32\Sleep, ui, 100
+<em>Function Example:</em> <strong>TrueSleep</strong> := DynaCall("kernel32\Sleep", "ui", 100)
+<em>Calling the Func:</em> TrueSleep[1000], %TrueSleep%(1000)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -112,7 +114,11 @@ Note, this will be always the original order of parameters as specified in
 </dl>
 <dl>
 <h3>Examples</h3>
-<pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111) <em>; define a DynaCall object.</em><br>AHKCMD[ 65305 ] <em>; call the actual function</em><br>AHKCMD.65305<br>%AHKCMD%(65305)<br>AHKCMD.PTR( 65305 ) <em>; here (PTR) we can specify any AHK return type.</em></pre>
+<pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111) <em>; define a DynaCall object.</em>
+AHKCMD[ 65305 ] <em>; call the actual function</em>
+AHKCMD.65305
+%AHKCMD%(65305)
+AHKCMD.PTR( 65305 ) <em>; here (PTR) we can specify any AHK return type.</em></pre>
 </dl>
 <h3><em>Related</em></h3>
 <p><em><a href="DllCall.htm">DllCall()</a>, <a href="_DllImport.htm">#DllImport</a>, <a href="WinApi.htm">WinApi</a></em></p>

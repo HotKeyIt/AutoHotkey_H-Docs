@@ -14,7 +14,9 @@ like TCHAR or PTR or VOID..., see also <a href="Struct.htm">Struct</a>
 for usage and examples.
 </p>
 <br>
-<pre class="Syntax"><strong>OutPutVar</strong>:= sizeof("Definition"[, offset := 0])<br><br>sizeof, <span style="font-weight: bold;">OutPutVar</span>, Definition[, offset]</pre>
+<pre class="Syntax">sizeof, <strong>OutPutVar</strong>, Definition[, offset]<pre><em>Command  Example:</em> sizeof, <strong>sz</strong> UInt
+<em>Function Example:</em> <strong>sz</strong> := sizeof("Uint")</pre></pre>
+
 <h3>Parameters</h3>
 <dl>
   <dt>OutPutVar</dt>
@@ -44,5 +46,7 @@ new total size of structure (including offset).</p>
 <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">POINT:="UInt x,UInt y"<br>pt:=Struct(POINT)<br>MsgBox % sizeof(pt) " = " sizeof(POINT) " = " pt.size()<br></pre>
+<pre class="NoIndent">POINT:="UInt x,UInt y"
+pt:=Struct(POINT)
+MsgBox % sizeof(pt) " = " sizeof(POINT) " = " pt.size()</pre>
 </body></html>

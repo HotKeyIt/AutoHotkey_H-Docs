@@ -13,10 +13,15 @@
 
 <h1>NumPut</h1>
 <p>Stores a number in binary format at the specified address+offset.</p>
-<pre class="Syntax">NumPut, Number, VarOrAddress [, Offset = 0][, Type = &quot;UPtr&quot;]<pre><em>Command  Example:</em> NumPut, 100,% var, UInt<br><em>Function Example:</em> NumPut(100, var, "Uint")</pre></pre>
+<pre class="Syntax">NumPut, <strong>OutPutVar</strong>, Number, VarOrAddress [, Offset = 0][, Type = UPtr]<pre><em>Command  Example:</em> NumPut, <strong>PTR</strong>, 100,% var, UInt
+<em>Function Example:</em> <strong>PTR</strong> := NumPut(100, var, "Uint")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
+
+  <dt>OutputVar</dt>
+  <dd><p>The name of the variable in which to store the the address to the right of the item just written is returned. This is often used when writing a sequence of numbers of different types, such as in a structure for use with DllCall..</p>
+	<p>If the target address is invalid, an empty string is returned. However, some invalid addresses cannot be detected as such and may cause unpredictable behaviour.</p></dd>
 
   <dt>Number</dt>
   <dd><p>The number to store.</p></dd>
@@ -36,10 +41,6 @@
     </dd>
 
 </dl>
-
-<h3>Return Value</h3>
-<p>If the target address is invalid, an empty string is returned. However, some invalid addresses cannot be detected as such and may cause unpredictable behaviour.</p>
-<p>Otherwise, the address to the right of the item just written is returned. This is often used when writing a sequence of numbers of different types, such as in a structure for use with DllCall.</p>
 
 <h3>General Remarks</h3>
 <p>If an integer is too large to fit in the specified <em>Type</em>, its most significant bytes are ignored; e.g. <code>NumPut(257, var, 0, &quot;Char&quot;)</code> would store the number 1.</p>

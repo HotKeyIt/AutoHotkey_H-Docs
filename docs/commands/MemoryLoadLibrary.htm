@@ -18,7 +18,8 @@ href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx">Loa
 <br>
 
 <pre class="Syntax">MemoryLoadLibrary, <strong>OutPutVar</strong>, PathToDll
-<pre><em>Command  Example:</em> MemoryLoadLibrary, <strong>ahkdllModule</strong>, %A_ScriptDir%\AutoHotkey.dll<br><em>Function Example:</em> <strong>ahkdllModule</strong> := MemoryLoadLibrary(A_ScriptDir "\AutoHotkey.dll"))</pre></pre>
+<pre><em>Command  Example:</em> MemoryLoadLibrary, <strong>ahkdllModule</strong>, %A_ScriptDir%\AutoHotkey.dll
+<em>Function Example:</em> <strong>ahkdllModule</strong> := MemoryLoadLibrary(A_AhkDir "\AutoHotkey.dll"))</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -45,6 +46,12 @@ href="MemoryLoadString.htm">MemoryLoadString</a>, <a
 href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
 
 <h3>Examples</h3>
-<pre class="NoIndent">MemoryLoadLibrary, ahkdllModule, %A_ScriptDir%\AutoHotkey.dll <em>; Load the AutoHotkey module.</em><br>MemoryGetProcAddress, ahkdll, %ahkdllModule%, ahkdll <em>; get address of ahkdll function.</em><br>MemoryGetProcAddress, ahkReady, %ahkdllModule%, ahkReady <em>; get address of ahkReady function.</em><br>DllCall(ahkdll,"Str","NewScript.ahk","Str","") <em>; start new thread</em><br>While DllCall(ahkReady)<br>  Sleep 100<br>MemoryFreeLibrary(ahkdllModule)</pre>
+<pre class="NoIndent">MemoryLoadLibrary, ahkdllModule, %A_ScriptDir%\AutoHotkey.dll <em>; Load the AutoHotkey module.</em>
+MemoryGetProcAddress, ahkdll, %ahkdllModule%, ahkdll <em>; get address of ahkdll function.</em>
+MemoryGetProcAddress, ahkReady, %ahkdllModule%, ahkReady <em>; get address of ahkReady function.</em>
+DllCall(ahkdll,"Str","NewScript.ahk","Str","") <em>; start new thread</em>
+While DllCall(ahkReady)
+  Sleep 100
+MemoryFreeLibrary(ahkdllModule)</pre>
 </body>
 </html>

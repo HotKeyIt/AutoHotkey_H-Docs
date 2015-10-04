@@ -20,7 +20,8 @@ href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648046.aspx">Loa
 <br>
 
 <pre class="Syntax">MemoryLoadResource, <strong>OutPutVar</strong>, Handle, hResource 
-<pre><em>Command  Example:</em> MemoryLoadResource, <strong>DataPTR</strong>, %ahkdllModule%, %hResource%<br><em>Function Example:</em> <strong>DataPTR</strong> := MemoryLoadResource(ahkdllModule,hResource)</pre></pre>
+<pre><em>Command  Example:</em> MemoryLoadResource, <strong>DataPTR</strong>, %ahkdllModule%, %hResource%
+<em>Function Example:</em> <strong>DataPTR</strong> := MemoryLoadResource(ahkdllModule,hResource)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -52,6 +53,8 @@ href="MemoryLoadString.htm">MemoryLoadString</a>, <a
 href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
 
 <h3>Examples</h3>
-<pre>ahk:=MemoryLoadLibrary(A_ScriptDir "\AutoHotkey.dll")<br>hRes:=MemoryFindResource(ahk,"TYPELIB",1)<br>DataPTR := MemoryLoadResource(ahk,hRes)</pre>
+<pre>ahk:=MemoryLoadLibrary(A_AhkDir "\AutoHotkey.dll")
+hRes:=MemoryFindResource(ahk,"TYPELIB",1)
+DataPTR := MemoryLoadResource(ahk,hRes)</pre>
 </body>
 </html>

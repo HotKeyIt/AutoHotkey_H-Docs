@@ -57,9 +57,17 @@ the path of the executable will be used.
 </dd>
 </dl>
 <h3>Related</h3>
-<p><a href="ahktextdll.htm">ahktextdll()</a>, <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="AutoHotkey.htm#Mini">OnClipboardChange</a>, <a href="PostMessage.htm">Post/SendMessage</a>, <a href="../Functions.htm">Functions</a>, <a href="../misc/SendMessageList.htm">List of Windows Messages</a>,
-<a href="../misc/Threads.htm">Threads</a>, <a href="Critical.htm">Critical</a>, <a href="DllCall.htm">DllCall()</a></p>
+<p><a href="ahktextdll.htm">ahktextdll()</a>, <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="AutoHotkey.htm#Mini">AutoHotkeyMini.dll</a>, <a href="AhkThread.htm">AhkThread</a>, <a href="AhkMini.htm">AhkMini</a>,
+<a href="../misc/Threads.htm">Threads</a>, <a href="DllCall.htm">DllCall()</a></p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahkdll","Str",A_ScriptDir "\MyDllScript.ahk","Str","") <em>; start a new thread from file.</em><br>While DllCall(dllpath "\ahkReady")<br>Sleep 100 <em>; wait for the thread to exit</em><br>DllCall(dllpath "\ahktextdll","Str","MsgBox Another Hello World MsgBox!","Str","") <em>; Automatically exits current thread and starts a new thread from string.</em>
-</pre>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahkdll","Str",A_ScriptDir "\MyDllScript.ahk","Str","","CDecl") <em>; start a new thread from file.</em>
+While DllCall(dllpath "\ahkReady")
+  Sleep 100 <em>; wait for the thread to exit</em>
+
+<em>; Same Example like above using included AutoHotkey.dll</em>
+dll:=AhkThread(A_ScriptDir "\MyDllScript.ahk","",true)
+While dll.ahkReady()
+  Sleep 100 <em>; wait for the thread to exit</em></pre>
 </body></html>

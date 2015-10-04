@@ -16,10 +16,10 @@ Paramenters can be strings only.<br>
 <pre class="Syntax">DllCall, <strong>OutPutVar</strong>, Module\ahkPause, Str, OnOff, Int
 <pre><em>Command  Example:</em> DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>dll</strong>\ahkPause, PTR, 1, Int
                   DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\ahkPause, PTR, 0, Int
-<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkPause", "Str", "On", "Int")
+
+<em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkPause", "Str", "On", "Int")
                   <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkPause", "Str", "Off", "Int")</pre></pre>
-<pre class="Syntax">
-<br><br></pre>
+
 <h3>Parameters</h3>
 <dl>
 <dt>OutPutVar</dt>
@@ -38,5 +38,27 @@ Paramenters can be strings only.<br>
 <a href="ahkFindFunc.htm">ahkFindFunc</a>, <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","<br>(<br>~VKFF::Return<br>MyLabel:<br>MsgBox `% A_ThisLabel<br>Return<br>)","Str","") <em>; start a new thread, just the function.</em><br>DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0) <em>; jump to label and wait for it to finish / return.</em><em></em><em></em><br></pre>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","
+(
+#Persistent
+Loop
+  ToolTip `% A_TickCount
+)","Str","","CDecl") <em>; start a new thread, just the function.</em>
+Sleep 1000
+DllCall(dllpath "\ahkPause","Str","On","CDecl") <em>; Pause thread.</em>
+MsgBox End
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread("
+(
+#Persistent
+Loop
+	ToolTip `% A_TickCount
+)")
+Sleep 1000
+dll.ahkPause["On"]
+MsgBox End
+</pre>
 </body></html>

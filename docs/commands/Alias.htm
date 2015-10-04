@@ -27,5 +27,16 @@
 <h3>Related</h3>
 <p><a href="NumGet.htm">NumGet</a>, <a href="DllCall.htm">DllCall</a>, <a href="VarSetCapacity.htm">VarSetCapacity</a></p>
 <h3>Example</h3>
-<pre>var:="Hello World!"<br>Alias(refvar, var)<br>MsgBox % refvar<br>var:="AutoHotkey"<br>MsgBox % refvar<br><br><em>; Same example using variable pointer</em><br>var:="Hello World!"<br>Alias(refvar, getvar(var))<br>MsgBox % refvar<br>var:="AutoHotkey"<br>MsgBox % refvar</pre>
+<pre>var:="Hello World!"
+Alias(refvar, var)
+MsgBox % refvar
+refvar:="AutoHotkey"
+MsgBox % var
+
+<em>; Same example using variable pointer</em>
+var:="Hello World!"
+Alias(refvar, getvar(var))
+MsgBox % refvar
+refvar:="AutoHotkey"
+MsgBox % var</pre>
 </body></html>

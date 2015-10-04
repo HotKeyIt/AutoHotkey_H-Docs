@@ -16,7 +16,8 @@ script and returns a pointer to it.
 <pre class="Syntax">ahkFindFunc, <strong>OutPutVar</strong>, FuncName
 <pre><em>Command  Example:</em> DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>dll</strong>\ahkFindFunc, Str, FuncName, PTR
                   DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\ahkFindFunc, Str, FuncName, PTR
-<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkFindFunc", "Str", "FuncName", "PTR")
+
+<em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkFindFunc", "Str", "FuncName", "PTR")
                   <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkFindFunc", "Str", "FuncName", "PTR")</pre></pre>
 <h3>Parameters</h3>
 <dl>
@@ -34,5 +35,15 @@ script and returns a pointer to it.
 <a href="ahkFindLabel.htm">ahkFindLabel</a>, <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","~VKFF::Return`nMyFunc(param){`nReturn param`n}","Str","") <em>; start a new thread, just the function.</em><br>MsgBox % DllCall(dllpath "\ahkFindFunc","Str","MyFunc","PTR") <em>; call the function and display returned value in MsgBox.</em>ahkFindFunc("MyFunc") <em>; find function in current thread</em></pre>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyFunc(param){`nReturn param`n}","Str","","CDecl") <em>; start a new thread, just the function.</em>
+MsgBox % DllCall(dllpath "\ahkFindFunc","Str","MyFunc","CDecl PTR") <em>; call the function and display pointer in MsgBox.</em>
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread("#Persistent`nMyFunc(param){`nReturn param`n}")
+MsgBox % dll.ahkFindFunc["MyFunc"]
+
+<em>; Find pointer to function in current thread</em>
+MsgBox % ahkFindFunc("NumGet")</pre>
 </body></html>

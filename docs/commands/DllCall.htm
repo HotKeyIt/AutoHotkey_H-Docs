@@ -15,8 +15,9 @@
 <h1>DllCall()</h1>
 
 <p>Calls a function inside a DLL, such as a standard Windows API function.</p>
-<pre class="Syntax">DllCall, <strong>OutPutVar</strong>, &quot;[DllFile\]Function&quot; [, Type1, Arg1, Type2, Arg2, &quot;Cdecl ReturnType&quot;]
-<pre><em>Command  Example:</em> DllCall, <strong>hLib</strong>, LoadLibrary, Str, %A_AhkPath%<br><em>Function Example:</em> <strong>hLib</strong> := DllCall("LoadLibrary", "Str", A_AhkPath)</pre></pre>
+<pre class="Syntax">DllCall, <strong>OutPutVar</strong>, [DllFile\]Function [, Type1, Arg1, Type2, Arg2, Cdecl ReturnType]
+<pre><em>Command  Example:</em> DllCall, <strong>hLib</strong>, LoadLibrary, Str, %A_AhkPath%
+<em>Function Example:</em> <strong>hLib</strong> := DllCall("LoadLibrary", "Str", A_AhkPath)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

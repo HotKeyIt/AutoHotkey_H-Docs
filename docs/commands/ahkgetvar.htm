@@ -14,8 +14,9 @@
 <pre class="Syntax">DllCall, <strong>OutPutVar</strong>, Module\ahkgetvar, Str, VarName, UInt, GetVarPointer, CDecl Str
 <pre><em>Command  Example:</em> DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>dll</strong>\ahkgetvar, Str, MyVar, UInt, 0, CDecl Str
                   DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\ahkgetvar, Str, MyVar, UInt, 0, Str
-<br><em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkgetvar", "Str", "MyVar", "UInt", 0 ,"CDecl Str")
-                  <strong>Resu</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkgetvar", "Str", "MyVar", "UInt", 0, "CDecl Str")</pre></pre>
+
+<em>Function Example:</em> <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\ahkgetvar", "Str", "MyVar", "UInt", 0 ,"CDecl Str")
+                  <strong>Result</strong> := DllCall("AutoHotkey.<strong>exe</strong>\ahkgetvar", "Str", "MyVar", "UInt", 0, "CDecl Str")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt>OutPutVar</dt>
@@ -38,5 +39,14 @@
 <a href="DllCall.htm">DllCall()</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_ScriptDir "\AutoHotkey.dll"<br>DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em><br>DllCall(dllpath "\ahktextdll","Str","","Str","") <em>; start a new thread, just the function.</em><br>DllCall(dllpath "\ahkassign","Str","MyVar","Str","Hello World!") <em>; Assign value to variable<br></em>MsgBox % DllCall(dllpath "\ahkgetvar","Str","MyVar","UInt",0,"STR") <em>; Retrieve value from variable</em></pre>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","","Str","","CDecl") <em>; start a new thread from file.</em>
+DllCall(dllpath "\ahkassign","Str","var","Str","value","CDecl") <em>; assing value to var</em>
+MsgBox % DllCall(dllpath "\ahkgetvar","Str","var","UInt",0,"CDecl") <em>; wait for the thread to exit</em>
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread()
+dll.ahkassign("var","value")
+MsgBox % dll.ahkgetvar.var</pre>
 </body></html>

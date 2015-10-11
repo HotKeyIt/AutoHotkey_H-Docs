@@ -282,10 +282,12 @@ gui, show</pre>
 <p><strong>AX</strong>: Move the control horizontally by a specified amount when the Gui changes width.<br>For example: if the Gui width sizes up by 100px, a setting of ax1/2 would mean that the control would move to the right by 50px.</p>
 <p><strong>AY</strong>: Move the control vertically by a specified amount when the Gui changes height.<br>For example: if the Gui height sizes up by 100px, a setting of ay1/5 would mean that the control would move down by 20px.</p>
 <p><strong>AXP</strong> and <strong>AYP</strong>: Move the control by the same amount that the previous control moved.</p>
+<p><strong>AXA</strong> and <strong>AYA</strong>: Move the control by the same amount that the previous control moved and resized so the control is placed right after or below previous control.</p>
 
 <h3>The following auto size options are supported:</h3>
 <p><strong>AW</strong>: Resize the control width by an amount relative to the change in Gui width.<br>For example: if control is 100px wide and the Gui width sizes up by 100 px, a setting of aw0.5 would mean that control would widen by 50px.</p>
 <p><strong>AH</strong>: Resize the control height by an amount relative to the change in Gui height.<br>For example: if control is 20px wide and the Gui height sizes up by 100 px, a setting of aw1/4 would mean that control would heighten by 25px.</p>
+<p><strong>AWA</strong> and <strong>AHA</strong>: Resize the control width or height by the same amount as previous control.</p>
 
 <h3>Reset automatic adjustment</h3>
 <p>This is necessary when you start a new section of controls to ignore changed position of previous controls.

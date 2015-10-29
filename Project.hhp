@@ -187,6 +187,7 @@ docs\commands\Gui.htm
 docs\commands\GuiControl.htm
 docs\commands\GuiControlGet.htm
 docs\commands\GuiControls.htm
+docs\commands\HexToBin.htm
 docs\commands\Hotkey.htm
 docs\commands\HIBYTE.htm
 docs\commands\HIWORD.htm

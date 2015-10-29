@@ -1730,6 +1730,10 @@
 		<param name="Local" value="docs/objects/Object.htm#HasKey">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="HexToBin">
+		<param name="Local" value="docs/commands/HexToBin.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="HIBYTE">
 		<param name="Local" value="docs/commands/HIBYTE.htm">
 		</OBJECT>

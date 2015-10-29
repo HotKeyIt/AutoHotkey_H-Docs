@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>HexToBin</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>HexToBin</h1>
+<p>Convert hex string to binary memory.</p>
+<pre class="Syntax">HexToBin <strong>OutPutVar</strong>, Bin, Hex
+<pre><em>Command  Example:</em> HexToBin, <strong>address</strong>, %bin%, 101010
+<em>Function Example:</em> <strong>address</strong> := HexToBin(bin,"101010")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt>OutPutVar</dt>
+  <dd><p>The name of the variable in which to store address of bin variable.</p></dd>
+<dt>Bin</dt>
+<dd>
+<p>Name of variable in which to store binary data.</p>
+</dd>
+<dt>Hex</dt>
+<dd>
+<p>Hex string to convert.</p>
+</dd>
+</dl>
+<dl>
+<h3><em>Related</em></h3>
+<p><em><a href="DllCall.htm">DllCall()</a>, <a href="_DllImport.htm">#DllImport</a>, <a href="DynaCall.htm">DynaCall</a>, <a href="WinApi.htm">WinApi</a></em></p>
+<h3>Examples</h3>
+<pre class="NoIndent">VarSetCapacity(v,8,0)
+NumPut(0x10101010,&v,"INT64")
+hex:=BinToHex(&v,8)
+MsgBox % hex
+HexToBin(bin,hex)
+MsgBox % format("0x{1:X}",NumGet(&b,"INT64"))</pre>
+</body></html>

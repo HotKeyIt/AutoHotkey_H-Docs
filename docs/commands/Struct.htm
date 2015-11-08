@@ -124,7 +124,7 @@ AnotherFunc(){
     </dd>
   <dt>AddressToStructure</dt>
     <dd><p>Address of memory representing the structure. This variable is used
-      to access an existing structure in memory.<br>
+      to access an existing structure in memory.<br>When no AddressToStructure is given but InitObject is used, it must be passed in this parameter, see InitObject example.
       For example here we would use the memory of variable <span
       style="font-weight: bold;">pointMem</span> for the structure.<br>
       </p>
@@ -137,9 +137,9 @@ MsgBox % pt[] " = " (&amp;pointMem) "`n" pt.x " = " NumGet(pointMem,"UInt")</pre
     <dd><p>Initialize your structure right away. To initialize the structure
       you will need to pass an object with keys and values.<br>
       The order of keys and values is not relevant because it will be
-      enumerated in alphabetical order anyway<br>
+      enumerated in alphabetical order anyway.<br>When no AddressToStructure is given, InitObject must be used in AddressToStructure parameter.
       </p>
-      <pre>pt:=Struct("x,y",{x:100,y:200}) <em>; When no AddressOfStructure is given, initobject must be the second parameter.</em>
+      <pre>pt:=Struct("x,y",{x:100,y:200})
 MsgBox % pt.x "`n" pt.y</pre>
     </dd>
 </dl>

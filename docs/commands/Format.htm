@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Format</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>Format</h1>
+
+<p>Format values to desired string.</p>
+<pre class="Syntax">Format, <strong>OutPutVar</strong>, Format, Value1 [, Value2, Value3 ...]<pre><em>Command  Example:</em> Format, <strong>hex</strong>, 0x{1:X}, 100
+<em>Function Example:</em> <strong>hex</strong> := format("0x{1:X}", 100)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt>OutputVar</dt>
+  <dd><p>The name of the variable in which to store the formatted string.</p></dd>
+
+  <dt>Format</dt>
+  <dd><p>String of literal text and placeholders.<br>Placeholder format: "{" id ":" format "}"<br><strong>id</strong>: Numeric or string literal identifying the value in the parameter list.  For example, {1} is values[1] and {foo} is values["foo"].<br><strong>format</strong>: A format specifier as accepted by printf but excluding the leading "%".  See "Format Specification Fields" at MSDN: http://msdn.microsoft.com/en-us/library/56e442dc.aspx.</p></dd>
+</dl>
+
+<h3>Remarks</h3>
+<p>The "*" width specifier is not supported and there may be other limitations.</p>
+<h3>Example</h3>
+<pre class="NoIndent">MsgBox % format("0x{1:X}", 4919)
+MsgBox % format("Computation took {2:.9f} {1}", "seconds", 3.2001e-5)
+MsgBox % format_v("chmod {mode:o} {file}", {mode: 511, file: "myfile"})</pre>
+
+</body>
+</html>

@@ -1590,10 +1590,6 @@
 		<param name="Local" value="docs/commands/For.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Format">
-		<param name="Local" value="docs/commands/Format.htm">
-		</OBJECT>
-	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="FormatTime">
 		<param name="Local" value="docs/commands/FormatTime.htm">
 		</OBJECT>

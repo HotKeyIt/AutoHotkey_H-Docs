@@ -494,10 +494,6 @@
     <td>Repeats a series of commands once for each key-value pair in an object.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="For.htm">Format</a></td>
-    <td>Format values to desired string.</td>
-  </tr>
-  <tr>
     <td><a href="FormatTime.htm">FormatTime</a></td>
     <td>Transforms a <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDDHH24MISS</a> timestamp into the specified date/time format.</td>
   </tr>

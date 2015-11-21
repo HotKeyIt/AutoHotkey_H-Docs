@@ -748,10 +748,6 @@
 			<param name="Local" value="docs/commands/FileReplace.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Format">
-			<param name="Local" value="docs/commands/Format.htm">
-			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="GetEnv">
 			<param name="Local" value="docs/commands/GetEnv.htm">
 			</OBJECT>

@@ -17,10 +17,6 @@
 <th></th>
 </tr>
 <tr>
-<td><a href="commands/Alias.htm">#NoEnv / GetEnv()</a></td>
-<td>#NoEnv is now used in all scripts. Use GetEnv() to add environment variables to script.</td>
-</tr>
-<tr>
 <td><a href="commands/Alias.htm">Alias</a></td>
 <td>Create ByRef variable or share variables to other
 threads in a multi-thread environment.</td>

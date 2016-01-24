@@ -2422,6 +2422,10 @@
 		<param name="Local" value="docs/objects/Object.htm#SetCapacity">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ObjShare">
+		<param name="Local" value="docs/commands/ObjShare.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="OnClipboardChange (label)">
 		<param name="Local" value="docs/misc/Clipboard.htm#OnClipboardChange">
 		</OBJECT>

@@ -680,10 +680,6 @@
 			<param name="Local" value="docs/commands/CacheEnable.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="CriticalObject">
-			<param name="Local" value="docs/commands/CriticalObject.htm">
-			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Chr">
 			<param name="Local" value="docs/Functions.htm#Chr">
 			</OBJECT>
@@ -866,6 +862,10 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="ObjLoad">
 			<param name="Local" value="docs/commands/ObjLoad.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ObjShare">
+			<param name="Local" value="docs/commands/ObjShare.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Ord">

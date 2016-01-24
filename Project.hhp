@@ -237,6 +237,7 @@ docs\commands\ObjAddRef.htm
 docs\commands\ObjByRef.htm
 docs\commands\ObjLoad.htm
 docs\commands\ObjDump.htm
+docs\commands\ObjShare.htm
 docs\commands\OnExit.htm
 docs\commands\OnMessage.htm
 docs\commands\OutputDebug.htm

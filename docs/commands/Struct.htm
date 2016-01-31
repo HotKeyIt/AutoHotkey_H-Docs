@@ -476,23 +476,23 @@ MsgBox pt1.x "-" pt1.y</pre>
 
       <pre>s:=Struct("LPTSTR str")
 s.str:="Hello World!"
-MsgBox % StrGet(s.str["",""])</pre>
-      <span style="font-weight: bold;">TYPE ONLY DEFINITION</span></dd>
-    <dd>Struct supports type only definition for all default types like
+MsgBox % StrGet(s.str["",""])</pre></dd>
+    <dd><span style="font-weight: bold;">TYPE ONLY DEFINITION</span>
+      Struct supports type only definition for all default types like
       Int,Byte,Char... .<br>
       To access fields of such structures you will allways need to use digits
       like in arrays.<br>
 
       <pre>u:=Struct("UInt") <em>; this is similar to UInt[1]</em>
-u.1:=10<br>MsgBox % u.1</pre>
-      <span style="font-weight: bold;">ARRAYS</span></dd>
-    <dd>Same way arrays are supported.<br>
+u.1:=10<br>MsgBox % u.1</pre></dd>
+    <dd><span style="font-weight: bold;">ARRAYS</span>
+      Same way arrays are supported.<br>
 
       <pre>u:=Struct("UInt[10]")
 u.10:=100
-MsgBox % u.10</pre>
-      <span style="font-weight: bold;">ARRAYS OF UNKNOWN SIZE</span></dd>
-    <dd>Any structure can be used as array.<br>
+MsgBox % u.10</pre></dd>
+      <dd><span style="font-weight: bold;">ARRAYS OF UNKNOWN SIZE</span>
+      Any structure can be used as array.<br>
       However be careful, accessing memory that does not belong to the
       structure may crash your application.<br>
 
@@ -500,9 +500,9 @@ MsgBox % u.10</pre>
 pt.SetCapacity(16) <em>; increase capacity to hold 2 structures</em>
 pt.x := 1 <em>; we can access the first field right away, similar to pt.1.x := 1</em>
 pt.2.x := 2 <em>; here we access the second structure</em>
-MsgBox % pt.2.x " != " pt.x</pre>
-      <span style="font-weight: bold;">ENUMERATING A STRUCTURE</span></dd>
-    <dd>Using a for loop we can enumerate the structure to retrieve field names
+MsgBox % pt.2.x " != " pt.x</pre></dd>
+      <dd><span style="font-weight: bold;">ENUMERATING A STRUCTURE</span>
+      Using a for loop we can enumerate the structure to retrieve field names
       and their values.<br>
       Enumeration will be executed in same order as the structure was defined,
       not alphabetically like for simple objects.<br>
@@ -517,10 +517,10 @@ for k,v in s
 
       <pre>x:=Struct("UInt[10]",[0,9,8,7,6,5,4,3,2,1])
 for k, v In x
-  MsgBox % k ": " v</pre>
-      <span style="font-weight: bold;">DYNAMIC AND STATIC FIELDS AND
-      STRUCTURES</span></dd>
-    <dd>Struct supports calling dynamic structures and fields, such that are
+  MsgBox % k ": " v</pre></dd>
+      <dd><span style="font-weight: bold;">DYNAMIC AND STATIC FIELDS AND
+      STRUCTURES</span>
+      Struct supports calling dynamic structures and fields, such that are
       defined but do not exist as an object/field.<br>
       These objects/fields are created dynamically whenever needed and
       invoked/called automatically internally.<br>
@@ -561,13 +561,32 @@ MsgBox % s.GetCapacity("string")</pre>
       method.<br>
 
       <pre>s:=Struct("LPTSTR string")
-s.SetCapacity("string",260)</pre>
-      <span style="font-weight: bold;">NOTE</span></dd>
-    <dd>You cannot allocate memory for dynamic fields.<br>
+s.SetCapacity("string",260)</pre><br>
+      <span style="font-weight: bold;">NOTE</span>
+    You cannot allocate memory for dynamic fields.<br>
       Calling .GetCapacity() method on dynamic field will return -1.<br>
       Also calling .SetCapacity() method will simply fail.<br>
     </dd>
-
+    <dd><span style="font-weight: bold;">BIT FIELDS</span><br>
+    Also bit fields are supported, see <a href="https://msdn.microsoft.com/en-us/library/ewwyfdbe.aspx">Bit Fields</a> for more information.<br>
+    <pre>Bits:=Struct("
+(
+  {
+    Byte int;
+    struct {
+      Byte a:1,b:1,c:1,d:1,e:1,f:1,g:1,h:1;
+    }
+  }
+)")
+Loop % 0xFF{
+  bit:=(Bits.int:=A_Index) "`t"
+  For k, v in Bits
+    If A_Index>1
+      bit.= v " "
+  ToolTip % "int   bits: 1 2 3 4 5 6 7 8`n" bit
+  Sleep 100
+}</pre>
+    </dd>
 
   <h3>Related</h3>
 

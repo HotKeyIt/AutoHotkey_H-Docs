@@ -10,19 +10,29 @@
 <body>
 <h1>ObjLoad</h1>
 <p>Load a <a href="ObjDump.htm">dumped</a> object from memory or file.</p>
-<pre class="Syntax">ObjLoad, <strong>OutPutVar</strong>, AddressOrPath
+<pre class="Syntax">ObjLoad, <strong>OutPutVar</strong>, AddressOrPath [, Size, Password]
 <pre><em>Command  Example:</em> ObjLoad, <strong>obj</strong>, %A_ScriptDir%\MyObj.bin
 <em>Function Example:</em> <strong>obj</strong> := ObjLoad(A_ScriptDir "\MyObj.bin")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
-<dt>OutPutVar</dt>
+<dt><b>OutPutVar</b></dt>
   <dd><p>The name of the variable in which to store the loaded object.</p></dd>
 
-<dt>AddressOrPath</dt>
-<dd>
-<p>The address of a variable or a pointer to dumped object in memory.<br>This can be also a filepath to load an object from file.</p>
-</dd>
+  <dt>AddressOrPath</dt>
+  <dd>
+  <p>The address of a variable or a pointer to dumped object in memory.<br>This can be also a file path to load an object from file.</p>
+  </dd>
+
+  <dt>Size (optional)</dt>
+  <dd>
+  <p>When AddressOrPath is an address, this must be the size of the dumped object in memory, otherwise it can be omitted.</p>
+  </dd>
+  
+  <dt>Password (optional)</dt>
+  <dd>
+  <p>The password if for dumped object if it was used in ObjDump, otherwise it can be omitted.</p>
+  </dd>
 </dl>
 <dl>
 <h3>General Remarks</h3>

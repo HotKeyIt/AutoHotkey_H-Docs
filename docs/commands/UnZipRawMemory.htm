@@ -17,37 +17,42 @@
 <p>This function is used to unzip and decrypt raw memory, for example from resource.</p>
 
 <pre class="Syntax">UnZipRawMemory, <strong>OutPutVar</strong>, Address, Size, [, VariableOrAddress, Password]
-<pre><em>Command  Example:</em> UnZipRawMemory, <strong>Size</strong>,% &resource,% SizeOfResource(NULL,hRes), %Data%, AutoHotkey
-<em>Function Example:</em> <strong>Size</strong> := UnZipRawMemory(&resource, SizeOfRes(NULL,hRes), Data, "AutoHotkey")</pre></pre>
+<pre><em>Command  Example:</em> UnZipRawMemory, <strong>Size</strong>,% &resource,% SizeOfResource(NULL,hRes), %Data%
+<em>Function Example:</em> <strong>Size</strong> := UnZipRawMemory(&resource, SizeOfRes(NULL,hRes), Data)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
-  <dt>OutPutVar</dt>
+  <dt><b>OutPutVar</b></dt>
   <dd><p>The name of the variable in which to store the size of unzipped memory in bytes.</p></dd>
   
   <dt>Address</dt>
   <dd><p>Address to raw zipped memory.</p></dd>
   
   <dt>Size</dt>
-  <dd><p>Size of zipped memory.</p></dd>
+  <dd><p>Size in bytes of zipped memory.</p></dd>
 
   <dt>VariableOrAddress (optional)</dt>
   <dd><p>The name of a variable or address to copy unzipped memory to.</p></dd>
 
   <dt>Password (optional)</dt>
-  <dd><p>The password used to encrypt the data.</p></dd>
+  <dd><p>The password to use to decrypt the data.</p></dd>
 
 </dl>
 
 <h3>Remarks</h3>
-<p>Ahk2Exe uses <a href="http://www.codeproject.com/Articles/13370/LiteZip-and-LiteUnzip">LiteZip</a> to compress resources in raw mode (only 1 file supported).<br>Internally AutoHotkey is able to decompress raw resources automatically (compiled script + lib resources). 
+<p>Ahk2Exe uses <a href="ZipRawMemory.htm">ZipRawMemory</a> to compress and encrypt resources in raw mode (only 1 file supported).<br>
+Internally AutoHotkey is able to decompress raw resources automatically (compiled script, AutoHotkey[Mini].dll, WinApi + lib resources). 
 This function can be used in script to decrypt and decompress raw resources.</p>
-
+<h3>Related</h3>
+<p><a href="ZipRawMemory.htm">ZipRawMemory</a>, <a href="ZipCreateFile.htm">ZipCreateFile</a>, <a href="ZipAddFile.htm">ZipAddFile</a>,
+ <a href="ZipCloseFile.htm">ZipCloseFile</a>, <a href="ZipOptions.htm">ZipOptions</a>, <a href="UnZip.htm">UnZip</a>,
+ <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>, <a href="ZipAddBuffer.htm">ZipAddBuffer</a>, <a href="ZipCloseBuffer.htm">ZipCloseBuffer</a>,
+  <a href="UnZipBuffer.htm">UnZipBuffer</a>, <a href="ZipInfo.htm">ZipInfo</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></p>
 <h3>Examples</h3>
-<pre class="NoIndent">ResourceRead(data,A_AhkExe,"BETWEEN.AHK","LIB")
-UnZipRawMemory(&data,var,"AutoHotkey")
-MsgBox % StrGet(&var,"UTF-8")
+<pre class="NoIndent">sz:=ResGet(data, A_AhkPath,"AHKEXEC.AHK","LIB")
+UnZipRawMemory(&data, sz, var)
+MsgBox % StrGet(&var, "UTF-8")
 </pre>
 
 </body>

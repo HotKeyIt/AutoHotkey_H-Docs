@@ -10,34 +10,45 @@
 <body>
 <h1>ObjDump</h1>
 <p>Dump an object to memory or save to file for later use.</p>
-<pre class="Syntax">ObjDump, <strong>OutPutVar</strong>, ObjectOrPath [, DumpToVar, DumpBuffer]
+<pre class="Syntax">ObjDump, <strong>OutPutVar</strong>, ObjectOrPath [, DumpToVar, Mode, Password]
 <pre><em>Command  Example:</em> ObjDump, <strong>size</strong>, %obj%, %var%
 <em>Function Example:</em> <strong>size</strong> := ObjDump(obj, var)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
-<dt>OutPutVar</dt>
-  <dd><p>The name of the variable in which to store the size of dumped object.</p></dd>
+  <dt><b>OutPutVar</b></dt>
+    <dd><p>The name of the variable in which to store the size of dumped object.</p></dd>
 
-<dt>ObjectOrPath</dt>
-<dd>
-<p>The object to be dumped to memory.<br>To save the object to a file this parameter must be the filepath and DumpToVar parameter the object, see Examples.</p>
-</dd>
-<dt>DumpToVar (optional)</dt>
-<dd>
-<p>The name of the variable in which to store the dumped memory. When this parameter is omitted only the size will be returned.<br>When saving the object to a file this parameter will be the obect and ObjOrPath the filepath.</p>
-</dd>
-<dt>DumpBuffer (optional)</dt>
-<dd>
-<p>This parameter has effect on values of type string only.<br>When DumpBuffer is true, complete memory is saved using obj.GetCapacity(key). Otherwise only the actual string including terminating character is saved.</p>
-</dd>
+  <dt>ObjectOrPath</dt>
+  <dd>
+  <p>The object to be dumped to memory.<br>To save the object to a file this parameter must be the file path and DumpToVar parameter the object, see Examples.</p>
+  </dd>
+  
+  <dt>DumpToVar (optional)</dt>
+  <dd>
+  <p>The name of the variable in which to store the dumped memory. When this parameter is omitted only the size will be returned.
+  <br>When saving the object to a file this parameter will be the obect and ObjOrPath the filepath.</p>
+  </dd>
+  
+  <dt>Mode (optional)</dt>
+  <dd>
+  <p>This parameter has effect on values of type string only and determines whether the dumped object will be zipped.
+  <br>When Mode is 0 or 1, dumped object will be compressed and you can use a password to encrypt the data.
+  <br>When Mode is 1 or 3, complete memory of string values is saved using obj.GetCapacity(key). Otherwise only the actual string including terminating character is saved.</p>
+  </dd>
+  
+  <dt>Password (optional)</dt>
+  <dd>
+  <p>When Mode parameter is omitted or 0 or 1, this parameter can be a passwords to use for dumped object.</p>
+  </dd>
 </dl>
 <dl>
 <h3>General Remarks</h3>
 <dd>
 <p>Only standard objects and arrays are supported, ComObject, RegExMatchObject, FileObject, Func and DynaCall objects are not supported.
  <br><a href="Struct.htm">Struct</a> object can be dumped but <a href="ObjLoad.htm">ObjLoad</a> will restore a normal object instead of a Struct object.
- <br>The <a href="../Objects.htm#Custom_Objects">"base"</a> reference is not saved in <a href="ObjLoad.htm">ObjLoad</a> and is not restored.</p>
+ <br>The <a href="../Objects.htm#Custom_Objects">"base"</a> reference is not saved in <a href="ObjLoad.htm">ObjLoad</a> and is not restored.
+ <br>By default (Mode = 0) and Mode = 1 the dumped object is compressed and a password can be used to encrypt the dumped object.</p>
 </dd>
 </dl>
 <h3><em>Related</em></h3>

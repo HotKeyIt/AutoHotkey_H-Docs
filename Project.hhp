@@ -125,6 +125,7 @@ docs\commands\CreateScript.htm
 docs\commands\Critical.htm
 docs\commands\CriticalObject.htm
 docs\commands\CriticalSection.htm
+docs\commands\CryptAES.htm
 docs\commands\DateAdd.htm
 docs\commands\DateDiff.htm
 docs\commands\Deref.htm
@@ -137,6 +138,7 @@ docs\commands\DirDelete.htm
 docs\commands\DirMove.htm
 docs\commands\DirSelect.htm
 docs\commands\DllCall.htm
+docs\commands\Download.htm
 docs\commands\Drive.htm
 docs\commands\DriveGet.htm
 docs\commands\DynaCall.htm
@@ -319,7 +321,9 @@ docs\commands\Trim.htm
 docs\commands\Try.htm
 docs\commands\Type.htm
 docs\commands\Until.htm
-docs\commands\Download.htm
+docs\commands\UnZip.htm
+docs\commands\UnZipBuffer.htm
+docs\commands\UnZipRawMemory.htm
 docs\commands\VarSetCapacity.htm
 docs\commands\While.htm
 docs\commands\WinActivate.htm
@@ -367,6 +371,16 @@ docs\commands\WinShow.htm
 docs\commands\WinWait.htm
 docs\commands\WinWaitActive.htm
 docs\commands\WinWaitClose.htm
+docs\commands\ZipAddBuffer.htm
+docs\commands\ZipAddFile.htm
+docs\commands\ZipAddFolder.htm
+docs\commands\ZipCloseBuffer.htm
+docs\commands\ZipCloseFile.htm
+docs\commands\ZipCreateBuffer.htm
+docs\commands\ZipCreateFile.htm
+docs\commands\ZipInfo.htm
+docs\commands\ZipOptions.htm
+docs\commands\ZipRawMemory.htm
 docs\misc\Acknowledgements.htm
 docs\misc\Arrays.htm
 docs\misc\Clipboard.htm

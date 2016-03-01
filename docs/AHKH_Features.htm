@@ -17,8 +17,24 @@
 <th></th>
 </tr>
 <tr>
+<td><a href="commands/_DllImport.htm">#DllImport</a></td>
+<td>Create an alias function for a dll function that allows to omit parameters and use default values.<br>It can also load pure machine code supplied as hex string, see example.</td>
+</tr>
+<tr>
 <td><a href="commands/Alias.htm">#NoEnv / GetEnv()</a></td>
 <td>#NoEnv is now used in all scripts. Use GetEnv() to add environment variables to script.</td>
+</tr>
+<tr>
+<td><a href="commands/_WarnContinuableException.htm">#WarnContinuableException</a></td>
+<td>Do not warn on continuable exception, continue execution like main AutoHotkey does.</td>
+</tr>
+<tr>
+<td><a href="commands/AhkThread.htm">AhkThread</a></td>
+<td>Create a new thread using AutoHotkey.dll included in resources.</td>
+</tr>
+<tr>
+<td><a href="commands/AhkMini.htm">AhkMini</a></td>
+<td>Create a new thread using AutoHotkeyMini.dll included in resources.</td>
 </tr>
 <tr>
 <td><a href="commands/Alias.htm">Alias</a></td>
@@ -26,28 +42,63 @@
 threads in a multi-thread environment.</td>
 </tr>
 <tr>
-<td><a href="commands/_DllImport.htm">#DllImport</a></td>
-<td>Create an alias function for a dll function that allows to omit parameters and use default values.<br>It can also load pure machine code supplied as hex string, see example.</td>
+<td><a href="commands/BinToHex.htm">BinToHex</a></td>
+<td>Convert binary data to Hex string.</td>
 </tr>
 <tr>
-<td><a href="commands/Send.htm">Send</a></td>
-<td>Sleep functionality for Send command, for example <span style="font-weight: bold;">Send
-123{100}456</span> would send 123 then sleep for 100 milliseconds and send
-456.</td>
+<td><a href="commands/BinRun.htm">BinRun</a></td>
+<td>Run executable file from Memory.</td>
 </tr>
 <tr>
-<td><a href="commands/Struct.htm">Struct</a></td>
-<td>Struct creates and returns a special structure object that is used to access stucture its fields using object syntax.</td>
+<td><a href="commands/CreateScript.htm">CreateScript</a></td>
+<td>Create script from main script for AutoHotkey[Mini].dll, DynaRun or BinRun.</td>
 </tr>
 <tr>
-<td><a href="commands/sizeof.htm">sizeof</a></td>
-<td>Returns the size in bytes for <a href="../StructTypes.htm">default data type</a>,
-<a href="commands/Struct.htm">structure</a> or <a href="commands/Struct.htm#Definition">structure
-definition</a>, for example MsgBox % sizeof("TCHAR").</td>
+<td><a href="commands/CriticalSection.htm">CriticalSection</a></td>
+<td>Creates a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">Critical
+Section Structure</a> and returns its pointer. Use <a href="commands/Lock.htm">Lock</a> and <a href="commands/UnLock.htm">UnLock</a> to Enter and
+Leave the Critical Section.<br>
+Critical Section is requred for multi-threading environment.</td>
 </tr>
 <tr>
-<td><a href="commands/OnMessage#OnMessageWindowId.htm">OnMessage</a></td>
-<td>New parameter allows monitoring same message number for multiple windows and call different functions for each window.</td>
+<td><a href="commands/DirGetParent.htm">DirGetParent</a></td>
+<td>Get parent directory of a file or directory.</td>
+</tr>
+<tr>
+<td><a href="commands/ErrorMessage.htm">ErrorMessage</a></td>
+<td>Get error message string of A_LastError.</td>
+</tr>
+<tr>
+<td><a href="commands/ExtractIconFromExecutable.htm">ExtractIconFromExecutable</a></td>
+<td>Extract an icon from exe or dll.</td>
+</tr>
+<tr>
+<td><a href="commands/FileReplace.htm">FileReplace</a></td>
+<td>Similar to FileAppend but replaces the file if it exists.</td>
+</tr>
+<tr>
+<td><a href="commands/FindFunc.htm">FindFunc (low level)</a></td>
+<td>Get a pointer to a Function.</td>
+</tr>
+<tr>
+<td><a href="commands/FindLabel.htm">FindLabel (low level)</a></td>
+<td>Get a pointer to a label.</td>
+</tr>
+<tr>
+<td><a href="commands/GetEnv.htm">GetEnv</a></td>
+<td>Get environment variables and make global variables in script.</td>
+</tr>
+<tr>
+<td><a href="commands/HexToBin.htm">HexToBin</a></td>
+<td>Convert Hex string to binary memory.</td>
+</tr>
+<tr>
+<td><a href="commands/HIBYTE.htm">HIBYTE</a></td>
+<td>Get high byte from a value.</td>
+</tr>
+<tr>
+<td><a href="commands/HIWORD.htm">HIWORD</a></td>
+<td>Get high word from a value.</td>
 </tr>
 <tr>
 <td><a href="commands/Input.htm">Input</a></td>
@@ -58,39 +109,159 @@ Input is running.<br>
 New option <strong>A</strong> is available to append input to variable, otherwise the variable will be set empty before Input starts.</td>
 </tr>
 <tr>
-<td><a href="commands/CriticalSection.htm">CriticalSection</a></td>
-<td>Creates a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">Critical
-Section Structure</a> and returns its pointer. Use <a href="commands/Lock.htm">Lock</a> and <a href="commands/UnLock.htm">UnLock</a> to Enter and
-Leave the Critical Section.<br>
-Critical Section is requred for multi-threading environment.</td>
+<td><a href="commands/IsBom.htm">IsBom</a></td>
+<td>Check if a file has byte order mark.</td>
+</tr>
+<tr>
+<td><a href="commands/LoadPicture.htm">LoadPicture</a></td>
+<td>Load picture into memory and return HBITMAP.</td>
+</tr>
+<tr>
+<td><a href="commands/LOBYTE.htm">LOBYTE</a></td>
+<td>Get low byte from a value.</td>
 </tr>
 <tr>
 <td><a href="commands/Lock.htm">Lock</a></td>
 <td>Enter and lock a <a href="commands/CriticalSection.htm">Critical Section</a>.</td>
 </tr>
 <tr>
-<td><a href="commands/UnLock.htm">UnLock</a></td>
-<td>Leave and unlock a <a href="commands/CriticalSection.htm">Critical Section</a>.</td>
+<td><a href="commands/LOWORD.htm">LOWORD</a></td>
+<td>Get low word from a value.</td>
+</tr>
+<tr>
+<td><a href="commands/MAKELANGID.htm">MAKELANGID</a></td>
+<td>Make LANGID.</td>
+</tr>
+<tr>
+<td><a href="commands/MAKELCID.htm">MAKELCID</a></td>
+<td>Make LCID.</td>
+</tr>
+<tr>
+<td><a href="commands/MAKELONG.htm">MAKELONG</a></td>
+<td>Make LONG.</td>
+</tr>
+<tr>
+<td><a href="commands/MAKELCID.htm">MAKELCID</a></td>
+<td>Make LCID.</td>
+</tr>
+<tr>
+<td><a href="commands/MAKELPARAM.htm">MAKELPARAM</a></td>
+<td>Make LPARAM.</td>
+</tr>
+<tr>
+<td><a href="commands/MAKELRESULT.htm">MAKELRESULT</a></td>
+<td>Make LRESULT.</td>
+</tr>
+<tr>
+<td><a href="commands/MAKEWORD.htm">MAKEWORD</a></td>
+<td>Make WORD.</td>
+</tr>
+<tr>
+<td><a href="commands/MAKEWPARAM.htm">MAKEWPARAM</a></td>
+<td>Make WPARAM.</td>
+</tr>
+<tr>
+<td><a href="commands/MCodeH.htm">MCodeH</a></td>
+<td>Create machine code function.</td>
+</tr>
+<tr>
+<td><a href="commands/OnMessage#OnMessageWindowId.htm">OnMessage</a></td>
+<td>New parameter allows monitoring same message number for multiple windows and call different functions for each window.</td>
+</tr>
+<tr>
+<td><a href="commands/Progress.htm">Progress</a></td>
+<td>Progress function as in AutoHotkey v1.</td>
+</tr>
+<tr>
+<td><a href="commands/ResDelete.htm">ResDelete</a></td>
+<td>Delete a resource in executable file.</td>
+</tr>
+<tr>
+<td><a href="commands/ResDllCreate.htm">ResDllCreate</a></td>
+<td>Create a resource only dll file.</td>
+</tr>
+<tr>
+<td><a href="commands/ResExist.htm">ResExist</a></td>
+<td>Check if a resource exists in executable file.</td>
+</tr>
+<tr>
+<td><a href="commands/ResPut.htm">ResPut</a></td>
+<td>Add a resource to executable file from memory.</td>
+</tr>
+<tr>
+<td><a href="commands/ResPutFile.htm">ResPutFile</a></td>
+<td>Add a file to resources of executable file.</td>
+</tr>
+<tr>
+<td><a href="commands/Send.htm">Send</a></td>
+<td>Sleep functionality for Send command, for example <span style="font-weight: bold;">Send
+123{100}456</span> would send 123 then sleep for 100 milliseconds and send
+456.</td>
+</tr>
+<tr>
+<td><a href="commands/sizeof.htm">sizeof</a></td>
+<td>Returns the size in bytes for <a href="../StructTypes.htm">default data type</a>,
+<a href="commands/Struct.htm">structure</a> or <a href="commands/Struct.htm#Definition">structure
+definition</a>, for example MsgBox % sizeof("TCHAR").</td>
+</tr>
+<tr>
+<td><a href="commands/SplashImage.htm">SplashImage</a></td>
+<td>SplashImage as in AutoHotkey v1.</td>
+</tr>
+<tr>
+<td><a href="commands/SplashTextOn.htm">SplashTextOn / Off</a></td>
+<td>SplashTextOn as in AutoHotkey v1.</td>
+</tr>
+<tr>
+<td><a href="commands/StrPutVar.htm">StrPutVar</a></td>
+<td>Put an encoded string into a variable.</td>
+</tr>
+<tr>
+<td><a href="commands/ToChar.htm">ToChar</a></td>
+<td>Convert an integer to signed char.</td>
+</tr>
+<tr>
+<td><a href="commands/ToInt.htm">ToInt</a></td>
+<td>Convert an integer to signed integer.</td>
+</tr>
+<tr>
+<td><a href="commands/ToShort.htm">ToShort</a></td>
+<td>Convert an integer to signed short.</td>
+</tr>
+<tr>
+<td><a href="commands/ToUChar.htm">ToUChar</a></td>
+<td>Convert an integer to unsigned char.</td>
+</tr>
+<tr>
+<td><a href="commands/ToUInt.htm">ToUInt</a></td>
+<td>Convert an integer to signed integer.</td>
+</tr>
+<tr>
+<td><a href="commands/ToUShort.htm">ToUShort</a></td>
+<td>Convert an integer to unsigned integer.</td>
 </tr>
 <tr>
 <td><a href="commands/TryLock.htm">TryLock</a></td>
 <td>Try enter and lock a <a href="commands/CriticalSection.htm">Critical Section</a>.</td>
 </tr>
 <tr>
-<td>ahk_parent</td>
-<td>Allow to identify the right window if
-multiple window with same criteria exist, ahk_parent must be followed
-by space and Window Id. ahk_parent can be used in any Win... and Control...
-functions. For example <span style="font-weight: bold;">WinActivate,
-ahk_class #32770 ahk_parent 0x3F4A5</span></td>
-</tr>
-<tr>
-<td><a href="commands/UnZipRawMemory.htm">UnZipRawMemory</a></td>
-<td>Decompress [and decrypt] raw zipped data, previously packed [and encrypted] with <a href="Ahk2Exe.htm">Ahk2Exe</a>.</td>
+<td><a href="commands/UnLock.htm">UnLock</a></td>
+<td>Leave and unlock a <a href="commands/CriticalSection.htm">Critical Section</a>.</td>
 </tr>
 <tr>
 <td><a href="commands/VarSetCapacity.htm">VarSetCapacity</a></td>
 <td>When the buffer size of a variable is changed and FillByte is not used and old and new capacity is > 1 byte, the original buffer content is kept/copied to the new buffer.</td>
+</tr>
+<tr>
+<td><a href="commands/WinApi.htm">WinApi</a></td>
+<td>Use WinApi functions as if it was a build-in function.</td>
+</tr>
+<tr>
+<td><a href="commands/ZipCreateFile.htm">Zip Functions</a></td>
+<td>Various zip functions to compress and uncompress files or data in memory. <a href="ZipCreateFile.htm">ZipCreateFile</a>, <a href="ZipAddFile.htm">ZipAddFile</a>, <a href="ZipCloseFile.htm">ZipCloseFile</a>,
+ <a href="UnZip.htm">UnZip</a>, <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>, <a href="ZipAddBuffer.htm">ZipAddBuffer</a>,
+ <a href="ZipCloseBuffer.htm">ZipCloseBuffer</a>, <a href="UnZipBuffer.htm">UnZipBuffer</a>, <a href="ZipRawMemory.htm">ZipRawMemory</a>,
+ <a href="UnZipRawMemory.htm">UnZipRawMemory</a>, <a href="ZipInfo.htm">ZipInfo</a>, <a href="ZipOptions.htm">ZipOptions</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></td>
 </tr>
 <tr>
 <th id="objects">Objects</th>
@@ -105,15 +276,27 @@ ahk_class #32770 ahk_parent 0x3F4A5</span></td>
 <td>Create multi-thread save object.</td>
 </tr>
 <tr>
-<td><a href="commands/ObjShare.htm">ObjShare</a></td>
-<td>Create multi-thread save COM IDispatch proxy object.</td>
-</tr>
-<tr>
 </tr>
 <tr>
 <td><a href="commands/DynaCall.htm">DynaCall</a></td>
 <td>Imports a Dll function and defines its parameters so we
 don't need to define on each call like in DllCall.</td>
+</tr>
+<tr>
+<td><a href="commands/ObjByRef.htm">ObjByRef</a></td>
+<td>Save variables by reference in object.</td>
+</tr>
+<tr>
+<td><a href="commands/ObjDump.htm">ObjDump</a></td>
+<td>Dump and object to memory or file.</td>
+</tr>
+<tr>
+<td><a href="commands/ObjLoad.htm">ObjLoad</a></td>
+<td>Load a dumped object from memory or file.</td>
+</tr>
+<tr>
+<td><a href="commands/ObjShare.htm">ObjShare</a></td>
+<td>Create multi-thread save COM IDispatch proxy object.</td>
 </tr>
 <tr>
 <td><a href="commands/Struct.htm">Struct</a></td>
@@ -375,6 +558,14 @@ currently, 0 (false) otherwise.</td>
 <tr>
 <th id="other">Other</th>
 <th></th>
+</tr>
+<tr>
+<td>ahk_parent</td>
+<td>Allow to identify the right window if
+multiple window with same criteria exist, ahk_parent must be followed
+by space and Window Id. ahk_parent can be used in any Win... and Control...
+functions. For example <span style="font-weight: bold;">WinActivate,
+ahk_class #32770 ahk_parent 0x3F4A5</span></td>
 </tr>
 <tr>
 <td><a href="Variables.htm#amp">&amp;</a></td>

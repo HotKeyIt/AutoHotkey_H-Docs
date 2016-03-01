@@ -700,6 +700,10 @@
 			<param name="Local" value="docs/commands/CriticalSection.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="CryptAES">
+			<param name="Local" value="docs/commands/CryptAES.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="DirExist">
 			<param name="Local" value="docs/Functions.htm#DirExist">
 			</OBJECT>
@@ -964,6 +968,14 @@
 			<param name="Local" value="docs/commands/ToUShort.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="UnZip">
+			<param name="Local" value="docs/commands/UnZip.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="UnZipBuffer">
+			<param name="Local" value="docs/commands/UnZipBuffer.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="UnZipRawMemory">
 			<param name="Local" value="docs/commands/UnZipRawMemory.htm">
 			</OBJECT>
@@ -978,6 +990,46 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="WinExist">
 			<param name="Local" value="docs/commands/WinExist.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipAddBuffer">
+			<param name="Local" value="docs/commands/ZipAddBuffer.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipAddFile">
+			<param name="Local" value="docs/commands/ZipAddFile.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipAddFolder">
+			<param name="Local" value="docs/commands/ZipAddFolder.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipCloseBuffer">
+			<param name="Local" value="docs/commands/ZipCloseBuffer.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipCloseFile">
+			<param name="Local" value="docs/commands/ZipCloseFile.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipCreateBuffer">
+			<param name="Local" value="docs/commands/ZipCreateBuffer.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipCreateFile">
+			<param name="Local" value="docs/commands/ZipCreateFile.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipInfo">
+			<param name="Local" value="docs/commands/ZipInfo.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipOptions">
+			<param name="Local" value="docs/commands/ZipOptions.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ZipRawMemory">
+			<param name="Local" value="docs/commands/ZipRawMemory.htm">
 			</OBJECT>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">

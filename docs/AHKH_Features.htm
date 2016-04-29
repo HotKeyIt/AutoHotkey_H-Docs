@@ -21,7 +21,7 @@
 <td>Create an alias function for a dll function that allows to omit parameters and use default values.<br>It can also load pure machine code supplied as hex string, see example.</td>
 </tr>
 <tr>
-<td><a href="commands/Alias.htm">#NoEnv / GetEnv()</a></td>
+<td><a href="commands/GetEnv.htm">#NoEnv / GetEnv()</a></td>
 <td>#NoEnv is now used in all scripts. Use GetEnv() to add environment variables to script.</td>
 </tr>
 <tr>
@@ -56,7 +56,7 @@ threads in a multi-thread environment.</td>
 <tr>
 <td><a href="commands/CriticalSection.htm">CriticalSection</a></td>
 <td>Creates a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">Critical
-Section Structure</a> and returns its pointer. Use <a href="commands/Lock.htm">Lock</a> and <a href="commands/UnLock.htm">UnLock</a> to Enter and
+Section Structure</a> and returns its pointer. Use EnterCriticalSection and LeaveCriticalSection to Enter and
 Leave the Critical Section.<br>
 Critical Section is requred for multi-threading environment.</td>
 </tr>
@@ -109,7 +109,7 @@ Input is running.<br>
 New option <strong>A</strong> is available to append input to variable, otherwise the variable will be set empty before Input starts.</td>
 </tr>
 <tr>
-<td><a href="commands/IsBom.htm">IsBom</a></td>
+<td><a href="commands/IsBOM.htm">IsBom</a></td>
 <td>Check if a file has byte order mark.</td>
 </tr>
 <tr>
@@ -119,10 +119,6 @@ New option <strong>A</strong> is available to append input to variable, otherwis
 <tr>
 <td><a href="commands/LOBYTE.htm">LOBYTE</a></td>
 <td>Get low byte from a value.</td>
-</tr>
-<tr>
-<td><a href="commands/Lock.htm">Lock</a></td>
-<td>Enter and lock a <a href="commands/CriticalSection.htm">Critical Section</a>.</td>
 </tr>
 <tr>
 <td><a href="commands/LOWORD.htm">LOWORD</a></td>
@@ -139,10 +135,6 @@ New option <strong>A</strong> is available to append input to variable, otherwis
 <tr>
 <td><a href="commands/MAKELONG.htm">MAKELONG</a></td>
 <td>Make LONG.</td>
-</tr>
-<tr>
-<td><a href="commands/MAKELCID.htm">MAKELCID</a></td>
-<td>Make LCID.</td>
 </tr>
 <tr>
 <td><a href="commands/MAKELPARAM.htm">MAKELPARAM</a></td>
@@ -165,7 +157,7 @@ New option <strong>A</strong> is available to append input to variable, otherwis
 <td>Create machine code function.</td>
 </tr>
 <tr>
-<td><a href="commands/OnMessage#OnMessageWindowId.htm">OnMessage</a></td>
+<td><a href="commands/OnMessage.htm">OnMessage</a></td>
 <td>New parameter allows monitoring same message number for multiple windows and call different functions for each window.</td>
 </tr>
 <tr>
@@ -239,14 +231,6 @@ definition</a>, for example MsgBox % sizeof("TCHAR").</td>
 <tr>
 <td><a href="commands/ToUShort.htm">ToUShort</a></td>
 <td>Convert an integer to unsigned integer.</td>
-</tr>
-<tr>
-<td><a href="commands/TryLock.htm">TryLock</a></td>
-<td>Try enter and lock a <a href="commands/CriticalSection.htm">Critical Section</a>.</td>
-</tr>
-<tr>
-<td><a href="commands/UnLock.htm">UnLock</a></td>
-<td>Leave and unlock a <a href="commands/CriticalSection.htm">Critical Section</a>.</td>
 </tr>
 <tr>
 <td><a href="commands/VarSetCapacity.htm">VarSetCapacity</a></td>

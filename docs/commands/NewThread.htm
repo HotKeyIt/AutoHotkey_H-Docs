@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>NewThread</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/jquery.js" type="text/javascript"></script>
+<script src="../static/tree.jquery.js" type="text/javascript"></script>
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>NewThread</h1>
+<p>Create a real additional AutoHotkey thread in current process without using AutoHotkey.dll.</p>
+<br>
+<pre class="Syntax">NewThread, <strong>OutPutVar</strong>, Script [, Parameters, Title]
+<pre><em>Command  Example:</em> NewThread, <strong>ThreadID</strong>, MsgBox Message from thread.
+<em>Function Example:</em> <strong>ThreadID</strong> := NewThread("MsgBox Message from thread.")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutPutVar</b></dt>
+    <dd><p>The name of the variable in which to store the ThreadID for newly created thread.</p>
+    </dd>
+<dt>Script</dt>
+<dd>
+<p>The AutoHotkey script to execute as string or variable containing a string. If you want to start a script from file simply use <a href="_Include.htm">#Include</a> directive.</p>
+</dd>
+<dt>Parameters (optional)</dt>
+<dd>
+<p>Command line parameters that will be available in built-in variable <strong><a href="Variables.htm#CommandLine">A_Args</a></strong>
+object.</p>
+</dd>
+<dt>Title (optional)</dt>
+<dd>
+<p>Title to use for new script.</p>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="AhkThread.htm">AhkThread</a>, <a href="ExeThread.htm">ExeThread</a>, <a href="ThreadObj.htm">ThreadObj</a>
+, <a href="AhkMini.htm">AhkMini</a>, <a href="../Objects.htm">Objects</a>, <a href="DllCall.htm">DllCall()</a></p>
+<h3>Examples</h3>
+<pre class="NoIndent">NewThread("Msgbox `% variable:=`"Thread`"")</pre>
+</body></html>

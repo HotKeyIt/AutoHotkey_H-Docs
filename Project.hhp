@@ -247,7 +247,11 @@ docs\commands\Pause.htm
 docs\commands\PixelGetColor.htm
 docs\commands\PixelSearch.htm
 docs\commands\PostMessage.htm
-docs\commands\Process.htm
+docs\commands\ProcessClose.htm
+docs\commands\ProcessExist.htm
+docs\commands\ProcessSetPriority.htm
+docs\commands\ProcessWait.htm
+docs\commands\ProcessWaitClose.htm
 docs\commands\Progress.htm
 docs\commands\Random.htm
 docs\commands\RegDelete.htm

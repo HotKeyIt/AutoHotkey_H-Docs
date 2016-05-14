@@ -1416,8 +1416,24 @@
 		</OBJECT>
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Process">
-			<param name="Local" value="docs/commands/Process.htm">
+			<param name="Name" value="ProcessClose">
+			<param name="Local" value="docs/commands/ProcessClose.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ProcessExist">
+			<param name="Local" value="docs/commands/ProcessExist.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ProcessSetPriority">
+			<param name="Local" value="docs/commands/ProcessSetPriority.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ProcessWait">
+			<param name="Local" value="docs/commands/ProcessWait.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ProcessWaitclose">
+			<param name="Local" value="docs/commands/ProcessWaitClose.htm">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Run/RunWait">

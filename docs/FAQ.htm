@@ -158,7 +158,7 @@ KeepWinZRunning := false  <em>; Reset in preparation for the next press of this 
 return</pre>
 <h3 id="perf">How can performance be improved for games or at other times when the CPU is under heavy load?</h3>
 <p>If a script's <a href="Hotkeys.htm">Hotkeys</a>, <a href="commands/Click.htm">Clicks</a>, or <a href="commands/Send.htm">Sends</a> are noticeably slower than normal while the CPU is under heavy load, raising the script's process-priority may help. To do this, include the following line near the top of the script:</p>
-<pre><a href="commands/Process.htm">Process</a>, Priority, , High</pre>
+<pre><a href="commands/ProcessSetPriority.htm">ProcessSetPriority</a>, High</pre>
 <h3 id="help">How can context sensitive help for AutoHotkey commands be used in any editor?</h3>
 <p>Rajat created <a href="scripts/ContextSensitiveHelp.htm">this script</a>.</p>
 <h3 id="load">How to detect when a web page is finished loading?</h3>

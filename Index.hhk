@@ -2491,7 +2491,7 @@
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="PID (Process ID)">
-		<param name="Local" value="docs/commands/Process.htm">
+		<param name="Local" value="docs/commands/ProcessExist.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="PixelGetColor">
@@ -2522,16 +2522,28 @@
 		<param name="Local" value="docs/commands/Run.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="priority of a process">
-		<param name="Local" value="docs/commands/Process.htm">
-		</OBJECT>
-	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="priority of a thread">
 		<param name="Local" value="docs/commands/Thread.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Process">
-		<param name="Local" value="docs/commands/Process.htm">
+		<param name="Name" value="ProcessSetPriority">
+		<param name="Local" value="docs/commands/ProcessSetPriortiy.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ProcessClose">
+		<param name="Local" value="docs/commands/ProcessClose.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ProcessExist">
+		<param name="Local" value="docs/commands/ProcessExist.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ProcessWait">
+		<param name="Local" value="docs/commands/ProcessWait.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ProcessWaitClose">
+		<param name="Local" value="docs/commands/ProcessWaitClose.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ProgramFiles">

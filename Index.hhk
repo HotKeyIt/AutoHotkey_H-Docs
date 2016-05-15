@@ -1390,6 +1390,10 @@
 		<param name="Local" value="docs/commands/Throw.htm#Exception">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ExeThread">
+		<param name="Local" value="docs/commands/ExeThread.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Exit">
 		<param name="Local" value="docs/commands/Exit.htm">
 		</OBJECT>
@@ -2326,6 +2330,10 @@
 		<param name="Local" value="docs/objects/Object.htm#NewEnum">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="NewThread">
+		<param name="Local" value="docs/commands/NewThread.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="NoTimers">
 		<param name="Local" value="docs/commands/Thread.htm">
 		</OBJECT>
@@ -3112,6 +3120,10 @@
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Thread">
 		<param name="Local" value="docs/commands/Thread.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ThreadObj">
+		<param name="Local" value="docs/commands/ThreadObj.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="threads">

@@ -16,7 +16,7 @@ If a thread is already executed it will terminated before new thread
 starts.<br>
 Note you will need to load AutoHotkey.dll module using LoadLibrary
 before you can use this function, see Example.<br>
-<strong>This function is only available in AutoHotkey[Mini].dll</strong></p>
+<strong>This function is only available in AutoHotkey.dll</strong></p>
 <br>
 <pre class="Syntax">DllCall, <strong>OutPutVar</strong>, AutoHotkey.dll<strong>\ahkdll</strong>, Str, FileName, Str, Parameters, CDecl UPTR
 <pre><em>Command  Example:</em> DllCall, <strong>hThread</strong>, AutoHotkey.dll\ahkdll, Str, FileName.ahk, Str,, CDecl UPTR
@@ -30,7 +30,7 @@ before you can use this function, see Example.<br>
 <dt>FileName.ahk (optional)</dt>
 <dd>
 <p>New AutoHotkey script saved on disk or network to be
-executed in AutoHotkey[Mini].dll. When omitted, following script is used: <pre>#Persistent<br>#NoTrayIcon</pre></p>
+executed in AutoHotkey.dll. When omitted, following script is used: <pre>#Persistent<br>#NoTrayIcon</pre></p>
 </dd>
 <dt>Parameters (optional)</dt>
 <dd>
@@ -57,7 +57,7 @@ the path of the executable will be used.
 </dd>
 </dl>
 <h3>Related</h3>
-<p><a href="ahktextdll.htm">ahktextdll()</a>, <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="AutoHotkey.htm#Mini">AutoHotkeyMini.dll</a>, <a href="AhkThread.htm">AhkThread</a>, <a href="AhkMini.htm">AhkMini</a>,
+<p><a href="ahktextdll.htm">ahktextdll()</a>, <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="AhkThread.htm">AhkThread</a>,
 <a href="../misc/Threads.htm">Threads</a>, <a href="DllCall.htm">DllCall()</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"

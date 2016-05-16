@@ -706,10 +706,6 @@
 		<param name="Local" value="docs/commands/ahktextdll.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="AhkMini">
-		<param name="Local" value="docs/commands/AhkMini.htm">
-		</OBJECT>
-	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ahkReady">
 		<param name="Local" value="docs/commands/ahkReady.htm">
 		</OBJECT>

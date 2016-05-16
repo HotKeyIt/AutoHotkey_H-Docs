@@ -86,10 +86,6 @@
     <td>Exported function that allows calling a Label in script currently executed by AutoHotkey module.</td>
   </tr>
   <tr>
-    <td><a href="AhkMini.htm">AhkMini</a></td>
-    <td>Create a real additional <a href="../AutoHotkeyDll.htm#AutoHotkeyMini">AutoHotkeyMini</a> thread in current process.</td>
-  </tr>
-  <tr>
     <td><a href="ahkPause.htm">ahkPause</a></td>
     <td>Exported function used to pause or un-pause AutoHotkey module.</td>
   </tr>
@@ -99,11 +95,11 @@
   </tr>
   <tr>
     <td><a href="ahkReady.htm">ahkReady</a></td>
-    <td>Exported function to check if a script is currently executed by AutoHotkey module (AutoHotkey[Mini].dll only).</td>
+    <td>Exported function to check if a script is currently executed by AutoHotkey module (AutoHotkey.dll only).</td>
   </tr>
   <tr>
     <td><a href="ahkTerminate.htm">ahkTerminate</a></td>
-    <td>Exported function that exits script currently executed by AutoHotkey module (AutoHotkey[Mini].dll only).</td>
+    <td>Exported function that exits script currently executed by AutoHotkey module (AutoHotkey.dll only).</td>
   </tr>
   <tr>
     <td><a href="Alias.htm">Alias</a></td>
@@ -384,6 +380,10 @@
   <tr>
     <td><a href="Throw.htm#Exception">Exception</a></td>
     <td>Creates an <a href="Catch.htm#RuntimeErrors">Exception</a> object.</td>
+  </tr>
+  <tr>
+    <td><a href="ExeThread.htm">ExeThread</a></td>
+    <td>Included function to start new exe thread (without using AutoHotkey.dll).</td>
   </tr>
   <tr>
     <td><a href="Exit.htm">Exit</a></td>
@@ -770,6 +770,10 @@
     <td>Displays the specified text in a small window containing one or more buttons (such as Yes and No).</td>
   </tr>
   <tr>
+    <td><a href="NewThread.htm">NewThread</a></td>
+    <td>Build-in function to start new exe thread (without using AutoHotkey.dll).</td>
+  </tr>
+  <tr>
     <td><a href="NumGet.htm">NumGet</a></td>
     <td>Returns the binary number stored at the specified address+offset.</td>
   </tr>
@@ -1153,6 +1157,10 @@
   <tr>
     <td><a href="Thread.htm">Thread</a></td>
     <td>Sets the priority or interruptibility of <a href="../misc/Threads.htm">threads</a>. It can also temporarily disable all <a href="SetTimer.htm">timers</a>.</td>
+  </tr>
+  <tr>
+    <td><a href="ThreadObj.htm">ThreadObj</a></td>
+    <td>Included function to start new exe thread (without using AutoHotkey.dll).</td>
   </tr>
   <tr>
     <td class="larger"><a href="Throw.htm">Throw</a></td>

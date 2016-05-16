@@ -45,10 +45,6 @@
 <td>Create a new thread 'without' using AutoHotkey.dll. If you want to communicate with the thread it is best to use ExeThread or ThreadObj.</td>
 </tr>
 <tr>
-<td><a href="commands/AhkMini.htm">AhkMini</a></td>
-<td>Create a new thread using AutoHotkeyMini.dll included in resources.</td>
-</tr>
-<tr>
 <td><a href="commands/Alias.htm">Alias</a></td>
 <td>Create ByRef variable or share variables to other
 threads in a multi-thread environment.</td>
@@ -63,7 +59,7 @@ threads in a multi-thread environment.</td>
 </tr>
 <tr>
 <td><a href="commands/CreateScript.htm">CreateScript</a></td>
-<td>Create script from main script for AutoHotkey[Mini].dll, DynaRun or BinRun.</td>
+<td>Create script from main script for NewThread, AutoHotkey.dll, DynaRun or BinRun.</td>
 </tr>
 <tr>
 <td><a href="commands/CriticalSection.htm">CriticalSection</a></td>
@@ -352,7 +348,7 @@ to 0.</td>
 </tr>
 <tr>
 <td><a href="IsDll">A_IsDll</a></td>
-<td>returns 1 (true) if called from AutoHotkey[Mini].dll and
+<td>returns 1 (true) if called from AutoHotkey.dll and
 FALSE/NULL/0 otherwise.</td>
 </tr>
 <tr>
@@ -418,7 +414,7 @@ AutoHotkey_H any AutoHotkey binary (AutoHotkey.dll,
 AutoHotkey.exe, AutoHotkeySC.bin) can be compiled.<br>
 This allows keeping
 full functionality of AutoHotkey including executing other scripts. Compiled AutoHotkey.exe and
-AutoHotkey[Mini].dll can use /E
+AutoHotkey.dll can use /E
 switch to execute different script than compiled one.</td>
 <tr>
 	<td><a href="misc/Ahk2Exe.htm">Ahk2Exe</a></td>
@@ -454,13 +450,8 @@ AutoHotkey functionality that might be more difficult to implement in
 another language.</td>
 </tr>
 <tr>
-<td><a href="AutoHotkeyDll.htm#AutoHotkeyMini">AutoHotkeyMini.dll</a></td>
-<td>Mini AutoHotkey Module for less memory usage and faster
-load.</td>
-</tr>
-<tr>
 <th id="other">Exported Functions</th>
-<th>Available for AutoHotkey.exe and AutoHotkey[Mini].dll</th>
+<th>Available for AutoHotkey.exe and AutoHotkey.dll</th>
 </tr>
 <tr>
 <td><a href="commands/ahkIsUnicode.htm">ahkIsUnicode</a></td>
@@ -470,13 +461,13 @@ load.</td>
 <td><a href="commands/ahkFunction.htm">ahkFunction</a></td>
 <td>Call
 a function via SendMessage method. Mainly used with
-AutoHotkey[Mini].dll to call a function in dll script or call a
+AutoHotkey.dll to call a function in dll script or call a
 function in main script from dll.</td>
 </tr>
 <tr>
 <td><a href="commands/ahkPostFunction.htm">ahkPostFunction</a></td>
 <td>Call a function via PostMessage method (does not wait
-until function returns). Also used mainly with AutoHotkey[Mini].dll</td>
+until function returns). Also used mainly with AutoHotkey.dll</td>
 </tr>
 <tr>
 <td><a href="commands/ahkassign.htm">ahkExecuteLine</a></td>
@@ -485,7 +476,7 @@ until function returns). Also used mainly with AutoHotkey[Mini].dll</td>
 <tr>
 <td><a href="commands/ahkLabel.htm">ahkLabel</a></td>
 <td>Goto (PostMessage) or Gosub (SendMessage) a Label. Also
-used mainly with AutoHotkey[Mini].dll</td>
+used mainly with AutoHotkey.dll</td>
 </tr>
 <tr>
 <td><a href="commands/ahkFindFunction.htm">ahkFindFunction</a></td>
@@ -526,7 +517,7 @@ temporarily. Not available for scripts compiled with AutoHotkeySC.bin.</td>
 </tr>
 <tr>
 <th>Exported Functions</th>
-<th>Available only in AutoHotkey[Mini].dll</th>
+<th>Available only in AutoHotkey.dll</th>
 </tr>
 <tr>
 <td><a href="commands/ahkdll.htm">ahkdll</a></td>

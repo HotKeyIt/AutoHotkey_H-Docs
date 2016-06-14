@@ -12,7 +12,7 @@
 <h1>ExeThread</h1>
 <p>Create a real additional AutoHotkey thread in current process without using AutoHotkey.dll (based on <a href="NewThread.htm">NewThread</a>).</p>
 <br>
-<pre class="Syntax">ExeThread, <strong>OutPutVar</strong>, Script [, Parameters, Title]
+<pre class="Syntax">ExeThread, <strong>OutPutVar</strong>, Script [, Parameters, Title, Wait]
 <pre><em>Command  Example:</em> ExeThread, <strong>Thread</strong>, MsgBox Message from thread.
 <em>Function Example:</em> <strong>Thread</strong> := ExeThread("MsgBox Message from thread.")</pre></pre>
 <h3>Parameters</h3>
@@ -32,6 +32,10 @@ object.</p>
 <dt>Title (optional)</dt>
 <dd>
 <p>Title to use for new script.</p>
+</dd>
+<dt>Wait (optional)</dt>
+<dd>
+<p>Milliseconds to wait for new script to start.</p>
 </dd>
 </dl>
 <h3>Related</h3>

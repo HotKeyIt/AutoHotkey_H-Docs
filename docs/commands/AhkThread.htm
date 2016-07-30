@@ -12,7 +12,7 @@
 <h1>AhkThread</h1>
 <p>Create a real additional AutoHotkey thread in current process using AutoHotkey.dll.</p>
 <br>
-<pre class="Syntax">AhkThread, <strong>OutPutVar</strong> [, ScriptOrFile, Parameters, ScriptIsFile, DllToUse]
+<pre class="Syntax">AhkThread, <strong>OutPutVar</strong> [, ScriptOrFile, Parameters, Title, ScriptIsFile, DllToUse]
 <pre><em>Command  Example:</em> AhkThread, <strong>Thread</strong>, MsgBox Message from thread.
 <em>Function Example:</em> <strong>Thread</strong> := AhkThread("MsgBox Message from thread.")</pre></pre>
 <h3>Parameters</h3>
@@ -35,6 +35,10 @@ This parameter can be one of the following:
 <p>Command line
 parameters that will be available in built-in variable <strong><a href="Variables.htm#CommandLine">A_Args</a></strong>
 object.</p>
+</dd>
+<dt>Title (optional)</dt>
+<dd>
+<p>Title for the dll thread (by default filename) that will be shown in MsgBox, Gui... when no Title is given.</p>
 </dd>
 <dt>ScriptIsFile (optional)</dt>
 <dd>

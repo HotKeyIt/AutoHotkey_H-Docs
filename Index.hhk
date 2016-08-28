@@ -2531,7 +2531,7 @@
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ProcessSetPriority">
-		<param name="Local" value="docs/commands/ProcessSetPriortiy.htm">
+		<param name="Local" value="docs/commands/ProcessSetPriority.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="ProcessClose">

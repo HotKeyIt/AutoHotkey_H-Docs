@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Alphabetical Command and Function Index</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 <style type="text/css">
 <!--
@@ -22,15 +19,15 @@
 
 <table class="info">
   <tr>
-    <th width="25%">Entry</th>
-    <th width="75%">Description</th>
+    <th style="width:25%">Entry</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td class="larger"><a href="Block.htm">{ ... } (Block)</a></td>
     <td>A pair of braces denotes a block. Blocks are typically used with <a href="../Functions.htm">functions</a>, <a href="Else.htm">Else</a>, <a href="Loop.htm">Loop</a>, <a href="While.htm">While-loop</a>, and IF-commands.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="../Objects.htm#Usage_Associative_Arrays">{ ... } / Object()</a></td>
+    <td class="larger"><a href="../Objects.htm#Usage_Associative_Arrays">{ ... } / Object</a></td>
     <td>Creates a scriptable associative array.</td>
   </tr>
   <tr>
@@ -38,87 +35,19 @@
     <td>Creates a scriptable associative array with integer keys.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Abs">Abs</a></td>
+    <td><a href="Math.htm#Abs">Abs</a></td>
     <td>Returns the absolute value of <em>Number</em>.</td>
   </tr>
   <tr>
-    <td><a href="addFile.htm">addFile</a></td>
-    <td>Adds new code from a file on disk or network in currently executed script.</td>
-  </tr>
-  <tr>
-    <td><a href="addScript.htm">addScript</a></td>
-    <td>Exported function that adds new code from string to currently executed script.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkassign.htm">ahkassign</a></td>
-    <td>Exported function that assigns a string value to a variable in currently executed script.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkExec.htm">ahkExec</a></td>
-    <td>Exported function that executes some code temporarily from string in currently executed script.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkFunction.htm">ahkFunction</a></td>
-    <td>Exported function that allows calling a function in script currently executed by AutoHotkey module.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkExecuteLine.htm">ahkExecuteLine</a></td>
-    <td>Exported function that executes script from given line pointer.</td>
-  </tr>
-  <tr>
-    <td><a href="AhkExported.htm">AhkExported</a></td>
-    <td>Retrieves an object to control main thread (AutoHotkey.exe) same way as in <a href="AhkThread.htm">AhkThread</a>.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkFindFunc.htm">ahkFindFunc</a></td>
-    <td>Exported function that finds a function in currently executed script and returns a pointer to it</td>
-  </tr>
-  <tr>
-    <td><a href="ahkFindLabel.htm">ahkFindLabel</a></td>
-    <td>Exported function that finds a label in currently executed script and returns a pointer to it</td>
-  </tr>
-  <tr>
-    <td><a href="ahkgetvar.htm">ahkgetvar</a></td>
-    <td>Exported function to retrieve the value of a variable as string.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkLabel.htm">ahkLabel</a></td>
-    <td>Exported function that allows calling a Label in script currently executed by AutoHotkey module.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkPause.htm">ahkPause</a></td>
-    <td>Exported function used to pause or un-pause AutoHotkey module.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkPostFunction.htm">ahkPostFunction</a></td>
-    <td>Exported function that allows calling a function in script currently executed by AutoHotkey module without waiting for the function to return.</td>
-  </tr>
-  <tr>
-    <td><a href="ahkReady.htm">ahkReady</a></td>
-    <td>Exported function to check if a script is currently executed by AutoHotkey module (AutoHotkey.dll only).</td>
-  </tr>
-  <tr>
-    <td><a href="ahkTerminate.htm">ahkTerminate</a></td>
-    <td>Exported function that exits script currently executed by AutoHotkey module (AutoHotkey.dll only).</td>
-  </tr>
-  <tr>
-    <td><a href="Alias.htm">Alias</a></td>
-    <td>Convert a local variable to an alias to represent a different variable for example in another thread.</td>
-  </tr>
-  <tr>
-    <td><a href="AhkThread.htm">AhkThread</a></td>
-    <td>Create a real additional AutoHotkey thread in current process.</td>
-  </tr>
-  <tr>
-    <td><a href="../Functions.htm#ASin">ASin</a></td>
+    <td><a href="Math.htm#ASin">ASin</a></td>
     <td>Returns the arcsine (the number whose sine is <em>Number</em>) in radians.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#ACos">ACos</a></td>
+    <td><a href="Math.htm#ACos">ACos</a></td>
     <td>Returns the arccosine (the number whose cosine is <em>Number</em>) in radians.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#ATan">ATan</a></td>
+    <td><a href="Math.htm#ATan">ATan</a></td>
     <td>Returns the arctangent (the number whose tangent is <em>Number</em>) in radians.</td>
   </tr>
   <tr>
@@ -146,12 +75,12 @@
     <td>Specifies the code to execute if an exception is raised during execution of a <a href="Try.htm">try</a> statement.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Ceil">Ceil</a></td>
+    <td><a href="Math.htm#Ceil">Ceil</a></td>
     <td>Returns <em>Number</em> rounded up to the nearest integer (without any .00 suffix).</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Chr">Chr</a></td>
-    <td>Returns the character corresponding to the Unicode character code indicated by Number.</td>
+    <td><a href="Chr.htm">Chr</a></td>
+    <td>Returns the string (usually a single character) corresponding to the character code indicated by the specified number.</td>
   </tr>
   <tr>
     <td class="larger"><a href="Click.htm">Click</a></td>
@@ -178,7 +107,7 @@
     <td>Creates a COM object.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ComObjDll.htm">ComObjDll</a></td>
+    <td><a href="ComObjDll.htm">ComObjDll</a></td>
     <td>Creates a COM object from a dll.</td>
   </tr>
   <tr>
@@ -208,10 +137,6 @@
   <tr>
     <td><a href="ComObjValue.htm">ComObjValue</a></td>
     <td>Retrieves the value or pointer stored in a COM wrapper object.</td>
-  </tr>
-  <tr>
-    <td><a href="ComVar.htm">ComVar</a></td>
-    <td>Creates an object which can be used to pass a value ByRef.</td>
   </tr>
   <tr>
     <td><a href="Continue.htm">Continue</a></td>
@@ -262,7 +187,7 @@
     <td>Sets coordinate mode for various commands to be relative to either the active window or the screen.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Cos">Cos</a></td>
+    <td><a href="Math.htm#Cos">Cos</a></td>
     <td>Returns the trigonometric cosine of <em>Number</em>.</td>
   </tr>
   <tr>
@@ -328,7 +253,7 @@
   <tr>
     <td><a href="DirSelect.htm">DirSelect</a></td>
     <td>Displays a standard dialog that allows the user to select a folder.</td>
-  </tr>		
+  </tr>  
   <tr>
     <td class="larger"><a href="DllCall.htm">DllCall</a></td>
     <td>Calls a function inside a DLL, such as a standard Windows API function.</td>
@@ -394,7 +319,7 @@
     <td>Terminates the script unconditionally.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Exp">Exp</a></td>
+    <td><a href="Math.htm#Exp">Exp</a></td>
     <td>Returns <em>e</em> (which is approximately 2.71828182845905) raised to the <em>N</em>th power.</td>
   </tr>
   <tr>
@@ -416,6 +341,14 @@
   <tr>
     <td><a href="FileEncoding.htm">FileEncoding</a></td>
     <td>Sets the default encoding for <a href="FileRead.htm">FileRead</a>, <a href="LoopReadFile.htm">Loop Read</a>, <a href="FileAppend.htm">FileAppend</a>, and <a href="FileOpen.htm">FileOpen</a>.</td>
+  </tr>
+  <tr>
+    <td class="larger"><a href="FileExist.htm">FileExist</a></td>
+    <td>Checks for the existence of a file or folder and returns its attributes.</td>
+  </tr>
+  <tr>
+    <td><a href="FileInstall.htm">FileInstall</a></td>
+    <td>Includes the specified file inside the <a href="../Scripts.htm#ahk2exe">compiled version</a> of the script.</td>
   </tr>
   <tr>
     <td><a href="FileGetAttrib.htm">FileGetAttrib</a></td>
@@ -462,8 +395,8 @@
     <td>Empties the recycle bin.</td>
   </tr>
   <tr>
-    <td height="14" class="larger"><a href="FileReplace.htm">FileReplace</a></td>
-    <td height="14">Deletes the file and writes text to the file after creating it.</td>
+    <td><a href="FileReplace.htm">FileReplace</a></td>
+    <td>Deletes the file and writes text to the file after creating it.</td>
   </tr>
   <tr>
     <td height="14" class="larger"><a href="FileSelect.htm">FileSelect</a></td>
@@ -490,7 +423,7 @@
     <td>Finds a label in currently executed script and returns a pointer to it.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Floor">Floor</a></td>
+    <td><a href="Math.htm#Floor">Floor</a></td>
     <td>Returns <em>Number</em> rounded down to the nearest integer (without any .00 suffix).</td>
   </tr>
   <tr>
@@ -498,28 +431,28 @@
     <td>Repeats a series of commands once for each key-value pair in an object.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="For.htm">Format</a></td>
-    <td>Format values to desired string.</td>
+    <td><a href="Format.htm">Format</a></td>
+    <td>Formats a variable number of input values according to a format string.</td>
   </tr>
   <tr>
     <td><a href="FormatTime.htm">FormatTime</a></td>
     <td>Transforms a <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDDHH24MISS</a> timestamp into the specified date/time format.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Func">Func</a></td>
+    <td><a href="Func.htm">Func</a></td>
     <td>Retrieves a <a href="../Objects.htm#Function_References">reference</a> to a function.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#GetKeyName">GetKeyName</a><br><a href="../Functions.htm#GetKeyName">GetKeyVK</a><br><a href="../Functions.htm#GetKeyName">GetKeySC</a></td>
-    <td>Retrieves the name or text, virtual key code or scan code of a key.</td>
+    <td><a href="GetKey.htm">GetKeyName</a></td>
+    <td>Retrieves the name or text of a key.</td>
   </tr>
   <tr>
-    <td><a href="GetKeySC.htm">GetKeySC</a></td>
-    <td>Retrieves the name/text, scan code of a key.</td>
+    <td><a href="GetKey.htm">GetKeyVK</a></td>
+    <td>Retrieves the virtual key code of a key.</td>
   </tr>
   <tr>
-    <td><a href="GetEnv.htm">GetEnv</a></td>
-    <td>Add environment variables to script.</td>
+    <td><a href="GetKey.htm">GetKeySC</a></td>
+    <td>Retrieves the scan code of a key.</td>
   </tr>
   <tr>
     <td><a href="GetKeyState.htm">GetKeyState</a></td>
@@ -614,7 +547,7 @@
     <td>Displays an input box to ask the user to enter a string.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#InStr">InStr</a></td>
+    <td><a href="InStr.htm">InStr</a></td>
     <td>Searches for a given <em>occurrence</em> of a string, from the left or the right.</td>
   </tr>
   <tr>
@@ -630,16 +563,16 @@
     <td>Returns true / 1 if FilePattern is in use and cannot be read / deleted / written.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#IsFunc">IsFunc</a></td>
-    <td>Indicates whether a function may be <a href="../Functions.htm#DynCall">called dynamically</a>.</td>
+    <td><a href="IsFunc.htm">IsFunc</a></td>
+    <td>Returns a non-zero number if the specified function exists in the script.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#IsLabel">IsLabel</a></td>
-    <td>Checks whether the given value exist as a label.</td>
+    <td><a href="IsLabel.htm">IsLabel</a></td>
+    <td>Returns a non-zero number if the specified label exists in the script.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#IsObject">IsObject</a></td>
-    <td>Determines whether a value is an object.</td>
+    <td><a href="IsObject.htm">IsObject</a></td>
+    <td>Returns a non-zero number if the specified value is an object.</td>
   </tr>
   <tr>
     <td><a href="KeyHistory.htm">KeyHistory</a></td>
@@ -670,7 +603,7 @@
     <td>Retrieves the low-order byte from the given value.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Log">Log</a></td>
+    <td><a href="Math.htm#Log">Log</a></td>
     <td>Returns the logarithm (base 10) of <em>Number</em>.</td>
   </tr>
   <tr>
@@ -678,7 +611,7 @@
     <td>Retrieves the low-order word from the given value.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Ln">Ln</a></td>
+    <td><a href="Math.htm#Ln">Ln</a></td>
     <td>Returns the natural logarithm (base e) of <em>Number</em>.</td>
   </tr>
   <tr>
@@ -729,20 +662,26 @@
     <td><a href="MAKEWPARAM.htm">MAKEWPARAM</a></td>
     <td>Creates a value for use as an wParam parameter in a message.</td>
   </tr>
+    <td><a href="Menu.htm">Menu</a></td>
+    <td>Creates, deletes, modifies and displays menus and menu items. Changes the tray icon and its tooltip. Controls whether the main window of a <a href="../Scripts.htm#ahk2exe">compiled script</a> can be opened.</td>
+  </tr>
   <tr>
     <td><a href="MAKEWPARAM.htm">MCODEH</a></td>
     <td>Creates a <a href="DynaCall.htm">DynaCall</a> object for machine code function.</td>
   </tr>
+    <td><a href="MenuGetHandle.htm">MenuGetHandle</a></td>
+    <td>Retrieves the <a href="Menu.htm#Win32_Menus">Win32 menu</a> handle of a menu.</td>
+  </tr>
   <tr>
-    <td><a href="Menu.htm">Menu</a></td>
-    <td>Creates, deletes, modifies and displays menus and menu items. Changes the tray icon and its tooltip. Controls whether the main window of a <a href="../Scripts.htm#ahk2exe">compiled script</a> can be opened.</td>
+    <td><a href="MenuGetName.htm">MenuGetName</a></td>
+    <td>Retrieves the name of a menu given a handle to its underlying <a href="Menu.htm#Win32_Menus">Win32 menu</a>.</td>
   </tr>
   <tr>
     <td><a href="MenuSelect.htm">MenuSelect</a></td>
     <td>Invokes a menu item from the menu bar of the specified window.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Mod">Mod</a></td>
+    <td><a href="Math.htm#Mod">Mod</a></td>
     <td>Modulo. Returns the remainder when <em>Dividend</em> is divided by <em>Divisor</em>.</td>
   </tr>
   <tr>
@@ -870,6 +809,10 @@
     <td>Specifies a <a href="../Functions.htm">function</a> to call automatically when the script receives the specified message.</td>
   </tr>
   <tr>
+    <td><a href="Ord.htm">Ord</a></td>
+    <td>Returns the ordinal value (numeric character code) of the first character in the specified string.</td>
+  </tr>
+  <tr>
     <td><a href="OutputDebug.htm">OutputDebug</a></td>
     <td>Sends a string to the debugger (if any) for display.</td>
   </tr>
@@ -890,12 +833,27 @@
     <td>Places a message in the message queue of a window or control.</td>
   </tr>
   <tr>
-    <td><a href="Process.htm">Process</a></td>
-    <td>Performs one of the following operations on a process: checks if it exists; changes its priority; closes it; waits for it to close.</td>
+    <td><a href="ProcessClose.htm">ProcessClose</a></td>
+    <td>Terminates a process.</td>
   </tr>
   <tr>
-    <td><a href="Process.htm">Progress</a></td>
+    <td><a href="Progress.htm">Progress</a></td>
     <td>Creates or updates a window containing a progress bar.</td>
+  </tr>
+    <td><a href="ProcessExist.htm">ProcessExist</a></td>
+    <td>Checks if a matching process exists (is running).</td>
+  </tr>
+  <tr>
+    <td><a href="ProcessSetPriority.htm">ProcessSetPriority</a></td>
+    <td>Changes the priority of a process.</td>
+  </tr>
+  <tr>
+    <td><a href="ProcessWait.htm">ProcessWait</a></td>
+    <td>Waits until a matching process exists (is running).</td>
+  </tr>
+  <tr>
+    <td><a href="ProcessWaitClose.htm">ProcessWaitClose</a></td>
+    <td>Waits for all matching processes to close.</td>
   </tr>
   <tr>
     <td><a href="Random.htm">Random</a></td>
@@ -911,7 +869,11 @@
   </tr>
   <tr>
     <td><a href="RegDelete.htm">RegDelete</a></td>
-    <td>Deletes a subkey or value from the registry.</td>
+    <td>Deletes a value from the registry.</td>
+  </tr>
+  <tr>
+    <td><a href="RegDelete.htm">RegDeleteKey</a></td>
+    <td>Deletes a subkey from the registry.</td>
   </tr>
   <tr>
     <td><a href="RegRead.htm">RegRead</a></td>
@@ -958,7 +920,7 @@
     <td>Returns from a subroutine to which execution had previously jumped via <a href="../Functions.htm">function-call</a>, <a href="Gosub.htm">Gosub</a>, <a href="../Hotkeys.htm">Hotkey</a> activation, <a href="GroupActivate.htm">GroupActivate</a>, or other means.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Round">Round</a></td>
+    <td><a href="Math.htm#Round">Round</a></td>
     <td>If <em>N</em> is omitted or 0, <em>Number</em> is rounded to the nearest integer. If <em>N</em> is positive number, <em>Number</em> is rounded to <em>N</em> decimal places. If <em>N</em> is negative, <em>Number</em> is rounded by <em>N</em> digits to the left of the decimal point.</td>
   </tr>
   <tr>
@@ -1047,7 +1009,7 @@
     <td>Shuts down, restarts, or logs off the system.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Sin">Sin</a></td>
+    <td><a href="Math.htm#Sin">Sin</a></td>
     <td>Returns the trigonometric sine of <em>Number</em>.</td>
   </tr>
   <tr>
@@ -1079,7 +1041,7 @@
     <td>Separates a file name or URL into its name, directory, extension, and drive.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Sqrt">Sqrt</a></td>
+    <td><a href="Math.htm#Sqrt">Sqrt</a></td>
     <td>Returns the square root of <em>Number</em>.</td>
   </tr>
   <tr>
@@ -1151,7 +1113,7 @@
     <td>Retrieves screen resolution, multi-monitor info,  dimensions of system objects, and other system properties.</td>
   </tr>
   <tr>
-    <td><a href="../Functions.htm#Tan">Tan</a></td>
+    <td><a href="Math.htm#Tan">Tan</a></td>
     <td>Returns the trigonometric tangent of <em>Number</em>.</td>
   </tr>
   <tr>
@@ -1196,7 +1158,7 @@
   </tr>
   <tr>
     <td><a href="TrayTip.htm">TrayTip</a></td>
-    <td>Creates a balloon message window near the tray icon.</td>
+    <td>Creates a balloon message window or toast notification near the tray icon.</td>
   </tr>
   <tr>
     <td><a href="Trim.htm">Trim</a></td>
@@ -1215,15 +1177,15 @@
     <td>Applies a condition to the continuation of a Loop or For-loop.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="UnZip.htm">UnZip</a></td>
+    <td><a href="UnZip.htm">UnZip</a></td>
     <td>This function is used to unzip a zip archive to disk.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="UnZipBuffer.htm">UnZipBuffer</a></td>
+    <td><a href="UnZipBuffer.htm">UnZipBuffer</a></td>
     <td>This function is used to unzip an item from zip archive to memory,.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="UnZipRawMemory.htm">UnZipRawMemory</a></td>
+    <td><a href="UnZipRawMemory.htm">UnZipRawMemory</a></td>
     <td>This function is used to unzip and decrypt raw memory created with ZipRawMemory, for example from resource.</td>
   </tr>
   <tr>
@@ -1264,11 +1226,11 @@
   </tr>
   <tr>
     <td><a href="WinGetControls.htm">WinGetControls</a></td>
-    <td>Retrieves the control names for all controls in a window.</td>
+    <td>Retrieves an array of control names for all controls in the specified window.</td>
   </tr>
   <tr>
-    <td><a href="WinGetControlsHWND.htm">WinGetControlsHWND</a></td>
-    <td>Retrieves the control handles for all controls in a window.</td>
+    <td><a href="WinGetControlsHwnd.htm">WinGetControlsHwnd</a></td>
+    <td>Retrieves an array of control unique ID numbers (HWND/handle) for all controls in the specified window.</td>
   </tr>
   <tr>
     <td><a href="WinGetCount.htm">WinGetCount</a></td>
@@ -1276,7 +1238,7 @@
   </tr>
   <tr>
     <td><a href="WinGetExStyle.htm">WinGetExStyle</a></td>
-    <td>Retrieves an 8-digit hexadecimal number representing extended style (respectively) of a window.</td>
+    <td>Retrieves an integer representing the extended style of the specified window.</td>
   </tr>
   <tr>
     <td><a href="WinGetID.htm">WinGetID</a></td>
@@ -1427,43 +1389,43 @@
       is not active.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipAddBuffer.htm">ZipAddBuffer</a></td>
+    <td><a href="ZipAddBuffer.htm">ZipAddBuffer</a></td>
     <td>Add a file to zip archive from memory.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipAddFile.htm">ZipAddFile</a></td>
+    <td><a href="ZipAddFile.htm">ZipAddFile</a></td>
     <td>Add a file to zip archive from disk.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipAddFolder.htm">ZipAddFolder</a></td>
+    <td><a href="ZipAddFolder.htm">ZipAddFolder</a></td>
     <td>Add an empty folder to zip archive.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipCloseBuffer.htm">ZipCloseBuffer</a></td>
+    <td><a href="ZipCloseBuffer.htm">ZipCloseBuffer</a></td>
     <td>Close zip archive created with ZipCreateBuffer.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipCloseFile.htm">ZipCloseFile</a></td>
+    <td><a href="ZipCloseFile.htm">ZipCloseFile</a></td>
     <td>Close zip archive created with ZipCreateFile.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipCreateBuffer.htm">ZipCreateBuffer</a></td>
+    <td><a href="ZipCreateBuffer.htm">ZipCreateBuffer</a></td>
     <td>Create a zip archive in memory.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipCreateFile.htm">ZipCreateFile</a></td>
+    <td><a href="ZipCreateFile.htm">ZipCreateFile</a></td>
     <td>Create a zip archive on disk.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipInfo.htm">ZipInfo</a></td>
+    <td><a href="ZipInfo.htm">ZipInfo</a></td>
     <td>Get information about all items in zip archive.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipOptions.htm">ZipOptions</a></td>
+    <td><a href="ZipOptions.htm">ZipOptions</a></td>
     <td>Change options for a zip archive created with ZipCreateFile or ZipCreateBuffer.</td>
   </tr>
   <tr>
-    <td class="larger"><a href="ZipRawMemory.htm">ZipRawMemory</a></td>
+    <td><a href="ZipRawMemory.htm">ZipRawMemory</a></td>
     <td>Create a raw zip archive in memory, UnZipRawMemory must be used to unzip such an archive.</td>
   </tr>
   <tr>

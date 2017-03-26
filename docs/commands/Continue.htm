@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Continue</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -47,7 +44,7 @@ Loop 3
     {
         if (x*A_Index = 4)
             <strong>continue outer</strong>  <em>; Equivalent to <strong>continue 2</strong> or <strong>goto continue_outer</strong>.</em>
-        MsgBox %x%,%A_Index%
+        MsgBox("%x%,%A_Index%")
     }
     continue_outer: <em>; For goto.</em>
 }

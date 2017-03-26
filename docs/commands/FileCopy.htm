@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>FileCopy</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -40,7 +37,7 @@
 <h3>ErrorLevel</h3>
 <p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to the number of files that could not be copied due to an error, or 0 otherwise.</p>
-<p>In either case, if the source file is a single file (no wildcards) and it does not exist, ErrorLevel is set to 0. To detect this condition, use <a href="../Functions.htm#FileExist">FileExist()</a> on the source file prior to copying it.</p>
+<p>In either case, if the source file is a single file (no wildcards) and it does not exist, ErrorLevel is set to 0. To detect this condition, use <a href="FileExist.htm">FileExist</a> on the source file prior to copying it.</p>
 <p>Unlike <a href="FileMove.htm">FileMove</a>, copying a file onto itself is always counted as an error, even if the overwrite mode is in effect.</p>
 <p>If files were found, <a href="../Variables.htm#LastError">A_LastError</a> is set to 0 (zero) or the result of the operating system's GetLastError() function immediately after the last failure. Otherwise A_LastError contains an error code that might indicate why no files were found.</p>
 
@@ -48,7 +45,7 @@
 <p>FileCopy copies files only. To instead copy the contents of a folder (all its files and subfolders), see the examples section below. To copy a single folder (including its subfolders), use <a href="DirCopy.htm">DirCopy</a>.</p>
 <p>The operation will continue even if error(s) are encountered.</p>
 <h3>Related</h3>
-<p><a href="FileMove.htm">FileMove</a>, <a href="DirCopy.htm">DirCopy</a>, <a href="DirMove.htm">DirMove</a>, <a href="FileDelete.htm">FileDelete</a>, <a href="FileReplace.htm">FileReplace</a></p>
+<p><a href="FileMove.htm">FileMove</a>, <a href="DirCopy.htm">DirCopy</a>, <a href="DirMove.htm">DirMove</a>, <a href="FileDelete.htm">FileDelete</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">FileCopy, C:\My Documents\List1.txt, D:\Main Backup\  <em>; Make a copy but keep the orig. file name.</em>
 FileCopy, C:\My File.txt, C:\My File New.txt  <em>; Copy a file into the same folder by providing a new name.</em>

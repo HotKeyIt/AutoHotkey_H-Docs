@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>FileMove</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -38,7 +35,7 @@
 
 <h3>ErrorLevel</h3>
 <p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
-<p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to the number of files that could not be moved due to an error, or 0 otherwise. However, if the source file is a single file (no wildcards) and it does not exist, ErrorLevel is set to 0. To detect this condition, use <a href="../Functions.htm#FileExist">FileExist()</a> on the source file prior to moving it.</p>
+<p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to the number of files that could not be moved due to an error, or 0 otherwise. However, if the source file is a single file (no wildcards) and it does not exist, ErrorLevel is set to 0. To detect this condition, use <a href="FileExist.htm">FileExist</a> on the source file prior to moving it.</p>
 <p>Unlike <a href="FileCopy.htm">FileCopy</a>, moving a file onto itself is always considered successful, even if the overwrite mode is not in effect.</p>
 <p>If files were found, <a href="../Variables.htm#LastError">A_LastError</a> is set to 0 (zero) or the result of the operating system's GetLastError() function immediately after the last failure. Otherwise A_LastError contains an error code that might indicate why no files were found.</p>
 
@@ -58,17 +55,17 @@ ErrorCount := MoveFilesAndFolders(&quot;C:\My Folder\*.*&quot;, &quot;D:\Folder 
 if ErrorCount &lt;&gt; 0
     MsgBox %ErrorCount% files/folders could not be moved.
 
-MoveFilesAndFolders(SourcePattern, DestinationFolder, DoOverwrite = false)
+MoveFilesAndFolders(SourcePattern, DestinationFolder, DoOverwrite := false)
 <em>; Moves all files and folders matching SourcePattern into the folder named DestinationFolder and
 ; returns the number of files/folders that could not be moved.</em>
 {
     if DoOverwrite = 1
-        DoOverwrite = 2  <em>; See <a href="DirMove.htm">DirMove</a> for description of mode 2 vs. 1.</em>
+        DoOverwrite := 2  <em>; See <a href="DirMove.htm">DirMove</a> for description of mode 2 vs. 1.</em>
     <em>; First move all the files (but not the folders):</em>
     FileMove, %SourcePattern%, %DestinationFolder%, %DoOverwrite%
     ErrorCount := ErrorLevel
     <em>; Now move all the folders:</em>
-    Loop, %SourcePattern%, 2  <em>; 2 means &quot;retrieve folders only&quot;.</em>
+    Loop, Files, %SourcePattern%, D  <em>; D means &quot;retrieve folders only&quot;.</em>
     {
         DirMove, %A_LoopFilePath%, %DestinationFolder%\%A_LoopFileName%, %DoOverwrite%
         ErrorCount += ErrorLevel

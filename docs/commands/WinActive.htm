@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>WinActive</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -15,13 +12,13 @@
 <h1>WinActive</h1>
 
 <p>Checks if the specified window exists and is currently active (foremost). If it is, <em>WinActive()</em> returns its Unique ID (HWND).</p>
-<pre class="Syntax">WinActive, <strong>OutPutVar</strong> [, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> WinActive, <strong>id</strong>, A
+<pre class="Syntax">WinActive, <strong>OutputVar</strong> [, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> WinActive, <strong>id</strong>, A
 <em>Function Example:</em> <strong>id</strong> := WinActive("A")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
   <dd><p>The name of the variable in which to store the retrieved <a href="WinGet.htm">UniqueID</a>.</p></dd>
 
   <dt>WinTitle</dt>
@@ -44,7 +41,7 @@
 
 <h3>Remarks</h3>
 <p>If all parameters are omitted, the <a href="../misc/WinTitle.htm#LastFoundWindow">Last Found Window</a> will be used.</p>
-<p>If the active window is a qualified match, the <a href="../LastFoundWindow.htm">Last Found Window</a> will be updated to be the active window.</p>
+<p>If the active window is a qualified match, the <a href="../misc/WinTitle.htm#LastFoundWindow">Last Found Window</a> will be updated to be the active window.</p>
 <p>An easy way to retrieve the unique ID of the active window is with <code>ActiveHwnd := WinExist(&quot;A&quot;)</code>.</p>
 <p>Window titles and text are case sensitive. Hidden windows are not detected unless <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> has been turned on.</p>
 <h3>Related</h3>

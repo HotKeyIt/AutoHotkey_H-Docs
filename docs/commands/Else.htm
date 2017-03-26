@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Else</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -54,7 +51,7 @@ if x = 1
     Gosub, a1
 <strong>else</strong> if x = 2 <em>; &quot;else if&quot; style</em>
     Gosub, a2
-<strong>else</strong> IfEqual, x, 3 <em>; alternate style</em>
+<strong>else</strong> if x = 3
 {
     Gosub, a3
     Sleep, 1
@@ -62,7 +59,7 @@ if x = 1
 <strong>else</strong> Gosub, a4  <em>; i.e. Any single command can be on the same line with an ELSE.</em>
  
 <em>; Also OK:</em>
-IfEqual, y, 1, Gosub, b1
+if y = 1, Gosub, b1
 <strong>else</strong> {
     Sleep, 1
     Gosub, b2

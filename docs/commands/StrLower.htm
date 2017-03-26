@@ -1,12 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>StrLower / StrUpper</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -20,7 +17,7 @@
 <h3>Parameters</h3>
 <dl>
 
-  <dt><b>OutPutVar</b></dt>
+  <dt>OutputVar</dt>
   <dd><p>The name of the variable in which to store the newly converted string.</p></dd>
 
   <dt>String</dt>
@@ -32,18 +29,25 @@
 </dl>
 
 <h3>Remarks</h3>
-<p>To detect whether a character or string is entirely uppercase or lowercase, use <a href="RegExMatch.htm">RegExMatch</a>. For example:</p>
+<p>To detect whether a character or string is entirely uppercase or lowercase, use <a href="is.htm"><em>value</em> is "upper"/"lower"</a> or <a href="RegExMatch.htm">RegExMatch</a>. For example:</p>
 <pre>var := "abc"
-if RegExMatch(var, "^[a-z]$")
-    MsgBox var is entirely composed of lowercase characters.
+if var is "upper"
+    MsgBox var is empty or contains only uppercase characters.
+if var is "lower"
+    MsgBox var is empty or contains only lowercase characters.
+if RegExMatch(var, "^[a-z]+$")
+    MsgBox var is not empty and contains only lowercase ASCII characters.
 if !RegExMatch(var, "[A-Z]")
-    MsgBox var does not contain any uppercase characters.</pre>
+    MsgBox var does not contain any uppercase ASCII characters.</pre>
+
+<p><a href="Format.htm">Format</a> can also be used for case conversions, as shown below:</p>
+<pre>MsgBox % Format("{:U}, {:L} and {:T}", "upper", "LOWER", "title")</pre>
 
 <h3>Related</h3>
-<p><a href="../Functions.htm#InStr">InStr</a>, <a href="../Functions.htm#SubStr">SubStr</a>, <a href="../Functions.htm#StrLen">StrLen</a>, <a href="StrReplace.htm">StrReplace</a></p>
+<p><a href="InStr.htm">InStr</a>, <a href="../Functions.htm#SubStr">SubStr</a>, <a href="../Functions.htm#StrLen">StrLen</a>, <a href="StrReplace.htm">StrReplace</a></p>
 <h3>Example</h3>
-<pre class="NoIndent">StrUpper, String1, String1  <em>; i.e. output can be the same as input.</em>
-StrLower, String2, String2</pre>
+<pre class="NoIndent">StrUpper, String1, %String1%  <em>; i.e. output can be the same as input.</em>
+StrLower, String2, ABC  <em>; String2 now contains "abc"</em></pre>
 
 </body>
 </html>

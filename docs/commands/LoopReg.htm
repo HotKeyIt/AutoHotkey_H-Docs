@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Loop (registry)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -16,31 +13,31 @@
 
 <p>Retrieves the contents of the specified registry subkey, one item at a time.</p>
 
-<pre class="Syntax">Loop, Reg, RootKey\Key [, Mode]<pre><em>Command  Example:</em> LoopReg, HKEY_LOCAL_MACHINE, KVR</pre></pre>
+<pre class="Syntax">Loop, Reg, KeyName [, Mode]
+LoopReg(KeyName [, Mode])</pre>
 <h3>Parameters</h3>
 <dl>
 
   <dt>Reg</dt>
-  <dd><p>This parameter must be the word REG, and cannot be an expression or variable reference.</p></dd>
+  <dd><p>The literal word <code>Reg</code> (case-insensitive). This cannot be a variable or expression.</p></dd>
 
-  <dt>RootKey</dt>
-  <dd><p>Must be either HKEY_LOCAL_MACHINE (or HKLM), HKEY_USERS (or HKU), HKEY_CURRENT_USER (or HKCU), HKEY_CLASSES_ROOT (or HKCR), or HKEY_CURRENT_CONFIG (or HKCC).</p>
-      <p>To access a remote registry, prepend the computer name and a slash, as in this example:<br> \\workstation01\HKEY_LOCAL_MACHINE</p></dd>
-
-  <dt>Key</dt>
-  <dd><p>The name of the key (e.g. Software\SomeApplication). If blank or omitted, the contents of <em>RootKey</em> will be retrieved.</p></dd>
-
+  <dt>KeyName</dt>
+  <dd><p>The full name of the registry key.</p>
+  <p>This must start with HKEY_LOCAL_MACHINE, HKEY_USERS, HKEY_CURRENT_USER, HKEY_CLASSES_ROOT, or HKEY_CURRENT_CONFIG (or the abbreviations for each of these, such as HKLM). To access a <a href="#remote">remote registry</a>, prepend the computer name and a slash, as in this example: \\workstation01\HKEY_LOCAL_MACHINE</p></dd>
+  
   <dt>Mode</dt>
-  <dd><p>One or more of the following characters (case-insensitive), optionally separated by spaces or tabs:</p>
-      <p><strong>V</strong>: Retrieve values which match the pattern. This is the default if &quot;D&quot; is not specified.<br>
-      <strong>K</strong>: Retrieve subkeys which match the pattern.<br>
-      <strong>R</strong>: Recurse into subkeys so that all values and subkeys contained therein are retrieved.</p></dd>
+  <dd><p>Zero or more of the following letters:</p>
+    <p><code>K</code>: Include keys.<br>
+    <code>V</code>: Include values. Values are also included if both K and V are omitted.<br>
+    <code>R</code>: Recurse into subkeys. If R is omitted, keys and values within subkeys of <em>Key</em> are not included.</p>
+  </dd>
+
 
 </dl>
 
 <h3>Remarks</h3>
 <p>A registry-loop is useful when you want to operate on a collection registry values or subkeys, one at a time. The values and subkeys are retrieved in reverse order (bottom to top) so that <a href="RegDelete.htm">RegDelete</a> can be used inside the loop without disrupting the loop.</p>
-<p>The following variables exist within any registry-loop. If an inner registry-loop is enclosed by an outer registry-loop, the innermost loop's registry item will take precedence:</p>
+<p id="vars">The following variables exist within any registry-loop. If an inner registry-loop is enclosed by an outer registry-loop, the innermost loop's registry item will take precedence:</p>
 <table class="info">
   <tr>
     <td>A_LoopRegName</td>
@@ -66,8 +63,8 @@
 <p>When used inside a registry-loop, the following commands can be used in a simplified way to indicate that the currently retrieved item should be operated upon:</p>
 <table class="info">
   <tr>
-    <td width="21%"><a href="RegRead.htm">RegRead</a>, OutputVar</td>
-    <td width="79%">Reads the current item. If the current item is a key, ErrorLevel will be set to 1 and <em>OutputVar</em> will be made empty.</td>
+    <td style="width:21%"><a href="RegRead.htm">RegRead</a>, OutputVar</td>
+    <td>Reads the current item. If the current item is a key, ErrorLevel will be set to 1 and <em>OutputVar</em> will be made empty.</td>
   </tr>
   <tr>
     <td><a href="RegWrite.htm">RegWrite</a> [, Value]</td>
@@ -78,7 +75,7 @@
     <td>Deletes the current item. If the current item is a key, it will be deleted along with any subkeys and values it contains.</td>
   </tr>
 </table>
-<p>When accessing a remote registry (via the <em>RootKey</em> parameter described above), the following notes apply:</p>
+<p id="remote">When accessing a remote registry (via the <em>KeyName</em> parameter described above), the following notes apply:</p>
 <ul>
   <li>The target machine must be running the Remote Registry service.</li>
   <li>Access to a remote registry may fail if the target computer is not in the same domain as yours or the local or remote username  lacks sufficient permissions (however, see below for possible workarounds).</li>
@@ -107,8 +104,8 @@ Loop, Reg, HKCU\Software\Microsoft\Windows, R KV  <em>; Recursively retrieve key
         if ErrorLevel
             value := &quot;*error*&quot;
     }
-    MsgBox, 4, , %a_LoopRegName% = %value% (%a_LoopRegType%)`n`nContinue?
-    if A_MsgBoxResult = "No", break
+    Result := MsgBox("%a_LoopRegName% = %value% (%a_LoopRegType%)`n`nContinue?",, 4)
+    if Result = "No", break
 }</pre>
 <p>&nbsp;</p>
 <pre class="NoIndent"><em>; Example: A working example to recursively search the entire
@@ -150,8 +147,8 @@ CheckThisRegItem:
         return
     if InStr(RegValue, Target)
     {
-        MsgBox, 4, , The following match was found:`n%A_LoopRegKey%\%A_LoopRegSubKey%\%A_LoopRegName%`nValue = %RegValue%`n`nContinue?
-        if A_MsgBoxResult = &quot;No&quot;
+        Result := MsgBox("The following match was found:`n%A_LoopRegKey%\%A_LoopRegSubKey%\%A_LoopRegName%`nValue = %RegValue%`n`nContinue?",, 4)
+        if Result = &quot;No&quot;
             ContinueRegSearch := false  <em>; Tell our caller to stop searching.</em>
     }
     return

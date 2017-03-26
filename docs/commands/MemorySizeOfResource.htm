@@ -1,11 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML> 
 <html>
 <head>
   <title>MemorySizeOfResource</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
+
+
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 
@@ -19,13 +19,13 @@ Similar to <a
 href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648048.aspx">SizeOfResource</a>.</p>
 <br>
 
-<pre class="Syntax">MemorySizeOfResource, <strong>OutPutVar</strong>, Handle, hResource 
+<pre class="Syntax">MemorySizeOfResource, <strong>OutputVar</strong>, Handle, hResource 
 <pre><em>Command  Example:</em> MemorySizeOfResource, <strong>sz</strong>, %ahkdllModule%, %hResource%
 <em>Function Example:</em> <strong>sz</strong> := MemorySizeOfResource(ahkdllModule,hResource)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
     <dd><p>The name of the variable in which to store the function pointer.</p>
     </dd>
   <dt>Handle</dt>

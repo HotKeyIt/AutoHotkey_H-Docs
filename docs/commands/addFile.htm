@@ -1,12 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML> 
 <html>
 <head>
   <title>addFile</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
+
+
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 
@@ -17,18 +17,18 @@
 </p>
 <br>
 
-<pre class="Syntax">addFile, <strong>OutPutVar</strong>, FilePath [, WaitExecute]
+<pre class="Syntax">addFile, <strong>OutputVar</strong>, FilePath [, WaitExecute]
 <pre><em>Command  Example:</em> addFile, <strong>LinePtr</strong>, %A_ScriptDir%\MyScript.ahk, 1
                   DllCall, <strong>LinePTR</strong>, AutoHotkey.<strong>dll</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
-                  DllCall, <strong>OutPutVar</strong>, AutoHotkey.<strong>exe</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
+                  DllCall, <strong>OutputVar</strong>, AutoHotkey.<strong>exe</strong>\addFile, Str, %A_ScriptDir%\MyScript.ahk, Int, 1, UPTR
 
 <em>Function Example:</em> <strong>LinePtr</strong> := addFile(A_ScriptDir "\MyScript.ahk", 1)
-                  <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")
-                  <strong>OutPutVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")</pre></pre>
+                  <strong>OutputVar</strong> := DllCall("AutoHotkey.<strong>dll</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")
+                  <strong>OutputVar</strong> := DllCall("AutoHotkey.<strong>exe</strong>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
     <dd><p>The name of the variable in which to store the line pointer to new code, if code could not be added 0 will be stored.</p>
     </dd>
   <dt>NewCode</dt>
@@ -48,7 +48,7 @@
 <p><a href="ahkFindFunc.htm">ahkFindFunc</a>, <a
 href="addScript.htm">addScript</a>, <a
 href="ahkFindLabel.htm">ahkFindLabel</a>, <a
-href="ahkassign.htm">ahkassign</a>, <a href="DllCall.htm">DllCall()</a> </p>
+href="ahkassign.htm">ahkassign</a>, <a href="DllCall.htm">DllCall</a> </p>
 
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"

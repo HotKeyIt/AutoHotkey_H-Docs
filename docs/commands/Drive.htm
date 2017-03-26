@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Drive</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -45,7 +42,7 @@ return</pre>
 <h3>Remarks</h3>
 <p>The following is an alternate ejection method that also works on types of media/devices other than CD/DVD:</p>
 <pre><em>; Update the first line below to match the desired drive letter (you can ignore all the other lines below).</em>
-Driveletter = I:  <em>; Set this to the drive letter you wish to eject.</em>
+Driveletter := "I:"  <em>; Set this to the drive letter you wish to eject.</em>
 
 hVolume := DllCall(&quot;CreateFile&quot;
     , Str, &quot;\\.\&quot; . Driveletter

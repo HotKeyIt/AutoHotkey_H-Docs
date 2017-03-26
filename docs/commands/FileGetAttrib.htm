@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>FileGetAttrib</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -18,11 +15,12 @@
 <pre class="Syntax">FileGetAttrib, <strong>OutputVar</strong> [, Filename]<pre><em>Command  Example:</em> FileGetAddrib, <strong>Attr</strong>, %A_AhkPath%
 <em>Function Example:</em> <strong>Attr</strong> := FileGetAttrib(A_AhkPath)</pre></pre>
 
-<a href="FileGetAttrib.htm#attrib">AttributeString</a> := <a href="../Functions.htm#FileExist">FileExist</a>(FilePattern)</pre>
+<pre class="Syntax">FileGetAttrib, OutputVar [, Filename]
+AttributeString := <a href="FileExist.htm">FileExist</a>(FilePattern)</pre>
 <h3>Parameters</h3>
 <dl>
 
-  <dt><b>OutPutVar</b></dt>
+  <dt>OutputVar</dt>
   <dd><p>The name of the variable in which to store the retrieved text.</p></dd>
 
   <dt>Filename</dt>
@@ -35,7 +33,7 @@
 <p><a href="../Variables.htm#LastError">A_LastError</a> is set to the result of the operating system's GetLastError() function.</p>
 
 <h3>Remarks</h3>
-<p><a name="attrib"></a>The string returned will contain a subset of the letters in the string &quot;RASHNDOCT&quot;:<br>
+<p id="attrib">The string returned will contain a subset of the letters in the string &quot;RASHNDOCT&quot;:<br>
   <br>
 R = READONLY<br>
 A = ARCHIVE<br>
@@ -49,14 +47,14 @@ T = TEMPORARY</p>
 <p><br>
   To check if a particular attribute is present in the retrieved string, following this example:</p>
 <pre>FileGetAttrib, Attributes, C:\My File.txt
-IfInString, Attributes, H
+if InStr(Attributes, "H")
     MsgBox The file is hidden.</pre>
 <p>On a related note, to retrieve a file's 8.3 short name, follow this example:</p>
-<pre><a href="LoopFile.htm">Loop</a>, C:\My Documents\Address List.txt
-    ShortPathName = %A_LoopFileShortPath%  <em>; Will yield something similar to C:\MYDOCU~1\ADDRES~1.txt</em></pre>
+<pre><a href="LoopFile.htm">Loop, Files</a>, C:\My Documents\Address List.txt
+    ShortPathName := A_LoopFileShortPath  <em>; Will yield something similar to C:\MYDOCU~1\ADDRES~1.txt</em></pre>
 <p>A similar method can be used to get the long name of an 8.3 short name.</p>
 <h3>Related</h3>
-<p><a href="../Functions.htm#FileExist">FileExist()</a>, <a href="FileSetAttrib.htm">FileSetAttrib</a>, <a href="FileGetTime.htm">FileGetTime</a>, <a href="FileSetTime.htm">FileSetTime</a>, <a href="FileGetSize.htm">FileGetSize</a>, <a href="FileGetVersion.htm">FileGetVersion</a>, <a href="LoopFile.htm">File-loop</a></p>
+<p><a href="FileExist.htm">FileExist</a>, <a href="FileSetAttrib.htm">FileSetAttrib</a>, <a href="FileGetTime.htm">FileGetTime</a>, <a href="FileSetTime.htm">FileSetTime</a>, <a href="FileGetSize.htm">FileGetSize</a>, <a href="FileGetVersion.htm">FileGetVersion</a>, <a href="LoopFile.htm">File-loop</a></p>
 <h3>Example</h3>
 <pre class="NoIndent">FileGetAttrib, OutputVar, C:\New Folder</pre>
 

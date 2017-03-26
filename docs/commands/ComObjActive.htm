@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>ComObjActive</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -15,20 +12,15 @@
 <h1>ComObjActive()</h1>
 
 <p>Retrieves a running object that has been registered with OLE.</p>
-<pre class="Syntax"><p>ComObjActive, <strong>OutPutVar</strong>, CLSID</p><pre><em>Command  Example:</em> ComObjActive, <strong>aOut</strong>, Outlook.Application
+<pre class="Syntax"><p>ComObjActive, <strong>OutputVar</strong>, CLSID</p><pre><em>Command  Example:</em> ComObjActive, <strong>aOut</strong>, Outlook.Application
 <em>Function Example:</em> <strong>aOut</strong> := ComObjActive("Outlook.Application")</pre></pre>
 
-<p>The usages shown below are deprecated and may be altered or unavailable in a future release.</p>
-<p id="missing">Creates an object which may be used in place of an optional parameter's default value when calling a method of a COM object. Obsolete since v1.1.12: simply write two consecutive commas instead, as in <code>Obj.Method(1,,3)</code></p>
-<p>To write more future-proof code, use the following instead:</p>
-<pre>ComObject := ComObject(9, DispPtr, 1), ObjAddRef(DispPtr)
-DispPtr := <a href="ComObjValue.htm">ComObjValue</a>(ComObject), ObjAddRef(DispPtr)</pre>
 <h3>Parameters</h3>
 <dl>
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
     <dd><p>The name of the variable in which to store a COM wrapper object which can be used with <a href="../Objects.htm#Usage_Objects">object syntax</a>.</p>
       <p>Default behaviour. <a href="http://msdn.microsoft.com/en-us/library/ms691379.aspx">AddRef</a> is called automatically for IUnknown and IDispatch pointers, so the caller should use <a href="ObjAddRef.htm">ObjRelease</a> to release their copy of the pointer if appropriate.</p>
-      <p>As the default behaviour may be changing in a future release, it is recommended to always set <em>Flags</em> to <code>1</code> when wrapping an interface pointer, and call <a href="ObjAddRef.htm">ObjAddRef()</a> if needed.</p>
+      <p>As the default behaviour may be changing in a future release, it is recommended to always set <em>Flags</em> to <code>1</code> when wrapping an interface pointer, and call <a href="ObjAddRef.htm">ObjAddRef</a> if needed.</p>
     </td>
 </p></dd>
   <dt>CLSID</dt>

@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Var := expression</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -24,7 +21,10 @@
   <dd><p>The name of the <a href="../Variables.htm">variable</a> in which to store the result of <em>expression</em>.</p></dd>
 
   <dt>Expression</dt>
-  <dd><p>See <a href="../Variables.htm#Expressions">expressions</a> and the examples below for details.</p></dd>
+  <dd>
+    <p>See <a href="../Variables.htm#Expressions">expressions</a> and the examples below for details.</p>
+    <p>Note that this parameter is <strong>not optional</strong>. To empty the variable, specify an empty string. For example: <code>x := ""</code></p>
+  </dd>
 
 </dl>
 
@@ -36,7 +36,7 @@ x := &quot;literal string&quot;  <em>; Same performance as x = literal string.</
 <p>The words <code>true</code> and <code>false</code> are built-in constants containing 1 and 0. They can be used to make a script more readable as in these examples:</p>
 <pre>CaseSensitive := false
 ContinueSearch := true</pre>
-<p>It is possible to create an <a href="../misc/Arrays.htm">array</a> with this command and any others that accept an <em>OutputVar</em>. This is done by making <em>OuputVar</em> contain a reference to another variable, e.g. <code>Array%i% := Var/100 + 5</code>. See <a href="../misc/Arrays.htm">Arrays</a> for more information.</p>
+<p>It is possible to create a <a href="../misc/Arrays.htm#pseudo">pseudo-array</a> with this command and any others that accept an <em>OutputVar</em>. This is done by making <em>OutputVar</em> contain a reference to another variable, e.g. <code>Array%i% := Var/100 + 5</code>. See <a href="../misc/Arrays.htm">Arrays</a> for more information.</p>
 <h3>Related</h3>
 <p><a href="../Variables.htm#Expressions">Expressions</a>, <a href="IfExpression.htm">IF (expression)</a>, <a href="../Functions.htm">Functions</a>, <a href="EnvSet.htm">EnvSet</a>, <a href="../misc/Arrays.htm">Arrays</a></p>
 <h3>Examples</h3>

@@ -1,12 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
+
 <html>
 <head>
 <title>WinGetTransparent</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
+
+
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -14,18 +14,18 @@
 <h1>WinGetTransparent</h1>
 
 <p>Retrieves the degree of transparency of a window (see <a href="WinSetTransparent.htm">WinSetTransparent</a> for how to set transparency).</p>
-<pre class="Syntax">WinGetTransparent, <strong>OutPutVar</strong> [, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> <strong>Trans</strong> := WinGetTransparent("ahk_class Notepad")
+<pre class="Syntax">WinGetTransparent, <strong>OutputVar</strong> [, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> <strong>Trans</strong> := WinGetTransparent("ahk_class Notepad")
 <em>Function Example:</em> <strong>Trans</strong> := WinGetTransparent("ahk_class Notepad")</pre></pre>
 
 <pre><em>Function Example:</em></pre></pre>
 <h3>Parameters</h3>
 <dl>
 
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
   <dd><p>The name of the variable in which to store a number between 0 and 255, where 0 indicates an invisible window and 255 indicates an opaque window. <em>OutputVar</em> is made blank if: 1) the OS is older than Windows XP; 2) there are no matching windows; 3) the window has no transparency level; or 4) other conditions (caused by OS behavior) such as the window having been minimized, restored, and/or resized since it was made transparent.</p></dd>
 
   <dt>WinTitle (optional)</dt>
-  <dd><p>The title or partial title of the target window (the matching behavior is determined by <a href="SetTitleMatchMode.htm">SetTitleMatchMode</a>). If this and the other 3 window parameters are blank or omitted, the <a href="../LastFoundWindow.htm">Last Found Window</a> will be used. To use a window class, specify ahk_class ExactClassName (shown by Window Spy). To use a <a href="Process.htm">process identifier (PID)</a>, specify ahk_pid %VarContainingPID%. To use a <a href="GroupAdd.htm">window group</a>, specify ahk_group GroupName. To use a window's <a href="WinGet.htm">unique ID number</a>,
+  <dd><p>The title or partial title of the target window (the matching behavior is determined by <a href="SetTitleMatchMode.htm">SetTitleMatchMode</a>). If this and the other 3 window parameters are blank or omitted, the <a href="../LastFoundWindow.htm">Last Found Window</a> will be used. To use a window class, specify ahk_class ExactClassName (shown by Window Spy). To use a <a href="ProcessExist.htm">process identifier (PID)</a>, specify ahk_pid %VarContainingPID%. To use a <a href="GroupAdd.htm">window group</a>, specify ahk_group GroupName. To use a window's <a href="WinGet.htm">unique ID number</a>,
 specify ahk_id %VarContainingID%. The search can be narrowed
 by specifying <a href="../LastFoundWindow.htm#multi">multiple criteria</a>. For example: <em>My File.txt ahk_class Notepad</em>. The use correct child window when multiple window with same criteria exist specify ahk_parent %VarContainingID%. For example: <em>ahk_class #32770 ahk_parent %MyWinID%</em></p></dd>
   

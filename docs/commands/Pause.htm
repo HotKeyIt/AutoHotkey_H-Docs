@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Pause</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -16,15 +13,16 @@
 
 <p>Pauses the script's <a href="../misc/Threads.htm">current thread</a>.</p>
 
-<pre class="Syntax">Pause [, On|Off|Toggle, OperateOnUnderlyingThread?]<pre><em>Command  Example:</em> #p::Pause <em>; Pressing Win+P once will pause the script. Pressing it again will unpause.</em></pre></pre>
+<pre class="Syntax">#p::Pause <em>; Pressing Win+P once will pause the script. Pressing it again will unpause.</em>
+Pause [, On|Off|Toggle, OperateOnUnderlyingThread?]</pre>
 <h3>Parameters</h3>
 <dl>
 
   <dt>On|Off|Toggle</dt>
   <dd><p>If blank or omitted, it defaults to Toggle. Otherwise, specify one of the following words:</p>
-      <p><strong>Toggle</strong>: Pauses the <a href="../misc/Threads.htm">current thread</a> unless the thread beneath it is paused, in which case the underlying thread is unpaused.</p>
-      <p><strong>On</strong>: Pauses the current thread.</p>
-      <p><strong>Off</strong>: If the thread beneath the current thread is paused, it will be in an unpaused state when resumed. Otherwise, the command has no effect.<br>
+      <p><strong>Toggle</strong> or -1: Pauses the <a href="../misc/Threads.htm">current thread</a> unless the thread beneath it is paused, in which case the underlying thread is unpaused.</p>
+      <p><strong>On</strong> or 1 (<a href="../Variables.htm#True">true</a>): Pauses the current thread.</p>
+      <p><strong>Off</strong> or 0 (<a href="../Variables.htm#False">false</a>): If the thread beneath the current thread is paused, it will be in an unpaused state when resumed. Otherwise, the command has no effect.<br>
       </p></dd>
 
   <dt>OperateOnUnderlyingThread?</dt>
@@ -54,7 +52,7 @@
 <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a>, On
 WM_COMMAND := 0x111
 ID_FILE_PAUSE := 65403
-<a href="PostMessage.htm">PostMessage</a>, WM_COMMAND, ID_FILE_PAUSE,,, C:\YourScript.ahk ahk_class AutoHotkey</pre>
+<a href="PostMessage.htm">PostMessage</a>, %WM_COMMAND%, %ID_FILE_PAUSE%,,, C:\YourScript.ahk ahk_class AutoHotkey</pre>
 
 </body>
 </html>

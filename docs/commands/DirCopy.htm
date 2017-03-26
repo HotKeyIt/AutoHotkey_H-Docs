@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>DirCopy</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -48,20 +45,20 @@
 
 <em>; Example #2: A working script that prompts you to copy a folder.</em>
 DirSelect, SourceFolder, , 3, Select the folder to copy
-if SourceFolder =
+if SourceFolder = ""
     return
 <em>; Otherwise, continue.</em>
 DirSelect, TargetFolder, , 3, Select the folder IN WHICH to create the duplicate folder.
-if TargetFolder =
+if TargetFolder = ""
     return
 <em>; Otherwise, continue.</em>
-MsgBox, 4, , A copy of the folder &quot;%SourceFolder%&quot; will be put into &quot;%TargetFolder%&quot;.  Continue?
-if A_MsgBoxResult = "No"
+Result := MsgBox("A copy of the folder &quot;%SourceFolder%&quot; will be put into &quot;%TargetFolder%&quot;.  Continue?",, 4)
+if Result = "No"
     return
-SplitPath, SourceFolder, SourceFolderName  <em>; Extract only the folder name from its full path.</em>
+SplitPath, %SourceFolder%, SourceFolderName  <em>; Extract only the folder name from its full path.</em>
 DirCopy, %SourceFolder%, %TargetFolder%\%SourceFolderName%
 if ErrorLevel
-    MsgBox The folder could not be copied, perhaps because a folder of that name already exists in &quot;%TargetFolder%&quot;.
+    MsgBox("The folder could not be copied, perhaps because a folder of that name already exists in &quot;%TargetFolder%&quot;.")
 return</pre>
 
 </body>

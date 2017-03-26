@@ -9,10 +9,10 @@ Display compile progress=No
 Full-text search=Yes
 Index file=Index.hhk
 Language=0x409 English (United States)
-Title=AutoHotkey v2 Help
+Title=AutoHotkey_H v2 Help
 
 [WINDOWS]
-Contents="AutoHotkey v2 Help","Table of Contents.hhc","Index.hhk","docs\AutoHotkey.htm","docs\AutoHotkey.htm",,,,,0x33520,,0x10200e,,,,,,3,,0
+Contents="AutoHotkey_H v2 Help","Table of Contents.hhc","Index.hhk","docs\AutoHotkey.htm","docs\AutoHotkey.htm",,,,,0x33520,,0x10200e,,,,,,3,,0
 
 
 [FILES]
@@ -23,7 +23,6 @@ docs\AHKL_Features.htm
 docs\AHKH_Features.htm
 docs\AutoHotkey.htm
 docs\AutoHotkeyDll.htm
-docs\ChangeLogHelp.htm
 docs\Compat.htm
 docs\FAQ.htm
 docs\Functions.htm
@@ -31,14 +30,13 @@ docs\HotkeyFeatures.htm
 docs\Hotkeys.htm
 docs\Hotstrings.htm
 docs\KeyList.htm
-docs\LastFoundWindow.htm
 docs\license.htm
 docs\Objects.htm
 docs\Scripts.htm
 docs\StructTypes.htm
 docs\Tutorial.htm
-docs\TutorialLaunch.htm
 docs\Variables.htm
+docs\Welcome.htm
 docs\commands\index.htm
 docs\commands\_ClipboardTimeout.htm
 docs\commands\_DllImport.htm
@@ -107,7 +105,6 @@ docs\commands\ComObjGet.htm
 docs\commands\ComObjQuery.htm
 docs\commands\ComObjType.htm
 docs\commands\ComObjValue.htm
-docs\commands\ComVar.htm
 docs\commands\Continue.htm
 docs\commands\Control.htm
 docs\commands\ControlClick.htm
@@ -225,6 +222,8 @@ docs\commands\MAKEWORD.htm
 docs\commands\MAKEWPARAM.htm
 docs\commands\MCodeH.htm
 docs\commands\Menu.htm
+docs\commands\MenuGetHandle.htm
+docs\commands\MenuGetName.htm
 docs\commands\MenuSelect.htm
 docs\commands\MonitorGet.htm
 docs\commands\MouseClick.htm
@@ -235,6 +234,8 @@ docs\commands\MsgBox.htm
 docs\commands\NumGet.htm
 docs\commands\NumPut.htm
 docs\commands\ObjAddRef.htm
+docs\commands\ObjBindMethod.htm
+docs\commands\OnClipboardChange.htm
 docs\commands\ObjByRef.htm
 docs\commands\ObjLoad.htm
 docs\commands\ObjDump.htm
@@ -391,6 +392,7 @@ docs\misc\CLSID-List.htm
 docs\misc\ErrorLevel.htm
 docs\misc\EscapeChar.htm
 docs\misc\FontsStandard.htm
+docs\misc\ImageHandles.htm
 docs\misc\Labels.htm
 docs\misc\Languages.htm
 docs\misc\Macros.htm
@@ -409,6 +411,7 @@ docs\misc\WinTitle.htm
 docs\objects\Enumerator.htm
 docs\objects\File.htm
 docs\objects\Func.htm
+docs\objects\Functor.htm
 docs\objects\Object.htm
 docs\scripts\ContextSensitiveHelp.htm
 docs\scripts\EasyWindowDrag.htm

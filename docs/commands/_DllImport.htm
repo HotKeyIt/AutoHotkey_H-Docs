@@ -1,13 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
+
 <html>
 <head>
 <title>#DllImport</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -26,7 +24,7 @@
   <dd><p>The DLL or EXE file name followed by a backslash and the name of the function. For example: <code>&quot;MyDLL\MyFunction&quot;</code> (the file extension &quot;.dll&quot; is the default when omitted). If an absolute path isn't specified, <em>DllFile</em> is assumed to be in the system's PATH or <a href="../Variables.htm#WorkingDir">A_WorkingDir</a>. Following built-in variables can be used too: A_ScriptDir, A_AhkPath, A_DllPath, A_AppData, A_AppDataCommon.</p>
       <p><em><a name="std"></a>DllFile</em> may be omitted when calling a function that resides in User32.dll, Kernel32.dll, ComCtl32.dll, or Gdi32.dll. For example, <code>&quot;User32\IsWindowVisible&quot;</code> produces the same result as <code>&quot;IsWindowVisible&quot;</code>.</p>
       <p>If no function can be found by the given name, a "W" (Unicode) suffix is automatically appended. For example, <code>"MessageBox"</code> is the same as <code>"MessageBoxW"</code>.</p>
-    <p>This parameter may also consist solely of an an integer, which is interpreted as the address of the function to call. Sources of such addresses include <a href="#COM">COM</a> and <a href="RegisterCallback.htm">RegisterCallback()</a>.
+    <p>This parameter may also consist solely of an an integer, which is interpreted as the address of the function to call. Sources of such addresses include <a href="#COM">COM</a> and <a href="RegisterCallback.htm">RegisterCallback</a>.
 		<br><strong>Note:</strong> 9MyFunction or 0MyDll.dll\Function are not supported because they will be assumed integers and will cause an exception to be trown.</p>
 	<p>This parameter may also be a hex string that represents the code.<br>Hex code for 64-bit can be appended after 32-bit code separated using colon (:) [32-bit hex]:[64-bit hex]. See also examples below.</p></dd>
 

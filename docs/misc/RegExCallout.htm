@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Regular Expression Callouts</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -49,10 +46,10 @@
 </ul>
 
 <p>For example:</p>
-<pre>Haystack = The quick brown fox jumps over the lazy dog.
+<pre>Haystack := "The quick brown fox jumps over the lazy dog."
 RegExMatch(Haystack, "i)(The) (\w+)\b(?CCallout)")
 Callout(m) {
-    MsgBox m=%m%`nm1=%m1%`nm2=%m2%
+    MsgBox m[0]=%m[0]%`nm[1]=%m[1]%`nm[2]=%m[2]%
     return 1
 }</pre>
 <p>In the above example, <em>Func</em> is called once for each substring which matches the part of the pattern preceding the callout. <span class="Syntax">\b</span> is used to exclude incomplete words in matches such as <em>The quic</em>, <em>The qui</em>, <em>The qu</em>, etc.</p>
@@ -73,7 +70,7 @@ pad := A_PtrSize=8 ? 4 : 0  <em>; Compensate for 64-bit data alignment.</em>
 callout_data      := NumGet(A_EventInfo, 28 + pad + A_PtrSize*2)
 pattern_position  := NumGet(A_EventInfo, 28 + pad + A_PtrSize*3, "Int")
 next_item_length  := NumGet(A_EventInfo, 32 + pad + A_PtrSize*3, "Int")
-if version >= 2
+if version &gt;= 2
     mark   := StrGet(NumGet(A_EventInfo, 36 + pad + A_PtrSize*3, "Int"), "UTF-8")
 </pre>
 <p>For more information, see <a href="http://www.pcre.org/pcre.txt">pcre.txt</a>, <a href="../commands/NumGet.htm">NumGet</a> and <a href="../Variables.htm#PtrSize">A_PtrSize</a>.</p>
@@ -82,7 +79,7 @@ if version >= 2
 
 <p>Including <span class="Syntax">C</span> in the options of the pattern enables the auto-callout mode. In this mode, callouts equivalent to <span class="Syntax">(?C255)</span> are inserted before each item in the pattern. For example, the following template may be used to debug regular expressions:</p>
 <pre><em>; Set the default callout function.</em>
-pcre_callout = DebugRegEx
+pcre_callout := "DebugRegEx"
 
 <em>; Call RegExMatch with auto-callout option C.</em>
 RegExMatch("xxxabc123xyz", "C)abc.*xyz")

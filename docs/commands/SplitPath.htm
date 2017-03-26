@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>SplitPath</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -47,18 +44,18 @@
 <p>Wildcards (* and ?) and other  characters illegal in filenames are  treated the same as legal characters, with the exception of colon, backslash, and period (dot), which are processed according to their nature in delimiting the drive letter, directory, and extension of the file.</p>
 <p><strong>Support for URLs</strong>: If <em>Path</em> contains a colon-double-slash, such as http://domain.com or ftp://domain.com, <em>OutDir</em> is set to the protocol prefix + domain name + directory (e.g. http://domain.com/images) and <em>OutDrive</em> is set to the protocol prefix + domain name (e.g. http://domain.com). All other variables are set according to their definitions above.</p>
 <h3>Related</h3>
-<p><a href="LoopFile.htm#LoopFileExt">A_LoopFileExt</a>, <a href="StrSplit.htm">StrSplit</a>, <a href="../Functions.htm#InStr">InStr</a>, <a href="../Functions.htm#SubStr">SubStr</a>, <a href="FileSelect.htm">FileSelect</a>, <a href="DirSelect.htm">DirSelect</a></p>
+<p><a href="LoopFile.htm#LoopFileExt">A_LoopFileExt</a>, <a href="StrSplit.htm">StrSplit</a>, <a href="InStr.htm">InStr</a>, <a href="../Functions.htm#SubStr">SubStr</a>, <a href="FileSelect.htm">FileSelect</a>, <a href="DirSelect.htm">DirSelect</a></p>
 <h3>Example</h3>
-<pre class="NoIndent">FullFileName = C:\My Documents\Address List.txt
+<pre class="NoIndent">FullFileName := "C:\My Documents\Address List.txt"
    
 <em>; To fetch only the bare filename from the above:</em>
-SplitPath, FullFileName, name
+SplitPath, %FullFileName%, name
 
 <em>; To fetch only its directory:</em>
-SplitPath, FullFileName,, dir
+SplitPath, %FullFileName%,, dir
 
 <em>; To fetch all info:</em>
-SplitPath, FullFileName, name, dir, ext, name_no_ext, drive
+SplitPath, %FullFileName%, name, dir, ext, name_no_ext, drive
    
 <em>; The above will set the variables as follows:
 ; name = Address List.txt

@@ -1,13 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Overriding Hotkeys</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 
@@ -29,7 +26,7 @@ return</pre>
 Rwin::return</pre>
 <p>To disable or change an application's non-global hotkey (that is, a shortcut key that only works when that application is the active window), consider the following example which disables Control+P (Print) only for Notepad, leaving the key in effect for all other types of windows:</p>
 <pre>$^p::
-IfWinActive ahk_class Notepad
+if WinActive("ahk_class Notepad")
     return  <em>; i.e. do nothing, which causes Control-P to do nothing in Notepad.</em>
 Send ^p
 return</pre>

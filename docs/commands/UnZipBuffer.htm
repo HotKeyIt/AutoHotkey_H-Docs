@@ -1,13 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
+
 <html>
 <head>
 <title>UnZipBuffer</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
+
+
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -16,8 +16,8 @@
 
 <p>Extract one items from a zip archive.</p>
 
-<pre class="Syntax">UnZipBuffer, <strong>OutPutVar</strong>, ZipFileName, FileToExtract [, VariableName, Password]
-UnZipBuffer, <strong>OutPutVar</strong>, Address, Size, FileToExtract [, VariableName, Password]
+<pre class="Syntax">UnZipBuffer, <strong>OutputVar</strong>, ZipFileName, FileToExtract [, VariableName, Password]
+UnZipBuffer, <strong>OutputVar</strong>, Address, Size, FileToExtract [, VariableName, Password]
 <pre><em>Command  Example:</em> UnZipBuffer, <strong>Success</strong>, MyZip.zip, scripts\MyScript.ahk,% var
                   UnZipBuffer, <strong>Success</strong>,% &zip, sz, scripts\MyScript.ahk,% var
 <em>Function Example:</em> <strong>Success</strong> := UnZipBuffer("MyZip.zip", "scripts\MyScript.ahk", var)
@@ -26,7 +26,7 @@ UnZipBuffer, <strong>OutPutVar</strong>, Address, Size, FileToExtract [, Variabl
 <h3>Parameters</h3>
 <dl>
 
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
   <dd><p>The name of the variable in which to store the size of extracted file.</p></dd>
   
   <dt>ZipFileName or Address</dt>

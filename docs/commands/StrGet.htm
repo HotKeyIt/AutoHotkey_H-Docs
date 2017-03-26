@@ -1,12 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
+
 <html>
 <head>
   <title>StrGet</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
+
+
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 
@@ -15,12 +15,12 @@
 
 <p>Copies a string to or from a memory address, optionally converting to or
 from a given code page.</p>
-<pre class="Syntax">StrGet, <strong>OutPutVar</strong>, Address [, Length, Encoding = <i>None</i>]<pre><em>Command  Example:</em> StrGet, <strong>string</strong>, %stringAddr%, 10, UTF-8
+<pre class="Syntax">StrGet, <strong>OutputVar</strong>, Address [, Length, Encoding = <i>None</i>]<pre><em>Command  Example:</em> StrGet, <strong>string</strong>, %stringAddr%, 10, UTF-8
 <em>Function Example:</em> <strong>string</strong> := StrGet(stringAddr, 10, "UTF-8")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
     <dd><p>The name of the variable in which to store the read string.</p>
     </dd>
   <dt>Address</dt>
@@ -66,7 +66,7 @@ href="http://www.autohotkey.com/forum/">AutoHotkey Community Forum</a>.</p>
 
 <p><a href="../Compat.htm">Script Compatibility</a>, <a href="StrPut.htm">StrPut</a>, <a href="StrPutVar.htm">StrPutVar</a>, <a href="FileEncoding.htm">FileEncoding</a>
 , <a
-href="VarSetCapacity.htm">VarSetCapacity()</a></p>
+href="VarSetCapacity.htm">VarSetCapacity</a></p>
 
 <h3>Examples</h3>
 

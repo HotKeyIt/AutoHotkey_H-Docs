@@ -1,10 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML> 
 <html><head><title>ObjShare</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
+
+
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -12,20 +12,20 @@
 <p>Included function to use an object in a multi-threaded environment. This is especially useful to call methods of a class from a different thread.
 Such objects can be used from multiple threads without causing a crash using COM functions <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318557.aspx">LresultFromObject</a> and <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd373605.aspx">ObjectFromLresult</a>.</p>
 <br>
-<pre class="Syntax">ObjShare, <strong>OutPutVar</strong> [, ObjectOrLresult] 
+<pre class="Syntax">ObjShare, <strong>OutputVar</strong> [, ObjectOrLresult] 
 <pre><em>Command  Example:</em> ObjShare, <strong>Lresult</strong>,%MyObject%
 <em>Function Example:</em> <strong>Lresult</strong> := ObjShare(MyObject)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
     <dd><p>The name of the variable in which to store the Lresult created for object or IDispatch proxy COM object.</p>
     </dd>
 		
 <dt>ObjectOrLresult</dt>
 <dd>
 <p>Existing Object or Lresult to use.<br>
-When this parameter is an object OutPutVar will be Lresult value. Otherwise when Lresult is passed OutPutVar will be an IDispatch proxy COM object</p>
+When this parameter is an object OutputVar will be Lresult value. Otherwise when Lresult is passed OutputVar will be an IDispatch proxy COM object</p>
 </dd>
 </dl>
 <dl>

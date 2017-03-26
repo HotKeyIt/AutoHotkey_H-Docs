@@ -1,13 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
+
 <html>
 <head>
 <title>ZipCloseBuffer</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
+
+
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
@@ -16,14 +16,14 @@
 
 <p>Closes zip archive created with <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>, saves it to variable and returns its size.</p>
 
-<pre class="Syntax">ZipCloseBuffer, <strong>OutPutVar</strong>, ZipHandle [, VariableName]
+<pre class="Syntax">ZipCloseBuffer, <strong>OutputVar</strong>, ZipHandle [, VariableName]
 <pre><em>Command  Example:</em> ZipCloseBuffer, <strong>Size</strong>,% hZip,% var
 <em>Function Example:</em> <strong>Size</strong> := ZipCloseBuffer(hZip, var)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
   <dd><p>The name of the variable in which to store the size in bytes of zip file in memory.</p></dd>
   
   <dt>ZipHandle</dt>

@@ -1,30 +1,30 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>NumGet</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
-<script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tree.jquery.js" type="text/javascript"></script>
 <script src="../static/content.js" type="text/javascript"></script>
 </head>
 <body>
 
 <h1>NumGet</h1>
 <p>Returns the binary number stored at the specified address+offset.</p>
-<pre class="Syntax">NumGet, <strong>OutPutVar</strong>, VarOrAddress [, Offset = 0][, Type = UPtr]<pre><em>Command  Example:</em> NumGet, <strong>val</strong>,% MyVar, UInt
+<pre class="Syntax">NumGet, <strong>OutputVar</strong>, VarOrAddress [, Offset = 0][, Type = UPtr]<pre><em>Command  Example:</em> NumGet, <strong>val</strong>,% MyVar, UInt
 <em>Function Example:</em> <strong>val</strong> := NumGet(MyVar,"UInt") </pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
-  <dt><b>OutPutVar</b></dt>
+  <dt><b>OutputVar</b></dt>
   <dd><p>The name of the variable in which to store the number at the specified address+offset.</p>
 	<p>If the target address is invalid, an empty string is returned. However, some invalid addresses cannot be detected as such and may cause unpredictable behaviour.</p></dd>
 
   <dt>VarOrAddress</dt>
-  <dd><p>A memory address or variable. If <em>VarOrAddress</em> is a variable such as <code>MyVar</code> and the variable does not contain a pure number or an object, it is equivalent to passing <code>&amp;MyVar</code>. However, omitting the &quot;&amp;&quot; performs better and ensures that the target address + offset is <a href="VarSetCapacity.htm">valid</a>.</p></dd>
+  <dd>
+		<p>A memory address or variable. If <em>VarOrAddress</em> is a variable such as <code>MyVar</code> and it contains a string (not a pure number), the address of the variable's string buffer is used. This is usually equivalent to passing <code>&amp;MyVar</code>, but omitting the &quot;&amp;&quot; performs better and ensures that the target address + offset is <a href="VarSetCapacity.htm">valid</a>. If the variable contains a pure number, that number is assumed to be an address.</p>
+	</dd>
 
   <dt>Offset</dt>
   <dd><p>An offset - in bytes - which is added to <em>VarOrAddress</em> to determine the target address.</p></dd>
@@ -40,7 +40,7 @@
 </dl>
 
 <h3>General Remarks</h3>
-<p>If only three parameters are present, the third parameter can be either <em>Offset</em> or <em>Type</em>. For example, <code>NumPut(x, var, "int")</code> is valid.</p>
+<p>If only two parameters are present, the second parameter can be either <em>Offset</em> or <em>Type</em>. For example, <code>NumGet(var, "int")</code> is valid.</p>
 
 <h3>Related</h3>
 <p><a href="NumPut.htm">NumPut</a>, <a href="DllCall.htm">DllCall</a>, <a href="VarSetCapacity.htm">VarSetCapacity</a></p>

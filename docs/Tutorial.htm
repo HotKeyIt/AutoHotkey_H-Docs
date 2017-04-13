@@ -61,7 +61,7 @@
 						</ol>
 					</li>
 					<li><a href="#s4" class="toci">Running programs &amp; website</a></li>
-					<li><a href="#s5" class="toci">Commands vs. Functions</a>
+					<li><a href="#s5" class="toci">Commands vs. Functions()</a>
 						<ol>
 							<li><a href="#s51" class="toci">Code blocks</a></li>
 						</ol>
@@ -98,7 +98,7 @@
 						Before we begin our journey, let me give some advice. 
 						Throughout this tutorial you will see a lot of text and a 
 						lot of code. For optimal learning power, it is advised 
-						that you read the text and <strong>try</strong> the code. Then study
+						that you read the text and <b>try</b> the code. Then study
 						the code.
 						<br />You can copy and paste most examples on this page.
 						<br />If you get confused, try reading the section again.
@@ -183,7 +183,7 @@ Return
 							the Hotkey. <code>^</code> means 
 							<span class="key">CTRL</span>, 
 							<code>j</code> is the letter 
-							<span class="key">j</span>. Anything to the <strong>left</strong> of
+							<span class="key">j</span>. Anything to the <b>left</b> of
 							<code>::</code> are the keys you need to press.<br />
 
 							- The second line. <code>Send, My First Script</code> is how you SEND keystrokes. <code>SEND</code> is the command, anything after the comma (,) will be typed.<br />
@@ -214,23 +214,23 @@ Return
 					<div>
 						How to find the Help File on your computer:<br />
 						<p>Downloads for v2.0-a076 and later include an offline help file.  Currently there is no installer for v2, so the help file is wherever you put it.</p>
-						<p>Look for <strong>AutoHotkey.chm</strong> or a file that says AutoHotkey and has a yellow question mark on it.</p>
+						<p>Look for <b>AutoHotkey.chm</b> or a file that says AutoHotkey and has a yellow question mark on it.</p>
 						<!-- There are a few ways to do this, I'll assume you have it installed to the default locations.<br /><br />
 						Method 1:
 						<ol>
 							<li>Find the Start menu or Start Orb on your screen, usually in the lower left.</li>
-							<li>Click <strong>Programs</strong> or <strong>All Programs</strong>.</li>
-							<li>Find <strong>AutoHotkey</strong> in the list.</li>
-							<li>You should then see <strong>AutoHotkey Help File</strong>. Click it.</li>
+							<li>Click <b>Programs</b> or <b>All Programs</b>.</li>
+							<li>Find <b>AutoHotkey</b> in the list.</li>
+							<li>You should then see <b>AutoHotkey Help File</b>. Click it.</li>
 							<li>Done!</li>
 						</ol>
 						Method 2:
 						<ol>
 							<li>Go to your desktop.</li>
-							<li>Find <strong>My Computer</strong> or <strong>Computer</strong>. Open it.</li>
-							<li>Go into your harddrive that contains <strong>AutoHotkey</strong>. Probably <strong>C:\</strong> drive.</li>
-							<li>Search within all <strong>Program Files</strong> folders for <strong>AutoHotkey</strong>.</li>
-							<li>Look for <strong>AutoHotkey.chm</strong> or a file that says AutoHotkey and has a yellow question mark on it.</li>
+							<li>Find <b>My Computer</b> or <b>Computer</b>. Open it.</li>
+							<li>Go into your harddrive that contains <b>AutoHotkey</b>. Probably <b>C:\</b> drive.</li>
+							<li>Search within all <b>Program Files</b> folders for <b>AutoHotkey</b>.</li>
+							<li>Look for <b>AutoHotkey.chm</b> or a file that says AutoHotkey and has a yellow question mark on it.</li>
 							<li>Done!</li>
 						</ol>
 					</div> -->
@@ -267,7 +267,7 @@ Return
 					<p>The difference between the two examples is that the hotkey will be triggered when you press <span class="key">CTRL &amp; J</span> while the hotstring will convert your typed "ftw" into "Free the whales".</p>
 					<p>
 						<i>"So, how exactly does a person such as myself create a hotkey?"</i>
-						Good question. A hotkey is created by using a single pair of ::'s. The key or key combo needs to go on the <strong>left</strong> of the <code>::</code>. And the content needs to go below, followed by a <code>Return</code>.<br />
+						Good question. A hotkey is created by using a single pair of ::'s. The key or key combo needs to go on the <b>left</b> of the <code>::</code>. And the content needs to go below, followed by a <code>Return</code>.<br />
 					</p>
 					<p class="note">Note: There are exceptions, but those tend to cause confusion a lot of the time. So it won't be covered in the tutorial, at least, not right now.</p>
 <pre>
@@ -275,7 +275,7 @@ esc::
    MsgBox Escape!!!!
 Return
 </pre>
-					<p>A hotstring has a pair of ::'s on each side of the text you want to trigger the text replacement. While the text to replace your typed text goes on the <strong>right</strong> of the second pair of ::'s.</p>
+					<p>A hotstring has a pair of ::'s on each side of the text you want to trigger the text replacement. While the text to replace your typed text goes on the <b>right</b> of the second pair of ::'s.</p>
 					<p>Hotstring, as mentioned above, can also launch scripted actions. That's fancy talk for <i>"do pretty much anything"</i>. Same with hotkeys.</p>
 <pre>
 ::btw::
@@ -328,11 +328,11 @@ Return
 						</p>
 					</div>
 					<p>
-						Additionally, here is a list of all/most hotkey names that can be used on the <strong>left</strong> side of a hotkeys :: symbol:<br /><a href="KeyList.htm">KeyList.htm</a>
+						Additionally, here is a list of all/most hotkey names that can be used on the <b>left</b> side of a hotkeys :: symbol:<br /><a href="KeyList.htm">KeyList.htm</a>
 					</p>
 					<p>
 						You can define a custom combination of two (and only two) 
-						keys (except joystick buttons) by using <strong>&amp;</strong> between
+						keys (except joystick buttons) by using <b>&amp;</b> between
 						them. In the below example, you would hold down 
 						<span class="key">Numpad0</span> then press the second 
 						key to trigger the hotkey:
@@ -480,7 +480,7 @@ Return                                     <em>; This ends the hotkey. The code 
 					</div>
 					<p><i><strong>The next couple of paragraphs are talking about the <a href="commands/Send.htm">table on send page</a>.</strong><br /></i></p>
 					<p class="note">
-						Note:<br />This table <strong>does not</strong> apply to <a href="Hotkeys.htm">hotkeys</a>. Meaning, you do not wrap <span class="key">CTRL</span> or <span class="key">ENTER</span> (or any other key) inside {}'s when making a hotkey.
+						Note:<br />This table <b>does not</b> apply to <a href="Hotkeys.htm">hotkeys</a>. Meaning, you do not wrap <span class="key">CTRL</span> or <span class="key">ENTER</span> (or any other key) inside {}'s when making a hotkey.
 					</p><br />
 
 					<div>
@@ -501,7 +501,7 @@ Return
 					<hr />
 					<div>
 						<p>The gigantic table above shows pretty much every special key built-in to AHK. Such as: <code>{enter}</code> and <code>{space}</code>.<br />
-						A common issue lots of people have is they assume that the curly brackets are put in the documentation pages just for fun. But in fact <strong>they are needed</strong>. It's how AHK knows that <code>{!}</code> means "exclamation point" and not "press the <span class="key">Alt</span> key". So please remember to check the table on the <a href="commands/Send.htm">send</a> page and make sure you have your brackets in the right places.</p>
+						A common issue lots of people have is they assume that the curly brackets are put in the documentation pages just for fun. But in fact <b>they are needed</b>. It's how AHK knows that <code>{!}</code> means "exclamation point" and not "press the <span class="key">Alt</span> key". So please remember to check the table on the <a href="commands/Send.htm">send</a> page and make sure you have your brackets in the right places.</p>
 <pre>
 <em>; Notice the ! is in {}'s? That's because if it wasn't, AHK would
 ; press the ALT key.</em>
@@ -515,9 +515,9 @@ send, Multiple enter lines have enter been sent. <em>; WRONG</em>
 send, Multiple{enter}lines have{enter}been sent. <em>; CORRECT</em>
 </pre>
 						<div>
-							Another common issue is that people think that <strong>everything</strong> needs
+							Another common issue is that people think that <b>everything</b> needs
 							to be wrapped in brackets with the send command. That is FALSE. If 
-							it's not in the chart, it does not need brackets. You do <strong>not</strong>
+							it's not in the chart, it does not need brackets. You do <b>not</b>
 							need to wrap common letters, numbers or even some symbols (such as . 
 							(period)) in {}'s.<br /> 
 							Also, with the Send commands you are able to send more than 1 letter,
@@ -580,7 +580,7 @@ Apples are a fruit.
 					</p>
 					<h3 id="s31">a. Games </h3>
 					<p>
-						<strong><span style="color:red;">This is important!</span></strong><br />
+						<b><span style="color:red;">This is important!</span></b><br />
 						A lot of games, especially modern ones, have cheat prevention software. 
 						Things like GameGuard, Hackshield, PunkBuster and several others. 
 						If a game has a cheat prevention system and your hotkeys,
@@ -588,7 +588,7 @@ Apples are a fruit.
 						Not only is bypassing these systems in violation of the games policies
 						and will get you banned, they are complex to work around. 
 						There are methods that can increase the chance of working in some games, but there is no 
-						magical <i>"make it work in my game now!!!"</i> button. so try <strong>ALL</strong> 
+						magical <i>"make it work in my game now!!!"</i> button. so try <b>ALL</b> 
 						of these before giving up.<br />
 					</p>
 
@@ -715,10 +715,10 @@ Run, Notepad.exe
 						</ol>
 
 						Functions usually return a value differently than a command does. Commands need an <i>OutputVar</i> parameter, functions do not. The most common way to assign a variable to the value of a function is like so:<br />
-						<code><span style="color:#ff4400"><strong>MyVariable</strong></span>:=Function(Parameters)</code>
+						<code><span style="color:#ff4400"><b>MyVariable</b></span>:=Function(Parameters)</code>
 
 <pre>
-<span style="color:#ff4400"><strong>MyVariable</strong></span>:=SubStr("I'm scripting, awesome!", 16)
+<span style="color:#ff4400"><b>MyVariable</b></span>:=SubStr("I'm scripting, awesome!", 16)
 </pre>
 					<p class="note">This isn't the only way, but it's the most common. You are assigning <code>MyVariable</code> to the value of the function (in this case, <code>SubStr(...)</code>) that is to the right of the :=.<br />
 					<a href="Functions.htm">More about Functions</a></p>
@@ -741,7 +741,7 @@ SendInput("This is awesome{!}{!}{!}")
 					</div>
 					<h3 id="s51">a. Code blocks</h3>
 					<p>
-						<a href="commands/Block.htm">Code blocks</a> are little curly brackets (<strong>{</strong> and <strong>}</strong>) that are there to group a section of code together so that AutoHotkey knows it's one big family and that it needs to stay together. They are most often used with <i>If</i> and <i>Loop</i>s. Without them, only the first line in the block is called.<br /><br />
+						<a href="commands/Block.htm">Code blocks</a> are little curly brackets (<b>{</b> and <b>}</b>) that are there to group a section of code together so that AutoHotkey knows it's one big family and that it needs to stay together. They are most often used with <i>If</i> and <i>Loop</i>s. Without them, only the first line in the block is called.<br /><br />
 					</p>
 					<div>
 						In the following code, both lines are run only if var equals 5.
@@ -753,7 +753,7 @@ if (var=5)
 }
 </pre><br />
 
-						In the following code, the msgbox is only shown if var equals 5. The code will always exit, even if var <strong>isn't</strong> 5.
+						In the following code, the msgbox is only shown if var equals 5. The code will always exit, even if var <b>isn't</b> 5.
 
 <pre>
 if (var=5)
@@ -800,11 +800,11 @@ MsgBox, We are now 'outside' the if. We did not need {}'s since there was only 1
 					<hr />
 
 					<p class="note">
-						Any equal sign (<strong>=</strong>) with a symbol in front of it is called an <strong>Assignment Operator</strong>, which are always an expression. So <code>:=</code> <code>+=</code> <code>-=</code> <code>.=</code> etc. always use expressions.
+						Any equal sign (<b>=</b>) with a symbol in front of it is called an <b>Assignment Operator</b>, which are always an expression. So <code>:=</code> <code>+=</code> <code>-=</code> <code>.=</code> etc. always use expressions.
 					</p>
 					<h3 id="s61">a. When to use percents</h3>
 					<p>
-						One of the most common issues with AutoHotkey involving variables is when to use the percent signs (<strong>%</strong>). Hopefully this will clear some confusion.
+						One of the most common issues with AutoHotkey involving variables is when to use the percent signs (<b>%</b>). Hopefully this will clear some confusion.
 					</p>
 					<div>
 						When to use %'s:
@@ -814,7 +814,7 @@ MsgBox, We are now 'outside' the if. We did not need {}'s since there was only 1
 							<li>When you want to use the content of a variable inside a quoted string (see the 2nd method in the previous section).</li>
 						</ol>
 
-						When <strong>not</strong> to use %'s:
+						When <b>not</b> to use %'s:
 						<ol>
 							<li>In parameters that are output variables, For example: <code>StrLen, <span style="color:red">OutputVar</span>, %InputVar%</code></li>
 							<li>On the left side of an assignment: <code><span style="color:red">Var</span> := "123abc"</code></li>
@@ -1045,9 +1045,9 @@ if Var1 < Var2            <em>; Check if a var is lesser than another var.</em>
 					</p>
 					<h3 id="s81">a. The mysterious []'s</h3>
 					<div>
-						Throughout the documentation, you will see these two symbols (<strong>[</strong> and <strong>]</strong>) surrounding code in the yellow syntax box at the top of almost all pages. Anything inside of these brackets are <strong><i>OPTIONAL</i></strong>. Meaning the stuff inside can be left out if you don't need them. When writing your code, it is very important to <strong>NOT</strong> type the []'s in your code.<br /><br />
+						Throughout the documentation, you will see these two symbols (<b>[</b> and <b>]</b>) surrounding code in the yellow syntax box at the top of almost all pages. Anything inside of these brackets are <b><i>OPTIONAL</i></b>. Meaning the stuff inside can be left out if you don't need them. When writing your code, it is very important to <b>NOT</b> type the []'s in your code.<br /><br />
 						On the <a href="commands/ControlGetText.htm">ControlGetText</a> page you will see this (without the colors):<br />
-						<code>ControlGetText, OutputVar <span style="color:red"><strong>[</strong></span><span style="color:navy">, Control, WinTitle, WinText, ExcludeTitle, ExcludeText</span><span style="color:red"><strong>]</strong></span></code><br /><br />
+						<code>ControlGetText, OutputVar <span style="color:red"><b>[</b></span><span style="color:navy">, Control, WinTitle, WinText, ExcludeTitle, ExcludeText</span><span style="color:red"><b>]</b></span></code><br /><br />
 						So you could simply do this if you wanted:<br />
 						<code>ControlGetText, OutputVar</code><br /><br />
 
@@ -1080,7 +1080,7 @@ MsgBox, %A_AHKVersion%
 					</p>
 					<p>
 						If you try something and it gives you an error, study that error. Then try to fix your code. Then try running it again. If you still get an error, modify your code some more. Keep trying and failing until your code fails no more. You will learn a lot this way by reading the documentation, reading errors and learning what works and what doesn't.
-						<span class="InlineCode">Try, fail, try, fail, try, try, try, fail, fail, <strong>succeed!</strong></span>
+						<span class="InlineCode">Try, fail, try, fail, try, try, try, fail, fail, <b>succeed!</b></span>
 					</p>
 					<p>
 						This is how a lot of "pros" have learned. But don't be afraid to ask for help, we don't bite (hard).
@@ -1091,7 +1091,7 @@ MsgBox, %A_AHKVersion%
 					<div>
 						This stuff (indentation) is very important! Your code will run perfectly fine without it, but it will be a major headache for you and other to read your code. Small code (25 lines or less) will probably be fine to read without indentation, but it'll soon get sloppy. It's best you learn to indent ASAP.<br />
 						Indentation has no set style, but it's best to keep everything consistent.<br />
-						"<strong>What is indentation?</strong>" you ask? It's simply spacing to break up your code so you can see what belongs to what. People usually use 3 or 4 spaces or 1 tab per "level".<br /><br />
+						"<b>What is indentation?</b>" you ask? It's simply spacing to break up your code so you can see what belongs to what. People usually use 3 or 4 spaces or 1 tab per "level".<br /><br />
 						No indents:
 
 <pre>

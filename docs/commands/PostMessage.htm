@@ -64,12 +64,12 @@ SendMessage, Msg [, wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, Ex
 <p>PostMessage places the message in the message queue associated with the target window. It does not wait for acknowledgement or reply. By contrast, SendMessage waits for the target window to process the message, up until the timeout period expires.</p>
 <p>The <em>wParam</em> and <em>lParam</em> parameters should be integers. If AutoHotkey or the target window is 32-bit, only the low 32 bits are used; that is, the value should be between -2147483648 and 4294967295 (0xFFFFFFFF). If AutoHotkey and the target window are both 64-bit, any integer value <a href="../Variables.htm#cap">supported by AutoHotkey</a> can be used. As with all integer values in AutoHotkey, a prefix of 0x indicates a hex value. For example, 0xFF is equivalent to 255.</p>
 <p>A string may be sent via <em>wParam</em> or <em>lParam</em> by specifying the address of a variable. The following example uses the <a href="../Variables.htm#amp">address operator (&amp;)</a> to do this:</p>
-<pre>SendMessage, 0xC, 0, <strong>&amp;MyVar</strong>, ClassNN, WinTitle  <em>; 0XC is WM_SETTEXT</em></pre>
+<pre>SendMessage, 0xC, 0, <b>&amp;MyVar</b>, ClassNN, WinTitle  <em>; 0XC is WM_SETTEXT</em></pre>
 <p>A string put into MyVar by the receiver of the message is properly recognized without the need for extra steps. However, this works only if the parameter's first character is an ampersand (&amp;); for example, <code>5+&amp;MyVar</code> would not work but <code>&amp;MyVar</code> or <code>&amp;MyVar+5</code> would work.</p>
 <p>A quoted/literal string may also be sent as in the following working example (the &amp; operator should not be used in this case):</p>
 <pre>Run Notepad
 WinWait Untitled - Notepad
-SendMessage, 0xC, 0, <strong>&quot;New Notepad Title&quot;</strong>  <em>; 0XC is WM_SETTEXT</em></pre>
+SendMessage, 0xC, 0, <b>&quot;New Notepad Title&quot;</b>  <em>; 0XC is WM_SETTEXT</em></pre>
 <p>To send a message to all windows in the system, including those that are hidden or disabled, specify <code>ahk_id 0xFFFF</code> for <em>WinTitle</em> (0xFFFF is HWND_BROADCAST). This technique should be used only for messages intended to be broadcast, such as the following example:</p>
 <pre>SendMessage, 0x1A,,,, ahk_id 0xFFFF  <em>; 0x1A is WM_SETTINGCHANGE</em></pre>
 <p>To have a script receive a message, use <a href="OnMessage.htm">OnMessage</a>.</p>

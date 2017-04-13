@@ -36,12 +36,12 @@
 
 <h3 id="Usage">Usage</h3>
 <p>To make effective use of ComObjConnect, you must first write functions in the script to handle any events of interest. Such functions, or "event-handlers," have the following structure:</p>
-<pre class="Syntax Short NoIndent"><i>Prefix</i><strong>EventName</strong>([<i>Params...</i>, ComObject])
+<pre class="Syntax Short NoIndent"><i>Prefix</i><b>EventName</b>([<i>Params...</i>, ComObject])
 {
     <i class="dull">... event-handling code ...</i>
     return <i>returnValue</i>
 }</pre>
-<p><i>Prefix</i> is a prefix of your choosing, while <strong>EventName</strong> is the name of whatever event the function should handle.</p>
+<p><i>Prefix</i> is a prefix of your choosing, while <b>EventName</b> is the name of whatever event the function should handle.</p>
 <p><i>Params</i> corresponds to whatever parameters the event has. If the event has no parameters, <i>Params</i> should be omitted entirely. <i>ComObject</i> is optional, and can only be used if the correct number of <i>Params</i> are defined; it contains a reference to the original wrapper object which was passed to ComObjConnect. &quot;ComObject&quot; should be replaced with a name more meaningful in the context of your script.</p>
 <p>Note that event handlers may have return values. To return a COM-specific type of value, use <a href="ComObject.htm">ComObject(type, value)</a>. For example, <code>return ComObject(0,0)</code> returns a variant of type VT_EMPTY, which is equivalent to returning <code>undefined</code> (or not returning) from a JavaScript function.</p>
 <p>Call <code>ComObjConnect(yourObject, "<i>Prefix</i>")</code> to enable event-handling.</p>
@@ -56,13 +56,13 @@
 ie := ComObjCreate("<a href="http://msdn.microsoft.com/en-us/library/aa752084.aspx">InternetExplorer.Application</a>")
 
 <em>; Connects events to corresponding script functions with the prefix "IE_".</em>
-<strong>ComObjConnect</strong>(ie, "IE_")
+<b>ComObjConnect</b>(ie, "IE_")
 
 ie.Visible := true  <em>; This is known to work incorrectly on IE7.</em>
 ie.Navigate("https://autohotkey.com/")
 #Persistent
 
-<strong>IE_<a href="http://msdn.microsoft.com/en-us/library/aa768329.aspx">DocumentComplete</a></strong>(ieEventParam, url, ieFinalParam) {
+<b>IE_<a href="http://msdn.microsoft.com/en-us/library/aa768329.aspx">DocumentComplete</a></b>(ieEventParam, url, ieFinalParam) {
     global ie
     if (ie != ieEventParam)
         s .= <em>"First parameter is a new wrapper object.`n"</em>

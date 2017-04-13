@@ -19,8 +19,8 @@ This special object can be used to access the stucture its fields using object
 syntax. </p>
 <br>
 
-<pre class="Syntax">Struct, <strong>OutputVar</strong>, Definition [,AddressToStructure, InitObject]<pre><em>Command  Example:</em> Struct, <strong>pt</strong>, int x;y,% obj:={x:10,y:20}
-<em>Function Example:</em> <strong>pt</strong> := Struct("int x;y",{x:10,y:20})</pre></pre>
+<pre class="Syntax">Struct, <b>OutputVar</b>, Definition [,AddressToStructure, InitObject]<pre><em>Command  Example:</em> Struct, <b>pt</b>, int x;y,% obj:={x:10,y:20}
+<em>Function Example:</em> <b>pt</b> := Struct("int x;y",{x:10,y:20})</pre></pre>
 
 <h3>Parameters<br>
 </h3>
@@ -36,16 +36,16 @@ syntax. </p>
       Either semicolon (;) or comma (,) can be used to separate fields, even
       mixed. <br>
       If no type for first field is given UInt will be used, otherwise
-      previous type will be used, e.g. in <strong>"a,Int x,y,Char c,d"</strong>, a will
+      previous type will be used, e.g. in <b>"a,Int x,y,Char c,d"</b>, a will
       be UInt, y Int and d Char.<br>
-      If only one type/key is given, e.g. <strong>"UInt"</strong>, it is assumed to be a
+      If only one type/key is given, e.g. <b>"UInt"</b>, it is assumed to be a
       structure definition that resolves to default type or a variable that
       describes the structure.<br>
-      <strong>Note!</strong> something like <strong>"len;"</strong> or <strong>"MyVar,"</strong> are interpreted as <strong>"UInt
-      length"</strong> and <strong>"UInt MyVar"</strong> unless len and MyVar are a variable defining the structure.<br>
-      So for <strong>Struct("MyVar")</strong>, MyVar must define a structure, e.g.
-      <strong>MyVar := "Int x, Int y"</strong>, if there is no MyVar variable or it is empty <strong>Struct("MyVar")</strong> will be same
-      as <strong>Struct("UInt MyVar")</strong>. </p>
+      <b>Note!</b> something like <b>"len;"</b> or <b>"MyVar,"</b> are interpreted as <b>"UInt
+      length"</b> and <b>"UInt MyVar"</b> unless len and MyVar are a variable defining the structure.<br>
+      So for <b>Struct("MyVar")</b>, MyVar must define a structure, e.g.
+      <b>MyVar := "Int x, Int y"</b>, if there is no MyVar variable or it is empty <b>Struct("MyVar")</b> will be same
+      as <b>Struct("UInt MyVar")</b>. </p>
       <pre>_POINT:="(
 Int x; // also comments in C style are supported
        // empty lines will be simply ignored.
@@ -155,11 +155,11 @@ MsgBox % pt.x "`n" pt.y</pre>
 <table style="width: 800px; height: 80px;" class="info">
   <tbody>
     <tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the size of field or structure.</td>
     </tr>
     <tr>
-      <td><strong>field</strong></td>
+      <td><b>field</b></td>
       <td>Name of existing field within the structure, if omitted the size of
         structure is returned.</td>
     </tr>
@@ -180,12 +180,12 @@ Msgbox % struct.Size(1) <em>; returns 8</em></pre>
 <h3>Offset</h3>
 
 <p>Returns offset for a field.</p>
-<pre class="Syntax"><strong>OutputVar</strong> := Struct.Offset(field)</pre>
+<pre class="Syntax"><b>OutputVar</b> := Struct.Offset(field)</pre>
 
 <table style="width: 800px; height: 40px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the offset.</td>
     </tr>
     <tr>
@@ -202,12 +202,12 @@ MsgBox % pt.Offset("y") <em>; returns 4</em></pre>
 <h3>CountOf</h3>
 
 <p>Returns size of array or 0 if structure or field is not an array.</p>
-<pre class="Syntax"><strong>OutputVar</strong> := Struct.CountOf([field])</pre>
+<pre class="Syntax"><b>OutputVar</b> := Struct.CountOf([field])</pre>
 
 <table style="width: 800px; height: 40px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the length of array.</td>
     </tr>
     <tr>
@@ -250,12 +250,12 @@ MsgBox % StrGet(s[],10,"CP0")</pre>
 <h3>GetAddress</h3>
 
 <p>Returns address of field or structure.</p>
-<pre class="Syntax"><strong>OutputVar</strong> := Struct.GetAddress([field])</pre>
+<pre class="Syntax"><b>OutputVar</b> := Struct.GetAddress([field])</pre>
 
 <table style="width: 800px; height: 40px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the address.</td>
     </tr>
     <tr>
@@ -263,7 +263,7 @@ MsgBox % StrGet(s[],10,"CP0")</pre>
       <td>Name of existing field within the structure. When omitted, returns
         address of structure itself. To get the address for structure you can
         also use[] or [""] for structure objects and [""] for its fields.
-        <strong>Note</strong> you cannot use [] for fields. </td>
+        <b>Note</b> you cannot use [] for fields. </td>
     </tr>
   </tbody>
 </table>
@@ -276,12 +276,12 @@ MsgBox % pt.GetAddress("x") " = " pt.x[""]</pre>
 <h3>Encoding</h3>
 
 <p>Returns encoding for field or structure.</p>
-<pre class="Syntax"><strong>OutputVar</strong> := Struct.Encoding([field])</pre>
+<pre class="Syntax"><b>OutputVar</b> := Struct.Encoding([field])</pre>
 
 <table style="width: 800px; height: 40px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the encoding.</td>
     </tr>
     <tr>
@@ -303,12 +303,12 @@ MsgBox % str1.Encoding("name") " = " str2.Encoding()</pre>
 <div class="methodShort">
 <h3>IsPointer</h3>
 <p>Returns true if the field or structure is a pointer.</p>
-<pre class="Syntax"><strong>OutputVar</strong> := Struct.IsPointer([field])</pre>
+<pre class="Syntax"><b>OutputVar</b> := Struct.IsPointer([field])</pre>
 
 <table style="width: 800px; height: 40px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store true if field or structure is a pointer or 0 / false otherwise.</td>
     </tr>
     <tr>
@@ -328,12 +328,12 @@ MsgBox % s.IsPointer()</pre>
 <h3>GetPointer</h3>
 
 <p>Returns pointer saved in structure or field.</p>
-<pre class="Syntax"><strong>OutputVar</strong> := Struct.GetPointer([field])</pre>
+<pre class="Syntax"><b>OutputVar</b> := Struct.GetPointer([field])</pre>
 
 <table style="width: 800px; height: 40px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the address.</td>
     </tr>
     <tr>
@@ -357,12 +357,12 @@ MsgBox % str.name["",""] "`n" StrGet(str.name["",""]))</pre>
 
 <p>Set new size for our structure or pointer, returns true if new memory was
 allocated.</p>
-<pre class="Syntax"><strong>OutputVar</strong> := Struct.SetCapacity([field,] newsize)</pre>
+<pre class="Syntax"><b>OutputVar</b> := Struct.SetCapacity([field,] newsize)</pre>
 
 <table style="width: 800px; height: 80px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the new size.</td>
     </tr>
     <tr>
@@ -401,12 +401,12 @@ MsgBox % str.1</pre>
 
 <p>Returns Capacity previously set using .SetCapacity() or via assigning a
 string.</p>
-<pre><strong>OutputVar</strong> := Struct.GetCapacity([field])</pre>
+<pre><b>OutputVar</b> := Struct.GetCapacity([field])</pre>
 
 <table style="width: 800px; height: 80px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the capacity in bytes.</td>
     </tr>
     <tr>
@@ -426,12 +426,12 @@ MsgBox % str.GetCapacity("name")</pre>
 <h3>Clone</h3>
 
 <p>Returns new structure object of same type.</p>
-<pre class="Syntax"><strong>OutputVar</strong> := Struct.Clone([AddressOfStructure,InitObject])</pre>
+<pre class="Syntax"><b>OutputVar</b> := Struct.Clone([AddressOfStructure,InitObject])</pre>
 
 <table style="width: 800px; height: 80px;" class="info">
   <tbody>
 	<tr>
-      <td width="15%"><strong>OutputVar</strong></td>
+      <td width="15%"><b>OutputVar</b></td>
       <td>The name of the Variable in which to store the new structure object.</td>
     </tr>
     <tr>
@@ -466,9 +466,9 @@ MsgBox pt1.x "-" pt1.y</pre>
       You can receive the address of structure or key using empty key (e.g. struct.item[""]).
       For structure objects also [] can be used (e.g. struct[] or struct[""]).</dd>
   <br>
-    <dd>When a key is not given a type, e.g. <strong>"LPTSTR key1,key2"</strong>, previous type is used. If the first key lacks a type, Uint is used,
-		so <strong>"key1,key2"</strong> is equivalent to <strong>"UInt key1,key2"</strong> or <strong>"UInt key1,UInt key2"</strong>.<br>
-		<br>Note: pointer needs to be specified for each element, so <strong>"*UInt key1,key2"</strong> is equivalent to <strong>"UInt *key1,UInt key2"</strong>. If both elements are pointers <strong>"UInt *key1,*key2"</strong> must be used.</dd>
+    <dd>When a key is not given a type, e.g. <b>"LPTSTR key1,key2"</b>, previous type is used. If the first key lacks a type, Uint is used,
+		so <b>"key1,key2"</b> is equivalent to <b>"UInt key1,key2"</b> or <b>"UInt key1,UInt key2"</b>.<br>
+		<br>Note: pointer needs to be specified for each element, so <b>"*UInt key1,key2"</b> is equivalent to <b>"UInt *key1,UInt key2"</b>. If both elements are pointers <b>"UInt *key1,*key2"</b> must be used.</dd>
   <br>
     <dd>To access a pointer in pointer you can specify empty key several times,
       e.g. object["",""] would get the pointer at address of object[].<br>

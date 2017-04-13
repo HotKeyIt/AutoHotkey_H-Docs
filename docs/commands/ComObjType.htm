@@ -11,20 +11,20 @@
 
 <h1>ComObjType</h1>
 <p>Retrieves type information from a COM object.</p>
-<pre class="Syntax">ComObjType, <strong>OutputVar</strong>, ComObject [, Value]<pre><em>Command  Example:</em> ComObjType, <strong>Name</strong>, %ComObject%, Name
-<em>Function Example:</em> <strong>IID</strong> := ComObjType(ComObject,"Name")</pre></pre>
+<pre class="Syntax">ComObjType, <b>OutputVar</b>, ComObject [, Value]<pre><em>Command  Example:</em> ComObjType, <b>Name</b>, %ComObject%, Name
+<em>Function Example:</em> <b>IID</b> := ComObjType(ComObject,"Name")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
   <dt><b>OutputVar</b></dt>
-    <dd><p>The name of the variable in which to store the result depending on Parameter, see <strong>Value</strong>.</p>
+    <dd><p>The name of the variable in which to store the result depending on Parameter, see <b>Value</b>.</p>
     </dd>
   <dt>ComObject</dt>
     <dd><p>A wrapper object containing a COM object or typed value.</p>
     </dd>
   <dt>Value (optional)</dt>
-    <dd><p>The result will differ depending on this parameter:<li><strong>VarType</strong> - Omitt the <strong>Value</strong> parameter to retrieve the type of value.</li><li><strong>Name</strong> - Pass "Name" in <strong>Value</strong> parameter to retrieve the interface type name.</li><li><strong>IID</strong> - Pass "IID" in <strong>Value</strong> parameter to retrieve a globally unique identifier (GUID) representing the interface type.</li>.</p>
+    <dd><p>The result will differ depending on this parameter:<li><b>VarType</b> - Omitt the <b>Value</b> parameter to retrieve the type of value.</li><li><b>Name</b> - Pass "Name" in <b>Value</b> parameter to retrieve the interface type name.</li><li><b>IID</b> - Pass "IID" in <b>Value</b> parameter to retrieve a globally unique identifier (GUID) representing the interface type.</li>.</p>
     </dd>
 </dl>
 

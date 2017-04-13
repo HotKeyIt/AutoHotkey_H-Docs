@@ -12,8 +12,8 @@
 <h1>SoundGet</h1>
 
 <p>Retrieves various settings from a sound device (master mute, master volume, etc.)</p>
-<pre class="Syntax">SoundGet, <strong>OutputVar</strong> [, ComponentType, ControlType, DeviceNumber]<pre><em>Command  Example:</em> SoundGet, <strong>setting</strong>
-<em>Function Example:</em> <strong>setting</strong> := SoundGet()</pre></pre>
+<pre class="Syntax">SoundGet, <b>OutputVar</b> [, ComponentType, ControlType, DeviceNumber]<pre><em>Command  Example:</em> SoundGet, <b>setting</b>
+<em>Function Example:</em> <b>setting</b> := SoundGet()</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -28,7 +28,7 @@
 
   <dt>ControlType</dt>
   <dd><p>If omitted or blank, it defaults to VOLUME. Otherwise, it can be one of the following words: VOLUME (or VOL), ONOFF, MUTE, MONO, LOUDNESS, STEREOENH, BASSBOOST, PAN, QSOUNDPAN, BASS, TREBLE, EQUALIZER, or the number of a valid control type (see <a href="SoundSet.htm#Ex">soundcard analysis script</a>). If the specified <em>ComponentType</em> lacks the specified <em>ControlType</em>, ErrorLevel will indicate the problem.</p>
-    <p><strong>Note:</strong> sound devices usually support only VOLUME (or VOL) and MUTE, although others may be available depending on Windows and the sound device.</p></dd>
+    <p><b>Note:</b> sound devices usually support only VOLUME (or VOL) and MUTE, although others may be available depending on Windows and the sound device.</p></dd>
 
   <dt>DeviceNumber</dt>
   <dd><p>A number between 1 and the total number of supported devices. If this parameter is omitted, it defaults to 1 (the first sound device), or on Windows Vista or above, the system's default device for playback. The <a href="SoundSet.htm#Ex">soundcard analysis script</a> may help determine which number to use.</p></dd>

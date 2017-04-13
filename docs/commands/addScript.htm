@@ -14,13 +14,13 @@
 script.
 </p>
 <br>
-<pre class="Syntax">addScript, <strong>OutputVar</strong>, NewCode [, WaitExecute]
-<pre><em>Command  Example:</em> addScript, <strong>LinePtr</strong>, MsgBox `% A_Now, 1
-                  DllCall, <strong>LinePtr</strong>, AutoHotkey.<strong>dll</strong>\addScript, Str, MsgBox `% A_Now, Int, 1, UPTR
-                  DllCall, <strong>LinePtr</strong>, AutoHotkey.<strong>exe</strong>\addScript, Str, MsgBox `% A_Now, Int, 1, UPTR
-<em>Function Example:</em> <strong>LinePtr</strong> := addScript("MsgBox `% A_Now", 1)
-                  <strong>LinePtr</strong> := DllCall("AutoHotkey.<strong>dll</strong>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")
-                  <strong>LinePtr</strong> := DllCall("AutoHotkey.<strong>exe</strong>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")</pre></pre>
+<pre class="Syntax">addScript, <b>OutputVar</b>, NewCode [, WaitExecute]
+<pre><em>Command  Example:</em> addScript, <b>LinePtr</b>, MsgBox `% A_Now, 1
+                  DllCall, <b>LinePtr</b>, AutoHotkey.<b>dll</b>\addScript, Str, MsgBox `% A_Now, Int, 1, UPTR
+                  DllCall, <b>LinePtr</b>, AutoHotkey.<b>exe</b>\addScript, Str, MsgBox `% A_Now, Int, 1, UPTR
+<em>Function Example:</em> <b>LinePtr</b> := addScript("MsgBox `% A_Now", 1)
+                  <b>LinePtr</b> := DllCall("AutoHotkey.<b>dll</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")
+                  <b>LinePtr</b> := DllCall("AutoHotkey.<b>exe</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")</pre></pre>
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>

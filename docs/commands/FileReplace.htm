@@ -16,9 +16,9 @@
 
 <p>Deletes the file and writes text to the file after creating it.</p>
 
-<pre class="Syntax">FileReplace, <strong>OutputVar</strong> , Text, Filename [, Encoding]
-<pre><em>Command  Example:</em> FileReplace, <strong>Success</strong>,text,%A_ScriptDir%\MyFile.txt
-<em>Function Example:</em> <strong>Success</strong> := FileReplace("text",A_ScriptDir "\MyFile.txt")</pre></pre>
+<pre class="Syntax">FileReplace, <b>OutputVar</b> , Text, Filename [, Encoding]
+<pre><em>Command  Example:</em> FileReplace, <b>Success</b>,text,%A_ScriptDir%\MyFile.txt
+<em>Function Example:</em> <b>Success</b> := FileReplace("text",A_ScriptDir "\MyFile.txt")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -32,7 +32,7 @@
 
   <dt>Filename</dt>
   <dd><p>The name of the file to be appended, which is assumed to be in <a href="../Variables.htm#WorkingDir">%A_WorkingDir%</a> if an absolute path isn't specified.</p>
-    <p><strong>Binary mode</strong>: To append in binary mode rather than text mode, prepend an asterisk to the filename. This causes each linefeed character (`n) to be written as as a single linefeed (LF) rather than the Windows standard of CR+LF. For example: <code>*C:\My Unix File.txt</code>.</p>
+    <p><b>Binary mode</b>: To append in binary mode rather than text mode, prepend an asterisk to the filename. This causes each linefeed character (`n) to be written as as a single linefeed (LF) rather than the Windows standard of CR+LF. For example: <code>*C:\My Unix File.txt</code>.</p>
     </dd>
   <dt>Encoding</dt>
   <dd><p>Overrides the default encoding set by <a href="FileEncoding.htm">FileEncoding</a>, where <em>Encoding</em> follows the same format.</p></dd>

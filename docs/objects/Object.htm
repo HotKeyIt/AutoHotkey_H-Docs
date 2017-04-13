@@ -159,7 +159,7 @@ Object.SetCapacity(Key, ByteSize)</pre>
   <tr><td style="width:15%">MaxItems</td><td>The maximum number of key-value pairs the object should be able to contain before it must be automatically expanded.  If less than the current number of key-value pairs, that number is used instead, and any unused space is freed.</td></tr>
   <tr><td>Key</td><td>Any valid key.</td></tr>
   <tr><td>ByteSize</td><td>The new size in bytes of the field's string buffer, excluding the null-terminator.  If the field does not exist, it is created.  If <i>ByteSize</i> is zero, the buffer is freed but the empty field is not removed.  If <i>ByteSize</i> is less than the current size, excess data is truncated; otherwise all existing data is preserved.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>The new capacity if successful, otherwise an empty string.</td></tr>
+  <tr><td><b>Returns</b></td><td>The new capacity if successful, otherwise an empty string.</td></tr>
 </table></div>
 
 <div class="methodShort" id="GetCapacity"><h2>GetCapacity</h2>
@@ -182,8 +182,8 @@ ByteSize := Object.GetCapacity(Key)</pre>
 <div class="methodShort" id="Clone"><h2>Clone</h2>
 <pre class="Syntax">Clone := Object.Clone([From, To])</pre>
 <table class="info">
-  <tr><td width="15%">From (optional)</td><td width="85%">The lowest key (integer or string) to include in cloned object. When this parameter is missing, all strings and integers lower than <strong>To</strong> will be included.</td></tr>
-  <tr><td>To (optional)</td><td>The highest key to include in cloned object.When this parameter is missing, all integers and strings higher than <strong>From</strong> will be included.</td></tr>
+  <tr><td width="15%">From (optional)</td><td width="85%">The lowest key (integer or string) to include in cloned object. When this parameter is missing, all strings and integers lower than <b>To</b> will be included.</td></tr>
+  <tr><td>To (optional)</td><td>The highest key to include in cloned object.When this parameter is missing, all integers and strings higher than <b>From</b> will be included.</td></tr>
 </table>
 <p>Note, the order of From integers To strings.</p>
 <pre>obj:={1:1,2:2,3:3,4:4,5:5,test:"test",ahk:"ahk",var:"var",(""):"empty",([]):"object"}

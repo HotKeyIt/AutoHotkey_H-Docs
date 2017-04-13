@@ -12,9 +12,9 @@
 <p>Build in function, similar to DllCall but works with DllCall
 structures and uses Object syntax. It is often faster than DllCall,
 easier to use and it saves a lot of typing and code.</p>
-<pre class="Syntax">DynaCall, <strong>DynaCallObject</strong>, [DllFile\]Function, ParameterDefinition, Default1, Default2, Default3, ...
-<pre><em>Command  Example:</em> DynaCall, <strong>TrueSleep</strong>, kernel32\Sleep, ui, 100
-<em>Function Example:</em> <strong>TrueSleep</strong> := DynaCall("kernel32\Sleep", "ui", 100)
+<pre class="Syntax">DynaCall, <b>DynaCallObject</b>, [DllFile\]Function, ParameterDefinition, Default1, Default2, Default3, ...
+<pre><em>Command  Example:</em> DynaCall, <b>TrueSleep</b>, kernel32\Sleep, ui, 100
+<em>Function Example:</em> <b>TrueSleep</b> := DynaCall("kernel32\Sleep", "ui", 100)
 <em>Calling the Func:</em> TrueSleep[1000], %TrueSleep%(1000)</pre></pre>
 
 <h3>Parameters</h3>
@@ -80,7 +80,7 @@ You can have any amount of space or tabs between parameters, those will
 be simply ignored.
 </p>
 <ul>
-<li><strong>Return type</strong> and = or == are optional and can be left out.</li>
+<li><b>Return type</b> and = or == are optional and can be left out.</li>
 </ul>
 <p><span style="font-weight: bold;">Changing
 order of parameters</span><br>
@@ -109,7 +109,7 @@ called</li>
 <dd>
 <p>The default value to use when the parameter is omitted in function call.<br>
 Note, this will be always the original order of parameters as specified in
-<strong>ParameterDefinition</strong>.</p>
+<b>ParameterDefinition</b>.</p>
 </dd>
 </dl>
 <dl>

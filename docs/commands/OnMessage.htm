@@ -13,8 +13,8 @@
 
 <p>Specifies a <a href="../Functions.htm">function</a> or <a href="../objects/Functor.htm">function object</a> to call automatically when the script receives the specified message.</p>
 
-<pre class="Syntax">OnMessage, <strong>OutputVar</strong>, MsgNumber [, WindowId, Function, MaxThreads]<pre><em>Command  Example:</em> OnMessage, <strong>Func</strong>, 0x200, MyFunc
-<em>Function Example:</em> <strong>Func</strong> := OnMessage(0x200, "MyFunc")</pre></pre>
+<pre class="Syntax">OnMessage, <b>OutputVar</b>, MsgNumber [, WindowId, Function, MaxThreads]<pre><em>Command  Example:</em> OnMessage, <b>Func</b>, 0x200, MyFunc
+<em>Function Example:</em> <b>Func</b> := OnMessage(0x200, "MyFunc")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -40,12 +40,12 @@
 <h3 id="Usage">Usage</h3>
 
 <p>Any number of functions or <a href="../objects/Functor.htm">function objects</a> can monitor a given <em>MsgNumber</em>.</p>
-<p>Either of these two lines registers a function object to be called <strong>after</strong> any previously registered functions:</p>
+<p>Either of these two lines registers a function object to be called <b>after</b> any previously registered functions:</p>
 <pre class="Syntax">
 OnMessage(MsgNumber, Function)     <em>; Option 1</em>
 OnMessage(MsgNumber, Function, 1)  <em>; Option 2 (MaxThreads = 1)</em>
 </pre>
-<p>This registers a function object to be called <strong>before</strong> any previously registered functions:</p>
+<p>This registers a function object to be called <b>before</b> any previously registered functions:</p>
 <pre class="Syntax">OnMessage(MsgNumber, Function, -1)</pre>
 <p>To unregister a function object, specify 0 for <em>MaxThreads</em>:</p>
 <pre class="Syntax">OnMessage(MsgNumber, Function, 0)</pre>
@@ -170,7 +170,7 @@ DetectHiddenWindows Off  <em>; Must not be turned off until after PostMessage.</
 ; To use it, save and run both of the following scripts then press Win+Space to show an
 ; InputBox that will prompt you to type in a string.</em>
 
-<em>; Save the following script as &quot;<strong>Receiver.ahk</strong>&quot; then launch it:</em>
+<em>; Save the following script as &quot;<b>Receiver.ahk</b>&quot; then launch it:</em>
 #SingleInstance
 OnMessage(0x4a, &quot;Receive_WM_COPYDATA&quot;)  <em>; 0x4a is WM_COPYDATA</em>
 return
@@ -184,7 +184,7 @@ Receive_WM_COPYDATA(wParam, lParam)
     return true  <em>; Returning 1 (true) is the traditional way to acknowledge this message.</em>
 }
 
-<em>; Save the following script as &quot;<strong>Sender.ahk</strong>&quot; then launch it.  After that, press the Win+Space hotkey.</em>
+<em>; Save the following script as &quot;<b>Sender.ahk</b>&quot; then launch it.  After that, press the Win+Space hotkey.</em>
 TargetScriptTitle := "Receiver.ahk ahk_class AutoHotkey"
 
 #space::  <em>; Win+Space hotkey. Press it to show an InputBox for entry of a message string.</em>

@@ -14,7 +14,7 @@
 <h1>Remapping Keys and Buttons</h1>
 
 <h2>Introduction</h2>
-<p><strong>Limitation</strong>: AutoHotkey's remapping feature described below is generally not as pure and effective as remapping directly via the Windows registry. For the advantages and disadvantages of each approach, see <a href="#registry">registry remapping</a>.</p>
+<p><b>Limitation</b>: AutoHotkey's remapping feature described below is generally not as pure and effective as remapping directly via the Windows registry. For the advantages and disadvantages of each approach, see <a href="#registry">registry remapping</a>.</p>
 <h2 id="Remap">Remapping the Keyboard and Mouse</h2>
 <p>The syntax for the built-in remapping feature is <code>OriginKey::DestinationKey</code>. For example, a <a href="../Scripts.htm">script</a> consisting only of the following line would make the &quot;a&quot; key behave like the &quot;b&quot; key:</p>
 <pre>a::b</pre>
@@ -24,7 +24,7 @@ b::a</pre>
 <p>The examples above use lowercase, which is recommended for most purposes because it also remaps the corresponding uppercase letters (that is, it will send uppercase when Capslock is &quot;on&quot; or the Shift key is held down). By contrast, specifying an uppercase letter on the right side forces uppercase. For example, the following line would produce an uppercase B when you type either &quot;a&quot; or &quot;A&quot; (as long as Capslock is off):</p>
 <pre>a::B</pre>
 <p>&nbsp;</p>
-<p id="RemapMouse"><strong>Mouse remapping</strong>: To remap the mouse instead of the keyboard, use the same approach. For example:</p>
+<p id="RemapMouse"><b>Mouse remapping</b>: To remap the mouse instead of the keyboard, use the same approach. For example:</p>
 <table class="info">
   <tr>
     <td>MButton::Shift</td>
@@ -40,7 +40,7 @@ b::a</pre>
   </tr>
 </table>
 <p>&nbsp;</p>
-<p><strong>Other useful remappings:</strong></p>
+<p><b>Other useful remappings:</b></p>
 <table class="info">
   <tr>
     <td>Capslock::Ctrl</td>
@@ -101,18 +101,18 @@ ToolTip You pressed %A_ThisHotkey%.
 return</pre>
 <p id="SendPlay">If <a href="../commands/SendMode.htm">SendMode</a> is used in the auto-execute section (top part of the script), it affects all remappings. However, since remapping uses <a href="../commands/Send.htm#blind">Send {Blind}</a> and since the <a href="../commands/SendMode.htm">SendPlay mode</a> does not fully support  {Blind}, some remappings might not function properly in SendPlay mode (especially Control, Shift, Alt, and Win). To work around this, avoid SendPlay in auto-execute section when you have remappings; then use the command <a href="../commands/Send.htm#SendPlay">SendPlay</a> vs. Send in other places throughout the script. Alternatively, you could translate your remappings into hotkeys (as described below) that explicitly call SendEvent vs. Send.</p>
 <p>When a script is launched, each remapping is translated into a pair of <a href="../Hotkeys.htm">hotkeys</a>. For example, a script containing <code>a::b</code> actually contains the following two hotkeys instead:</p>
-<pre>*<strong>a</strong>::
+<pre>*<b>a</b>::
 SetKeyDelay -1   <em>; If the destination key is a mouse button, SetMouseDelay is used instead.</em>
-Send <a href="../commands/Send.htm#blind">{Blind}</a>{<strong>b</strong> DownTemp}  <em>; DownTemp is like Down except that other Send commands in the script won't assume &quot;b&quot; should stay down during their Send.</em>
+Send <a href="../commands/Send.htm#blind">{Blind}</a>{<b>b</b> DownTemp}  <em>; DownTemp is like Down except that other Send commands in the script won't assume &quot;b&quot; should stay down during their Send.</em>
 return
 
-*<strong>a up</strong>::
+*<b>a up</b>::
 SetKeyDelay -1  <em>; See note below for why press-duration is not specified with either of these SetKeyDelays.</em>
-Send {Blind}{<strong>b</strong> Up}
+Send {Blind}{<b>b</b> Up}
 return</pre>
 <p>However, the above hotkeys vary under the following circumstances:</p>
 <ol>
-  <li>When the source key is LCtrl and the destination key is an Alt key, the line <code>Send {Blind}{LAlt DownTemp}</code> is replaced by <code>Send {Blind}<strong>{LCtrl Up}</strong>{LAlt DownTemp}</code>. The same is true if the source is RCtrl, except that <code>{RCtrl up}</code> is used.</li>
+  <li>When the source key is LCtrl and the destination key is an Alt key, the line <code>Send {Blind}{LAlt DownTemp}</code> is replaced by <code>Send {Blind}<b>{LCtrl Up}</b>{LAlt DownTemp}</code>. The same is true if the source is RCtrl, except that <code>{RCtrl up}</code> is used.</li>
   <li>When a keyboard key is being remapped to become a mouse button (e.g. <code>RCtrl::RButton</code>), the hotkeys above use SetMouseDelay in place of SetKeyDelay. In addition, the first hotkey above is replaced by the following, which prevents the keyboard's auto-repeat feature from generating repeated mouse clicks:
     <pre>*RCtrl::
 SetMouseDelay -1
@@ -156,19 +156,19 @@ KeyWait AppsKey  <em>; Prevents keyboard auto-repeat from repeating the mouse cl
 SendEvent {Blind}{RButton up}
 return</pre>
 <h2 id="registry">Remapping via the Registry's &quot;Scancode Map&quot;</h2>
-<p><strong>Advantages:</strong></p>
+<p><b>Advantages:</b></p>
 <ul>
   <li>Registry remapping is generally more pure and effective than <a href="#Remap">AutoHotkey's remapping</a>. For example, it works in a broader variety of games, it has no known <a href="#AltTab">alt-tab issues</a>, and it is capable of firing AutoHotkey's hook hotkeys  (whereas AutoHotkey's remapping requires a <a href="#HookHotkeys">workaround</a>).</li>
   <li>If you choose to make the registry entries manually (explained below), absolutely no external software is needed to remap your keyboard. Even if you use <a href="http://webpages.charter.net/krumsick/">KeyTweak</a> to make the registry entries for you, KeyTweak does not need to stay running all the time (unlike AutoHotkey).</li>
 </ul>
-<p><strong>Disadvantages:</strong></p>
+<p><b>Disadvantages:</b></p>
 <ul>
   <li>Registry remapping is relatively permanent: a reboot is required to undo the changes or put new ones into effect.</li>
   <li>Its effect is global: it cannot create remappings specific to a particular user, application, or locale.</li>
   <li>It cannot send keystrokes that are modified by Shift, Control, Alt, or AltGr. For example, it cannot remap a lowercase character to an uppercase one.</li>
   <li>It supports only the keyboard (AutoHotkey has <a href="#RemapMouse">mouse remapping</a> and some <a href="RemapJoystick.htm">limited joystick remapping</a>).</li>
 </ul>
-<p><strong>How to Apply Changes to the Registry:</strong> There are at least two methods to remap keys via the registry:</p>
+<p><b>How to Apply Changes to the Registry:</b> There are at least two methods to remap keys via the registry:</p>
 <ol>
   <li>Use a program like <a href="http://webpages.charter.net/krumsick/">KeyTweak</a> (freeware) to visually remap your keys. It will change the registry for you.</li>
   <li>Remap keys manually by creating a .reg file (plain text) and loading it into the registry. This is demonstrated at <a href="http://www.autohotkey.com/forum/post-56216.html#56216">www.autohotkey.com/forum/post-56216.html#56216</a></li>

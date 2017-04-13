@@ -70,7 +70,7 @@ HideTrayTip() {
 <p>This may not always work, according to at least one report.</p>
 
 <h3>Remarks</h3>
-<p id="Windows10"><strong>Windows 10</strong> replaces all balloon windows with toast notifications by default (this can be overridden via group policy). Calling TrayTip multiple times will usually cause multiple notifications to be placed in a "queue" instead of each notification replacing the last.</p>
+<p id="Windows10"><b>Windows 10</b> replaces all balloon windows with toast notifications by default (this can be overridden via group policy). Calling TrayTip multiple times will usually cause multiple notifications to be placed in a "queue" instead of each notification replacing the last.</p>
 <p>TrayTip has no effect if the script lacks a tray icon (via <a href="_NoTrayIcon.htm">#NoTrayIcon</a> or <code><a href="Menu.htm">Menu</a>, Tray, NoIcon</code>). TrayTip also has no effect if the following REG_DWORD value exists and has been set to 0:</p>
 <pre>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced &gt;&gt; EnableBalloonTips</pre>
 <p>On a related note, there is a tooltip displayed whenever the user hovers the mouse over the script's tray icon. The contents of this tooltip can be changed via: <code><a href="Menu.htm">Menu</a>, Tray, Tip, My New Text</code>.</p>

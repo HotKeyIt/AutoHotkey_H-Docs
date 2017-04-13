@@ -35,13 +35,13 @@
   <dd><p>Windows whose text include this value will not be considered.</p></dd>
 
 </dl>
-<p><a name="TransLimit"></a><strong>Known Limitations for Transparent and <a href="WinSetTransColor">TransColor</a></strong>:</p>
+<p><a name="TransLimit"></a><b>Known Limitations for Transparent and <a href="WinSetTransColor">TransColor</a></b>:</p>
 <ul>
   <li>They have no effect on a window that lacks a caption (title bar) and lacks the <a href="#AlwaysOnTop">always-on-top</a> property. For <a href="Gui.htm">GUI windows</a>, this can be solved by removing the caption only after making the window transparent. Alternatively, the following properties allow transparency to take effect: <code><a href="Gui.htm#Options">Gui -Caption +ToolWindow</a></code>.</li>
   <li>Setting &quot;Transparent&quot; to 255 prior to turning it off might avoid window redrawing problems such as a black background. If the window still fails to be redrawn correctly, see <a href="#Redraw">Redraw</a> for a possible workaround.</li>
   <li>To change a window's existing <a href="#TransColor">TransColor</a>, it may be necessary to turn off transparency before making the change.</li>
 </ul>
-<p><strong>Tip</strong>: To make the task bar transparent, use <code>WinSet, Transparent, 150, ahk_class Shell_TrayWnd</code>. Similarly, to make the Start Menu transparent, follow this example:</p>
+<p><b>Tip</b>: To make the task bar transparent, use <code>WinSet, Transparent, 150, ahk_class Shell_TrayWnd</code>. Similarly, to make the Start Menu transparent, follow this example:</p>
 <pre>DetectHiddenWindows, on
 WinSet, Transparent, 150, ahk_class BaseBar  <em>; To make the Start Menu's submenus transparent, also include the script below.</em></pre>
 <p>To make all or selected menus on the entire system transparent, keep a script such as the following always running. Note that although such a script cannot make its own menus transparent, it can make those of other scripts transparent:</p>

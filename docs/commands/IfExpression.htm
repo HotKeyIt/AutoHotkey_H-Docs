@@ -19,17 +19,17 @@
 <p>When an IF or an <a href="Else.htm">ELSE</a> owns more than one line, those lines must be enclosed in <a href="Block.htm">braces</a>. However, if only one line belongs to an IF or ELSE, the braces are optional. See the examples at the bottom of this page.</p>
 <p>The space after <code>if</code> is optional if the expression starts with an open-parenthesis, as in <code>if(expression)</code>.</p>
 <p id="otb">The One True Brace (OTB) style may optionally be used. For example:</p>
-<pre>if (x &lt; y) <strong>{</strong>
+<pre>if (x &lt; y) <b>{</b>
     ...
-<strong>}</strong>
-if WinExist(&quot;Untitled - Notepad&quot;) <strong>{</strong>
+<b>}</b>
+if WinExist(&quot;Untitled - Notepad&quot;) <b>{</b>
     WinActivate
-<strong>}</strong>
-if IsDone <strong>{</strong>
+<b>}</b>
+if IsDone <b>{</b>
     ...
-<strong>}</strong> else <strong>{</strong>
+<b>}</b> else <b>{</b>
     ...
-<strong>}</strong></pre>
+<b>}</b></pre>
 <p>Any type of statement can appear immediately to the right of an if-statement, but unlike an else-statement, a delimiting comma is required. For example:</p>
 <pre>if true, MsgBox  <em>; Good</em>
 if true  MsgBox  <em>; Bad</em></pre>

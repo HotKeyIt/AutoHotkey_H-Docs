@@ -14,9 +14,9 @@
 The main difference to <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a> thread is that a TLS thread shares the <a href="_InstallKeybdHook.htm">hook</a> between all threads and uses one pool of <a href="../Hotkeys.htm">Hotkeys</a> and <a href="Hotstrings.htm">Hotstrings</a>,
  so if you have same hotkey in main thread and TLS thread you will get a duplicate Hotkey error.</p>
 <br>
-<pre class="Syntax">NewThread, <strong>OutputVar</strong>, Script [, Parameters, Title]
-<pre><em>Command  Example:</em> NewThread, <strong>ThreadID</strong>, MsgBox Message from thread.
-<em>Function Example:</em> <strong>ThreadID</strong> := NewThread("MsgBox Message from thread.")</pre></pre>
+<pre class="Syntax">NewThread, <b>OutputVar</b>, Script [, Parameters, Title]
+<pre><em>Command  Example:</em> NewThread, <b>ThreadID</b>, MsgBox Message from thread.
+<em>Function Example:</em> <b>ThreadID</b> := NewThread("MsgBox Message from thread.")</pre></pre>
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>
@@ -28,7 +28,7 @@ The main difference to <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a> thread 
 </dd>
 <dt>Parameters (optional)</dt>
 <dd>
-<p>Command line parameters that will be available in built-in variable <strong><a href="Variables.htm#CommandLine">A_Args</a></strong>
+<p>Command line parameters that will be available in built-in variable <b><a href="Variables.htm#CommandLine">A_Args</a></b>
 object.</p>
 </dd>
 <dt>Title (optional)</dt>

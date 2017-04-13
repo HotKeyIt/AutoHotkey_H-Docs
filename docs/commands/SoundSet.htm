@@ -19,7 +19,7 @@
 <dl>
 
   <dt>NewSetting</dt>
-  <dd><p>Percentage number between -100 and 100 inclusive (it can be a floating point number). If the number begins with a plus or minus sign, the <strong>current setting</strong> will be adjusted up or down by the indicated amount. Otherwise, the setting will be set explicitly to the level indicated by <em>NewSetting</em>.</p>
+  <dd><p>Percentage number between -100 and 100 inclusive (it can be a floating point number). If the number begins with a plus or minus sign, the <b>current setting</b> will be adjusted up or down by the indicated amount. Otherwise, the setting will be set explicitly to the level indicated by <em>NewSetting</em>.</p>
       <p>For <em>ControlTypes</em> with only two possible settings -- namely ONOFF, MUTE, MONO, LOUDNESS, STEREOENH, and BASSBOOST -- any positive number will turn on the setting and a zero will turn it off. However, if the number begins with a plus or minus sign, the  setting  will be toggled (set to the opposite of its current state).</p></dd>
 
   <dt>ComponentType</dt>
@@ -29,7 +29,7 @@
 
   <dt>ControlType</dt>
   <dd><p>If omitted or blank, it defaults to VOLUME. Otherwise, it can be one of the following words: VOLUME (or VOL), ONOFF, MUTE, MONO, LOUDNESS, STEREOENH, BASSBOOST, PAN, QSOUNDPAN, BASS, TREBLE, EQUALIZER, or the number of a valid control type (see <a href="#Ex">soundcard analysis script</a>). If the specified <em>ComponentType</em> lacks the specified <em>ControlType</em>, ErrorLevel will indicate the problem.</p>
-    <p><strong>Note:</strong> sound devices usually support only VOLUME (or VOL) and MUTE, although others may be available depending on Windows and the sound device.</p></dd>
+    <p><b>Note:</b> sound devices usually support only VOLUME (or VOL) and MUTE, although others may be available depending on Windows and the sound device.</p></dd>
 
   <dt>DeviceNumber</dt>
   <dd><p>A number between 1 and the total number of supported devices. If this parameter is omitted, it defaults to 1 (the first sound device), or on Windows Vista or above, the system's default device for playback. The <a href="#Ex">soundcard analysis script</a> may help determine which number to use.</p></dd>

@@ -12,8 +12,8 @@
 <h1>PixelSearch</h1>
 
 <p>Searches a region of the screen for a pixel of the specified color.</p>
-<pre class="Syntax">PixelSearch, <strong>OutputVarX</strong>, <strong>OutputVarY</strong>, X1, Y1, X2, Y2, ColorID [, Variation, Fast]<pre><em>Command  Example:</em> PixelSearch, <strong>x</strong>, <strong>y</strong>, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, 0xFFFFFF
-<em>Function Example:</em> PixelSearch(<strong>x</strong>, <strong>y</strong>, 0, 0, A_ScreenWidth, A_ScreenHeight)</pre></pre>
+<pre class="Syntax">PixelSearch, <b>OutputVarX</b>, <b>OutputVarY</b>, X1, Y1, X2, Y2, ColorID [, Variation, Fast]<pre><em>Command  Example:</em> PixelSearch, <b>x</b>, <b>y</b>, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, 0xFFFFFF
+<em>Function Example:</em> PixelSearch(<b>x</b>, <b>y</b>, 0, 0, A_ScreenWidth, A_ScreenHeight)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -23,7 +23,7 @@
     <p>Either or both of these parameters may be left blank, in which case ErrorLevel (see below) can be used to determine whether a match was found.</p></dd>
 
   <dt>X1, Y1</dt>
-  <dd><p>The X and Y coordinates of the upper left corner of the rectangle to search. <strong>Coordinates are relative to the active window unless <a href="CoordMode.htm">CoordMode</a> was used to change that</strong>.</p></dd>
+  <dd><p>The X and Y coordinates of the upper left corner of the rectangle to search. <b>Coordinates are relative to the active window unless <a href="CoordMode.htm">CoordMode</a> was used to change that</b>.</p></dd>
 
   <dt>X2, Y2</dt>
   <dd><p>The X and Y coordinates of the lower right corner of the rectangle to search. Coordinates are relative to the active window unless <a href="CoordMode.htm">CoordMode</a> was used to change that.</p></dd>
@@ -36,7 +36,7 @@
 
   <dt>Fast</dt>
   <dd><p>This parameter contains a string of options. Currently it can only have one value (if not empty):</p>
-      <p id="fast"><strong>Fast</strong>: Uses a faster searching method that in most cases dramatically reduces the amount of CPU time used by the search. Although color depths as low as 8-bit (256-color) are supported, the fast mode performs much better in 24-bit or 32-bit color. If the screen's color depth is 16-bit or lower, the <em>Variation</em> parameter might behave slightly differently in fast mode than it does in slow mode. Finally, the fast mode searches the screen row by row (top down) instead of column by column. Therefore, it might find a different pixel than that of the slow mode if there is more than one matching pixel.</p>
+      <p id="fast"><b>Fast</b>: Uses a faster searching method that in most cases dramatically reduces the amount of CPU time used by the search. Although color depths as low as 8-bit (256-color) are supported, the fast mode performs much better in 24-bit or 32-bit color. If the screen's color depth is 16-bit or lower, the <em>Variation</em> parameter might behave slightly differently in fast mode than it does in slow mode. Finally, the fast mode searches the screen row by row (top down) instead of column by column. Therefore, it might find a different pixel than that of the slow mode if there is more than one matching pixel.</p>
   </dd>
 
 </dl>

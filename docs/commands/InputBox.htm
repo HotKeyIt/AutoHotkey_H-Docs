@@ -12,8 +12,8 @@
 <h1>InputBox</h1>
 
 <p>Displays an input box to ask the user to enter a string.</p>
-<pre class="Syntax">InputBox, <strong>OutputVar</strong> [, Title, Prompt, Options, Default]<pre><em>Command  Example:</em> InputBox,<strong>var</strong>, Enter Value
-<em>Function Example:</em> <strong>var</strong> := InputBox("Enter Value")</pre></pre>
+<pre class="Syntax">InputBox, <b>OutputVar</b> [, Title, Prompt, Options, Default]<pre><em>Command  Example:</em> InputBox,<b>var</b>, Enter Value
+<em>Function Example:</em> <b>var</b> := InputBox("Enter Value")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -29,10 +29,10 @@
 
   <dt>Options</dt>
   <dd><p>A string of case-insensitive options, with each separated from the last by a space or tab.</p>
-      <p><strong>Xn Yn:</strong> The X and Y coordinates of the dialog. For example, <em>X0 Y0</em> puts the window at the upper left corner of the desktop. If either coordinate is omitted, the dialog will be centered in that dimension. Either coordinate can be negative to position the dialog partially or entirely off the desktop (or on a secondary monitor in a multi-monitor setup).</p>
-      <p><strong>Wn Hn:</strong> The width and height of the dialog. For example, <em>W375 H189</em> is the default size.</p>
-      <p><strong>T:</strong> Specifies the timeout in seconds. For example, <em>T10.0</em> is ten seconds. If this value exceeds 2147483 (24.8 days), it will be set to 2147483. After the timeout has elapsed, the InputBox window will be automatically closed and <a href="../misc/ErrorLevel.htm">ErrorLevel</a> will be set to 2. <em>OutputVar</em> will still be set to what the user entered.</p>
-      <p><strong>Password:</strong> Mask the user's input. To specify which character is used, follow this example: <em>Password*</em></p></dd>
+      <p><b>Xn Yn:</b> The X and Y coordinates of the dialog. For example, <em>X0 Y0</em> puts the window at the upper left corner of the desktop. If either coordinate is omitted, the dialog will be centered in that dimension. Either coordinate can be negative to position the dialog partially or entirely off the desktop (or on a secondary monitor in a multi-monitor setup).</p>
+      <p><b>Wn Hn:</b> The width and height of the dialog. For example, <em>W375 H189</em> is the default size.</p>
+      <p><b>T:</b> Specifies the timeout in seconds. For example, <em>T10.0</em> is ten seconds. If this value exceeds 2147483 (24.8 days), it will be set to 2147483. After the timeout has elapsed, the InputBox window will be automatically closed and <a href="../misc/ErrorLevel.htm">ErrorLevel</a> will be set to 2. <em>OutputVar</em> will still be set to what the user entered.</p>
+      <p><b>Password:</b> Mask the user's input. To specify which character is used, follow this example: <em>Password*</em></p></dd>
 
   <dt>Default</dt>
   <dd><p>A string that will appear in the InputBox's edit field when the dialog first appears. The user can change it by backspacing or other means.</p></dd>

@@ -10,9 +10,9 @@
 <body>
 <h1>BinRun</h1>
 <p>Run a executable file (.exe) from memory.</p>
-<pre class="Syntax">BinRun, <strong>OutputVar</strong>, AddressOrPath [, CommandLineParams, ScriptCommandLineParams, Hide, ExeToUse]
-<pre><em>Command  Example:</em> BinRun, <strong>PID</strong>,% &MyExe, `nMsgBox `% A_Args.a,% {a:"Hello World!"}
-<em>Function Example:</em> <strong>PID</strong> := BinRun(&MyExe, "`nMsgBox `% A_Args.a", {a:"Hello World!"})</pre></pre>
+<pre class="Syntax">BinRun, <b>OutputVar</b>, AddressOrPath [, CommandLineParams, ScriptCommandLineParams, Hide, ExeToUse]
+<pre><em>Command  Example:</em> BinRun, <b>PID</b>,% &MyExe, `nMsgBox `% A_Args.a,% {a:"Hello World!"}
+<em>Function Example:</em> <b>PID</b> := BinRun(&MyExe, "`nMsgBox `% A_Args.a", {a:"Hello World!"})</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -41,7 +41,7 @@
 
 <dt>ExeToUse</dt>
 <dd>
-<p>Executable to use as base for new process.<br>By default the executable of current process is taken and <strong>%A_WinDir% \Microsoft.NET\Framework\v2.0.50727\vbc.exe</strong> to launch 32-bit exe from 64-bit process.</p>
+<p>Executable to use as base for new process.<br>By default the executable of current process is taken and <b>%A_WinDir% \Microsoft.NET\Framework\v2.0.50727\vbc.exe</b> to launch 32-bit exe from 64-bit process.</p>
 </dd>
 </dl>
 <h3>Examples</h3>

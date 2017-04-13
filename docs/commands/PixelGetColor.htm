@@ -12,8 +12,8 @@
 <h1>PixelGetColor</h1>
 
 <p>Retrieves  the color of the pixel at the specified x,y coordinates.</p>
-<pre class="Syntax">PixelGetColor, <strong>OutputVar</strong>, X, Y [, Alt|Slow]<pre><em>Command  Example:</em> PixelGetColor, <strong>color</strong>, 100, 200
-<em>Function Example:</em> <strong>color</strong> := PixelGetColor(100,200)</pre></pre>
+<pre class="Syntax">PixelGetColor, <b>OutputVar</b>, X, Y [, Alt|Slow]<pre><em>Command  Example:</em> PixelGetColor, <b>color</b>, 100, 200
+<em>Function Example:</em> <b>color</b> := PixelGetColor(100,200)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -26,8 +26,8 @@
 
   <dt>Alt|Slow</dt>
   <dd><p>This parameter may contain zero or more of the following words. If more than one word is present, separate each from the next with a space (e.g. <code>Alt Slow</code>).</p>
-      <p><strong>Alt</strong>: Uses an alternate method to retrieve the color, which should be used when the normal method produces invalid or inaccurate colors for a particular type of window. This method is about 10% slower than the normal method.</p>
-      <p><strong>Slow</strong>: Uses a more elaborate method to retrieve the color, which may work in certain full-screen applications when the other methods fail. This method is about three times slower than the normal method. Note: <em>Slow</em> takes precedence over <em>Alt</em>, so there is no need to specify <em>Alt</em> in this case.</p>
+      <p><b>Alt</b>: Uses an alternate method to retrieve the color, which should be used when the normal method produces invalid or inaccurate colors for a particular type of window. This method is about 10% slower than the normal method.</p>
+      <p><b>Slow</b>: Uses a more elaborate method to retrieve the color, which may work in certain full-screen applications when the other methods fail. This method is about three times slower than the normal method. Note: <em>Slow</em> takes precedence over <em>Alt</em>, so there is no need to specify <em>Alt</em> in this case.</p>
     </dd>
 
 </dl>

@@ -16,11 +16,11 @@ If a thread is already executed it will terminated before new thread
 starts.<br>
 Note you will need to load AutoHotkey.dll module using LoadLibrary
 before you can use this function, see Example.<br>
-<strong>This function is only available in AutoHotkey.dll</strong></p>
+<b>This function is only available in AutoHotkey.dll</b></p>
 <br>
-<pre class="Syntax">DllCall, <strong>OutputVar</strong>, AutoHotkey.dll<strong>\ahktextdll</strong>, Str, Script, Str, Parameters, Str, Title, CDecl UPTR
-<pre><em>Command  Example:</em> DllCall, <strong>hThread</strong>, AutoHotkey.dll\ahktextdll, Str, MsgBox From Thread, Str,, Str,, CDecl UPTR
-<em>Function Example:</em> <strong>hThread</strong> := DllCall("AutoHotkey.dll\ahktextdll", "Str", "MsgBox From Thread" ,"Str", "", "Str", "", "PTR")
+<pre class="Syntax">DllCall, <b>OutputVar</b>, AutoHotkey.dll<b>\ahktextdll</b>, Str, Script, Str, Parameters, Str, Title, CDecl UPTR
+<pre><em>Command  Example:</em> DllCall, <b>hThread</b>, AutoHotkey.dll\ahktextdll, Str, MsgBox From Thread, Str,, Str,, CDecl UPTR
+<em>Function Example:</em> <b>hThread</b> := DllCall("AutoHotkey.dll\ahktextdll", "Str", "MsgBox From Thread" ,"Str", "", "Str", "", "PTR")
 </pre></pre>
 <h3>Parameters</h3>
 <dl>
@@ -35,7 +35,7 @@ executed in AutoHotkey.dll. When omitted, following script is used: <pre>#Persis
 <dt>Parameters (optional)</dt>
 <dd>
 <p>Command line
-parameters that will be available in built-in variable <strong><a href="Variables.htm#CommandLine">A_Args</a></strong>
+parameters that will be available in built-in variable <b><a href="Variables.htm#CommandLine">A_Args</a></b>
 object.</p>
 </dd>
 <dt>Title (optional)</dt>

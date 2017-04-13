@@ -13,8 +13,8 @@
 
 <p>Retrieves various types of information about a control.</p>
 
-<pre class="Syntax">ControlGet, <strong>OutputVar</strong>, Cmd [, Value, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> ControlGet, <strong>IsEnabled</strong>, Enabled,, Edit1, MyGui ahk_class AutoHotkeyGUI
-<em>Function Example:</em> <strong>IsEnabled</strong> := ControlGet("Enabled",, "Edit1", "MyGui ahk_class AutoHotkeyGUI")</pre></pre>
+<pre class="Syntax">ControlGet, <b>OutputVar</b>, Cmd [, Value, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> ControlGet, <b>IsEnabled</b>, Enabled,, Edit1, MyGui ahk_class AutoHotkeyGUI
+<em>Function Example:</em> <b>IsEnabled</b> := ControlGet("Enabled",, "Edit1", "MyGui ahk_class AutoHotkeyGUI")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -46,9 +46,9 @@
 
 <h3 id="Subcommands">Cmd, Value</h3>
 <p>The <em>Cmd</em> and <em>Value</em> parameters are dependent upon each other and their usage is described below.</p>
-<p id="List"><strong>List</strong>: Retrieves a list of items from a ListView, ListBox, ComboBox, or DropDownList.</p>
+<p id="List"><b>List</b>: Retrieves a list of items from a ListView, ListBox, ComboBox, or DropDownList.</p>
 <p><u>ListView</u>: The syntax for ListView retrieval is:</p>
-<pre>ControlGet, OutputVar, List, <strong>Options</strong>, SysListView321, WinTitle, WinText</pre>
+<pre>ControlGet, OutputVar, List, <b>Options</b>, SysListView321, WinTitle, WinText</pre>
 <p>If the <em>Options</em> parameter is blank or omitted, all the text in the control is retrieved. Each row except the last will end with a linefeed character (`n). Within each row, each field (column) except the last will end with a tab character (`t).</p>
 <p>Specify for <em>Options</em> zero or more of the following words, each separated from the next with a space or tab:</p>
 <p><em>Selected</em>: Retrieves only the selected (highlighted) rows rather than all rows. If none, <em>OutputVar</em> is made blank.<br>
@@ -77,26 +77,26 @@ Loop, Parse, %List%, `n  <em>; Rows are delimited by linefeeds (`n).</em>
 <pre>ControlGet, List, List,, ComboBox1, WinTitle
 Loop, Parse, %List%, `n
     MsgBox Item number %A_Index% is %A_LoopField%.</pre>
-<p><strong>Checked</strong>: Sets <em>OutputVar</em> to be 1 if the checkbox or radio button is checked or 0 if not.</p>
-<p><strong>Enabled</strong>: Sets <em>OutputVar</em> to be 1 if <em>Control</em> is enabled, or 0 if disabled.</p>
-<p><strong>Visible</strong>: Sets <em>OutputVar</em> to be 1 if <em>Control</em> is visible, or 0 if hidden.</p>
-<p><strong>Tab</strong>: Sets <em>OutputVar</em> to the tab number of a SysTabControl32 control. The first tab is 1, the second is 2, etc. To instead discover how many tabs (pages) exist in a tab control, follow this example:</p>
+<p><b>Checked</b>: Sets <em>OutputVar</em> to be 1 if the checkbox or radio button is checked or 0 if not.</p>
+<p><b>Enabled</b>: Sets <em>OutputVar</em> to be 1 if <em>Control</em> is enabled, or 0 if disabled.</p>
+<p><b>Visible</b>: Sets <em>OutputVar</em> to be 1 if <em>Control</em> is visible, or 0 if hidden.</p>
+<p><b>Tab</b>: Sets <em>OutputVar</em> to the tab number of a SysTabControl32 control. The first tab is 1, the second is 2, etc. To instead discover how many tabs (pages) exist in a tab control, follow this example:</p>
 <pre><a href="PostMessage.htm">SendMessage</a>, 0x1304,,, SysTabControl321, WinTitle  <em>; 0x1304 is TCM_GETITEMCOUNT.</em>
 TabCount := ErrorLevel</pre>
-<p><strong>FindString, String</strong>: Sets <em>OutputVar</em> to the entry number of a ListBox or ComboBox that is an exact match for <em>String</em>. The first entry in the control is 1, the second 2, and so on. If no match is found, <em>OutputVar</em> is made blank and ErrorLevel is set to 1.</p>
-<p><strong>Choice</strong>: Sets <em>OutputVar</em> to be the name of the currently selected entry in a ListBox or ComboBox. To instead retrieve the position of the selected item, follow this example (use only one of the first two lines):</p>
+<p><b>FindString, String</b>: Sets <em>OutputVar</em> to the entry number of a ListBox or ComboBox that is an exact match for <em>String</em>. The first entry in the control is 1, the second 2, and so on. If no match is found, <em>OutputVar</em> is made blank and ErrorLevel is set to 1.</p>
+<p><b>Choice</b>: Sets <em>OutputVar</em> to be the name of the currently selected entry in a ListBox or ComboBox. To instead retrieve the position of the selected item, follow this example (use only one of the first two lines):</p>
 <pre><a href="PostMessage.htm">SendMessage</a>, 0x188, 0, 0, ListBox1, WinTitle  <em>; 0x188 is LB_GETCURSEL (for a ListBox).</em>
 <a href="PostMessage.htm">SendMessage</a>, 0x147, 0, 0, ComboBox1, WinTitle  <em>; 0x147 is CB_GETCURSEL (for a DropDownList or ComboBox).</em>
 ChoicePos := ErrorLevel  <em>; It will be -1 if there is no item selected.</em>
 ChoicePos += 1  <em>; Convert from 0-based to 1-based, i.e. so that the first item is known as 1, not 0.</em></pre>
-<p><strong>LineCount</strong>: Sets <em>OutputVar</em> to be the number of lines in an Edit control. All Edit controls have at least 1 line, even if the control is empty.</p>
-<p><strong>CurrentLine</strong>: Sets <em>OutputVar</em> to be the line number in an Edit control where the caret (insert point) resides. The first line is 1. If there is text selected in the control, <em>OutputVar</em> is set to the line number where the selection begins.</p>
-<p><strong>CurrentCol</strong>: Sets <em>OutputVar</em> to be the column number in an Edit control where the caret (text insertion point) resides. The first column is 1. If there is text selected in the control, <em>OutputVar</em> is set to the column number where the selection begins.</p>
-<p><strong>Line, N</strong>: Sets <em>OutputVar</em> to be the text of line <em>N</em> in an Edit control. Line 1 is the first line. Depending on the nature of the control, <em>OutputVar</em> might end in a carriage return (`r) or a carriage return + linefeed (`r`n). If the specified line number is blank or does not exist, <a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 and <em>OutputVar</em> is made blank.</p>
-<p><strong>Selected</strong>: Sets <em>OutputVar</em> to be the selected text in an Edit control. If no text is selected, OutputVar will be made blank and ErrorLevel will be set to 0 (i.e. no error). Certain types of controls, such as RichEdit20A, might not produce the correct text in some cases (e.g. Metapad).</p>
-<p><strong>Style</strong>: Retrieves an 8-digit hexadecimal number representing the style of the control. See the <a href="../misc/Styles.htm">styles table</a> for a listing of some styles.</p>
-<p><strong>ExStyle</strong>: Retrieves an 8-digit hexadecimal number representing the extended style of the control.</p>
-<p id="Hwnd"><strong>Hwnd</strong>: Retrieves the window handle (HWND) of the specified control. For example: <code>ControlGet, OutputVar, Hwnd,, Edit1, WinTitle</code>. A control's HWND is often used with <a href="PostMessage.htm">PostMessage</a>, <a href="PostMessage.htm">SendMessage</a>, and <a href="DllCall.htm">DllCall</a>. On a related note, a control's HWND can also be retrieved via <a href="MouseGetPos.htm">MouseGetPos</a>. Finally, a control's HWND can be used directly as an <a href="../misc/WinTitle.htm#ahk_id">ahk_id WinTitle</a> (this also works on hidden controls even when <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> is Off).</p>
+<p><b>LineCount</b>: Sets <em>OutputVar</em> to be the number of lines in an Edit control. All Edit controls have at least 1 line, even if the control is empty.</p>
+<p><b>CurrentLine</b>: Sets <em>OutputVar</em> to be the line number in an Edit control where the caret (insert point) resides. The first line is 1. If there is text selected in the control, <em>OutputVar</em> is set to the line number where the selection begins.</p>
+<p><b>CurrentCol</b>: Sets <em>OutputVar</em> to be the column number in an Edit control where the caret (text insertion point) resides. The first column is 1. If there is text selected in the control, <em>OutputVar</em> is set to the column number where the selection begins.</p>
+<p><b>Line, N</b>: Sets <em>OutputVar</em> to be the text of line <em>N</em> in an Edit control. Line 1 is the first line. Depending on the nature of the control, <em>OutputVar</em> might end in a carriage return (`r) or a carriage return + linefeed (`r`n). If the specified line number is blank or does not exist, <a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 and <em>OutputVar</em> is made blank.</p>
+<p><b>Selected</b>: Sets <em>OutputVar</em> to be the selected text in an Edit control. If no text is selected, OutputVar will be made blank and ErrorLevel will be set to 0 (i.e. no error). Certain types of controls, such as RichEdit20A, might not produce the correct text in some cases (e.g. Metapad).</p>
+<p><b>Style</b>: Retrieves an 8-digit hexadecimal number representing the style of the control. See the <a href="../misc/Styles.htm">styles table</a> for a listing of some styles.</p>
+<p><b>ExStyle</b>: Retrieves an 8-digit hexadecimal number representing the extended style of the control.</p>
+<p id="Hwnd"><b>Hwnd</b>: Retrieves the window handle (HWND) of the specified control. For example: <code>ControlGet, OutputVar, Hwnd,, Edit1, WinTitle</code>. A control's HWND is often used with <a href="PostMessage.htm">PostMessage</a>, <a href="PostMessage.htm">SendMessage</a>, and <a href="DllCall.htm">DllCall</a>. On a related note, a control's HWND can also be retrieved via <a href="MouseGetPos.htm">MouseGetPos</a>. Finally, a control's HWND can be used directly as an <a href="../misc/WinTitle.htm#ahk_id">ahk_id WinTitle</a> (this also works on hidden controls even when <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> is Off).</p>
 <h3>ErrorLevel</h3>
 <p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p>Upon success, <a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 0. If a problem occurred -- such as a nonexistent window or control -- <a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 and <em>OutputVar</em> is made blank.</p>

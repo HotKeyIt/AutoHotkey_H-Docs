@@ -18,7 +18,7 @@
 <pre class="Syntax">String := File.Read([Characters])</pre>
 <table class="info">
   <tr><td style="width:15%">Characters</td><td>The maximum number of characters to read. If omitted, the rest of the file is read and returned as one string. If the File object was created from a handle to a non-seeking device such as a console buffer or pipe, omitting this parameter may cause the method to fail or return only what data is currently available.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>A string.</td></tr>
+  <tr><td><b>Returns</b></td><td>A string.</td></tr>
 </table></div>
 
 <div class="methodShort" id="Write"><h2>Write</h2>
@@ -26,14 +26,14 @@
 <pre class="Syntax">File.Write(String)</pre>
 <table class="info">
   <tr><td style="width:15%">String</td><td>A string.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>The number of bytes (not characters) that were written.</td></tr>
+  <tr><td><b>Returns</b></td><td>The number of bytes (not characters) that were written.</td></tr>
 </table></div>
 
 <div class="methodShort" id="ReadLine"><h2>ReadLine</h2>
 <p>Reads a line of text from the file and advances the file pointer.</p>
 <pre class="Syntax">Line := File.ReadLine()</pre>
 <table class="info">
-  <tr><td style="width:15%"><strong>Returns</strong></td><td width="85%">A line of text, excluding the line ending.</td></tr>
+  <tr><td style="width:15%"><b>Returns</b></td><td width="85%">A line of text, excluding the line ending.</td></tr>
 </table>
 <p>Lines up to 65,534 characters long can be read. If the length of a line exceeds this, the remainder of the line is returned by subsequent calls to this method.</p></div>
 
@@ -42,7 +42,7 @@
 <pre class="Syntax">File.WriteLine([String])</pre>
 <table class="info">
   <tr><td style="width:15%">String</td><td>An optional string.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>The number of bytes (not characters) that were written.</td></tr>
+  <tr><td><b>Returns</b></td><td>The number of bytes (not characters) that were written.</td></tr>
 </table></div>
 
 <div class="methodShort" id="ReadNum"><h2>Read<i>Num</i></h2>
@@ -53,7 +53,7 @@
     <td>One of the following specified directly as part of the function name:<br>
     UInt, Int, Int64, Short, UShort, Char, UChar, Double, or Float.
     <p>These type names have the same meanings as with <a href="../commands/DllCall.htm#types">DllCall</a>.</p></td></tr>
-  <tr><td><strong>Returns</strong></td><td>A number if successful, otherwise an empty string.</td></tr>
+  <tr><td><b>Returns</b></td><td>A number if successful, otherwise an empty string.</td></tr>
 </table>
 <p>If a Try statement is active and no bytes were read, an exception is thrown. However, no exception is thrown if at least one byte was read, even if the size of the given <i>NumType</i> is greater than the number of bytes read. Instead, the missing bytes are assumed to be zero.</p></div>
 
@@ -66,7 +66,7 @@
     UInt, Int, Int64, Short, UShort, Char, UChar, Double, or Float.
     <p>These type names have the same meanings as with <a href="../commands/DllCall.htm#types">DllCall</a>.</p></td></tr>
   <tr><td>Num</td><td>A number.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>The number of bytes that were written. For instance, WriteUInt returns 4 if successful.</td></tr>
+  <tr><td><b>Returns</b></td><td>The number of bytes that were written. For instance, WriteUInt returns 4 if successful.</td></tr>
 </table></div>
 
 <div class="methodShort" id="RawRead"><h2>RawRead</h2>
@@ -75,7 +75,7 @@
 <table class="info">
   <tr><td style="width:15%">VarOrAddress</td><td>A variable or memory address to which the data will be copied.  Usage is similar to <a href="../commands/NumGet.htm">NumGet</a>.</td></tr>
   <tr><td>Bytes</td><td>The maximum number of bytes to read.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>The number of bytes that were read.</td></tr>
+  <tr><td><b>Returns</b></td><td>The number of bytes that were read.</td></tr>
 </table>
 <p>If a Try statement is active and <em>Bytes</em> is non-zero but no bytes were read, an exception is thrown. <a href="#AtEOF">AtEOF</a> can be used to avoid this, if needed.</p></div>
 
@@ -85,7 +85,7 @@
 <table class="info">
   <tr><td style="width:15%">VarOrAddress</td><td>A variable containing the data or the address of the data in memory.  Usage is similar to <a href="../commands/NumPut.htm">NumPut</a>.</td></tr>
   <tr><td>Bytes</td><td>The number of bytes to write.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>The number of bytes that were written.</td></tr>
+  <tr><td><b>Returns</b></td><td>The number of bytes that were written.</td></tr>
 </table></div>
 
 <div class="methodShort" id="Seek"><h2>Seek</h2>
@@ -100,7 +100,7 @@ File.Pos := Distance</pre>
       <li>1 (SEEK_CUR): Current position of the file pointer.</li>
       <li>2 (SEEK_END): End of the file. <i>Distance</i> should usually be negative.</li>
     </ul>If omitted, <i>Origin</i> defaults to SEEK_END when Distance is negative and SEEK_SET otherwise.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>A non-zero value if successful, otherwise zero.</td></tr>
+  <tr><td><b>Returns</b></td><td>A non-zero value if successful, otherwise zero.</td></tr>
 </table></div>
 
 <div class="methodShort" id="Tell"><h2>Tell</h2>
@@ -108,7 +108,7 @@ File.Pos := Distance</pre>
 Pos := File.Position
 Pos := File.Pos</pre>
 <table class="info">
-  <tr><td style="width:15%"><strong>Returns</strong></td><td>The current position of the file pointer, where 0 is the beginning of the file.</td></tr>
+  <tr><td style="width:15%"><b>Returns</b></td><td>The current position of the file pointer, where 0 is the beginning of the file.</td></tr>
 </table></div>
 
 <div class="methodShort" id="Length"><h2>Length</h2>
@@ -117,14 +117,14 @@ Pos := File.Pos</pre>
 File.Length := NewSize</pre>
 <table class="info">
   <tr><td style="width:15%">NewSize</td><td>The new size of the file, in bytes.</td></tr>
-  <tr><td><strong>Returns</strong></td><td>The size of the file, in bytes.</td></tr>
+  <tr><td><b>Returns</b></td><td>The size of the file, in bytes.</td></tr>
 </table>
 <p>This property should be used only with an actual file. If the File object was created from a handle to a pipe, it may return the amount of data currently available in the pipe's internal buffer, but this behaviour is not guaranteed.</p></div>
 
 <div class="methodShort" id="AtEOF"><h2>AtEOF</h2>
 <pre class="Syntax">IsAtEOF := File.AtEOF</pre>
 <table class="info">
-  <tr><td style="width:15%"><strong>Returns</strong></td><td>A non-zero value if the file pointer has reached the end of the file, otherwise zero.</td></tr>
+  <tr><td style="width:15%"><b>Returns</b></td><td>A non-zero value if the file pointer has reached the end of the file, otherwise zero.</td></tr>
 </table>
 <p>This property should be used only with an actual file. If the File object was created from a handle to a non-seeking device such as a console buffer or pipe, the returned value may not be meaningful, as such devices do not logically have an "end of file".</p></div>
 
@@ -152,7 +152,7 @@ File.Encoding := Encoding</pre>
 <div class="methodShort" id="Handle"><h2>__Handle</h2>
 <pre class="Syntax">File.__Handle</pre>
 <table class="info">
-  <tr><td style="width:15%"><strong>Returns</strong></td><td>A system file handle, intended for use with DllCall. See <a href="http://msdn.microsoft.com/en-us/library/aa363858.aspx">CreateFile</a>.</td></tr>
+  <tr><td style="width:15%"><b>Returns</b></td><td>A system file handle, intended for use with DllCall. See <a href="http://msdn.microsoft.com/en-us/library/aa363858.aspx">CreateFile</a>.</td></tr>
 </table>
 <p>File objects internally buffer reads or writes. If data has been written into the object's internal buffer, it is committed to disk before the handle is returned. If the buffer contains data read from file, it is discarded and the actual file pointer is reset to the logical position indicated by <code>File.Pos</code>.</p></div>
 

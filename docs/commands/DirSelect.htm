@@ -13,8 +13,8 @@
 
 <p>Displays a standard dialog  that allows the user to select a folder.</p>
 
-<pre class="Syntax">DirSelect, <strong>OutputVar</strong> [, StartingFolder, Options, Prompt]<pre><em>Command  example:</em> DirSelect, <strong>Folder</strong>, %A_Temp%
-<em>Function example:</em> <strong>Folder</strong> := DirSelect(A_Temp)</pre></pre>
+<pre class="Syntax">DirSelect, <b>OutputVar</b> [, StartingFolder, Options, Prompt]<pre><em>Command  example:</em> DirSelect, <b>Folder</b>, %A_Temp%
+<em>Function example:</em> <b>Folder</b> := DirSelect(A_Temp)</pre></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -33,10 +33,10 @@ Folder := RegExReplace(Folder, "\\$")  <em>; Removes the trailing backslash, if 
 
   <dt>Options</dt>
   <dd><p>One of the following numbers:</p>
-      <p><strong>0</strong>: The options below are all disabled (except on Windows 2000, where the &quot;make new folder&quot; button might appear anyway).</p>
-      <p><strong>1</strong> (default): A button is provided that allows the user to create new folders.</p>
-      <p><strong>Add 2</strong> to the above number to  provide an edit field that allows the user to type the name of a folder. For example, a value of 3 for this parameter provides both an edit field and a &quot;make new folder&quot; button.</p>
-      <p id="NewDialog"><strong>Add 4</strong> to the above number to omit the BIF_NEWDIALOGSTYLE property. Adding 4 ensures that DirSelect will work properly even in a Preinstallation Environment like WinPE or BartPE. However, this prevents the appearance of a &quot;make new folder&quot; button, at least on Windows XP.</p>
+      <p><b>0</b>: The options below are all disabled (except on Windows 2000, where the &quot;make new folder&quot; button might appear anyway).</p>
+      <p><b>1</b> (default): A button is provided that allows the user to create new folders.</p>
+      <p><b>Add 2</b> to the above number to  provide an edit field that allows the user to type the name of a folder. For example, a value of 3 for this parameter provides both an edit field and a &quot;make new folder&quot; button.</p>
+      <p id="NewDialog"><b>Add 4</b> to the above number to omit the BIF_NEWDIALOGSTYLE property. Adding 4 ensures that DirSelect will work properly even in a Preinstallation Environment like WinPE or BartPE. However, this prevents the appearance of a &quot;make new folder&quot; button, at least on Windows XP.</p>
       <p>If the user types an invalid folder name in the edit field, <em>OutputVar</em> will be set to the folder selected in the navigation tree rather than what the user entered, at least on Windows XP.</p></dd>
 
       </p></dd>

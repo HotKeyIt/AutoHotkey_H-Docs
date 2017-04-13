@@ -34,9 +34,9 @@ SendEvent Keys<pre><em>Command  Example:</em> Send, Hello{Space}World{!}
 
 </dl>
 
-<p id="SendRaw"><strong>Raw mode</strong> - <em>SendRaw</em> or <a href="#Raw">{Raw}</a>: The characters <code>^+!#{}</code> are interpreted literally rather than translating <code>{Enter}</code> to an ENTER keystroke, <code>^c</code> to Control-C, etc. To use raw mode with SendInput, SendPlay, or SendEvent, write <a href="#Raw">{Raw}</a> as the first item in the string; for example: <code>SendInput {Raw}abc</code>.</p>
+<p id="SendRaw"><b>Raw mode</b> - <em>SendRaw</em> or <a href="#Raw">{Raw}</a>: The characters <code>^+!#{}</code> are interpreted literally rather than translating <code>{Enter}</code> to an ENTER keystroke, <code>^c</code> to Control-C, etc. To use raw mode with SendInput, SendPlay, or SendEvent, write <a href="#Raw">{Raw}</a> as the first item in the string; for example: <code>SendInput {Raw}abc</code>.</p>
 <p><em>Raw mode</em> does not affect the interpretation of <a href="../misc/EscapeChar.htm">escape sequences</a>, <a href="../Variables.htm#retrieving">variable references</a> and <a href="../Variables.htm#Expressions">expressions</a>. For example, <code>SendRaw, ``100`%</code> sends the string <code>`100%</code>. When using <a href="ControlSend.htm">ControlSend</a>, it is also necessary to escape literal commas (<code>`,</code>).</p>
-<p id="specialchars"><strong>Normal mode</strong>: When not in raw mode, the following symbols have special meaning: <code>!+^#{}</code></p>
+<p id="specialchars"><b>Normal mode</b>: When not in raw mode, the following symbols have special meaning: <code>!+^#{}</code></p>
 <p>The modifiers <code>!+^#</code> affect only the very next key. To send the corresponding modifier key on its own, enclose the key name in braces. To just press (hold down) or release the key, follow the key name with the word "down" or "up" as shown below.</p>
 <style>
 #modifierkeys td:not(:last-child) { white-space: nowrap; text-align: center }
@@ -87,11 +87,11 @@ SendEvent Keys<pre><em>Command  Example:</em> Send, Hello{Space}World{!}
     <td colspan="4" style="white-space: normal; text-align: left">Braces are used to enclose <a href="#keynames">key names and other options</a>, and to send special characters literally. For example, <code>{Tab}</code> is the Tab key and <code>{!}</code> is a literal exclamation mark.</td>
   </tr>
 </table>
-<p><strong>Note</strong>: As capital letters are produced by sending the SHIFT key, <code>A</code> produces a different effect in some programs than <code>a</code>. For example, <code>!A</code> presses ALT+SHIFT+A and <code>!a</code> presses ALT+a. If in doubt, use lowercase.</p>
+<p><b>Note</b>: As capital letters are produced by sending the SHIFT key, <code>A</code> produces a different effect in some programs than <code>a</code>. For example, <code>!A</code> presses ALT+SHIFT+A and <code>!a</code> presses ALT+a. If in doubt, use lowercase.</p>
 <p><br>
-<strong id="SendInput">SendInput</strong> and <strong id="SendPlay">SendPlay</strong>: SendInput and SendPlay use the same syntax as SendEvent but are generally faster and more reliable. In addition, they buffer any physical keyboard or mouse activity during the send, which prevents the user's keystrokes from being interspersed with those being sent. By default, <em>Send</em> is synonymous <em>SendPlay</em>; but it can be made a synonym for SendEvent or <a href="#SendPlayDetail">SendPlay</a> via <a href="SendMode.htm">SendMode</a>. For more details about each mode, see <a href="#SendInputDetail">SendInput</a> and <a href="#SendPlayDetail">SendPlay</a> below.</p>
-<p id="SendEvent"><strong>SendEvent</strong>: SendEvent sends keystrokes using the Windows keybd_event function (search MSDN for details). The rate at which keystrokes are sent is determined by <a href="SetKeyDelay.htm">SetKeyDelay</a>. <a href="SendMode.htm">SendMode</a> can be used to make Send synonymous with SendEvent or SendPlay.</p>
-<p id="keynames"><strong>Key Names</strong>: The following table lists the special keys that can be sent (each key name must be enclosed in braces):</p>
+<strong id="SendInput">SendInput</b> and <strong id="SendPlay">SendPlay</b>: SendInput and SendPlay use the same syntax as SendEvent but are generally faster and more reliable. In addition, they buffer any physical keyboard or mouse activity during the send, which prevents the user's keystrokes from being interspersed with those being sent. By default, <em>Send</em> is synonymous <em>SendPlay</em>; but it can be made a synonym for SendEvent or <a href="#SendPlayDetail">SendPlay</a> via <a href="SendMode.htm">SendMode</a>. For more details about each mode, see <a href="#SendInputDetail">SendInput</a> and <a href="#SendPlayDetail">SendPlay</a> below.</p>
+<p id="SendEvent"><b>SendEvent</b>: SendEvent sends keystrokes using the Windows keybd_event function (search MSDN for details). The rate at which keystrokes are sent is determined by <a href="SetKeyDelay.htm">SetKeyDelay</a>. <a href="SendMode.htm">SendMode</a> can be used to make Send synonymous with SendEvent or SendPlay.</p>
+<p id="keynames"><b>Key Names</b>: The following table lists the special keys that can be sent (each key name must be enclosed in braces):</p>
 <table class="info">
   <tr>
     <th>Key Name</th>
@@ -490,7 +490,7 @@ SendEvent Keys<pre><em>Command  Example:</em> Send, Hello{Space}World{!}
     <th>&nbsp;</th>
   </tr>
   <tr id="Click">
-    <td align="center"><strong>{Click [Options]}</strong></td>
+    <td align="center"><b>{Click [Options]}</b></td>
     <td>Sends a mouse click using the same options available in the <a href="Click.htm">Click command</a>. For example, <code>{Click}</code> would click the left mouse button once at the mouse cursor's current position, and <code>{Click 100, 200}</code> would click at coordinates 100, 200 (based on <a href="CoordMode.htm">CoordMode</a>). To move the mouse without clicking, specify 0 after the coordinates; for example: <code>{Click 100, 200, 0}</code>. The delay between mouse clicks is determined by <a href="SetMouseDelay.htm">SetMouseDelay</a> (not <a href="SetKeyDelay.htm">SetKeyDelay</a>).</td>
   </tr>
   <tr>
@@ -498,24 +498,24 @@ SendEvent Keys<pre><em>Command  Example:</em> Send, Hello{Space}World{!}
     <td>Sends a mouse button event at the cursor's current position (to have control over position and other options, use <a href="Click.htm">{Click}</a> above). The delay between mouse clicks is determined by <a href="SetMouseDelay.htm">SetMouseDelay</a>. WheelLeft/Right have no effect on operating systems older than Windows Vista.</td>
   </tr>
   <tr id="blind">
-    <td><strong>{Blind}</strong></td>
+    <td><b>{Blind}</b></td>
     <td><p>When {Blind} is the first item in the string, the program avoids releasing Alt/Control/Shift/Win if they started out in the down position. For example, the hotkey <code>+s::Send {Blind}abc</code> would send ABC rather than abc because the user is holding down the Shift key.</p>
       <p>{Blind} also causes <a href="SetStoreCapslockMode.htm">SetStoreCapslockMode</a> to be ignored; that is, the state of Capslock is not changed. Finally, {Blind} omits the extra Control keystrokes that would otherwise be sent; such keystrokes prevent: 1) Start Menu appearance during LWin/RWin keystrokes; 2) menu bar activation during Alt keystrokes.</p>
       <p>Blind-mode is used internally when <a href="../misc/Remap.htm">remapping a key</a>. For example, the remapping a::b would produce: 1) &quot;b&quot; when you type &quot;a&quot;; 2) uppercase B when you type uppercase A; and 3) Control-B when you type Control-A.</p>
       <p>{Blind} is not supported by SendRaw and <a href="ControlSend.htm">ControlSendRaw</a>. Furthermore, it is not completely supported by <a href="#SendPlayDetail">SendPlay</a>, especially when dealing with the modifier keys (Control, Alt, Shift, and Win).</p></td>
   </tr>
   <tr id="Raw">
-    <td><strong>{Raw}</strong></td>
+    <td><b>{Raw}</b></td>
     <td>Enables <a href="#SendRaw"><em>Raw mode</em></a>, which causes the following characters to be interpreted literally: <code>^+!#{}</code>. Although the string <code>{Raw}</code> need not occur at the beginning of the string, once specified, it stays in effect for the remainder of the string.</td>
   </tr>
 </table>
 
 <h2>Repeating  or Holding Down a Key</h2>
-<p><strong>To repeat a keystroke</strong>: Enclose in braces the name of the key followed by the number of times to repeat it. For example:</p>
+<p><b>To repeat a keystroke</b>: Enclose in braces the name of the key followed by the number of times to repeat it. For example:</p>
 <pre>Send {DEL 4}  <em>; Presses the Delete key 4 times.</em>
 Send {S 30}   <em>; Sends 30 uppercase S characters.</em>
 Send +{TAB 4}  <em>; Presses Shift-Tab 4 times.</em></pre>
-<p><strong>To hold down or release a key</strong>: Enclose in braces the name of the key followed by the word <strong>Down</strong> or <strong>Up</strong>. For example:</p>
+<p><b>To hold down or release a key</b>: Enclose in braces the name of the key followed by the word <b>Down</b> or <b>Up</b>. For example:</p>
 <pre>Send {b down}{b up}
 Send {TAB down}{TAB up}
 Send {Up down}  <em>; Press down the up-arrow key.</em>
@@ -532,28 +532,28 @@ Send {Tab up}  <em>; Release the key.</em></pre>
 
 <h2 id="Remarks">General Remarks</h2>
 <p>There are no specific limitations on which characters the Send command supports. If a character does not exist in the current keyboard layout, it is simulated by sending a Unicode character packet or <a href="#asc">Alt+nnnnn</a> combination, depending on the version of AutoHotkey. Unicode characters are supported directly as text in Unicode versions of AutoHotkey, or using <a href="#sendu">{U+nnnn} notation</a> in any version.</p>
-<p><strong>BlockInput Compared to SendInput/SendPlay</strong>: Although the <a href="BlockInput.htm">BlockInput</a> command can be used to prevent any keystrokes physically typed by the user from disrupting the flow of simulated keystrokes, it is often better to use <a href="#SendInputDetail">SendInput</a> or <a href="#SendPlayDetail">SendPlay</a> so that keystrokes and mouse clicks become uninterruptible. This is because unlike BlockInput, SendInput/Play does not discard what the user types during the send; instead, such keystrokes are buffered and sent afterward.</p>
+<p><b>BlockInput Compared to SendInput/SendPlay</b>: Although the <a href="BlockInput.htm">BlockInput</a> command can be used to prevent any keystrokes physically typed by the user from disrupting the flow of simulated keystrokes, it is often better to use <a href="#SendInputDetail">SendInput</a> or <a href="#SendPlayDetail">SendPlay</a> so that keystrokes and mouse clicks become uninterruptible. This is because unlike BlockInput, SendInput/Play does not discard what the user types during the send; instead, such keystrokes are buffered and sent afterward.</p>
 <p>When sending a large number of keystrokes, a <a href="../Scripts.htm#continuation">continuation section</a> can be used to improve readability and maintainability.</p>
 <p>Since the operating system does not allow simulation of the CTRL-ALT-DELETE combination, doing something like <code>Send ^!{Delete}</code> will have no effect.</p>
-<p><strong>Send may have no effect</strong> on Windows Vista or later if the active window is running with administrative privileges and the script is not. This is due to a security mechanism called User Interface Privilege Isolation.</p>
+<p><b>Send may have no effect</b> on Windows Vista or later if the active window is running with administrative privileges and the script is not. This is due to a security mechanism called User Interface Privilege Isolation.</p>
 
 <h2 id="SendInputDetail">SendInput</h2>
 <p>SendInput is generally the preferred method to send keystrokes and mouse clicks because of its superior speed and reliability. Under most conditions, SendInput is nearly instantaneous, even when sending long strings. Since SendInput is so fast, it is also more reliable because there is less opportunity for some other window to pop up unexpectedly and intercept the keystrokes. Reliability is further improved by the fact that anything the user types during a SendInput is postponed until afterward.</p>
 <p>Unlike the other sending modes, the operating system limits SendInput to about 5000 characters (this may vary depending on the operating system's version and performance settings). Characters and events beyond this limit are not sent.</p>
-<p><strong>Note:</strong> SendInput ignores SetKeyDelay because the operating system does not support a delay in this mode. However, when SendInput reverts to <a href="#SendEvent">SendEvent</a> under the conditions described below, it uses <code><a href="SetKeyDelay.htm">SetKeyDelay -1, 0</a></code> (unless SendEvent's KeyDelay is <code>-1,-1</code>, in which case <code>-1,-1</code> is used). When SendInput reverts to <a href="#SendPlayDetail">SendPlay</a>, it uses SendPlay's KeyDelay.</p>
+<p><b>Note:</b> SendInput ignores SetKeyDelay because the operating system does not support a delay in this mode. However, when SendInput reverts to <a href="#SendEvent">SendEvent</a> under the conditions described below, it uses <code><a href="SetKeyDelay.htm">SetKeyDelay -1, 0</a></code> (unless SendEvent's KeyDelay is <code>-1,-1</code>, in which case <code>-1,-1</code> is used). When SendInput reverts to <a href="#SendPlayDetail">SendPlay</a>, it uses SendPlay's KeyDelay.</p>
 <p id="SendInputUnavail">If a script <em>other than</em> the one executing SendInput has a <a href="_InstallKeybdHook.htm">low-level keyboard hook</a> installed, SendInput automatically reverts to <a href="#SendEvent">SendEvent</a> (or <a href="#SendPlayDetail">SendPlay</a> if <a href="SendMode.htm"><code>SendMode InputThenPlay</code></a> is in effect). This is done because the presence of an external hook disables all of SendInput's advantages, making it inferior to both SendPlay and SendEvent. However, since SendInput is unable to detect a low-level hook in programs other than AutoHotkey v1.0.43+, it will not revert in these cases, making it less reliable than SendPlay/Event.</p>
 <p>When SendInput sends mouse clicks by means such as <a href="#Click">{Click}</a>, and <a href="SetMouseDelay.htm"><code>CoordMode Mouse, Relative</code></a> is in effect (the default), every click will be relative to the window that was active at the start of the send. Therefore, if SendInput intentionally activates another window (by means such as alt-tab), the coordinates of subsequent clicks within the same command will be wrong because they will still be relative to the old window rather than the new one.</p>
 
 <h2 id="SendPlayDetail">SendPlay</h2>
-<p><strong>Note:</strong> SendPlay may have no effect at all if UAC is enabled, even if the script is running as an administrator. For more information, refer to the <a href="../FAQ.htm#uac">FAQ</a>.</p>
+<p><b>Note:</b> SendPlay may have no effect at all if UAC is enabled, even if the script is running as an administrator. For more information, refer to the <a href="../FAQ.htm#uac">FAQ</a>.</p>
 <p>SendPlay's biggest advantage is its ability to &quot;play back&quot; keystrokes and mouse clicks in a broader variety of games than the other modes. For example, a particular game may accept <a href="../Hotstrings.htm#SendMode">hotstrings</a> only when they have the <a href="../Hotstrings.htm#SendMode">SendPlay option</a>.</p>
 <p>Of the three sending modes, SendPlay is the most unusual because it does not simulate keystrokes and mouse clicks per se. Instead, it creates a series of events (messages) that flow directly to the active window (similar to <a href="ControlSend.htm">ControlSend</a>, but at a lower level). Consequently, SendPlay does not trigger hotkeys or hotstrings.</p>
 <p>Like <a href="#SendInputDetail">SendInput</a>, SendPlay's keystrokes do not get interspersed with keystrokes typed by the user. Thus, if the user happens to type something during a SendPlay, those keystrokes are postponed until afterward.</p>
 <p>Although SendPlay is considerably slower than SendInput, it is usually faster than the traditional <a href="#SendEvent">SendEvent</a> mode (even when <a href="SetKeyDelay.htm">KeyDelay</a> is -1).</p>
 <p>The Windows keys (LWin and RWin) are automatically blocked during a SendPlay if the <a href="_InstallKeybdHook.htm">keyboard hook</a> is installed. This prevents the Start Menu from appearing if the user accidentally presses a Windows key during the send. By contrast, keys other than LWin and RWin do not need to be blocked because the operating system automatically postpones them until after the SendPlay (via buffering).</p>
 <p>SendPlay does not use the standard settings of SetKeyDelay and SetMouseDelay. Instead, it defaults to no delay at all, which can be changed as shown in the following examples:</p>
-<pre><a href="SetKeyDelay.htm">SetKeyDelay</a>, 0, 10, <strong>Play</strong>  <em>; Note that both 0 and -1 are the same in SendPlay mode.</em>
-<a href="SetMouseDelay.htm">SetMouseDelay</a>, 10, <strong>Play</strong></pre>
+<pre><a href="SetKeyDelay.htm">SetKeyDelay</a>, 0, 10, <b>Play</b>  <em>; Note that both 0 and -1 are the same in SendPlay mode.</em>
+<a href="SetMouseDelay.htm">SetMouseDelay</a>, 10, <b>Play</b></pre>
 <p>SendPlay is unable to turn on or off the Capslock, Numlock, or Scroll-lock keys. Similarly, it is unable to change a key's state as seen by <a href="GetKeyState.htm">GetKeyState</a> unless the keystrokes are sent to one of the script's own windows. Even then, any changes to the left/right modifier keys (e.g. RControl) can be detected only via their neutral counterparts (e.g. Control). Also, SendPlay has other limitations described on the <a href="SendMode.htm#Play">SendMode page</a>.</p>
 <p>Unlike <a href="#SendInputDetail">SendInput</a> and <a href="#SendEvent">SendEvent</a>, the user may interrupt a SendPlay by pressing Control-Alt-Del or Control-Escape. When this happens, the remaining keystrokes are not sent but the script continues executing as though the SendPlay had completed normally.</p>
 <p>Although SendPlay can send LWin and RWin events, they are sent directly to the active window rather than performing their native operating system function. To work around this, use <a href="#SendEvent">SendEvent</a>. For example, <code>SendEvent #r</code> would show the Start Menu's Run dialog.</p>

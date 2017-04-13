@@ -28,9 +28,9 @@ else  <em>; Braces must be used around the section below because it consists of 
 <p>The <a href="Block.htm#otb">One True Brace (OTB) style</a> may optionally be used around an &quot;else&quot;. For example:</p>
 <pre>if IsDone {
     ...
-<strong>}</strong> else if (x &lt; y) <strong>{</strong>
+<b>}</b> else if (x &lt; y) <b>{</b>
     ...
-<strong>}</strong> else <strong>{</strong>
+<b>}</b> else <b>{</b>
     ...
 }</pre>
 <h3>Related</h3>
@@ -41,7 +41,7 @@ else  <em>; Braces must be used around the section below because it consists of 
     WinActivate
     Send This is a test.{Enter}
 }
-<strong>else</strong>
+<b>else</b>
 {
     WinActivate, Some Other Window
     MouseClick, left, 100, 200
@@ -49,18 +49,18 @@ else  <em>; Braces must be used around the section below because it consists of 
 
 if x = 1
     Gosub, a1
-<strong>else</strong> if x = 2 <em>; &quot;else if&quot; style</em>
+<b>else</b> if x = 2 <em>; &quot;else if&quot; style</em>
     Gosub, a2
-<strong>else</strong> if x = 3
+<b>else</b> if x = 3
 {
     Gosub, a3
     Sleep, 1
 }
-<strong>else</strong> Gosub, a4  <em>; i.e. Any single command can be on the same line with an ELSE.</em>
+<b>else</b> Gosub, a4  <em>; i.e. Any single command can be on the same line with an ELSE.</em>
  
 <em>; Also OK:</em>
 if y = 1, Gosub, b1
-<strong>else</strong> {
+<b>else</b> {
     Sleep, 1
     Gosub, b2
 }</pre>

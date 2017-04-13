@@ -62,15 +62,15 @@ MsgBox % <span class="red">&apos;</span>She said, &quot;An apple a day.&quot;<sp
 <pre>CaseSensitive := false
 ContinueSearch := true
 hWindow := null</pre>
-<p><strong>Integers and floating point</strong>: Within an expression, numbers are considered to be floating point if they contain a decimal point or scientific notation; otherwise, they are integers. For most operators -- such as addition and multiplication -- if either of the inputs is a floating point number, the result will also be a floating point number.</p>
+<p><b>Integers and floating point</b>: Within an expression, numbers are considered to be floating point if they contain a decimal point or scientific notation; otherwise, they are integers. For most operators -- such as addition and multiplication -- if either of the inputs is a floating point number, the result will also be a floating point number.</p>
 <p>Within expressions and non-expressions alike, integers may be written in either hexadecimal or decimal format. Hexadecimal numbers all start with the prefix 0x. For example, <code>Sleep 0xFF</code> is equivalent to <code>Sleep 255</code>. Floating point numbers can optionally be written in scientific notation, with or without a decimal point (e.g. <code>1e4</code> or <code>-2.1E-4</code>).</p>
 <p>Within expressions, unquoted literal numbers such as <code>128</code>, <code>0x7F</code> and <code>1.0</code> are converted to pure numbers before the script begins executing, so converting the number to a string may produce a value different to the original literal value. For example:</p>
 <pre>MsgBox(0x7F)  <em>; Shows 128</em>
 MsgBox(1.00)  <em>; Shows 1.0</em></pre>
-<p id="percent-space"><strong>Force an expression</strong>: An expression can be used in a parameter that does not directly support it (except an OutputVar parameter) by preceding the expression with a percent sign and a space or tab. For example:</p>
-<pre><a href="commands/FileAppend.htm">FileAppend</a>, <strong>%</strong> MyArray[i], My File.txt
-<a href="commands/MsgBox.htm">MsgBox</a> <strong>%</strong> &quot;The variable MyVar contains &quot; . MyVar . &quot;.&quot;
-<a href="commands/WinSetTransparent.htm">WinSetTransparent</a>, <strong>%</strong> X + 100
+<p id="percent-space"><b>Force an expression</b>: An expression can be used in a parameter that does not directly support it (except an OutputVar parameter) by preceding the expression with a percent sign and a space or tab. For example:</p>
+<pre><a href="commands/FileAppend.htm">FileAppend</a>, <b>%</b> MyArray[i], My File.txt
+<a href="commands/MsgBox.htm">MsgBox</a> <b>%</b> &quot;The variable MyVar contains &quot; . MyVar . &quot;.&quot;
+<a href="commands/WinSetTransparent.htm">WinSetTransparent</a>, <b>%</b> X + 100
 <p>An expression can also be inserted at any point in a string by enclosing it in percent signs, as in the following example:</p>
 <pre>MsgBox, The time is %FormatTime(A_Now, "Time")%.</pre>
 <p>OutputVar parameters also allow this, but the result of the expression should be the (full or partial) name of a variable, as a string.</p>
@@ -128,7 +128,7 @@ MsgBox("Hello, " A_UserName "!")</pre>
       <p><strong>Logical-not (!)</strong>: If the operand is blank or 0, the result of applying logical-not is 1, which means &quot;true&quot;. Otherwise, the result is 0 (false). For example: <code>!x or !(y and z)</code>. Note: The word NOT is synonymous with <strong>!</strong> except that <strong>!</strong> has a higher precedence. Consecutive unary operators such as <code><strong>!!</strong>Var</code> are allowed because they are evaluated in right-to-left order.</p>
       <p><strong>Bitwise-not (~)</strong>: This inverts each bit of its operand. If the operand is a floating point value, it is truncated to an integer prior to the calculation. If the operand  is between 0 and 4294967295 (0xffffffff), it will be treated as an <u>unsigned</u> 32-bit value. Otherwise, it is treated as a <u>signed</u> 64-bit value. For example, <code>~0xf0f</code> evaluates to 0xfffff0f0 (4294963440).</p>
       <p id="amp"><strong>Address (&amp;)</strong>: <code>&amp;MyVar</code> retrieves the address of <em>MyVar</em>'s contents in memory, which is typically used with <a href="commands/DllCall.htm#struct">DllCall structures</a>. <em>MyVar</em>'s contents can be a string, a 64-bit integer, a 64-bit floating-point number, or an object.</p>
-      <p><strong>Dereference (*)</strong>: <code>*Expression</code> assumes that <code>Expression</code> resolves to a numeric memory address; it retrieves the byte at that address as a number between 0 and 255 (0 is always retrieved if the address is 0; but any other invalid address must be avoided because it might crash the script). However, <a href="Functions.htm#NumGet">NumGet</a> generally performs much better when retrieving binary numbers.</p></td>
+      <p><strong>Dereference (*)</strong>: <code>*Expression</code> assumes that <code>Expression</code> resolves to a numeric memory address; it retrieves the byte at that address as a number between 0 and 255 (0 is always retrieved if the address is 0; but any other invalid address must be avoided because it might crash the script). However, <a href="Functions.htm#NumGet">NumGet()</a> generally performs much better when retrieving binary numbers.</p></td>
   </tr>
   <tr>
     <td style="text-align:center"><strong>*<br>
@@ -137,7 +137,7 @@ MsgBox("Hello, " A_UserName "!")</pre>
     </strong></td>
     <td><p><strong>Multiply (*)</strong>: The result is an integer if both inputs are integers; otherwise, it is a floating point number.</p>
       <p id="divide"><strong>True divide (/)</strong>: True division yields a floating point result even when both inputs are integers. For example, <code>3/2</code> yields 1.5 rather than 1, and <code>4/2</code> yields 2.0 rather than 2.</p>
-      <p id="FloorDivide"><strong>Floor divide (//)</strong>: The double-slash operator uses high-performance integer division if the two inputs are integers. For example, <code>5//3</code> is 1 and <code>5//-3</code> is -1. If either of the inputs is in floating point format, floating point division is performed and the result is truncated to the nearest integer to the left. For example, <code>5//3.0</code> is 1.0 and <code>5.0//-3</code> is -2.0. Although the result of this floating point division is an integer, it is stored in floating point format so that anything else that uses it will see it as such. For modulo, see <a href="commands/Math.htm#Mod">mod</a>.</p>
+      <p id="FloorDivide"><strong>Floor divide (//)</strong>: The double-slash operator uses high-performance integer division if the two inputs are integers. For example, <code>5//3</code> is 1 and <code>5//-3</code> is -1. If either of the inputs is in floating point format, floating point division is performed and the result is truncated to the nearest integer to the left. For example, <code>5//3.0</code> is 1.0 and <code>5.0//-3</code> is -2.0. Although the result of this floating point division is an integer, it is stored in floating point format so that anything else that uses it will see it as such. For modulo, see <a href="commands/Math.htm#Mod">mod()</a>.</p>
     <p>The <a href="#AssignOp">*=</a> and <a href="#AssignOp">/=</a> operators are a shorthand way to multiply or divide the value in a variable by another value. For example, <code>Var*=2</code> produces the same result as <code>Var:=Var*2</code> (though the former performs better).</p>
     <p>Division by zero yields a blank result (empty string).</p></td>
   </tr>
@@ -340,11 +340,11 @@ Var := "The color is %FoundColor%"   <em>; Variable substitution within a string
   </tr>
   <tr id="ThisFunc">
     <td>A_ThisFunc</td>
-    <td>The name of the <a href="Functions.htm">user-defined function</a> that is currently executing (blank if none); for example: MyFunction. See also: <a href="commands/IsFunc.htm">IsFunc</a></td>
+    <td>The name of the <a href="Functions.htm">user-defined function</a> that is currently executing (blank if none); for example: MyFunction. See also: <a href="commands/IsFunc.htm">IsFunc()</a></td>
   </tr>
   <tr id="ThisLabel">
     <td>A_ThisLabel</td>
-    <td>The name of the <a href="misc/Labels.htm">label</a> (subroutine) that is currently executing (blank if none); for example: MyLabel. It is updated whenever the script executes <a href="commands/Gosub.htm">Gosub</a>/<a href="commands/Return.htm">Return</a> or <a href="commands/Goto.htm">Goto</a>. It is also updated for automatically-called labels such as <a href="commands/SetTimer.htm">timers</a>, <a href="commands/Gui.htm#DefaultWin">GUI threads</a>, <a href="commands/Menu.htm">menu items</a>, <a href="Hotkeys.htm">hotkeys</a> and <a href="Hotstrings.htm">hotstrings</a>. However, A_ThisLabel is not updated when execution &quot;falls into&quot; a label from above; when that happens, A_ThisLabel retains its previous value. See also: <a href="#ThisHotkey">A_ThisHotkey</a> and <a href="commands/IsLabel.htm">IsLabel</a></td>
+    <td>The name of the <a href="misc/Labels.htm">label</a> (subroutine) that is currently executing (blank if none); for example: MyLabel. It is updated whenever the script executes <a href="commands/Gosub.htm">Gosub</a>/<a href="commands/Return.htm">Return</a> or <a href="commands/Goto.htm">Goto</a>. It is also updated for automatically-called labels such as <a href="commands/SetTimer.htm">timers</a>, <a href="commands/Gui.htm#DefaultWin">GUI threads</a>, <a href="commands/Menu.htm">menu items</a>, <a href="Hotkeys.htm">hotkeys</a> and <a href="Hotstrings.htm">hotstrings</a>. However, A_ThisLabel is not updated when execution &quot;falls into&quot; a label from above; when that happens, A_ThisLabel retains its previous value. See also: <a href="#ThisHotkey">A_ThisHotkey</a> and <a href="commands/IsLabel.htm">IsLabel()</a></td>
   </tr>
   <tr id="AhkVersion">
     <td>A_AhkVersion</td>
@@ -450,7 +450,7 @@ Var := "The color is %FoundColor%"   <em>; Variable substitution within a string
 Sleep, 1000
 ElapsedTime := A_TickCount - StartTime
 MsgBox,  %ElapsedTime% milliseconds have elapsed.</pre>
-<p>If you need more precision than A_TickCount's 10ms, use <a href="commands/DllCall.htm#QPC">QueryPerformanceCounter</a>.</p>
+<p>If you need more precision than A_TickCount's 10ms, use <a href="commands/DllCall.htm#QPC">QueryPerformanceCounter()</a>.</p>
 </td>
   </tr>
 </table>
@@ -620,7 +620,7 @@ MsgBox,  %ElapsedTime% milliseconds have elapsed.</pre>
       <ul>
         <li>The <a href="commands/OnClipboardChange.htm">OnClipboardChange label</a></li>
         <li><a href="Hotkeys.htm#Wheel">Mouse wheel hotkeys</a> (WheelDown/Up/Left/Right)</li>
-        <li><a href="commands/RegisterCallback.htm">RegisterCallback</a></li>
+        <li><a href="commands/RegisterCallback.htm">RegisterCallback()</a></li>
         <li><a href="commands/Gui.htm#label">GUI events</a>, namely <a href="commands/Gui.htm#GuiContextMenu">GuiContextMenu</a>, <a href="commands/Gui.htm#GuiDropFiles">GuiDropFiles</a>, <a href="commands/GuiControls.htm#ListBox">ListBox</a>, <a href="commands/ListView.htm">ListView</a>, <a href="commands/TreeView.htm">TreeView</a>, and <a href="commands/GuiControls.htm#StatusBar">StatusBar</a>. If there is no additional information for an event, A_EventInfo contains 0.</li>
       </ul>
       <p><strong>Read/write:</strong> A_EventInfo can also be set by the script, but can only accept unsigned integers within the range available to pointers (32-bit or 64-bit depending on the version of AutoHotkey).</p></td>
@@ -826,7 +826,7 @@ return
   </tr>
   <tr id="LastError">
     <td>A_LastError</td>
-    <td><p><strong>Read/write:</strong> This is usually the result from the OS's GetLastError() function after the script calls certain commands/functions, or the HRESULT of the last COM object invocation. See <a href="commands/DllCall.htm#LastError">DllCall</a> or <a href="commands/Run.htm#LastError">Run/RunWait</a> for more details.</p>
+    <td><p><strong>Read/write:</strong> This is usually the result from the OS's GetLastError() function after the script calls certain commands/functions, or the HRESULT of the last COM object invocation. See <a href="commands/DllCall.htm#LastError">DllCall()</a> or <a href="commands/Run.htm#LastError">Run/RunWait</a> for more details.</p>
     <p>Assigning a value to A_LastError also causes the OS's SetLastError() function to be called.</p></td>
   </tr>
 </table>

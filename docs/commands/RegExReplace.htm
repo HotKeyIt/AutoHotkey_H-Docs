@@ -35,7 +35,7 @@
   <dd><p>The unquoted name of a variable in which to store the number of replacements that occurred (0 if none).</p></dd>
 
   <dt>Limit</dt>
-  <dd><p>If <em>Limit</em> is omitted, it defaults to -1, which replaces <strong>all</strong> occurrences of the pattern found in <em>Haystack</em>. Otherwise, specify the maximum number of replacements to allow. The part of <em>Haystack</em> to the right of the last replacement is left unchanged.</p></dd>
+  <dd><p>If <em>Limit</em> is omitted, it defaults to -1, which replaces <b>all</b> occurrences of the pattern found in <em>Haystack</em>. Otherwise, specify the maximum number of replacements to allow. The part of <em>Haystack</em> to the right of the last replacement is left unchanged.</p></dd>
 
   <dt>StartingPosition</dt>
   <dd><p>If <em>StartingPosition</em> is omitted, it defaults to 1 (the beginning of <em>Haystack</em>). Otherwise, specify 2 to start at the second character, 3 to start at the third, and so on.  If <em>StartingPosition</em> is beyond the length of <em>Haystack</em>, the search starts at the empty string that lies at the end of <em>Haystack</em> (which typically results in no replacements).</p>
@@ -63,7 +63,7 @@
 <p>To improve performance, the 100 most recently used regular expressions are kept cached in memory (in compiled form).</p>
 <p>The <a href="../misc/RegEx-QuickRef.htm#Study">study option (S)</a> can sometimes improve the performance of a regular expression that is used many times (such as in a loop).</p>
 <h3>Remarks</h3>
-<p>Most characters like abc123 can be used literally inside a regular expression. However, the characters <strong>\.*?+[{|()^$</strong> must be preceded by a backslash to be seen as literal. For example, <strong>\.</strong> is a literal period and <strong>\\</strong> is a literal backslash. Escaping can be avoided by using \Q...\E. For example: <code>\QLiteral Text\E</code>.</p>
+<p>Most characters like abc123 can be used literally inside a regular expression. However, the characters <b>\.*?+[{|()^$</b> must be preceded by a backslash to be seen as literal. For example, <b>\.</b> is a literal period and <b>\\</b> is a literal backslash. Escaping can be avoided by using \Q...\E. For example: <code>\QLiteral Text\E</code>.</p>
 <p>Within a regular expression, special characters such as tab and newline can be escaped with either an accent (`) or a backslash (\). For example, `t is the same as \t.</p>
 <p>To learn the basics of regular expressions (or refresh your memory of pattern syntax), see the <a href="../misc/RegEx-QuickRef.htm">RegEx Quick Reference</a>.</p>
 <h3>Related</h3>

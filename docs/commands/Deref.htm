@@ -10,8 +10,8 @@
 
 <h1>Deref</h1>
 <p>Expands variable references and <a href="../misc/EscapeChar.htm">escape sequences</a> contained inside other variables.</p>
-<pre class="Syntax">Deref, <strong>OutputVar</strong>, String<pre><em>Command  Example:</em> Deref, <strong>value</strong>,% "The time now is %A_Hour%:%A_Min%:%A_Sec%"
-<em>Function Example:</em> <strong>value</strong> := Deref("The time now is %A_Hour%:%A_Min%:%A_Sec%")</pre></pre>
+<pre class="Syntax">Deref, <b>OutputVar</b>, String<pre><em>Command  Example:</em> Deref, <b>value</b>,% "The time now is %A_Hour%:%A_Min%:%A_Sec%"
+<em>Function Example:</em> <b>value</b> := Deref("The time now is %A_Hour%:%A_Min%:%A_Sec%")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -32,7 +32,7 @@
 <pre class="NoIndent">
 var1 := "test"
 var2 := Chr(37) "var1" Chr(37)  <em>; Chr(37) is %</em>
-<strong>Deref</strong> OutputVar, %var2%
+<b>Deref</b> OutputVar, %var2%
 MsgBox %OutputVar%  <em>; Shows "test"</em>
 </pre>
 

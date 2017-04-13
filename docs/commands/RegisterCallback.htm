@@ -28,8 +28,8 @@
 
   <dt>Options</dt>
   <dd><p>Specify zero or more of the following words. Separate each option from the next with a space (e.g. <code>C Fast</code>).</p>
-    <p id="Fast"><strong>Fast</strong> or <strong>F</strong>: Avoids starting a new <a href="../misc/Threads.htm">thread</a> each time <em>FunctionName</em> is called. Although this performs better, it must be avoided whenever the thread from which <em>Address</em> is called varies (e.g. when the callback is triggered by an incoming message). This is because <em>FunctionName</em> will be able to change global settings such as <a href="../misc/ErrorLevel.htm">ErrorLevel</a>, <a href="../Variables.htm#LastError">A_LastError</a>, and the <a href="../misc/WinTitle.htm#LastFoundWindow">last-found window</a> for whichever thread happens to be running at the time it is called. For more information, see <a href="#Threads">Remarks</a>.</p>
-    <p><strong>CDecl</strong> or <strong>C</strong>: Makes <em>Address</em> conform to the &quot;C&quot; calling convention. This is typically omitted because the standard calling convention is much more common for callbacks.</p></dd>
+    <p id="Fast"><b>Fast</b> or <b>F</b>: Avoids starting a new <a href="../misc/Threads.htm">thread</a> each time <em>FunctionName</em> is called. Although this performs better, it must be avoided whenever the thread from which <em>Address</em> is called varies (e.g. when the callback is triggered by an incoming message). This is because <em>FunctionName</em> will be able to change global settings such as <a href="../misc/ErrorLevel.htm">ErrorLevel</a>, <a href="../Variables.htm#LastError">A_LastError</a>, and the <a href="../misc/WinTitle.htm#LastFoundWindow">last-found window</a> for whichever thread happens to be running at the time it is called. For more information, see <a href="#Threads">Remarks</a>.</p>
+    <p><b>CDecl</b> or <b>C</b>: Makes <em>Address</em> conform to the &quot;C&quot; calling convention. This is typically omitted because the standard calling convention is much more common for callbacks.</p></dd>
 
   <dt>ParamCount</dt>
   <dd><p>The number of parameters that <em>Address</em>'s caller will pass to it. If entirely omitted, it defaults to the number of mandatory parameters in the <a href="../Functions.htm#define">definition</a> of <em>FunctionName</em>. In either case, ensure that the caller passes exactly this number of parameters.</p></dd>
@@ -44,7 +44,7 @@
 <p>A <a href="../Functions.htm">function</a> assigned to a callback address may accept up to 31 parameters. <a href="../Functions.htm#optional">Optional parameters</a> are permitted, which is useful when the function is called by more than one caller.</p>
 <p>Interpreting the parameters correctly requires some understanding of how the x86 calling conventions work. Since AutoHotkey does not have typed parameters, the callback's parameter list is assumed to consist of integers, and some reinterpretation may be required.</p>
 
-<p><strong>AutoHotkey 32-bit:</strong> All incoming parameters are unsigned 32-bit integers. Smaller types are padded out to 32 bits, while larger types are split into a series of 32-bit parameters.</p>
+<p><b>AutoHotkey 32-bit:</b> All incoming parameters are unsigned 32-bit integers. Smaller types are padded out to 32 bits, while larger types are split into a series of 32-bit parameters.</p>
 <p>If an incoming parameter is intended to be a signed integer, any negative numbers can be revealed by following either of the following examples:</p>
 <pre><em>; Method #1</em>
 if wParam > 0x7FFFFFFF
@@ -53,9 +53,9 @@ if wParam > 0x7FFFFFFF
 <em>; Method #2: Relies on the fact that AutoHotkey natively uses signed 64-bit integers.</em>
 wParam := wParam &lt;&lt; 32 &gt;&gt; 32</pre>
 
-<p><strong>AutoHotkey 64-bit:</strong> All incoming parameters are signed 64-bit integers. AutoHotkey does not natively support unsigned 64-bit integers. Smaller types are padded out to 64 bits, while larger types are always passed by address.</p>
+<p><b>AutoHotkey 64-bit:</b> All incoming parameters are signed 64-bit integers. AutoHotkey does not natively support unsigned 64-bit integers. Smaller types are padded out to 64 bits, while larger types are always passed by address.</p>
 
-<p><strong>AutoHotkey 32-bit/64-bit:</strong> If an incoming parameter is intended to be 8-bit or 16-bit (or 32-bit on x64), the upper bits of the value might contain "garbage" which can be filtered out by using bitwise-and, as in the following examples:</p>
+<p><b>AutoHotkey 32-bit/64-bit:</b> If an incoming parameter is intended to be 8-bit or 16-bit (or 32-bit on x64), the upper bits of the value might contain "garbage" which can be filtered out by using bitwise-and, as in the following examples:</p>
 <pre>Callback(UCharParam, UShortParam, UIntParam) {
     UCharParam &amp;= 0xFF
     UShortParam &amp;= 0xFFFF
@@ -66,7 +66,7 @@ wParam := wParam &lt;&lt; 32 &gt;&gt; 32</pre>
 <pre>MyString := StrGet(MyParameter)</pre>
 <p>If an incoming parameter is the address of a structure, the individual members may be extracted by following the steps at <a href="DllCall.htm#struct">DllCall structures</a>.</p>
 
-<p id="Indirect"><strong>Receiving parameters by address:</strong> If the function is declared as <a href="../Functions.htm#Variadic">variadic</a>, its final parameter is assigned the <i>address</i> of the first callback parameter which was not assigned to a script parameter. For example:</p>
+<p id="Indirect"><b>Receiving parameters by address:</b> If the function is declared as <a href="../Functions.htm#Variadic">variadic</a>, its final parameter is assigned the <i>address</i> of the first callback parameter which was not assigned to a script parameter. For example:</p>
 <pre>
 callback := RegisterCallback("TheFunc", "F", 3)  <em>; Parameter list size must be specified.</em>
 TheFunc("TheFunc was called directly.")          <em>; Call TheFunc directly.</em>
@@ -100,7 +100,7 @@ TheFunc(params*) {
 
 <em>; For performance and memory conservation, call RegisterCallback() only once for a given callback:</em>
 if not EnumAddress  <em>; Fast-mode is okay because it will be called only from this thread:</em>
-    EnumAddress := <strong>RegisterCallback</strong>(&quot;EnumWindowsProc&quot;, &quot;Fast&quot;)
+    EnumAddress := <b>RegisterCallback</b>(&quot;EnumWindowsProc&quot;, &quot;Fast&quot;)
 
 DetectHiddenWindows On  <em>; Due to fast-mode, this setting will go into effect for the callback too.</em>
 
@@ -132,8 +132,8 @@ GuiHwnd := WinExist()
 <em>; 64-bit scripts must call SetWindowLongPtr instead of SetWindowLong:</em>
 SetWindowLong := A_PtrSize=8 ? "SetWindowLongPtr" : "SetWindowLong"
 
-WindowProcNew := <strong>RegisterCallback</strong>(&quot;WindowProc&quot;, &quot;&quot;  <em>; Specify &quot;&quot; to avoid fast-mode for subclassing.</em>
-    , <strong>4</strong>, MyTextHwnd)  <em>; Must specify exact ParamCount when EventInfo parameter is present.</em>
+WindowProcNew := <b>RegisterCallback</b>(&quot;WindowProc&quot;, &quot;&quot;  <em>; Specify &quot;&quot; to avoid fast-mode for subclassing.</em>
+    , <b>4</b>, MyTextHwnd)  <em>; Must specify exact ParamCount when EventInfo parameter is present.</em>
 WindowProcOld := DllCall(SetWindowLong, Ptr, GuiHwnd, Int, -4  <em>; -4 is GWL_WNDPROC</em>
     , Ptr, WindowProcNew, Ptr) <em>; Return value must be set to Ptr or UPtr vs. Int.</em>
 

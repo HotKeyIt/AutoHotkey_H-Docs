@@ -13,17 +13,17 @@
 
 <p>Retrieves screen resolution and multi-monitor info.</p>
 
-<pre class="Syntax"><strong>Exists</strong> := MonitorGet([N, <strong>Left</strong>, <strong>Top</strong>, <strong>Right</strong>, <strong>Bottom</strong>])
-<strong>Exists</strong>  := MonitorGetWorkArea([N, <strong>Left</strong>, <strong>Top</strong>, <strong>Right</strong>, <strong>Bottom</strong>])
-<strong>Count</strong>   := MonitorGetCount()
-<strong>Primary</strong> := MonitorGetPrimary()
-<strong>Name</strong>    := MonitorGetName([N])
+<pre class="Syntax"><b>Exists</b> := MonitorGet([N, <b>Left</b>, <b>Top</b>, <b>Right</b>, <b>Bottom</b>])
+<b>Exists</b>  := MonitorGetWorkArea([N, <b>Left</b>, <b>Top</b>, <b>Right</b>, <b>Bottom</b>])
+<b>Count</b>   := MonitorGetCount()
+<b>Primary</b> := MonitorGetPrimary()
+<b>Name</b>    := MonitorGetName([N])
 
-MonitorGet [, N, <strong>Left</strong>, <strong>Top</strong>, <strong>Right</strong>, <strong>Bottom</strong>]
-MonitorGetWorkArea [, N, <strong>Left</strong>, <strong>Top</strong>, <strong>Right</strong>, <strong>Bottom</strong>]
-MonitorGetCount, <strong>Count</strong>
-MonitorGetPrimary, <strong>Primary</strong>
-MonitorGetName, <strong>Name</strong> [, N]
+MonitorGet [, N, <b>Left</b>, <b>Top</b>, <b>Right</b>, <b>Bottom</b>]
+MonitorGetWorkArea [, N, <b>Left</b>, <b>Top</b>, <b>Right</b>, <b>Bottom</b>]
+MonitorGetCount, <b>Count</b>
+MonitorGetPrimary, <b>Primary</b>
+MonitorGetName, <b>Name</b> [, N]
 </pre>
 
 <h3>Parameters</h3>
@@ -47,7 +47,7 @@ MonitorGetName, <strong>Name</strong> [, N]
 </dl>
 
 <h3>MonitorGet</h3>
-<p>Checks for the existence of monitor number <strong>N</strong> and optionally retrieves its bounding coordinates. The information is stored in up to four variables passed as parameters. If <strong>N</strong> is too high or there is a problem retrieving the info, the variables are all made blank and the return value is false. For example:</p>
+<p>Checks for the existence of monitor number <b>N</b> and optionally retrieves its bounding coordinates. The information is stored in up to four variables passed as parameters. If <b>N</b> is too high or there is a problem retrieving the info, the variables are all made blank and the return value is false. For example:</p>
 <pre>if MonitorGet(2, Left, Top, Right, Bottom)
     MsgBox, Left: %Left% -- Top: %Top% -- Right: %Right% -- Bottom %Bottom%.
 else
@@ -63,7 +63,7 @@ else
 <p>Retrieves the number of the primary monitor, which will be 1 in a single-monitor system.</p>
 
 <h3>MonitorGetName</h3>
-<p>Retrieves the operating system's name for monitor number <strong>N</strong>.</p>
+<p>Retrieves the operating system's name for monitor number <b>N</b>.</p>
 
 <h3>Remarks</h3>
 <p>The built-in variables <a href="../Variables.htm#Screen">A_ScreenWidth</a> and <a href="../Variables.htm#Screen">A_ScreenHeight</a> contain the dimensions of the primary monitor, in pixels.</p>

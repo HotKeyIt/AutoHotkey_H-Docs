@@ -25,7 +25,7 @@ toc = [
   ]},
   {label:"Frequently Asked Questions",path:"FAQ.htm"},
   {label:"AutoHotkey_L New Features",path:"AHKL_Features.htm"},
-  {label:"AutoHotkey_H New Features",path:"AHKL_Features.htm"},
+  {label:"AutoHotkey_H New Features",path:"AHKH_Features.htm"},
   {label:"Tutorial (quick start)",path:"Tutorial.htm"},
   {label:"Recent AutoHotkey_L Changes",path:"AHKL_ChangeLog.htm"},
   {label:"Recent AutoHotkey_H Changes",path:"AHKH_ChangeLog.htm"},

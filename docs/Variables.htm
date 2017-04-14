@@ -532,12 +532,8 @@ MsgBox,  %ElapsedTime% milliseconds have elapsed.</pre>
     <td><strong>Read/write:</strong> The current speed set by <a href="commands/SetDefaultMouseSpeed.htm">SetDefaultMouseSpeed</a>.</td>
   </tr>
   <tr id="CoordMode">
-    <td>A_CoordModeToolTip<br>
-    A_CoordModePixel<br>
-    A_CoordModeMouse<br>
-    A_CoordModeCaret<br>
-    A_CoordModeMenu</td>
-    <td><strong>Read/write:</strong> The current mode (Window, Client or Screen) set by <a href="commands/CoordMode.htm">CoordMode</a>.</td>
+    <td>A_CoordModeToolTip<br>A_CoordModePixel<br>A_CoordModeMouse<br>A_CoordModeCaret<br>A_CoordModeMenu</td>
+    <td><strong>Read/write:</strong> The current mode (Client = 0, Window/Relative 0 1 or Screen = 2) set by <a href="commands/CoordMode.htm">CoordMode</a>.</td>
   </tr>
   <tr id="RegView">
     <td>A_RegView</td>
@@ -799,10 +795,29 @@ MsgBox,  %ElapsedTime% milliseconds have elapsed.</pre>
     <td><p>The type of mouse cursor currently being displayed. It will be one of the following words: AppStarting, Arrow, Cross, Help, IBeam, Icon, No, Size, SizeAll, SizeNESW, SizeNS, SizeNWSE, SizeWE, UpArrow, Wait, Unknown. The acronyms used with the size-type cursors are compass directions, e.g. NESW = NorthEast+SouthWest. The hand-shaped cursors (pointing and grabbing) are classified as Unknown.</p></td>
   </tr>
   <tr id="Caret">
-    <td>A_CaretX<br>
-    A_CaretY</td>
+    <td>A_CaretX<br>A_CaretY</td>
     <td><p>The current X and Y coordinates of the caret (text insertion point). The coordinates are relative to the active window unless <a href="commands/CoordMode.htm">CoordMode</a> is used to make them relative to the entire screen. If there is no active window or the caret position cannot be determined, these variables are blank.</p>
       <p>The following script allows you to move the caret around to see its current position displayed in an auto-update tooltip. Note that some windows (e.g. certain versions of MS Word) report the same caret position regardless of its actual position.</p>
+  <tr id="other">
+  <td>A_GlobalStruct (low level)</td>
+  <td><p>Pointer to internal global structure.</p></td>
+  </tr>
+  <tr>
+  <td>A_MainThreadID</td>
+  <td><p>Id of main thread (exe).</p></td>
+  </tr>
+  <tr>
+  <td>A_ModuleHandle</td>
+  <td><p>Handle of currently executed Module (dll/exe).</p></td>
+  </tr>
+  <tr>
+  <td>A_ScriptStruct (low level)</td>
+  <td><p>Pointer to internal script structure.</p></td>
+  </tr>
+  <tr>
+  <td>A_ThreadID</td>
+  <td><p>Handle of currently executed Thread.</p></td>
+  </tr>
 <pre>
 SetTimer, WatchCaret, 100
 return

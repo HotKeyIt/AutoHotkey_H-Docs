@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetIDLast</title>
+<title>WinGetIDLast()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,7 +15,7 @@
 
 <p>Similar to <a href="WinGetID.htm">WinGetID</a> but retrieves the ID of the last/bottommost window if there is more than one match. If there is only one match, it performs identically to ID.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := WinGetIDLast([WinTitle, WinText, ExcludeTitle, ExcludeText])
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetIDLast</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
 <pre><b>IDLast</b> := WinGetIDLast("ahk_class Notepad")</pre>
 WinGetIDLast, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
 <pre>WinGetIDLast, <b>IDLast</b>, ahk_class Notepad</pre></pre>

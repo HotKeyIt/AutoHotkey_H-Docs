@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileCreateShortcut</title>
+<title>FileCreateShortcut()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>FileCreateShortcut</h1>
 
 <p>Creates a shortcut (.lnk) file.</p>
-<pre class="Syntax">FileCreateShortcut, Target, LinkFile [, WorkingDir, Args, Description, IconFile, ShortcutKey, IconNumber, RunState]<pre><em>Command  Example:</em> FileCreateShortcut, %A_ScriptDir%\MyScript.lnk, %A_ScriptFullPath%
+<pre class="Syntax"><span class="func">FileCreateShortcut</span> Target, LinkFile <span class="optional">, WorkingDir, Args, Description, IconFile, ShortcutKey, IconNumber, RunState</span><pre><em>Command  Example:</em> FileCreateShortcut A_ScriptDir "\MyScript.lnk", A_ScriptFullPath
 <em>Function Example:</em> FileCreateShortCut(A_ScriptDir "MyScript.lnk", A_ScriptFullPath)</pre></pre>
 
 <h3>Parameters</h3>
@@ -50,7 +50,6 @@
 
 </dl>
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p><em>Target</em> might not need to include a path if the target file resides in one of the folders listed in the system's PATH environment variable.</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>SoundPlay</title>
+<title>SoundPlay()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>SoundPlay</h1>
 
 <p>Plays a sound, video, or other supported file type.</p>
-<pre class="Syntax">SoundPlay, Filename [, wait]<pre><em>Command  Example:</em> SoundPlay, %A_ScriptDir%\MySound.wav
+<pre class="Syntax"><span class="func">SoundPlay</span> Filename <span class="optional">, wait</span><pre><em>Command  Example:</em> SoundPlay A_ScriptDir "\MySound.wav"
 <em>Function Example:</em> SoundPlay(A_ScriptDir "\MySound.wav")</pre></pre>
 
 <h3>Parameters</h3>
@@ -34,7 +34,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>All Windows OSes should be able to play .wav files. However, other files (.mp3, .avi, etc.) might not be playable if the right codecs or features aren't installed on the OS.</p>

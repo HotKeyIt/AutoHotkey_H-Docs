@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetMinMax</title>
+<title>WinGetMinMax()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,9 +15,8 @@
 
 <p>Retrieves the minimized/maximized state for a window.</p>
 
-<pre class="Syntax">WinGetMinMax, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
-<pre><em>Command  example:</em> WinGetMinMax, <b>MinMax</b>, ahk_class Notepad
-<em>Functon example:</em> <b>MinMax</b> := WinGetMinMax("ahk_class Notepad")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetMinMax</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
+<pre><em>Functon example:</em> <b>MinMax</b> := WinGetMinMax("ahk_class Notepad")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 

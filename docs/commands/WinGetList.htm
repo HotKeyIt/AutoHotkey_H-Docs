@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetList</title>
+<title>WinGetList()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,9 +15,8 @@
 
 <p>Retrieves the unique ID numbers of all existing windows that match the specified WinTitle, WinText, ExcludeTitle, and ExcludeText (to retrieve all windows on the entire system, omit all four title/text parameters). </p>
 
-<pre class="Syntax">WinGetList, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
-<pre><em>Command  example:</em> WinGetList, <b>List</b>, ahk_class Notepad
-<em>Function example:</em> <b>List</b> := WinGetList("ahk_class Notepad")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetList</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
+<pre><em>Function example:</em> <b>List</b> := WinGetList("ahk_class Notepad")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 

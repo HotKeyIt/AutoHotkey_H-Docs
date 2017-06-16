@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>ComObjArray</title>
+<title>ComObjArray()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,9 +12,8 @@
 <h1>ComObjArray</h1>
 
 <p>Creates a SafeArray for use with COM.</p>
-<pre class="Syntax">ComObjArray, <b>OutputVar</b>, VarType, Count1 [, Count2, ... Count8]
-<pre><em>Command  Example:</em> ComObjArray, <b>arr</b>, 8, 10, 10, 10
-<em>Function Example:</em> <b>arr</b> := ComObjArray(VT_BSTR := 8,10,10,10)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ComObjArray</span>(VarType, Count1 <span class="optional">, Count2, ... Count8</span>)
+<pre><em>Function Example:</em> <b>arr</b> := ComObjArray(VT_BSTR := 8,10,10,10)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

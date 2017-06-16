@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ahkExec</title>
+<html><head><title>ahkExec()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -15,10 +15,10 @@ executed
 script.
 </p>
 <br>
-<pre class="Syntax">ahkExec, <b>OutputVar</b>, Code
-<pre><em>Command  Example:</em> ahkExec, <b>Result</b>, MsgBox `% A_Now
-                  DllCall, <b>Result</b>, AutoHotkey.<b>dll</b>\ahkExec, Str, MsgBox `% A_Now, Char
-                  DllCall, <b>Result</b>, AutoHotkey.<b>exe</b>\ahkExec, Str, MsgBox `% A_Now, Char
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkExec</span>(Code)
+<pre><em>Command  Example:</em> ahkExec "MsgBox `% A_Now"
+                  DllCall "AutoHotkey.<b>dll</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char"
+                  DllCall "AutoHotkey.<b>exe</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char"
 
 <em>Function Example:</em> <b>Result</b> := ahkExec("MsgBox `% A_Now")
                   <b>Result</b> := DllCall("AutoHotkey.<b>dll</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char")

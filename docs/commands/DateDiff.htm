@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>DateDiff</title>
+<title>DateDiff()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 <script src="../static/content.js" type="text/javascript"></script>
@@ -12,9 +12,8 @@
 
 <p>Compares two <a href="FileSetTime.htm#YYYYMMDD">date-time</a> values and returns the difference.</p>
 
-<pre class="Syntax">DateDiff, <b>OutputVar</b>, DateTime1, DateTime2, TimeUnits
-<pre><em>Command  Example:</em> DateDiff, <b>Days</b>, %A_Now%, 20100101, days
-<em>Function Example:</em> <b>Days</b> := DateDiff("20100101", A_Now, "days")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DateDiff</span>(DateTime1, DateTime2, TimeUnits)
+<pre><em>Function Example:</em> <b>Days</b> := DateDiff("20100101", A_Now, "days")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

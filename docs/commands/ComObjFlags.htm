@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>ComObjFlags</title>
+<title>ComObjFlags()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,8 +12,8 @@
 
 <h1>ComObjFlags</h1>
 <p>Retrieves or changes flags which control a COM wrapper object's behaviour.</p>
-<pre class="Syntax">ComObjFlags, <b>OutputVar</b> [, NewFlags, Mask]<pre><em>Command  Example:</em> ComObjFlags, <b>flags</b>, %ComObject%
-<em>Function Example:</em> <b>flags</b> := ComObjFlags(ComObject)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ComObjFlags</span>(<span class="optional">NewFlags, Mask</span>)<pre><em>Command  Example:</em> ComObjFlags ComObject, -1
+<em>Function Example:</em> <b>flags</b> := ComObjFlags(ComObject, -1)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

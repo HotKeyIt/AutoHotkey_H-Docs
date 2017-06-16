@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetPID</title>
+<title>WinGetPID()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,7 +15,7 @@
 
 <p>Retrieves the PID of the process that owns a window.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := WinGetPID([WinTitle, WinText, ExcludeTitle, ExcludeText])
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetPID</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
 <pre><b>PID</b> := WinGetPID("ahk_class Notepad")</pre>
 WinGetPID, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
 <pre>WinGetPID, <b>Count</b>, ahk_class Notepad</pre></pre>

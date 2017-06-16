@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ExeThread</title>
+<html><head><title>ExeThread()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,8 +12,8 @@
 <h1>ExeThread</h1>
 <p>Create a real additional AutoHotkey thread in current process without using AutoHotkey.dll (based on <a href="NewThread.htm">NewThread</a>).</p>
 <br>
-<pre class="Syntax">ExeThread, <b>OutputVar</b>, Script [, Parameters, Title, Wait]
-<pre><em>Command  Example:</em> ExeThread, <b>Thread</b>, MsgBox Message from thread.
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ExeThread</span>(Script <span class="optional">, Parameters, Title, Wait</span>)
+<pre><em>Command  Example:</em> ExeThread "MsgBox Message from thread."
 <em>Function Example:</em> <b>Thread</b> := ExeThread("MsgBox Message from thread.")</pre></pre>
 <h3>Parameters</h3>
 <dl>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML> 
 <html>
 <head>
-  <title>MemoryLoadString</title>
+  <title>MemoryLoadString()</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -19,9 +19,8 @@ Similar to <a
 href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms647486.aspx">LoadString</a>.</p>
 <br>
 
-<pre class="Syntax">MemoryLoadString, <b>OutputVar</b>, Handle, Id [, BufferPointer, Length] 
-<pre><em>Command  Example:</em> MemoryLoadString, <b>StringLength</b>, %ahkdllModule%, 2,% &amp;var, 10
-<em>Function Example:</em> <b>StringLength</b> := MemoryLoadString(ahkdllModule,2, &amp;var, 10)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemoryLoadString</span>(Handle, Id <span class="optional">, BufferPointer, Length</span>)
+<pre><em>Function Example:</em> <b>StringLength</b> := MemoryLoadString(ahkdllModule,2, &amp;var, 10)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

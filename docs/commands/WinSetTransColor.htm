@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>WinSetTransColor</title>
+<html><head><title>WinSetTransColor()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
 
 <p>Makes all pixels of the chosen color invisible inside the target window, which allows the contents of the window behind it to show through. If the user clicks on an invisible pixel, the click will &quot;fall through&quot; to the window behind it.</p>
 
-<pre class="Syntax">WinSetTransColor, Color [N] [, WinTitle, WinText,  ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> WinSetTransColor, White, A
+<pre class="Syntax"><span class="func">WinSetTransColor</span> Color <span class="optional">N</span> <span class="optional">, WinTitle, WinText,  ExcludeTitle, ExcludeText</span><pre><em>Command  Example:</em> WinSetTransColor "White", "A"
 <em>Function Example:</em> WinSetTransColor("White", "A")</pre></pre>
 <h3>Parameters</h3>
 <dl>

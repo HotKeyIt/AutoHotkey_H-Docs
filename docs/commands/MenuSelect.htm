@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>MenuSelect</title>
+<title>MenuSelect()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>MenuSelect</h1>
 
 <p>Invokes a menu item from the menu bar of the specified window.</p>
-<pre class="Syntax">MenuSelect, WinTitle, WinText, Menu [, SubMenu1, SubMenu2, SubMenu3, SubMenu4, SubMenu5, SubMenu6, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> MenuSelect, A,, File, Open
+<pre class="Syntax"><span class="func">MenuSelect</span> WinTitle, WinText, Menu <span class="optional">, SubMenu1, SubMenu2, SubMenu3, SubMenu4, SubMenu5, SubMenu6, ExcludeTitle, ExcludeText</span><pre><em>Command  Example:</em> MenuSelect "A",, "File", "Open"
 <em>Function Example:</em> MenuSelect("A",, "File", "Open")</pre></pre>
 
 <h3>Parameters</h3>
@@ -54,7 +54,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>For this command to work, the target window need not be active. However, some windows might need to be in a <a href="WinRestore.htm">non-minimized</a> state.</p>

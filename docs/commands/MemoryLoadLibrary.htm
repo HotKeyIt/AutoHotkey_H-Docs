@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>MemoryLoadLibrary</title>
+<html><head><title>MemoryLoadLibrary()</title>
 
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,9 +17,8 @@ into the process. Similar to <a
 href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx">LoadLibrary</a> but loads the module from memory rather than disk and allows loading a module multiple times.</p>
 <br>
 
-<pre class="Syntax">MemoryLoadLibrary, <b>OutputVar</b>, PathToDll
-<pre><em>Command  Example:</em> MemoryLoadLibrary, <b>ahkdllModule</b>, %A_ScriptDir%\AutoHotkey.dll
-<em>Function Example:</em> <b>ahkdllModule</b> := MemoryLoadLibrary(A_AhkDir "\AutoHotkey.dll"))</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemoryLoadLibrary</span>(PathToDll)
+<pre><em>Function Example:</em> <b>ahkdllModule</b> := MemoryLoadLibrary(A_AhkDir "\AutoHotkey.dll"))</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>DirMove</title>
+<title>DirMove()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 
 <p>Moves a folder along with all its sub-folders and files. It can also rename a folder.</p>
 
-<pre class="Syntax">DirMove(Source, Dest [, Flag])<pre><em>Exmaple:</em> DirMove("C:\MyFolder","C:\MyNewFolder")</pre>DirMove, Source, Dest [, Flag]<pre><em>Exmaple:</em> DirMove, C:\MyFolder, C:\MyNewFolder</pre></pre>
+<pre class="Syntax"><span class="func">DirMove</span> Source, Dest <span class="optional">, Flag</span><pre><em>Exmaple:</em> DirMove("C:\MyFolder","C:\MyNewFolder")</pre>DirMove, Source, Dest [, Flag]<pre><em>Exmaple:</em> DirMove, C:\MyFolder, C:\MyNewFolder</pre></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -33,7 +33,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>DirMove moves a single folder to a new location. To instead move the contents of a folder (all its files and subfolders), see the examples section of <a href="FileMove.htm">FileMove</a>.</p>

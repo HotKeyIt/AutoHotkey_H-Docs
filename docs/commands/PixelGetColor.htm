@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>PixelGetColor</title>
+<title>PixelGetColor()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,8 +12,7 @@
 <h1>PixelGetColor</h1>
 
 <p>Retrieves  the color of the pixel at the specified x,y coordinates.</p>
-<pre class="Syntax">PixelGetColor, <b>OutputVar</b>, X, Y [, Alt|Slow]<pre><em>Command  Example:</em> PixelGetColor, <b>color</b>, 100, 200
-<em>Function Example:</em> <b>color</b> := PixelGetColor(100,200)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">PixelGetColor</span>(X, Y <span class="optional">, Alt|Slow</span>)<pre><em>Function Example:</em> <b>color</b> := PixelGetColor(100,200)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -33,7 +32,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>The pixel must be visible; in other words, it is not possible to retrieve the pixel color of a window hidden behind another window. By contrast, pixels beneath the mouse cursor can usually be detected. The exception to this is game cursors, which in most cases will hide any pixels beneath them.</p>

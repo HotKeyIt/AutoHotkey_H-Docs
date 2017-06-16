@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>DynaCall</title>
+<html><head><title>DynaCall()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,9 +12,8 @@
 <p>Build in function, similar to DllCall but works with DllCall
 structures and uses Object syntax. It is often faster than DllCall,
 easier to use and it saves a lot of typing and code.</p>
-<pre class="Syntax">DynaCall, <b>DynaCallObject</b>, [DllFile\]Function, ParameterDefinition, Default1, Default2, Default3, ...
-<pre><em>Command  Example:</em> DynaCall, <b>TrueSleep</b>, kernel32\Sleep, ui, 100
-<em>Function Example:</em> <b>TrueSleep</b> := DynaCall("kernel32\Sleep", "ui", 100)
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DynaCall</span>("<span class="optional">DllFile\</span>Function", "ParameterDefinition", Default1, Default2, Default3, ...)
+<pre><em>Function Example:</em> <b>TrueSleep</b> := DynaCall("kernel32\Sleep", "ui", 100)
 <em>Calling the Func:</em> TrueSleep[1000], %TrueSleep%(1000)</pre></pre>
 
 <h3>Parameters</h3>

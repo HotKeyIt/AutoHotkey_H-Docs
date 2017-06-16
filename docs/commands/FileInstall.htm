@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileInstall</title>
+<title>FileInstall()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>FileInstall</h1>
 
 <p>Includes the specified file inside the <a href="../Scripts.htm#ahk2exe">compiled version</a> of the script.</p>
-<pre class="Syntax">FileInstall, Source, Dest [, Flag]<pre><em>Command  Example:</em>FileInstall, AutoHotkey.dll, AutoHotkey.dll
+<pre class="Syntax"><span class="func">FileInstall</span> Source, Dest <span class="optional">, Flag</span><pre><em>Command  Example:</em>FileInstall "AutoHotkey.dll", "AutoHotkey.dll"
 <em>Function Example:</em> FileInstall("AutoHotkey.dll","AutoHotkey.dll")</pre></pre>
 
 <h3>Parameters</h3>
@@ -33,7 +33,6 @@
 
 </dl>
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>This command is a directive for the <a href="../Scripts.htm#ahk2exe">Ahk2Exe compiler</a> that allows you to add extra files to the resulting compiled script. Later, when the compiled script is run, the files are extracted back out onto the disk.</p>

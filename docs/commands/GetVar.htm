@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>GetVar</title>
+<html><head><title>GetVar()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -11,9 +11,8 @@
 <h1>GetVar</h1>
 <p>Retrieves a pointer to a variable.</p>
 <br>
-<pre class="Syntax">GetVar, <b>OutputVar</b>, VarName [, ResolveAlias]
-<pre><em>Command  Example:</em> GetVar, <b>varptr</b>, MyVar
-<em>Function Example:</em> <b>varptr</b> := GetVar(MyVar)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">GetVar</span>(VarName <span class="optional">, ResolveAlias</span>)
+<pre><em>Function Example:</em> <b>varptr</b> := GetVar(MyVar)</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt><b>OutputVar</b></dt>

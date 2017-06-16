@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>ControlGetPos</title>
+<title>ControlGetPos()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,8 +13,8 @@
 
 <p>Retrieves the position and size of a control.</p>
 
-<pre class="Syntax">ControlGetPos [, <b>X</b>, <b>Y</b>, <b>Width</b>, <b>Height</b>, Control,
-WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> ControlGetPos, <b>x</b>, <b>y</b>, <b>w</b>, <b>h</b>, Edit1, MyGui ahk_class AutoHotkeyGUI
+<pre class="Syntax"><span class="func">ControlGetPos</span> <span class="optional"><b>X</b>, <b>Y</b>, <b>Width</b>, <b>Height</b>, Control,
+WinTitle, WinText, ExcludeTitle, ExcludeText</span><pre><em>Command  Example:</em> ControlGetPos, <b>x</b>, <b>y</b>, <b>w</b>, <b>h</b>, "Edit1", "MyGui ahk_class AutoHotkeyGUI"
 <em>Function Example:</em> ControlGetPos(<b>x</b>, <b>y</b>, <b>w</b>, <b>h</b>, "Edit1", "MyGui ahk_class AutoHotkeyGUI")</pre></pre>
 
 <h3>Parameters</h3>
@@ -29,7 +29,7 @@ WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> Con
 
   <dt>Control</dt>
   <dd><p>Can be either ClassNN (the classname and instance number of the control) or the control's text, both of which can be determined via Window Spy. When using text, the matching behavior is determined by <a href="SetTitleMatchMode.htm">SetTitleMatchMode</a>. If this parameter is blank, the target window's topmost control will be used.</p>
-    <p>To operate upon a control's HWND (window handle), leave the <em>Control</em> parameter blank and specify <code>ahk_id %ControlHwnd%</code> for the <em>WinTitle</em> parameter (this also works on hidden controls even when <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> is Off). The HWND of a control is typically retrieved via <a href="ControlGet.htm#Hwnd">ControlGet Hwnd</a>, <a href="MouseGetPos.htm">MouseGetPos</a>, or <a href="DllCall.htm">DllCall</a>.</p></dd>
+    <p>To operate upon a control's HWND (window handle), leave the <em>Control</em> parameter blank and specify <code>ahk_id %ControlHwnd%</code> for the <em>WinTitle</em> parameter (this also works on hidden controls even when <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> is Off). The HWND of a control is typically retrieved via <a href="Control.htm#GetHwnd">ControlGetHwnd</a>, <a href="MouseGetPos.htm">MouseGetPos</a>, or <a href="DllCall.htm">DllCall</a>.</p></dd>
 
   <dt>WinTitle</dt>
   <dd><p>A window title or other criteria identifying the target window. See <a href="../misc/WinTitle.htm">WinTitle</a>.</p></dd>
@@ -51,7 +51,7 @@ WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> Con
 <p>To discover the ClassNN or HWND of the control that the mouse is currently hovering over, use <a href="MouseGetPos.htm">MouseGetPos</a>. To retrieve a list of all controls in a window, use <a href="WinGet.htm">WinGet</a>.</p>
 <p>Window titles and text are case sensitive. Hidden windows are not detected unless <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> has been turned on.</p>
 <h3>Related</h3>
-<p><a href="ControlMove.htm">ControlMove</a>, <a href="WinGetPos.htm">WinGetPos</a>, <a href="Control.htm">Control</a>, <a href="ControlGet.htm">ControlGet</a>, <a href="ControlGetText.htm">ControlGetText</a>, <a href="ControlSetText.htm">ControlSetText</a>, <a href="ControlClick.htm">ControlClick</a>, <a href="ControlFocus.htm">ControlFocus</a>, <a href="ControlSend.htm">ControlSend</a></p>
+<p><a href="ControlMove.htm">ControlMove</a>, <a href="WinGetPos.htm">WinGetPos</a>, <a href="Control.htm">Control functions</a>, <a href="ControlGetText.htm">ControlGetText</a>, <a href="ControlSetText.htm">ControlSetText</a>, <a href="ControlClick.htm">ControlClick</a>, <a href="ControlFocus.htm">ControlFocus</a>, <a href="ControlSend.htm">ControlSend</a></p>
 <h3>Example</h3>
 <pre class="NoIndent"><em>; This working example will continuously update and display the
 ; name and position of the control currently under the mouse cursor:</em>

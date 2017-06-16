@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>FileReplace</title>
+<title>FileReplace()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,8 +16,8 @@
 
 <p>Deletes the file and writes text to the file after creating it.</p>
 
-<pre class="Syntax">FileReplace, <b>OutputVar</b> , Text, Filename [, Encoding]
-<pre><em>Command  Example:</em> FileReplace, <b>Success</b>,text,%A_ScriptDir%\MyFile.txt
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FileReplace</span>(Text, Filename <span class="optional">, Encoding</span>)
+<pre><em>Command  Example:</em> FileReplace "text",A_ScriptDir "\MyFile.txt"
 <em>Function Example:</em> <b>Success</b> := FileReplace("text",A_ScriptDir "\MyFile.txt")</pre></pre>
 <h3>Parameters</h3>
 <dl>

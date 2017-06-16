@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ObjDump</title>
+<html><head><title>ObjDump()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -10,8 +10,8 @@
 <body>
 <h1>ObjDump</h1>
 <p>Dump an object to memory or save to file for later use.</p>
-<pre class="Syntax">ObjDump, <b>OutputVar</b>, ObjectOrPath [, DumpToVar, Mode, Password]
-<pre><em>Command  Example:</em> ObjDump, <b>size</b>, %obj%, %var%
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjDump</span>(ObjectOrPath <span class="optional">, DumpToVar, Mode, Password</span>)
+<pre><em>Command  Example:</em> ObjDump "C:\Temp\MyObject.dmp", obj
 <em>Function Example:</em> <b>size</b> := ObjDump(obj, var)</pre></pre>
 
 <h3>Parameters</h3>

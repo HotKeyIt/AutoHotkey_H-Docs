@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>CriticalObject</title>
+<html><head><title>CriticalObject()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,9 +12,8 @@
 <p>Built-in function to enwrap an object for multi-thread use.
 Such objects can be used from multiple threads without causing a crash.</p>
 <br>
-<pre class="Syntax">CriticalObject, <b>OutputVar</b> [, Object, lpCriticalSection] 
-<pre><em>Command  Example:</em> CriticalObject, <b>obj</b>,%MyCriticalObject%
-<em>Function Example:</em> <b>obj</b> := CriticalObject(MyCriticalObject)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">CriticalObject</span>(<span class="optional">Object, lpCriticalSection</span>)
+<pre><em>Function Example:</em> <b>obj</b> := CriticalObject(MyCriticalObject)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

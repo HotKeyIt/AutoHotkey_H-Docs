@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ObjByRef</title>
+<html><head><title>ObjByRef()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,8 @@
 <h1>ObjByRef</h1>
 <p>Creates an object containing <a href="../../docs/Functions.htm#ByRef">ByRef</a> variables, obj.var returns actual variable content and obj.var := value will assign new value to variable.</p>
 <br>
-<pre class="Syntax">ObjByRef, <b>OutputVar</b>, Var1 [, Var2, ...]
-<pre><em>Command  Example:</em> ObjByRef, <b>ByRefObj</b>,% Var1
-<em>Function Example:</em> <b>ByRefObj</b> := ObjByRef(Var1)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjByRef</span>(Var1 <span class="optional">, Var2, ...</span>)
+<pre><em>Function Example:</em> <b>ByRefObj</b> := ObjByRef(Var1)</pre></pre>
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>

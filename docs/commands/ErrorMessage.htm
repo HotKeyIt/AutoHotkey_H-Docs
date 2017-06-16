@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ErrorMessage</title>
+<html><head><title>ErrorMessage()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -11,9 +11,8 @@
 <h1>ErrorMessage</h1>
 <p>Retrieve the error message from <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms681381.aspx">system message table</a> resources.</p>
 <br>
-<pre class="Syntax">ErrorMessage, <b>OutputVar</b> [, MessageId]
-<pre><em>Command  Example:</em> ErrorMessage, <b>Error</b>,% A_LastError
-<em>Function Example:</em> <b>Error</b> := ErrorMessage(A_LastError)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ErrorMessage</span>(<span class="optional">MessageId</span>)
+<pre><em>Function Example:</em> <b>Error</b> := ErrorMessage(A_LastError)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

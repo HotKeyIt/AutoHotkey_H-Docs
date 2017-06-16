@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileMove</title>
+<title>FileMove()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 
 <p>Moves or renames one or more files.</p>
 
-<pre class="Syntax">FileMove, SourcePattern, DestPattern [, Flag]</pre>
+<pre class="Syntax"><span class="func">FileMove</span> SourcePattern, DestPattern <span class="optional">, Flag</span></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -34,7 +34,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to the number of files that could not be moved due to an error, or 0 otherwise. However, if the source file is a single file (no wildcards) and it does not exist, ErrorLevel is set to 0. To detect this condition, use <a href="FileExist.htm">FileExist</a> on the source file prior to moving it.</p>
 <p>Unlike <a href="FileCopy.htm">FileCopy</a>, moving a file onto itself is always considered successful, even if the overwrite mode is not in effect.</p>
 <p>If files were found, <a href="../Variables.htm#LastError">A_LastError</a> is set to 0 (zero) or the result of the operating system's GetLastError() function immediately after the last failure. Otherwise A_LastError contains an error code that might indicate why no files were found.</p>

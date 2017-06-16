@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>VarSetCapacity</title>
+<title>VarSetCapacity()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,8 +13,8 @@
 
 <p>Enlarges a variable's holding capacity or frees its memory. Normally, this is necessary only for unusual circumstances such as <a href="DllCall.htm">DllCall</a>.</p>
 
-<pre class="Syntax">VarSetCapacity, <b>OutputVar</b>, UnquotedVarName [, RequestedCapacity, FillByte]
-<pre><em>Command  Example:</em> VarSetCapacity, <b>GrantedCapacity</b>, MyVar, 100
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">VarSetCapacity</span>(UnquotedVarName <span class="optional">, RequestedCapacity, FillByte</span>)
+<pre><em>Command  Example:</em> VarSetCapacity MyVar, 100
 <em>Function Example:</em> <b>GrantedCapacity</b> := VarSetCapacity(MyVar, 100)</pre></pre>
 <h3>Parameters</h3>
 <dl>

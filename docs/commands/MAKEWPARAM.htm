@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>MAKEWPARAM</title>
+<html><head><title>MAKEWPARAM()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -11,8 +11,7 @@
 <h1>MAKEWPARAM</h1>
 <p>Creates a value for use as an wParam parameter in a message.</p>
 <br>
-<pre class="Syntax">MAKEWPARAM, <b>OutputVar</b>, ValueLow, ValueHigh<pre><em>Command  Example:</em> MAKEWPARAM, <b>wParam</b>, 10, 20
-<em>Function Example:</em> <b>wParam</b> := MAKEWPARAM(10, 20)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MAKEWPARAM</span>(ValueLow, ValueHigh)<pre><em>Function Example:</em> <b>wParam</b> := MAKEWPARAM(10, 20)</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt><b>OutputVar</b></dt>

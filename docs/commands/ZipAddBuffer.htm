@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>ZipAddBuffer</title>
+<title>ZipAddBuffer()</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,8 +16,8 @@
 
 <p>Add a file from memory to a zip archive created with <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a> or <a href="ZipCreateFile.htm">ZipCreateFile</a>.</p>
 
-<pre class="Syntax">ZipAddBuffer, <b>OutputVar</b>, ZipHandle, Address, Size, FileName
-<pre><em>Command  Example:</em> ZipAddBuffer, <b>Success</b>,% hZip,% &var, %sz%, MyScript.ahk
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipAddBuffer</span>(ZipHandle, Address, Size, FileName)
+<pre><em>Command  Example:</em> ZipAddBuffer hZip, &var, sz, "MyScript.ahk"
 <em>Function Example:</em> <b>Success</b> := ZipAddBuffer(hZip, &var, sz, "MyScript.ahk")</pre></pre>
 
 <h3>Parameters</h3>

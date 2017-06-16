@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>WinGetClass</title>
+<title>WinGetClass()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,8 +12,7 @@
 <h1>WinGetClass</h1>
 
 <p>Retrieves the specified window's class name.</p>
-<pre class="Syntax">WinGetClass, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> WinGetClass, <b>class</b>, A
-<em>Function Example:</em> <b>class</b> := WinGetClass("A")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetClass</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)<pre><em>Function Example:</em> <b>class</b> := WinGetClass("A")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>ZipCloseBuffer</title>
+<title>ZipCloseBuffer()</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,9 +16,8 @@
 
 <p>Closes zip archive created with <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>, saves it to variable and returns its size.</p>
 
-<pre class="Syntax">ZipCloseBuffer, <b>OutputVar</b>, ZipHandle [, VariableName]
-<pre><em>Command  Example:</em> ZipCloseBuffer, <b>Size</b>,% hZip,% var
-<em>Function Example:</em> <b>Size</b> := ZipCloseBuffer(hZip, var)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipCloseBuffer</span>(ZipHandle <span class="optional">, VariableName</span>)
+<pre><em>Function Example:</em> <b>Size</b> := ZipCloseBuffer(hZip, var)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

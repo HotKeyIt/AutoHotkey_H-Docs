@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>DllCall</title>
+<title>DllCall()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,8 +12,8 @@
 <h1>DllCall()</h1>
 
 <p>Calls a function inside a DLL, such as a standard Windows API function.</p>
-<pre class="Syntax">DllCall, <b>OutputVar</b>, [DllFile\]Function [, Type1, Arg1, Type2, Arg2, Cdecl ReturnType]
-<pre><em>Command  Example:</em> DllCall, <b>hLib</b>, LoadLibrary, Str, %A_AhkPath%
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("<span class="optional">DllFile\</span>Function" <span class="optional">, "Type1", Arg1, "Type2", Arg2, "Cdecl ReturnType"</span>)
+<pre><em>Command  Example:</em> DllCall LoadLibrary, Str, %A_AhkPath%
 <em>Function Example:</em> <b>hLib</b> := DllCall("LoadLibrary", "Str", A_AhkPath)</pre></pre>
 
 <h3>Parameters</h3>
@@ -226,12 +226,12 @@ WatchScrollBar:
 ActiveWindow := WinExist(&quot;A&quot;)
 if not ActiveWindow  <em>; No active window.</em>
     return
-ControlGetFocus, FocusedControl, ahk_id %ActiveWindow%
+FocusedControl := ControlGetFocus()  <em>; Omit all parameter to use the Last Found Window.</em>
 if not FocusedControl  <em>; No focused control.</em>
     return
 <em>; Display the vertical or horizontal scroll bar's position in a ToolTip:</em>
-ControlGet, ChildHWND, Hwnd,, %FocusedControl%, ahk_id %ActiveWindow%
-ToolTip % <b>DllCall</b>(&quot;GetScrollPos&quot;, &quot;Ptr&quot;, ChildHWND, &quot;Int&quot;, 1)  <em>;  Last parameter is 1 for SB_VERT, 0 for SB_HORZ.</em>
+ChildHWND := ControlGetHwnd(FocusedControl)
+ToolTip(<strong>DllCall</strong>("GetScrollPos", "Ptr", ChildHWND, "Int", 1))  <em>;  Last parameter is 1 for SB_VERT, 0 for SB_HORZ.</em>
 return</pre>
 
 <pre class="NoIndent" id="file"><em>; Example: This is a working script that writes some text to a file then reads it back into memory.

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>UnZipBuffer</title>
+<title>UnZipBuffer()</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,10 +16,10 @@
 
 <p>Extract one items from a zip archive.</p>
 
-<pre class="Syntax">UnZipBuffer, <b>OutputVar</b>, ZipFileName, FileToExtract [, VariableName, Password]
-UnZipBuffer, <b>OutputVar</b>, Address, Size, FileToExtract [, VariableName, Password]
-<pre><em>Command  Example:</em> UnZipBuffer, <b>Success</b>, MyZip.zip, scripts\MyScript.ahk,% var
-                  UnZipBuffer, <b>Success</b>,% &zip, sz, scripts\MyScript.ahk,% var
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZipBuffer</span>(ZipFileName, FileToExtract <span class="optional">, VariableName, Password</span>)
+<b>OutputVar</b> := UnZipBuffer(Address, Size, FileToExtract [, VariableName, Password])
+<pre><em>Command  Example:</em> UnZipBuffer "MyZip.zip", "scripts\MyScript.ahk", var
+                  UnZipBuffer &zip, sz, "scripts\MyScript.ahk", var
 <em>Function Example:</em> <b>Success</b> := UnZipBuffer("MyZip.zip", "scripts\MyScript.ahk", var)
                   <b>Success</b> := UnZipBuffer (&zip, sz, "scripts\MyScript.ahk", var)</pre></pre>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileDelete</title>
+<title>FileDelete()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>FileDelete</h1>
 
 <p>Deletes one or more files.</p>
-<pre class="Syntax">FileDelete, FilePattern<pre><em>Command  Example:</em> FileDelete, %A_ScriptDir%\MyFile.txt
+<pre class="Syntax"><span class="func">FileDelete</span> FilePattern<pre><em>Command  Example:</em> FileDelete A_ScriptDir "\MyFile.txt"
 <em>Function Example:</em> FileDelete(A_ScriptDir "\MyFile.txt")</pre></pre>
 
 <h3>Parameters</h3>
@@ -25,7 +25,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to the number of files that failed to be deleted (if any) or 0 otherwise. Deleting a wildcard pattern such as <code>*.tmp</code> is considered a success even if it does not match any files; thus ErrorLevel is set to 0.</p>
 <p>If files were found, <a href="../Variables.htm#LastError">A_LastError</a> is set to 0 (zero) or the result of the operating system's GetLastError() function immediately after the last failure. Otherwise A_LastError contains an error code that might indicate why no files were found.</p>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ThreadObj</title>
+<html><head><title>ThreadObj()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,8 @@
 <h1>ThreadObj</h1>
 <p>Create a real additional AutoHotkey thread in current process without using AutoHotkey.dll (based on <a href="NewThread.htm">NewThread</a>).</p>
 <br>
-<pre class="Syntax">ThreadObj, <b>OutputVar</b>, Script [, Parameters, Title]
-<pre><em>Command  Example:</em> ThreadObj, <b>Thread</b>, MsgBox Message from thread.
-<em>Function Example:</em> <b>Thread</b> := ThreadObj("MsgBox Message from thread.")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ThreadObj</span>(Script <span class="optional">, Parameters, Title</span>)
+<pre><em>Function Example:</em> <b>Thread</b> := ThreadObj("MsgBox Message from thread.")</pre></pre>
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>

@@ -124,7 +124,6 @@ docs\commands\CriticalSection.htm
 docs\commands\CryptAES.htm
 docs\commands\DateAdd.htm
 docs\commands\DateDiff.htm
-docs\commands\Deref.htm
 docs\commands\DetectHiddenText.htm
 docs\commands\DetectHiddenWindows.htm
 docs\commands\DirCopy.htm
@@ -183,9 +182,6 @@ docs\commands\GroupActivate.htm
 docs\commands\GroupAdd.htm
 docs\commands\GroupClose.htm
 docs\commands\GroupDeactivate.htm
-docs\commands\Gui.htm
-docs\commands\GuiControl.htm
-docs\commands\GuiControlGet.htm
 docs\commands\GuiControls.htm
 docs\commands\HexToBin.htm
 docs\commands\Hotkey.htm

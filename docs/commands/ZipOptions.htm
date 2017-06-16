@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>ZipOptions</title>
+<title>ZipOptions()</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,8 +16,8 @@
 
 <p>Changes options for zip archive created with <a href="ZipCreateFile.htm">ZipCreateFile</a>.</p>
 
-<pre class="Syntax">ZipOptions, <b>OutputVar</b>, ZipHandle, Options
-<pre><em>Command  Example:</em> ZipOptions, <b>Success</b>,% hZip, 0x80000000
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipOptions</span>(ZipHandle, Options)
+<pre><em>Command  Example:</em> ZipOptions hZip, 0x80000000
 <em>Function Example:</em> <b>Success</b> := ZipOptions(hZip, 0x80000000)</pre></pre>
 
 <h3>Parameters</h3>

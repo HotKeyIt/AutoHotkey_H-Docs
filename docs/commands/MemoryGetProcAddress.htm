@@ -1,7 +1,7 @@
 <!DOCTYPE HTML> 
 <html>
 <head>
-  <title>MemoryGetProcAddress</title>
+  <title>MemoryGetProcAddress()</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -18,9 +18,8 @@ previously loaded with <a href="MemoryLoadLibrary">MemoryLoadLibrary.</a>
 Similar to <a
 href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms683212.aspx">GetProcAddress</a>.</p>
 <br>
-<pre class="Syntax">MemoryGetProcAddress, <b>OutputVar</b>, Handle, FuncName 
-<pre><em>Command  Example:</em> MemoryGetProcAddress, <b>ahkdll</b>, %ahkdllModule%, ahkdll
-<em>Function Example:</em> <b>ahkdll</b> := MemoryGetProcAddress(ahkdllModule,"ahkdll")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemoryGetProcAddress</span>(Handle, FuncName)
+<pre><em>Function Example:</em> <b>ahkdll</b> := MemoryGetProcAddress(ahkdllModule,"ahkdll")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

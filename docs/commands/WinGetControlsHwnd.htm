@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetControlsHwnd</title>
+<title>WinGetControlsHwnd()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -14,8 +14,7 @@
 <h1>WinGetControlsHwnd</h1>
 
 <p>Retrieves the control IDs for all controls in a window. If no matching window exists or there are no controls in the window, OutputVar is made blank. Otherwise, each control name consists of its class name followed immediately by its sequence number (ClassNN), as shown by Window Spy.</p>
-<pre class="Syntax">WinGetControlsHwnd, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> <b>ControlsHwnd</b> := WinGetControlsHwnd("ahk_class Notepad")
-<em>Function Example:</em> <b>ControlsHwnd</b> := WinGetControlsHwnd("ahk_class Notepad")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetControlsHwnd</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)<pre><em>Function Example:</em> <b>ControlsHwnd</b> := WinGetControlsHwnd("ahk_class Notepad")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

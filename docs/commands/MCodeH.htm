@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>MCodeH</title>
+<html><head><title>MCodeH()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -10,8 +10,8 @@
 <body>
 <h1>MCodeH</h1>
 <p>Creates a <a href="DynaCall.htm">DynaCall</a> object for machine code function.</p>
-<pre class="Syntax">MCodeH, <b>OutputVar</b>, Hex [, Definition, Parameter1, Parameter2, ...]
-<pre><em>Command  Example:</em> MCodeH, <b>BSwap16</b>, 8AE18AC5C3, h==h<br><em>Function Example:</em> <b>BSwap16</b> := MCodeH("8AE18AC5C3", "h==h")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MCodeH</span>(Hex <span class="optional">, Definition, Parameter1, Parameter2, ...</span>)
+<pre><em>Function Example:</em> <b>BSwap16</b> := MCodeH("8AE18AC5C3", "h==h")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

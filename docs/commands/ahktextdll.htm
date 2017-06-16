@@ -18,9 +18,9 @@ Note you will need to load AutoHotkey.dll module using LoadLibrary
 before you can use this function, see Example.<br>
 <b>This function is only available in AutoHotkey.dll</b></p>
 <br>
-<pre class="Syntax">DllCall, <b>OutputVar</b>, AutoHotkey.dll<b>\ahktextdll</b>, Str, Script, Str, Parameters, Str, Title, CDecl UPTR
-<pre><em>Command  Example:</em> DllCall, <b>hThread</b>, AutoHotkey.dll\ahktextdll, Str, MsgBox From Thread, Str,, Str,, CDecl UPTR
-<em>Function Example:</em> <b>hThread</b> := DllCall("AutoHotkey.dll\ahktextdll", "Str", "MsgBox From Thread" ,"Str", "", "Str", "", "PTR")
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("AutoHotkey.dll<b>\ahktextdll</b>", "Str", "Script", "Str", "Parameters", "Str", "Title", "CDecl UPTR")
+<pre><em>Command  Example:</em> DllCall "AutoHotkey.dll\ahktextdll", "Str", "MsgBox From Thread", "Str",, "Str",, "CDecl UPTR"
+<em>Function Example:</em> <b>hThread</b> := DllCall("AutoHotkey.dll\ahktextdll", "Str", "MsgBox From Thread" ,"Str",, "Str",, "PTR")
 </pre></pre>
 <h3>Parameters</h3>
 <dl>

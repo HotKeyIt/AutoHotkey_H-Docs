@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Process</title>
+<title>Process()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,26 +13,21 @@
 
 <p>Functions for performing the following operations on a process: check if it exists; change its priority; close it; wait for it to exist; wait for it to close.</p>
 
-<pre class="Syntax" id="Exist">ProcessExist, OutputVar [, PID-or-Name]
-OutputVar := ProcessExist([PID-or-Name])</pre>
+<pre class="Syntax" id="Exist">OutputVar := <span class="func">ProcessExist</span>(<span class="optional">PID-or-Name</span>)</pre>
 <p><b>Exist</b>: Sets <em>OutputVar</em> to the Process ID (PID) if a matching process exists, or 0 otherwise.  If the <em>PID-or-Name</em> parameter is blank, the script's own PID is retrieved.</p>
 
-<pre class="Syntax" id="Close">ProcessClose, OutputVar, PID-or-Name
-ProcessClose(PID-or-Name)</pre>
+<pre class="Syntax" id="Close">OutputVar := <span class="func">ProcessClose</span>(PID-or-Name)</pre>
 <p><b>Close</b>: If a matching process is successfully terminated, <em>OutputVar</em> is set to its former Process ID (PID). Otherwise (there was no matching process or there was a problem terminating it), it is set to 0. Since the process will be abruptly terminated -- possibly interrupting its work at a critical point or resulting in the loss of unsaved data in its windows (if it has any) -- this method should be used only if a process cannot be closed by using <a href="WinClose.htm">WinClose</a> on one of its windows.</p>
 
-<pre class="Syntax" id="Priority">ProcessSetPriority, Priority [, PID-or-Name]
-ProcessSetPriority(Priority [, PID-or-Name])</pre>
+<pre class="Syntax" id="Priority"><span class="func">ProcessSetPriority</span> Priority <span class="optional">, PID-or-Name</span></pre>
 <p><b>Priority</b>: Changes the priority (as seen in Windows Task Manager) of the first matching process to <em>Priority</em>. If the <em>PID-or-Name</em> parameter is blank, the script's own priority will be changed.</p>
 <p><em>Priority</em> should be one of the following letters or words: L (or Low), B (or BelowNormal), N (or Normal), A (or AboveNormal), H (or High), R (or Realtime). Note: Any process not designed to run at Realtime priority might reduce system stability if set to that level.</p>
 <p>If called as a function, the return value is the Process ID (PID) of the process whose priority was set, or 0 if there is no matching process or there was a problem changing its priority.</p>
 
-<pre class="Syntax" id="Wait">ProcessWait, OutputVar, PID-or-Name [, Timeout]
-ProcessWait(PID-or-Name [, Timeout])</pre>
+<pre class="Syntax" id="Wait">OutputVar := <span class="func">ProcessWait</span>(PID-or-Name <span class="optional">, Timeout</span>)</pre>
 <p><b>Wait</b>: Waits up to <em>Timeout</em> seconds (can contain a decimal point) for a matching process to exist. If <em>Timeout</em> is omitted, the command will wait indefinitely. If a matching process is discovered, <em>OutputVar</em> is set to its Process ID (PID). If the command times out, <em>OutputVar</em> is set to 0.</p>
 
-<pre class="Syntax" id="WaitClose">ProcessWaitClose, OutputVar, PID-or-Name [, Timeout]
-ProcessWaitClose(PID-or-Name [, Timeout])</pre>
+<pre class="Syntax" id="WaitClose">OutputVar := <span class="func">ProcessWaitClose</span>(PID-or-Name <span class="optional">, Timeout</span>)</pre>
 <p><b>WaitClose</b>: Waits up to <em>Timeout</em> seconds (can contain a decimal point) for ALL matching processes to close. If <em>Timeout</em> is omitted, the command will wait indefinitely. If all matching processes are closed, <em>OutputVar</em> is set to 0. If the command times out, <em>OutputVar</em> is set to the Process ID (PID) of the first matching process that still exists.</p>
 
 <h3>Parameters</h3>
@@ -81,31 +76,35 @@ if ErrorLevel <em>; The PID still exists.</em>
 <pre class="NoIndent"><em>; Example #3: A hotkey to change the priority of the active window's process:</em>
 
 #z:: <em>; Win+Z hotkey</em>
-WinGetPID, active_pid, A
-WinGetTitle, active_title, A
-Gui, 5:Add, Text,, Press ESCAPE to cancel, or double-click a new`npriority level for the following window:`n%active_title%
-Gui, 5:Add, ListBox, vMyListBox gMyListBox r5, Normal|High|Low|BelowNormal|AboveNormal
-Gui, 5:Add, Button, default, OK
-Gui, 5:Show,, Set Priority
+Gui := GuiCreate(, "Set Priority")
+Gui.Add("Text",, "
+(
+  Press ESCAPE to cancel, or double-click a new
+  priority level for the following window:
+)")
+Gui.Add("Text", "wp", WinGetTitle("A"))
+LB := Gui.Add("ListBox", "r5", "Normal||High|Low|BelowNormal|AboveNormal")
+SetPriority := Func("SetPriority").bind(LB, WinGetPID("A"))
+LB.OnEvent("DoubleClick", SetPriority)
+Gui.Add("Button", "default", "OK").OnEvent("Click", SetPriority)
+Gui.OnEvent("Escape", "Gui_Close")
+Gui.OnEvent("Close", "Gui_Close")
+Gui.Show()
 return
 
-5GuiEscape:
-5GuiClose:
-Gui, Destroy
-return
+SetPriority(LB, PID)
+{
+  if ProcessSetPriority(LB.Text, PID)
+    MsgBox("Success: Its priority was changed to '%LB.Text%'.")
+  else
+    MsgBox("Error: Its priority could not be changed to '%LB.Text%'.")
+  WinClose()
+}
 
-MyListBox:
-if A_GuiEvent &lt;&gt; "DoubleClick"
-    return
-<em>; else fall through to the next label:</em>
-5ButtonOK:
-GuiControlGet, MyListBox
-Gui, Destroy
-if ProcessSetPriority(MyListBox, active_pid)
-    MsgBox Success: Its priority was changed to &quot;%MyListBox%&quot;.
-else
-    MsgBox Error: Its priority could not be changed to &quot;%MyListBox%&quot;.
-return</pre>
+Gui_Close(Gui)
+{
+  Gui.Destroy()
+}</pre>
 <p>&nbsp;</p>
 <pre class="NoIndent" id="ListEx"><em>; Example #4: Retrieves a list of running processes via DllCall then shows them in a MsgBox.</em>
 
@@ -154,10 +153,11 @@ MsgBox("%l%", "%c% Processes", 0)</pre>
 <p>&nbsp;</p>
 <pre class="NoIndent" id="ListCom"><em>; Example #5: Retrieves a list of running processes via COM.</em>
 
-Gui, Add, ListView, x2 y0 w400 h500, Process Name|Command Line
+Gui := GuiCreate(, "Process List")
+LV := Gui.Add("ListView", "x2 y0 w400 h500", "Process Name|Command Line")
 for process in ComObjGet("winmgmts:").ExecQuery("Select * from Win32_Process")
-    LV_Add("", process.Name, process.CommandLine)
-Gui, Show,, Process List
+    LV.Add("", process.Name, process.CommandLine)
+Gui.Show()
 
 <em>; Win32_Process: <a href="http://msdn.microsoft.com/en-us/library/aa394372.aspx">http://msdn.microsoft.com/en-us/library/aa394372.aspx</a></em>
 </pre>

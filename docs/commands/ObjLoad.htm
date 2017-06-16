@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ObjLoad</title>
+<html><head><title>ObjLoad()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -10,9 +10,8 @@
 <body>
 <h1>ObjLoad</h1>
 <p>Load a <a href="ObjDump.htm">dumped</a> object from memory or file.</p>
-<pre class="Syntax">ObjLoad, <b>OutputVar</b>, AddressOrPath [, Size, Password]
-<pre><em>Command  Example:</em> ObjLoad, <b>obj</b>, %A_ScriptDir%\MyObj.bin
-<em>Function Example:</em> <b>obj</b> := ObjLoad(A_ScriptDir "\MyObj.bin")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjLoad</span>(AddressOrPath <span class="optional">, Size, Password</span>)
+<pre><em>Function Example:</em> <b>obj</b> := ObjLoad(A_ScriptDir "\MyObj.bin")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

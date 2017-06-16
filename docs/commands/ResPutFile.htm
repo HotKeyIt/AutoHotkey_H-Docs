@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>ResPutFile</title>
+  <title>ResPutFile()</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -14,8 +14,8 @@
 <h1>ResPutFile</h1>
 
 <p>Updates a resource in executable file (dll or exe).</p>
-<pre class="Syntax">ResPutFile, <b>OutputVar</b>, FilePath, Executable, Name [, Type, Language]
-<pre><em>Command  Example:</em> ResPut, <b>Success</b>, %A_ScriptDir%\MyFile.txt, %A_ScriptDir%\MyDll.dll, MYRESOURCE
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ResPutFile</span>(FilePath, Executable, Name <span class="optional">, Type, Language</span>)
+<pre><em>Command  Example:</em> ResPut A_ScriptDir "\MyFile.txt", A_ScriptDir "\MyDll.dll", "MYRESOURCE"
 <em>Function Example:</em> <b>Success</b> := ResPut(A_ScriptDir "\MyFile.txt", A_ScriptDir "\MyDll.dll", "MYRESOURCE")</pre></pre>
 
 <h3>Parameters</h3>

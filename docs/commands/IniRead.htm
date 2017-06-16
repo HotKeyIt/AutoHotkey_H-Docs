@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>IniRead</title>
+<title>IniRead()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,10 +13,9 @@
 
 <p>Reads a value, section or list of section names from a standard format .ini file.</p>
 
-<pre class="Syntax">IniRead, OutputVar, Filename, Section, Key [, Default]
-IniRead, OutputVarSection, Filename, Section
-IniRead, OutputVarSectionNames, Filename
-</pre>
+<pre class="Syntax">OutputVar := <span class="func">IniRead</span>(Filename, Section, Key <span class="optional">, Default</span>)
+OutputVarSection := <span class="func">IniRead</span>(Filename, Section)
+OutputVarSectionNames := <span class="func">IniRead</span>(Filename)</pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -47,7 +46,6 @@ IniRead, OutputVarSectionNames, Filename
 
 </dl>
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>The operating system automatically omits leading and trailing spaces/tabs from the retrieved string. To prevent this, enclose the string in single or double quote marks. The outermost set of single or double quote marks is also omitted, but any spaces inside the quote marks are preserved.</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Trim</title>
+<title>Trim()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,10 +12,9 @@
 <h1>Trim</h1>
 
 <p>Trims characters from the beginning and/or end of a string.</p>
-<pre class="Syntax">Trim, <b>OutputVar</b>, String, OmitChars
-LTrim, <b>OutputVar</b>, String, OmitChars
-RTrim, <b>OutputVar</b>, String, OmitChars<pre><em>Command  Example:</em> Trim, <b>result</b>, %text%, `n`r
-<em>Function Example:</em> <b>result</b> := Trim(text,"`n`r")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">Trim</span>(String, OmitChars)
+<b>OutputVar</b> := <span class="func">LTrim</span>(String, OmitChars)
+<b>OutputVar</b> := <span class="func">RTrim</span>(String, OmitChars)<pre><em>Function Example:</em> <b>result</b> := Trim(text,"`n`r")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

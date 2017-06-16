@@ -47,7 +47,7 @@
   <li><a href="#winamp">How can Winamp be controlled even when it isn't active?</a></li>
   <li><a href="#msgbox">How can MsgBox's button names be changed?</a></li>
   <li><a href="#DefaultEditor">How can I change the default editor, which is accessible via context menu or tray icon?</a></li>
-  <li><a href="#GuiSubmit">How can I save the contents of my GUI associated variables?</a></li>
+  <li><a href="#GuiSubmit">How can I save the contents of my GUI controls?</a></li>
   <li><a href="#GDIPlus">Can I draw something with AHK?</a></li>
   <li><a href="#WinWaitAction">How can I start an action when a window appears, closes or becomes [in]active?</a></li>
 </ul>
@@ -112,8 +112,8 @@ return</pre>
   <li>Hotkeys/hotstrings don't work when a program running as admin is active.</li>
   <li>Some windows refuse to be automated (e.g. Device Manager ignores Send).</li>
 </ul>
-<p>If you've switched operating systems, it is likely that something else has also changed and may be affecting your script. For instance, if you've got a new computer, it might have different drivers or other software installed. If you've also updated to a newer version of AutoHotkey, find out which version you had before and then check the <a href="AHKL_ChangeLog.htm">changelog</a> and <a href="Compat.htm">compatibility notes</a>.</p>
-<p><a href="commands/SoundGet.htm">SoundGet</a>, <a href="commands/SoundSet.htm">SoundSet</a>, <a href="commands/SoundGetWaveVolume.htm">SoundGetWaveVolume</a> and <a href="commands/SoundSetWaveVolume.htm">SoundSetWaveVolume</a> behave differently on Vista and later than on earlier versions of Windows. In particular, device numbers are different and some components may be unavailable. Behaviour depends on the audio drivers, which are necessarily different to the ones used on XP. The <a href="commands/SoundSet.htm#Ex">soundcard analysis script</a> can be used to find the correct device numbers.</p>
+<p>If you've switched operating systems, it is likely that something else has also changed and may be affecting your script. For instance, if you've got a new computer, it might have different drivers or other software installed. If you've also updated to a newer version of AutoHotkey, find out which version you had before and then check the <a href="ChangeLog.htm">changelog</a> and <a href="Compat.htm">compatibility notes</a>.</p>
+<p><a href="commands/SoundGet.htm">SoundGet</a> and <a href="commands/SoundSet.htm">SoundSet</a> behave differently on Vista and later than on earlier versions of Windows. In particular, device numbers are different and some components may be unavailable. Behaviour depends on the audio drivers, which are necessarily different to the ones used on XP. The <a href="commands/SoundSet.htm#Ex">soundcard analysis script</a> can be used to find the correct device numbers.</p>
 <p>Also refer to the following question:</p>
 
 <h3 id="uac">How do I work around problems caused by User Account Control (UAC)?</h3>
@@ -265,18 +265,19 @@ else
 <p>Here is an <a href="scripts/MsgBoxButtonNames.htm">example</a>.</p>
 <h3 id="DefaultEditor">How can I change the default editor, which is accessible via context menu or tray icon?</h3>
 <p>In the example section of <a href="commands/Edit.htm">Edit</a> you will find a script that allows you to change the default editor.</p>
-<h3 id="GuiSubmit">How can I save the contents of my GUI associated variables?</h3>
-<p>Use <a href="commands/Gui.htm#Submit">Gui Submit</a>. For Example:</p>
-<pre>Gui, Add, Text,, Enter some Text and press Submit:
-Gui, Add, Edit, vAssociatedVar
-Gui, Add, Button,, Submit
-Gui, Show
-Return
+<h3 id="GuiSubmit">How can I save the contents of my GUI controls?</h3>
+<p>Use <a href="objects/Gui.htm#Submit">Gui.Submit</a>. For Example:</p>
+<pre>Gui := GuiCreate()
+Gui.Add("Text",, "Enter some Text and press Submit:")
+Gui.Add("Edit", "vMyEdit")
+Gui.Add("Button",, "Submit").OnEvent("Click", "Submit")
+Gui.Show()
 
-ButtonSubmit:
-Gui, Submit, NoHide
-MsgBox, Content of the edit control: %AssociatedVar%
-Return</pre>
+Submit(Btn)
+{
+  Saved := Btn.Gui.Submit(false)
+  MsgBox("Content of the edit control: " Saved.MyEdit)
+}</pre>
 <h3 id="GDIPlus">Can I draw something with AHK?</h3>
 <p>See <a href="http://www.autohotkey.com/forum/topic32238.html">GDI+ standard library</a> by tic. It's also possible with some rudimentary methods using Gui, but in a limited way.</p>
 <h3 id="WinWaitAction">How can I start an action when a window appears, closes or becomes [in]active?</h3>

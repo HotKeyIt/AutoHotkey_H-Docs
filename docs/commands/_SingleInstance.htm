@@ -13,15 +13,15 @@
 
 <p>Determines whether a script is allowed to run again when it is already running.</p>
 
-<pre class="Syntax">#SingleInstance [force|ignore|off]</pre>
+<pre class="Syntax"><span class="func">#SingleInstance</span> <span class="optional">force|ignore|off</span></pre>
 <h3>Parameters</h3>
 <dl>
 
   <dt>force|ignore|off</dt>
   <dd><p>This parameter determines what happens when a script is launched while a previous instance of itself is already running. If specified, it must be one of the following words:</p>
-    <p><b>Force</b>: Skips the dialog box and replaces the old instance automatically, which is similar in effect to the <a href="Reload.htm">Reload</a> command.</p>            
-    <p><b>Ignore</b>: Skips the dialog box and leaves the old instance running. In other words, attempts to launch an already-running script are ignored.</p>
-    <p><b>Off</b>: Allows multiple instances of the script to run concurrently.</p>
+    <p><strong>Force</strong>: Skips the dialog box and replaces the old instance automatically, which is similar in effect to the <a href="Reload.htm">Reload</a> command.</p>            
+    <p><strong>Ignore</strong>: Skips the dialog box and leaves the old instance running. In other words, attempts to launch an already-running script are ignored.</p>
+    <p><strong>Off</strong>: Allows multiple instances of the script to run concurrently.</p>
     <p>If the parameter is omitted, it defaults to <em>Force</em>.</p>
   </dd>
 

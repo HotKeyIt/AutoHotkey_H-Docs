@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetExStyle</title>
+<title>WinGetExStyle()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -14,8 +14,7 @@
 <h1>WinGetExStyle</h1>
 
 <p>Retrieves an 8-digit hexadecimal number representing exstyle or extended style (respectively) of a window.</p>
-<pre class="Syntax">WinGetExStyle, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]<pre><em>Command  Example:</em> WinGetExStyle, <b>Style</b>, ahk_class Notepad
-<em>Function Example:</em> <b>Style</b> := WinGetExStyle("ahk_class Notepad")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetExStyle</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)<pre><em>Function Example:</em> <b>Style</b> := WinGetExStyle("ahk_class Notepad")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

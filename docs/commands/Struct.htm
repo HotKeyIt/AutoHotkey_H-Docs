@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML> 
 <html>
 <head>
-  <title>Struct</title>
+  <title>Struct()</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -19,8 +19,7 @@ This special object can be used to access the stucture its fields using object
 syntax. </p>
 <br>
 
-<pre class="Syntax">Struct, <b>OutputVar</b>, Definition [,AddressToStructure, InitObject]<pre><em>Command  Example:</em> Struct, <b>pt</b>, int x;y,% obj:={x:10,y:20}
-<em>Function Example:</em> <b>pt</b> := Struct("int x;y",{x:10,y:20})</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">Struct</span>(Definition <span class="optional">,AddressToStructure, InitObject</span>)<pre><em>Function Example:</em> <b>pt</b> := Struct("int x;y",{x:10,y:20})</pre></pre>
 
 <h3>Parameters<br>
 </h3>

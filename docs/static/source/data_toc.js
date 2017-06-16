@@ -87,7 +87,8 @@ toc = [
     {label:"NumGet",path:"commands/NumGet.htm"},
     {label:"NumPut",path:"commands/NumPut.htm"},
     {label:"RegisterCallback",path:"commands/RegisterCallback.htm"},
-    {label:"StrPut/StrGet",path:"commands/StrPutGet.htm"},
+    {label:"StrGet",path:"commands/StrGet.htm"},
+    {label:"StrPut",path:"commands/StrPut.htm"},
     {label:"VarSetCapacity",path:"commands/VarSetCapacity.htm"},
     {label:"WinApi",path:"commands/WinApi.htm"},
     {label:"COM",children:
@@ -109,8 +110,8 @@ toc = [
   ]},
   {label:"File, Directory and Disk",children:
   [
-    {label:"Drive",path:"commands/Drive.htm"},
-    {label:"DriveGet",path:"commands/DriveGet.htm"},
+    {label:"Drive..",path:"commands/Drive.htm"},
+    {label:"DriveGet..",path:"commands/DriveGet.htm"},
     {label:"DirCopy",path:"commands/DirCopy.htm"},
     {label:"DirCreate",path:"commands/DirCreate.htm"},
     {label:"DirDelete",path:"commands/DirDelete.htm"},
@@ -187,10 +188,12 @@ toc = [
   [
     {label:"DirSelect",path:"commands/DirSelect.htm"},
     {label:"FileSelect",path:"commands/FileSelect.htm"},
-    {label:"Gui",path:"commands/Gui.htm"},
     {label:"Gui control types",path:"commands/GuiControls.htm"},
-    {label:"GuiControl",path:"commands/GuiControl.htm"},
-    {label:"GuiControlGet",path:"commands/GuiControlGet.htm"},
+    {label:"Gui object",path:"objects/Gui.htm"},
+    {label:"GuiControl object",path:"objects/GuiControl.htm"},
+    {label:"GuiCreate",path:"commands/GuiCreate.htm"},
+    {label:"GuiCtrlFromHwnd",path:"commands/GuiCtrlFromHwnd.htm"},
+    {label:"GuiFromHwnd",path:"commands/GuiFromHwnd.htm"},
     {label:"Gui ListView control",path:"commands/ListView.htm"},
     {label:"Gui TreeView control",path:"commands/TreeView.htm"},
     {label:"InputBox",path:"commands/InputBox.htm"},
@@ -282,7 +285,6 @@ toc = [
   ]},
   {label:"Misc.",children:
   [
-    {label:"Deref",path:"commands/Deref.htm"},
     {label:"Download",path:"commands/Download.htm"},
     {label:"Edit",path:"commands/Edit.htm"},
     {label:"Func",path:"commands/Func.htm"},
@@ -355,10 +357,9 @@ toc = [
   [
     {label:"Controls",children:
     [
-      {label:"Control",path:"commands/Control.htm"},
+      {label:"Control functions",path:"commands/Control.htm"},
       {label:"ControlClick",path:"commands/ControlClick.htm"},
       {label:"ControlFocus",path:"commands/ControlFocus.htm"},
-      {label:"ControlGet",path:"commands/ControlGet.htm"},
       {label:"ControlGetFocus",path:"commands/ControlGetFocus.htm"},
       {label:"ControlGetPos",path:"commands/ControlGetPos.htm"},
       {label:"ControlGetText",path:"commands/ControlGetText.htm"},

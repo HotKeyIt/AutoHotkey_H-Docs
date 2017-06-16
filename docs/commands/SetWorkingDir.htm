@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>SetWorkingDir</title>
+<title>SetWorkingDir()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>SetWorkingDir</h1>
 
 <p>Changes the script's current working directory.</p>
-<pre class="Syntax">SetWorkingDir, DirName<pre><em>Command  Example:</em> SetWorkingDir, %A_ScriptDir%
+<pre class="Syntax"><span class="func">SetWorkingDir</span> DirName<pre><em>Command  Example:</em> SetWorkingDir A_ScriptDir
 <em>Function Example:</em> SetWorkingDir(A_scriptDir)</pre></pre>
 
 <h3>Parameters</h3>
@@ -24,7 +24,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>The script's working directory is the default directory that is used to access files and folders when an absolute path has not been specified. In the following example, the file <em>My Filename.txt</em> is assumed to be in %A_WorkingDir%: <code><a href="FileAppend.htm">FileAppend</a>, A Line of Text, My Filename.txt</code>.</p>

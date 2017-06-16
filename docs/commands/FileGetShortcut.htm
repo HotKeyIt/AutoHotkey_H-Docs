@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileGetShortcut</title>
+<title>FileGetShortcut()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,8 +13,8 @@
 
 <p>Retrieves information about a shortcut (.lnk) file, such as its target file.</p>
 
-<pre class="Syntax">FileGetShortcut, LinkFile [, <b>OutTarget</b>, <b>OutDir</b>, <b>OutArgs</b>, <b>OutDescription</b>, <b>OutIcon</b>, <b>OutIconNum</b>, <b>OutRunState</b>]
-<pre><em>Command  Example:</em> FileGetShortcut,%A_StartMenu%\Programs\Internet Explorer.lnk, <b>Target</b>
+<pre class="Syntax"><span class="func">FileGetShortcut</span> LinkFile <span class="optional">, <b>OutTarget</b>, <b>OutDir</b>, <b>OutArgs</b>, <b>OutDescription</b>, <b>OutIcon</b>, <b>OutIconNum</b>, <b>OutRunState</b></span>
+<pre><em>Command  Example:</em> FileGetShortcut A_StartMenu "\Programs\Internet Explorer.lnk", <b>Target</b>
 <em>Function Example:</em> FileGetShortcut(A_StartMenu "\Programs\Internet Explorer.lnk", <b>Target</b>)</pre></pre>
 
 <h3>Parameters</h3>
@@ -50,7 +50,6 @@
 
 </dl>
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p>If there was a problem -- such as <em>LinkFile</em> not existing -- all the output variables are made blank and <a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1. Otherwise, ErrorLevel is set to 0.</p>
 <h3>Remarks</h3>
 <p>Any of the output variables may be omitted if the corresponding information is not needed.</p>

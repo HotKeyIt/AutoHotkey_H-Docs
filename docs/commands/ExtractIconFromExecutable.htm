@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ExtractIconFromExecutable</title>
+<html><head><title>ExtractIconFromExecutable()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -11,8 +11,7 @@
 <h1>ExtractIconFromExecutable</h1>
 
 <p>Extracts an icon from executable (dll or exe).</p>
-<pre class="Syntax">ExtractIconFromExecutable, <b>OutputVar</b>, FilePath, IconNumber, Width, Height<pre><em>Command  Example:</em> ExtractIconFromExecutable, hIcon, %A_AhkPath%, 16, 16
-<em>Function Example:</em> <b>hIcon</b> := ExtractIconFromExecutable(A_AhkPath, 1, 16, 16)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ExtractIconFromExecutable</span>(FilePath, IconNumber, Width, Height)<pre><em>Function Example:</em> <b>hIcon</b> := ExtractIconFromExecutable(A_AhkPath, 1, 16, 16)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

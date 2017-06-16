@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetControls</title>
+<title>WinGetControls()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,7 +15,7 @@
 
 <p>Retrieves the control names for all controls in a window. If no matching window exists or there are no controls in the window, OutputVar is made blank. Otherwise, each control name consists of its class name followed immediately by its sequence number (ClassNN), as shown by Window Spy.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := WinGetControls([WinTitle, WinText, ExcludeTitle, ExcludeText])
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetControls</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
 <pre><b>Controls</b> := WinGetControls("ahk_class Notepad")</pre>
 WinGetControls, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
 <pre>WinGetControls, <b>Controls</b>, ahk_class Notepad</pre></pre>

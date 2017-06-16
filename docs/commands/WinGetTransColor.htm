@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetTransColor</title>
+<title>WinGetTransColor()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,9 +15,8 @@
 
 <p>Retrieves the color that is marked transparent in a window (see <a href="WinSetTransColor.htm">WinSetTransColor</a> for how to set the TransColor).</p>
 
-<pre class="Syntax">WinGetTransColor, <b>OutputVar</b>, Colour [, WinTitle, WinText, ExcludeTitle, ExcludeText]
-<pre><em>Command  Example:</em> WinGetTransColor, <b>success</b>, 0xFFFFFF, ahk_class Notepad
-<em>Function Example:</em> <b>success</b> := WinGetTransColor(0xFFFFFF,"ahk_class Notepad")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetTransColor</span>(Colour <span class="optional">, WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
+<pre><em>Function Example:</em> <b>success</b> := WinGetTransColor(0xFFFFFF,"ahk_class Notepad")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

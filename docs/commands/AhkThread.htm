@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>AhkThread</title>
+<html><head><title>AhkThread()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,8 @@
 <h1>AhkThread</h1>
 <p>Create a real additional AutoHotkey thread in current process using AutoHotkey.dll.</p>
 <br>
-<pre class="Syntax">AhkThread, <b>OutputVar</b> [, ScriptOrFile, Parameters, Title, ScriptIsFile, DllToUse]
-<pre><em>Command  Example:</em> AhkThread, <b>Thread</b>, MsgBox Message from thread.
-<em>Function Example:</em> <b>Thread</b> := AhkThread("MsgBox Message from thread.")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">AhkThread</span>(<span class="optional">ScriptOrFile, Parameters, Title, ScriptIsFile, DllToUse</span>)
+<pre><em>Function Example:</em> <b>Thread</b> := AhkThread("MsgBox Message from thread.")</pre></pre>
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>

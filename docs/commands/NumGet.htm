@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>NumGet</title>
+<title>NumGet()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -11,8 +11,7 @@
 
 <h1>NumGet</h1>
 <p>Returns the binary number stored at the specified address+offset.</p>
-<pre class="Syntax">NumGet, <b>OutputVar</b>, VarOrAddress [, Offset = 0][, Type = UPtr]<pre><em>Command  Example:</em> NumGet, <b>val</b>,% MyVar, UInt
-<em>Function Example:</em> <b>val</b> := NumGet(MyVar,"UInt") </pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">NumGet</span>(VarOrAddress <span class="optional">, Offset = 0, Type = UPtr</span>)<pre><em>Function Example:</em> <b>val</b> := NumGet(MyVar,"UInt") </pre></pre>
 
 <h3>Parameters</h3>
 <dl>

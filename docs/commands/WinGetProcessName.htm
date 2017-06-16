@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetProcessName</title>
+<title>WinGetProcessName()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,7 +15,7 @@
 
 <p>Retrieves the name of the process (e.g. notepad.exe) that owns a window.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := WinGetProcessName([WinTitle, WinText, ExcludeTitle, ExcludeText])
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetProcessName</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
 <pre><b>Name</b> := WinGetProcessName("ahk_class Notepad")</pre>
 WinGetProcessName, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
 <pre>WinGetProcessName, <b>Count</b>, ahk_class Notepad</pre></pre>

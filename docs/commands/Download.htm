@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Download</title>
+<title>Download()</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
 
 <p>Downloads a file from the Internet.</p>
 
-<pre class="Syntax">Download(URL, FileName)<pre>Download("http://ahkscript.org/download/index.htm", A_ScriptDir "\ahkscript.htm")</pre>Download, URL, Filename<pre>Download, http://ahkscript.org/download/index.htm, %A_ScriptDir%\ahkscript.htm</pre></pre>
+<pre class="Syntax"><span class="func">Download</span>(URL, FileName)<pre>Download("http://ahkscript.org/download/index.htm", A_ScriptDir "\ahkscript.htm")</pre>Download, URL, Filename<pre>Download, http://ahkscript.org/download/index.htm, %A_ScriptDir%\ahkscript.htm</pre></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -28,7 +28,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>The download might appear to succeed even when the remote file doesn't exist. This is because many web servers send an error page instead of the missing file. This error page is what will be saved in place of <em>Filename</em>.</p>

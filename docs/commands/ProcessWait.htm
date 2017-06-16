@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>ProcessWait</title>
+<title>ProcessWait()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,8 +16,8 @@
 
 <p>Waits for a matching processes to exist.</p>
 
-<pre class="Syntax">ProcessWait, <b>OutputVar</b>, PID-or-Name [, Seconds]
-<pre><em>Command  Example:</em> ProcessWait, <b>PID</b>, AutoHotkey.exe, 3.5
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ProcessWait</span>(PID-or-Name <span class="optional">, Seconds</span>)
+<pre><em>Command  Example:</em> ProcessWait "AutoHotkey.exe", 3.5
 <em>Function Example:</em> <b>PID</b> := ProcessWait("AutoHotkey.exe", 3.5)</pre></pre>
 
 <dl>

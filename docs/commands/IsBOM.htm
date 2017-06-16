@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>IsBOM</title>
+<html><head><title>IsBOM()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -11,8 +11,7 @@
 <h1>IsBOM</h1>
 <p>Returns true if given address contains a byte order mark.</p>
 <br>
-<pre class="Syntax">IsBOM, <b>OutputVar</b>, Address [, BOM]<pre><em>Command  Example:</em> IsBOM, <b>result</b>,% &var, UTF-16BE
-<em>Function Example:</em> <b>result</b> := IsBOM(&var, "UTF-16BE")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">IsBOM</span>(Address <span class="optional">, BOM</span>)<pre><em>Function Example:</em> <b>result</b> := IsBOM(&var, "UTF-16BE")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt><b>OutputVar</b></dt>

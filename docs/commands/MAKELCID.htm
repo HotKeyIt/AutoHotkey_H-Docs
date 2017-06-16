@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>MAKELCID</title>
+<html><head><title>MAKELCID()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -11,8 +11,7 @@
 <h1>MAKELCID</h1>
 <p>Creates a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd373763.aspx">locale identifier</a> from a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318691.aspx">language identifier</a> and a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd374060.aspx">sort order identifier</a>.</p>
 <br>
-<pre class="Syntax">MAKELCID, <b>OutputVar</b>, LanguageID, SortID<pre><em>Command  Example:</em> MAKELCID, <b>langid</b>, 0x9, 0x1
-<em>Function Example:</em> <b>langid</b> := MAKELCID(0x9, 0x1)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MAKELCID</span>(LanguageID, SortID)<pre><em>Function Example:</em> <b>langid</b> := MAKELCID(0x9, 0x1)</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt><b>OutputVar</b></dt>

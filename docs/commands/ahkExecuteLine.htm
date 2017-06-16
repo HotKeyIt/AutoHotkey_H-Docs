@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ahkExecuteLine</title>
+<html><head><title>ahkExecuteLine()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -11,9 +11,9 @@
 <h1>ahkExecuteLine</h1>
 <p>Exported function that executes script from given line pointer.</p>
 <br>
-<pre class="Syntax">ahkExecuteLine, <b>OutputVar</b>, LinePointer, Mode, Wait
-<pre><em>Command  Example:</em> DllCall, <b>VarPointer</b>, AutoHotkey.<b>dll</b>\ahkExecuteLine, PTR, %LinePointer%, UInt, 0, UInt, 0, PTR
-                  DllCall, <b>VarPointer</b>, AutoHotkey.<b>exe</b>\ahkExecuteLine, PTR, %LinePointer%, UInt, 0, UInt, 0, PTR
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkExecuteLine</span>(LinePointer, Mode, Wait)
+<pre><em>Command  Example:</em> DllCall "AutoHotkey.<b>dll</b>\ahkExecuteLine", "PTR", LinePointer, "UInt", 0, "UInt", 0, "PTR"
+                  DllCall "AutoHotkey.<b>exe</b>\ahkExecuteLine", "PTR", LinePointer, "UInt", 0, "UInt", 0, "PTR"
 
 <em>Function Example:</em> <b>LinePointer</b> := DllCall("AutoHotkey.<b>dll</b>\ahkExecuteLine", "PTR", LinePointer, "UInt", 0, "UInt", 0, "PTR")
                   <b>VarPointer</b> := DllCall("AutoHotkey.<b>exe</b>\ahkExecuteLine", "PTR", LinePointer, "UInt", 0, "UInt", 0, "PTR")</pre></pre>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileGetSize</title>
+<title>FileGetSize()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,9 +13,8 @@
 
 <p>Retrieves the size of a file.</p>
 
-<pre class="Syntax">FileGetSize, <b>OutputVar</b> [, Filename, Units]
-<pre><em>Command  Example:</em> FileGetSize, <b>FileTime</b>, %A_AhkExe%
-<em>Function Example:</em> <b>FileTime</b> := FileGetSize(A_AhkExe)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FileGetSize</span>(<span class="optional">Filename, Units</span>)
+<pre><em>Function Example:</em> <b>FileTime</b> := FileGetSize(A_AhkExe)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -34,7 +33,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <p><a href="../Variables.htm#LastError">A_LastError</a> is set to the result of the operating system's GetLastError() function.</p>
 

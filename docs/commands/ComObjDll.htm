@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>ComObjDll</title>
+<title>ComObjDll()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -14,8 +14,7 @@
 
 <h1>ComObjDll</h1>
 <p>Creates a COM object from a dll.</p>
-<pre class="Syntax">ComObjDll, <b>OutputVar</b>, hModule, CLSID [, IID]<pre><em>Command  Example:</em> ComObjDll, <b>ahk</b>, %hModule%, {C00BCC8C-5A04-4392-870F-20AAE1B926B2}
-<em>Function Example:</em> <b>ahk</b> := ComObjDll(hModule,"{C00BCC8C-5A04-4392-870F-20AAE1B926B2}")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ComObjDll</span>(hModule, CLSID <span class="optional">, IID</span>)<pre><em>Function Example:</em> <b>ahk</b> := ComObjDll(hModule,"{C00BCC8C-5A04-4392-870F-20AAE1B926B2}")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

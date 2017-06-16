@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>ResExist</title>
+  <title>ResExist()</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
   <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -14,9 +14,8 @@
 <h1>ResExist</h1>
 
 <p>Check whether resource exists in the executable file (dll or exe).</p>
-<pre class="Syntax">ResExist, <b>OutputVar</b>, Executable, Name [, Type, Language]
-<pre><em>Command  Example:</em> ResExist, <b>Exist</b>, %A_AhkPath%, MYRESOURCE
-<em>Function Example:</em> <b>Exist</b> := ResExist(A_AhkPath, "MYRESOURCE")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ResExist</span>(Executable, Name <span class="optional">, Type, Language</span>)
+<pre><em>Function Example:</em> <b>Exist</b> := ResExist(A_AhkPath, "MYRESOURCE")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ResourceLoadLibrary</title>
+<html><head><title>ResourceLoadLibrary()</title>
 
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +16,8 @@ href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll
 from resources into the process. Similar to <a href="MemoryLoadLibrary.htm">MemoryLoadLibrary</a>.</p>
 <br>
 
-<pre class="Syntax">ResourceLoadLibrary, <b>OutputVar</b>, ResName
-<pre><em>Command  Example:</em> ResourceLoadLibrary, <b>ahkdllModule</b>, AutoHotkey.dll
-<em>Function Example:</em> <b>ahkdllModule</b> := ResourceLoadLibrary("AutoHotkey.dll")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ResourceLoadLibrary</span>(ResName)
+<pre><em>Function Example:</em> <b>ahkdllModule</b> := ResourceLoadLibrary("AutoHotkey.dll")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

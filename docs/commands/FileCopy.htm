@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileCopy</title>
+<title>FileCopy()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 
 <p>Copies one or more files.</p>
 
-<pre class="Syntax">FileCopy, SourcePattern, DestPattern [, Flag]</pre>
+<pre class="Syntax"><span class="func">FileCopy</span> SourcePattern, DestPattern <span class="optional">, Flag</span></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -35,7 +35,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to the number of files that could not be copied due to an error, or 0 otherwise.</p>
 <p>In either case, if the source file is a single file (no wildcards) and it does not exist, ErrorLevel is set to 0. To detect this condition, use <a href="FileExist.htm">FileExist</a> on the source file prior to copying it.</p>
 <p>Unlike <a href="FileMove.htm">FileMove</a>, copying a file onto itself is always counted as an error, even if the overwrite mode is in effect.</p>

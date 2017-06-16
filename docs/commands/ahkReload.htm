@@ -13,9 +13,9 @@
 <b>This function is only available in AutoHotkey.dll</b>
 </p>
 <br>
-<pre class="Syntax">DllCall, <b>OutputVar</b>, AutoHotkey.dll\ahkReload, Int, TimeOut, CHAR
-<pre><em>Command  Example:</em> DllCall, , AutoHotkey.<b>dll</b>\ahkReload, Int, 0, CHAR
-<br><em>Function Example:</em> DllCall("AutoHotkey.<b>dll</b>\ahkReload", "Int", 0, "CHAR")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("AutoHotkey.dll\ahkReload", "Int", TimeOut, "Int")
+<pre><em>Command  Example:</em> DllCall "AutoHotkey.<b>dll</b>\ahkReload", "Int", 0, "Int"
+<br><em>Function Example:</em> DllCall("AutoHotkey.<b>dll</b>\ahkReload", "Int", 0, "Int")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

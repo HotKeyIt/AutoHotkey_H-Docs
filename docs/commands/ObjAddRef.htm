@@ -14,9 +14,8 @@
 
 <p>Increments or decrements an object's <a href="../Objects.htm#Reference_Counting">reference count</a>.</p>
 
-<pre class="Syntax">ObjAddRef, <b>OutputVar</b>, Ptr
-ObjRelease, <b>OutputVar</b>, Ptr<pre><em>Command  Example:</em> ObjAddRef, <b>RefCount</b>,% &obj
-<em>Function Example:</em> <b>RefCount</b> := ObjAddRef(&obj)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjAddRef</span>(Ptr)
+<b>OutputVar</b> := ObjRelease(Ptr)<pre><em>Function Example:</em> <b>RefCount</b> := ObjAddRef(&obj)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

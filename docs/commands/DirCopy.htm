@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>DirCopy</title>
+<title>DirCopy()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 
 <p>Copies a folder along with all its sub-folders and files (similar to xcopy).</p>
 
-<pre class="Syntax">DirCopy, Source, Dest [, Flag]</pre>
+<pre class="Syntax"><span class="func">DirCopy</span> Source, Dest <span class="optional">, Flag</span></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -32,7 +32,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise. However, if the source directory contains any saved webpages consisting of a <em>PageName.htm</em> file and a corresponding directory named <em>PageName_files</em>, an error may be indicated even when the copy is successful.</p>
 <h3>Remarks</h3>
 <p>If the destination directory structure doesn't exist it will be created if possible.</p>
@@ -52,13 +51,13 @@ DirSelect, TargetFolder, , 3, Select the folder IN WHICH to create the duplicate
 if TargetFolder = ""
     return
 <em>; Otherwise, continue.</em>
-Result := MsgBox("A copy of the folder &quot;%SourceFolder%&quot; will be put into &quot;%TargetFolder%&quot;.  Continue?",, 4)
+Result := MsgBox("A copy of the folder '%SourceFolder%' will be put into '%TargetFolder%'.  Continue?",, 4)
 if Result = "No"
     return
 SplitPath, %SourceFolder%, SourceFolderName  <em>; Extract only the folder name from its full path.</em>
 DirCopy, %SourceFolder%, %TargetFolder%\%SourceFolderName%
 if ErrorLevel
-    MsgBox("The folder could not be copied, perhaps because a folder of that name already exists in &quot;%TargetFolder%&quot;.")
+    MsgBox("The folder could not be copied, perhaps because a folder of that name already exists in '%TargetFolder%'.")
 return</pre>
 
 </body>

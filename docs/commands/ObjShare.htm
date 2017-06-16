@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ObjShare</title>
+<html><head><title>ObjShare()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,9 +12,8 @@
 <p>Included function to use an object in a multi-threaded environment. This is especially useful to call methods of a class from a different thread.
 Such objects can be used from multiple threads without causing a crash using COM functions <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318557.aspx">LresultFromObject</a> and <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd373605.aspx">ObjectFromLresult</a>.</p>
 <br>
-<pre class="Syntax">ObjShare, <b>OutputVar</b> [, ObjectOrLresult] 
-<pre><em>Command  Example:</em> ObjShare, <b>Lresult</b>,%MyObject%
-<em>Function Example:</em> <b>Lresult</b> := ObjShare(MyObject)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjShare</span>(ObjectOrLresult)
+<pre><em>Function Example:</em> <b>Lresult</b> := ObjShare(MyObject)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

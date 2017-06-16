@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>PixelSearch</title>
+<title>PixelSearch()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>PixelSearch</h1>
 
 <p>Searches a region of the screen for a pixel of the specified color.</p>
-<pre class="Syntax">PixelSearch, <b>OutputVarX</b>, <b>OutputVarY</b>, X1, Y1, X2, Y2, ColorID [, Variation, Fast]<pre><em>Command  Example:</em> PixelSearch, <b>x</b>, <b>y</b>, 0, 0, %A_ScreenWidth%, %A_ScreenHeight%, 0xFFFFFF
+<pre class="Syntax"><span class="func">PixelSearch</span> <b>OutputVarX</b>, <b>OutputVarY</b>, X1, Y1, X2, Y2, ColorID <span class="optional">, Variation, Fast</span><pre><em>Command  Example:</em> PixelSearch, <b>x</b>, <b>y</b>, 0, 0, A_ScreenWidth, A_ScreenHeight, "0xFFFFFF"
 <em>Function Example:</em> PixelSearch(<b>x</b>, <b>y</b>, 0, 0, A_ScreenWidth, A_ScreenHeight)</pre></pre>
 
 <h3>Parameters</h3>
@@ -42,7 +42,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception if there was a problem while searching. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 0 if the color was found in the specified region, 1 if it was not found, or 2 if there was a problem that prevented the command from conducting the search.</p>
 <h3>Remarks</h3>
 <p>The region to be searched must be visible; in other words, it is not possible to  search a region of a window hidden behind another window. By contrast, pixels beneath the mouse cursor can usually be detected. The exception to this is cursors in games, which in most cases will hide any pixels beneath them.</p>

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>ZipCloseFile</title>
+<title>ZipCloseFile()</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,8 +16,8 @@
 
 <p>Closes zip archive created with <a href="ZipCreateFile.htm">ZipCreateFile</a>.</p>
 
-<pre class="Syntax">ZipCloseFile, <b>OutputVar</b>, ZipHandle
-<pre><em>Command  Example:</em> ZipCloseFile, <b>Success</b>,% hZip
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipCloseFile</span>(ZipHandle)
+<pre><em>Command  Example:</em> ZipCloseFile hZip
 <em>Function Example:</em> <b>Success</b> := ZipCloseFile(hZip)</pre></pre>
 
 <h3>Parameters</h3>

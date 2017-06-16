@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetProcessPath</title>
+<title>WinGetProcessPath()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,7 +15,7 @@
 
 <p>Retrieves full path of the process (e.g. C:\Windows\notepad.exe) that owns a window.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := WinGetProcessPath([WinTitle, WinText, ExcludeTitle, ExcludeText])
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetProcessPath</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
 <pre><b>path</b> := WinGetProcessPath("ahk_class Notepad")</pre>
 WinGetProcessPath, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
 <pre>WinGetProcessPath, <b>path</b>, ahk_class Notepad</pre></pre>

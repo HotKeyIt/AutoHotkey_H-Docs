@@ -11,11 +11,8 @@
 <h1>ahkgetvar</h1>
 <p>Exported function to retrieve the value of a variable as string.</p>
 <br>
-<pre class="Syntax">DllCall, <b>OutputVar</b>, Module\ahkgetvar, Str, VarName, UInt, GetVarPointer, CDecl Str
-<pre><em>Command  Example:</em> DllCall, <b>OutputVar</b>, AutoHotkey.<b>dll</b>\ahkgetvar, Str, MyVar, UInt, 0, CDecl Str
-                  DllCall, <b>OutputVar</b>, AutoHotkey.<b>exe</b>\ahkgetvar, Str, MyVar, UInt, 0, Str
-
-<em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkgetvar", "Str", "MyVar", "UInt", 0 ,"CDecl Str")
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("Module\ahkgetvar", "Str", "VarName", "UInt", GetVarPointer, "CDecl Str")
+<pre><em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkgetvar", "Str", "MyVar", "UInt", 0 ,"CDecl Str")
                   <b>Result</b> := DllCall("AutoHotkey.<b>exe</b>\ahkgetvar", "Str", "MyVar", "UInt", 0, "CDecl Str")</pre></pre>
 <h3>Parameters</h3>
 <dl>

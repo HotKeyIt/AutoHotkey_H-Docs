@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ahkFindLabel</title>
+<html><head><title>ahkFindLabel()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,11 +13,8 @@
 script and returns a pointer to it.
 </p>
 <br>
-<pre class="Syntax">ahkFindLabel, <b>OutputVar</b>, LabelName
-<pre><em>Command  Example:</em> DllCall, <b>OutputVar</b>, AutoHotkey.<b>dll</b>\ahkFindLabel, Str, LabelName, PTR
-                  DllCall, <b>OutputVar</b>, AutoHotkey.<b>exe</b>\ahkFindLabel, Str, LabelName, PTR
-
-<em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkFindLabel", "Str", "LabelName", "PTR")
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkFindLabel</span>("LabelName")
+<pre><em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkFindLabel", "Str", "LabelName", "PTR")
                   <b>OutputVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkFindLabel", "Str", "LabelName", "PTR")</pre></pre>
 <h3>Parameters</h3>
 <dl>

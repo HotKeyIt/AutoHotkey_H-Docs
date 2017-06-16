@@ -14,9 +14,9 @@ currently executed
 script.
 </p>
 <br>
-<pre class="Syntax">DllCall, <b>OutputVar</b>, Module\ahkassign, Str, VarName, Str, Value, CDecl UInt
-<pre><em>Command  Example:</em> DllCall, <b>Result</b>, AutoHotkey.<b>dll</b>\ahkassign, Str, Variable, Str, 100, CDecl UInt
-                  DllCall, <b>Result</b>, AutoHotkey.<b>exe</b>\ahkassign, Str, Variable, Str, 100, CDecl UInt
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("Module\ahkassign", "Str", "VarName", "Str", Value, "CDecl UInt")
+<pre><em>Command  Example:</em> DllCall "AutoHotkey.<b>dll</b>\ahkassign", "Str", "Variable", "Str", "100", "CDecl UInt"
+                  DllCall "AutoHotkey.<b>exe</b>\ahkassign", "Str", "Variable", "Str", "100", "CDecl UInt"
 
 <em>Function Example:</em> <b>Result</b> := DllCall("AutoHotkey.<b>dll</b>\ahkassign", "Str", "Variable", "Str", "100" ,"CDecl UInt")
                   <b>Result</b> := DllCall("AutoHotkey.<b>exe</b>\ahkassign", "Str", "Variable", "Str", "100", "CDecl UInt")</pre></pre>

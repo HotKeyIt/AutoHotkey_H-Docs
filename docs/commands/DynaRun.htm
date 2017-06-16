@@ -10,8 +10,8 @@
 <body>
 <h1>DynaRun</h1>
 <p>Run code dynamically in new AutoHotkey process.</p>
-<pre class="Syntax">DynaRun, <b>OutputVar</b>, Script, ScriptName, ScriptParameters, AlternateExecutable
-<pre><em>Command  Example:</em> DynaRun, <b>PID</b>, Msgbox Test, MyDynaRunScript
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DynaRun</span>(Script <span class="optional">, ScriptName, ScriptParameters, AlternateExecutable</span>)
+<pre><em>Command  Example:</em> DynaRun "Msgbox Test", "MyDynaRunScript"
 <em>Function Example:</em> <b>PID</b> := DynaRun("MsgBox Test", "MyDynaRunScript")</pre></pre>
 
 <h3>Parameters</h3>

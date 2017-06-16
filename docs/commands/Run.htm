@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Run / RunWait</title>
+<title>Run() / RunWait()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -19,7 +19,7 @@
 <p>Runs an external program. Unlike Run, RunWait will wait until
 the program finishes before continuing.</p>
 
-<pre class="Syntax">Run, Target [, WorkingDir, Max|Min|Hide|UseErrorLevel, OutputVarPID]<pre><em>Command  Example:</em> Run, calc.exe
+<pre class="Syntax"><span class="func">Run</span> Target <span class="optional">, WorkingDir, Max|Min|Hide|UseErrorLevel, OutputVarPID</span><pre><em>Command  Example:</em> Run calc.exe
 <em>Function Example:</em> Run("calc.exe")</pre></pre>
 
 <h3>Parameters</h3>
@@ -48,7 +48,6 @@ the program finishes before continuing.</p>
 
 </dl>
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p>Run: Does not set <a href="../misc/ErrorLevel.htm">ErrorLevel</a> unless UseErrorLevel (above) is in effect, in which case ErrorLevel is set to the word ERROR upon failure or 0 upon success.</p>
 <p>RunWait: Sets ErrorLevel to the program's exit code (a signed 32-bit integer). If UseErrorLevel is in effect and the launch failed, the word ERROR is stored.</p>
 <h3>Remarks</h3>

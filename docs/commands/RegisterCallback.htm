@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>RegisterCallback</title>
+<title>RegisterCallback()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 
 <p>Creates a machine-code address that when called, redirects the call to a <a href="../Functions.htm">function</a> in the script.</p>
 
-<pre class="Syntax">Address := RegisterCallback(&quot;FunctionName&quot; [, Options = &quot;&quot;, ParamCount = FormalCount, EventInfo = Address])</pre>
+<pre class="Syntax">Address := <span class="func">RegisterCallback</span>("FunctionName" <span class="optional">, Options := "", ParamCount := FormalCount, EventInfo := Address</span>)</pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -125,20 +125,18 @@ EnumWindowsProc(hwnd, lParam)
 TextBackgroundColor := 0xFFBBBB  <em>; A custom color in BGR format.</em>
 TextBackgroundBrush := DllCall(&quot;CreateSolidBrush&quot;, UInt, TextBackgroundColor)
 
-Gui, Add, Text, HwndMyTextHwnd, Here is some text that is given`na custom background color.
-Gui +LastFound
-GuiHwnd := WinExist()
+Gui := GuiCreate()
+Text := Gui.Add("Text",, "Here is some text that is given`na custom background color.")
 
 <em>; 64-bit scripts must call SetWindowLongPtr instead of SetWindowLong:</em>
 SetWindowLong := A_PtrSize=8 ? "SetWindowLongPtr" : "SetWindowLong"
 
 WindowProcNew := <b>RegisterCallback</b>(&quot;WindowProc&quot;, &quot;&quot;  <em>; Specify &quot;&quot; to avoid fast-mode for subclassing.</em>
-    , <b>4</b>, MyTextHwnd)  <em>; Must specify exact ParamCount when EventInfo parameter is present.</em>
-WindowProcOld := DllCall(SetWindowLong, Ptr, GuiHwnd, Int, -4  <em>; -4 is GWL_WNDPROC</em>
+    , <strong>4</strong>, Text.Hwnd)  <em>; Must specify exact ParamCount when EventInfo parameter is present.</em>
+WindowProcOld := DllCall(SetWindowLong, Ptr, Gui.Hwnd, Int, -4  <em>; -4 is GWL_WNDPROC</em>
     , Ptr, WindowProcNew, Ptr) <em>; Return value must be set to Ptr or UPtr vs. Int.</em>
 
-Gui Show
-return
+Gui.Show()
 
 WindowProc(hwnd, uMsg, wParam, lParam)
 {

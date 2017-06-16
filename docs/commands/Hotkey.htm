@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Hotkey</title>
+<title>Hotkey()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -13,9 +13,11 @@
 
 <p>Creates, modifies, enables, or disables a hotkey while the script is running.</p>
 
-<pre class="Syntax">Hotkey, KeyName [, Label, Options]
-Hotkey, IfWinActive/Exist [, WinTitle, WinText]
-Hotkey, If [, Expression]<pre><em>Command  Example:</em> Hotkey, !a, MyHotkeyLabel
+<pre class="Syntax"><span class="func">Hotkey</span> KeyName <span class="optional">, Label, Options</span>
+<span class="func">Hotkey</span> "IfWinActive/Exist" <span class="optional">, WinTitle, WinText</span>
+<span class="func">Hotkey</span> "If" <span class="optional">, Expression</span>
+<span class="func">Hotkey</span> "If", FunctionObject
+<pre><em>Command  Example:</em> Hotkey "!a", "MyHotkeyLabel"
 <em>Function Example:</em> Hotkey("!a","MyHotkeyLabel")</pre></pre>
 <h3>Parameters</h3>
 <dl>
@@ -84,7 +86,6 @@ Hotkey, If [, Expression]<pre><em>Command  Example:</em> Hotkey, !a, MyHotkeyLab
 </dl>
 
 <h3 id="ErrorLevel">ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p>If the first parameter is "If" or begins with "IfWin", an exception is thrown if a parameter is invalid or a memory allocation fails. ErrorLevel is not set in those cases.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is changed only when the word UseErrorLevel is present in the <em>Options</em> parameter.</p>
 <table class="info">
@@ -181,34 +182,35 @@ Hotkey, IfWinActive, ahk_class Notepad
 Hotkey, ^!c, MyLabelForNotepad  <em>; Creates Ctrl-Alt-C as a hotkey that works only in Notepad.</em></pre>
 
 <pre class="NoIndent" id="ExampleIfFn"><em>; This GUI allows you to register primitive three-key combination hotkeys:</em>
-Gui Add, Text, xm, Prefix key:
-Gui Add, Edit, yp x100 w100 vPrefix, Space
-Gui Add, Text, xm, Suffix hotkey:
-Gui Add, Edit, yp x100 w100  vSuffix, f &amp; j
-Gui Add, Button, Default, Register
-Gui Show
-return
+Gui := GuiCreate()
+Gui.Add("Text", "xm", "Prefix key:")
+Gui.Add("Edit", "yp x100 w100 vPrefix", "Space")
+Gui.Add("Text", "xm", "Suffix hotkey:")
+Gui.Add("Edit", "yp x100 w100 vSuffix", "f &amp; j")
+Gui.Add("Button", "Default", "Register").OnEvent("Click", "RegisterHotkey")
+Gui.OnEvent("Close", "Gui_Close")
+Gui.OnEvent("Escape", "Gui_Close")
+Gui.Show()
 
-ButtonRegister() {
-    global
-    Gui Submit, NoHide
+RegisterHotkey(BtnCtrl) {
     local fn
-    fn := Func("HotkeyShouldFire").Bind(Prefix)
-    Hotkey If, % fn
-    Hotkey % Suffix, FireHotkey
+    Saved := BtnCtrl.Gui.Submit(false)
+    fn := Func("HotkeyShouldFire").Bind(Saved.Prefix)
+    Hotkey("If", fn)
+    Hotkey(Saved.Suffix, "FireHotkey")
 }
 
-HotkeyShouldFire(prefix, thisHotkey) {
+HotkeyShouldFire(prefix) {
     return GetKeyState(prefix)
 }
 
 FireHotkey() {
-    MsgBox %A_ThisHotkey%
+    MsgBox(A_ThisHotkey)
 }
 
-GuiClose:
-GuiEscape:
-ExitApp</pre>
+Gui_Close() {
+    ExitApp()
+}</pre>
 
 </body>
 </html>

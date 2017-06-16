@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>IniDelete</title>
+<title>IniDelete()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>IniDelete</h1>
 
 <p>Deletes a value from a standard format .ini file.</p>
-<pre class="Syntax">IniDelete, Filename, Section [, Key]<pre><em>Command  Example:</em> IniDelete, %A_ScriptDir%\MyIni.ini, Settings, AlwaysOnTop
+<pre class="Syntax"><span class="func">IniDelete</span> Filename, Section <span class="optional">, Key</span><pre><em>Command  Example:</em> IniDelete A_ScriptDir "\MyIni.ini", "Settings", "AlwaysOnTop"
 <em>Function Example:</em> IniDelete(A_ScriptDir "\MyIni.ini", "Settings", "AlwaysOnTop")</pre></pre>
 
 <h3>Parameters</h3>
@@ -29,7 +29,6 @@
 
 </dl>
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <h3>Remarks</h3>
 <p>A standard ini file looks like:</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileGetAttrib</title>
+<title>FileGetAttrib()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,10 +12,9 @@
 <h1>FileGetAttrib</h1>
 
 <p>Reports whether a file or folder is read-only, hidden, etc.</p>
-<pre class="Syntax">FileGetAttrib, <b>OutputVar</b> [, Filename]<pre><em>Command  Example:</em> FileGetAddrib, <b>Attr</b>, %A_AhkPath%
-<em>Function Example:</em> <b>Attr</b> := FileGetAttrib(A_AhkPath)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FileGetAttrib</span>(<span class="optional">Filename</span>)<pre><em>Function Example:</em> <b>Attr</b> := FileGetAttrib(A_AhkPath)</pre></pre>
 
-<pre class="Syntax">FileGetAttrib, OutputVar [, Filename]
+<pre class="Syntax">OutputVar := <span class="func">FileGetAttrib</span>(<span class="optional">Filename</span>)
 AttributeString := <a href="FileExist.htm">FileExist</a>(FilePattern)</pre>
 <h3>Parameters</h3>
 <dl>
@@ -28,7 +27,6 @@ AttributeString := <a href="FileExist.htm">FileExist</a>(FilePattern)</pre>
 
 </dl>
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <p><a href="../Variables.htm#LastError">A_LastError</a> is set to the result of the operating system's GetLastError() function.</p>
 

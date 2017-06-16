@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>ahkFunction</title>
+<html><head><title>ahkFunction()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -15,9 +15,9 @@ currently executed by&nbsp;AutoHotkey module.<br>
 Paramenters can be strings only as well as return value.<br>
 </p>
 <br>
-<pre class="Syntax">ahkFunction, <b>OutputVar</b>, FuncName, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10
-<pre><em>Command  Example:</em> DllCall, <b>OutputVar</b>, AutoHotkey.<b>dll</b>\ahkFunction, Str, FuncName[, Str, Arg1 , ..., Str,Arg10], Str
-                  DllCall, <b>OutputVar</b>, AutoHotkey.<b>exe</b>\ahkFunction, Str, FuncName[, Str, Arg1 , ..., Str,Arg10], Str
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkFunction</span>("FuncName" <span class="optional">, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10</span>)
+<pre><em>Command  Example:</em> DllCall "AutoHotkey.<b>dll</b>\ahkFunction", "Str", "FuncName" [, "Str", "Arg1", ..., "Str", "Arg10"], "CDecl Str"
+                  DllCall "AutoHotkey.<b>exe</b>\ahkFunction", "Str", "FuncName" [, "Str", "Arg1", ..., "Str", "Arg10"], "CDecl Str"
 
 <em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkFunction", "Str", "FuncName"[, "Str", Arg1 , ..., "Str",Arg10], "Str")
                   <b>OutputVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkFunction", "Str", "FuncName"[, "Str", Arg1 , ..., "Str",Arg10], "Str")</pre></pre>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Menu</title>
+<title>Menu()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 <h1>Menu</h1>
 
 <p>Creates, deletes, modifies and displays menus and menu items. Changes the tray icon and its tooltip. Controls whether the main window of a <a href="../Scripts.htm#ahk2exe">compiled script</a> can be opened.</p>
-<pre class="Syntax">Menu, MenuName, Cmd [, P3, P4, P5]<pre><em>Command  Example:</em> Menu, MyMenu, Add, File, MenuFile
+<pre class="Syntax"><span class="func">Menu</span> MenuName, Cmd <span class="optional">, P3, P4, P5</span><pre><em>Command  Example:</em> Menu "MyMenu", "Add", "File", "MenuFile"
 <em>Function Example:</em> Menu("MyMenu", "Add", "File", "MenuFile")</pre></pre>
 
 <h3>Parameters</h3>
@@ -51,7 +51,7 @@ Menu, tray, add, This Menu Item Is A Submenu, :MySubmenu</pre>
   <tr><td>+Radio</td>
   <td>If the item is checked, a bullet point is used instead of a check mark.</td></tr>
   <tr><td>+Right</td>
-  <td>The item is right-justified within the menu bar. This only applies to <a href="Gui.htm#Menu">menu bars</a>, not popup menus or submenus.</td></tr>
+  <td>The item is right-justified within the menu bar. This only applies to <a href="../objects/Gui.htm#Menu">menu bars</a>, not popup menus or submenus.</td></tr>
   <tr><td>+Break</td>
   <td>The item begins a new column in a popup menu.</td></tr>
   <tr><td>+BarBreak</td>
@@ -83,7 +83,7 @@ Menu, tray, add, This Menu Item Is A Submenu, :MySubmenu</pre>
 <h2>Change the Tray Icon or ToolTip <span class="headnote">(<em>MenuName</em> must be TRAY)</span></h2>
 <p id="Icon"><b>Icon [, FileName, IconNumber, 1]</b>: Changes the script's icon to one of the ones from <em>FileName</em>. The following types of files are supported: ICO, CUR, ANI, EXE, DLL, CPL, SCR, and other types that contain icon resources. To use an icon group other than the first one in the file, specify its number for <em>IconNumber</em> (if omitted, it defaults to 1). For example, <b>2</b> would load the default icon from the second icon group. If <em>IconNumber</em> is negative, its absolute value is assumed to be the resource ID of an icon within an executable file. Specify an asterisk (*) for <em>FileName</em> to restore the script to its default icon.</p>
 <p>The last parameter: Specify 1 for the last parameter to freeze the icon, or 0 to unfreeze it (or leave it blank to keep the frozen/unfrozen state unchanged). When the icon has been frozen, <a href="Pause.htm">Pause</a> and <a href="Suspend.htm">Suspend</a> will not change it. Note: To freeze or unfreeze the <em>current</em> icon, use 1 or 0 as in the following example: <code>Menu, Tray, Icon,,, 1</code>.</p>
-<p>Changing the tray icon also changes the icon displayed by <a href="InputBox.htm">InputBox</a> and subsequently-created <a href="Gui.htm">GUI</a> windows. <a href="../Scripts.htm#ahk2exe">Compiled scripts</a> are also affected even if a custom icon was specified at the time of compiling. Note: Changing the icon will not unhide the tray icon if it was previously hidden by means such as <a href="_NoTrayIcon.htm">#NoTrayIcon</a>; to do that, use <code>Menu, Tray, Icon</code> (with no parameters).</p>
+<p>Changing the tray icon also changes the icon displayed by <a href="InputBox.htm">InputBox</a> and subsequently-created <a href="GuiCreate.htm">GUI</a> windows. <a href="../Scripts.htm#ahk2exe">Compiled scripts</a> are also affected even if a custom icon was specified at the time of compiling. Note: Changing the icon will not unhide the tray icon if it was previously hidden by means such as <a href="_NoTrayIcon.htm">#NoTrayIcon</a>; to do that, use <code>Menu, Tray, Icon</code> (with no parameters).</p>
 <p id="distort">Slight distortion may occur when loading tray icons from file types other than .ICO. This is especially true for 16x16 icons. To prevent this, store the desired tray icon inside a .ICO file.</p>
 <p>There are some icons built into the operating system's DLLs and CPLs that might be useful. For example: <code>Menu, Tray, Icon, Shell32.dll, 174</code>.</p>
 <p>The built-in variables <b>A_IconNumber</b> and <b>A_IconFile</b> contain the number and name (with full path) of the current icon (both are blank if the icon is the default).</p>
@@ -92,7 +92,7 @@ Menu, tray, add, This Menu Item Is A Submenu, :MySubmenu</pre>
 <p><b>NoIcon</b>: Removes the tray icon if it exists. If this command is used at the very top of the script, the tray icon might be briefly visible when the script is launched. To prevent that, use <a href="_NoTrayIcon.htm">#NoTrayIcon</a> instead. The built-in variable <b>A_IconHidden</b> contains 1 if the tray icon is currently hidden or 0 otherwise.</p>
 <p><b>Tip [, Text]</b>: Changes the tray icon's tooltip -- which is displayed when the mouse hovers over it. To create a multi-line tooltip, use the linefeed character (`n) in between each line, e.g. Line1`nLine2. Only the first 127 characters of <em>Text</em> are displayed, and <em>Text</em> is truncated at the first tab character, if present. If <em>Text</em> is omitted, the tooltip is restored to its default text. The built-in variable <b>A_IconTip</b> contains the current text of the tooltip (blank if the text is at its default).</p>
 <h2>Miscellaneous Commands</h2>
-<p id="Show"><b>Show [, X, Y]</b>: Displays <em>MenuName</em>, allowing the user to select an item with arrow keys, menu shortcuts (underlined letters), or the mouse. Any menu can be shown, including the tray menu but with the exception of <a href="Gui.htm">GUI</a> menu bars. If both X and Y are omitted, the menu is displayed at the current position of the mouse cursor. If only one of them is omitted, the mouse cursor's position will be used for it. X and Y are relative to the active window. Specify &quot;<a href="CoordMode.htm">CoordMode</a>, Menu&quot; beforehand to make them relative to the entire screen.</p>
+<p id="Show"><strong>Show [, X, Y]</strong>: Displays <em>MenuName</em>, allowing the user to select an item with arrow keys, menu shortcuts (underlined letters), or the mouse. Any menu can be shown, including the tray menu but with the exception of <a href="../objects/Gui.htm#Menu">GUI menu bars</a>. If both X and Y are omitted, the menu is displayed at the current position of the mouse cursor. If only one of them is omitted, the mouse cursor's position will be used for it. X and Y are relative to the active window. Specify &quot;<a href="CoordMode.htm">CoordMode</a>, Menu&quot; beforehand to make them relative to the entire screen.</p>
 <p><b>Color, ColorValue [, Single]</b>: Changes the background color of the menu to <em>ColorValue</em>, which is one of the 16 primary HTML color names or a 6-digit RGB color value (see <a href="../misc/Colors.htm">color chart</a>). Leave <em>ColorValue</em> blank (or specify the word Default) to restore the menu to its default color. If the word Single is not present as the next parameter, any submenus attached to this menu will also be changed in color.</p>
 <p><b>Click, ClickCount</b>: Specify 1 for <em>ClickCount</em> to allow a single-click to activate the tray menu's default menu item. Specify 2 for <em>ClickCount</em> to return to the default behavior (double-click). For example: <code>Menu, Tray, Click, 1</code>.</p>
 <p id="MainWindow"><b>MainWindow</b>: This command affects <a href="../Scripts.htm#ahk2exe">compiled scripts</a> only. It allows the script's main window to be opened via the tray icon, which is otherwise impossible. It also enables the items in the main window's View menu such as &quot;Lines most recently executed&quot;, which allows viewing of the script's source code and other info. <em>MenuName</em> must be TRAY.</p>
@@ -121,7 +121,7 @@ Menu, tray, add, This Menu Item Is A Submenu, :MySubmenu</pre>
 <p>The built-in variables <b><a href="../Variables.htm#ThisMenuItem">A_ThisMenuItem</a></b> and <b><a href="../Variables.htm#ThisMenuItemPos">A_ThisMenuItemPos</a></b> contain the name and position of the custom menu item most recently selected by the user (blank if none). Similarly, <b>A_ThisMenu</b> is the name of the menu from which <b>A_ThisMenuItem</b> was selected. These variables are useful when building a menu whose contents are not always the same. In such a case, it is usually best to point all such menu items to the same label and have that label refer to the above variables to determine what action to take.</p>
 
 <h2>Related</h2>
-<p><a href="Gui.htm">GUI</a>, <a href="../misc/Threads.htm">Threads</a>, <a href="Thread.htm">Thread</a>, <a href="Critical.htm">Critical</a>, <a href="_NoTrayIcon.htm">#NoTrayIcon</a>, <a href="Gosub.htm">Gosub</a>, <a href="Return.htm">Return</a>, <a href="SetTimer.htm">SetTimer</a></p>
+<p><a href="GuiCreate.htm">GUI</a>, <a href="../misc/Threads.htm">Threads</a>, <a href="Thread.htm">Thread</a>, <a href="Critical.htm">Critical</a>, <a href="_NoTrayIcon.htm">#NoTrayIcon</a>, <a href="Gosub.htm">Gosub</a>, <a href="Return.htm">Return</a>, <a href="SetTimer.htm">SetTimer</a></p>
 <h2>Examples</h2>
 <pre class="NoIndent"><em>; EXAMPLE #1: This is a working script that adds a new menu item to the bottom of the tray icon menu.</em>
 
@@ -235,21 +235,23 @@ Test:
 MsgBox, You selected &quot;%A_ThisMenuItem%&quot; in menu &quot;%A_ThisMenu%&quot;.
 return</pre>
 <pre class="NoIndent"><em>; EXAMPLE #4: This is a working script that adds icons to its menu items.</em>
-Menu, FileMenu, Add, Script Icon, MenuHandler
-Menu, FileMenu, Add, Suspend Icon, MenuHandler
-Menu, FileMenu, Add, Pause Icon, MenuHandler
-Menu, FileMenu, Icon, Script Icon, %A_AhkPath%, 2 <em>;Use the 2nd icon group from the file</em>
-Menu, FileMenu, Icon, Suspend Icon, %A_AhkPath%, -206 <em>;Use icon with resource identifier 206</em>
-Menu, FileMenu, Icon, Pause Icon, %A_AhkPath%, -207 <em>;Use icon with resource identifier 207</em>
-Menu, MyMenuBar, Add, &amp;File, :FileMenu
-Gui, Menu, MyMenuBar
-Gui, Add, Button, gExit, Exit This Example
-Gui, Show
-MenuHandler:
-Return
+Menu("FileMenu", "Add", "Script Icon", "MenuHandler")
+Menu("FileMenu", "Add", "Suspend Icon", "MenuHandler")
+Menu("FileMenu", "Add", "Pause Icon", "MenuHandler")
+Menu("FileMenu", "Icon", "Script Icon", A_AhkPath, 2) <em>; 2nd icon group from the file</em>
+Menu("FileMenu", "Icon", "Suspend Icon", A_AhkPath, -206) <em>; icon with resource ID 206</em>
+Menu("FileMenu", "Icon", "Pause Icon", A_AhkPath, -207) <em>; icon with resource ID 207</em>
+Menu("MyMenuBar", "Add", "&amp;File", ":FileMenu")
+Gui := GuiCreate()
+Gui.Menu := "MyMenuBar"
+Gui.Add("Button",, "Exit This Example").OnEvent("Click", "Exit_Click")
+Gui.Show()
 
-Exit:
-ExitApp
-</pre>
+MenuHandler() {
+}
+
+Exit_Click() {
+  WinClose()
+}</pre>
 </body>
 </html>

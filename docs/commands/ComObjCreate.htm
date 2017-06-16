@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>ComObjCreate</title>
+<title>ComObjCreate()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,8 +12,7 @@
 <h1>ComObjCreate</h1>
 <p>Creates a COM object.</p>
 
-<pre class="Syntax">ComObjCreate, <b>OutputVar</b>, CLSID [, IID]<pre><em>Command  Example:</em> ComObjCreate, <b>ie</b>, InternetExplorer.Application
-<em>Function Example:</em> <b>ie</b> := ComObjCreate("InternetExplorer.Application")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ComObjCreate</span>(CLSID <span class="optional">, IID</span>)<pre><em>Function Example:</em> <b>ie</b> := ComObjCreate("InternetExplorer.Application")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

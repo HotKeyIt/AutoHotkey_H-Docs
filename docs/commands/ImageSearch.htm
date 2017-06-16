@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>ImageSearch</title>
+<title>ImageSearch()</title>
 <meta name="description" content="Use ImageSearch in this free macro program to search the screen for an ICO, BMP, or PNG image. Send keystrokes or mouse clicks in response.">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
 <h1>ImageSearch</h1>
 
 <p>Searches a region of the screen for an image.</p>
-<pre class="Syntax">ImageSearch, <b>OutputVarX</b>, <b>OutputVarY</b>, X1, Y1, X2, Y2, ImageFile<pre><em>Command  Example:</em> ImageSearch, <b>x</b>, <b>y</b>, 0, 0,%A_ScreenWidth%, %A_ScreenHeight%, %A_ScriptDir%\MyImage.jpg
+<pre class="Syntax"><span class="func">ImageSearch</span> <b>OutputVarX</b>, <b>OutputVarY</b>, X1, Y1, X2, Y2, ImageFile<pre><em>Command  Example:</em> ImageSearch, <b>x</b>, <b>y</b>, 0, 0,A_ScreenWidth, A_ScreenHeight, A_ScriptDir "\MyImage.jpg"
 <em>Function Example:</em> ImageSearch(<b>x</b>, <b>y</b>, 0, 0, A_ScreenWidth, A_ScreenHeight)</pre></pre>
 
 <h3>Parameters</h3>
@@ -42,7 +42,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception if there was a problem while searching. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 0 if the image was found in the specified region, 1 if it was not found, or 2 if there was a problem that prevented the command from conducting the search (such as failure to open the image file or a badly formatted option).</p>
 <h3>Remarks</h3>
 <p>ImageSearch can be used to detect graphical objects on the screen that either lack text or whose text cannot be easily retrieved. For example, it can be used to discover the position of picture buttons, icons, web page links, or game objects. Once located, such objects can be clicked via <a href="Click.htm">Click</a>.</p>

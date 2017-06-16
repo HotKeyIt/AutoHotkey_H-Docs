@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>ProcessClose</title>
+<title>ProcessClose()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,8 +16,8 @@
 
 <p>Closes a process.</p>
 
-<pre class="Syntax">ProcessClose, <b>OutputVar</b>, PID-or-Name 
-<pre><em>Command  Example:</em> ProcessClose, <b>PID</b>, Notepad.exe
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ProcessClose</span>(PID-or-Name)
+<pre><em>Command  Example:</em> ProcessClose "Notepad.exe"
 <em>Function Example:</em> <b>PID</b> := ProcessClose("Notepad.exe")</pre></pre>
 
 <dl>

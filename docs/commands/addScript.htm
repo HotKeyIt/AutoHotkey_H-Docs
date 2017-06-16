@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>addScript</title>
+<html><head><title>addScript()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,10 +14,10 @@
 script.
 </p>
 <br>
-<pre class="Syntax">addScript, <b>OutputVar</b>, NewCode [, WaitExecute]
-<pre><em>Command  Example:</em> addScript, <b>LinePtr</b>, MsgBox `% A_Now, 1
-                  DllCall, <b>LinePtr</b>, AutoHotkey.<b>dll</b>\addScript, Str, MsgBox `% A_Now, Int, 1, UPTR
-                  DllCall, <b>LinePtr</b>, AutoHotkey.<b>exe</b>\addScript, Str, MsgBox `% A_Now, Int, 1, UPTR
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">addScript</span>(NewCode <span class="optional">, WaitExecute</span>)
+<pre><em>Command  Example:</em> addScript "MsgBox `% A_Now", 1
+                  DllCall "AutoHotkey.<b>dll</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR"
+                  DllCall "AutoHotkey.<b>exe</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR"
 <em>Function Example:</em> <b>LinePtr</b> := addScript("MsgBox `% A_Now", 1)
                   <b>LinePtr</b> := DllCall("AutoHotkey.<b>dll</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")
                   <b>LinePtr</b> := DllCall("AutoHotkey.<b>exe</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")</pre></pre>

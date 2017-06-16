@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>FileGetTime</title>
+<title>FileGetTime()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -12,8 +12,7 @@
 <h1>FileGetTime</h1>
 
 <p>Retrieves the datetime stamp of a file or folder.</p>
-<pre class="Syntax">FileGetTime, <b>OutputVar</b> [, Filename, WhichTime]<pre><em>Command  Example:</em> FileGetTime, <b>time</b>, %A_AhkPath%
-<em>Function Example:</em> <b>time</b> := FileGetTime(A_AhkPath)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FileGetTime</span>(<span class="optional">Filename, WhichTime</span>)<pre><em>Function Example:</em> <b>time</b> := FileGetTime(A_AhkPath)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -33,7 +32,6 @@
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
 <p><a href="../Variables.htm#LastError">A_LastError</a> is set to the result of the operating system's GetLastError() function.</p>
 

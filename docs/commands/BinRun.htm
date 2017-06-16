@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>BinRun</title>
+<html><head><title>BinRun()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -10,8 +10,8 @@
 <body>
 <h1>BinRun</h1>
 <p>Run a executable file (.exe) from memory.</p>
-<pre class="Syntax">BinRun, <b>OutputVar</b>, AddressOrPath [, CommandLineParams, ScriptCommandLineParams, Hide, ExeToUse]
-<pre><em>Command  Example:</em> BinRun, <b>PID</b>,% &MyExe, `nMsgBox `% A_Args.a,% {a:"Hello World!"}
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">BinRun</span>(AddressOrPath <span class="optional">, CommandLineParams, ScriptCommandLineParams, Hide, ExeToUse<span class="optional">)
+<pre><em>Command  Example:</em> BinRun &MyExe, "`nMsgBox `% A_Args.a", {a:"Hello World!"}
 <em>Function Example:</em> <b>PID</b> := BinRun(&MyExe, "`nMsgBox `% A_Args.a", {a:"Hello World!"})</pre></pre>
 
 <h3>Parameters</h3>

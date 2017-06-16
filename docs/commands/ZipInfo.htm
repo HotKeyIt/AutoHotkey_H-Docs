@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>ZipInfo</title>
+<title>ZipInfo()</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,9 +16,8 @@
 
 <p>Return an object with information about all items within a zip archive.</p>
 
-<pre class="Syntax">ZipInfo, <b>OutputVar</b>, FileNameOrAddress [, Size]
-<pre><em>Command  Example:</em> ZipInfo, <b>obj</b>, MyZipFile.zip
-<em>Function Example:</em> <b>obj</b> := ZipInfo("MyZipFile.zip")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipInfo</span>(FileNameOrAddress <span class="optional">, Size</span>)
+<pre><em>Function Example:</em> <b>obj</b> := ZipInfo("MyZipFile.zip")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

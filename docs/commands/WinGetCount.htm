@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>WinGetCount</title>
+<title>WinGetCount()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
 
@@ -15,9 +15,8 @@
 
 <p>Retrieves the number of existing windows that match the specified WinTitle, WinText, ExcludeTitle, and ExcludeText (0 if none).</p>
 
-<pre class="Syntax">WinGetCount, <b>OutputVar</b> [, WinTitle, WinText, ExcludeTitle, ExcludeText]
-<pre><em>Command  example:</em> WinGetCount, <b>Count</b>, ahk_class Notepad
-<em>Function example:</em> <b>Count</b> := WinGetCount("ahk_class Notepad")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetCount</span>([<span class="optional">inTitle, WinText, ExcludeTitle, ExcludeText</span>)
+<pre><em>Function example:</em> <b>Count</b> := WinGetCount("ahk_class Notepad")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 

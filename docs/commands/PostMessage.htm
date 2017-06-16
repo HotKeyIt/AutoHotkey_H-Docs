@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>PostMessage / SendMessage</title>
+<title>PostMessage() / SendMessage()</title>
 <meta name="description" content="Send messages to a window with this free macro program. PostMessage puts a message in the window's message queue, but SendMessage waits for a reply.">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +14,8 @@
 
 <p>Sends a message to a window or control (SendMessage additionally waits for acknowledgement).</p>
 
-<pre class="Syntax">PostMessage, Msg [, wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]
-SendMessage, Msg [, wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, ExcludeText, Timeout]</pre>
+<pre class="Syntax"><span class="func">PostMessage</span> Msg <span class="optional">, wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, ExcludeText</span>
+<span class="func">SendMessage</span> Msg <span class="optional">, wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, ExcludeText, Timeout</span></pre>
 <h3>Parameters</h3>
 <dl>
 
@@ -30,7 +30,7 @@ SendMessage, Msg [, wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, Ex
 
   <dt>Control</dt>
   <dd><p>If this parameter is blank or omitted, the message will be sent directly to the target window rather than one of its controls. Otherwise, this parameter can be either ClassNN (the classname and instance number of the control) or the control's text, both of which can be determined via Window Spy. When using text, the matching behavior is determined by <a href="SetTitleMatchMode.htm">SetTitleMatchMode</a>.</p>
-    <p>To operate upon a control's HWND (window handle), leave the <em>Control</em> parameter blank and specify <code>ahk_id %ControlHwnd%</code> for the <em>WinTitle</em> parameter (this also works on hidden controls even when <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> is Off). The HWND of a control is typically retrieved via <a href="ControlGet.htm#Hwnd">ControlGet Hwnd</a>, <a href="MouseGetPos.htm">MouseGetPos</a>, or <a href="DllCall.htm">DllCall</a>.</p>
+    <p>To operate upon a control's HWND (window handle), leave the <em>Control</em> parameter blank and specify <code>ahk_id %ControlHwnd%</code> for the <em>WinTitle</em> parameter (this also works on hidden controls even when <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> is Off). The HWND of a control is typically retrieved via <a href="Control.htm#GetHwnd">ControlGetHwnd</a>, <a href="MouseGetPos.htm">MouseGetPos</a>, or <a href="DllCall.htm">DllCall</a>.</p>
     </dd>
 
   <dt>WinTitle</dt>
@@ -51,7 +51,6 @@ SendMessage, Msg [, wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, Ex
 </dl>
 
 <h3>ErrorLevel</h3>
-<p>These commands are able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
 <p>PostMessage: <a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem such as the target window or control not existing. Otherwise, it is set to 0.</p>
 <p>SendMessage: <a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to the word ERROR if there was a problem or the command timed out. Otherwise, it is set to the numeric result of the message, which might sometimes be a &quot;reply&quot; depending on the nature of the message and its target window.</p>
 <p>The range of possible values depends on the target window and the version of AutoHotkey that is running.  When using a 32-bit version of AutoHotkey, or if the target window is 32-bit, the result is a 32-bit unsigned integer between 0 and 4294967295. When using the 64-bit version of AutoHotkey with a 64-bit window, the result is a 64-bit signed integer between -9223372036854775808 and 9223372036854775807.</p>

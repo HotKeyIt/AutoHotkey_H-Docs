@@ -76,6 +76,22 @@ pre em, code em {
 	color: #00A000;
 	font-style: normal;
 }
+.Syntax span.func {
+	font-weight: bold;
+	color: #605428;
+}
+.Syntax span.optional:before {
+    content:  "[";
+    color: orange;
+    font: 130% serif;
+    line-height: 0;
+}
+.Syntax span.optional:after {
+    content:  "]";
+    color: orange;
+	font: 130% serif;
+    line-height: 0;
+}
 .NoIndent {
     margin-left: 0;
 }
@@ -205,15 +221,15 @@ a.ver:hover, a.ver:focus {
 	padding: 0.5em;
 	margin-bottom: 1em;
 }
-.methodShort h2 {
+.methodShort h2, .methodShort h3 {
 	margin-top: 0;
   color: black;
   border-bottom: 0px;
 }
-.methodShort table.info {
+.methodShort > table.info {
 	border: none;
 }
-.methodShort table.info td {
+.methodShort > table.info td {
 	border: none;
 	vertical-align: text-top;
 }

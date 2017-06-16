@@ -1,5 +1,5 @@
 <!DOCTYPE HTML> 
-<html><head><title>StrPutVar</title>
+<html><head><title>StrPutVar()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -10,7 +10,7 @@
 
 <p>Copies a string to a variable, optionally converting to or
 from a given code page.</p>
-<pre class="Syntax">StrPutVar, <b>OutputVar</b>, String, Variable, Encoding<pre><em>Command  Example:</em> StrPutVar, <b>size</b>, AutoHotkey, %Var%, CP0
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">StrPutVar</span>(String, Variable, Encoding)<pre><em>Command  Example:</em> StrPutVar "AutoHotkey", Var, "CP0"
 <em>Function Example:</em> <b>size</b> := StrPutVar("AutoHotkey", Var, "CP0")</pre></pre>
 
 <h3>Parameters</h3>

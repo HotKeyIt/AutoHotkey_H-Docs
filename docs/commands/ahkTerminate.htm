@@ -14,9 +14,9 @@ currently executed by AutoHotkey module.<br>
 <b>This function is only available in AutoHotkey.dll</b>
 </p>
 <br>
-<pre class="Syntax">DllCall, <b>OutputVar</b>, AutoHotkey.<b>dll</b>\ahkTerminate, Int, Timeout, CHAR
-<pre><em>Command  Example:</em> DllCall,, AutoHotkey.<b>dll</b>\ahkTerminate, Int, 500, CHAR
-<em>Function Example:</em> DllCall("AutoHotkey.<b>dll</b>\ahkTerminate", "Int", 500, "CHAR")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("AutoHotkey.<b>dll</b>\ahkTerminate", "Int", Timeout, "Int")
+<pre><em>Command  Example:</em> DllCall "AutoHotkey.<b>dll</b>\ahkTerminate", "Int", 500, "Int"
+<em>Function Example:</em> DllCall("AutoHotkey.<b>dll</b>\ahkTerminate", "Int", 500, "Int")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt><b>OutputVar</b></dt>

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>UnZip</title>
+<title>UnZip()</title>
 <meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="../static/theme.css" rel="stylesheet" type="text/css" />
@@ -16,10 +16,10 @@
 
 <p>Extract one or all items from a zip archive.</p>
 
-<pre class="Syntax">UnZip, <b>OutputVar</b>, ZipFileName, DestinationFolder [, FileToExtract, DestinationFileName, Password]
-UnZip, <b>OutputVar</b>, Address, Size, DestinationFolder [, FileToExtract, DestinationFileName, Password]
-<pre><em>Command  Example:</em> UnZip, <b>Success</b>, MyZip.zip, C:\Temp, scripts\MyScript.ahk
-                  UnZip, <b>Success</b>,% &zip, sz, C:\Temp, scripts\MyScript.ahk
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZip</span>(ZipFileName, DestinationFolder <span class="optional">, FileToExtract, DestinationFileName, Password</span>)
+<b>OutputVar</b> := UnZip(Address, Size, DestinationFolder [, FileToExtract, DestinationFileName, Password])
+<pre><em>Command  Example:</em> UnZip "MyZip.zip", "C:\Temp", "scripts\MyScript.ahk"
+                  UnZip &zip, sz, "C:\Temp", "scripts\MyScript.ahk"
 <em>Function Example:</em> <b>Success</b> := UnZip("MyZip.zip", "C:\Temp", "scripts\MyScript.ahk")
                   <b>Success</b> := UnZip(&zip, sz, "C:\Temp", "scripts\MyScript.ahk")</pre></pre>
 

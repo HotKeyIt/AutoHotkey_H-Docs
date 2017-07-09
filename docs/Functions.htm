@@ -26,6 +26,7 @@
   <li><a href="#include">Using #Include to Share Functions Among Multiple Scripts</a></li>
   <li><a href="#lib">Libraries of Functions: Standard Library and User Library</a></li>
   <li><a href="#BuiltIn">Built-in Functions</a></li>
+  <li><a href="#Macro">Macro Functions</a></li>
 </ul>
 <h2 id="intro">Introduction and Simple Examples</h2>
 <p id="define">A function is similar to a subroutine (<a href="commands/Gosub.htm">Gosub</a>) except that it can accept parameters (inputs) from its caller. In addition, a function may optionally return a value to its caller. Consider the following simple function that accepts two numbers and returns their sum:</p>
@@ -281,6 +282,36 @@ path-to-the-currently-running-AutoHotkey.exe\Lib\  <em>; Standard library.</em><
 <p>A built-in function is overridden if the script defines its own function of the same name. For example, a script could have its own custom WinExist() function that is called instead of the standard one. However, the script would then have no way to call the original function.</p>
 <p>External functions that reside in DLL files may be called with <a href="commands/DllCall.htm">DllCall()</a>.</p>
 <p>To get more details about a particular built-in function below, simply click on its name.</p>
+<h2 id="Macro">Macro Functions</h2>
+<p>A function definition can be prefixed with 'macro ' (followed by space, not tab!) to create a macro instead of function.<br>Macro will use caller's scope for all variables except for parameters, function parameters will be resolved to local variables.<br>Dynamic variable references will also use caller's scope.</p>
+<p>Global and static variables are not supported in macros.</p>
+<p>Deref function example:</p>
+<pre>fun()
+fun(){
+	MyVar:="AutoHotkey_H"
+	MsgBox deref("Calling deref ``% from %A_ThisFunc% in %MyVar%")
+}
+macro deref(__deref__,__out__:="",__set__:=""){
+	Loop Parse, __deref__, "%"
+		If __set__&&!__set__:=false
+			__out__.=%A_LoopField%
+		else if SubStr(A_LoopField,-1)="``"
+			__out__.=SubStr(A_LoopField,1,-1) "%"
+		else __out__.=A_LoopField,__set__:=true
+	return __out__
+}</pre>
+<p>Alternative deref function example:</p>
+<pre>fun()
+fun(){
+	MyVar:="AutoHotkey_H"
+	MsgBox deref(["A_ThisFunc","MyVar"],"Calling deref ``% from `a in `a","`a")
+}
+macro deref(__vars__,__text__,__delimiter__,__out__:=""){
+	Loop Parse, __text__, __delimiter__
+		if A_LoopField
+			__delimiter__:=__vars__[A_Index],__out__.=A_LoopField %__delimiter__%
+	return __out__
+}</pre>
 <h3>Frequently-used Functions</h3>
 <table class="info">
   <tr>

@@ -285,6 +285,7 @@ toc = [
   ]},
   {label:"Misc.",children:
   [
+    {label:"Cast",path:"commands/Cast.htm"},
     {label:"Download",path:"commands/Download.htm"},
     {label:"Edit",path:"commands/Edit.htm"},
     {label:"Func",path:"commands/Func.htm"},
@@ -296,6 +297,7 @@ toc = [
     {label:"ListVars",path:"commands/ListVars.htm"},
     {label:"MonitorGet",path:"commands/MonitorGet.htm"},
     {label:"OutputDebug",path:"commands/OutputDebug.htm"},
+    {label:"Type",path:"commands/Type.htm"},
     {label:"VarSetCapacity",path:"commands/VarSetCapacity.htm"}
   ]},
   {label:"Process",children:

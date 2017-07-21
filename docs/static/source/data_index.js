@@ -234,6 +234,7 @@ index = [
   ["Call method (Func object)","objects/Func.htm#Call"],
   ["callbacks","commands/RegisterCallback.htm"],
   ["case sensitive strings","commands/StringCaseSense.htm"],
+  ["Cast","commands/Cast.htm"],
   ["Catch","commands/Catch.htm"],
   ["Ceil","commands/Math.htm#Ceil"],
   ["Changelog","ChangeLog.htm"],

@@ -10,7 +10,7 @@
 <body>
 <h1>Cast</h1>
 <p>Converts a value from one data type to another data type.</p>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">Cast</span>(VarOrValue <span class="optional">, DataType, NewDataType</span>)
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">Cast</span>(DataType, VarOrValue, NewDataType)
 <pre><em>Function Example:</em> <b>NewValue</b> := Cast(2.5,"float","UInt")</pre></pre>
 
 <h3>Parameters</h3>
@@ -18,15 +18,15 @@
 <dt><b>OutputVar</b></dt>
   <dd><p>The name of the variable in which to store the converted value.</p></dd>
 
-  <dt>VarOrValue</dt>
-  <dd>
-  <p>The variable or a value to be converted.</p>
-  </dd>
-
   <dt>DataType</dt>
   <dd>
   <p>Data type of given variable or value, must be one of the following strings:<br>
       UInt, Int, Int64, Short, UShort, Char, UChar, Double, Float, Ptr or UPtr</p>
+  </dd>
+  
+  <dt>VarOrValue</dt>
+  <dd>
+  <p>The variable or a value to be converted.</p>
   </dd>
   
   <dt>NewDataType</dt>

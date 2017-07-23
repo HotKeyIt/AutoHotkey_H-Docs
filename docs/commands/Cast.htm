@@ -11,7 +11,7 @@
 <h1>Cast</h1>
 <p>Converts a value from one data type to another data type.</p>
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">Cast</span>(DataType, VarOrValue, NewDataType)
-<pre><em>Function Example:</em> <b>NewValue</b> := Cast(2.5,"float","UInt")</pre></pre>
+<pre><em>Function Example:</em> <b>NewValue</b> := Cast("float",2.5,"UInt")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -35,6 +35,6 @@
   </dd>
 </dl>
 <h3>Examples</h3>
-<pre class="NoIndent">MsgBox Cast(1.4,"float","int")
-MsgBox Cast(-1,"int","uchar")</pre>
+<pre class="NoIndent">MsgBox Cast("float",1.4,"int")
+MsgBox Cast("int",-1,"uchar")</pre>
 </body></html>

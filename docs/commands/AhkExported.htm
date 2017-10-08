@@ -24,11 +24,67 @@
 <h3>General Remarks</h3>
 <dd>
 <p>Scripts compiled with AutoHotkeySC.bin cannot use ahkExec, addFile and addScript functions.</p>
+<table>
+<tr><b>Methods</b></tr>
+<tr>
+<td><a href="ahkFunction.htm">ahkFunction</a></td>
+<td>Call a function via SendMessage method.</td>
+</tr>
+<tr>
+<td><a href="ahkPostFunction.htm">ahkPostFunction</a></td>
+<td>Call a function via PostMessage method (does not wait
+until function returns).</td>
+</tr>
+<tr>
+<td><a href="ahkExecuteLine.htm">ahkExecuteLine</a></td>
+<td>Executes script from given line pointer.</td>
+</tr>
+<tr>
+<td><a href="ahkLabel.htm">ahkLabel</a></td>
+<td>Goto (PostMessage) or Gosub (SendMessage) a Label.</td>
+</tr>
+<tr>
+<td><a href="ahkFindFunction.htm">ahkFindFunction</a></td>
+<td>Find a function and return its pointer.</td>
+</tr>
+<tr>
+<td><a href="ahkFindLabel.htm">ahkFindLabel</a></td>
+<td>Find a label and return its pointer.</td>
+</tr>
+<tr>
+<td><a href="addFile.htm">addFile</a></td>
+<td>Add and optionally execute additional script/code from
+file.</td>
+</tr>
+<tr>
+<td><a href="addScript.htm">addScript</a></td>
+<td>Add
+and optionally execute additional script/code from
+text/memory/variable.</td>
+</tr>
+<tr>
+<td><a href="ahkExec.htm">ahkExec</a></td>
+<td>Execute some script/code from text/memory/variable
+temporarily.</td>
+</tr>
+<tr>
+<td><a href="ahkassign.htm">ahkassign</a></td>
+<td>Assign a value to variable or pointer of variable.</td>
+</tr>
+<tr>
+<td><a href="ahkgetvar.htm">ahkgetvar</a></td>
+<td>Retrieve a value from a variable.</td>
+</tr>
+<tr>
+<td><a href="ahkPause.htm">ahkPause</a></td>
+<td>Pause Script.</td>
+</tr>
+</table>
 </dd>
 </dl>
 <h3>Related</h3>
 <p><a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="AhkThread.htm">AhkThread</a>, <a href="../Objects.htm">Objects</a>, <a href="DllCall.htm">DllCall</a></p>
 <h3>Examples</h3>
-<pre class="NoIndent">AhkExe:=AhkExported()<br>Msgbox % AhkExe.ahkgetvar("A_IsCompiled") <em>; Check if Autohotkey.exe is compiled
+<pre class="NoIndent">AhkExe:=AhkExported()<br>Msgbox % AhkExe.ahkgetvar("A_IsCompiled") <em>; Check if Script is compiled e.g. from AutoHotkey.dll script
 </pre>
 </body></html>

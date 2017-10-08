@@ -55,6 +55,90 @@ object.</p>
 When ScriptOrFile is omitted or empty, the compiled script is
 executed.</p>
 <p>To free resources for the thread we have to call ahkthread_free(obj) and also release the object (obj:="").<br>obj.ahkterminate() can be called optionally.</p>
+<table>
+<tr><b>Methods</b></tr>
+<tr>
+<td><a href="ahkdll.htm">ahkdll</a></td>
+<td>Load a new thread from a file, current thread will be
+terminated.</td>
+</tr>
+<tr>
+<td><a href="ahktextdll.htm">ahktextdll</a></td>
+<td>Load a new thread from a string/memory/variable,
+current thread will be terminated.</td>
+</tr>
+<tr>
+<td><a href="ahkReady.htm">ahkReady</a></td>
+<td>Returns 1 (true) if a thread is being executed
+currently, 0 (false) otherwise.</td>
+</tr>
+<tr>
+<td><a href="ahkTerminate.htm">ahkTerminate</a></td>
+<td>Terminate thread.</td>
+</tr>
+<tr>
+<td><a href="ahkReload.htm">ahkReload</a></td>
+<td>Reload thread using same parameters used with <a href="ahkdll.htm">ahkdll</a> or <a href="ahktextdll.htm">ahktextdll</a>.</td>
+</tr>
+<tr>
+<td><a href="ahkFunction.htm">ahkFunction</a></td>
+<td>Call
+a function via SendMessage method. Mainly used with
+AutoHotkey.dll to call a function in dll script or call a
+function in main script from dll.</td>
+</tr>
+<tr>
+<td><a href="ahkPostFunction.htm">ahkPostFunction</a></td>
+<td>Call a function via PostMessage method (does not wait
+until function returns). Also used mainly with AutoHotkey.dll</td>
+</tr>
+<tr>
+<td><a href="ahkExecuteLine.htm">ahkExecuteLine</a></td>
+<td>Executes script from given line pointer.</td>
+</tr>
+<tr>
+<td><a href="ahkLabel.htm">ahkLabel</a></td>
+<td>Goto (PostMessage) or Gosub (SendMessage) a Label. Also
+used mainly with AutoHotkey.dll</td>
+</tr>
+<tr>
+<td><a href="ahkFindFunction.htm">ahkFindFunction</a></td>
+<td>Find a function and return its pointer.</td>
+</tr>
+<tr>
+<td><a href="ahkFindLabel.htm">ahkFindLabel</a></td>
+<td>Find a label and return its pointer.</td>
+</tr>
+<tr>
+<td><a href="addFile.htm">addFile</a></td>
+<td>Add and optionally execute additional script/code from
+file. Not available for scripts compiled with AutoHotkeySC.bin.</td>
+</tr>
+<tr>
+<td><a href="addScript.htm">addScript</a></td>
+<td>Add
+and optionally execute additional script/code from
+text/memory/variable. Not available for scripts compiled with
+AutoHotkeySC.bin.</td>
+</tr>
+<tr>
+<td><a href="ahkExec.htm">ahkExec</a></td>
+<td>Execute some script/code from text/memory/variable
+temporarily. Not available for scripts compiled with AutoHotkeySC.bin.</td>
+</tr>
+<tr>
+<td><a href="ahkassign.htm">ahkassign</a></td>
+<td>Assign a value to variable or pointer of variable.</td>
+</tr>
+<tr>
+<td><a href="ahkgetvar.htm">ahkgetvar</a></td>
+<td>Retrieve a value from a variable.</td>
+</tr>
+<tr>
+<td><a href="ahkPause.htm">ahkPause</a></td>
+<td>Pause Script.</td>
+</tr>
+</table>
 </dd>
 </dl>
 <h3>Related</h3>

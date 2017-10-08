@@ -18,11 +18,11 @@
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>
-    <dd><p>The name of the variable in which to store the Thread object for newly created thread, you can use the same Methods as in <a href="AhkExported.htm">AhkExported</a>.</p>
+    <dd><p>The name of the variable in which to store the Thread object for newly created thread.</p>
     </dd>
 <dt>Script</dt>
 <dd>
-<p>The AutoHotkey script to execute as string or variable containing a string. If you want to start a script from file simply use <a href="_Include.htm">#Include</a> directive.</p>
+<p>The AutoHotkey script to execute as string or variable containing a string. If you want to start a script from file simply use <a href="_Include.htm">#Include</a> directive. If you want to start empty script use <a href="_Persistent.htm">#Persistent</a>.</p>
 </dd>
 <dt>Parameters (optional)</dt>
 <dd>
@@ -36,6 +36,67 @@ object.</p>
 <dt>Wait (optional)</dt>
 <dd>
 <p>Milliseconds to wait for new script to start.</p>
+</dd>
+</dl>
+
+<h3>General Remarks</h3>
+<dd>
+<table>
+<tr><b>Methods</b></tr>
+<tr>
+<td><a href="ahkFunction.htm">ahkFunction</a></td>
+<td>Call a function via SendMessage method.</td>
+</tr>
+<tr>
+<td><a href="ahkPostFunction.htm">ahkPostFunction</a></td>
+<td>Call a function via PostMessage method (does not wait
+until function returns).</td>
+</tr>
+<tr>
+<td><a href="ahkExecuteLine.htm">ahkExecuteLine</a></td>
+<td>Executes script from given line pointer.</td>
+</tr>
+<tr>
+<td><a href="ahkLabel.htm">ahkLabel</a></td>
+<td>Goto (PostMessage) or Gosub (SendMessage) a Label.</td>
+</tr>
+<tr>
+<td><a href="ahkFindFunction.htm">ahkFindFunction</a></td>
+<td>Find a function and return its pointer.</td>
+</tr>
+<tr>
+<td><a href="ahkFindLabel.htm">ahkFindLabel</a></td>
+<td>Find a label and return its pointer.</td>
+</tr>
+<tr>
+<td><a href="addFile.htm">addFile</a></td>
+<td>Add and optionally execute additional script/code from
+file.</td>
+</tr>
+<tr>
+<td><a href="addScript.htm">addScript</a></td>
+<td>Add
+and optionally execute additional script/code from
+text/memory/variable.</td>
+</tr>
+<tr>
+<td><a href="ahkExec.htm">ahkExec</a></td>
+<td>Execute some script/code from text/memory/variable
+temporarily.</td>
+</tr>
+<tr>
+<td><a href="ahkassign.htm">ahkassign</a></td>
+<td>Assign a value to variable or pointer of variable.</td>
+</tr>
+<tr>
+<td><a href="ahkgetvar.htm">ahkgetvar</a></td>
+<td>Retrieve a value from a variable.</td>
+</tr>
+<tr>
+<td><a href="ahkPause.htm">ahkPause</a></td>
+<td>Pause Script.</td>
+</tr>
+</table>
 </dd>
 </dl>
 <h3>Related</h3>

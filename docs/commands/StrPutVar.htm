@@ -10,7 +10,7 @@
 
 <p>Copies a string to a variable, optionally converting to or
 from a given code page.</p>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">StrPutVar</span>(String, Variable, Encoding)<pre><em>Command  Example:</em> StrPutVar "AutoHotkey", Var, "CP0"
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">StrPutVar</span>(String, Variable [, Encoding])<pre><em>Command  Example:</em> StrPutVar "AutoHotkey", Var, "CP0"
 <em>Function Example:</em> <b>size</b> := StrPutVar("AutoHotkey", Var, "CP0")</pre></pre>
 
 <h3>Parameters</h3>
@@ -24,10 +24,10 @@ from a given code page.</p>
   <dt>Variable (ByRef)</dt>
     <dd><p>Output variable to store new string.</p>
     </dd>
-  <dt>Encoding</dt>
+  <dt>Encoding (optional)</dt>
     <dd><p>The source encoding for StrGet or target encoding for StrPut; for
       example, "UTF-8", "UTF-16" or "CP936".Specify "CP0" to use the system default
-      ANSI code page.</p>
+      ANSI code page. When omitted UTF-8 is used.</p>
     </dd>
 </dl>
 

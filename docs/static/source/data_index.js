@@ -757,6 +757,7 @@ index = [
   ["ResDelete","commands/ResDelete.htm"],
   ["ResDllCreate","commands/ResDllCreate.htm"],
   ["ResExist","commands/ResExist.htm"],
+  ["ResGet","commands/ResGet.htm"],
   ["resize a window","commands/WinMove.htm"],
   ["ResPut","commands/ResPut.htm"],
   ["ResPutFile","commands/ResPutFile.htm"],

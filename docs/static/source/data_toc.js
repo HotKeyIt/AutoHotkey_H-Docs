@@ -72,6 +72,22 @@ toc = [
       {label:"ahkgetvar",path:"commands/ahkgetvar.htm"}
     ]}
   ]},
+  {label:"Binary",children:
+  [
+    {label:"BinToHex",path:"commands/BinToHex.htm"},
+    {label:"CacheEnable",path:"commands/CacheEnable.htm"},
+    {label:"HexToBin",path:"commands/HexToBin.htm"},
+    {label:"ObjDump",path:"commands/ObjDump.htm"},
+    {label:"ObjLoad",path:"commands/ObjLoad.htm"}
+  ]},
+  {label:"Cast",path:"commands/Cast.htm",children:
+  [
+    {label:"ToChar",path:"commands/ToChar.htm"},
+    {label:"ToInt",path:"commands/ToInt.htm"},
+    {label:"ToShort",path:"commands/ToShort.htm"},
+    {label:"ToUChar",path:"commands/ToUChar.htm"},
+    {label:"ToUInt",path:"commands/ToUInt.htm"}
+  ]},
   {label:"Environment",children:
   [
     {label:"ClipWait",path:"commands/ClipWait.htm"},
@@ -86,11 +102,27 @@ toc = [
     {label:"DynaCall",path:"commands/DynaCall.htm"},
     {label:"NumGet",path:"commands/NumGet.htm"},
     {label:"NumPut",path:"commands/NumPut.htm"},
+    {label:"MCodeH",path:"commands/MCodeH.htm"},
     {label:"RegisterCallback",path:"commands/RegisterCallback.htm"},
     {label:"StrGet",path:"commands/StrGet.htm"},
     {label:"StrPut",path:"commands/StrPut.htm"},
     {label:"VarSetCapacity",path:"commands/VarSetCapacity.htm"},
-    {label:"WinApi",path:"commands/WinApi.htm"},
+    {label:"WinApi",path:"commands/WinApi.htm",children:[
+      {label:"Macros",children:
+      [
+        {label:"HIBYTE",path:"commands/HIBYTE.htm"},
+        {label:"HIWORD",path:"commands/HIWORD.htm"},
+        {label:"LOBYTE",path:"commands/LOBYTE.htm"},
+        {label:"LOWORD",path:"commands/LOWORD.htm"},
+        {label:"MAKELANGID",path:"commands/MAKELANGID.htm"},
+        {label:"MAKELCID",path:"commands/MAKELCID.htm"},
+        {label:"MAKELONG",path:"commands/MAKELONG.htm"},
+        {label:"MAKELPARAM",path:"commands/MAKELPARAM.htm"},
+        {label:"MAKELRESULT",path:"commands/MAKELRESULT.htm"},
+        {label:"MAKEWORD",path:"commands/MAKEWORD.htm"},
+        {label:"MAKEWPARAM",path:"commands/MAKEWPARAM.htm"}
+      ]},
+    ]},
     {label:"COM",children:
     [
       {label:"ComObjActive",path:"commands/ComObjActive.htm"},
@@ -289,6 +321,7 @@ toc = [
     {label:"Download",path:"commands/Download.htm"},
     {label:"Edit",path:"commands/Edit.htm"},
     {label:"Func",path:"commands/Func.htm"},
+    {label:"IsBOM",path:"commands/IsBOM.htm"},
     {label:"IsByRef",path:"commands/IsByRef.htm"},
     {label:"IsFunc",path:"commands/IsFunc.htm"},
     {label:"IsLabel",path:"commands/IsLabel.htm"},
@@ -302,6 +335,9 @@ toc = [
   ]},
   {label:"Process",children:
   [
+    {label:"BinRun",path:"commands/BinRun.htm"},
+    {label:"CreateScript",path:"commands/CreateScript.htm"},
+    {label:"DynaRun",path:"commands/DynaRun.htm"},
     {label:"Process",path:"commands/Process.htm"},
     {label:"Run/RunWait",path:"commands/Run.htm"},
     {label:"RunAs",path:"commands/RunAs.htm"},
@@ -353,7 +389,48 @@ toc = [
   [
     {label:"Struct",path:"commands/Struct.htm"},
     {label:"sizeof",path:"commands/sizeof.htm"},
-    {label:"Build-in data types",path:"StructTypes.htm"}
+    {label:"Built-in Data Types",path:"StructTypes.htm"}
+  ]},
+  {label:"Threads",children:
+  [
+    {label:"With AutoHotkey.dll",children:
+    [
+      {label:"ahkdll",path:"commands/ahkdll.htm"},
+      {label:"ahktextdll",path:"commands/ahktextdll.htm"},
+      {label:"AhkThread",path:"commands/AhkThread.htm"},
+      {label:"AhkExported",path:"commands/AhkExported.htm"},
+      {label:"Methods",children:
+      [
+        {label:"addFile",path:"commands/addFile.htm"},
+        {label:"addScript",path:"commands/addScript.htm"},
+        {label:"ahkassign",path:"commands/ahkassign.htm"},
+        {label:"ahkExec",path:"commands/ahkExec.htm"},
+        {label:"ahkExecuteLine",path:"commands/ahkExecuteLine.htm"},
+        {label:"ahkFindFunction",path:"ahkFindFunction.htm"},
+        {label:"ahkFindLabel",path:"commands/ahkFindLabel.htm"},
+        {label:"ahkFunction",path:"commands/ahkFunction.htm"},
+        {label:"ahkgetvar",path:"commands/ahkgetvar.htm"},
+        {label:"ahkLabel",path:"commands/ahkLabel.htm"},
+        {label:"ahkPause",path:"commands/ahkPause.htm"},
+        {label:"ahkPostFunction",path:"commands/ahkPostFunction.htm"},
+        {label:"ahkReady",path:"commands/ahkReady.htm"},
+        {label:"ahkReload",path:"commands/ahkReload.htm"},
+        {label:"ahkTerminate",path:"commands/ahkTerminate.htm"}
+      ]}
+    ]},
+    {label:"Without AutoHotkey.dll",children:
+    [
+      {label:"ExeThread",path:"commands/ExeThread.htm"},
+      {label:"ThreadObj",path:"commands/ThreadObj.htm"},
+      {label:"NewThread",path:"commands/NewThread.htm"}
+    ]},
+    {label:"Thread Management",children:
+    [
+      {label:"Alias",path:"commands/Alias.htm"},
+      {label:"CriticalObject",path:"commands/CriticalObject.htm"},
+      {label:"CriticalSection",path:"commands/CriticalSection.htm"},
+      {label:"ObjShare",path:"commands/ObjShare.htm"}
+    ]}
   ]},
   {label:"Window",children:
   [

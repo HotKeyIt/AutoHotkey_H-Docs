@@ -1,4 +1,4 @@
-<!DOCTYPE HTML> 
+<!DOCTYPE HTML>
 <html><head><title>BinRun()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -44,6 +44,8 @@
 <p>Executable to use as base for new process.<br>By default the executable of current process is taken and <b>%A_WinDir% \Microsoft.NET\Framework\v2.0.50727\vbc.exe</b> to launch 32-bit exe from 64-bit process.</p>
 </dd>
 </dl>
+<h3>Related</h3>
+<p><a href="DynaRun.htm">DynaRun</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">FileRead,file,*c %A_AhkPath%
 BinRun(&file,"`nMsgBox `% A_Args.a",{a:"Hello World!"})

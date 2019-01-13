@@ -1,4 +1,4 @@
-<!DOCTYPE HTML> 
+<!DOCTYPE HTML>
 <html><head><title>AutoHotkey_H New Features</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -65,8 +65,12 @@ threads in a multi-thread environment.</td>
 <td>Run executable file from Memory.</td>
 </tr>
 <tr>
+<td><a href="commands/CacheEnable.htm">CacheEnable</a></td>
+<td>Re-enable binary number caching for a variable.</td>
+</tr>
+<tr>
 <td><a href="commands/CreateScript.htm">CreateScript</a></td>
-<td>Create script from main script for NewThread, AutoHotkey.dll, DynaRun or BinRun.</td>
+<td>Create script from main script for <a href="NewThread.htm">NewThread</a>, <a href="./AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="BinRun.htm">BinRun</a> or <a href="DynaRun.htm">DynaRun</a>.</td>
 </tr>
 <tr>
 <td><a href="commands/CriticalSection.htm">CriticalSection</a></td>
@@ -76,8 +80,16 @@ Leave the Critical Section.<br>
 Critical Section is requred for multi-threading environment.</td>
 </tr>
 <tr>
+<td><a href="commands/CryptAES.htm">CryptAES</a></td>
+<td>Encrypt and Decrypt data.</td>
+</tr>
+<tr>
 <td><a href="commands/DirGetParent.htm">DirGetParent</a></td>
 <td>Get parent directory of a file or directory.</td>
+</tr>
+<tr>
+<td><a href="commands/DynaRun.htm">DynaRun</a></td>
+<td>Run code dynamically in new AutoHotkey process.</td>
 </tr>
 <tr>
 <td><a href="commands/ErrorMessage.htm">ErrorMessage</a></td>
@@ -124,7 +136,7 @@ Input is running.<br>
 New option <b>A</b> is available to append input to variable, otherwise the variable will be set empty before Input starts.</td>
 </tr>
 <tr>
-<td><a href="commands/IsBOM.htm">IsBom</a></td>
+<td><a href="commands/IsBOM.htm">IsBOM</a></td>
 <td>Check if a file has byte order mark.</td>
 </tr>
 <tr>
@@ -442,7 +454,7 @@ switch to execute different script than compiled one.</td>
 <tr>
 <td id="types">Resource Library</td>
 <td>You can include
-library functions in resource of exe or dll (Resorce type must be "LIB", e.g. LIB/WATCHDIRECTORY.AHK).<br> 
+library functions in resource of exe or dll (Resorce type must be "LIB", e.g. LIB/WATCHDIRECTORY.AHK).<br>
 Additionally AutoHotkey.dll can load library
 functions from exe file automatically (Note both execuables must be using same password if source is encrypted).<br>
 Note,

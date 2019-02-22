@@ -10,7 +10,7 @@
 <body>
 <h1>ObjLoad</h1>
 <p>Load a <a href="ObjDump.htm">dumped</a> object from memory or file.</p>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjLoad</span>(AddressOrPath <span class="optional">, Size, Password</span>)
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjLoad</span>(AddressOrPath<span class="optional">, Password</span>)
 <pre><em>Function Example:</em> <b>obj</b> := ObjLoad(A_ScriptDir "\MyObj.bin")</pre></pre>
 
 <h3>Parameters</h3>
@@ -21,11 +21,6 @@
   <dt>AddressOrPath</dt>
   <dd>
   <p>The address of a variable or a pointer to dumped object in memory.<br>This can be also a file path to load an object from file.</p>
-  </dd>
-
-  <dt>Size (optional)</dt>
-  <dd>
-  <p>When AddressOrPath is an address and <a href="ObjDump.htm">ObjDump</a> used compression (mode 2 or 3) this must be the size of the dumped object in memory, otherwise it can be omitted.</p>
   </dd>
   
   <dt>Password (optional)</dt>
@@ -38,7 +33,7 @@
 <dd>
 <p>Only standard objects and arrays are supported (such that can be enumerated by <a href="For.htm">for loop</a>).<br>ComObject, RegExMatchObject, FileObject, Func and DynaCall objects are not supported.
  <br><a href="Struct.htm">Struct</a> object can be <a href="ObjDump.htm">dumped</a> but ObjLoad will restore a normal object instead of a Struct object.
- <br>If original object had a <a href="../Objects.htm#Custom_Objects">"base"</a> reference, it was not saved by <a href="ObjDump.htm">ObjDump</a> and is not restored.</p>
+ <br>If original object had a <a href="../Objects.htm#Custom_Objects">"base"</a> reference, it won't be dumped by <a href="ObjDump.htm">ObjDump</a> and will not be restored.</p>
 </dd>
 </dl>
 <h3>Examples</h3>

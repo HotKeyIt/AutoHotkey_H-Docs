@@ -64,5 +64,5 @@
 <b>AutoHotkey example.</b>
 <pre>AhkCom := ComObjCreate("AutoHotkey.Script")<br>AhkCom.ahktextdll("MsgBox Hello World!`nExitApp")<br>While AhkCom.ahkReady()<br>Sleep, 100<br>MsgBox Exiting now<br></pre>
 <b>ComObjDll example</b>
-<pre>hModule:=DllCall("LoadLibrary","Str",A_AhkDir "\AutoHotkey.dll")<br>ahk:=ComObjDll(hModule,"{FEEEC4BA-04AF-45F0-B385-7290C65CFB9B}") ; CLSID for Version 2.0<br><br>hModule:=MemoryLoadLibrary(A_AhkDir "\AutoHotkey.dll")<br>ahk:=ComObjMemDll(hModule,"{FEEEC4BA-04AF-45F0-B385-7290C65CFB9B}") ; CLSID for Version 2.0</pre>
+<pre>hModule:=DllCall("LoadLibrary","Str",A_AhkDir "\AutoHotkey.dll")<br>ahk:=ComObjDll(hModule,"{FEEEC4BA-04AF-45F0-B385-7290C65CFB9B}") ; CLSID for Version 2.0</pre>
 </body></html>

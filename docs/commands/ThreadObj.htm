@@ -21,11 +21,11 @@
     </dd>
 <dt>Script</dt>
 <dd>
-<p>The AutoHotkey script to execute as string or variable containing a string. If you want to start a script from file simply use <a href="_Include.htm">#Include</a> directive.</p>
+<p>The AutoHotkey script to execute as string or variable containing a string. If you want to start a script from file simply use #Include directive.</p>
 </dd>
 <dt>Parameters (optional)</dt>
 <dd>
-<p>Command line parameters that will be available in built-in variable <b><a href="Variables.htm#CommandLine">A_Args</a></b>
+<p>Command line parameters that will be available in built-in variable <b>A_Args</b>
 object.</p>
 </dd>
 <dt>Title (optional)</dt>
@@ -53,8 +53,7 @@ thread.ExitApp()
     
 </dl>
 <h3>Related</h3>
-<p><a href="AhkThread.htm">AhkThread</a>, <a href="ExeThread.htm">NewThread</a>, <a href="ThreadObj.htm">ExeThread</a>
-, <a href="../Objects.htm">Objects</a>, <a href="DllCall.htm">DllCall</a></p>
+<p><a href="AhkThread.htm">AhkThread</a>, <a href="ExeThread.htm">NewThread</a>, <a href="ThreadObj.htm">ExeThread</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">Thread:=ThreadObj("Msgbox `% variable:=`"Thread`"")
 MsgBox % thread.variable</pre>

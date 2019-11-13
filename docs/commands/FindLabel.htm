@@ -26,7 +26,7 @@
 <h3>Examples</h3>
 <pre class="NoIndent">; AHK Structures
 global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func,_AHKDerefType *next,UInt symbol},BYTE type,param_count,WORD length"
-global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKDerefType *deref,_AHKVar *var,LPTSTR marker},{LPTSTR buf,size_t marker_length}}},UINT symbol,{_AHKExprTokenType *circuit_token,LPTSTR mem_to_free}"
+global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKDerefType *deref,_AHKVar *var,LPTSTR marker,_AHKExprTokenType *circuit_token},{_AHKExprTokenType *outer_deref,LPTSTR error_reporting_marker,size_t marker_length, BOOL is_lvalue}}},UINT symbol"
 global _AHKArgStruct := "BYTE type,bool is_expression,WORD length,LPTSTR text,_AHKDerefType *deref,_AHKExprTokenType *postfix"
 global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
 global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"

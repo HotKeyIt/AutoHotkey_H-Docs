@@ -16,50 +16,29 @@
 
 <p>Deletes the file and writes text to the file after creating it.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">FileReplace</span>(Text, Filename <span class="optional">, Encoding</span>)
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FileReplace</span>(Text, Filename <span class="optional">, Options</span>)
 <pre><em>Command  Example:</em> FileReplace "text",A_ScriptDir "\MyFile.txt"
 <em>Function Example:</em> <b>Success</b> := FileReplace("text",A_ScriptDir "\MyFile.txt")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 
   <dt><b>OutputVar</b></dt>
-  <dd><p>The name of the <a href="../Variables.htm">variable</a> in which to store true if file was replaced or false otherwise.</p></dd>
+  <dd><p>The name of the variable in which to store true if file was replaced or false otherwise.</p></dd>
 
   <dt>Text</dt>
-  <dd><p>The text to append to the file. This text may include linefeed characters (`n) to start new lines. In addition, a single long line can be broken up into several shorter ones by means of a <a href="../Scripts.htm#continuation">continuation section</a>.</p>
-      <p>If <em>Text</em> is blank, <em>Filename</em> will be created as an empty file (but if the file already exists, its modification time will be updated).</p>
-    <p>If <em>Text</em> is <a href="../misc/Clipboard.htm#ClipboardAll">%ClipboardAll%</a> or a variable that was previously assigned the value of ClipboardAll, <em>Filename</em> will be unconditionally overwritten with the entire contents of the clipboard (i.e. <a href="FileDelete.htm">FileDelete</a> is not necessary).</p></dd>
+  <dd><p>The text to append to the file. See more info in FileAppend.</p></dd>
 
   <dt>Filename</dt>
-  <dd><p>The name of the file to be appended, which is assumed to be in <a href="../Variables.htm#WorkingDir">%A_WorkingDir%</a> if an absolute path isn't specified.</p>
-    <p><b>Binary mode</b>: To append in binary mode rather than text mode, prepend an asterisk to the filename. This causes each linefeed character (`n) to be written as as a single linefeed (LF) rather than the Windows standard of CR+LF. For example: <code>*C:\My Unix File.txt</code>.</p>
+  <dd><p>The name of the file to be appended, which is assumed to be in %A_WorkingDir% if an absolute path isn't specified.</p>
     </dd>
-  <dt>Encoding</dt>
-  <dd><p>Overrides the default encoding set by <a href="FileEncoding.htm">FileEncoding</a>, where <em>Encoding</em> follows the same format.</p></dd>
+  <dt>Options</dt>
+  <dd><p>See FileAppend options.</p></dd>
 
 </dl>
 
-<h3>ErrorLevel</h3>
-<p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
-<p><a href="../Variables.htm#LastError">A_LastError</a> is set to the result of the operating system's GetLastError() function.</p>
-
 <h3>Remarks</h3>
-<p>The target file is automatically closed after the text is appended (except when FileAppend is used in its single-parameter mode inside a <a href="LoopReadFile.htm">file-reading/writing loop</a>).</p>
-<p><a href="FileOpen.htm">FileOpen</a> in append mode provides more control than FileAppend and allows the file to be kept open rather than opening and closing it each time. Once a file is opened in append mode, use <code>file.<a href="../objects/File.htm#Write">Write</a>(string)</code> to append the string. File objects also support binary I/O via <a href="../objects/File.htm#RawWrite">RawWrite</a>/<a href="../objects/File.htm#RawRead">RawRead</a> or <a href="../objects/File.htm#WriteNum">Write<i>Num</i></a>/<a href="../objects/File.htm#ReadNum">Read<i>Num</i></a>, whereas FileAppend supports only text.</p>
-<h3>Related</h3>
-<p><a href="FileOpen.htm">FileOpen</a>/<a href="../objects/File.htm">File Object</a>, <a href="FileRead.htm">FileRead</a>, <a href="FileAppend.htm">FileAppend</a>, <a href="LoopReadFile.htm">file-reading loop</a>, <a href="IniWrite.htm">IniWrite</a>, <a href="FileDelete.htm">FileDelete</a>, <a href="OutputDebug.htm">OutputDebug</a>, <a href="../Scripts.htm#continuation">continuation sections</a></p>
+<p>FileOpen in append mode provides more control than FileAppend and allows the file to be kept open rather than opening and closing it each time. Once a file is opened in append mode, use <code>file.Write(string)</code> to append the string. File objects also support binary I/O via RawWrite/RawRead or Write<i>Num</i>/Read<i>Num</i>, whereas FileAppend supports only text.</p>
 <h3>Example</h3>
-<pre class="NoIndent">FileAppend, Another line.`n, C:\My Documents\Test.txt
-
-<em>; The following example uses a <a href="../Scripts.htm#continuation">continuation section</a> to enhance readability and maintainability:</em>
-FileAppend,
-(
-A line of text.
-By default, the hard carriage return (Enter) between the previous line and this one will be written to the file.
-    This line is indented with a tab; by default, that tab will also be written to the file.
-Variable references such as %Var% are expanded by default.
-), C:\My File.txt</pre>
-<p>&nbsp;</p>
-<pre class="NoIndent">FileReplace(var,A_ScriptDir "\MyFile.txt")</pre>
+<pre class="NoIndent">FileReplace "New content`n", "C:\My Documents\Test.txt"</pre>
 </body>
 </html>

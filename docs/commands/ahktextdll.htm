@@ -35,7 +35,7 @@ executed in AutoHotkey.dll. When omitted, following script is used: <pre>#Persis
 <dt>Parameters (optional)</dt>
 <dd>
 <p>Command line
-parameters that will be available in built-in variable <b><a href="Variables.htm#CommandLine">A_Args</a></b>
+parameters that will be available in built-in variable <b>A_Args</b>
 object.</p>
 </dd>
 <dt>Title (optional)</dt>
@@ -60,8 +60,7 @@ the path of the executable will be used.
 </dd>
 </dl>
 <h3>Related</h3>
-<a href="../misc/Threads.htm">Threads</a>, <a href="DllCall.htm">DllCall</a></p>
-<p><a href="ahktextdll.htm">ahktextdll</a>, <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="AhkThread.htm">AhkThread</a>,
+<p><a href="ahktextdll.htm">ahktextdll</a>, <a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="AhkThread.htm">AhkThread</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>

@@ -19,7 +19,7 @@
 <dl>
 
   <dt><b>OutputVar</b></dt>
-  <dd><p>The name of the variable in which to store the actual return value of a function same as in <a href="DllCall.htm">DllCall</a> or <a href="DynaCall.htm">DynaCall</a>. If the function is of a type that does not return a value, the result is an undefined integer. If the function cannot be called due to an <a href="DllCall.htm#error">error</a>, the OutputVar is set blank (an empty string) and ErrorLevel is set.</p></dd>
+  <dd><p>The name of the variable in which to store the actual return value of a function same as in DllCall or <a href="DynaCall.htm">DynaCall</a>. If the function is of a type that does not return a value, the result is an undefined integer. If the function cannot be called due to an error, the OutputVar is set blank (an empty string) and ErrorLevel is set.</p></dd>
   
   <dt>Function</dt>
   <dd><p>The name of dll function to call. See example.</p></dd>
@@ -33,7 +33,7 @@
 </p><p>Parameter * or P is not used in WinApi, instead such parameters are of type PTR, use getvar(var:=0) if you like to store the value in variable directly.
 <br>The variable is of type Int64 by default, to convert to desired type use <a href="Cast.htm">Cast</a> or <a href="ToChar.htm">ToChar</a>, <a href="ToShort.htm">ToShort</a>, <a href="ToInt.htm">ToInt</a>, <a href="ToUChar.htm">ToUChar</a>, <a href="ToUShort.htm">ToUShort</a>, <a href="ToUInt.htm">ToUInt</a>, this is mainly required to convert Unsigned value to Signed.</p>
 <h3>Related</h3>
-<p><a href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a>, <a href="_DllImport.htm">#DllImport</a></p>
+<p><a href="DynaCall.htm">DynaCall</a>, <a href="_DllImport.htm">#DllImport</a></p>
 
 <h3>Examples</h3>
 <pre class="NoIndent">

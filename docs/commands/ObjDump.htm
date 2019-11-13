@@ -10,7 +10,7 @@
 <body>
 <h1>ObjDump</h1>
 <p>Dump an object to memory or save to file for later use.</p>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjDump</span>(ObjectOrPath <span class="optional">, DumpToVar, Mode, Password</span>)
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjDump</span>(ObjectOrPath <span class="optional">, DumpToVar, Compress, Password</span>)
 <pre><em>Command  Example:</em> ObjDump "C:\Temp\MyObject.dmp", obj
 <em>Function Example:</em> <b>size</b> := ObjDump(obj, var)</pre></pre>
 
@@ -30,26 +30,21 @@
   <br>When saving the object to a file this parameter will be the obect and ObjOrPath the filepath.</p>
   </dd>
   
-  <dt>Mode (optional)</dt>
+  <dt>Compress (optional)</dt>
   <dd>
-  <p>This parameter has effect on values of type string only and determines whether the dumped object will be zipped.
-  <br>Supported modes are 0 (default), 1 (dump complete memory), 2 (default + compression), 3 (dump complete memory and compress).
-  <br>When Mode is 2 or 3, dumped object will be compressed and you can use a password to encrypt the data.
-  <br>When Mode is 1 or 3, complete memory of string values is saved using obj.GetCapacity(key). Otherwise only the actual string including terminating character is saved.</p>
+  <p>If this parameter is not NULL || FALSE || 0, then dumped object will be compressed.</p>
   </dd>
   
   <dt>Password (optional)</dt>
   <dd>
-  <p>When Mode parameter is 2 or 3, this parameter can be a passwords to use for dumped object, it is not supported for mode 0 and 1!</p>
+  <p>When dumped object is compressed this parameter can be a passwords to use for dumped object, no password can be used if Compress parameter is NULL || FALSE || 0!</p>
   </dd>
 </dl>
 <dl>
 <h3>General Remarks</h3>
 <dd>
-<p>Only standard objects and arrays are supported, ComObject, RegExMatchObject, FileObject, Func and DynaCall objects are not supported.
- <br><a href="Struct.htm">Struct</a> object can be dumped but <a href="ObjLoad.htm">ObjLoad</a> will restore a normal object instead of a Struct object.
- <br>The <a href="../Objects.htm#Custom_Objects">"base"</a> reference is not saved in <a href="ObjLoad.htm">ObjLoad</a> and is not restored.
- <br>By default (Mode = 0) and Mode = 1 the dumped object is compressed and a password can be used to encrypt the dumped object.</p>
+<p>Only following data is saved: for Objects its properties, for Maps its items, for Arrays its values, buffer in BufferObjects and Structs which are converted to Map. Other types of Objects are not supported.
+ <br>The "base" reference is not saved and can not be restored.</p>
 </dd>
 </dl>
 <h3><em>Related</em></h3>

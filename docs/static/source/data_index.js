@@ -47,6 +47,7 @@ index = [
   ["IsBom","commands/IsBom.htm"],
   ["LOBYTE","commands/LOBYTE.htm"],
   ["LOWORD","commands/LOWORD.htm"],
+  ["Macro","commands/Macro.htm"],
   ["MAKELANGID","commands/MAKELANGID.htm"],
   ["MAKELCID","commands/MAKELCID.htm"],
   ["MAKELONG","commands/MAKELONG.htm"],

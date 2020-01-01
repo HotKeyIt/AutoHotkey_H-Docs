@@ -108,6 +108,7 @@ toc = [
   {label:"Misc.",children:
   [
     {label:"IsBOM",path:"commands/IsBOM.htm"},
+    {label:"Macro",path:"commands/Macro.htm"},
   ]},
   {label:"String",children:
   [

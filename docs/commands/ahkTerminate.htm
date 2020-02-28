@@ -37,11 +37,11 @@ DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
 DllCall(dllpath "\ahktextdll","Str","MsgBox","Str","","CDecl") <em>; start a new thread.</em>
 Sleep 1000
 DllCall(dllpath "\ahkTerminate","UInt",0,"CDecl") <em>; terminate thread.</em>
-MsgBox End
+MsgBox "End"
 
 <em>; Same example like above using included AutoHotkey.dll</em>
 dll:=AhkThread("MsgBox")
 Sleep 1000
 dll.ahkterminate[]
-MsgBox End</pre>
+MsgBox "End"</pre>
 </body></html>

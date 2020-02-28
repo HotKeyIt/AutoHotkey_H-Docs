@@ -60,6 +60,6 @@ Loop, 4 <em>; Create 4 Threads.</em>
  AhkThread%A_Index% := AhkThread("obj:=CriticalObject(" <span style="font-weight: bold;">(&obj)</span> ")`nLoop`nobj[" A_Index "]:= A_Index")
  
 Loop <em>; Show current content of object.</em>
- ToolTip, % obj.1 "`n" obj.2 "`n" obj.3 "`n" obj.4
+ ToolTip obj.1 "`n" obj.2 "`n" obj.3 "`n" obj.4
 Esc::ExitApp</pre>
 </body></html>

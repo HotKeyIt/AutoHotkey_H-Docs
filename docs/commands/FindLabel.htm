@@ -32,7 +32,7 @@ global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
 global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"
 global _AHKLabel := "PTR vTable,LPTSTR mName,_AHKLine *mJumpToLine,_AHKLabel *mPrevLabel,*mNextLabel"
 MyLabel:=Struct(_AHKLabel,FindLabel("MyLabel"))
-MsgBox % "Name:`t" MyLabel.mName "`nLine:`t" MyLabel.mJumpToLine.mLineNumber
+MsgBox "Name:`t" MyLabel.mName "`nLine:`t" MyLabel.mJumpToLine.mLineNumber
 MyLabel:
 Return</pre>
 </body></html>

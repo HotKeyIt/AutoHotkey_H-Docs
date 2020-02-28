@@ -45,33 +45,26 @@ When this parameter is an object OutputVar will be Lresult value. Otherwise when
 <h3>Related</h3>
 <p><a href="../objects/Object.htm">Object</a>, <a href="CriticalObject.htm">CriticalObject</a></p>
 <h3>Examples</h3>
-<pre class="NoIndent">Gui,Add,Slider,vSlider,50
-Gui,Add,CheckBox
-Gui,Show,w200 h100
-t:=new Test 
-lresult := ObjShare(t) <em>; Create lresult to use in a different thread</em>
-AhkThread("
+<pre class="NoIndent">t:=Test.new(), lresult := ObjShare(t) <em>; Create lresult to use in a different thread</em>
+AhkThread(
 (
-    t := ObjShare(%lresult%) <em>; Create IDispatch proxy COM object</em>
-    Loop
-        t.CheckBox()
-)")
+    "t := ObjShare(" lresult ") <em>; Create IDispatch proxy COM object</em>
+	Loop
+        t.CheckBox()"
+))
  
 Loop
   t.Slider()
-return
-GuiClose:
-ExitApp
+
 Class Test {
-  CheckBox(){
-    GuiControlGet,value,,Button1
-    GuiControl,,Button1,% Value?0:1
+  __New(p*){
+    (Gui:=this.Gui:=GuiCreate()).OnEvent("Close",this.GetMethod("GuiClose"))
+    this.Slider:=Gui.Add("Slider","vSlider",50)
+    this.CheckBox:=Gui.Add("CheckBox")
+    Gui.Show("w200 h100")	
   }
-  Slider(){
-    GuiControlGet,value,,Slider
-    if value=100
-      value:=0
-    GuiControl,,Slider,% Value+1
-  }
+  GuiClose(p*) => ExitApp()
+  CheckBox()   => this.CheckBox.value:=this.CheckBox.value?0:1
+  Slider()     => this.Slider.Value:=(value:=this.Slider.value)=100?0:++value
 }</pre>
 </body></html>

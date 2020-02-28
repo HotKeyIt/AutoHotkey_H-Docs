@@ -1,4 +1,4 @@
-<!DOCTYPE HTML> 
+  <!DOCTYPE HTML> 
 <html><head><title>SplashTextOn()/SplashTextOff()</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -44,11 +44,10 @@ SplashTextOn [, Width, Height, Title, Text]<pre><em>Command  Example:</em> Splas
 <h3>Related</h3>
 <p><a href="Progress.htm">Progress</a>, <a href="Progress.htm">SplashImage</a>, <a href="ToolTip.htm">ToolTip</a>, <a href="MsgBox.htm">MsgBox</a>, <a href="InputBox.htm">InputBox</a>, <a href="FileSelectFile.htm">FileSelectFile</a>, <a href="FileSelectFolder.htm">FileSelectFolder</a>, WinMove</p>
 <h3>Example</h3>
-<pre class="NoIndent">SplashTextOn, , , Displays only a title bar.
-Sleep, 2000
-SplashTextOn, 400, 300, Clipboard, The clipboard contains:`n%clipboard%
-WinMove, Clipboard, , 0, 0  <em>; Move the splash window to the top left corner.</em>
-Msgbox, Press OK to dismiss the SplashText
+<pre class="NoIndent">SplashTextOn  , , 'Displays only a title bar.'
+Sleep 2000
+SplashTextOn 400, 300, 'Clipboard', 'The clipboard contains:`n' clipboard
+Msgbox "Press OK to dismiss the SplashText"
 SplashTextOff</pre>
 
 </body>

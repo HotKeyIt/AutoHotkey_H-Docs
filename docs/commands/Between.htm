@@ -32,21 +32,18 @@
 </dd>
 </dl>
 <h3>Example</h3>
-<pre class="NoIndent">if between(var, 1, 5)
-    MsgBox, %var% is in the range 1 to 5, inclusive.
+<pre class="NoIndent">if between(var:=4, 1, 5)
+    MsgBox var " is in the range 1 to 5, inclusive."
 
-if !between(var, 0.0, 1.0)
-    MsgBox %var% is not in the range 0.0 to 1.0, inclusive.
+if !between(var:=1.1, 0.0, 1.0)
+    MsgBox var " is not in the range 0.0 to 1.0, inclusive."
 
-if between(var, VarLow, VarHigh)
-    MsgBox %var% is between %VarLow% and %VarHigh%.
-
-if between(var, "blue", "red")
-    MsgBox %var% is alphabetically between the words blue and red.
+if between(var:="blur", "blue", "red")
+    MsgBox var " is alphabetically between the words blue and red."
 
 LowerLimit := 1
 UpperLimit := 10
-InputBox, UserInput, Enter a number between %LowerLimit% and %UpperLimit%
+UserInput:=InputBox("Enter a number between " LowerLimit " and " UpperLimit)
 if !between(UserInput, LowerLimit, UpperLimit)
-    MsgBox Your input is not within the valid range.</pre>
+    MsgBox "Your input is not within the valid range."</pre>
 </body></html>

@@ -39,21 +39,22 @@
 <h3>Examples</h3>
 <pre class="NoIndent">DynaRun(CreateScript("
 (
-Gui,Add,Button,g<Button,Click me to Test Label and Function
-Gui,Show
+Gui:=GuiCreate()
+Gui.Add("Button","","Click me to Test Label and Function").OnEvent("Click","Button")
+Gui.OnEvent("Close","GuiClose")
+Gui.Show()
 Return
 <Button:ButtonEnd>
-func{}
+fun{}
 )"),"Dynamic script")
 ExitApp
 <Button:
-Gui,Hide
-MsgBox % func()
-GuiClose:
-ExitApp
+Return
+Button(button,p*) => (button.Gui.Show("Hide"),MsgBox(fun()))
+GuiClose(p*) => ExitApp()
 ButtonEnd>:
 Return
-func(){
+fun(p*){
   Return "test trough pipe"
 }</pre>
 </body></html>

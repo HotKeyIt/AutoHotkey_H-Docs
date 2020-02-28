@@ -27,14 +27,14 @@
 <h3>Example</h3>
 <pre>var:="Hello World!"
 Alias(refvar, var)
-MsgBox % refvar
+MsgBox refvar
 refvar:="AutoHotkey"
-MsgBox % var
+MsgBox var
 
 <em>; Same example using variable pointer</em>
 var:="Hello World!"
 Alias(refvar, getvar(var))
-MsgBox % refvar
+MsgBox refvar
 refvar:="AutoHotkey"
-MsgBox % var</pre>
+MsgBox var</pre>
 </body></html>

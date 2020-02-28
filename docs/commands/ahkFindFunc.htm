@@ -35,12 +35,12 @@ script and returns a pointer to it.
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
 DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyFunc(param){`nReturn param`n}","Str","","CDecl") <em>; start a new thread, just the function.</em>
-MsgBox % DllCall(dllpath "\ahkFindFunc","Str","MyFunc","CDecl PTR") <em>; call the function and display pointer in MsgBox.</em>
+MsgBox DllCall(dllpath "\ahkFindFunc","Str","MyFunc","CDecl PTR") <em>; call the function and display pointer in MsgBox.</em>
 
 <em>; Same example like above using included AutoHotkey.dll</em>
 dll:=AhkThread("#Persistent`nMyFunc(param){`nReturn param`n}")
-MsgBox % dll.ahkFindFunc["MyFunc"]
+MsgBox dll.ahkFindFunc["MyFunc"]
 
 <em>; Find pointer to function in current thread</em>
-MsgBox % ahkFindFunc("NumGet")</pre>
+MsgBox ahkFindFunc("NumGet")</pre>
 </body></html>

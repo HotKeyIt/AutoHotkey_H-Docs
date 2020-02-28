@@ -31,11 +31,11 @@
 <h3><em>Related</em></h3>
 <p><em><a href="_DllImport.htm">#DllImport</a>, <a href="DynaCall.htm">DynaCall</a>, <a href="WinApi.htm">WinApi</a></em></p>
 <h3>Examples</h3>
-<pre class="NoIndent">MsgBox % BinToHex(&"123",6) <em>; unicode string to hex</em>
+<pre class="NoIndent">MsgBox BinToHex(&"123",6) <em>; unicode string to hex</em>
 VarSetCapacity(var,11)
 StrPut("ABC",&var,"CP0")
-MsgBox % BinToHex(var,4) <em>; ansi string to hex</em>
+MsgBox BinToHex(var,4) <em>; ansi string to hex</em>
 Loop 10
 	NumPut(A_Index,&var,A_Index-1,"Char")
-MsgBox % BinToHex(&var,10) <em>; memory to hex</em></pre>
+MsgBox BinToHex(&var,10) <em>; memory to hex</em></pre>
 </body></html>

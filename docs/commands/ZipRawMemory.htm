@@ -52,7 +52,7 @@ Internally AutoHotkey is able to decompress raw resources automatically (compile
 <pre class="NoIndent">string:="This is a message from AutoHotkey."
 sz := ZipRawMemory(string, StrLen(string) * 2, var, "password")
 UnZipRawMemory(&var, sz, text, "password")
-MsgBox % text
+MsgBox text
 </pre>
 
 </body>

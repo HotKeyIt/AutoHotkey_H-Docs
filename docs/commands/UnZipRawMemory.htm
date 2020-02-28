@@ -52,7 +52,7 @@ This function can be used in script to decrypt and decompress raw resources.</p>
 <h3>Examples</h3>
 <pre class="NoIndent">sz:=ResGet(data, A_AhkPath,"AHKEXEC.AHK","LIB")
 UnZipRawMemory(&data, sz, var)
-MsgBox % StrGet(&var, "UTF-8")
+MsgBox StrGet(&var, "UTF-8")
 </pre>
 
 </body>

@@ -139,13 +139,13 @@ GuiControl,, MyProgress, +10  <em>; Move the bar upward by 10 percent. Omit the 
 <h2>Related</h2>
 <p><a href="Gui.htm">GUI</a>, <a href="SplashImage.htm">SplashImage</a>, <a href="SplashTextOn.htm">SplashTextOn</a></p>
 <h2>Examples</h2>
-<pre class="NoIndent">Progress, b w200, My SubText, My MainText, My Title
-Progress, 50 <em>; Set the position of the bar to 50%.</em>
-Sleep, 4000
-Progress, Off
+<pre class="NoIndent">Progress "b w200", "My SubText", "My MainText", "My Title"
+Progress "50" <em>; Set the position of the bar to 50%.</em>
+Sleep 4000
+Progress "Off"
 
 <em>; Create a window just to display some 18-point Courier text:</em>
-Progress, m2 b fs18 zh0, This is the Text.`nThis is a 2nd line., , , Courier New
+Progress "m2 b fs18 zh0", "This is the Text.`nThis is a 2nd line.", , , "Courier New"
 </pre>
 
 </body>

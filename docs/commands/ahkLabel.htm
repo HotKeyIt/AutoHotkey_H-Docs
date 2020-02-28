@@ -47,7 +47,7 @@ DllCall(dllpath "\ahktextdll","Str","
 (
 #Persistent
 MyLabel:
-MsgBox `% A_ThisLabel
+MsgBox A_ThisLabel
 Return
 )","Str","","CDecl") <em>; start a new thread, just the function.</em>
 DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0,"CDecl") <em>; jump to label and wait for it to finish / return.</em>
@@ -57,7 +57,7 @@ dll:=AhkThread("
 (
 #Persistent
 MyLabel:
-MsgBox `% A_ThisLabel
+MsgBox A_ThisLabel
 Return
 )")
 dll.ahkLabel["MyLabel"]</pre>

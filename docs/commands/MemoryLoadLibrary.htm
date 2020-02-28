@@ -45,10 +45,10 @@ href="MemoryLoadString.htm">MemoryLoadString</a>, <a
 href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
 
 <h3>Examples</h3>
-<pre class="NoIndent">MemoryLoadLibrary, ahkdllModule, %A_ScriptDir%\AutoHotkey.dll <em>; Load the AutoHotkey module.</em>
-MemoryGetProcAddress, ahkdll, %ahkdllModule%, ahkdll <em>; get address of ahkdll function.</em>
-MemoryGetProcAddress, ahkReady, %ahkdllModule%, ahkReady <em>; get address of ahkReady function.</em>
-DllCall(ahkdll,"Str","NewScript.ahk","Str","") <em>; start new thread</em>
+<pre class="NoIndent">ahkdllModule :=MemoryLoadLibrary(A_ScriptDir "\AutoHotkey.dll") <em>; Load the AutoHotkey module.</em>
+ahkdll := MemoryGetProcAddress(ahkdllModule, "ahkdll") <em>; get address of ahkdll function.</em>
+ahkReady := MemoryGetProcAddress(ahkdllModule, "ahkReady") <em>; get address of ahkReady function.</em>
+DllCall(ahkdll,"Str","NewScript.ahk","Str","","Str","") <em>; start new thread</em>
 While DllCall(ahkReady)
   Sleep 100
 MemoryFreeLibrary(ahkdllModule)</pre>

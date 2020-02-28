@@ -39,7 +39,7 @@ else
 global _AHKUSerFunc := "PTR *mFunc,int mInstances,_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass,_AHKLabel *mFirstLabel,*mLastLabel,_AHKFunc *mOuterFunc,PTR mFuncs,_AHKVar **mVar,**mLazyVar,**mGlobalVar,**mStaticVar,**mStaticLazyVar,**mDownVar,**mUpVar,Int *mUpVarIndex,Int mVarCount,mVarCountMax,mLazyVarCount,mGlobalVarCount,mStaticVarCount,mStaticLazyVarCount,mDownVarCount,mUpVarCount,bool mIsFuncExpression, UCHAR mDefaultVarType,bool mIsMacro,PTR *mdyna_param,bool mPreprocessLocalVarsDone"
 global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor},{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
 MyFunc:=Struct(_AHKFunc,FindFunc("MyFunc"))
-MsgBox % "Name:`t`t" MyFunc.mName "`nParamCount:`t" MyFunc.mParamCount "`nStaticVarCount:`t" MyFunc.mStaticVarcount
+MsgBox "Name:`t`t" MyFunc.mName "`nParamCount:`t" MyFunc.mParamCount "`nStaticVarCount:`t" MyFunc.mStaticVarcount
 MyFunc(p1,p2){
 	static var1,var2,var3
 }</pre>

@@ -39,8 +39,8 @@ MsgBox % DllCall(dllpath "\ahkFindLabel","Str","MyLabel","CDecl PTR") <em>; call
 
 <em>; Same example like above using included AutoHotkey.dll</em>
 dll:=AhkThread("#Persistent`nMyLabel:`nReturn")
-MsgBox % dll.ahkFindLabel["MyLabel"]
+MsgBox dll.ahkFindLabel["MyLabel"]
 
 <em>; Find label in current thread</em>
-MsgBox % ahkFindLabel("MyLabel")</pre>
+MsgBox ahkFindLabel("MyLabel")</pre>
 </body></html>

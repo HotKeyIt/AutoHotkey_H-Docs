@@ -44,7 +44,7 @@ DllCall(dllpath "\ahktextdll","Str","
 (
 #Persistent
 Loop
-  ToolTip `% A_TickCount
+  ToolTip A_TickCount
 )","Str","","CDecl") <em>; start a new thread, just the function.</em>
 Sleep 1000
 DllCall(dllpath "\ahkPause","Str","On","CDecl") <em>; Pause thread.</em>
@@ -55,10 +55,10 @@ dll:=AhkThread("
 (
 #Persistent
 Loop
-	ToolTip `% A_TickCount
+	ToolTip A_TickCount
 )")
 Sleep 1000
 dll.ahkPause["On"]
-MsgBox End
+MsgBox "End"
 </pre>
 </body></html>

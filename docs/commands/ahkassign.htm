@@ -46,10 +46,10 @@ script.
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
 DllCall(dllpath "\ahktextdll","Str","","Str","","CDecl") <em>; start a new thread from file.</em>
 DllCall(dllpath "\ahkassign","Str","var","Str","value","CDecl") <em>; assing value to var</em>
-MsgBox % DllCall(dllpath "\ahkgetvar","Str","var","UInt",0,"CDecl") <em>; wait for the thread to exit</em>
+MsgBox DllCall(dllpath "\ahkgetvar","Str","var","UInt",0,"CDecl") <em>; wait for the thread to exit</em>
 
 <em>; Same example like above using included AutoHotkey.dll</em>
 dll:=AhkThread()
 dll.ahkassign("var","value")
-MsgBox % dll.ahkgetvar.var</pre>
+MsgBox dll.ahkgetvar.var</pre>
 </body></html>

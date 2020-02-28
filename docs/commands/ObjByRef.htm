@@ -32,11 +32,11 @@
 </dl>
 <h3>Examples</h3>
 <pre class="NoIndent">ByRefObj := ObjByRef(var:="Hello World!")
-MsgBox % ByRefObj.var <em>; returns content of var</em>
+MsgBox ByRefObj.var <em>; returns content of var</em>
 ByRefObj.var := "Hello AHK!" <em>; assign new content to var</em>
-MsgBox % var
+MsgBox var
 ByRefObj.newvar:=var2 <em>; add new variable to ByRefObj but use newvar instead of var2 as key name</em>
 ByRefObj.newvar:=1 <em>; assign new content to var</em>
-MsgBox % var2
+MsgBox var2
 </pre>
 </body></html>

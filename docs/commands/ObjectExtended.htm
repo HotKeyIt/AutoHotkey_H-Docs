@@ -1,0 +1,33 @@
+<!DOCTYPE HTML> 
+<html><head><title>Object features</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>DefineDefault()</h1>
+<p>Instead showing an error, define a default value for object, map and array to return when the key / Item / property does not exist.</p>
+<pre class="Syntax"><span class="func">ObjMapArray := ObjMapArray.DefineDefault([Value])</span>
+<pre><em>Command  Example:</em> ObjMapArray.DefineDefault ""
+<em>Function Example:</em> ObjMapArray.DefineDefault("")</pre></pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of the variable to store the object, array or map.</p>
+</dd>
+<dt>Value</dt>
+<dd>
+<p>The default value (number, string, object, ...) to return when a key / Item / property does not exist.<br>Leave that parameter empty to restore default behaviour (show an error).</p>
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre class="NoIndent">obj:=[].DefineDefault("Item does not exist!")
+MsgBox obj[1] ; Item does not exist!
+obj.DefineDefault ''
+MsgBox obj[2] ; empty
+obj.DefineDefault ; restore
+MsgBox obj[1] ; Error: invalid Index.</pre>
+</body></html>

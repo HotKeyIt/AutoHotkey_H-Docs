@@ -44,8 +44,8 @@
 global _AhkVarType := {0:"VAR_ALIAS",1:"VAR_NORMAL",2:"VAR_VIRTUAL",3:"VAR_CLIPBOARD",4:"VAR_CLIPBOARDALL",5:"VAR_BUILTIN"}
 
 var:="AHK",	v:=Struct(_AhkVar,GetVar(var))
-MsgBox % v.mName "`n" _AhkVarType[v.mType] "`n" v.mCharContents
+MsgBox v.mName "`n" _AhkVarType.%v.mType% "`n" v.mCharContents
 
 v:=Struct(_AhkVar,GetVar("ClipboardAll"))
-MsgBox % v.mName "`n" _AhkVarType[v.mType]</pre>
+MsgBox v.mName "`n" _AhkVarType.%v.mType%</pre>
 </body></html>

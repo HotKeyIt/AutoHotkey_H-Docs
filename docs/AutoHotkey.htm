@@ -267,6 +267,36 @@ definition</a>, for example MsgBox % sizeof("TCHAR").</td>
  <a href="commands/UnZipRawMemory.htm">UnZipRawMemory</a>, <a href="commands/ZipInfo.htm">ZipInfo</a>, <a href="commands/ZipOptions.htm">ZipOptions</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></td>
 </tr>
 <tr>
+<th id="gui">Gui</th>
+<th>Gui related features</th>
+</tr>
+<tr>
+<td>Gui Scroll options</td>
+<td><p><strong>Scroll</strong>: Enable vertical and horizontal Scroll bars for gui.</p>
+<p><strong>VScroll</strong>: Enable vertical Scroll bar.</p>
+<p><strong>HScroll</strong>: Enable horizontal Scroll bar.</p></td>
+</tr>
+<tr>
+<td>Auto positioning and resizing of controls</td>
+<td><p>Controls can be automatically positioned and resized when Gui is resized. Controls will be positioned and resized relatively to the initial size of Gui (Gui, Show).
+<br>The initial size of controls becomes the smallest size it will ever shrink to.
+<br>Resizing and positioning values can be followed by decimal number (e.g. 2 or 0.5) as well as fraction of an integer (e.g. 1/3), negative values are also supported.
+<br>When no value is given it defaults to 1, so ax, ax1 and ax1/1 do the same thing.
+<br>Note: the order in which controls are created might be important when position of previous controls needs to be considered.</p>
+<h3>The following auto position options are supported:</h3>
+<p><strong>AX</strong>: Move the control horizontally by a specified amount when the Gui changes width.<br>For example: if the Gui width sizes up by 100px, a setting of ax1/2 would mean that the control would move to the right by 50px.</p>
+<p><strong>AY</strong>: Move the control vertically by a specified amount when the Gui changes height.<br>For example: if the Gui height sizes up by 100px, a setting of ay1/5 would mean that the control would move down by 20px.</p>
+<p><strong>AXP</strong> and <strong>AYP</strong>: Move the control by the same amount that the previous control moved.</p>
+<p><strong>AXA</strong> and <strong>AYA</strong>: Move the control by the same amount that the previous control moved and resized so the control is placed right after or below previous control.</p>
+
+<h3>The following auto size options are supported:</h3>
+<p><strong>AW</strong>: Resize the control width by an amount relative to the change in Gui width.<br>For example: if control is 100px wide and the Gui width sizes up by 100 px, a setting of aw0.5 would mean that control would widen by 50px.</p>
+<p><strong>AH</strong>: Resize the control height by an amount relative to the change in Gui height.<br>For example: if control is 20px wide and the Gui height sizes up by 100 px, a setting of aw1/4 would mean that control would heighten by 25px.</p>
+<p><strong>AWA</strong> and <strong>AHA</strong>: Resize the control width or height by the same amount as previous control.</p>
+</td>
+</tr>
+<tr>
+<tr>
 <th id="objects">Objects</th>
 <th></th>
 </tr>
@@ -348,7 +378,6 @@ for MemoryModuel.</td>
 <td><a href="commands/MemoryLoadString.htm">MemoryLoadString</a></td>
 <td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms647486.aspx">LoadString</a>.</td>
 </tr>
-<tr>
 <th id="vars">Variables</th>
 <th></th>
 </tr>

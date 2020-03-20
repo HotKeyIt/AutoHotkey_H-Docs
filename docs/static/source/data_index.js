@@ -1,4 +1,5 @@
 index = [
+  ["#DefineDefault[Object/Array/Map]Value","commands/_DefineDefaultObjectValue.htm"],
   ["#DllImport","commands/_DllImport.htm"],
   ["#WarnContinuableException","commands/_WarnContinuableException.htm"],
   ["Acknowledgements","misc/Acknowledgements.htm"],

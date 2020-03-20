@@ -25,6 +25,12 @@
 <p>The default value (number, string, object, ...) to return when a key / Item / property does not exist.<br>Leave that parameter empty to restore default behaviour (show an error).</p>
 </dd>
 </dl>
+<dl>
+<dt>Remarks</dt>
+<dd>
+<p>DefaultValue can also be defined globally using #DefineDefaultObjectValue / #DefineDefaultArrayValue / #DefineDefaultMapValue.</p>
+</dd>
+</dl>
 <h3>Examples</h3>
 <pre class="NoIndent">obj:=[].DefineDefault("Item does not exist!")
 MsgBox obj[1] ; Item does not exist!
@@ -36,6 +42,7 @@ MsgBox obj[1] ; Error: invalid Index.</pre>
 <div class="methodShort" id="Object__Item">
 <h1>__Item for Objects</h1>
 <p>Objects can read and write properties using . and [] syntax.</p>
+<dl>
 <dt>Remarks</dt>
 <dd>
 <p>Key for properties is always a string. When number is given, it will be converted to string.</p>

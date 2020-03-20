@@ -180,6 +180,7 @@ toc = [
   ]},
   {label:"#Directives",children:
   [
+    {label:"#DefineDefaultObjectValue",path:"commands/_DefineDefaultObjectValue.htm"},
     {label:"#DllImport",path:"commands/_DllImport.htm"},
     {label:"#WarnContinuableException",path:"commands/_WarnContinuableException.htm"}
   ]}

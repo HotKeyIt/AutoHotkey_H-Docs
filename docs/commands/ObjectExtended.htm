@@ -54,4 +54,12 @@ obj.1:="test"
 obj[2]:="more"
 MsgBox obj.2</pre>
 </div>
+<div class="methodShort" id="UMap">
+<h1>UMap()</h1>
+<p>Create unsorted Map. Normally Integers, Objects and Strings are saved separately and sorted alphabetically for performance. Using UMap keys will be in the same order like they were added.</p>
+<h3>Examples</h3>
+<pre class="NoIndent">obj:=UMap("z",1,"a",2,99,3,1,4)
+for k, v in obj
+  MsgBox k "=" v</pre>
+</div>
 </body></html>

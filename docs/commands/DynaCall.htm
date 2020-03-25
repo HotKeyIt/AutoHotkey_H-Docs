@@ -112,6 +112,11 @@ Note, this will be always the original order of parameters as specified in
 </dd>
 </dl>
 <dl>
+<h3>Remarks</h3>
+<dd><p><b>Base</b> and <b>__Class</b> are properties and DynaCall cannot be invoked using them as parameter with dot (.) syntax, instead use MyDynaCall["base"] syntax!</p>
+</dd>
+</dl>
+<dl>
 <h3>Examples</h3>
 <pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111) <em>; define a DynaCall object.</em>
 AHKCMD[ 65305 ] <em>; call the actual function</em>

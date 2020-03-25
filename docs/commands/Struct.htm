@@ -460,7 +460,8 @@ MsgBox pt1.x "-" pt1.y</pre>
   <dt>Features and Remarks</dt>
     <dd>Some remarks about structure objects and more features.</dd>
   <br>
-    <dd>A structure object cannot be altered, so you cannot add more fields to
+    <dd><b>Base</b> and <b>__Class</b> are properties and cannot be accessed using dot (.) syntax, use MyStruct["base"] instead!<br>
+      A structure object cannot be altered, so you cannot add more fields to
       it. The only exeption are arrays, here items are resolved dynamically.<br>
       You can receive the address of structure or key using empty key (e.g. struct.item[""]).
       For structure objects also [] can be used (e.g. struct[] or struct[""]).</dd>

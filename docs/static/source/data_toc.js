@@ -180,7 +180,9 @@ toc = [
   ]},
   {label:"#Directives",children:
   [
-    {label:"#DefineDefaultObjectValue",path:"commands/_DefineDefaultObjectValue.htm"},
+    {label:"#CriticalObjectSleepTime",path:"commands/_CriticalObjectSleepTime.htm"},
+    {label:"#CriticalObjectTimeOut",path:"commands/_CriticalObjectTimeOut.htm"},
+    {label:"#DefineDefault[Object/Array/Map]Value",path:"commands/_DefineDefaultObjectValue.htm"},
     {label:"#DllImport",path:"commands/_DllImport.htm"},
     {label:"#WarnContinuableException",path:"commands/_WarnContinuableException.htm"}
   ]}

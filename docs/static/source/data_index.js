@@ -1,4 +1,6 @@
 index = [
+  ["#CriticalObjectSleepTime","commands/_CriticalObjectSleepTime.htm"],
+  ["#CriticalObjectTimeOut","commands/_CriticalObjectTimeOut.htm"],
   ["#DefineDefault[Object/Array/Map]Value","commands/_DefineDefaultObjectValue.htm"],
   ["#DllImport","commands/_DllImport.htm"],
   ["#WarnContinuableException","commands/_WarnContinuableException.htm"],

@@ -184,6 +184,8 @@ toc = [
     {label:"#CriticalObjectTimeOut",path:"commands/_CriticalObjectTimeOut.htm"},
     {label:"#DefineDefault[Object/Array/Map]Value",path:"commands/_DefineDefaultObjectValue.htm"},
     {label:"#DllImport",path:"commands/_DllImport.htm"},
-    {label:"#WarnContinuableException",path:"commands/_WarnContinuableException.htm"}
+    {label:"#WarnContinuableException",path:"commands/_WarnContinuableException.htm"},
+    {label:"#WindowClassGui",path:"commands/_WindowClassGui.htm"},
+    {label:"#WindowClassMain",path:"commands/_WindowClassMain.htm"}
   ]}
 ];

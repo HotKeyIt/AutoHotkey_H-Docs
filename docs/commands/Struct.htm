@@ -119,7 +119,7 @@ MyFunc(){
 }
 AnotherFunc(){
   static pt:=Struct("MyFunc(POINT)",,{x:10,y:20})
-	MsgBox(pt.x "-" pt.y)
+  MsgBox(pt.x "-" pt.y)
 }</pre>
     </dd>
   <dt>StructMemory</dt>
@@ -367,7 +367,8 @@ allocated.</p>
 str.SetCapacity("name",2000)
 previous_pointer := str.GetPointer("name")
 str.name:="AutoHotkey"
-MsgBox previous_pointer " = " str.GetPointer("name") "`n" str.name <em>; as you can see pointer did not change.</em></pre>
+MsgBox previous_pointer " = " str.GetPointer("name") "`n" str.name <em>; as you can see pointer did not change since memory was only reduced.</em>
+MsgBox str.name.GetCapacity() <em>; however, allocated size changed.</em></pre>
 
 <p>When memory is reallocated the content will be copied to new memory.
 When a string is assigned to a field the memory is reallocated
@@ -418,7 +419,7 @@ Msgbox struct.Size(1) <em>; returns 8</em></pre>
   <br>
     <dd>When a key is not given a type, e.g. <b>"LPTSTR key1,key2"</b>, previous type is used. If the first key lacks a type, Uint is used,
 		so <b>"key1,key2"</b> is equivalent to <b>"UInt key1,key2"</b> or <b>"UInt key1,UInt key2"</b>.<br>
-		<br>Note: pointer needs to be specified for each element, so <b>"*UInt key1,key2"</b> is equivalent to <b>"UInt *key1,UInt key2"</b>. If both elements are pointers <b>"UInt *key1,*key2"</b> must be used.</dd>
+		<br>Note: pointer needs to be specified for each element, so <b>"UInt *key1,key2"</b> is equivalent to <b>"UInt *key1,UInt key2"</b>. If both elements are pointers <b>"UInt *key1,*key2"</b> must be used.</dd>
   <br>
     <dd>To access a pointer in pointer you can specify empty key multiple times,
       e.g. MyStruct["",""] would get the pointer at address of MyStruct.<br>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+  <title>MemoryFindResource()</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>MemoryFindResource</h1>
+
+<p>Find the resource in the specified <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>
+previously loaded with <a href="MemoryLoadLibrary">MemoryLoadLibrary.</a>
+Similar to <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648042.aspx">FindResource</a> and <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648043.aspx">FindResourceEx</a>.</p>
+<br>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemoryFindResource</span>(Handle, Name, Type [, Language])
+<pre><em>Function Example:</em> <b>ahkdllTypeLib</b> := MemoryFindResource(ahkdllModule,1,"TYPELIB")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the resource pointer.</p>
+    </dd>
+  <dt>Handle</dt>
+    <dd><p>MemoryModule handle prevously loaded with <a
+      href="MemoryLoadLibrary">MemoryLoadLibrary.</a></p>
+    </dd>
+  <dt>Name</dt>
+    <dd><p>Name of the resource, can be a string or digit.</p>
+    </dd>
+  <dt>Type</dt>
+    <dd><p>Type of the resource, can be a string or digit. See also <a
+      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648009.aspx">Resource
+      Types.</a></p>
+    </dd>
+  <dt>Language (optional)</dt>
+    <dd><p>The language of the resource.</p>
+    </dd>
+
+</dl>
+
+<h3>Related</h3>
+
+<p><a href="MemoryModule.htm">MemoryModule</a>, <a
+href="MemoryLoadLibrary.htm">MemoryLoadLibrary</a>, <a
+href="ResourceLoadLibrary.htm">ResourceLoadLibrary</a>, <a
+href="MemoryFreeLibrary.htm">MemoryFreeLibrary</a>, <a
+href="MemoryGetProcAddress.htm">MemoryGetProcAddress</a>, <a
+href="MemorySizeofResource.htm">MemorySizeofResource</a>, <a
+href="MemoryLoadResource.htm">MemoryLoadResource</a>, <a
+href="MemoryLoadString.htm">MemoryLoadString</a>, <a
+href="MemoryLoadStringEx.htm">MemoryLoadStringEx</a>, <a
+href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
+</body>
+</html>

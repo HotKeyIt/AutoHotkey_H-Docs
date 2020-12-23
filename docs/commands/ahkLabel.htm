@@ -1,0 +1,61 @@
+<!DOCTYPE HTML> 
+<html><head><title>ahkLabel</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ahkLabel</h1>
+<p>Exported function that allows calling a Label in script
+currently executed by AutoHotkey module.<br>
+Paramenters can be strings only as well as return value.<br>
+</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("Module\ahkLabel", "Str", "LabelName", "UInt", DoNotWait, "CDecl Int")
+<pre><em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkLabel", "Str", "MyLabel", "UInt", 0, "CDecl Int")
+                  <b>OutputVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkLabel", "Str", "MyLabel", "UInt", 0, "CDecl Int")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of the variable to store 1 / true if label was found or 0 / false otherwise.</p>
+</dd>
+<dt>LabelName</dt>
+<dd>
+<p>The name of the label to jump to.</p>
+</dd>
+<dt>DoNotWait</dt>
+<dd>
+<p>1 (true) will not wait for the code to finish / return, FALSE / NULL
+/ 0 will wait for execution to finish like GoSub does.</p>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="ahkPostFunction.htm">ahkPostFunction</a>,
+<a href="ahkFindFunc.htm">ahkFindFunc</a>, <a href="DllCall.htm">DllCall</a>
+</p>
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","
+(
+#Persistent
+MyLabel:
+MsgBox % A_ThisLabel
+Return
+)","Str","","CDecl") <em>; start a new thread, just the function.</em>
+DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0,"CDecl") <em>; jump to label and wait for it to finish / return.</em>
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread("
+(
+#Persistent
+MyLabel:
+MsgBox % A_ThisLabel
+Return
+)")
+dll.ahkLabel["MyLabel"]</pre>
+</body></html>

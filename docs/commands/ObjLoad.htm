@@ -1,0 +1,41 @@
+<!DOCTYPE HTML> 
+<html><head><title>ObjLoad()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ObjLoad</h1>
+<p>Load a <a href="ObjDump.htm">dumped</a> object from memory or file.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjLoad</span>(AddressOrPath<span class="optional">, Password</span>)
+<pre><em>Function Example:</em> <b>obj</b> := ObjLoad(A_ScriptDir "\MyObj.bin")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the loaded object.</p></dd>
+
+  <dt>AddressOrPath</dt>
+  <dd>
+  <p>Buffer object or a pointer to dumped object in memory.<br>This can be also a file path to load an object from file.</p>
+  </dd>
+  
+  <dt>Password (optional)</dt>
+  <dd>
+  <p>The password if for dumped object if it was used in ObjDump, otherwise it can be omitted.</p>
+  </dd>
+</dl>
+<dl>
+<h3>General Remarks</h3>
+<dd>
+<p>Only standard objects and arrays are supported (such that can be enumerated by <a href="For.htm">for loop</a>).<br>ComObject, RegExMatchObject, FileObject, Func and DynaCall objects are not supported.
+ <br><a href="Struct.htm">Struct</a> object can be <a href="ObjDump.htm">dumped</a> but ObjLoad will restore a normal object instead of a Struct object.
+ <br>If original object had a "base" reference, it won't be dumped by <a href="ObjDump.htm">ObjDump</a> and will not be restored.</p>
+</dd>
+</dl>
+<h3>Examples</h3>
+<p>See <a href="ObjDump.htm">ObjDump</a></em>.</p>
+</body></html>

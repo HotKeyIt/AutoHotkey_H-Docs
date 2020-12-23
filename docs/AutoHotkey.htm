@@ -1,59 +1,241 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>AutoHotkey</title>
+<title>AutoHotkey_H v1</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="static/theme.css" rel="stylesheet" type="text/css" />
-<script src="static/jquery.js" type="text/javascript"></script>
-<script src="static/tree.jquery.js" type="text/javascript"></script>
 <script src="static/content.js" type="text/javascript"></script>
 </head>
 <body>
 
-<a id="ahklogo" href="./"><img src="static/ahk_logo.png" border="0" alt="AutoHotkey"></a>
-<h1>Version <a href="AHKL_ChangeLog.htm">v<!--ver-->1.1.16.05<!--/ver--></a></h1>
-<p><a href="http://ahkscript.org">http://ahkscript.org</a></p>
-<p>&copy;2003-2014 Chris Mallett, portions &copy;<a href="http://www.autoitscript.com/">AutoIt Team</a> and the AHK community</p>
+<a id="ahklogo" href="./"><img src="static/ahk_logo.png" alt="AutoHotkey"></a>
+<h1>Version <a href="ChangeLog.htm"><!--ver-->AHK_H v1<!--/ver--></a></h1>
+<p><a href="https://autohotkey.com">https://autohotkey.com</a></p>
+<p>&copy; 2019 Hotkeyit, Steve Gray, Chris Mallett, portions &copy; <a href="http://www.autoitscript.com/">AutoIt Team</a> and various others</p>
 <p style="font-size:85%">Software License: <a href="license.htm">GNU General Public License</a></p>
 
-<h2>Important Note</h2>
-<p>Due to some fundamental differences between AutoHotkey 1.0 and AutoHotkey 1.1 (particularly Unicode and x64 executables), scripts written for AutoHotkey 1.0 may not work as expected on AutoHotkey 1.1. For details of known compatibility problems and solutions, refer to the following:</p>
-<ul>
-  <li><a href="Compat.htm">Script compatibility</a> - Unicode vs ANSI, DllCall, NumPut/Get, other changes</li>
-  <li><a href="Scripts.htm#cp">Script file code page</a> - save your scripts as UTF-8!</li>
-</ul>
+<h1>AutoHotkey_H New Features <a href="../" style="float: right; font-size: 12px;">[home]</a></h1>
+<br>
+<table class="info">
+<tbody>
+<tr>
+<th id="commands">Commands / Functions</th>
+<th></th>
+</tr>
+<tr><td><a href="commands/_DllImport.htm">#DllImport</a></td><td>Create an alias function for a dll function that allows to omit parameters and use default values.<br>It can also load pure machine code supplied as hex string, see example.</td></tr>
+<tr><td><a href="commands/_WarnContinuableException.htm">#WarnContinuableException</a></td><td>Do not warn on continuable exception, continue execution like main AutoHotkey does.</td></tr>
+<tr><td><a href="commands/_WindowClassMain.htm">#WindowClassMain</a></td><td>Change main window class from AutoHotkey to something different.</td></tr>
+<tr><td><a href="commands/_WindowClassGui.htm">#WindowClassGui</a></td><td>Change Gui window class from AutoHotkeyGUI to something different.</td></tr>
+<tr><td><a href="commands/AhkThread.htm">AhkThread</a></td><td>Create a new thread using AutoHotkey.dll included in resources.</td></tr>
+<tr><td><a href="commands/Alias.htm">Alias</a></td><td>Create ByRef variable or share variables to other threads in a multi-thread environment.</td></tr>
+<tr><td><a href="commands/BinRun.htm">BinRun</a></td><td>Run executable file from Memory.</td></tr>
+<tr><td><a href="commands/BinToHex.htm">BinToHex</a></td><td>Convert binary data to Hex string.</td></tr>
+<tr><td><a href="commands/CreateScript.htm">CreateScript</a></td><td>Create script from main script for <a href="commands/NewThread.htm">NewThread</a>, <a href="./AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="commands/BinRun.htm">BinRun</a> or <a href="commands/DynaRun.htm">DynaRun</a>.</td></tr>
+<tr><td><a href="commands/CriticalSection.htm">CriticalSection</a></td><td>Creates a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">Critical Section Structure</a> and returns its pointer. Use EnterCriticalSection and LeaveCriticalSection to Enter and Leave the Critical Section.<br> Critical Section is requred for multi-threading environment.</td></tr>
+<tr><td><a href="commands/CryptAES.htm">CryptAES</a></td><td>Encrypt and Decrypt data.</td></tr>
+<tr><td><a href="commands/DirGetParent.htm">DirGetParent</a></td><td>Get parent directory of a file or directory.</td></tr>
+<tr><td><a href="commands/DynaRun.htm">DynaRun</a></td><td>Run code dynamically in new AutoHotkey process.</td></tr>
+<tr><td><a href="commands/ErrorMessage.htm">ErrorMessage</a></td><td>Get error message string of A_LastError.</td></tr>
+<tr><td><a href="commands/FileReplace.htm">FileReplace</a></td><td>Similar to FileAppend but replaces the file if it exists.</td></tr>
+<tr><td><a href="commands/FindFunc.htm">FindFunc (low level)</a></td><td>Get a pointer to a Function.</td></tr>
+<tr><td><a href="commands/FindLabel.htm">FindLabel (low level)</a></td><td>Get a pointer to a label.</td></tr>
+<tr><td><a href="commands/GetEnv.htm">#NoEnv / GetEnv</a></td><td>#NoEnv is now used in all scripts. Use GetEnv to add environment variables to script.</td></tr>
+<tr><td><a href="commands/GetEnv.htm">GetEnv</a></td><td>Get environment variables and make global variables in script.</td></tr>
+<tr><td><a href="commands/HexToBin.htm">HexToBin</a></td><td>Convert Hex string to binary memory.</td></tr>
+<tr><td><a href="commands/HIBYTE.htm">HIBYTE</a></td><td>Get high byte from a value.</td></tr>
+<tr><td><a href="commands/HIWORD.htm">HIWORD</a></td><td>Get high word from a value.</td></tr>
+<tr><td><a href="commands/IsBOM.htm">IsBOM</a></td><td>Check if a file has byte order mark.</td></tr>
+<tr><td><a href="commands/LOBYTE.htm">LOBYTE</a></td><td>Get low byte from a value.</td></tr>
+<tr><td><a href="commands/LOWORD.htm">LOWORD</a></td><td>Get low word from a value.</td></tr>
+<tr><td><a href="commands/MAKELANGID.htm">MAKELANGID</a></td><td>Make LANGID.</td></tr>
+<tr><td><a href="commands/MAKELCID.htm">MAKELCID</a></td><td>Make LCID.</td></tr>
+<tr><td><a href="commands/MAKELONG.htm">MAKELONG</a></td><td>Make LONG.</td></tr>
+<tr><td><a href="commands/MAKELPARAM.htm">MAKELPARAM</a></td><td>Make LPARAM.</td></tr>
+<tr><td><a href="commands/MAKELRESULT.htm">MAKELRESULT</a></td><td>Make LRESULT.</td></tr>
+<tr><td><a href="commands/MAKEWORD.htm">MAKEWORD</a></td><td>Make WORD.</td></tr>
+<tr><td><a href="commands/MAKEWPARAM.htm">MAKEWPARAM</a></td><td>Make WPARAM.</td></tr>
+<tr><td><a href="commands/MCodeH.htm">MCodeH</a></td><td>Create machine code function.</td></tr>
+<tr><td><a href="commands/ResDelete.htm">ResDelete</a></td><td>Delete a resource in executable file.</td></tr>
+<tr><td><a href="commands/ResDllCreate.htm">ResDllCreate</a></td><td>Create a resource only dll file.</td></tr>
+<tr><td><a href="commands/ResExist.htm">ResExist</a></td><td>Check if a resource exists in executable file.</td></tr>
+<tr><td><a href="commands/ResPut.htm">ResPut</a></td><td>Add a resource to executable file from memory.</td></tr>
+<tr><td><a href="commands/ResPutFile.htm">ResPutFile</a></td><td>Add a file to resources of executable file.</td></tr>
+<tr><td><a href="commands/Send.htm">Send</a></td><td>Sleep functionality for Send command, for example <span style="font-weight: bold;">Send 123{100}456</span> would send 123 then sleep for 100 milliseconds and send 456.</td></tr>
+<tr><td><a href="commands/sizeof.htm">sizeof</a></td><td>Returns the size in bytes for <a href="StructTypes.htm">default data type</a>, <a href="commands/Struct.htm">structure</a> or <a href="commands/Struct.htm#Definition">structure definition</a>, for example MsgBox % sizeof("TCHAR").</td></tr>
+<tr><td><a href="commands/StrBuf.htm">StrPutVar</a></td><td>Put an encoded string into a variable.</td></tr>
+<tr><td><a href="commands/ToChar.htm">ToChar</a></td><td>Convert an integer to signed char.</td></tr>
+<tr><td><a href="commands/ToInt.htm">ToInt</a></td><td>Convert an integer to signed integer.</td></tr>
+<tr><td><a href="commands/ToShort.htm">ToShort</a></td><td>Convert an integer to signed short.</td></tr>
+<tr><td><a href="commands/ToUChar.htm">ToUChar</a></td><td>Convert an integer to unsigned char.</td></tr>
+<tr><td><a href="commands/ToUInt.htm">ToUInt</a></td><td>Convert an integer to signed integer.</td></tr>
+<tr><td><a href="commands/ToUShort.htm">ToUShort</a></td><td>Convert an integer to unsigned integer.</td></tr>
+<tr><td><a href="../AutoHotkey.chm::/docs/commands/VarSetCapacity.htm">VarSetCapacity</a></td><td>When the buffer size of a variable is changed and FillByte is not used and old and new capacity is > 1 byte, the original buffer content is kept/copied to the new buffer.</td></tr>
+<tr><td><a href="commands/WinApi.htm">WinApi</a></td><td>Use WinApi functions as if it was a build-in function.</td></tr>
+<tr>
+<td><a href="commands/ZipCreateFile.htm">Zip Functions</a></td>
+<td>Various zip functions to compress and uncompress files or data in memory. <a href="commands/ZipCreateFile.htm">ZipCreateFile</a>, <a href="commands/ZipAddFile.htm">ZipAddFile</a>, <a href="commands/ZipCloseFile.htm">ZipCloseFile</a>,
+ <a href="commands/UnZip.htm">UnZip</a>, <a href="commands/ZipCreateBuffer.htm">ZipCreateBuffer</a>, <a href="commands/ZipAddBuffer.htm">ZipAddBuffer</a>,
+ <a href="commands/ZipCloseBuffer.htm">ZipCloseBuffer</a>, <a href="commands/UnZipBuffer.htm">UnZipBuffer</a>, <a href="commands/ZipRawMemory.htm">ZipRawMemory</a>,
+ <a href="commands/UnZipRawMemory.htm">UnZipRawMemory</a>, <a href="commands/ZipInfo.htm">ZipInfo</a>, <a href="commands/ZipOptions.htm">ZipOptions</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></td>
+</tr>
+<tr>
+<th id="gui">Gui</th>
+<th>Gui related features</th>
+</tr>
+<tr>
+<td>Auto positioning and resizing of controls</td>
+<td><p>Controls can be automatically positioned and resized when Gui is resized. Controls will be positioned and resized relatively to the initial size of Gui (Gui, Show).
+<br>The initial size of controls becomes the smallest size it will ever shrink to.
+<br>Resizing and positioning values can be followed by decimal number (e.g. 2 or 0.5) as well as fraction of an integer (e.g. 1/3), negative values are also supported.
+<br>When no value is given it defaults to 1, so ax, ax1 and ax1/1 do the same thing.
+<br>Note: the order in which controls are created might be important when position of previous controls needs to be considered.</p>
+<h3>The following auto position options are supported:</h3>
+<p><strong>AX</strong>: Move the control horizontally by a specified amount when the Gui changes width.<br>For example: if the Gui width sizes up by 100px, a setting of ax1/2 would mean that the control would move to the right by 50px.</p>
+<p><strong>AY</strong>: Move the control vertically by a specified amount when the Gui changes height.<br>For example: if the Gui height sizes up by 100px, a setting of ay1/5 would mean that the control would move down by 20px.</p>
+<p><strong>AXP</strong> and <strong>AYP</strong>: Move the control by the same amount that the previous control moved.</p>
+<p><strong>AXA</strong> and <strong>AYA</strong>: Move the control by the same amount that the previous control moved and resized so the control is placed right after or below previous control.</p>
+<p><strong>AXR</strong> and <strong>AWR</strong>: Reset horizontal repositioning.</p>
+<p><strong>AYR</strong> and <strong>AHR</strong>: Reset vertical repositioning.</p>
 
-<h2>Quick Reference</h2>
-<p>Fundamentals:</p>
-<ul>
-  <li><a href="Tutorial.htm">Tutorial for beginners</a></li>
-  <li><a href="commands/Edit.htm#Editors">Text editors with AutoHotkey support</a></li>
-  <li><a href="FAQ.htm">Frequently asked questions</a></li>
-  <li><a href="Scripts.htm">Scripts</a>
-    <ul>
-      <li><a href="commands/index.htm">Commands</a></li>
-      <li><a href="Variables.htm">Variables and expressions</a></li>
-      <li><a href="Functions.htm">Functions</a></li>
-      <li><a href="Objects.htm">Objects</a></li>
-      <li><a href="Scripts.htm#idebug">Interactive debugging</a></li>
-    </ul>
-  </li>
-</ul>
-<p>Keyboard and mouse:</p>
-<ul>
-  <li><a href="Hotkeys.htm">Hotkeys (mouse, joystick and keyboard shortcuts)</a></li>
-  <li><a href="Hotstrings.htm">Hotstrings and auto-replace</a></li>
-  <li><a href="misc/Remap.htm">Remapping keys and buttons</a></li>
-  <li><a href="KeyList.htm">List of keys, mouse buttons and joystick controls</a></li>
-</ul>
-<p>Other:</p>
-<ul>
-  <li><a href="commands/DllCall.htm">DllCall</a></li>
-  <li><a href="misc/RegEx-QuickRef.htm">RegEx quick reference</a></li>
-  <li><a href="AHKL_Features.htm">AutoHotkey_L (AutoHotkey 1.1) features</a></li>
-</ul>
+<h3>The following auto size options are supported:</h3>
+<p><strong>AW</strong>: Resize the control width by an amount relative to the change in Gui width.<br>For example: if control is 100px wide and the Gui width sizes up by 100 px, a setting of aw0.5 would mean that control would widen by 50px.</p>
+<p><strong>AH</strong>: Resize the control height by an amount relative to the change in Gui height.<br>For example: if control is 20px wide and the Gui height sizes up by 100 px, a setting of aw1/4 would mean that control would heighten by 25px.</p>
+<p><strong>AWA</strong> and <strong>AHA</strong>: Resize the control width or height by the same amount as previous control.</p>
+</td>
+</tr>
+<tr>
+<td>Gui Scroll options</td>
+<td><p><strong>Scroll</strong>: Enable vertical and horizontal Scroll bars for gui.</p>
+<p><strong>VScroll</strong>: Enable vertical Scroll bar.</p>
+<p><strong>HScroll</strong>: Enable horizontal Scroll bar.</p></td>
+</tr>
+<tr>
+<tr>
+<th id="objects">Objects</th>
+<th></th>
+</tr>
+<tr><td><a href="commands/ComObjDll.htm">ComObjDll</a></td><td>Creates a COM Object from a COM dll.</td></tr>
+<tr><td><a href="commands/CriticalObject.htm">CriticalObject</a></td><td>Create multi-thread save object.</td></tr>
+<tr><td>InputHook Option A</td><td>When using option A, previous input or text set via <b>MyInputHook.Input := Text</b> will not be discarded, instead new input will be appended to the text.</td></tr>
+<tr><td><a href="commands/DynaCall.htm">DynaCall</a></td><td>Imports a Dll function and defines its parameters so we don't need to define on each call like in DllCall.</td></tr>
+<tr><td><a href="commands/ObjByRef.htm">ObjByRef</a></td><td>Save variables by reference in object.</td></tr>
+<tr><td><a href="commands/ObjDump.htm">ObjDump</a></td><td>Dump an object to memory or file.</td></tr>
+<tr><td><a href="commands/ObjLoad.htm">ObjLoad</a></td><td>Load a dumped object from memory or file.</td></tr>
+<tr><td><a href="commands/ObjShare.htm">ObjShare</a></td><td>Create multi-thread save COM IDispatch proxy object.</td></tr>
+<tr><td><a href="commands/Struct.htm">Struct</a></td><td>Creates C++ like Structure object that is accessed and modified using object syntax.</td></tr>
+<tr>
+<th id="commands">MemoryModule</th>
+<th>Allows loading a dll from Memory, e.g. Resource.</th>
+</tr>
+<tr><td><a href="commands/MemoryFindResource.htm">MemoryFindResource</a></td><td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648042.aspx">FindResource</a>.</td></tr>
+<tr><td><a href="commands/MemoryFreeLibrary.htm">MemoryFreeLibrary</a></td><td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms683152.aspx">FreeLibrary</a> for MemoryModule.</td></tr>
+<tr><td><a href="commands/MemoryGetProcAddress.htm">MemoryGetProcAddress</a></td><td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms683212.aspx">GetProcAddress</a> for MemoryModule.</td></tr>
+<tr><td><a href="commands/MemoryLoadLibrary.htm">MemoryLoadLibrary</a></td><td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx">LoadLibrary</a> but loads a dll from memory. This allows real multi-threading by loading loading a dll multiple times.</td></tr>
+<tr><td><a href="commands/MemoryLoadResource.htm">MemoryLoadResource</a></td><td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648046.aspx">LoadResource</a>.</td></tr>
+<tr><td><a href="commands/MemoryLoadString.htm">MemoryLoadString</a></td><td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms647486.aspx">LoadString</a>.</td></tr>
+<tr><td><a href="commands/MemorySizeofResource%20.htm">MemorySizeofResource</a></td><td>Similar to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648048.aspx">SizeOfResource</a> for MemoryModuel.</td></tr>
+<th id="vars">Variables</th>
+<th></th>
+</tr>
+<tr>
+<td>NULL</td>
+<td>New&nbsp;built-in, variable same as FALSE. Resolves
+to 0.</td>
+</tr>
+<tr><td>A_AhkDir</td><td>returns the path of current exe.</td></tr>
+<tr><td>A_IsDll</td><td>returns 1 (true) if called from AutoHotkey.dll and FALSE/NULL/0 otherwise.</td></tr>
+<tr><td>A_DllPath</td><td>returns the path of current module (dll or exe).</td></tr>
+<tr><td>A_DllDir</td><td>returns the path of current module (dll or exe).</td></tr>
+<tr><td>A_ModuleHandle</td><td>Equivalent to GetModuleHandle(NULL) but returns the correct ModuleHandle for AutoHotkey.dll when using <a href="commands/MemoryModule.htm">MemoryModule</a></td></tr>
+<tr><td>A_ScriptStruct</td><td>returns pointer to internal g_script structure.</td></tr>
+<tr><td>A_GlobalStruct</td><td>returns pointer to internal g structure.</td></tr>
+<tr>
+<th id="types">Compiling</th>
+<th></th>
+</tr>
+<tr>
+<td>Compiling AutoHotkey</td>
+<td>Original
+AutoHotkey is only capable to be compiled with AutoHotkeySC.bin. In
+AutoHotkey_H any AutoHotkey binary (AutoHotkey.dll,
+AutoHotkey.exe, AutoHotkeySC.bin) can be compiled.<br>
+This allows keeping
+full functionality of AutoHotkey including executing other scripts. Compiled AutoHotkey.exe and
+AutoHotkey.dll can use /E
+switch to execute different script than compiled one.</td>
+<tr>
+	<td>Ahk2Exe</td>
+	<td>Custom version of fincs Ahk2Exe compiler with support for AutoHotkey_H features.</td>
+</tr>
+<tr>
+<td id="types">Resource Library</td>
+<td>You can include
+library functions in resource of exe or dll (Resorce type must be "LIB", e.g. LIB/WATCHDIRECTORY.AHK).<br>
+Additionally AutoHotkey.dll can load library
+functions from exe file automatically (Note both execuables must be using same password if source is encrypted).<br>
+Note,
+this is not supported by AutoHotkeySC.bin.</td>
+</tr>
+<tr><td><a href="commands/UnZipRawMemory.htm">Resource Compression and Encryption</a></td><td>Ahk2Exe supports compression and encryption for resource files, AutoHotkey will decompress and decrypt the files internally automatically. <a href="commands/UnZipRawMemory.htm">UnZipRawMemory</a> can be used to decompress and decrypt resources in Script.</td></tr>
+<tr>
+<th id="other">AutoHotkey.dll Module</th>
+<th></th>
+</tr>
+<tr><td><a href="AutoHotkeyDll.htm">AutoHotkey.dll</a></td><td>AutoHotkey Module with COM support that can be used for multi-threading and allows AutoHotkey to be embedded into another applications. It provides AutoHotkey functionality that might be more difficult to implement in another language.</td></tr>
+<tr>
+<th id="other">Exported Functions</th>
+<th>Available for AutoHotkey.exe and AutoHotkey.dll</th>
+</tr>
+<tr><td><a href="commands/addFile.htm">addFile</a></td><td>Add and optionally execute additional script/code from file. Not available for scripts compiled with AutoHotkeySC.bin.</td></tr>
+<tr><td><a href="commands/addScript.htm">addScript</a></td><td>Add and optionally execute additional script/code from text/memory/variable. Not available for scripts compiled with AutoHotkeySC.bin.</td></tr>
+<tr><td><a href="commands/ahkassign.htm">ahkassign</a></td><td>Assign a value to variable or pointer of variable.</td></tr>
+<tr><td><a href="commands/ahkExec.htm">ahkExec</a></td><td>Execute some script/code from text/memory/variable temporarily. Not available for scripts compiled with AutoHotkeySC.bin.</td></tr>
+<tr><td><a href="commands/ahkExecuteLine.htm">ahkExecuteLine</a></td><td>Executes script from given line pointer.</td></tr>
+<tr><td><a href="commands/ahkFindFunc.htm">ahkFindFunc</a></td><td>Find a function and return its pointer.</td></tr>
+<tr><td><a href="commands/ahkFindLabel.htm">ahkFindLabel</a></td><td>Find a label and return its pointer.</td></tr>
+<tr><td><a href="commands/ahkFunction.htm">ahkFunction</a></td><td>Call a function via SendMessage method. Mainly used with AutoHotkey.dll to call a function in dll script or call a function in main script from dll.</td></tr>
+<tr><td><a href="commands/ahkgetvar.htm">ahkgetvar</a></td><td>Retrieve a value from a variable.</td></tr>
+<tr><td><a href="commands/ahkLabel.htm">ahkLabel</a></td><td>Goto (PostMessage) or Gosub (SendMessage) a Label. Also used mainly with AutoHotkey.dll</td></tr>
+<tr><td><a href="commands/ahkPause.htm">ahkPause</a></td><td>Pause Script.</td></tr>
+<tr><td><a href="commands/ahkPostFunction.htm">ahkPostFunction</a></td><td>Call a function via PostMessage method (does not wait until function returns). Also used mainly with AutoHotkey.dll</td></tr>
+<tr>
+<th>Exported Functions</th>
+<th>Available only in AutoHotkey.dll</th>
+</tr>
+<tr><td><a href="commands/ahkdll.htm">ahkdll</a> and <a href="commands/ahktextdll.htm">ahktextdll</a></td><td>Load a new thread from a file or string/memory/variable, current thread will be terminated.</td></tr>
+<tr><td><a href="commands/ahkReady.htm">ahkReady</a></td><td>Returns 1 (true) if a thread is being executed currently, 0 (false) otherwise.</td></tr>
+<tr><td><a href="commands/ahkReload.htm">ahkReload</a></td><td>Reload thread using same parameters used with <a href="commands/ahkdll.htm">ahkdll</a> or <a href="commands/ahktextdll.htm">ahktextdll</a>.</td></tr>
+<tr><td><a href="commands/ahkTerminate.htm">ahkTerminate</a></td><td>Terminate thread.</td></tr>
+<tr>
+<th id="other">Other</th>
+<th></th>
+</tr>
+<tr>
+<td>ahk_parent</td>
+<td>Allow to identify the right window if
+multiple window with same criteria exist, ahk_parent must be followed
+by space and Window Id. ahk_parent can be used in any Win... and Control...
+functions. For example <span style="font-weight: bold;">WinActivate,
+ahk_class #32770 ahk_parent 0x3F4A5</span></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>Retrieve pointer to any String or build in variable like &amp;A_LoopField or &amp;"Text".</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Function_Libraries">Function Libraries</h2>
+<p>In addition to the user library in <code>%A_MyDocuments%\AutoHotkey\Lib</code>,
+standard library in the AutoHotkey directory and local library which
+resides in <code>%A_ScriptDir%\Lib</code> functions may be
+auto-included from a folder that %A_AhkExeDir%\lib.lnk points to. For
+more information, see Libraries
+of Functions.</p>
+<h2 id="Static">Static Variables</h2>
+<p>Static variables are saved in separate array internally for
+better performance. Also ListVars
+shows static and local variables separately.</p>
 
 <h2>Acknowledgements</h2>
 <p>A special thanks to Jonathan Bennett, whose generosity in releasing  AutoIt v2 as free software in 1999 served as an inspiration and time-saver for myself and many others worldwide. In addition, many of AutoHotkey's enhancements to the AutoIt v2 command set, as well as the Window Spy and the old script compiler, were adapted directly from the AutoIt v3 source code. So thanks to Jon and the other AutoIt authors for those as well.<br>

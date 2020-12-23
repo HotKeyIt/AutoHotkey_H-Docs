@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>UnZipRawMemory()</title>
+<meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>UnZipRawMemory</h1>
+
+<p>This function is used to unzip and decrypt raw memory, for example from resource.</p>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZipRawMemory</span>(AddressOrBufferObject<span class="optional">, Size, Password</span>)
+<pre><em>Function Example:</em> <b>MyBuffer</b> := UnZipRawMemory(resourceBuffer)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+
+  <dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the creted Buffer object containing unzipped memory.</p></dd>
+  
+  <dt>AddressOrBuffer</dt>
+  <dd><p>Buffer object or pointer/address to raw zipped memory.</p></dd>
+  
+  <dt>Size (optional)</dt>
+  <dd><p>Size in bytes of zipped memory. Not required if AddressOrBuffer is Buffer Object</p></dd>
+
+  <dt>VariableOrAddress (optional)</dt>
+  <dd><p>The name of a variable or address to copy unzipped memory to.</p></dd>
+
+  <dt>Password (optional)</dt>
+  <dd><p>The password to use to decrypt the data.</p></dd>
+
+</dl>
+
+<h3>Remarks</h3>
+<p>Ahk2Exe uses <a href="ZipRawMemory.htm">ZipRawMemory</a> to compress and encrypt resources in raw mode (only 1 file/string/buffer is supported).<br>
+Internally AutoHotkey is able to decompress raw resources automatically (compiled script, AutoHotkey.dll, WinApi + lib resources). 
+This function can be used in script to decrypt and decompress raw resources.</p>
+<h3>Related</h3>
+<p><a href="ZipRawMemory.htm">ZipRawMemory</a>, <a href="ZipCreateFile.htm">ZipCreateFile</a>, <a href="ZipAddFile.htm">ZipAddFile</a>,
+ <a href="ZipCloseFile.htm">ZipCloseFile</a>, <a href="ZipOptions.htm">ZipOptions</a>, <a href="UnZip.htm">UnZip</a>,
+ <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>, <a href="ZipAddBuffer.htm">ZipAddBuffer</a>, <a href="ZipCloseBuffer.htm">ZipCloseBuffer</a>,
+  <a href="UnZipBuffer.htm">UnZipBuffer</a>, <a href="ZipInfo.htm">ZipInfo</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></p>
+<h3>Examples</h3>
+<pre class="NoIndent">sz:=ResGet(MyBuffer, A_AhkPath,"AHKEXEC.AHK","LIB")
+UnZipRawMemory(&MyBuffer,sz, data)
+MsgBox % StrGet(&data, "UTF-8")
+</pre>
+
+</body>
+</html>

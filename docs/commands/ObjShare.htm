@@ -1,0 +1,86 @@
+<!DOCTYPE HTML> 
+<html><head><title>ObjShare()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ObjShare</h1>
+<p>Included function to use an object in a multi-threaded environment. This is especially useful to call methods of a class from a different thread.
+Such objects can be used from multiple threads without causing a crash using COM functions <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318557.aspx">LresultFromObject</a> and <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd373605.aspx">ObjectFromLresult</a>.</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjShare</span>(ObjectOrLresult)
+<pre><em>Function Example:</em> <b>Lresult</b> := ObjShare(MyObject)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the Lresult created for object or IDispatch proxy COM object.</p>
+    </dd>
+		
+<dt>ObjectOrLresult</dt>
+<dd>
+<p>Existing Object or Lresult to use.<br>
+When this parameter is an object OutputVar will be Lresult value. Otherwise when Lresult is passed OutputVar will be an IDispatch proxy COM object</p>
+</dd>
+</dl>
+<dl>
+<h3>General Remarks</h3>
+<dd>
+<p>AutoHotkey is not thread safe and when you execute code from another thread while main thread is executing code as well it will result in an access violation and your program will crash.</p>
+<p><span style="font-weight: bold;">How does ObjShare work</span>:<br></p>
+<ul>
+<li>Lresult is created for an object in any exe or dll thread that owns the object.</li>
+<li>This Lresult is used in a different thread to create an IDispatch proxy COM object that when called will invoke the original object.</li>
+<li>While IDispatch proxy COM object is processed, the thread where lresult was created will be able to execute any other code before finishing processing.</li>
+</ul>
+<p>Note! You cannot access the object in the other thread using <a href="ahkExec.htm">ahkExec</a>, <a href="ahkFunction.htm">ahkFunction</a> or <a href="ahkLabel.htm">ahkLabel</a> (GoSub mode), this will result in a COM error.</p>
+<p>When the thread that created lresult is in critical mode you will not be able to invoke the IDispatch proxy COM object until thread becomes non critical.</p>
+<p>To share an object to multiple threads you will need to create a separate lresult for each thread by calling ObjShare multiple times.</p>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="../objects/Object.htm">Object</a>, <a href="CriticalObject.htm">CriticalObject</a></p>
+<h3>Examples</h3>
+<pre class="NoIndent">t:=new Test(), lresult := ObjShare(t) <em>; Create lresult to use in a different thread</em>
+AhkThread("
+(
+    t := ObjShare(" lresult ") <em>; Create IDispatch proxy COM object</em>
+	Loop {
+        t.CheckBox()
+        Sleep 10
+    }
+)")
+ 
+Loop {
+  t.Slider()
+  Sleep 10
+}
+
+Class Test {
+  __New(p*){
+    Gui, test:New, HWNDhwnd
+    Gui, Add, Slider, hwndSliderhwnd, 0
+    this.slidervalue:=0
+    this.checkvalue:=0
+    Gui, Add, Checkbox, hwndCheckBoxhwnd
+    Gui, Show, w200 h100
+    this.checkBoxhwnd:=checkboxhwnd
+    this.sliderhwnd:=sliderhwnd
+    this.hwnd:=hwnd
+  }
+  CheckBox(){
+    Gui, test:Default
+    GuiControl,,% this.checkboxhwnd,% this.checkvalue:=!this.checkvalue
+  }
+  Slider(){
+    Gui, test:Default
+    GuiControl,,% this.Sliderhwnd,% this.slidervalue=100?this.slidervalue:=0:++this.slidervalue
+  }
+}
+TestGuiClose:
+ExitApp</pre>
+</body></html>

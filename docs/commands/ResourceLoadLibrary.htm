@@ -1,0 +1,55 @@
+<!DOCTYPE HTML> 
+<html><head><title>ResourceLoadLibrary()</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ResourceLoadLibrary</h1>
+
+<p>Loads the specified <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>
+from resources into the process. Similar to <a href="MemoryLoadLibrary.htm">MemoryLoadLibrary</a>.</p>
+<br>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ResourceLoadLibrary</span>(ResName)
+<pre><em>Function Example:</em> <b>ahkdllModule</b> := ResourceLoadLibrary("AutoHotkey.dll")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the handle of loaded
+      module. </p>
+    </dd>
+  <dt>ResName</dt>
+    <dd><p>Name of RCDATA resource, created by <a
+      href="FileInstall.htm">FileInstall</a>.</p>
+    </dd>
+</dl>
+
+<h3>Related</h3>
+
+<p><a href="MemoryModule.htm">MemoryModule</a>, <a
+href="MemoryGetProcAddress.htm">MemoryGetProcAddress</a>, <a
+href="MemoryLoadLibrary.htm">MemoryLoadLibrary</a>, <a
+href="MemoryFreeLibrary.htm">MemoryFreeLibrary</a>, <a
+href="MemoryFindResource.htm">MemoryFindResource</a>, <a
+href="MemorySizeofResource.htm">MemorySizeofResource</a>, <a
+href="MemoryLoadResource.htm">MemoryLoadResource</a>, <a
+href="MemoryLoadString.htm">MemoryLoadString</a>, <a
+href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
+
+<h3>Examples</h3>
+<pre class="NoIndent">ahkdllModule := MemoryLoadLibrary(A_ScriptDir "\AutoHotkey.dll") <em>; Load the AutoHotkey module.</em>
+ahkdll := MemoryGetProcAddress(ahkdllModule, "ahkdll") <em>; get address of ahkdll function.</em>
+ahkReady := MemoryGetProcAddress(ahkdllModule, "ahkReady") <em>; get address of ahkReady function.</em>
+DllCall(ahkdll,"Str","NewScript.ahk","Str","","Str","") <em>; start new thread</em>
+While DllCall(ahkReady)
+  Sleep 100
+MemoryFreeLibrary(ahkdllModule)</pre>
+</body>
+</html>

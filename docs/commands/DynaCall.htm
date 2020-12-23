@@ -1,0 +1,129 @@
+<!DOCTYPE HTML> 
+<html><head><title>DynaCall()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>DynaCall</h1>
+<p>Build in function, similar to DllCall but works with DllCall
+structures and uses Object syntax. It is often faster than DllCall,
+easier to use and it saves a lot of typing and code.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DynaCall</span>("<span class="optional">DllFile\</span>Function", "ParameterDefinition", Default1, Default2, Default3, ...)
+<pre><em>Function Example:</em> <b>TrueSleep</b> := DynaCall("kernel32\Sleep", "ui", 100)
+<em>Calling the Func:</em> TrueSleep[1000], %TrueSleep%(1000)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the DynaCall object which is used to call the dll function.</p></dd>
+
+<dt>[DllFile\]Function</dt>
+<dd>
+<p>The DLL or EXE file name followed by a backslash and the
+name of the function. For example: "MyDLL\MyFunction" (".dll" is default and can be omitted). If an absolute path
+isn't specified, <em>DllFile</em> is assumed to be in the
+system's PATH or A_WorkingDir.</p>
+<p><em><a name="std"></a>DllFile</em>
+may be omitted when calling a function that resides in User32.dll,
+Kernel32.dll, ComCtl32.dll, or Gdi32.dll. For example,
+"User32\IsWindowVisible" produces the same result as "IsWindowVisible".</p>
+<p>If no function can be found by the given name, a "W"
+(Unicode) suffix is automatically appended. For example, "MessageBox"
+is the same as "MessageBoxW".</p>
+<p>This parameter may also consist solely of an an integer,
+which is interpreted as the address of the function to call. Sources of
+such addresses include COM and Callback.</p>
+</dd>
+<dt>ParameterDefinition</dt>
+<dd>
+<p>For definition you will need to use the short version of
+DllCall types.</p>
+<table>
+<tbody>
+<tr>
+<td style="font-weight: bold;" width="15%">DllCall</td>
+<td style="font-weight: bold;" width="50%">DynaCall
+equivalent</td>
+</tr><tr><td>Int</td><td>i</td>
+</tr><tr><td>Str</td><td>s</td>
+</tr><tr><td>AStr</td><td>a</td>
+</tr><tr><td>WStr</td><td>w</td>
+</tr><tr><td>Short</td><td>h</td>
+</tr><tr><td>Char</td><td>c</td>
+</tr><tr><td>Float</td><td>f</td>
+</tr><tr><td>Double</td><td>d</td>
+</tr><tr><td>PTR</td><td>t</td>
+</tr><tr><td>Int64</td><td>i6</td>
+</tr>
+<tr>
+<td>CDecl</td>
+<td>Use == instead of =, for example "t==uis".</td>
+</tr>
+<tr>
+<td>U prefix and * or p</td>
+<td>This is supported as well, for
+example: "ui=ui*s", "ui=uips"</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>The syntax for parameter definition is [ &nbsp;<span style="font-weight: bold;">Return type &nbsp; </span>=[=]
+&nbsp;&nbsp; ] &nbsp;<span style="font-weight: bold;">
+ParamType &nbsp; &nbsp;ParamType &nbsp; &nbsp;ParamType</span>
+&nbsp; ...<br>
+You can have any amount of space or tabs between parameters, those will
+be simply ignored.
+</p>
+<ul>
+<li><b>Return type</b> and = or == are optional and can be left out.</li>
+</ul>
+<p><span style="font-weight: bold;">Changing
+order of parameters</span><br>
+</p>
+<ul>
+It is possible to change the order of parameters to use when the
+function is called.<br>
+Therefore we need to use an object for parameter definition with
+following syntax.
+<ul>
+<span style="font-weight: bold;">[
+definition,
+FirstParam, SecondParam, ...]</span>
+<li>Definition - Same as above</li>
+<li>FirstParam - First parameter to use when function is
+called</li>
+<li>SecondParam - Second parameter to use when function
+is
+called</li>
+<p>This is best explained in following example.</p>
+<pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111)<br>MsgBox % A_IsSuspended<br>AHKCMD[ 65305 ] <em>; suspend script, following is the same call:<br>; DllCall("SendMessage", "PTR", A_ScriptHwnd, "UInt", 0x111, "PTR", 65305, "PTR", 0)</em><br>MsgBox % A_IsSuspended<br></pre>
+</ul>
+</ul>
+</dd>
+<dt>Default Value</dt>
+<dd>
+<p>The default value to use when the parameter is omitted in function call.<br>
+Note, this will be always the original order of parameters as specified in
+<b>ParameterDefinition</b>.</p>
+</dd>
+</dl>
+<dl>
+<h3>Remarks</h3>
+<dd><p><b>Base</b> and <b>__Class</b> are properties and DynaCall cannot be invoked using them as parameter with dot (.) syntax, instead use MyDynaCall["base"] syntax!</p>
+</dd>
+</dl>
+<dl>
+<h3>Examples</h3>
+<pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111) <em>; define a DynaCall object.</em>
+AHKCMD[ 65305 ] <em>; call the actual function</em>
+AHKCMD.65305
+%AHKCMD%(65305)
+AHKCMD.PTR( 65305 ) <em>; here (PTR) we can specify any AHK return type.</em></pre>
+</dl>
+<h3><em>Related</em></h3>
+<p><em><a href="_DllImport.htm">#DllImport</a>, <a href="WinApi.htm">WinApi</a></em></p>
+</body></html>

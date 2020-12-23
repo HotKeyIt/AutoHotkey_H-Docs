@@ -1,0 +1,54 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+  <title>MemoryGetProcAddress()</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>MemoryGetProcAddress</h1>
+
+<p>Find the function pointer in the specified <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>
+previously loaded with <a href="MemoryLoadLibrary">MemoryLoadLibrary.</a>
+Similar to <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms683212.aspx">GetProcAddress</a>.</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemoryGetProcAddress</span>(Handle, FuncName)
+<pre><em>Function Example:</em> <b>ahkdll</b> := MemoryGetProcAddress(ahkdllModule,"ahkdll")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the function pointer.</p>
+    </dd>
+  <dt>Handle</dt>
+    <dd><p>MemoryModule handle prevously returned by <a
+      href="MemoryLoadLibrary">MemoryLoadLibrary.</a> or <a
+      href="ResourceLoadLibrary">ResourceLoadLibrary.</a></p>
+    </dd>
+  <dt>FuncName</dt>
+    <dd><p>Name of the function.</p>
+    </dd>
+</dl>
+
+<h3>Related</h3>
+
+<p><a href="MemoryModule.htm">MemoryModule</a>, <a
+href="MemoryLoadLibrary.htm">MemoryLoadLibrary</a>, <a
+href="ResourceLoadLibrary.htm">ResourceLoadLibrary</a>, <a
+href="MemoryFreeLibrary.htm">MemoryFreeLibrary</a>, <a
+href="MemoryFindResource.htm">MemoryFindResource</a>, <a
+href="MemorySizeofResource.htm">MemorySizeofResource</a>, <a
+href="MemoryLoadResource.htm">MemoryLoadResource</a>, <a
+href="MemoryLoadString.htm">MemoryLoadString</a>, <a
+href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
+
+<h3>Examples</h3>
+<p>See <a href="MemoryLoadLibrary">MemoryLoadLibrary</a></p>
+</body>
+</html>

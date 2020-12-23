@@ -1,0 +1,68 @@
+<!DOCTYPE HTML> 
+<html><head><title>AutoHotkey COM Interface</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<script src="static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>AutoHotkey &nbsp; COM Interface</h1>
+<h2>Available Interfaces</h2>
+<table class="info">
+<tbody>
+<tr>
+<td style="font-weight: bold;">Module AutoHotkey v1</td>
+<td style="font-weight: bold;">Interface</td>
+<td style="font-weight: bold;">GUID</td>
+</tr>
+<tr>
+<td>Last registered (Unicode/ANSI/X64)</td>
+<td>AutoHotkey.Script</td>
+<td><span style="font-weight: bold;">{C00BCC8C-5A04-4392-870F-20AAE1B926B2}</span></td>
+</tr>
+<tr>
+<td>Unicode 32-bit</td>
+<td>AutoHotkey.Script.UNICODE</td>
+<td><span style="font-weight: bold;">{C58DCD96-1D6F-4F85-B555-02B7F21F5CAF}</span></td>
+</tr>
+<tr>
+<td>ANSI 32-bit</td>
+<td>AutoHotkey.Script.ANSI</td>
+<td><span style="font-weight: bold;">{974318D9-A5B2-4FE5-8AC4-33A0C9EBB8B5}</span></td>
+</tr>
+<tr>
+<td>Unicode 64-bit</td>
+<td>AutoHotkey.Script.X64</td>
+<td><span style="font-weight: bold;">{38D00012-DC83-4E17-9BAD-D9DD97902580}</span></td>
+</tr>
+<tr>
+<td style="font-weight: bold;">Module AutoHotkey v2</td>
+<td style="font-weight: bold;">Interface</td>
+<td style="font-weight: bold;">GUID</td>
+</tr>
+<tr>
+<td>Last registered (Unicode/X64)</td>
+<td>AutoHotkey2.Script</td>
+<td><span style="font-weight: bold;">{FEEEC4BA-04AF-45F0-B385-7290C65CFB9B}</span></td>
+</tr>
+<tr>
+<td>Unicode win32</td>
+<td>AutoHotkey2.Script.UNICODE</td>
+<td><span style="font-weight: bold;">{EC81EBBA-6CEE-4363-AB77-C0E57046AA89}</span></td>
+</tr>
+<tr>
+<td>Unicode x64</td>
+<td>AutoHotkey2.Script.X64</td>
+<td><span style="font-weight: bold;">{F1D0DE03-30FD-4326-B33F-989BBFAA5FFA}</span></td>
+</tr>
+</tbody>
+</table>
+<h3>Examples</h3>
+<b>Visual Basic example.</b>
+<pre>Sub atest()<br>Dim AhkCom As Object<br>Set AhkCom = CreateObject("AutoHotkey.Script")<br>AhkCom.ahktextdll("MsgBox Hello World!" &amp; Chr(13) &amp; "ExitApp")<br>End Sub</pre>
+<b>AutoHotkey example.</b>
+<pre>AhkCom := ComObjCreate("AutoHotkey.Script")<br>AhkCom.ahktextdll("MsgBox Hello World!`nExitApp")<br>While AhkCom.ahkReady()<br>Sleep, 100<br>MsgBox Exiting now<br></pre>
+<b>ComObjDll example</b>
+<pre>hModule:=DllCall("LoadLibrary","Str",A_AhkDir "\AutoHotkey.dll")<br>ahk:=ComObjDll(hModule,"{FEEEC4BA-04AF-45F0-B385-7290C65CFB9B}") ; CLSID for Version 2.0</pre>
+</body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+  <title>MemorySizeOfResource()</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>MemorySizeOfResource</h1>
+
+<p>Find out the size of resource in the specified <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>
+previously loaded with <a href="MemoryLoadLibrary">MemoryLoadLibrary.</a>
+Similar to <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648048.aspx">SizeOfResource</a>.</p>
+<br>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemorySizeOfResource</span>(Handle, hResource)
+<pre><em>Function Example:</em> <b>sz</b> := MemorySizeOfResource(ahkdllModule,hResource)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the function pointer.</p>
+    </dd>
+  <dt>Handle</dt>
+    <dd><p>MemoryModule handle prevously returned by <a
+      href="MemoryLoadLibrary">MemoryLoadLibrary.</a></p>
+    </dd>
+  <dt>hResource</dt>
+    <dd><p>Resource handle previously returned by <a
+      href="MemoryFindResource">MemoryFindResource</a></p>
+    </dd>
+</dl>
+
+<h3>Related</h3>
+
+<p><a href="MemoryModule.htm">MemoryModule</a>, <a
+href="ResoureLoadLibrary.htm">ResourceLoadLibrary</a>, <a
+href="MemoryLoadLibrary.htm">MemoryLoadLibrary</a>, <a
+href="MemoryFreeLibrary.htm">MemoryFreeLibrary</a>, <a
+href="MemoryFindResource.htm">MemoryFindResource</a>, <a
+href="">MemorySizeofResource</a>, <a
+href="MemoryLoadResource.htm">MemoryLoadResource</a>, <a
+href="MemoryLoadString.htm">MemoryLoadString</a>, <a
+href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
+
+<h3>Examples</h3>
+<pre>ahk:=MemoryLoadLibrary(A_AhkDir "\AutoHotkey.dll")
+hRes:=MemoryFindResource(ahk,"TYPELIB",1)
+MsgBox % MemorySizeOfResource(ahk,hRes)</pre>
+</body>
+</html>

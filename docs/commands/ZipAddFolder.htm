@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>ZipAddFolder()</title>
+<meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>ZipAddFolder</h1>
+
+<p>Add an empty folder to zip archive created with <a href="ZipCreateFile.htm">ZipCreateFile</a> or <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>.</p>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipAddFolder</span>(ZipHandle, ZipFileName)
+<pre><em>Function Example:</em> <b>Success</b> := ZipAddFolder(hZip, "scripts")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+
+  <dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store 1 / true if file was added successfully or 0 / false if operation failed.</p></dd>
+  
+  <dt>ZipHandle</dt>
+  <dd><p>Zip handle returned from <a href="ZipCreateFile.htm">ZipCreateFile</a> or <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>.</p></dd>
+  
+  <dt>ZipFileName</dt>
+  <dd><p>Path and name of the folder to use for zip archive.</p></dd>
+
+</dl>
+
+<h3>Related</h3>
+<p><a href="ZipCreateFile.htm">ZipCreateFile</a>, <a href="ZipCloseFile.htm">ZipCloseFile</a>, <a href="ZipOptions.htm">ZipOptions</a>,
+ <a href="UnZip.htm">UnZip</a>, <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>, <a href="ZipAddBuffer.htm">ZipAddBuffer</a>,
+ <a href="ZipCloseBuffer.htm">ZipCloseBuffer</a>, <a href="UnZipBuffer.htm">UnZipBuffer</a>, <a href="ZipRawMemory.htm">ZipRawMemory</a>,
+ <a href="UnZipRawMemory.htm">UnZipRawMemory</a>, <a href="ZipInfo.htm">ZipInfo</a>, <a href="ZipAddFile.htm">ZipAddFile</a></p>
+<h3>Examples</h3>
+<pre class="NoIndent">hZip:=ZipCreateFile("C:\Test.zip")
+ZipAddFolder(hZip, "scripts")
+ZipCloseFile(hZip)
+</pre>
+
+</body>
+</html>

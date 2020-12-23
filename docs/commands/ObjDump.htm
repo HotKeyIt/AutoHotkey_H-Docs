@@ -1,0 +1,69 @@
+<!DOCTYPE HTML> 
+<html><head><title>ObjDump()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ObjDump</h1>
+<p>Dump an object to memory or save to file for later use.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjDump</span>(ObjectOrPath <span class="optional">, DumpToVar, Compress, Password</span>)
+<pre><em>Function Example:</em> <b>size</b> := ObjDump(obj, var)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the size of dumped object.</p></dd>
+
+  <dt>ObjectOrPath</dt>
+  <dd>
+  <p>The object to be dumped to memory.<br>To save the object to a file this parameter must be the file path and DumpToVar parameter the object, see Examples.</p>
+  </dd>
+  
+  <dt>DumpToVar (optional)</dt>
+  <dd>
+  <p>The name of the variable in which to store Buffer object. When this parameter is omitted only the size will be returned.
+  <br>When saving the object to a file this parameter will be the object and ObjOrPath the file path.</p>
+  </dd>
+  
+  <dt>Compress (optional)</dt>
+  <dd>
+  <p>If this parameter is not NULL || FALSE || 0, then dumped object will be compressed.</p>
+  </dd>
+  
+  <dt>Password (optional)</dt>
+  <dd>
+  <p>When dumped object is compressed this parameter can be a passwords to use for dumped object, no password can be used if Compress parameter is NULL || FALSE || 0!</p>
+  </dd>
+</dl>
+<dl>
+<h3>General Remarks</h3>
+<dd>
+<p>Only following data is saved: for Objects its properties, for Maps its items, for Arrays its values, buffer in BufferObjects and Structs which are converted to Map. Other types of Objects are not supported.
+ <br>The "base" reference is not saved and can not be restored.</p>
+</dd>
+</dl>
+<h3><em>Related</em></h3>
+<p><em><a href="ObjLoad.htm">ObjLoad</a></em></p>
+<h3>Examples</h3>
+<pre class="NoIndent"><em>; Create a simple object</em>
+obj := {key:"value",1:"test",2:10}
+
+<em>; Dump an object to variable.</em>
+sz := ObjDump(obj, var)
+
+<em>; Restore an object from variable</em>
+obj := ObjLoad(var.Ptr)
+
+<em>; Dump an object to file</em>
+sz := ObjDump(A_ScriptDir "\MyDump.bin", obj)
+
+<em>; Restore an object from file</em>
+obj := ObjLoad(A_ScriptDir "\MyDump.bin")
+
+<em>; Get the dump size of an object </em>
+MsgBox % ObjDump(obj)</pre>
+</body></html>

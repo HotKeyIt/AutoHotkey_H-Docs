@@ -1,0 +1,52 @@
+<!DOCTYPE HTML> 
+<html><head><title>ahkassign</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ahkassign</h1>
+<p>Exported function that assigns a string value to a variable in
+currently executed
+script.
+</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("Module\ahkassign", "Str", "VarName", "Str", Value, "CDecl UInt")
+<pre><em>Function Example:</em> <b>Result</b> := DllCall("AutoHotkey.<b>dll</b>\ahkassign", "Str", "Variable", "Str", "100" ,"CDecl UInt")
+                  <b>Result</b> := DllCall("AutoHotkey.<b>exe</b>\ahkassign", "Str", "Variable", "Str", "100", "CDecl UInt")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of the variable in which to store the result, -1 on failure and 0 on success.</p>
+</dd>
+<dt>VarName</dt>
+<dd>
+<p>Name of the variable to assign value to.</p>
+</dd>
+<dt>Value</dt>
+<dd>
+<p>Value as String.</p>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="ahkFindFunc.htm">ahkFindFunc</a>,
+<a href="ahkFindLabel.htm">ahkFindLabel</a>,
+<a href="ahkgetvar.htm">ahkgetvar</a>
+</p>
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","","Str","","CDecl") <em>; start a new thread from file.</em>
+DllCall(dllpath "\ahkassign","Str","var","Str","value","CDecl") <em>; assing value to var</em>
+MsgBox % DllCall(dllpath "\ahkgetvar","Str","var","UInt",0,"CDecl") <em>; wait for the thread to exit</em>
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread()
+dll.ahkassign("var","value")
+MsgBox % dll.ahkgetvar.var</pre>
+</body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML> 
+<html><head><title>BinToHex()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>BinToHex</h1>
+<p>Convert binary memory to hex string.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">BinToHex</span>(Address, Length)
+<pre><em>Function Example:</em> <b>hex</b> := BinToHex(&var, 10)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the hex string.</p></dd>
+
+<dt>Address</dt>
+<dd>
+<p>Address of variable or pointer to memory.</p>
+</dd>
+<dt>Length</dt>
+<dd>
+<p>Length of memory in bytes to convert.</p>
+</dd>
+</dl>
+<dl>
+<h3><em>Related</em></h3>
+<p><em><a href="_DllImport.htm">#DllImport</a>, <a href="DynaCall.htm">DynaCall</a>, <a href="WinApi.htm">WinApi</a></em></p>
+<h3>Examples</h3>
+<pre class="NoIndent">MsgBox % BinToHex(&"123",6) <em>; unicode string to hex</em>
+VarSetCapacity(var,11)
+StrPut("ABC",&var,"CP0")
+MsgBox % BinToHex(&var,4) <em>; ansi string to hex</em>
+Loop 10
+	NumPut(A_Index,&var,A_Index-1,"Char")
+MsgBox % BinToHex(&var,10) <em>; memory to hex</em></pre>
+</body></html>

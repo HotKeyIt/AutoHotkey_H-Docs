@@ -1,0 +1,60 @@
+<!DOCTYPE HTML> 
+<html><head><title>ahkPostFunction()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ahkPostFunction</h1>
+<p>Exported function that allows calling a function in script
+currently executed by&nbsp;AutoHotkey module without waiting for
+the function to return.<br>
+Paramenters can be strings only.<br>
+</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkPostFunction</span>("FuncName" <span class="optional">, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10</span>)
+<pre><em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkPostFunction", "Str", "FuncName"[, "Str", Arg1 , ..., "Str",Arg10], "Str")
+                  <b>OutputVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkPostFunction", "Str", "FuncName"[, "Str", Arg1 , ..., "Str",Arg10], "Str")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of the variable to store 0 if function was found or -1 if functon was not found.</p>
+</dd>
+<dt>FuncName</dt>
+<dd>
+<p>The name of the function to call.</p>
+</dd>
+<dt>Arg1, ..., Arg10</dt>
+<dd>
+<p>You can pass up to 10 parameters to the function. Note all
+parameters need to be Strings or NULL / 0 if you want to omit parameter (use function default parameters)</p>
+</dd>
+<dl>
+<h3>Return Value</h3>
+<dd>
+<p>If a function was found and called it returns 1 (true),
+otherwise 0 (false).</p>
+</dd>
+</dl>
+<h3>Remarks</h3>
+<p>Note that Function will not run if <a href="_MaxThreads.htm">#MaxThreads</a> limit is reached.</p>
+<h3>Related</h3>
+<p><a href="ahkFunction.htm">ahkFunction</a>,
+<a href="ahkFindFunc.htm">ahkFindFunc</a>
+</p>
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyFunc(param){`nSleep 1000`nMsgBox `% param`n}","Str","","CDecl") <em>; start a new thread, just the function.</em>
+DllCall(dllpath "\ahkPostFunction","Str","MyFunc","Str","Hello World!","Str","","Str","","Str","","Str","","Str","","Str","","Str","","Str","","Str","","CDecl") <em>; call the function.</em>
+Sleep 2000 <em>; wait 2 seconds and exit</em>
+ 
+ <em>; Same example like above using included AutoHotkey.dll</em>
+ dll:=AhkThread("#Persistent`nMyFunc(param){`nSleep 1000`nMsgBox `% param`n}")
+ dll.ahkPostFunction["MyFunc","Hello World!"]
+ Sleep 2000</pre>
+</body></html>

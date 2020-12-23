@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>ResGet()</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>ResGet</h1>
+
+<p>Reads a resource from executable file (dll or exe).</p>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ResGet</span>(Executable, Name <span class="optional">, Type, Language</span>)<pre><em>Function Example:</em> <b>Size</b> := ResGet(Data, A_AhkPath, "MYRESOURCE")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the Buffer object containing the read data.</p>
+    </dd>
+  <dt>Executable</dt>
+    <dd><p>Path to the executable file (dll, exe or bin).</p>
+    </dd>
+  <dt>Name</dt>
+    <dd><p>The name of resource.</p>
+    </dd>
+  <dt>Type (optional)</dt>
+    <dd><p>Type of resource. Default is RCDATA (10).<br>See <a href="http://msdn.microsoft.com/en-us/library/ms648009.aspx">MSDN</a> for default resource types.</p>
+    </dd>
+  <dt>Language (optional)</dt>
+    <dd><p>The <a href="http://www.microsoft.com/resources/msdn/goglobal/default.mspx">language</a> of resource.</p>
+    </dd>
+</dl>
+
+
+<h3>Remarks</h3>
+
+<p>If resource data is compressed or encrypted you can use <a href="UnZipRawMemory.htm">UnZipRawMemory</a> to decrypt and unzip it.</p>
+
+<h3>Related</h3>
+
+<p><a href="ResPut.htm">ResPut</a>, <a
+href="ResPutFile.htm">ResPutFile</a>
+<a href="ResExist.htm">ResExist</a>, <a href="ResDelete.htm">ResDelete</a>, <a
+href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+
+<h3>Example</h3>
+<pre class="NoIndent">sz:=ResGet(data,A_AhkPath,"RESGET.AHK","LIB")
+UnZipRawMemory(&data,sz,var)
+MsgBox % StrGet(&var,"UTF-8")</pre>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML> 
+<html><head><title>FindLabel()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>FindLabel</h1>
+<p>Finds a label in currently executed script and returns a pointer to it.</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FindLabel</span>(LabelName)<pre><em>Function Example:</em> <b>MyLabelPtr</b> := FindLabel("MyLabel")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of the variable to store the label pointer in or 0 if the label was not found.</p>
+</dd>
+<dt>LabelName</dt>
+<dd>
+<p>The name of the label to find.</p>
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre class="NoIndent">; AHK Structures
+global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func,_AHKDerefType *next,UInt symbol},BYTE type,param_count,WORD length"
+global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKDerefType *deref,_AHKVar *var,LPTSTR marker,_AHKExprTokenType *circuit_token},{_AHKExprTokenType *outer_deref,LPTSTR error_reporting_marker,size_t marker_length, BOOL is_lvalue}}},UINT symbol"
+global _AHKArgStruct := "BYTE type,bool is_expression,WORD length,LPTSTR text,_AHKDerefType *deref,_AHKExprTokenType *postfix"
+global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
+global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"
+global _AHKLabel := "PTR vTable,LPTSTR mName,_AHKLine *mJumpToLine,_AHKLabel *mPrevLabel,*mNextLabel"
+MyLabel:=Struct(_AHKLabel,FindLabel("MyLabel"))
+MsgBox "Name:`t" MyLabel.mName "`nLine:`t" MyLabel.mJumpToLine.mLineNumber
+MyLabel:
+Return</pre>
+</body></html>

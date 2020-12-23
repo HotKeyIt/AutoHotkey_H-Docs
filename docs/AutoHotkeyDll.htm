@@ -1,0 +1,70 @@
+<!DOCTYPE HTML> 
+<html><head><title>AutoHotkey dll Module</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<script src="static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>AutoHotkey.dll module</h1>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#Reasons">Why do we need an
+AutoHotkey Module</a></li>
+<li><a href="#OtherPrograms">Using AutoHotkey
+Module in other programs</a></li>
+<li><a href="#COMInterface">COM Interface</a></li>
+<li><a href="#Reload">Reload script but keep Process running.</a></li>
+</ul>
+<h2 id="Reasons"><a name="Reasons"></a>Why
+do we need an AutoHotkey Module</h2>
+<p><b>Multi-threading</b>: AutoHotkey
+is not designed for multi-threading naturally and most likely it will
+be&nbsp;never implemented. Using AutoHotkey.dll
+we can stil run multiple
+scripts in one process, on a multi-core system we can even run multiple
+scripts at the same time. To do so, AutoHotkey module&nbsp;also
+needs to be loaded
+multiple times. Note for this you will need to use <a href="MemoryModule.html">MemoryModule</a>
+or
+multiple
+dlls&nbsp;by copying and renaming AutoHotkey.dll
+for example to
+MyScript1.dll, MyScript2.dll ...<br>
+</p>
+<p>AutoHotkey Module is running in its own context,
+using separate memory, functions and variables, this allows to access,
+read and write its memory / variables from another thread. AutoHotkey
+Module exports several functions that allow various operations to
+create and manipulate the new thread. </p>
+<p id="OtherPrograms"><b>Use AutoHotkey in
+other programms</b>:
+AutoHotkey Module can be also used in other programming languages like
+VB, C#, C++, Python, Lua and many more. Programms that do not support
+loading a dll naturally can use the <a href="COMInterface.htm">COM
+Interface</a> of AutoHotkey.dll.</p>
+<p id="COMInterface"><b>AutoHotkey COM Interface</b>:
+AutoHotkey.dll can be also loaded and manipulated using its <a href="COMInterface.htm">COM
+  Interface</a>. Before using this Interface, AutoHotkey.dll needs to be
+registered:</p>
+<pre>regsvr32 "C:\Program Files\AutoHotkey\AutoHotkey.dll"</pre>
+To unregister AutoHotkey.dll use:
+<pre>regsvr32 /u "C:\Program Files\AutoHotkey\AutoHotkey.dll"</pre>
+<p>AutoHotkey_H additionally supports loading unregistered dlls
+using <a href="commands/ComObjDll.html">ComObjDll</a>.</p>
+<p>Internally COM Interface always use <a href="MemoryModule.html">MemoryModule</a> to create a
+new thread, this allows loading the same module multiple times.
+AutoHotkey.dll automatically frees the module when&nbsp;COM object
+is released.</p>
+<p id="Reload"><b>Reload script but
+keepProcess running</b><p>
+<p>Using AutoHotkey Module we can
+share
+variables/objects/memory between thread. For example we can create all
+reqiured variables in main thread and share them to AutoHotkey Module
+using <a href="commands/Alias.html">Alias</a>
+function. Whenever a reload is required (e.g to accept new
+hotstrings and hotkeys) we can reload the AutoHotkey module only and
+share the variables again.</p>
+</body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+<title>MemoryModule</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<script src="static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>MemoryModule</h1>
+
+<h2>Table of Contents</h2>
+<ul>
+  <li><a href="#About">About Memory Module</a></li>
+  <li><a href="#Multithread">Load a dll multiple times</a></li>
+  <li><a href="#COMSupport">COM Support</a></li>
+  <li><a href="#Functions">Built-in functions.</a></li>
+</ul>
+
+<h2 id="About">About Memory Module</h2>
+
+<p><a
+href="http://www.joachim-bauch.de/tutorials/loading-a-dll-from-memory/">MemoryModule</a>
+was developed by Joachim Bauch and is released under MPL 2.0.<br>
+The default windows API functions to load external libraries into a program
+(LoadLibrary, LoadLibraryEx) only work with files on the filesystem. MemoryModule is a library that can be used to load a DLL completely from
+memory - without storing on the disk first.</p>
+
+<p id="MultiThread"><a name="MultiThread"></a><b>Load a <a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>
+multiple times</b>: AutoHotkey is not designed for multi-threading
+naturally and most likely it will be never implemented. Using AutoHotkey.dll
+we can stil run multiple scripts in one process, on a
+multi-core system we can even run multiple scripts at the same time. To do so,
+AutoHotkey module also needs to be loaded multiple times. Instead of using
+multiple dlls by copying and renaming them we can use Memory Module.<br>
+</p>
+
+<p id="COMSupport"><b>COM support</b>: AutoHotkey_H additionally
+supports loading unregistered dlls using <a
+href="commands/ComObjDll.html">ComObjDll</a>.</p>
+
+<p>Internally AutoHotkey.dll COM Interface always uses <a
+href="MemoryModule.html">MemoryModule</a> to create a new thread, this allows
+loading the same module multiple times. AutoHotkey.dll automatically frees the
+module when COM object is released.</p>
+
+<p id="Functions"><b>Functions</b>: Following functions are available<br>
+</p>
+<ul>
+  <li><a href="commands/MemoryLoadLibrary.htm">MemoryLoadLibrary</a> - Load a
+    <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>
+    from Memory, similar to <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx">LoadLibrary</a>.</li>
+  <li><a href="commands/MemoryGetProcAddress.htm">MemoryGetProcAddress</a> -
+    Get address of a function in <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>,
+    similar to <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms683212.aspx">GetProcAddress</a></li>
+  <li><a href="commands/MemoryFreeLibrary.htm">MemoryFreeLibrary</a> - Free <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>,
+    similar to <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms683152.aspx">FreeLibrary</a></li>
+  <li><a href="commands/MemoryFindResource.htm">MemoryFindResource</a> - Find
+    Resource in a <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>,
+    similar to <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648042.aspx">FindResource
+    and FindResourceEx</a></li>
+  <li><a href="commands/MemorySizeofResource.htm">MemorySizeofResource</a> -
+    Retrieves the size in bytes, of the specified resource in a <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>,
+    similar to <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648048.aspx">SizeOfResource</a></li>
+  <li><a href="commands/MemoryLoadResource.htm">MemoryLoadResource</a> - Load the specified resource in a <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>,
+    similar to <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms648046.aspx">LoadResource</a></li>
+  <li><a href="commands/MemoryLoadString.htm">MemoryLoadString</a> - Load the specified
+    String resource in a <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682589.aspx">dll</a>,
+    similar to <a
+    href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms647486.aspx">LoadString</a></li>
+</ul>
+</body>
+</html>

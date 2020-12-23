@@ -1,0 +1,46 @@
+<!DOCTYPE HTML> 
+<html><head><title>ahkFindLabel()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ahkFindLabel</h1>
+<p>Exported function that finds a label in currently executed
+script and returns a pointer to it.
+</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkFindLabel</span>("LabelName")
+<pre><em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkFindLabel", "Str", "LabelName", "PTR")
+                  <b>OutputVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkFindLabel", "Str", "LabelName", "PTR")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of the variable to store the label pointer in or 0 if the label was not found.</p>
+</dd>
+<dt>LabelName</dt>
+<dd>
+<p>Name of the label to find.</p>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="ahkFunction.htm">ahkFunction</a>, <a href="ahkPostFunction.htm">ahkPostFunction</a>,
+<a href="ahkFindLabel.htm">ahkFindLabel</a>
+</p>
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyLabel:`nReturn","Str","","CDecl") <em>; start a new thread, just the function.</em>
+MsgBox % DllCall(dllpath "\ahkFindLabel","Str","MyLabel","CDecl PTR") <em>; call the function and display pointer in MsgBox.</em>
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread("#Persistent`nMyLabel:`nReturn")
+MsgBox % dll.ahkFindLabel["MyLabel"]
+
+<em>; Find label in current thread</em>
+MsgBox % ahkFindLabel("MyLabel")</pre>
+</body></html>

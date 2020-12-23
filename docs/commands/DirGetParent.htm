@@ -1,0 +1,37 @@
+<!DOCTYPE HTML> 
+<html><head><title>DirGetParent()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>DirGetParent</h1>
+<p>Retrieve parent directory for a file or folder.</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DirGetParent</span>(Path <span class="optional">, ParentCount</span>)
+<pre><em>Function Example:</em> <b>ParentDir</b> := DirGetParent(A_AhkPath)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the parent directory.</p>
+    </dd>
+  <dt>Path</dt>
+    <dd><p>Path to a directory or File, the path must exist.</p>
+    </dd>
+  <dt>ParentCount (optional)</dt>
+    <dd><p>By default (ParentCount = 1) parent directory is retrieved, to retrieve parent of parent use 2 and so on.</p>
+    </dd>
+</dl>
+<dl>
+<h3>General Remarks</h3>
+<dd>
+<p>If there is no parent directory, empty string will be returned.</p>
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre class="NoIndent">MsgBox % DirGetParent(A_AhkPath)</pre>
+</body></html>

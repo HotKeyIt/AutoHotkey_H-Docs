@@ -1,0 +1,54 @@
+<!DOCTYPE HTML> 
+<html><head><title>ahkExec()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ahkExec</h1>
+<p>Exported function that executes some code temporarily from
+string in currently
+executed
+script.
+</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkExec</span>(Code)
+<pre><em>Function Example:</em> <b>Result</b> := ahkExec("MsgBox `% A_Now")
+                  <b>Result</b> := DllCall("AutoHotkey.<b>dll</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char")
+                  <b>Result</b> := DllCall("AutoHotkey.<b>exe</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store 1 (true) if code was created and executed successfully, 0 (false) otherwise.</p>
+    </dd>
+<dt>NewCode</dt>
+<dd>
+<p>Code to execute temporarily in currently running script.</p>
+</dd>
+<h3>Return Value</h3>
+<dd>
+<p>If code was created and executed successfully 1 (true) is
+returned, otherwise 0 (false).</p>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="ahkFindFunc.htm">ahkFindFunc</a>,
+<a href="ahkFindLabel.htm">ahkFindLabel</a>,
+<a href="ahkassign.htm">ahkassign</a>
+</p>
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","","Str","","CDecl") <em>; start a new thread, just the function.</em>
+DllCall(dllpath "\ahkExec","Str","MsgBox Hello World!","CDecl") <em>; add and execute code</em>
+
+<em>; Same example like above but using included AutoHotkey.dll</em>
+dll:=AhkThread()
+dll.ahkExec["MsgBox Hello World!"]
+
+<em>; Execute code in current thread</em>
+ahkExec("MsgBox Test")</pre>
+</body></html>

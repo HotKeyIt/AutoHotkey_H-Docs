@@ -1,0 +1,42 @@
+<!DOCTYPE HTML> 
+<html><head><title>ObjByRef()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>ObjByRef</h1>
+<p>Creates an object containing <a href="../../docs/Functions.htm#ByRef">ByRef</a> variables, obj.var returns actual variable content and obj.var := value will assign new value to variable.</p>
+<br>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjByRef</span>(Var1 <span class="optional">, Var2, ...</span>)
+<pre><em>Function Example:</em> <b>ByRefObj</b> := ObjByRef(Var1)</pre></pre>
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the object.</p>
+    </dd>
+		
+  <dt>Var1, Var2, ...</dt>
+    <dd><p>The name of the variable which reference will be stored in the object, key will be the name of the variable.</p>
+    </dd>
+</dl>
+<dl>
+<h3>General Remarks</h3>
+<dd>
+<p>ByRefObj can also accept a new variable, simply use ByRefObj.newvar:=newvar. Other than calling ObjByRef() where key = VarName, when assigning new variable any name for the key can be used, e.g. ByRefObj.MyName:=Name</p>
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre class="NoIndent">ByRefObj := ObjByRef(var:="Hello World!")
+MsgBox % ByRefObj.var <em>; returns content of var</em>
+ByRefObj.var := "Hello AHK!" <em>; assign new content to var</em>
+MsgBox % var
+ByRefObj.newvar:=var2 <em>; add new variable to ByRefObj but use newvar instead of var2 as key name</em>
+ByRefObj.newvar:=1 <em>; assign new content to var</em>
+MsgBox % var2
+</pre>
+</body></html>

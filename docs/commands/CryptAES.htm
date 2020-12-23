@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>CryptAES()</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>CryptAES</h1>
+<p>Encrypt and Decrypt data.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">CryptAES</span>(AddressOrVar, Size, password <span class="optional">, EncryptOrDecrypt, Algorithm</span>)
+<pre><em>Function Example:</em> <b>size</b> := CryptAES(var, sz, "password", true)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+
+  <dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the size of encrypted memory.</p></dd>
+  
+  <dt>AddressOrVar</dt>
+  <dd><p>Variable or memory address of data to be encrypted or decrypted.</p></dd>
+  
+  <dt>Size</dt>
+  <dd><p>Size of data to be encrypted or decrypted. When encrypting make sure the buffer in AddressOrVar is at least 16 bytes larger than data to be encrypted!</p></dd>
+  
+  <dt>Password</dt>
+  <dd><p>Password to use for encryption or decryption.</p></dd>
+  
+  <dt>EncryptOrDecrypt (optional)</dt>
+  <dd><p>True or 1 to encrypt or false or 0 to decrypted. If omitted data is encrypted.</p></dd>
+  
+  <dt>Algorithm (optional)</dt>
+  <dd><p>Algorithm to use, supported values are 128 for CALG_AES_128, 192 for CALG_AES_192 or 256 for CALG_AES_256. If omitted CALG_AES_256 is used.</p></dd>
+</dl>
+
+<h3>Related</h3>
+<p><a href="ZipRawMemory.htm">ZipRawMemory</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
+</body>
+</html>

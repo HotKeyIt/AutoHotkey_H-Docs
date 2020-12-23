@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>FileReplace()</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>FileReplace</h1>
+
+<p>Deletes the file and writes text to the file after creating it.</p>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FileReplace</span>(Text, Filename <span class="optional">, Options</span>)
+<pre><em>Function Example:</em> <b>Success</b> := FileReplace("text",A_ScriptDir "\MyFile.txt")</pre></pre>
+<h3>Parameters</h3>
+<dl>
+
+  <dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store true if file was replaced or false otherwise.</p></dd>
+
+  <dt>Text</dt>
+  <dd><p>The text to append to the file. See more info in FileAppend.</p></dd>
+
+  <dt>Filename</dt>
+  <dd><p>The name of the file to be appended, which is assumed to be in %A_WorkingDir% if an absolute path isn't specified.</p>
+    </dd>
+  <dt>Options</dt>
+  <dd><p>See FileAppend options.</p></dd>
+
+</dl>
+
+<h3>Remarks</h3>
+<p>FileOpen in append mode provides more control than FileAppend and allows the file to be kept open rather than opening and closing it each time. Once a file is opened in append mode, use <code>file.Write(string)</code> to append the string. File objects also support binary I/O via RawWrite/RawRead or Write<i>Num</i>/Read<i>Num</i>, whereas FileAppend supports only text.</p>
+<h3>Example</h3>
+<pre class="NoIndent">FileReplace("New content`n", "C:\My Documents\Test.txt")</pre>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML> 
+<html><head><title>CreateScript()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>CreateScript</h1>
+<p>Creates a script from main script that can be passed to <a href="./AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="BinRun.htm">BinRun</a> or <a href="DynaRun.htm">DynaRun</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">CreateScript</span>(Script <span class="optional">, Password</span>)
+<pre><em>Function Example:</em> <b>MyScript</b> := CreateScript("a:=1`nStart:End`nfun{}")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the created script.</p></dd>
+
+<dt>Script</dt>
+<dd>
+<p>Label or function in main Script to include.<br>Syntax for including label is <b>tartingLabelName:EndingLabelName</b><br>Syntax for including function is <b>FunctionName{}</b></p>
+</dd>
+
+<dt>Password (optional)</dt>
+<dd>
+<p>Password used to compile in Ahk2Exe.</b></p>
+</dd>
+<dl>
+<h3>General Remarks</h3>
+<dd>
+<p><p>You can have any code between included labels and functions. Script is also loaded from Resource if A_IsCompiled.</p>
+</dd>
+</dl>
+<h3>Related</h3>
+<p><a href="./AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="BinRun.htm">BinRun</a>, <a href="DynaRun.htm">DynaRun</a></p>
+
+<h3>Examples</h3>
+<pre class="NoIndent">DynaRun(CreateScript("fun()`n<Start:End>`nfun{}"))
+ExitApp
+<Start:
+MsgBox some code to execute
+End>:
+Return
+fun(){
+  MsgBox calling %A_ThisFunc%
+}</pre>
+</body></html>

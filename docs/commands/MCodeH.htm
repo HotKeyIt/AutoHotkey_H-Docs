@@ -1,0 +1,36 @@
+<!DOCTYPE HTML> 
+<html><head><title>MCodeH()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>MCodeH</h1>
+<p>Creates a <a href="DynaCall.htm">DynaCall</a> object for machine code function.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MCodeH</span>(Hex <span class="optional">, Definition, Parameter1, Parameter2, ...</span>)
+<pre><em>Function Example:</em> <b>BSwap16</b> := MCodeH("8AE18AC5C3", "h==h")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the function object.</p></dd>
+
+<dt>Definition</dt>
+<dd>
+<p>Same definition syntax as used in <a href="DynaCall.htm">DynaCall</a>.</p>
+</dd>
+<dt>Parameter1, Parameter2, ... (optional)</dt>
+<dd>
+<p>Default Parameters to use when calling the function, same as for <a href="DynaCall.htm">DynaCall</a>.</p>
+</dd>
+</dl>
+<dl>
+<h3><em>Related</em></h3>
+<p><em><a href="_DllImport.htm">#DllImport</a>, <a href="DynaCall.htm">DynaCall</a>, <a href="WinApi.htm">WinApi</a></em></p>
+<h3>Examples</h3>
+<pre class="NoIndent">RGB_TO_BGR:=MCodeH(A_PtrSize=4?"8B4C24040FB6C18BD1C1E01081E200FF00000BC2C1E9100BC1C3":"0FB6C18BD1C1E910C1E01081E200FF00000BC20BC1C3","ui==ui")
+MsgBox % format("0x{1:X}",RGB_TO_BGR[0xAABBCC])</pre>
+</body></html>

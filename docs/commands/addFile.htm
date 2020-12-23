@@ -1,0 +1,62 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+  <title>addFile()</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>addFile</h1>
+
+<p>Adds new code from a file on disk or network in currently executed script.
+</p>
+<br>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">addFile</span>(FilePath <span class="optional">, WaitExecute</span>)
+<pre><em>Function Example:</em> <b>LinePtr</b> := addFile(A_ScriptDir "\MyScript.ahk", 1)
+                  <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")
+                  <b>OutputVar</b> := DllCall("AutoHotkey.<b>exe</b>\addFile", "Str", A_ScriptDir "\MyScript.ahk", "Int", 1, "UPTR")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the line pointer to new code, if code could not be added 0 will be stored.</p>
+    </dd>
+  <dt>NewCode</dt>
+    <dd><p>New AutoHotkey script saved on disk or network to be added to
+      currently running script.</p>
+    </dd>
+  <dt>WaitExecute (optional)</dt>
+    <dd><p>0 = add code but do not execute it.<br>
+      1 = add code, execute it and wait for it to finish execution.<br>
+      2 = add code, execute it and return immediately (does not wait until
+      execution finished).</p>
+    </dd>
+</dl>
+
+<h3>Related</h3>
+
+<p><a href="ahkFindFunc.htm">ahkFindFunc</a>, <a
+href="addScript.htm">addScript</a>, <a
+href="ahkFindLabel.htm">ahkFindLabel</a>, <a
+href="ahkassign.htm">ahkassign</a></p>
+
+<h3>Examples</h3>
+<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
+DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
+DllCall(dllpath "\ahktextdll","Str","","Str","","Cdecl") <em>; start new, empty thread.</em>
+DllCall(dllpath "\addFile","Str","NewScript.ahk","Int",1,"Cdecl") <em>; add and execute code</em>
+
+<em>; Same example like above using included AutoHotkey.dll</em>
+dll:=AhkThread()
+dll.addFile["NewScript.ahk",1]
+
+<em>; Add new script to current thread</em>
+addFile("NewScript.ahk",1)</pre>
+</body>
+</html>

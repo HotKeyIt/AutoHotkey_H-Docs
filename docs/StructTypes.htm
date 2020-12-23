@@ -1,0 +1,596 @@
+<!DOCTYPE HTML> 
+<html><head><title>Built-in Structure types</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<script src="static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>Built-in data types for Struct and sizeof functions.</h1>
+<p>AutoHotkey DllCall types are <b>bold</b>.</p>
+<table class="info">
+<tbody>
+<tr>
+<td width="14%">
+<p>ACCESS_MASK</p>
+</td>
+<td width="14%">
+<p>ATOM</p>
+</td>
+<td width="14%">
+<p>BOOL</p>
+</td>
+<td width="14%">
+<p>BOOLEAN</p>
+</td>
+<td width="14%">
+<p>BYTE</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>CHAR</p>
+</td>
+<td width="14%">
+<p>COLORREF</p>
+</td>
+</tr>
+<tr>
+<td style="font-weight: bold;" width="14%">
+<p>DOUBLE</p>
+</td>
+<td width="14%">
+<p>DWORD</p>
+</td>
+<td width="14%">
+<p>DWORD_PTR</p>
+</td>
+<td width="14%">
+<p>DWORD32</p>
+</td>
+<td width="14%">
+<p>DWORD64</p>
+</td>
+<td width="14%">
+<p>DWORDLONG</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>FLOAT</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>HACCEL</p>
+</td>
+<td width="14%">
+<p>HALF_PTR</p>
+</td>
+<td width="14%">
+<p>HANDLE</p>
+</td>
+<td width="14%">
+<p>HBITMAP</p>
+</td>
+<td width="14%">
+<p>HBRUSH</p>
+</td>
+<td width="14%">
+<p>HCOLORSPACE</p>
+</td>
+<td width="14%">
+<p>HCONV</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>HCONVLIST</p>
+</td>
+<td width="14%">
+<p>HCURSOR</p>
+</td>
+<td width="14%">
+<p>HDC</p>
+</td>
+<td width="14%">
+<p>HDDEDATA</p>
+</td>
+<td width="14%">
+<p>HDESK</p>
+</td>
+<td width="14%">
+<p>HDROP</p>
+</td>
+<td width="14%">
+<p>HDWP</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>HENHMETAFILE</p>
+</td>
+<td width="14%">
+<p>HFILE</p>
+</td>
+<td width="14%">
+<p>HFONT</p>
+</td>
+<td width="14%">
+<p>HGDIOBJ</p>
+</td>
+<td width="14%">
+<p>HGLOBAL</p>
+</td>
+<td width="14%">
+<p>HHOOK</p>
+</td>
+<td width="14%">
+<p>HICON</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>HINSTANCE</p>
+</td>
+<td width="14%">
+<p>HKEY</p>
+</td>
+<td width="14%">
+<p>HKL</p>
+</td>
+<td width="14%">
+<p>HLOCAL</p>
+</td>
+<td width="14%">
+<p>HMENU</p>
+</td>
+<td width="14%">
+<p>HMETAFILE</p>
+</td>
+<td width="14%">
+<p>HMODULE</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>HMONITOR</p>
+</td>
+<td width="14%">
+<p>HPALETTE</p>
+</td>
+<td width="14%">
+<p>HPEN</p>
+</td>
+<td width="14%">
+<p>HRESULT</p>
+</td>
+<td width="14%">
+<p>HRGN</p>
+</td>
+<td width="14%">
+<p>HRSRC</p>
+</td>
+<td width="14%">
+<p>HSZ</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>HWINSTA</p>
+</td>
+<td width="14%">
+<p>HWND</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>INT</p>
+</td>
+<td width="14%">
+<p>INT8</p>
+</td>
+<td width="14%">
+<p>INT16</p>
+</td>
+<td width="14%">
+<p>INT32</p>
+</td>
+<td width="14%">
+<p>INT_PTR</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>INT32</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>INT64</p>
+</td>
+<td width="14%">
+<p>LANGID</p>
+</td>
+<td width="14%">
+<p>LCID</p>
+</td>
+<td width="14%">
+<p>LCTYPE</p>
+</td>
+<td width="14%">
+<p>LGRPID</p>
+</td>
+<td width="14%">
+<p>LONG</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>LONG_PTR</p>
+</td>
+<td width="14%">
+<p>LONG32</p>
+</td>
+<td width="14%">
+<p>LONG64</p>
+</td>
+<td width="14%">
+<p>LONGLONG</p>
+</td>
+<td width="14%">
+<p>LPARAM</p>
+</td>
+<td width="14%">
+<p>LPBOOL</p>
+</td>
+<td width="14%">
+<p>LPBYTE</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>LPCOLORREF</p>
+</td>
+<td width="14%">
+<p>LPCSTR</p>
+</td>
+<td width="14%">
+<p>LPCTSTR</p>
+</td>
+<td width="14%">
+<p>LPCVOID</p>
+</td>
+<td width="14%">
+<p>LPCWSTR</p>
+</td>
+<td width="14%">
+<p>LPDWORD</p>
+</td>
+<td width="14%">
+<p>LPHANDLE</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>LPINT</p>
+</td>
+<td width="14%">
+<p>LPLONG</p>
+</td>
+<td width="14%">
+<p>LPSTR</p>
+</td>
+<td width="14%">
+<p>LPTSTR</p>
+</td>
+<td width="14%">
+<p>LPVOID</p>
+</td>
+<td width="14%">
+<p>LPWORD</p>
+</td>
+<td width="14%">
+<p>LPWSTR</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>LRESULT</p>
+</td>
+<td width="14%">
+<p>PBOOL</p>
+</td>
+<td width="14%">
+<p>PBOOLEAN</p>
+</td>
+<td width="14%">
+<p>PBYTE</p>
+</td>
+<td width="14%">
+<p>PCHAR</p>
+</td>
+<td width="14%">
+<p>PCSTR</p>
+</td>
+<td width="14%">
+<p>PCTSTR</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>PCWSTR</p>
+</td>
+<td width="14%">
+<p>PDWORD</p>
+</td>
+<td width="14%">
+<p>PDWORD_PTR</p>
+</td>
+<td width="14%">
+<p>PDWORD32</p>
+</td>
+<td width="14%">
+<p>PDWORD64</p>
+</td>
+<td width="14%">
+<p>PDWORDLONG</p>
+</td>
+<td width="14%">
+<p>PFLOAT</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>PHALF_PTR</p>
+</td>
+<td width="14%">
+<p>PHANDLE</p>
+</td>
+<td width="14%">
+<p>PHKEY</p>
+</td>
+<td width="14%">
+<p>PINT</p>
+</td>
+<td width="14%">
+<p>PINT8</p>
+</td>
+<td width="14%">
+<p>PINT16</p>
+</td>
+<td width="14%">
+<p>PINT32</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>PINT_PTR</p>
+</td>
+<td width="14%">
+<p>PINT32</p>
+</td>
+<td width="14%">
+<p>PINT64</p>
+</td>
+<td width="14%">
+<p>PLCID</p>
+</td>
+<td width="14%">
+<p>PLONG</p>
+</td>
+<td width="14%">
+<p>PLONG_PTR</p>
+</td>
+<td width="14%">
+<p>PLONG32</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>PLONG64</p>
+</td>
+<td width="14%">
+<p>PLONGLONG</p>
+</td>
+<td width="14%">
+<p>POINTER_32</p>
+</td>
+<td width="14%">
+<p>POINTER_64</p>
+</td>
+<td width="14%">
+<p>POINTER_SIGNED</p>
+</td>
+<td width="14%">
+<p>POINTER_UNSIGNED</p>
+</td>
+<td width="14%">
+<p>PSHORT</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>PSIZE_T</p>
+</td>
+<td width="14%">
+<p>PSSIZE_T</p>
+</td>
+<td width="14%">
+<p>PSTR</p>
+</td>
+<td width="14%">
+<p>PTBYTE</p>
+</td>
+<td width="14%">
+<p>PTCHAR</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>PTR</p>
+</td>
+<td width="14%">
+<p>PTSTR</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>PUCHAR</p>
+</td>
+<td width="14%">
+<p>PUHALF_PTR</p>
+</td>
+<td width="14%">
+<p>PUINT</p>
+</td>
+<td width="14%">
+<p>PUINT_PTR</p>
+</td>
+<td width="14%">
+<p>PUINT32</p>
+</td>
+<td width="14%">
+<p>PUINT64</p>
+</td>
+<td width="14%">
+<p>PULONG</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>PULONG_PTR</p>
+</td>
+<td width="14%">
+<p>PULONG32</p>
+</td>
+<td width="14%">
+<p>PULONG64</p>
+</td>
+<td width="14%">
+<p>PULONGLONG</p>
+</td>
+<td width="14%">
+<p>PUSHORT</p>
+</td>
+<td width="14%">
+<p>PVOID</p>
+</td>
+<td width="14%">
+<p>PWCHAR</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>PWORD</p>
+</td>
+<td width="14%">
+<p>PWSTR</p>
+</td>
+<td width="14%">
+<p>SC_HANDLE</p>
+</td>
+<td width="14%">
+<p>SC_LOCK</p>
+</td>
+<td width="14%">
+<p>SERVICE_STATUS_HANDLE</p>
+</td>
+<td width="14%">
+<p>SHORT</p>
+</td>
+<td width="14%">
+<p>SIGNED</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>SIZE_T</p>
+</td>
+<td width="14%">
+<p>SSIZE_T</p>
+</td>
+<td width="14%">
+<p>TBYTE</p>
+</td>
+<td width="14%">
+<p>TCHAR</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>UCHAR</p>
+</td>
+<td width="14%">
+<p>UHALF_PTR</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>UINT</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>UINT_PTR</p>
+</td>
+<td width="14%">
+<p>UINT32</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>UINT64</p>
+</td>
+<td width="14%">
+<p>ULONG</p>
+</td>
+<td width="14%">
+<p>ULONG_PTR</p>
+</td>
+<td width="14%">
+<p>ULONG32</p>
+</td>
+<td width="14%">
+<p>ULONG64</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>ULONGLONG</p>
+</td>
+<td width="14%">
+<p>UNSIGNED</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>UPTR</p>
+</td>
+<td style="font-weight: bold;" width="14%">
+<p>USHORT</p>
+</td>
+<td width="14%">
+<p>USN</p>
+</td>
+<td width="14%">
+<p>VOID</p>
+</td>
+<td width="14%">
+<p>WCHAR</p>
+</td>
+</tr>
+<tr>
+<td width="14%">
+<p>WORD</p>
+</td>
+<td width="14%">
+<p>WPARAM</p>
+</td>
+<td width="14%">
+<p>__int64</p>
+</td>
+<td width="14%">
+<p></p>
+</td>
+<td width="14%">
+<p></p>
+</td>
+<td width="14%">
+<p></p>
+</td>
+<td width="14%">
+<p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h2>Related</h2>
+<p><a href="commands/sizeof.htm">sizeof</a>,
+<a href="commands/Struct.htm">Stuct</a>
+, <a href="DllCall.htm">DllCall</a>, <a href="NumGet.htm">NumGet</a>, <a href="NumPut.htm">NumPut</a>
+</p>
+</body></html>

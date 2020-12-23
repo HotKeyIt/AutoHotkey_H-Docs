@@ -89,7 +89,7 @@ docs\commands\ResourceLoadLibrary.htm
 docs\commands\sizeof.htm
 docs\commands\SplashImage.htm
 docs\commands\SplashTextOn.htm
-docs\commands\StrPutVar.htm
+docs\commands\StrBuf.htm
 docs\commands\Struct.htm
 docs\commands\ToChar.htm
 docs\commands\ToInt.htm

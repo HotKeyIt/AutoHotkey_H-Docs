@@ -16,12 +16,9 @@
 
 <p>Extract one items from a zip archive.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZipBuffer</span>(ZipFileName, FileToExtract <span class="optional">, VariableName, Password</span>)
-<b>OutputVar</b> := UnZipBuffer(Address, Size, FileToExtract [, VariableName, Password])
-<pre><em>Command  Example:</em> UnZipBuffer "MyZip.zip", "scripts\MyScript.ahk", var
-                  UnZipBuffer &zip, sz, "scripts\MyScript.ahk", var
-<em>Function Example:</em> <b>Success</b> := UnZipBuffer("MyZip.zip", "scripts\MyScript.ahk", var)
-                  <b>Success</b> := UnZipBuffer (&zip, sz, "scripts\MyScript.ahk", var)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZipBuffer</span>(ZipFileName or Address or BufferObject, FileToExtract <span class="optional">, Password</span>)
+<pre><em>Function Example:</em> <b>MyBuffer</b> := UnZipBuffer("MyZip.zip", "scripts\MyScript.ahk")
+                  <b>MyBuffer</b> := UnZipBuffer(zipBuffer, sz, "scripts\MyScript.ahk", var)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -29,8 +26,8 @@
   <dt><b>OutputVar</b></dt>
   <dd><p>The name of the variable in which to store the size of extracted file.</p></dd>
   
-  <dt>ZipFileName or Address</dt>
-  <dd><p>The path and name of zip archive to extract from or an address to memory containing a zip archive.</p></dd>
+  <dt>ZipFileName or Address or BufferObject</dt>
+  <dd><p>The path and name of zip archive to extract from, buffer object or address/pointer to memory containing a zip archive also supported.</p></dd>
   
   <dt>Size</dt>
   <dd><p>The size in bytes of zip archive in memory. When previous parameter is ZipFileName this parameter is skipped, see examples.</p></dd>

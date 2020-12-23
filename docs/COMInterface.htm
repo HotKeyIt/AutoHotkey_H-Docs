@@ -60,9 +60,9 @@
 </table>
 <h3>Examples</h3>
 <b>Visual Basic example.</b>
-<pre>Sub atest()<br>Dim AhkCom As Object<br>Set AhkCom = CreateObject("AutoHotkey.Script")<br>AhkCom.ahktextdll("MsgBox Hello World!" &amp; Chr(13) &amp; "ExitApp")<br>End Sub</pre>
+<pre>Sub atest()<br>Dim AhkCom As Object<br>Set AhkCom = CreateObject("AutoHotkey2.Script")<br>AhkCom.ahktextdll("MsgBox 'Hello World!'" &amp; Chr(13) &amp; "ExitApp")<br>End Sub</pre>
 <b>AutoHotkey example.</b>
-<pre>AhkCom := ComObjCreate("AutoHotkey.Script")<br>AhkCom.ahktextdll("MsgBox Hello World!`nExitApp")<br>While AhkCom.ahkReady()<br>Sleep, 100<br>MsgBox Exiting now<br></pre>
+<pre>AhkCom := ComObjCreate("AutoHotkey2.Script")<br>AhkCom.ahktextdll("MsgBox 'Hello World!`nExitApp'")<br>While AhkCom.ahkReady()<br>Sleep, 100<br>MsgBox Exiting now<br></pre>
 <b>ComObjDll example</b>
 <pre>hModule:=DllCall("LoadLibrary","Str",A_AhkDir "\AutoHotkey.dll")<br>ahk:=ComObjDll(hModule,"{FEEEC4BA-04AF-45F0-B385-7290C65CFB9B}") ; CLSID for Version 2.0</pre>
 </body></html>

@@ -16,13 +16,13 @@ script.
 </p>
 <br>
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkExec</span>(Code)
-<pre><em>Command  Example:</em> ahkExec "MsgBox `% A_Now"
-                  DllCall "AutoHotkey.<b>dll</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char"
-                  DllCall "AutoHotkey.<b>exe</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char"
+<pre><em>Command  Example:</em> ahkExec "MsgBox A_Now"
+                  DllCall "AutoHotkey.<b>dll</b>\ahkExec", "Str", "MsgBox A_Now", "Char"
+                  DllCall "AutoHotkey.<b>exe</b>\ahkExec", "Str", "MsgBox A_Now", "Char"
 
-<em>Function Example:</em> <b>Result</b> := ahkExec("MsgBox `% A_Now")
-                  <b>Result</b> := DllCall("AutoHotkey.<b>dll</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char")
-                  <b>Result</b> := DllCall("AutoHotkey.<b>exe</b>\ahkExec", "Str", "MsgBox `% A_Now", "Char")</pre></pre>
+<em>Function Example:</em> <b>Result</b> := ahkExec("MsgBox A_Now")
+                  <b>Result</b> := DllCall("AutoHotkey.<b>dll</b>\ahkExec", "Str", "MsgBox A_Now", "Char")
+                  <b>Result</b> := DllCall("AutoHotkey.<b>exe</b>\ahkExec", "Str", "MsgBox A_Now", "Char")</pre></pre>
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>
@@ -47,12 +47,12 @@ returned, otherwise 0 (false).</p>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
 DllCall(dllpath "\ahktextdll","Str","","Str","","CDecl") <em>; start a new thread, just the function.</em>
-DllCall(dllpath "\ahkExec","Str","MsgBox Hello World!","CDecl") <em>; add and execute code</em>
+DllCall(dllpath "\ahkExec","Str","MsgBox 'Hello World!'","CDecl") <em>; add and execute code</em>
 
 <em>; Same example like above but using included AutoHotkey.dll</em>
 dll:=AhkThread()
-dll.ahkExec["MsgBox Hello World!"]
+dll.ahkExec["MsgBox 'Hello World!'"]
 
 <em>; Execute code in current thread</em>
-ahkExec("MsgBox Test")</pre>
+ahkExec("MsgBox 'Test'")</pre>
 </body></html>

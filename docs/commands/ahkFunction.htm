@@ -49,11 +49,11 @@ parameters need to be Strings or NULL / 0 if you want to omit parameter (use fun
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyFunc(param){`nSleep 10000`nMsgBox `% param`n}","Str","","CDecl") <em>; start a new thread, just the function.</em>
+DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyFunc(param){`nSleep 10000`nMsgBox param`n}","Str","","CDecl") <em>; start a new thread, just the function.</em>
 Msgbox DllCall(dllpath "\ahkFunction","Str","MyFunc","Str","Hello World!","CDecl Str") <em>; call the function.</em>
 
 <em>; Same example like above using internal AutoHotkey.dll</em>
-dll:=AhkThread("#Persistent`nMyFunc(param){`nSleep 10000`nMsgBox `% param`n}")
+dll:=AhkThread("#Persistent`nMyFunc(param){`nSleep 10000`nMsgBox param`n}")
 MsgBox dll.ahkFunction["MyFunc","test"]
 </pre>
 </body></html>

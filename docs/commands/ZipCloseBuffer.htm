@@ -16,20 +16,17 @@
 
 <p>Closes zip archive created with <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>, saves it to variable and returns its size.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipCloseBuffer</span>(ZipHandle <span class="optional">, VariableName</span>)
-<pre><em>Function Example:</em> <b>Size</b> := ZipCloseBuffer(hZip, var)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipCloseBuffer</span>(ZipHandle)
+<pre><em>Function Example:</em> <b>ZipBuffer</b> := ZipCloseBuffer(hZip)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
   <dt><b>OutputVar</b></dt>
-  <dd><p>The name of the variable in which to store the size in bytes of zip file in memory.</p></dd>
+  <dd><p>The name of the variable in which to store the Buffer object containing zip file in memory.</p></dd>
   
   <dt>ZipHandle</dt>
   <dd><p>Zip handle returned from <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>.</p></dd>
-  
-  <dt>VariableName</dt>
-  <dd><p>The name of the variable in which to store the zip archive.</p></dd>
 </dl>
 
 <h3>Related</h3>
@@ -39,8 +36,8 @@
  <a href="UnZipRawMemory.htm">UnZipRawMemory</a>, <a href="ZipInfo.htm">ZipInfo</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">hZip:=ZipCreateBuffer(10000000)
-ZipAddBuffer(hZip, "C:\MyScript.ahk", &var, sz)
-sz := ZipCloseBuffer(hZip, var)
+ZipAddBuffer(hZip, StrPtr(var), StrPut(var), "MyScript.ahk")
+ZipBuffer := ZipCloseBuffer(hZip)
 </pre>
 
 </body>

@@ -48,8 +48,8 @@ FALSE / NULL / 0.</p>
 <a href="ahkassign.htm">ahkassign</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">MsgBox first Line %A_TickCount%
-dll:=AhkThread("#Persistent`nMyVar:=`"Hello World!`"`nReturn`nMsgBox `% MyVar") <em>; start a new thread and set MyVar variable.</em>
+<pre class="NoIndent">MsgBox 'first Line ' A_TickCount
+dll:=AhkThread("#Persistent`nMyVar:=`"Hello World!`"`nReturn`nMsgBox MyVar") <em>; start a new thread and set MyVar variable.</em>
 hLine:=0
 Loop 3 <em>; Retrieve pointer to 4-th executable line.</em>
  hLine := dll.ahkExecuteLine[hLine]

@@ -17,11 +17,11 @@
 <p>Extract one or all items from a zip archive.</p>
 
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZip</span>(ZipFileName, DestinationFolder <span class="optional">, FileToExtract, DestinationFileName, Password</span>)
-<b>OutputVar</b> := UnZip(Address, Size, DestinationFolder [, FileToExtract, DestinationFileName, Password])
+<b>OutputVar</b> := UnZip(Buffer object or Address, Size, DestinationFolder [, FileToExtract, DestinationFileName, Password])
 <pre><em>Command  Example:</em> UnZip "MyZip.zip", "C:\Temp", "scripts\MyScript.ahk"
-                  UnZip &zip, sz, "C:\Temp", "scripts\MyScript.ahk"
+                  UnZip zip,, "C:\Temp", "scripts\MyScript.ahk"
 <em>Function Example:</em> <b>Success</b> := UnZip("MyZip.zip", "C:\Temp", "scripts\MyScript.ahk")
-                  <b>Success</b> := UnZip(&zip, sz, "C:\Temp", "scripts\MyScript.ahk")</pre></pre>
+                  <b>Success</b> := UnZip(zip,, "C:\Temp", "scripts\MyScript.ahk")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -29,8 +29,8 @@
   <dt><b>OutputVar</b></dt>
   <dd><p>The name of the variable in which to store 1 / true if file(s) was extracted successfully or 0 / false if operation failed.</p></dd>
   
-  <dt>ZipFileName or Address</dt>
-  <dd><p>The path and name of zip archive or an address to memory containing a zip archive.</p></dd>
+  <dt>ZipFileName, Buffer object or Address</dt>
+  <dd><p>The path and name of zip archive, a Buffer object or an address to memory containing a zip archive.</p></dd>
   
   <dt>Size</dt>
   <dd><p>When previous parameter is an address, the size of zip archive in memory otherwise this parameter is skipped, see examples.</p></dd>

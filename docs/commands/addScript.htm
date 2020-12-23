@@ -15,12 +15,12 @@ script.
 </p>
 <br>
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">addScript</span>(NewCode <span class="optional">, WaitExecute</span>)
-<pre><em>Command  Example:</em> addScript "MsgBox `% A_Now", 1
-                  DllCall "AutoHotkey.<b>dll</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR"
-                  DllCall "AutoHotkey.<b>exe</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR"
+<pre><em>Command  Example:</em> addScript "MsgBox A_Now", 1
+                  DllCall "AutoHotkey.<b>dll</b>\addScript", "Str", "MsgBox A_Now", "Int", 1, "UPTR"
+                  DllCall "AutoHotkey.<b>exe</b>\addScript", "Str", "MsgBox A_Now", "Int", 1, "UPTR"
 <em>Function Example:</em> <b>LinePtr</b> := addScript("MsgBox `% A_Now", 1)
-                  <b>LinePtr</b> := DllCall("AutoHotkey.<b>dll</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")
-                  <b>LinePtr</b> := DllCall("AutoHotkey.<b>exe</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")</pre></pre>
+                  <b>LinePtr</b> := DllCall("AutoHotkey.<b>dll</b>\addScript", "Str", "MsgBox A_Now", "Int", 1, "UPTR")
+                  <b>LinePtr</b> := DllCall("AutoHotkey.<b>exe</b>\addScript", "Str", "MsgBox A_Now", "Int", 1, "UPTR")</pre></pre>
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>
@@ -48,12 +48,12 @@ end execution).</p>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
 DllCall(dllpath "\ahktextdll","Str","","Str","","Cdecl") <em>; start new, empty thread.</em>
-DllCall(dllpath "\addScript","Str","MsgBox Hello World!","Int",1,"CDecl") <em>; add and execute code</em>
+DllCall(dllpath "\addScript","Str","MsgBox 'Hello World!'","Int",1,"CDecl") <em>; add and execute code</em>
 
 <em>; Same example like above using included AutoHotkey.dll</em>
 dll:=AhkThread()
-dll.addScript["MsgBox Hello World!",1]
+dll.addScript["MsgBox 'Hello World!'",1]
 
 <em>; Add and execute script in current thread</em>
-addScript("MsgBox Test",1)</pre>
+addScript("MsgBox 'Test'",1)</pre>
 </body></html>

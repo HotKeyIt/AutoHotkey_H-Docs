@@ -15,18 +15,15 @@
 
 <p>Reads a resource from executable file (dll or exe).</p>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ResGet</span>(Data, Executable, Name <span class="optional">, Type, Language</span>)<pre><em>Function Example:</em> <b>Size</b> := ResGet(Data, A_AhkPath, "MYRESOURCE")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ResGet</span>(Executable, Name <span class="optional">, Type, Language</span>)<pre><em>Function Example:</em> <b>Size</b> := ResGet(Data, A_AhkPath, "MYRESOURCE")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>
-    <dd><p>The name of the variable in which to store the size of read data.</p>
-    </dd>
-  <dt>Data (ByRef)</dt>
-    <dd><p><a href="../Functions.htm#param">ByRef variable</a> in which to store read data.</p>
+    <dd><p>The name of the variable in which to store the Buffer object containing the read data.</p>
     </dd>
   <dt>Executable</dt>
-    <dd><p>Path to the executable file (dll or exe).</p>
+    <dd><p>Path to the executable file (dll, exe or bin).</p>
     </dd>
   <dt>Name</dt>
     <dd><p>The name of resource.</p>
@@ -53,7 +50,7 @@ href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawM
 
 <h3>Example</h3>
 <pre class="NoIndent">ResGet(data,A_AhkPath,"RESGET.AHK","LIB")
-UnZipRawMemory(&data,var)
-MsgBox StrGet(&var,"UTF-8")</pre>
+var:=UnZipRawMemory(data)
+MsgBox StrGet(var,"UTF-8")</pre>
 </body>
 </html>

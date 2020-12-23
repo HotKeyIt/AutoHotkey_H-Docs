@@ -58,7 +58,7 @@ Loop
 
 Class Test {
   __New(p*){
-    (Gui:=this.Gui:=GuiCreate()).OnEvent("Close",this.GetMethod("GuiClose"))
+    (Gui:=this.Gui:=Gui.New()).OnEvent("Close",this.GetMethod("GuiClose"))
     this.Slider:=Gui.Add("Slider","vSlider",50)
     this.CheckBox:=Gui.Add("CheckBox")
     Gui.Show("w200 h100")	

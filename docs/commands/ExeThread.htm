@@ -61,7 +61,7 @@ until function returns).</td>
 <td>Goto (PostMessage) or Gosub (SendMessage) a Label.</td>
 </tr>
 <tr>
-<td><a href="ahkFindFunction.htm">ahkFindFunction</a></td>
+<td><a href="ahkFindFunc.htm">ahkFindFunc</a></td>
 <td>Find a function and return its pointer.</td>
 </tr>
 <tr>
@@ -102,7 +102,7 @@ temporarily.</td>
 <h3>Related</h3>
 <p><a href="AhkThread.htm">AhkThread</a>, <a href="ExeThread.htm">NewThread</a>, <a href="ThreadObj.htm">ThreadObj</a></p>
 <h3>Examples</h3>
-<pre class="NoIndent">Thread:=ExeThread("Msgbox `% variable:=`"Thread`"")
+<pre class="NoIndent">Thread:=ExeThread("Msgbox variable:=`"Thread`"")
 While !thread.ahkReady()
   Sleep 100
 MsgBox Thread.ahkgetvar.variable</pre>

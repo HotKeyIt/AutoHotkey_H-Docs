@@ -16,9 +16,9 @@
 
 <p>Add a file from memory to a zip archive created with <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a> or <a href="ZipCreateFile.htm">ZipCreateFile</a>.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipAddBuffer</span>(ZipHandle, Address, Size, FileName)
-<pre><em>Command  Example:</em> ZipAddBuffer hZip, &var, sz, "MyScript.ahk"
-<em>Function Example:</em> <b>Success</b> := ZipAddBuffer(hZip, &var, sz, "MyScript.ahk")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipAddBuffer</span>(ZipHandle, Address or BufferObject <span class="optional">, Size, FileName</span>)
+<pre><em>Command  Example:</em> ZipAddBuffer hZip, var, StrPut(var), "MyScript.ahk"
+<em>Function Example:</em> <b>Success</b> := ZipAddBuffer(hZip, varBuffer,, "MyScript.ahk")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -29,14 +29,14 @@
   <dt>ZipHandle</dt>
   <dd><p>Zip handle returned from <a href="ZipCreateFile.htm">ZipCreateFile</a> or <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>.</p></dd>
   
-  <dt>Address</dt>
-  <dd><p>Address of data to be added to zip archive.</p></dd>
+  <dt>Address or BufferObject</dt>
+  <dd><p>Address of data or Buffer object to be added to zip archive.</p></dd>
 
   <dt>Size</dt>
-  <dd><p>Size in bytes of data in memory.</p></dd>
+  <dd><p>Size in bytes of data in memory. Not required for Buffer object.</p></dd>
 
   <dt>FileName</dt>
-  <dd><p>Name of the file that will be added to zip archive.</p></dd>
+  <dd><p>Name of the file that will be added in zip archive.</p></dd>
   
 </dl>
 
@@ -47,8 +47,8 @@
  <a href="UnZipRawMemory.htm">UnZipRawMemory</a>, <a href="ZipInfo.htm">ZipInfo</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">hZip:=ZipCreateBuffer(10000000)
-ZipAddBuffer(hZip, "C:\MyScript.ahk", &var, sz)
-sz := ZipCloseBuffer(hZip, var)
+ZipAddBuffer(hZip, StrPtr(script), StrPut(script), "MyScript.ahk")
+zipBuffer := ZipCloseBuffer(hZip)
 </pre>
 
 </body>

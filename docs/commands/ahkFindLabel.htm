@@ -35,7 +35,7 @@ script and returns a pointer to it.
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
 DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyLabel:`nReturn","Str","","CDecl") <em>; start a new thread, just the function.</em>
-MsgBox % DllCall(dllpath "\ahkFindLabel","Str","MyLabel","CDecl PTR") <em>; call the function and display pointer in MsgBox.</em>
+MsgBox DllCall(dllpath "\ahkFindLabel","Str","MyLabel","CDecl PTR") <em>; call the function and display pointer in MsgBox.</em>
 
 <em>; Same example like above using included AutoHotkey.dll</em>
 dll:=AhkThread("#Persistent`nMyLabel:`nReturn")

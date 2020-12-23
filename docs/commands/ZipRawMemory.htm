@@ -16,23 +16,20 @@
 
 <p>This function is used to zip and decrypt raw memory, for example to use for resources.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipRawMemory</span>(Address, Size <span class="optional">, VariableOrAddress, Password</span>)
-<pre><em>Function Example:</em> <b>Size</b> := ZipRawMemory(&var, sizeOfvar, Data)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ZipRawMemory</span>(AddressOrBufferObject<span class="optional">, Size , Password</span>)
+<pre><em>Function Example:</em> <b>MyBuffer</b> := ZipRawMemory(StrPtr(var), StrPut(var))</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
 
   <dt><b>OutputVar</b></dt>
-  <dd><p>The name of the variable in which to store the size of zipped memory in bytes.</p></dd>
+  <dd><p>The name of the variable in which to store the created BufferObject containing zipped memory.</p></dd>
   
-  <dt>Address</dt>
-  <dd><p>Address to memory to be zipped.</p></dd>
+  <dt>AddressOrBufferObject</dt>
+  <dd><p>Address to memory or Buffer object to be zipped.</p></dd>
   
-  <dt>Size</dt>
-  <dd><p>Size in bytes of data in memory.</p></dd>
-
-  <dt>VariableOrAddress (optional)</dt>
-  <dd><p>The name of a variable or address to copy zipped memory to. If omitted only the size will be returned.</p></dd>
+  <dt>Size (optional)</dt>
+  <dd><p>Size in bytes of data in memory. Not required if AddressOrBuffer is Buffer Object.</p></dd>
 
   <dt>Password (optional)</dt>
   <dd><p>The password to use to encrypt the data.</p></dd>
@@ -40,7 +37,7 @@
 </dl>
 
 <h3>Remarks</h3>
-<p>Ahk2Exe uses ZipRawMemory to compress and encrypt resources in raw mode (only 1 file supported).<br>
+<p>Ahk2Exe uses ZipRawMemory to compress and encrypt resources in raw mode (only 1 file/string/buffer is supported).<br>
 Internally AutoHotkey is able to decompress raw resources automatically (compiled script, AutoHotkey.dll, WinApi + lib resources). 
 <a href="UnZipRawMemory.htm">UnZipRawMemory</a> can be used in script to decrypt and decompress data compressed with ZipRawMemory.</p>
 <h3>Related</h3>

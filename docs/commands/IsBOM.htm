@@ -11,7 +11,7 @@
 <h1>IsBOM</h1>
 <p>Checks the byte order mark for buffer or address.</p>
 <br>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">IsBOM</span>(AddressOrBuffer <span class="optional">, BOM</span>)<pre><em>Function Example:</em> <b>result</b> := IsBOM(&var, "UTF-16BE")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">IsBOM</span>(AddressOrBuffer <span class="optional">, BOM</span>)<pre><em>Function Example:</em> <b>result</b> := IsBOM(var, "UTF-16BE")</pre></pre>
 <h3>Parameters</h3>
 <dl>
 <dt><b>OutputVar</b></dt>
@@ -20,7 +20,7 @@
 </dd>
 <dt>AddressOrBuffer</dt>
 <dd>
-<p>Buffer or address to check for a byte order mark.</p>
+<p>Buffer object or address to check for a byte order mark.</p>
 </dd>
 <dt>BOM (optional)</dt>
 <dd>

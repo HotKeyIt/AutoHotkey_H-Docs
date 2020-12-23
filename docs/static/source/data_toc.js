@@ -2,7 +2,6 @@ toc = [
   {label:"Quick Reference",path:"AutoHotkey.htm"},
   {label:"AutoHotkey v2 Help",path:"AutoHotkeyV2.chm::/docs/AutoHotkey.htm"},
   {label:"Recent AutoHotkey_H Changes",path:"ChangeLog.htm"},
-  {label:"Command and Function Index",path:"commands/index.htm"},
   {label:"AutoHotkey Module",children:
   [
     {label:"About AutoHotkey Module",path:"AutoHotkeyDll.htm"},
@@ -63,8 +62,8 @@ toc = [
   [
     {label:"DynaCall",path:"commands/DynaCall.htm"},
     {label:"MCodeH",path:"commands/MCodeH.htm"},
-    {label:"WinApi",path:"commands/WinApi.htm",children:[
-      {label:"Macros",children:
+    {label:"WinApi",path:"commands/WinApi.htm"},
+    {label:"Macros",children:
       [
         {label:"HIBYTE",path:"commands/HIBYTE.htm"},
         {label:"HIWORD",path:"commands/HIWORD.htm"},
@@ -78,7 +77,6 @@ toc = [
         {label:"MAKEWORD",path:"commands/MAKEWORD.htm"},
         {label:"MAKEWPARAM",path:"commands/MAKEWPARAM.htm"}
       ]},
-    ]},
     {label:"COM",children:
     [
       {label:"ComObjDll",path:"commands/ComObjDll.htm"},
@@ -108,13 +106,18 @@ toc = [
   ]},
   {label:"Misc.",children:
   [
+    {label:"Between",path:"commands/Between.htm"},
+    {label:"BinRun",path:"commands/BinRun.htm"},
+    {label:"DynaRun",path:"commands/DynaRun.htm"},
+    {label:"EnvUpdate",path:"commands/EnvUpdate.htm"},
     {label:"IsBOM",path:"commands/IsBOM.htm"},
     {label:"Object features",path:"commands/ObjectExtended.htm"},
     {label:"Macro",path:"commands/Macro.htm"},
+    {label:"Swap",path:"commands/Swap.htm"},
   ]},
   {label:"String",children:
   [
-    {label:"StrPutVar",path:"commands/StrPutVar.htm"},
+    {label:"StrBuf",path:"commands/StrBuf.htm"},
   ]},
   {label:"Struct",children:
   [

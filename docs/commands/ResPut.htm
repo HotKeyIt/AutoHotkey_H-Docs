@@ -15,8 +15,8 @@
 
 <p>Updates a resource in executable file (dll or exe).</p>
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">ResPut</span>(Data, Size, Executable, Name <span class="optional">, Type, Language</span>)
-<pre><em>Command  Example:</em> ResPut Data,VarsetCapacity(data), A_ScriptDir "\MyDll.dll", "MYRESOURCE"
-<em>Function Example:</em> <b>Success</b> := ResPut(Data, VarsetCapacity(data), A_ScriptDir "\MyDll.dll", "MYRESOURCE")</pre></pre>
+<pre><em>Command  Example:</em> ResPut Data,data.size, A_ScriptDir "\MyDll.dll", "MYRESOURCE"
+<em>Function Example:</em> <b>Success</b> := ResPut(Data, data.size, A_ScriptDir "\MyDll.dll", "MYRESOURCE")</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -56,8 +56,6 @@ href="ResPutFile.htm">ResPutFile</a>,
 href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
 
 <h3>Example</h3>
-<pre class="NoIndent">Data:=FileRead(A_ScriptDir "\MYRES.RES", "RAW")
-FileGetSize(A_ScriptDir "\MYRES.RES")
-ResPut(Data, sz, A_AhkPath, "MYRES.RES")</pre>
+<pre class="NoIndent">ResPut(FileRead(A_ScriptDir "\MYRES.RES", "RAW"), FileGetSize(A_ScriptDir "\MYRES.RES"), A_ScriptDir "\MyProgram.exe", "MYRES.RES")</pre>
 </body>
 </html>

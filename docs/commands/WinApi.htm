@@ -37,19 +37,19 @@
 
 <h3>Examples</h3>
 <pre class="NoIndent">
-MsgBox % LoadLibrary(A_AhkPath)
+MsgBox LoadLibrary(A_AhkPath)
 
 GetCommandLine,cmd
-MsgBox % cmd
+MsgBox cmd
 
 StrToIntEx("-2147483648",0,getvar(var:=0))
-MsgBox % ToInt(var)
+MsgBox ToInt(var)
 
 OnMessage(0x999,"Ox999")
 SendMessage_(A_ScriptHwnd,0x999) <em>; same as DllCall("user32\SendMessage","PTR",A_ScriptHwnd,"UINT",0x999,"PTR",0,"PTR",0,"PTR")</em>
 ExitApp
 Ox999(w,l,m,h){
-  MsgBox % w "`n" l "`n" m "`n" h
+  MsgBox w "`n" l "`n" m "`n" h
   return 1
 }
 

@@ -70,7 +70,8 @@
 <tr><td><a href="commands/sizeof.htm">sizeof</a></td><td>Returns the size in bytes for <a href="StructTypes.htm">default data type</a>, <a href="commands/Struct.htm">structure</a> or <a href="commands/Struct.htm#Definition">structure definition</a>, for example MsgBox % sizeof("TCHAR").</td></tr>
 <tr><td><a href="commands/SplashImage.htm">SplashImage</a></td><td>SplashImage as in AutoHotkey v1.</td></tr>
 <tr><td><a href="commands/SplashTextOn.htm">SplashTextOn / Off</a></td><td>SplashTextOn as in AutoHotkey v1.</td></tr>
-<tr><td><a href="commands/StrPutVar.htm">StrPutVar</a></td><td>Put an encoded string into a variable.</td></tr>
+<tr><td><a href="commands/StrBuf.htm">StrBuf</a></td><td>Put an encoded string into a variable.</td></tr>
+<tr><td><a href="commands/Swap.htm">Swap</a></td><td>Swaps two variables.</td></tr>
 <tr><td><a href="commands/ThreadObj.htm">ThreadObj</a></td><td>Create a new thread 'without' using AutoHotkey.dll, based on COM using ObjShare.</td></tr>
 <tr><td><a href="commands/ToChar.htm">ToChar</a></td><td>Convert an integer to signed char.</td></tr>
 <tr><td><a href="commands/ToInt.htm">ToInt</a></td><td>Convert an integer to signed integer.</td></tr>
@@ -78,7 +79,6 @@
 <tr><td><a href="commands/ToUChar.htm">ToUChar</a></td><td>Convert an integer to unsigned char.</td></tr>
 <tr><td><a href="commands/ToUInt.htm">ToUInt</a></td><td>Convert an integer to signed integer.</td></tr>
 <tr><td><a href="commands/ToUShort.htm">ToUShort</a></td><td>Convert an integer to unsigned integer.</td></tr>
-<tr><td><a href="../AutoHotkeyV2.chm::/docs/commands/VarSetCapacity.htm">VarSetCapacity</a></td><td>When the buffer size of a variable is changed and FillByte is not used and old and new capacity is > 1 byte, the original buffer content is kept/copied to the new buffer.</td></tr>
 <tr><td><a href="commands/WinApi.htm">WinApi</a></td><td>Use WinApi functions as if it was a build-in function.</td></tr>
 <tr>
 <td><a href="commands/ZipCreateFile.htm">Zip Functions</a></td>
@@ -172,8 +172,8 @@ to 0.</td>
 <td>Compiling AutoHotkey</td>
 <td>Original
 AutoHotkey is only capable to be compiled with AutoHotkeySC.bin. In
-AutoHotkey_H any AutoHotkey binary (AutoHotkey.dll,
-AutoHotkey.exe, AutoHotkeySC.bin) can be compiled.<br>
+AutoHotkey_H any AutoHotkey binary (AutoHotkey.dll and 
+AutoHotkey.exe) can be compiled.<br>
 This allows keeping
 full functionality of AutoHotkey including executing other scripts. Compiled AutoHotkey.exe and
 AutoHotkey.dll can use /E
@@ -188,8 +188,7 @@ switch to execute different script than compiled one.</td>
 library functions in resource of exe or dll (Resorce type must be "LIB", e.g. LIB/WATCHDIRECTORY.AHK).<br>
 Additionally AutoHotkey.dll can load library
 functions from exe file automatically (Note both execuables must be using same password if source is encrypted).<br>
-Note,
-this is not supported by AutoHotkeySC.bin.</td>
+</td>
 </tr>
 <tr><td><a href="commands/UnZipRawMemory.htm">Resource Compression and Encryption</a></td><td>Ahk2Exe supports compression and encryption for resource files, AutoHotkey will decompress and decrypt the files internally automatically. <a href="commands/UnZipRawMemory.htm">UnZipRawMemory</a> can be used to decompress and decrypt resources in Script.</td></tr>
 <tr>
@@ -233,10 +232,6 @@ by space and Window Id. ahk_parent can be used in any Win... and Control...
 functions. For example <span style="font-weight: bold;">WinActivate,
 ahk_class #32770 ahk_parent 0x3F4A5</span></td>
 </tr>
-<tr>
-<td>&amp;</td>
-<td>Retrieve pointer to any String or build in variable like &amp;A_LoopField or &amp;"Text".</td>
-</tr>
 </tbody>
 </table>
 <h2 id="Function_Libraries">Function Libraries</h2>
@@ -246,11 +241,6 @@ resides in <code>%A_ScriptDir%\Lib</code> functions may be
 auto-included from a folder that %A_AhkExeDir%\lib.lnk points to. For
 more information, see Libraries
 of Functions.</p>
-<h2 id="Static">Static Variables</h2>
-<p>Static variables are saved in separate array internally for
-better performance. Also ListVars
-shows static and local variables separately.</p>
-<a href=""> </a>
 
 <h2>Acknowledgements</h2>
 <p>A special thanks to Jonathan Bennett, whose generosity in releasing  AutoIt v2 as free software in 1999 served as an inspiration and time-saver for myself and many others worldwide. In addition, many of AutoHotkey's enhancements to the AutoIt v2 command set, as well as the Window Spy and the old script compiler, were adapted directly from the AutoIt v3 source code. So thanks to Jon and the other AutoIt authors for those as well.<br>

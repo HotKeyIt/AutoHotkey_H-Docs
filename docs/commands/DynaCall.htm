@@ -100,7 +100,7 @@ called</li>
 is
 called</li>
 <p>This is best explained in following example.</p>
-<pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111)<br>MsgBox % A_IsSuspended<br>AHKCMD[ 65305 ] <em>; suspend script, following is the same call:<br>; DllCall("SendMessage", "PTR", A_ScriptHwnd, "UInt", 0x111, "PTR", 65305, "PTR", 0)</em><br>MsgBox % A_IsSuspended<br></pre>
+<pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111)<br>MsgBox A_IsSuspended<br>AHKCMD[ 65305 ] <em>; suspend script, following is the same call:<br>; DllCall("SendMessage", "PTR", A_ScriptHwnd, "UInt", 0x111, "PTR", 65305, "PTR", 0)</em><br>MsgBox A_IsSuspended<br></pre>
 </ul>
 </ul>
 </dd>

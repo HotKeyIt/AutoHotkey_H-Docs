@@ -1,0 +1,1 @@
+dir /S /N /W /B *.* >>dir.txt

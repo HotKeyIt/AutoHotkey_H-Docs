@@ -19,12 +19,14 @@ Similar to <a
 href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms683152.aspx">FreeLibrary</a>.</p>
 <br>
 
-<pre class="Syntax"><span class="func">MemoryFreeLibrary</span> Handle
-<pre><em>Command  Example:</em> MemoryFreeLibrary ahkdllModule
-<em>Function Example:</em> MemoryFreeLibrary(ahkdllModule)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemoryFreeLibrary</span> Handle
+<pre><em>Function Example:</em> lib := MemoryFreeLibrary(ahkdllModule)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the handle of loaded library. </p>
+    </dd>
   <dt>Handle</dt>
     <dd><p>MemoryModule handle prevously returned by <a
       href="MemoryLoadLibrary">MemoryLoadLibrary.</a></p>

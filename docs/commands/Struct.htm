@@ -25,7 +25,6 @@ This object can be used to access the defined structure using object syntax.<br>
   <li><a href="#IsPointer">IsPointer</a></li>
   <li><a href="#Offset">Offset</a></li>
   <li><a href="#SetCapacity">SetCapacity</a></li>
-  <li><a href="#Size">Size</a></li>
 </ul>
 <p><b>Struct</b> requires a definition and accepts optionally address of structure memory and initialization object.</p>
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">Struct</span>(Definition <span class="optional">,StructMemory, InitObject</span>)<pre><em>Function Example:</em> <b>pt</b> := Struct("int x;y",,{x:10,y:20})</pre></pre>
@@ -377,35 +376,6 @@ str.SetCapacity("name",100)
 MsgBox str.GetCapacity("name")
 str.name:="AutoHotkey"
 MsgBox str.GetCapacity("name")</pre>
-</div>
-<div class="methodShort" id="Size">
-<h3>Size</h3>
-
-<p>Returns the size in bytes of a structure or field.</p>
-<pre class="Syntax">OutputVar := Struct.Size([field])</pre>
-
-<table style="width: 800px; height: 80px;" class="info">
-  <tbody>
-    <tr>
-      <td width="15%"><b>OutputVar</b></td>
-      <td>The name of the Variable in which to store the size of field or structure.</td>
-    </tr>
-    <tr>
-      <td><b>field</b></td>
-      <td>Name of existing field within the structure, if omitted the size of
-        structure is returned.</td>
-    </tr>
-  </tbody>
-</table>
-<pre>pt:=Struct("x,y")
-Msgbox pt.Size() <em>; returns 8</em></pre>
-<pre>struct:=Struct("Int64 x,y")
-Msgbox struct.Size("y") <em>; returns 8</em></pre>
-If structure is an array you will needle to pass a digit to retrieve the size
-of a field.<br>
-
-<pre>struct:=Struct("Int64[2]")
-Msgbox struct.Size(1) <em>; returns 8</em></pre>
 </div>
 
 <dl>

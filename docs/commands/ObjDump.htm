@@ -54,7 +54,7 @@ obj := ObjLoad(var)
 
 <em>; Dump an object to file</em>
 f:=FileOpen(A_ScriptDir "\MyDump.bin","w -rwd")
-f.RawWrite(obj),f.Close()
+f.RawWrite(ObjDump(obj)),f.Close()
 
 <em>; Restore an object from file</em>
 obj := ObjLoad(A_ScriptDir "\MyDump.bin")

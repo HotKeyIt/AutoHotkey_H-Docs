@@ -13,7 +13,7 @@
 script and returns a pointer to it.
 </p>
 <br>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkFindFunc</span>("FuncName")
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FindFunc</span>("FuncName")
 <pre><em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkFindFunc", "Str", "FuncName", "PTR")
                   <b>OutputVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkFindFunc", "Str", "FuncName", "PTR")</pre></pre>
 <h3>Parameters</h3>
@@ -32,15 +32,50 @@ script and returns a pointer to it.
 <a href="ahkFindLabel.htm">ahkFindLabel</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
-DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyFunc(param){`nReturn param`n}","Str","","CDecl") <em>; start a new thread, just the function.</em>
-MsgBox DllCall(dllpath "\ahkFindFunc","Str","MyFunc","CDecl PTR") <em>; call the function and display pointer in MsgBox.</em>
+<pre class="NoIndent"><em>; AHK_H Structures</em>
+global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func,_AHKDerefType *next,UInt symbol,int int_value},BYTE type,BYTE substring_count,UInt length"
+global _AHKCallSite := "PTR *func, LPTSTR member, int flags, int param_count"
+global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKCallSite *callsite,_AHKDerefType *var_deref,_AHKVar *var,LPTSTR marker,_AHKExprTokenType *circuit_token},{_AHKCallSite *outer_param_list,LPTSTR error_reporting_marker,size_t marker_length, int var_usage}}},UINT symbol"
+global _AHKArgStruct := "BYTE type,bool is_expression,UInt length,LPTSTR text,_AHKDerefType *deref,_AHKExprTokenType *postfix, int max_stack, max_alloc"
+global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
+global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"
+global _AHKLabel := "LPTSTR mName,_AHKLine *mJumpToLine,_AHKLabel *mPrevLabel,*mNextLabel"
+global _AHKFuncParam := "_AHKVar *var,WORD is_byref,default_type,{LPTSTR default_str,Int64 default_int64,Double default_double}"
+If (A_PtrSize = 8)
+	global _AHKRCCallbackFunc := "UINT64 data1,data2,BYTE actual_param_count,flags,PTR *func"
+else
+	global _AHKRCCallbackFunc := "BYTE actual_param_count,flag,PTR *func"
+global _AHKFuncItemList := "_AHKUserFunc **mItem,int mCount, mCountMax"
+global _AHKVarItemList := "_AHKVar **mItem,int mCount, mCountMax"
+global _AHKFunc := "PTR vtable,v1,v2,v3,v4,v5,v6,v7,v8,LPCTSTR mName,int mParamCount,mMinParams,mIsVariadic,PTR *mBIF"
+global _AHKUserFunc := "PTR vtable,v1,v2,v3,v4,v5,v6,v7,v8,LPCTSTR mName, int mParamCount,mMinParams,mIsVariadic,PTR *mBIF,int mInstances,_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass,_AHKLabel *mFirstLabel,*mLastLabel,_AHKUserFunc *mOuterFunc,_AHKFuncItemList mFuncs,_AHKVarItemList mVars, _AHKVarItemList mStaticVars, _AHKVar **mDownVar, *mUpVar,Int *mUpVarIndex, mDownVarCount, mUpVarCount,bool mIsFuncExpression, BYTE mDefaultVarType,bool mIsMacro,PTR *mdyna_param,bool mPreprocessLocalVarsDone"
+global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mByteLength,_AHKVar *mAliasFor},UINT_PTR mByteCapacity,BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
 
-<em>; Same example like above using included AutoHotkey.dll</em>
-dll:=AhkThread("#Persistent`nMyFunc(param){`nReturn param`n}")
-MsgBox dll.ahkFindFunc["MyFunc"]
+fun(a,b:=0,c:=""){
+  local localvariable
+  static staticvariable
+  anotherfun(){
+  }
+  subfun(){
+  }
+}
+fun:=Struct(_AHKUserFunc,FindFunc("fun"))
+MsgBox "Name:`t`t" fun.mName "`nParamCount:`t" fun.mParamCount "`nMinParams:`t" fun.mMinParams "`nFirst param name:`t" fun.mParam.1.var.mName "`nLocal vars count:`t" fun.mVars.mCount "`nLocal varname:`t" fun.mVars.mItem.4.mName "`nStatic varname:`t" fun.mStaticVars.mItem.1.mName "`nSub function:`t" fun.mFuncs.mItem.1.mName
 
-<em>; Find pointer to function in current thread</em>
-MsgBox ahkFindFunc("NumGet")</pre>
+
+<em>; Show name of alias variable that was passed to function.</em>
+global a:="Auto",b:="Hot",c:="Key"
+MsgBox ShowVars(a,b,c)
+ShowVars(ByRef _1:="",ByRef _2:="",ByRef _3:="",ByRef _4:="",ByRef _5:="",ByRef _6:="",ByRef _7:="",ByRef _8:="",ByRef _9:="",ByRef _10:=""){
+   str:=""
+   func:=Struct(_AHKUserFunc,FindFunc(A_ThisFunc))
+   param:=Struct(_AHKFuncparam,func.mparam[""])
+   Loop 10{
+        Tooltip A_Index
+      if param[A_Index].var.mtype=0 && var:=param[A_Index].var.mAliasFor ;alias
+         str .= "`n" var.mname "=" _%A_Index%
+ }
+   Return SubStr(str, 2)
+}
+</pre>
 </body></html>

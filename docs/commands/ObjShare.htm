@@ -50,18 +50,18 @@ AhkThread(
 (
     "t := ObjShare(" lresult ") <em>; Create IDispatch proxy COM object</em>
 	Loop
-        t.CheckBox()"
+        t.CheckBox(),Sleep(10)"
 ))
  
 Loop
-  t.Slider()
+  t.Slider(),Sleep(10)
 
 Class Test {
   __New(p*){
-    (Gui:=this.Gui:=Gui.New()).OnEvent("Close",this.GetMethod("GuiClose"))
-    this.Slider:=Gui.Add("Slider","vSlider",50)
-    this.CheckBox:=Gui.Add("CheckBox")
-    Gui.Show("w200 h100")	
+    (MyGui:=this.Gui:=Gui.New()).OnEvent("Close",this.GetMethod("GuiClose"))
+    this.Slider:=MyGui.Add("Slider","vSlider",50)
+    this.CheckBox:=MyGui.Add("CheckBox")
+    MyGui.Show("w200 h100")	
   }
   GuiClose(p*) => ExitApp()
   CheckBox()   => this.CheckBox.value:=this.CheckBox.value?0:1

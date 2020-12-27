@@ -34,6 +34,6 @@
 NumPut("INT64", 0x10101010, v)
 hex:=BinToHex(v, 8)
 MsgBox hex
-HexToBin(bin, hex)
-MsgBox format("0x{1:X}",NumGet("INT64", b))</pre>
+bin:=HexToBin( hex)
+MsgBox format("0x{1:X}",NumGet(bin,"INT64"))</pre>
 </body></html>

@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>GetVar</h1>
-<p>Retrieves a pointer to a variable.</p>
+<p>Retrieves a low level pointer to a variable.</p>
 <br>
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">GetVar</span>(VarName <span class="optional">, ResolveAlias</span>)
 <pre><em>Function Example:</em> <b>varptr</b> := GetVar(MyVar)</pre></pre>
@@ -37,15 +37,33 @@
 <a href="ahkFindLabel.htm">ahkFindLabel</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV}
-	,{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor}
-	,{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
-	
-global _AhkVarType := {0:"VAR_ALIAS",1:"VAR_NORMAL",2:"VAR_VIRTUAL",3:"VAR_CLIPBOARD",4:"VAR_CLIPBOARDALL",5:"VAR_BUILTIN"}
+<pre class="NoIndent"><em>; AHK Structures</em>
+global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func,_AHKDerefType *next,UInt symbol,int int_value},BYTE type,BYTE substring_count,UInt length"
+global _AHKCallSite := "PTR *func, LPTSTR member, int flags, int param_count"
+global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKCallSite *callsite,_AHKDerefType *var_deref,_AHKVar *var,LPTSTR marker,_AHKExprTokenType *circuit_token},{_AHKCallSite *outer_param_list,LPTSTR error_reporting_marker,size_t marker_length, int var_usage}}},UINT symbol"
+global _AHKArgStruct := "BYTE type,bool is_expression,UInt length,LPTSTR text,_AHKDerefType *deref,_AHKExprTokenType *postfix, int max_stack, max_alloc"
+global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
+global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"
+global _AHKLabel := "LPTSTR mName,_AHKLine *mJumpToLine,_AHKLabel *mPrevLabel,*mNextLabel"
+global _AHKFuncParam := "_AHKVar *var,WORD is_byref,default_type,{LPTSTR default_str,Int64 default_int64,Double default_double}"
+If (A_PtrSize = 8)
+	global _AHKRCCallbackFunc := "UINT64 data1,data2,BYTE actual_param_count,flags,PTR *func"
+else
+	global _AHKRCCallbackFunc := "BYTE actual_param_count,flag,PTR *func"
+global _AHKFuncItemList := "_AHKUserFunc **mItem,int mCount, mCountMax"
+global _AHKVarItemList := "_AHKVar **mItem,int mCount, mCountMax"
+global _AHKFunc := "PTR vtable,v1,v2,v3,v4,v5,v6,v7,v8,LPCTSTR mName,int mParamCount,mMinParams,mIsVariadic,PTR *mBIF"
+global _AHKUserFunc := "PTR vtable,v1,v2,v3,v4,v5,v6,v7,v8,LPCTSTR mName, int mParamCount,mMinParams,mIsVariadic,PTR *mBIF,int mInstances,_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass,_AHKLabel *mFirstLabel,*mLastLabel,_AHKUserFunc *mOuterFunc,_AHKFuncItemList mFuncs,_AHKVarItemList mVars, _AHKVarItemList mStaticVars, _AHKVar **mDownVar, *mUpVar,Int *mUpVarIndex, mDownVarCount, mUpVarCount,bool mIsFuncExpression, BYTE mDefaultVarType,bool mIsMacro,PTR *mdyna_param,bool mPreprocessLocalVarsDone"
+global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mByteLength,_AHKVar *mAliasFor},UINT_PTR mByteCapacity,BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
 
+global _AhkVarType := {%'0'%:"VAR_ALIAS",%'1'%:"VAR_NORMAL",%'2'%:"VAR_CONSTANT",%'3'%:"VAR_VIRTUAL"}
+
+<em>; Show variable type and content.</em>
 var:="AHK",	v:=Struct(_AhkVar,GetVar(var))
 MsgBox v.mName "`n" _AhkVarType.%v.mType% "`n" v.mCharContents
 
-v:=Struct(_AhkVar,GetVar("ClipboardAll"))
-MsgBox v.mName "`n" _AhkVarType.%v.mType%</pre>
+<em>; Show variable type.</em>
+v:=Struct(_AhkVar,GetVar("A_Clipboard"))
+MsgBox v.mName "`n" _AhkVarType.%v.mType%
+</pre>
 </body></html>

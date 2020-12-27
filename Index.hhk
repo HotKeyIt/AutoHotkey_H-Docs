@@ -50,6 +50,7 @@
 <li><object type="text/sitemap"><param name="Name" value="FindFunc"><param name="Local" value="docs/commands/FindFunc.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="FindLabel"><param name="Local" value="docs/commands/FindLabel.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="GetEnv"><param name="Local" value="docs/commands/GetEnv.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="GetVar"><param name="Local" value="docs/commands/GetVar.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="HexToBin"><param name="Local" value="docs/commands/HexToBin.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="HIBYTE"><param name="Local" value="docs/commands/HIBYTE.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="HIWORD"><param name="Local" value="docs/commands/HIWORD.htm"></object>

@@ -19,38 +19,25 @@ Similar to <a
 href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms647486.aspx">LoadString</a>.</p>
 <br>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemoryLoadString</span>(Handle, Id <span class="optional">, BufferPointer, Length</span>)
-<pre><em>Function Example:</em> <b>StringLength</b> := MemoryLoadString(ahkdllModule,2, &amp;var, 10)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">MemoryLoadString</span>(Handle, Id <span class="optional">, Language</span>)
+<pre><em>Function Example:</em> <b>String</b> := MemoryLoadString(ahkdllModule,2)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>
-    <dd><p>The name of the variable in which to store the string pointer if
-      BufferPointer is omitted or 0 or size of the string if BufferPointer
-      parameter is used.</p>
+    <dd><p>The name of the variable in which to store the text.</p>
     </dd>
   <dt>Handle</dt>
-    <dd><p>MemoryModule handle prevously returned by <a
+    <dd><p>MemoryModule handle previously returned by <a
       href="MemoryLoadLibrary">MemoryLoadLibrary.</a></p>
     </dd>
   <dt>Id</dt>
     <dd><p>Id of string resource, must be a digit.</p>
     </dd>
-  <dt>BufferPointer (optional)</dt>
-    <dd><p>Pointer to the buffer receiving the string.</p>
-    </dd>
-  <dt>Length (optional)</dt>
-    <dd><p>The length of string in characters.</p>
-    </dd>
   <dt>Language (optional)</dt>
     <dd><p>The language of string, uses DEFAULT_LANGUAGE by default.</p>
     </dd>
 </dl>
-
-<h3>Remarks</h3>
-
-<p>If the BufferPointer is 0 or omitted the string from resource is returned,
-otherwise the string is copied to the buffer.</p>
 
 <h3>Related</h3>
 
@@ -66,6 +53,7 @@ href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
 
 <h3>Examples</h3>
 <pre>lib:=MemoryLoadLibrary(A_ScriptDir "\LiteZip.dll")
-MsgBox StrGet(MemoryLoadString(lib,1))</pre>
+MsgBox MemoryLoadString(lib,1)
+MemoryFreeLibrary(lib)</pre>
 </body>
 </html>

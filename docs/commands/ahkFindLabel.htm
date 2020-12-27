@@ -9,11 +9,10 @@
 </head>
 <body>
 <h1>ahkFindLabel</h1>
-<p>Exported function that finds a label in currently executed
-script and returns a pointer to it.
+<p>Exported function that finds a global label in currently executed script and returns a pointer to it.
 </p>
 <br>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ahkFindLabel</span>("LabelName")
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">FindLabel</span>("LabelName")
 <pre><em>Function Example:</em> <b>OutputVar</b> := DllCall("AutoHotkey.<b>dll</b>\ahkFindLabel", "Str", "LabelName", "PTR")
                   <b>OutputVar</b> := DllCall("AutoHotkey.<b>exe</b>\ahkFindLabel", "Str", "LabelName", "PTR")</pre></pre>
 <h3>Parameters</h3>
@@ -29,18 +28,29 @@ script and returns a pointer to it.
 </dl>
 <h3>Related</h3>
 <p><a href="ahkFunction.htm">ahkFunction</a>, <a href="ahkPostFunction.htm">ahkPostFunction</a>,
-<a href="ahkFindLabel.htm">ahkFindLabel</a>
+<a href="ahkFindFunc.htm">ahkFindFunc</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
-DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyLabel:`nReturn","Str","","CDecl") <em>; start a new thread, just the function.</em>
-MsgBox DllCall(dllpath "\ahkFindLabel","Str","MyLabel","CDecl PTR") <em>; call the function and display pointer in MsgBox.</em>
+<pre class="NoIndent">; AHK_H Structures</em>
+global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func,_AHKDerefType *next,UInt symbol,int int_value},BYTE type,BYTE substring_count,UInt length"
+global _AHKCallSite := "PTR *func, LPTSTR member, int flags, int param_count"
+global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKCallSite *callsite,_AHKDerefType *var_deref,_AHKVar *var,LPTSTR marker,_AHKExprTokenType *circuit_token},{_AHKCallSite *outer_param_list,LPTSTR error_reporting_marker,size_t marker_length, int var_usage}}},UINT symbol"
+global _AHKArgStruct := "BYTE type,bool is_expression,UInt length,LPTSTR text,_AHKDerefType *deref,_AHKExprTokenType *postfix, int max_stack, max_alloc"
+global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
+global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"
+global _AHKLabel := "LPTSTR mName,_AHKLine *mJumpToLine,_AHKLabel *mPrevLabel,*mNextLabel"
+global _AHKFuncParam := "_AHKVar *var,WORD is_byref,default_type,{LPTSTR default_str,Int64 default_int64,Double default_double}"
+If (A_PtrSize = 8)
+	global _AHKRCCallbackFunc := "UINT64 data1,data2,BYTE actual_param_count,flags,PTR *func"
+else
+	global _AHKRCCallbackFunc := "BYTE actual_param_count,flag,PTR *func"
+global _AHKFuncItemList := "_AHKUserFunc **mItem,int mCount, mCountMax"
+global _AHKVarItemList := "_AHKVar **mItem,int mCount, mCountMax"
+global _AHKFunc := "PTR vtable,v1,v2,v3,v4,v5,v6,v7,v8,LPCTSTR mName,int mParamCount,mMinParams,mIsVariadic,PTR *mBIF"
+global _AHKUserFunc := "PTR vtable,v1,v2,v3,v4,v5,v6,v7,v8,LPCTSTR mName, int mParamCount,mMinParams,mIsVariadic,PTR *mBIF,int mInstances,_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass,_AHKLabel *mFirstLabel,*mLastLabel,_AHKUserFunc *mOuterFunc,_AHKFuncItemList mFuncs,_AHKVarItemList mVars, _AHKVarItemList mStaticVars, _AHKVar **mDownVar, *mUpVar,Int *mUpVarIndex, mDownVarCount, mUpVarCount,bool mIsFuncExpression, BYTE mDefaultVarType,bool mIsMacro,PTR *mdyna_param,bool mPreprocessLocalVarsDone"
+global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mByteLength,_AHKVar *mAliasFor},UINT_PTR mByteCapacity,BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
 
-<em>; Same example like above using included AutoHotkey.dll</em>
-dll:=AhkThread("#Persistent`nMyLabel:`nReturn")
-MsgBox dll.ahkFindLabel["MyLabel"]
-
-<em>; Find label in current thread</em>
-MsgBox ahkFindLabel("MyLabel")</pre>
+Start:
+label:=Struct(_AHKLabel,FindLabel("Start"))
+MsgBox "Name:`t`t" label.mName "`nFirst Label Line:`t" label.mJumpToLine.mLineNumber "`nArg count:`t" label.mJumpToLine.mArgc "`nFirst Arg:`t`t" label.mJumpToLine.mArg.1.text "`nSecond Arg:`t" label.mJumpToLine.mArg.2.text</pre>
 </body></html>

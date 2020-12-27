@@ -47,6 +47,7 @@ index = [
   ["FindFunc","commands/FindFunc.htm"],
   ["FindLabel","commands/FindLabel.htm"],
   ["GetEnv","commands/GetEnv.htm"],
+  ["GetVar","commands/GetVar.htm"],
   ["HexToBin","commands/HexToBin.htm"],
   ["HIBYTE","commands/HIBYTE.htm"],
   ["HIWORD","commands/HIWORD.htm"],

@@ -31,7 +31,8 @@
 </dd>
 </dl>
 <h3>Examples</h3>
-<pre class="NoIndent">ByRefObj := ObjByRef(var:="Hello World!")
+<pre class="NoIndent">var2:=""
+ByRefObj := ObjByRef(var:="Hello World!")
 MsgBox ByRefObj.var <em>; returns content of var</em>
 ByRefObj.var := "Hello AHK!" <em>; assign new content to var</em>
 MsgBox var

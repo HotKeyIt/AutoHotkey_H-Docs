@@ -47,9 +47,9 @@ Internally AutoHotkey is able to decompress raw resources automatically (compile
   <a href="UnZipBuffer.htm">UnZipBuffer</a>, <a href="ZipInfo.htm">ZipInfo</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">string:="This is a message from AutoHotkey."
-sz := ZipRawMemory(string, StrLen(string) * 2, var, "password")
-UnZipRawMemory(&var, sz, text, "password")
-MsgBox text
+var := ZipRawMemory(StrPtr(string), StrPut(string), "password")
+textbuf:=UnZipRawMemory(var,,"password")
+MsgBox StrGet(text)
 </pre>
 
 </body>

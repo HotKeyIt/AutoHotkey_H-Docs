@@ -58,7 +58,7 @@ MsgBox obj.2</pre>
 <h1>UMap() / UArray() / UObject()</h1>
 <p>Create unsorted Map (applies to items and properties) / Array or Object (applies to properties only).<br>Normally Integers, Objects and Strings are saved separately and sorted alphabetically for performance. Using UMap/UArray/UObject items and properties will be saved and enumerated in the same order they were added.</p>
 <h3>Examples</h3>
-<pre class="NoIndent">map:=UMap("z",1,"a",2,99,3,1,4)
+<pre class="NoIndent">map:=UMap("z",1,"a",2,%'99'%,3,%'1'%,4)
 for k, v in map
   MsgBox k "=" v</pre>
 </div>

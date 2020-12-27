@@ -39,12 +39,12 @@
  <a href="ZipCloseBuffer.htm">ZipCloseBuffer</a>, <a href="UnZipBuffer.htm">UnZipBuffer</a>, <a href="ZipRawMemory.htm">ZipRawMemory</a>,
  <a href="UnZipRawMemory.htm">UnZipRawMemory</a>, <a href="ZipOptions.htm">ZipOptions</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></p>
 <h3>Examples</h3>
-<pre class="NoIndent">LV:=(Gui:=Gui.New()).Add("ListView","w800 h640",["Name","Attributes","CompressedSize","UncompressedSize","CreateTime","ModifyTime","AccessTime"])
-Gui.OnEvent("Close","GuiClose")
+<pre class="NoIndent">LV:=(MyGui:=Gui.New()).Add("ListView","w800 h640",["Name","Attributes","CompressedSize","UncompressedSize","CreateTime","ModifyTime","AccessTime"])
+MyGui.OnEvent("Close","GuiClose")
 for k, v in ZipInfo("MyZipFile.zip")
   LV.Add("",v.Name, v.Attributes, v.CompressedSize, v.UncompressedSize, v.CreateTime, v.ModifyTime, v.AccessTime)
 LV.ModifyCol
-Gui.Show()
+MyGui.Show()
 return
 GuiClose(p*) => ExitApp()</pre>
 </body></html>

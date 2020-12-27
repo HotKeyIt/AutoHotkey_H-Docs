@@ -110,6 +110,7 @@ toc = [
     {label:"BinRun",path:"commands/BinRun.htm"},
     {label:"DynaRun",path:"commands/DynaRun.htm"},
     {label:"EnvUpdate",path:"commands/EnvUpdate.htm"},
+    {label:"GetVar",path:"commands/GetVar.htm"},
     {label:"IsBOM",path:"commands/IsBOM.htm"},
     {label:"Object features",path:"commands/ObjectExtended.htm"},
     {label:"Macro",path:"commands/Macro.htm"},

@@ -120,6 +120,7 @@
 <li><object type="text/sitemap"><param name="Name" value="BinRun"><param name="Local" value="docs/commands/BinRun.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="DynaRun"><param name="Local" value="docs/commands/DynaRun.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="EnvUpdate"><param name="Local" value="docs/commands/EnvUpdate.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="GetVar"><param name="Local" value="docs/commands/GetVar.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="IsBOM"><param name="Local" value="docs/commands/IsBOM.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Object features"><param name="Local" value="docs/commands/ObjectExtended.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Macro"><param name="Local" value="docs/commands/Macro.htm"></object>

@@ -37,7 +37,7 @@ If (A_PtrSize = 8)
 else
 	global _AHKRCCallbackFunc := "ULONG data1,data2,data3,PTR stub,UINT_PTR callfuncptr,ULONG data4,data5,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
 global _AHKUSerFunc := "PTR *mFunc,int mInstances,_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass,_AHKLabel *mFirstLabel,*mLastLabel,_AHKFunc *mOuterFunc,PTR mFuncs,_AHKVar **mVar,**mLazyVar,**mGlobalVar,**mStaticVar,**mStaticLazyVar,**mDownVar,**mUpVar,Int *mUpVarIndex,Int mVarCount,mVarCountMax,mLazyVarCount,mGlobalVarCount,mStaticVarCount,mStaticLazyVarCount,mDownVarCount,mUpVarCount,bool mIsFuncExpression, UCHAR mDefaultVarType,bool mIsMacro,PTR *mdyna_param,bool mPreprocessLocalVarsDone"
-global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor},{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
+global _AHKVar := A_PtrSize ":{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor},{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
 MyFunc:=Struct(_AHKFunc,FindFunc("MyFunc"))
 MsgBox "Name:`t`t" MyFunc.mName "`nParamCount:`t" MyFunc.mParamCount "`nStaticVarCount:`t" MyFunc.mStaticVarcount
 MyFunc(p1,p2){

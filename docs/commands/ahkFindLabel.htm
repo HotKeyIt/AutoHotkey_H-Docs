@@ -48,7 +48,7 @@ global _AHKFuncItemList := "_AHKUserFunc **mItem,int mCount, mCountMax"
 global _AHKVarItemList := "_AHKVar **mItem,int mCount, mCountMax"
 global _AHKFunc := "PTR vtable,v1,v2,v3,v4,v5,v6,v7,v8,LPCTSTR mName,int mParamCount,mMinParams,mIsVariadic,PTR *mBIF"
 global _AHKUserFunc := "PTR vtable,v1,v2,v3,v4,v5,v6,v7,v8,LPCTSTR mName, int mParamCount,mMinParams,mIsVariadic,PTR *mBIF,int mInstances,_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass,_AHKLabel *mFirstLabel,*mLastLabel,_AHKUserFunc *mOuterFunc,_AHKFuncItemList mFuncs,_AHKVarItemList mVars, _AHKVarItemList mStaticVars, _AHKVar **mDownVar, *mUpVar,Int *mUpVarIndex, mDownVarCount, mUpVarCount,bool mIsFuncExpression, BYTE mDefaultVarType,bool mIsMacro,PTR *mdyna_param,bool mPreprocessLocalVarsDone"
-global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mByteLength,_AHKVar *mAliasFor},UINT_PTR mByteCapacity,BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
+global _AHKVar := A_PtrSize ":{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mByteLength,_AHKVar *mAliasFor},UINT_PTR mByteCapacity,BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
 
 Start:
 label:=Struct(_AHKLabel,FindLabel("Start"))

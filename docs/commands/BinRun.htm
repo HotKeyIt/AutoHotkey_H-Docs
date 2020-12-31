@@ -45,8 +45,8 @@
 </dl>
 <h3>Examples</h3>
 <pre class="NoIndent">FileRead, file, *c %A_AhkPath%
-BinRun(&file,"`nMsgBox % A_Args.a",{a:"Hello World!"})
+BinRun(&file,"`nMsgBox `% A_Args.a",{a:"Hello World!"})
 
 <em>; same as above</em>
-BinRun(A_AhkPath,"`nMsgBox A_Args.a",{a:"Hello World!"})</pre>
+BinRun(A_AhkPath,"`nMsgBox `% A_Args.a",{a:"Hello World!"})</pre>
 </body></html>

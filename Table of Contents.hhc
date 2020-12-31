@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+﻿<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <body>
 <object type="text/site properties">
@@ -7,6 +7,7 @@
 </object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="Quick Reference"><param name="Local" value="docs/AutoHotkey.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="AutoHotkey Help"><param name="Local" value="AutoHotkey.chm::/docs/AutoHotkey.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Recent AutoHotkey_H Changes"><param name="Local" value="docs/ChangeLog.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="AutoHotkey Module"></object>
 <ul>

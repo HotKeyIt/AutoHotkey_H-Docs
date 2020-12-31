@@ -36,12 +36,12 @@
 <h3>Related</h3>
 <a href="http://msdn.microsoft.com/en-us/library/dcw63t7z.aspx">CreateObject (MSDN)</a>
 
-<h3>Examples</h3>
-<p>For a constantly growing list of examples, see the following forum topic: <a href="http://www.autohotkey.com/forum/topic61509.html">http://www.autohotkey.com/forum/topic61509.html</a>.</p>
-<pre class="NoIndent">
-ie := <b>ComObjCreate</b>("InternetExplorer.Application")
-ie.Visible := true  <em>; This is known to work incorrectly on IE7.</em>
-ie.Navigate("http://www.autohotkey.com/")
+<h3>Example</h3>
+<pre class="NoIndent">lib:=LoadLibrary("AutoHotkey.dll")
+dll:=ComObjDll(lib,"{C58DCD96-1D6F-4F85-B555-02B7F21F5CAF}") ; AutoHotkey.Script.UNICODE 
+dll.ahktextdll("MsgBox from thread")
+while dll.ahkReady
+    Sleep 100
 </pre>
 
 </body>

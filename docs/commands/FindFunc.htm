@@ -25,19 +25,19 @@
 </dl>
 <h3>Examples</h3>
 <pre class="NoIndent">; AHK Structures
-global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func,_AHKDerefType *next,UInt symbol},BYTE type,param_count,WORD length"
-global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKDerefType *deref,_AHKVar *var,LPTSTR marker,_AHKExprTokenType *circuit_token},{_AHKExprTokenType *outer_deref,LPTSTR error_reporting_marker,size_t marker_length, BOOL is_lvalue}}},UINT symbol"
+global _AHKDerefType := "LPTSTR marker,{_AHKVar *var,_AHKFunc *func},BYTE is_function,param_count,WORD length"
+global _AHKExprTokenType := "{__int64 value_int64,double value_double,struct{{PTR *object,_AHKDerefType *deref,_AHKVar *var,LPTSTR marker},{LPTSTR buf,size_t marker_length, BOOL is_lvalue}}},UINT symbol,{_AHKExprTokenType *circuit_token, LPTSTR mem_to_free}"
 global _AHKArgStruct := "BYTE type,bool is_expression,WORD length,LPTSTR text,_AHKDerefType *deref,_AHKExprTokenType *postfix"
 global _AHKBreakPoint := "INT id,BYTE type,BYTE state,bool temporary"
 global _AHKLine := "BYTE mActionType,mArgc,WORD mFileIndex,UINT mLineNumber,_AHKArgStruct *mArg,PTR *mAttribute,_AHKLine *mPrevLine,*mNextLine,*mRelatedLine,*mParentLine,_AHKBreakPoint *mBreakPoint"
 global _AHKLabel := "PTR vTable,LPTSTR mName,_AHKLine *mJumpToLine,_AHKLabel *mPrevLabel,*mNextLabel"
 global _AHKFuncParam := "_AHKVar *var,WORD is_byref,default_type,{LPTSTR default_str,Int64 default_int64,Double default_double}"
 If (A_PtrSize = 8)
-	global _AHKRCCallbackFunc := "UINT64 data1,data2,PTR stub,UINT_PTR callfuncptr,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
+	global _AHKRCCallbackFunc := "UINT64 data1,data2,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
 else
-	global _AHKRCCallbackFunc := "ULONG data1,data2,data3,PTR stub,UINT_PTR callfuncptr,ULONG data4,data5,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
-global _AHKUSerFunc := "PTR *mFunc,int mInstances,_AHKLine *mJumpToLine,_AHKFuncParam *mParam,PTR *mClass,_AHKLabel *mFirstLabel,*mLastLabel,_AHKFunc *mOuterFunc,PTR mFuncs,_AHKVar **mVar,**mLazyVar,**mGlobalVar,**mStaticVar,**mStaticLazyVar,**mDownVar,**mUpVar,Int *mUpVarIndex,Int mVarCount,mVarCountMax,mLazyVarCount,mGlobalVarCount,mStaticVarCount,mStaticLazyVarCount,mDownVarCount,mUpVarCount,bool mIsFuncExpression, UCHAR mDefaultVarType,bool mIsMacro,PTR *mdyna_param,bool mPreprocessLocalVarsDone"
-global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor},{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
+	global _AHKRCCallbackFunc := "ULONG data1,data2,data3,data4,data5,BYTE actual_param_count,create_new_thread,event_info,*_AHKFunc func"
+global _AHKFunc := "PTR vTable, LPTSTR mName, {PTR mBIF, _AHKLine *mJumpToLine},_AHKFuncParam *mParam, int mParamCount, mMinParamCount, PTR *mClass,_AHKVar **mGlobalVar, **mVar, **mLazyVar, **mStaticVar, **mStaticLazyVar, int mGlobalVarCount, mVarCount, mVarCountMax, mLazyVarCount, mStaticVarCount, mStaticVarCountMax, mStaticLazyVarCount, mInstances, BYTE mDefaultVarType, bool mIsBuiltIn, mIsVariadic, mPreprocessLocalVarsDone"
+global _AHKVar := A_PtrSize ":{Int64 mContentsInt64,Double mContentsDouble,PTR mobject},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor},{UINT_PTR mByteCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
 MyFunc:=Struct(_AHKFunc,FindFunc("MyFunc"))
 MsgBox % "Name:`t`t" MyFunc.mName "`nParamCount:`t" MyFunc.mParamCount "`nStaticVarCount:`t" MyFunc.mStaticVarcount
 MyFunc(p1,p2){

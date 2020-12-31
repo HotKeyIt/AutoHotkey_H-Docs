@@ -43,6 +43,7 @@ DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
 DllCall(dllpath "\ahktextdll","Str","
 (
 #Persistent
+Return
 MyLabel:
 MsgBox % A_ThisLabel
 Return
@@ -53,6 +54,7 @@ DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0,"CDecl") <em>; jump to labe
 dll:=AhkThread("
 (
 #Persistent
+Return
 MyLabel:
 MsgBox % A_ThisLabel
 Return

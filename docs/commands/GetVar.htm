@@ -37,15 +37,13 @@
 <a href="ahkFindLabel.htm">ahkFindLabel</a>
 </p>
 <h3>Examples</h3>
-<pre class="NoIndent">global _AHKVar := "{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV}
-	,{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor}
-	,{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
+<pre class="NoIndent">global _AHKVar := A_PtrSize ":{Int64 mContentsInt64,Double mContentsDouble,PTR mobject,PTR mVV},{char *mByteContents,LPTSTR mCharContents},{UINT_PTR mLength,_AHKVar *mAliasFor},{UINT_PTR mCapacity,UINT_PTR mBIV},BYTE mHowAllocated,mAttrib,mScope,mType,LPTSTR mName"
 	
-global _AhkVarType := {0:"VAR_ALIAS",1:"VAR_NORMAL",2:"VAR_VIRTUAL",3:"VAR_CLIPBOARD",4:"VAR_CLIPBOARDALL",5:"VAR_BUILTIN"}
+global _AhkVarType := {0:"VAR_ALIAS",1:"VAR_NORMAL",2:"VAR_CLIPBOARD",3:"VAR_CLIPBOARDALL",4:"VAR_BUILTIN"}
 
 var:="AHK",	v:=Struct(_AhkVar,GetVar(var))
-MsgBox % v.mName "`n" _AhkVarType.%v.mType% "`n" v.mCharContents
+MsgBox % v.mName "`n" _AhkVarType[v.mType] "`n" v.mCharContents
 
 v:=Struct(_AhkVar,GetVar("ClipboardAll"))
-MsgBox % v.mName "`n" _AhkVarType.%v.mType%</pre>
+MsgBox % v.mName "`n" _AhkVarType[v.mType]</pre>
 </body></html>

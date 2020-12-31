@@ -65,7 +65,7 @@ href="MemoryLoadResource.htm">MemoryLoadResource</a>, <a
 href="DllCall.htm">DllCall</a>, <a href="DynaCall.htm">DynaCall</a> </p>
 
 <h3>Examples</h3>
-<pre>lib:=MemoryLoadLibrary(A_ScriptDir "\LiteZip.dll")
-MsgBox % StrGet(MemoryLoadString(lib,1))</pre>
+<pre>if lib:=MemoryLoadLibrary(A_ScriptDir "\LiteZip.dll")
+MsgBox % MemoryLoadString(lib,1)</pre>
 </body>
 </html>

@@ -51,10 +51,10 @@ otherwise 0 (false).</p>
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
 DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyFunc(param){`nSleep 1000`nMsgBox `% param`n}","Str","","CDecl") <em>; start a new thread, just the function.</em>
 DllCall(dllpath "\ahkPostFunction","Str","MyFunc","Str","Hello World!","Str","","Str","","Str","","Str","","Str","","Str","","Str","","Str","","Str","","CDecl") <em>; call the function.</em>
-Sleep 2000 <em>; wait 2 seconds and exit</em>
+Sleep 5000 <em>; wait 5 seconds and exit</em>
  
  <em>; Same example like above using included AutoHotkey.dll</em>
  dll:=AhkThread("#Persistent`nMyFunc(param){`nSleep 1000`nMsgBox `% param`n}")
  dll.ahkPostFunction["MyFunc","Hello World!"]
- Sleep 2000</pre>
+ Sleep 5000</pre>
 </body></html>

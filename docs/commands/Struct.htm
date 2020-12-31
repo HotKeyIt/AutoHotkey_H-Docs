@@ -237,7 +237,7 @@ MsgBox %  str1.Encoding("name") " != " str2.Encoding("name")</pre>
 </table>
 <pre>pt:=Struct("x,y")
 MsgBox %  pt.GetAddress() " = " pt[]
-MsgBox %  pt.GetAddress("x") " = " pt.x[""]</pre>
+MsgBox %  pt.GetAddress("y") " = " pt.y[""]</pre>
 </div>
 <div class="methodShort" id="GetCapacity">
 <h3>GetCapacity</h3>
@@ -335,7 +335,7 @@ MsgBox %  pt.Offset("y") <em>; returns 4</em>
 MyStruct:="Int a,b"
 pt:=Struct("MyStruct a[2]")
 MsgBox %  pt.a.Offset(2)  <em>; returns 8</em>
-       + pt.a.2.Offset("b") <em>; returns 4</em>
+       . " / " pt.a.2.Offset("b") <em>; returns 4</em>
 </pre>
 </div>
 <div class="methodShort" id="SetCapacity">
@@ -412,10 +412,11 @@ MsgBox %  struct.Size(1) <em>; returns 8</em></pre>
 <dl>
   <dt><h3>Features and Remarks<h3></dt>
     <dd><b>Some remarks about structure objects and more features.</b></dd>
+    <dd>By default, structure is aligned to the largest following item, however this can be changed by specifying the alignment followed by : in beginning of structure.<br>For example sizeof("Int a,Int64 b") == 16, where sizeof("4:Int a, Int64 b") == 12.</dd>
     <dd><b>Base</b> and <b>__Class</b> are properties and cannot be accessed using dot (.) syntax, use MyStruct["base"] instead!<br>
       A structure object can be resized, so you can even create array of a structure by increasing allocated memory.<br>
       You can receive the address of structure or key using empty key (e.g. MyStruct.item[""]).
-      For structure objects also [] can be used (e.g. MyStruct[] or MyStruct[""]).</dd>
+      Same can be used for structure objects too (e.g. MyStruct[] or MyStruct[""]).</dd>
   <br>
     <dd>When a key is not given a type, e.g. <b>"LPTSTR key1,key2"</b>, previous type is used. If the first key lacks a type, Uint is used,
 		so <b>"key1,key2"</b> is equivalent to <b>"UInt key1,key2"</b> or <b>"UInt key1,UInt key2"</b>.<br>
@@ -497,7 +498,7 @@ Loop 0xFF {
   For k, v in Bits
     If A_Index>1
       bit.= v " "
-  ToolTip "int   bits: 1 2 3 4 5 6 7 8`n" bit
+  ToolTip % "int   bits: 1 2 3 4 5 6 7 8`n" bit
   Sleep 200
 }</pre>
     </dd>
@@ -513,7 +514,7 @@ for k,v in s
   MsgBox %  k ": " v</pre>
       <p>Also Arrays can be enumerated same way.</p>
 
-      <pre>x:=Struct("UInt[10]",[0,9,8,7,6,5,4,3,2,1])
+      <pre>x:=Struct("UInt[10]",[9,8,7,6,5,4,3,2,1,0])
 for k, v In x
   MsgBox %  k ": " v</pre>
   <p><b>Note!</b> Fields of unknown size like "Uint *a" can be only enumerated to first value and not deeper!<br>
@@ -533,24 +534,25 @@ for k,v in pt.a.1
 
   <h3>Examples</h3>
 <pre class="NoIndent">
-<em>; 				Create array from existing memory</em>
+<em>; 				Create array of pointers</em>
 _POINT:="x,y"
-VarSetCapacity(pt1,8) <em>; allocate memory to variable to use in struct</em>
-pt:=Struct("*_POINT") <em>; same as to "*_POINT[1]"</em>
-pt["",""]:=&amp;pt1 <em>; assign pointer to fist item</em>
-pt.1.1.x:=1
-MsgBox %  pt.1.1.x
+pt:=Struct("*_POINT") <em>; similar to "*_POINT[1] but we have to allocate memory"</em>
+pt.SetCapacity(1,A_PtrSize),pt.SetCapacity(2,A_PtrSize)
+pt.1.SetCapacity(1,8),pt.2.SetCapacity(1,8) <em>; allocate memory</em>
+pt.1.1.x:=100, pt.2.1.x:=200
+MsgBox %  pt.1.1.x " / " pt.2.1.x
 </pre><pre class="NoIndent">
 <em>; 				More examples</em>
 pt:=Struct("x,y") <em>;POINT structure</em>
 pt.x:=100
 MsgBox %  pt.x
-rc:=Struct("left,top,right,bottom") <em>; RECT structure</em>
-Gui:=GuiCreate()
-Gui.Show("w640 h480")
-DllCall("GetWindowRect","PTR",gui.hwnd,"PTR",rc[])
+rc:=Struct("left,top,right,bottom") <em>;RECT structure</em>
+Gui,New,HWNDhwnd
+Gui,Show, w640 h480
+DllCall("GetWindowRect","PTR",hwnd,"PTR",rc[])
 MsgBox %  "left: " rc.left "`ntop: " rc.top "`nright: " rc.right "`nbottom: " rc.bottom
-Gui.Destroy
+Gui, Destroy
+ExitApp
 </pre><pre class="NoIndent">
 <em>; 				Array Examples
 ; Simple array structures.
@@ -562,18 +564,20 @@ MyArray:="a,b"
 arr:=Struct("MyArray[10]")
 arr.1.a:=1
 arr.2.b:=2
-MsgBox %  arr.1.a " = " arr.1.a "`n" arr.2.b
+MsgBox %  arr.1.a " / " arr.2.b
 </pre><pre class="NoIndent">
 <em>; 				Pointer Examples</em>
 <em>; SIMPLE POINTER*</em>
 int:=Struct("*UInt")
 int.SetCapacity(1,4)
+int.1.SetCapacity(1,4)
 int.1.1:=100
 MsgBox %  int.1.1
 </pre><pre class="NoIndent">
 <em>; 				Pointer to array of pointers</em>
 s:=Struct("**UInt")
 s.SetCapacity(1,8) <em>; array of 2 to pointer to uint</em>
+s.1.SetCapacity(1,8),s.1.SetCapacity(2,8)
 s.1.1.SetCapacity(1,8),s.1.2.SetCapacity(1,8)
 s.1.1.1:=10
 s.1.1.2:=20
@@ -603,20 +607,20 @@ Loop 3
 MsgBox %  StrGet(string[],26) <em>;get complete string</em>
 </pre><pre class="NoIndent">
 <em>; 				rect example</em>
-Gui:=GuiCreate()
+Gui,New,HWNDhwnd
 _RECT:="left,top,right,bottom"
 RC:=Struct(_RECT) <em>;create structure</em>
-Gui.Add("Text",,"Press Escape to continue")
-Gui.Show("w200 h100") <em>;show window</em>
-DllCall("GetWindowRect","PTR",Gui.hwnd,"PTR",rc[]) <em>;get window position</em>
+Gui,Add,Text,,Press Escape to continue
+Gui,Show,w200 h100 <em>;show window</em>
+DllCall("GetWindowRect","PTR",hwnd,"PTR",rc[]) <em>;get window position</em>
 rc.right := rc.right - rc.left <em>;Set rc.right to be the width</em>
 rc.bottom := rc.bottom - rc.top <em>;Set rc.bottom to be the height</em>
 While DllCall("GetCursorPos","PTR",rc[]) {
- DllCall("MoveWindow","PTR",gui.hwnd,"int",rc.left,"int",rc.top,"int",rc.right,"int",rc.bottom,"Int",1)
+ DllCall("MoveWindow","PTR",hwnd,"int",rc.left,"int",rc.top,"int",rc.right,"int",rc.bottom,"Int",1)
  If GetKeyState("Escape","P")
    break
 }
-Gui.Destroy
+ExitApp
 </pre><pre class="NoIndent">
 <em>; 				Findfirstfile example</em>
 _FILETIME := "dwLowDateTime,dwHighDateTime"
@@ -635,7 +639,7 @@ Loop {
    If !DllCall("FindNextFile","Uint",handle,"Uint",file.2[""])
       break
    DllCall("FileTimeToSystemTime","Uint",file.2.ftLastWriteTime[""],"Uint",time[""])
-   ToolTip StrGet(file.2.cFileName[""]) "`n" StrGet(file.2.cAlternateFileName[""]) "`n" file.2.nFileSizeHigh " - " file.2.nFileSizeLow
+   ToolTip % StrGet(file.2.cFileName[""]) "`n" StrGet(file.2.cAlternateFileName[""]) "`n" file.2.nFileSizeHigh " - " file.2.nFileSizeLow
          . "`n" time.wYear . "-" time.wMonth . "-" time.wDay
          . "`n" time.wDayOfWeek
          . "`n" time.wHour . ":" time.wMinute   . ":" time.wSecond . ":" time.Milliseconds
@@ -665,7 +669,7 @@ pEntry.dwSize := sizeof(_PROCESSENTRY32)
 hSnapshot:=DllCall("CreateToolhelp32Snapshot","UInt",TH32CS_SNAPALL:=0x0000001F,"PTR",0)
 DllCall("Process32First" (A_IsUnicode?"W":""),"PTR",hSnapshot,"PTR",pEntry[""])
 While (A_Index=1 || DllCall("Process32Next" (A_IsUnicode?"W":""),"PTR",hSnapshot,"PTR",pEntry[""])) {
-  ToolTip pEntry.cntUsage "`n" pEntry.th32ProcessID
+  ToolTip % pEntry.cntUsage "`n" pEntry.th32ProcessID
   . "`n" pEntry.th32DefaultHeapID "`n" pEntry.th32ModuleID
   . "`n" pEntry.cntThreads "`n" pEntry.th32ParentProcessID
   . "`n" pEntry.pcPriClassBase "`n" pEntry.dwFlags "`n" StrGet(pEntry.szExeFile[""])
@@ -723,7 +727,7 @@ ListProcessModules(dwPID)
   ;//  and display information about each module
   while(A_Index=1 || DllCall("Module32Next" (A_IsUnicode?"W":""),"PTR",hModuleSnap,"PTR", me32[""] ) )
   {
-    ToolTip "`tMODULE NAME`t=`t"       StrGet(me32.szModule[""])
+    ToolTip % "`tMODULE NAME`t=`t"       StrGet(me32.szModule[""])
             . "`n`texecutable`t=`t"    StrGet(me32.szExePath[""])
             . "`n`tprocess ID`t=`t"    me32.th32ProcessID
             . "`n`tref count (g)`t=`t"   me32.GlblcntUsage

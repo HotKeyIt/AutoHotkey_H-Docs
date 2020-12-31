@@ -57,6 +57,6 @@ href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawM
 <h3>Example</h3>
 <pre class="NoIndent">Data:=FileRead(A_ScriptDir "\MYRES.RES", "RAW")
 FileGetSize, sz, % A_ScriptDir "\MYRES.RES"
-ResPut(Data, sz, A_AhkPath, "MYRES.RES")</pre>
+ResPut(Data, sz, "MyExecutable.exe", "MYRES.RES")</pre>
 </body>
 </html>

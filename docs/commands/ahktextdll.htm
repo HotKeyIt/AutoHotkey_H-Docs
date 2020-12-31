@@ -64,7 +64,7 @@ the path of the executable will be used.
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","MsgBox 'Hello World!'","Str","","CDecl") <em>; start a new thread from file.</em>
+DllCall(dllpath "\ahktextdll","Str","MsgBox 'Hello World!'","Str","","Str","","CDecl") <em>; start a new thread from file.</em>
 While DllCall(dllpath "\ahkReady")
   Sleep 100 <em>; wait for the thread to exit</em>
 

@@ -25,6 +25,7 @@ This object can be used to access the defined structure using object syntax.<br>
   <li><a href="#IsPointer">IsPointer</a></li>
   <li><a href="#Offset">Offset</a></li>
   <li><a href="#SetCapacity">SetCapacity</a></li>
+  <li><a href="#Size">Size</a></li>
 </ul>
 <p><b>Struct</b> requires a definition and accepts optionally address of structure memory and initialization object.</p>
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">Struct</span>(Definition <span class="optional">,StructMemory, InitObject</span>)<pre><em>Function Example:</em> <b>pt</b> := Struct("int x;y",,{x:10,y:20})</pre></pre>
@@ -228,8 +229,9 @@ MsgBox str1.Encoding("name") " != " str2.Encoding("name")</pre>
     <tr>
       <td>field</td>
       <td>Name of existing field within the structure. When omitted, returns
-        address of structure itself. To get the address for structure or field you can
-        use [] or [""] as well.
+        address of structure itself. To get the address for structure you can
+        also use[] or [""] for structure objects and [""] for its fields.
+        <b>Note</b> you cannot use [] for fields. </td>
     </tr>
   </tbody>
 </table>
@@ -333,7 +335,7 @@ MsgBox pt.Offset("y") <em>; returns 4</em>
 MyStruct:="Int a,b"
 pt:=Struct("MyStruct a[2]")
 MsgBox pt.a.Offset(2)  <em>; returns 8</em>
-       + pt.a.2.Offset("b") <em>; returns 4</em>
+       . " / " pt.a.2.Offset("b") <em>; returns 4</em>
 </pre>
 </div>
 <div class="methodShort" id="SetCapacity">
@@ -377,10 +379,40 @@ MsgBox str.GetCapacity("name")
 str.name:="AutoHotkey"
 MsgBox str.GetCapacity("name")</pre>
 </div>
+<div class="methodShort" id="Size">
+<h3>Size</h3>
+
+<p>Returns the size in bytes of a structure or field.</p>
+<pre class="Syntax">OutputVar := Struct.Size([field])</pre>
+
+<table style="width: 800px; height: 80px;" class="info">
+  <tbody>
+    <tr>
+      <td width="15%"><b>OutputVar</b></td>
+      <td>The name of the Variable in which to store the size of field or structure.</td>
+    </tr>
+    <tr>
+      <td><b>field</b></td>
+      <td>Name of existing field within the structure, if omitted the size of
+        structure is returned.</td>
+    </tr>
+  </tbody>
+</table>
+<pre>pt:=Struct("x,y")
+MsgBox pt.Size() <em>; returns 8</em></pre>
+<pre>struct:=Struct("Int64 x,y")
+MsgBox struct.Size("y") <em>; returns 8</em></pre>
+If structure is an array you will needle to pass a digit to retrieve the size
+of a field.<br>
+
+<pre>struct:=Struct("Int64[2]")
+MsgBox struct.Size(1) <em>; returns 8</em></pre>
+</div>
 
 <dl>
   <dt><h3>Features and Remarks<h3></dt>
     <dd><b>Some remarks about structure objects and more features.</b></dd>
+    <dd>By default, structure is aligned to the largest following item, however this can be changed by specifying the alignment followed by : in beginning of structure.<br>For example sizeof("Int a,Int64 b") == 16, where sizeof("4:Int a, Int64 b") == 12.</dd>
     <dd><b>Ptr</b>, <b>Base</b> and <b>__Class</b> are reserved properties and cannot be accessed using dot (.) syntax, avoid using them as field or use MyStruct["Ptr"], MyStruct["base"] and MyStruct["__Class"] to access them!!!<br>
       A structure object can be resized, so you can even create array of a structure by increasing allocated memory.<br>
       You can receive the address of structure or key using empty key (e.g. MyStruct.item[]).
@@ -482,7 +514,7 @@ for k,v in s
   MsgBox k ": " v</pre>
       <p>Also Arrays can be enumerated same way.</p>
 
-      <pre>x:=Struct("UInt[10]",[0,9,8,7,6,5,4,3,2,1])
+      <pre>x:=Struct("UInt[10]",[9,8,7,6,5,4,3,2,1,0])
 for k, v In x
   MsgBox k ": " v</pre>
   <p><b>Note!</b> Fields of unknown size like "Uint *a" can be only enumerated to first value and not deeper!<br>
@@ -504,11 +536,11 @@ for k,v in pt.a.1
 <pre class="NoIndent">
 <em>; 				Create array from existing memory</em>
 _POINT:="x,y"
-pt1:=BufferAlloc(8) <em>; allocate memory to variable to use in struct</em>
-pt:=Struct("*_POINT") <em>; same as to "*_POINT[1]"</em>
-pt["",""]:=pt1.Ptr <em>; assign pointer to fist item</em>
-pt.1.1.x:=1
-MsgBox pt.1.1.x
+pt:=Struct("*_POINT") <em>; similar to "*_POINT[1] but we have to allocate memory"</em>
+pt.SetCapacity(1,A_PtrSize),pt.SetCapacity(2,A_PtrSize)
+pt.1.SetCapacity(1,8),pt.2.SetCapacity(1,8) <em>; allocate memory</em>
+pt.1.1.x:=100, pt.2.1.x:=200
+MsgBox pt.1.1.x " / " pt.2.1.x
 </pre><pre class="NoIndent">
 <em>; 				More examples</em>
 pt:=Struct("x,y") <em>;POINT structure</em>
@@ -531,7 +563,7 @@ MyArray:="a,b"
 arr:=Struct("MyArray[10]")
 arr.1.a:=1
 arr.2.b:=2
-MsgBox arr.1.a " = " arr.1.a "`n" arr.2.b
+MsgBox arr.1.a " / " arr.2.b
 </pre><pre class="NoIndent">
 <em>; 				Pointer Examples</em>
 <em>; SIMPLE POINTER*</em>
@@ -543,6 +575,7 @@ MsgBox int.1.1
 <em>; 				Pointer to array of pointers</em>
 s:=Struct("**UInt")
 s.SetCapacity(1,8) <em>; array of 2 to pointer to uint</em>
+s.1.SetCapacity(1,8),s.1.SetCapacity(2,8)
 s.1.1.SetCapacity(1,8),s.1.2.SetCapacity(1,8)
 s.1.1.1:=10
 s.1.1.2:=20

@@ -144,7 +144,7 @@ temporarily. Not available for scripts compiled with AutoHotkeySC.bin.</td>
 <h3>Related</h3>
 <p><a href="../AutoHotkeyDll.htm">AutoHotkey.dll</a></p>
 <h3>Examples</h3>
-<pre class="NoIndent">ahkdll:=AhkThread("Msgbox variable:=`"Thread`"") <em>; Loads the AutoHotkey module and starts the script.</em>
+<pre class="NoIndent">ahkdll:=AhkThread("#Persistent`nvariable:=`"Thread`"") <em>; Loads the AutoHotkey module and starts the script.</em>
 While !ahkdll.ahkgetvar.variable
   Sleep 50 <em>; wait until variable has been set.</em>
 MsgBox ahkdll.ahkgetvar.variable <em>; Display content of variable in thread</em>

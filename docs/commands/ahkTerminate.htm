@@ -34,7 +34,7 @@ currently executed by AutoHotkey module.<br>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","MsgBox","Str","","CDecl") <em>; start a new thread.</em>
+DllCall(dllpath "\ahktextdll","Str","MsgBox","Str","","Str","","CDecl") <em>; start a new thread.</em>
 Sleep 1000
 DllCall(dllpath "\ahkTerminate","UInt",0,"CDecl") <em>; terminate thread.</em>
 MsgBox "End"

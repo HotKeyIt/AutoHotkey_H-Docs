@@ -49,7 +49,7 @@ href="ResPutFile.htm">ResPutFile</a>
 href="ResDllCreate.htm">ResDllCreate</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory</a></p>
 
 <h3>Example</h3>
-<pre class="NoIndent">ResGet(data,A_AhkPath,"RESGET.AHK","LIB")
+<pre class="NoIndent">data:=ResGet(A_AhkPath,"RESGET.AHK","LIB")
 var:=UnZipRawMemory(data)
 MsgBox StrGet(var,"UTF-8")</pre>
 </body>

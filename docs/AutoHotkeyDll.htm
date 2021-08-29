@@ -22,7 +22,7 @@ do we need an AutoHotkey Module</h2>
 <p><b>Multi-threading</b>: AutoHotkey
 is not designed for multi-threading naturally and most likely it will
 be&nbsp;never implemented. Using AutoHotkey.dll
-we can stil run multiple
+we can still run multiple
 scripts in one process, on a multi-core system we can even run multiple
 scripts at the same time. To do so, AutoHotkey module&nbsp;also
 needs to be loaded
@@ -31,19 +31,19 @@ or
 multiple
 dlls&nbsp;by copying and renaming AutoHotkey.dll
 for example to
-MyScript1.dll, MyScript2.dll ...<br>
+AutoHotkey1.dll, AutoHotkey2.dll ...<br>
 </p>
 <p>AutoHotkey Module is running in its own context,
-using separate memory, functions and variables, this allows to access,
-read and write its memory / variables from another thread. AutoHotkey
+using separate memory, functions and variables. You can access,
+access variables and objects from another thread. AutoHotkey
 Module exports several functions that allow various operations to
 create and manipulate the new thread. </p>
 <p id="OtherPrograms"><b>Use AutoHotkey in
 other programms</b>:
 AutoHotkey Module can be also used in other programming languages like
-VB, C#, C++, Python, Lua and many more. Programms that do not support
+VB, C#, C++, Python, Lua and many more. Programs that do not support
 loading a dll naturally can use the <a href="COMInterface.htm">COM
-Interface</a> of AutoHotkey.dll.</p>
+Interface</a>.</p>
 <p id="COMInterface"><b>AutoHotkey COM Interface</b>:
 AutoHotkey.dll can be also loaded and manipulated using its <a href="COMInterface.htm">COM
   Interface</a>. Before using this Interface, AutoHotkey.dll needs to be

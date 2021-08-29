@@ -6,6 +6,7 @@
 <li><object type="text/sitemap"><param name="Name" value="#WarnContinuableException"><param name="Local" value="docs/commands/_WarnContinuableException.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="#WindowClassGui"><param name="Local" value="docs/commands/_WindowClassGui.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="#WindowClassMain"><param name="Local" value="docs/commands/_WindowClassMain.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="7-zip module"><param name="Local" value="https://documentation.help/7-Zip/index5.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Acknowledgements"><param name="Local" value="docs/misc/Acknowledgements.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="addFile"><param name="Local" value="docs/commands/addFile.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="addScript"><param name="Local" value="docs/commands/addScript.htm"></object>
@@ -97,6 +98,7 @@
 <li><object type="text/sitemap"><param name="Name" value="ZipAddFolder"><param name="Local" value="docs/commands/ZipAddFolder.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipCloseBuffer"><param name="Local" value="docs/commands/ZipCloseBuffer.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipCloseFile"><param name="Local" value="docs/commands/ZipCloseFile.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ZipCompressionLevel"><param name="Local" value="docs/commands/ZipCompressionLevel.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipCreateBuffer"><param name="Local" value="docs/commands/ZipCreateBuffer.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipCreateFile"><param name="Local" value="docs/commands/ZipCreateFile.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipInfo"><param name="Local" value="docs/commands/ZipInfo.htm"></object>

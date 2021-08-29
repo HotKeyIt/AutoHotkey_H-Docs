@@ -16,9 +16,9 @@
 
 <p>Extract one items from a zip archive.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZipBuffer</span>(ZipFileName or Address or BufferObject, FileToExtract <span class="optional">, Password</span>)
-<pre><em>Function Example:</em> <b>MyBuffer</b> := UnZipBuffer("MyZip.zip", "scripts\MyScript.ahk")
-                  <b>MyBuffer</b> := UnZipBuffer(zipBuffer, sz, "scripts\MyScript.ahk", var)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZipBuffer</span>(ZipFileName or Address or BufferObject, FileToExtract<span class="optional">, VariableName, Password</span>)
+<pre><em>Function Example:</em> <b>sz</b> := UnZipBuffer("MyZip.zip", "scripts\MyScript.ahk")
+                  <b>sz</b> := UnZipBuffer(zipBuffer, sz, "scripts\MyScript.ahk", var)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

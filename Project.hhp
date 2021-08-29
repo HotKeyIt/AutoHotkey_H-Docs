@@ -44,7 +44,6 @@ docs\commands\ahkTerminate.htm
 docs\commands\AhkThread.htm
 docs\commands\ahktextdll.htm
 docs\commands\Alias.htm
-docs\commands\Between.htm
 docs\commands\BinRun.htm
 docs\commands\BinToHex.htm
 docs\commands\CreateScript.htm
@@ -76,7 +75,6 @@ docs\commands\MAKEWPARAM.htm
 docs\commands\MCodeH.htm
 docs\commands\ObjLoad.htm
 docs\commands\ObjDump.htm
-docs\commands\ObjectExtended.htm
 docs\commands\ObjShare.htm
 docs\commands\ResDelete.htm
 docs\commands\ResDllCreate.htm
@@ -85,10 +83,9 @@ docs\commands\ResGet.htm
 docs\commands\ResPut.htm
 docs\commands\ResPutFile.htm
 docs\commands\ResourceLoadLibrary.htm
+docs\commands\SevenZip.htm
 docs\commands\sizeof.htm
-docs\commands\SplashImage.htm
-docs\commands\SplashTextOn.htm
-docs\commands\StrBuf.htm
+docs\commands\StrPutVar.htm
 docs\commands\Struct.htm
 docs\commands\ToChar.htm
 docs\commands\ToInt.htm

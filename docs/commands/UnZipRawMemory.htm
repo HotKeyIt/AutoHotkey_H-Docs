@@ -16,8 +16,8 @@
 
 <p>This function is used to unzip and decrypt raw memory, for example from resource.</p>
 
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZipRawMemory</span>(AddressOrBufferObject<span class="optional">, Size, Password</span>)
-<pre><em>Function Example:</em> <b>MyBuffer</b> := UnZipRawMemory(resourceBuffer)</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">UnZipRawMemory</span>(AddressOrBufferObject<span class="optional">, Size, VariableName, Password</span>)
+<pre><em>Function Example:</em> <b>sz</b> := UnZipRawMemory(&resource, ressize, var)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>

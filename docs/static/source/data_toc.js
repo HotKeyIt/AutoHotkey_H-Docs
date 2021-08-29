@@ -1,6 +1,7 @@
 toc = [
   {label:"Quick Reference",path:"AutoHotkey.htm"},
-  {label:"AutoHotkey Help",path:"AutoHotkey.chm::/docs/AutoHotkey.htm"},
+  {label:"AutoHotkey Help",path:"https://www.autohotkey.com/docs/AutoHotkey.htm"},
+  {label:"7-zip Help",path:"https://documentation.help/7-Zip/index5.htm"},
   {label:"Recent AutoHotkey_H Changes",path:"ChangeLog.htm"},
   {label:"AutoHotkey Module",children:
   [
@@ -49,7 +50,7 @@ toc = [
     {label:"ObjDump",path:"commands/ObjDump.htm"},
     {label:"ObjLoad",path:"commands/ObjLoad.htm"}
   ]},
-  {label:"Cast",path:"commands/Cast.htm",children:
+  {label:"Cast",children:
   [
     {label:"ToChar",path:"commands/ToChar.htm"},
     {label:"ToInt",path:"commands/ToInt.htm"},
@@ -85,12 +86,6 @@ toc = [
   [
     {label:"FileReplace",path:"commands/FileReplace.htm"},
   ]},
-  {label:"Graphical User Interfaces",children:
-  [
-    {label:"Progress",path:"commands/Progress.htm"},
-    {label:"SplashImage",path:"commands/SplashImage.htm"},
-    {label:"SplashTextOn",path:"commands/SplashTextOn.htm"},
-  ]},
   {label:"Memory Module",children:
   [
     {label:"MemoryModule",path:"MemoryModule.htm"},
@@ -108,6 +103,15 @@ toc = [
     {label:"BinRun",path:"commands/BinRun.htm"},
     {label:"DynaRun",path:"commands/DynaRun.htm"},
     {label:"IsBOM",path:"commands/IsBOM.htm"},
+  ]},
+  {label:"Resource",children:
+  [
+    {label:"ResDelete",path:"commands/ResDelete.htm"},
+    {label:"ResDllCreate",path:"commands/ResDllCreate.htm"},
+    {label:"ResExist",path:"commands/ResExist.htm"},
+    {label:"ResGet",path:"commands/ResGet.htm"},
+    {label:"ResPut",path:"commands/ResPut.htm"},
+    {label:"ResPutFile",path:"commands/ResPutFile.htm"}
   ]},
   {label:"String",children:
   [
@@ -155,6 +159,12 @@ toc = [
   ]},
   {label:"Zip Library",children:
   [
+    {label:"7-zip module",children:
+    [
+    {label:"SevenZip",path:"commands/SevenZip.htm"}
+    ]},
+    {label:"Built-in functions",children:
+    [
     {label:"UnZip",path:"commands/UnZip.htm"},
     {label:"UnZipBuffer",path:"commands/UnZipBuffer.htm"},
     {label:"UnZipRawMemory",path:"commands/UnZipRawMemory.htm"},
@@ -163,11 +173,13 @@ toc = [
     {label:"ZipAddFolder",path:"commands/ZipAddFolder.htm"},
     {label:"ZipCloseBuffer",path:"commands/ZipCloseBuffer.htm"},
     {label:"ZipCloseFile",path:"commands/ZipCloseFile.htm"},
+    {label:"ZipCompressionLevel",path:"commands/ZipCompressionLevel.htm"},
     {label:"ZipCreateBuffer",path:"commands/ZipCreateBuffer.htm"},
     {label:"ZipCreateFile",path:"commands/ZipCreateFile.htm"},
     {label:"ZipInfo",path:"commands/ZipInfo.htm"},
     {label:"ZipOptions",path:"commands/ZipOptions.htm"},
     {label:"ZipRawMemory",path:"commands/ZipRawMemory.htm"}
+    ]}
   ]},
   {label:"#Directives",children:
   [

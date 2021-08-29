@@ -122,7 +122,7 @@ AnotherFunc(){
   MsgBox % (pt.x "-" pt.y)
 }</pre>
     </dd>
-  <dt>StructMemory</dt>
+  <dt>StructMemory (optonal)</dt>
     <dd><p>Address of memory representing the structure. This variable is used
       to access an existing structure in memory.
       For example here we would use the memory of variable <span
@@ -133,7 +133,7 @@ pt:=Struct("x,y",&amp;pointMem)
 pt.x:=10
 MsgBox %  pt[] " = " (&amp;pointMem) "`n" pt.x " = " NumGet(pointMem,"UInt")</pre>
     </dd>
-  <dt>InitObject</dt>
+  <dt>InitObject (optonal)</dt>
     <dd><p>Initialize your structure right away using an object, map, array or another structure.<br>
       The order of keys and values is not relevant.</p>
       <pre>pt:=Struct("x,y",,{x:100,y:200})

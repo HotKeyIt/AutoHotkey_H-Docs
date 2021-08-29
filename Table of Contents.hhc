@@ -7,7 +7,8 @@
 </object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="Quick Reference"><param name="Local" value="docs/AutoHotkey.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="AutoHotkey Help"><param name="Local" value="AutoHotkey.chm::/docs/AutoHotkey.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="AutoHotkey Help"><param name="Local" value="https://www.autohotkey.com/docs/AutoHotkey.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="7-zip Help"><param name="Local" value="https://documentation.help/7-Zip/index5.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Recent AutoHotkey_H Changes"><param name="Local" value="docs/ChangeLog.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="AutoHotkey Module"></object>
 <ul>
@@ -56,7 +57,7 @@
 <li><object type="text/sitemap"><param name="Name" value="ObjDump"><param name="Local" value="docs/commands/ObjDump.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ObjLoad"><param name="Local" value="docs/commands/ObjLoad.htm"></object>
 </ul>
-<li><object type="text/sitemap"><param name="Name" value="Cast"><param name="Local" value="docs/commands/Cast.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="Cast"></object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="ToChar"><param name="Local" value="docs/commands/ToChar.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ToInt"><param name="Local" value="docs/commands/ToInt.htm"></object>
@@ -94,13 +95,6 @@
 <li><object type="text/sitemap"><param name="Name" value="FileReplace"><param name="Local" value="docs/commands/FileReplace.htm"></object>
 <li><object type="text/sitemap"></object>
 </ul>
-<li><object type="text/sitemap"><param name="Name" value="Graphical User Interfaces"></object>
-<ul>
-<li><object type="text/sitemap"><param name="Name" value="Progress"><param name="Local" value="docs/commands/Progress.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="SplashImage"><param name="Local" value="docs/commands/SplashImage.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="SplashTextOn"><param name="Local" value="docs/commands/SplashTextOn.htm"></object>
-<li><object type="text/sitemap"></object>
-</ul>
 <li><object type="text/sitemap"><param name="Name" value="Memory Module"></object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="MemoryModule"><param name="Local" value="docs/MemoryModule.htm"></object>
@@ -119,6 +113,15 @@
 <li><object type="text/sitemap"><param name="Name" value="DynaRun"><param name="Local" value="docs/commands/DynaRun.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="IsBOM"><param name="Local" value="docs/commands/IsBOM.htm"></object>
 <li><object type="text/sitemap"></object>
+</ul>
+<li><object type="text/sitemap"><param name="Name" value="Resource"></object>
+<ul>
+<li><object type="text/sitemap"><param name="Name" value="ResDelete"><param name="Local" value="docs/commands/ResDelete.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResDllCreate"><param name="Local" value="docs/commands/ResDllCreate.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResExist"><param name="Local" value="docs/commands/ResExist.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResGet"><param name="Local" value="docs/commands/ResGet.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResPut"><param name="Local" value="docs/commands/ResPut.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResPutFile"><param name="Local" value="docs/commands/ResPutFile.htm"></object>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="String"></object>
 <ul>
@@ -167,6 +170,12 @@
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="Zip Library"></object>
 <ul>
+<li><object type="text/sitemap"><param name="Name" value="7-zip module"></object>
+<ul>
+<li><object type="text/sitemap"><param name="Name" value="SevenZip"><param name="Local" value="docs/commands/SevenZip.htm"></object>
+</ul>
+<li><object type="text/sitemap"><param name="Name" value="Built-in functions"></object>
+<ul>
 <li><object type="text/sitemap"><param name="Name" value="UnZip"><param name="Local" value="docs/commands/UnZip.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="UnZipBuffer"><param name="Local" value="docs/commands/UnZipBuffer.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="UnZipRawMemory"><param name="Local" value="docs/commands/UnZipRawMemory.htm"></object>
@@ -175,11 +184,13 @@
 <li><object type="text/sitemap"><param name="Name" value="ZipAddFolder"><param name="Local" value="docs/commands/ZipAddFolder.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipCloseBuffer"><param name="Local" value="docs/commands/ZipCloseBuffer.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipCloseFile"><param name="Local" value="docs/commands/ZipCloseFile.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ZipCompressionLevel"><param name="Local" value="docs/commands/ZipCompressionLevel.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipCreateBuffer"><param name="Local" value="docs/commands/ZipCreateBuffer.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipCreateFile"><param name="Local" value="docs/commands/ZipCreateFile.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipInfo"><param name="Local" value="docs/commands/ZipInfo.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipOptions"><param name="Local" value="docs/commands/ZipOptions.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipRawMemory"><param name="Local" value="docs/commands/ZipRawMemory.htm"></object>
+</ul>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="#Directives"></object>
 <ul>

@@ -14,7 +14,7 @@
 script.
 </p>
 <br>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">addScript</span>(NewCode <span class="optional">, WaitExecute</span>)
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">addScript</span>(NewCode<span class="optional">, WaitExecute</span>)
 <pre><em>Function Example:</em> <b>LinePtr</b> := addScript("MsgBox `% A_Now", 1)
                   <b>LinePtr</b> := DllCall("AutoHotkey.<b>dll</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")
                   <b>LinePtr</b> := DllCall("AutoHotkey.<b>exe</b>\addScript", "Str", "MsgBox `% A_Now", "Int", 1, "UPTR")</pre></pre>

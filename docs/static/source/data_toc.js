@@ -1,7 +1,7 @@
 toc = [
   {label:"Quick Reference",path:"AutoHotkey.htm"},
-  {label:"AutoHotkey Help",path:"https://www.autohotkey.com/docs/AutoHotkey.htm"},
-  {label:"7-zip Help",path:"https://documentation.help/7-Zip/index5.htm"},
+  {label:"AutoHotkey Help",path:"AutoHotkeyV2.htm"},
+  {label:"7-zip Help",path:"7-zip.htm"},
   {label:"Recent AutoHotkey_H Changes",path:"ChangeLog.htm"},
   {label:"AutoHotkey Module",children:
   [

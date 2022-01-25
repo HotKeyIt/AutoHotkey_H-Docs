@@ -1,0 +1,63 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+  <title>JSON()</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>JSON</h1>
+
+<p><b>JSON</b> is a built-in Class that can stringify Objects and parse JSON string to create a Map or Array.</p>
+
+<h2>Methods</h2>
+<ul>
+<li><a href="#Parse">Parse</a></li>
+<li><a href="#Stringify">Stringify</a></li>
+</ul>
+
+<div class="methodShort" id="Parse">
+<h3>Parse</h3>
+
+<p>Parse a JSON string to a Map or Array.</p>
+<pre class="Syntax"><b>OutputVar</b> := JSON.Parse(JSON_String)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the created Map or Array.</p>
+</dd>
+<dt>JSON_String</dt>
+<dd>
+<p>String containing JSON or a variable containing a JSON string.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Stringify">
+<h3>Stringify</h3>
+
+<p>Convert an Object to a JSON string.</p>
+<pre class="Syntax"><b>OutputVar</b> := JSON.Stringify(Object)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the JSON string.</p>
+</dd>
+<dt>Object</dt>
+<dd>
+<p>Any Objects that support __Enum can be stringified.</p>
+</dd>
+</dl>
+</div>
+<h3>Examples</h3>
+<pre class="NoIndent">for k, v in JSON.Parse('{"a":1,"b":2,"c":3}')
+  MsgBox k "=" v
+
+MsgBox JSON.Stringify({a:1,b:[2,3,4],c:Map("d",5,"e",6,"f",7)})
+</body>
+</html>

@@ -9,35 +9,30 @@
 </head>
 <body>
 <h1>ObjDump</h1>
-<p>Dump an object to memory or save to file for later use.</p>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjDump</span>(Object <span class="optional">, Compress, Password</span>)
-<pre><em>Function Example:</em> <b>size</b> := ObjDump(obj, var)</pre></pre>
+<p>Dump an object to memory or save to file for later use. Dumped object can be compressed and encrypted using a password.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">ObjDump</span>(Object <span class="optional">, Password</span>)
+<pre><em>Function Example:</em> <b>DumpBuffer</b> := ObjDump(obj)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
   <dt><b>OutputVar</b></dt>
-    <dd><p>The name of the variable in which to store the size of dumped object.</p></dd>
+    <dd><p>The name of the variable in which to store the buffer containing dumped object.</p></dd>
 
   <dt>Object</dt>
   <dd>
-  <p>The object to be dumped to memory.</p>
-  </dd>
-  
-  <dt>Compress (optional)</dt>
-  <dd>
-  <p>If this parameter is not missing and not NULL || FALSE || 0, then dumped object will be compressed.</p>
+  <p>The object to be dumped.</p>
   </dd>
   
   <dt>Password (optional)</dt>
   <dd>
-  <p>When dumped object is compressed this parameter can be a passwords to use for dumped object, no password can be used if Compress parameter is missing or NULL || FALSE || 0!</p>
+  <p>If this parameter is omitted, dumped buffer will not be compressed and not encrypted. If password is an empty string (""), dumped object will be compressed without encryption.</p>
   </dd>
 </dl>
 <dl>
 <h3>General Remarks</h3>
 <dd>
-<p>Only following data is saved: for Objects its properties, for Maps and Arrays its items, for BufferObjects the buffer and Structs are converted to Map. Other types of Objects are not supported.
- <br>A user defined "base" is not saved and can not be restored.</p>
+<p>Only following objects and items are supported:<ul><li>Object: properties</li><li>Map and Array: items and properties</li><li>Buffer: memory buffer and properties</li><li>Struct is converted to unsorted Map</li><li>ComObjValue: VT_EMPTY, VT_NULL, VT_BOOL, VT_I2, VT_I4, VT_R4, VT_R8, VT_CY, VT_DATE, VT_BSTR, VT_I1, VT_UI1, VT_UI2, VT_, VT_UI4, VT_I8, VT_UI8, VT_INT, VT_UINT</li><li>Other types of Objects are not supported</li></ul>
+ <br>For user defined classes "base" is not saved and can not be restored.<br>Unsorted Objects, Arrays and Maps are supported too.</p>
 </dd>
 </dl>
 <h3><em>Related</em></h3>
@@ -47,18 +42,18 @@
 obj := {key:"value",1:"test",2:10}
 
 <em>; Dump an object to variable.</em>
-var := ObjDump(obj)
+buf := ObjDump(obj)
+<em>; Get the dump size of an object </em>
+MsgBox buf.size
 
 <em>; Restore an object from variable</em>
-obj := ObjLoad(var)
+obj := ObjLoad(buf)
 
 <em>; Dump an object to file</em>
 f:=FileOpen(A_ScriptDir "\MyDump.bin","w -rwd")
 f.RawWrite(ObjDump(obj)),f.Close()
 
 <em>; Restore an object from file</em>
-obj := ObjLoad(A_ScriptDir "\MyDump.bin")
+obj := ObjLoad(A_ScriptDir "\MyDump.bin")</pre>
 
-<em>; Get the dump size of an object </em>
-MsgBox ObjDump(obj).size</pre>
 </body></html>

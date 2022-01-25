@@ -22,14 +22,14 @@
 <dd>
 <p>Script to execute in new process as pure text.</p>
 </dd>
-<dt>ScriptName</dt>
+<dt>ScriptName (optional)</dt>
 <dd>
 <p>The name of the Script, it will be used for the pipe name and for script name, e.g. you will see it as title in a MsgBox.</p>
-  <dt>ScriptParameters</dt>
+  <dt>ScriptParameters (optional)</dt>
   <dd><p>Parameters for new script. To use parameters for executable you would need to specify those together with executable in AlternateExecutable.<br>This parameter can be an object which will be recreated in A_Args using <a href="ObjDump.htm">ObjDump</a>/<a href="ObjLoad.htm">ObjLoad</a></p>
     </dd>
 
-  <dt>AlternateExecutable</dt>
+  <dt>AlternateExecutable (optional)</dt>
   <dd><p>AutoHotkey Executable used to run the script. If you want to pass parameters to executable you would need to use that parameter.</p>
 <h3>Example</h3>
 <pre class="NoIndent">DynaRun("MsgBox A_Args.1","MyDynaRun","Test")  <em>; Will display MsgBox Test in new process.</em></pre>

@@ -9,17 +9,19 @@
 </head>
 <body>
 <h1>ahkReady</h1>
-<p>Exported function to check if a script is currently executed
-by AutoHotkey module.<br>
-<b>This function is only available in AutoHotkey.dll</b>
+<p>Exported function to check if a script is currently executed by AutoHotkey module.<br>
 </p>
 <br>
-<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("AutoHotkey.dll\ahkReady")
-<pre><em>Function Example:</em> <b>IsPaused</b> := DllCall("AutoHotkey.<b>dll</b>\ahkReady")</pre></pre>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">DllCall</span>("AutoHotkey.dll\ahkReady","Uint", ThreadID)
+<pre><em>Function Example:</em> <b>IsPaused</b> := DllCall("AutoHotkey.<b>dll</b>\ahkReady", "Uint", ThreadID)</pre></pre>
 <dl>
 <dt><b>OutputVar</b></dt>
 <dd>
 <p>The name of the variable to store 1 / true if script is executed or 0 / false otherwise.</p>
+</dd>
+<dt><b>ThreadID</b></dt>
+<dd>
+<p>The if of relevant thread, can be 0 if called in same thread.</p>
 </dd>
 </dl>
 <h3>Related</h3>
@@ -29,13 +31,13 @@ by AutoHotkey module.<br>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","Sleep 2000","Str","","CDecl") <em>; start a new thread, just the function.</em>
-While DllCall(dllpath "\ahkReady") <em>; wait until AutoHotkey.dll exits.</em>
+ThreadID:=DllCall(dllpath "\NewThread","Str","Sleep 2000","Str","","Str","AutoHotkey dll","CDecl") <em>; start a new thread, just the function.</em>
+While DllCall(dllpath "\ahkReady","Uint", ThreadID) <em>; wait until AutoHotkey.dll thread exits.</em>
   Sleep 100
 MsgBox End
 
-<em>; Same example like above using included Autohotkey.dll</em>
-dll:=AhkThread("Sleep 2000")
+<em>; Same example like above using NewThread function</em>
+dll:=NewThread("Sleep 2000",,,,dllPath)
 while dll.ahkReady()
   Sleep 100
 MsgBox "End"</pre>

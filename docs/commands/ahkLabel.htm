@@ -38,27 +38,28 @@ Paramenters can be strings only as well as return value.<br>
 </dl>
 <h3>Related</h3>
 <p><a href="ahkPostFunction.htm">ahkPostFunction</a>,
-<a href="ahkFindFunc.htm">ahkFindFunc</a>, <a href="DllCall.htm">DllCall</a>
+<a href="ahkFindFunc.htm">ahkFindFunc</a>, <a href="DllCall.htm">DllCall</a>,
+<a href="NewThread.htm">NewThread</a>
 </p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","
+ThreadID:=DllCall(dllpath "\NewThread","Str","
 (
-#Persistent
+Persistent
 MyLabel:
 MsgBox A_ThisLabel
 Return
-)","Str","","CDecl") <em>; start a new thread, just the function.</em>
-DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0,"CDecl") <em>; jump to label and wait for it to finish / return.</em>
+)","Str","","Str","","CDecl") <em>; start a new thread, just the function.</em>
+DllCall(dllpath "\ahkLabel","Str","MyLabel","UInt",0,"Uint",ThreadID,"CDecl") <em>; jump to label and wait for it to finish / return.</em>
 
-<em>; Same example like above using included AutoHotkey.dll</em>
-dll:=AhkThread("
+<em>; Same example like above using NewThread function.</em>
+dll:=NewThread("
 (
-#Persistent
+Persistent
 MyLabel:
 MsgBox A_ThisLabel
 Return
 )")
-dll.ahkLabel["MyLabel"]</pre>
+dll.ahkLabel("MyLabel")</pre>
 </body></html>

@@ -22,16 +22,11 @@ docs\AutoHotkeyDll.htm
 docs\license.htm
 docs\StructTypes.htm
 docs\Welcome.htm
-docs\commands\index.htm
 docs\commands\_DllImport.htm
-docs\commands\_WarnContinuableException.htm
-docs\commands\addFile.htm
 docs\commands\addScript.htm
 docs\commands\ahkassign.htm
-docs\commands\ahkdll.htm
 docs\commands\ahkExec.htm
 docs\commands\ahkExecuteLine.htm
-docs\commands\AhkExported.htm
 docs\commands\ahkFindFunc.htm
 docs\commands\ahkFindLabel.htm
 docs\commands\ahkFunction.htm
@@ -40,10 +35,6 @@ docs\commands\ahkLabel.htm
 docs\commands\ahkPause.htm
 docs\commands\ahkPostFunction.htm
 docs\commands\ahkReady.htm
-docs\commands\ahkReload.htm
-docs\commands\ahkTerminate.htm
-docs\commands\AhkThread.htm
-docs\commands\ahktextdll.htm
 docs\commands\Alias.htm
 docs\commands\Between.htm
 docs\commands\BinRun.htm
@@ -85,7 +76,7 @@ docs\commands\ResExist.htm
 docs\commands\ResGet.htm
 docs\commands\ResPut.htm
 docs\commands\ResPutFile.htm
-docs\commands\ResourceLoadLibrary.htm
+docs\commands\SevenZip.htm
 docs\commands\sizeof.htm
 docs\commands\SplashImage.htm
 docs\commands\SplashTextOn.htm
@@ -115,6 +106,7 @@ docs\misc\Acknowledgements.htm
 
 [MERGE FILES]
 AutoHotkeyV2.chm
+7-zip.chm
 
 [INFOTYPES]
 

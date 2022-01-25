@@ -1,17 +1,15 @@
 toc = [
   {label:"Quick Reference",path:"AutoHotkey.htm"},
+  {label:"AutoHotkey COM Interface",path:"COMInterface.htm"},
   {label:"AutoHotkey v2 Help",path:"AutoHotkeyV2.chm::/docs/AutoHotkey.htm"},
+  {label:"7-zip Help",path:"7-zip.chm::/cmdline/index.htm"},
   {label:"Recent AutoHotkey_H Changes",path:"ChangeLog.htm"},
   {label:"AutoHotkey Module",children:
   [
     {label:"About AutoHotkey Module",path:"AutoHotkeyDll.htm"},
-    {label:"AutoHotkey COM Interface",path:"COMInterface.htm"},
     {label:"Create Thread",children:
     [
-      {label:"ahkdll",path:"commands/ahkdll.htm"},
-      {label:"ahktextdll",path:"commands/ahktextdll.htm"},
-      {label:"AhkThread",path:"commands/AhkThread.htm"},
-      {label:"AhkExported",path:"commands/AhkExported.htm"}
+      {label:"NewThread",path:"commands/NewThread.htm"}
     ]},
     {label:"Working with threads",children:
     [
@@ -24,15 +22,12 @@ toc = [
     {label:"Add or Execute New Code",children:
     [
       {label:"ahkExec",path:"commands/ahkExec.htm"},
-      {label:"addScript",path:"commands/addScript.htm"},
-      {label:"addFile",path:"commands/addFile.htm"}
+      {label:"addScript",path:"commands/addScript.htm"}
     ]},
     {label:"Control Thread",children:
     [
       {label:"ahkPause",path:"commands/ahkPause.htm"},
-      {label:"ahkReady",path:"commands/ahkReady.htm"},
-      {label:"ahkReload",path:"commands/ahkReload.htm"},
-      {label:"ahkTerminate",path:"commands/ahkTerminate.htm"}
+      {label:"ahkReady",path:"commands/ahkReady.htm"}
     ]},
     {label:"Low Level / Advanced",children:
     [
@@ -49,7 +44,7 @@ toc = [
     {label:"ObjDump",path:"commands/ObjDump.htm"},
     {label:"ObjLoad",path:"commands/ObjLoad.htm"}
   ]},
-  {label:"Cast",path:"commands/Cast.htm",children:
+  {label:"Cast",children:
   [
     {label:"Cast",path:"commands/Cast.htm"},
     {label:"ToChar",path:"commands/ToChar.htm"},
@@ -101,8 +96,7 @@ toc = [
     {label:"MemoryFindResource",path:"commands/MemoryFindResource.htm"},
     {label:"MemorySizeofResource",path:"commands/MemorySizeofResource.htm"},
     {label:"MemoryLoadResource",path:"commands/MemoryLoadResource.htm"},
-    {label:"MemoryLoadString",path:"commands/MemoryLoadString.htm"},
-    {label:"ResourceLoadLibrary",path:"commands/ResourceLoadLibrary.htm"}
+    {label:"MemoryLoadString",path:"commands/MemoryLoadString.htm"}
   ]},
   {label:"Misc.",children:
   [
@@ -110,11 +104,23 @@ toc = [
     {label:"BinRun",path:"commands/BinRun.htm"},
     {label:"DynaRun",path:"commands/DynaRun.htm"},
     {label:"EnvUpdate",path:"commands/EnvUpdate.htm"},
+    {label:"GetProcessParameter",path:"commands/GetProcessParameter.htm"},
     {label:"GetVar",path:"commands/GetVar.htm"},
     {label:"IsBOM",path:"commands/IsBOM.htm"},
+    {label:"JSON",path:"commands/JSON.htm"},
     {label:"Object features",path:"commands/ObjectExtended.htm"},
     {label:"Macro",path:"commands/Macro.htm"},
     {label:"Swap",path:"commands/Swap.htm"},
+    {label:"WinGetPIDList",path:"commands/WinGetPIDList.htm"},
+  ]},
+  {label:"Resource",children:
+  [
+    {label:"ResDelete",path:"commands/ResDelete.htm"},
+    {label:"ResDllCreate",path:"commands/ResDllCreate.htm"},
+    {label:"ResExist",path:"commands/ResExist.htm"},
+    {label:"ResGet",path:"commands/ResGet.htm"},
+    {label:"ResPut",path:"commands/ResPut.htm"},
+    {label:"ResPutFile",path:"commands/ResPutFile.htm"}
   ]},
   {label:"String",children:
   [
@@ -130,13 +136,9 @@ toc = [
   [
     {label:"With AutoHotkey.dll",children:
     [
-      {label:"ahkdll",path:"commands/ahkdll.htm"},
-      {label:"ahktextdll",path:"commands/ahktextdll.htm"},
-      {label:"AhkThread",path:"commands/AhkThread.htm"},
-      {label:"AhkExported",path:"commands/AhkExported.htm"},
+      {label:"NewThread",path:"commands/NewThread.htm"},
       {label:"Methods",children:
       [
-        {label:"addFile",path:"commands/addFile.htm"},
         {label:"addScript",path:"commands/addScript.htm"},
         {label:"ahkassign",path:"commands/ahkassign.htm"},
         {label:"ahkExec",path:"commands/ahkExec.htm"},
@@ -147,16 +149,13 @@ toc = [
         {label:"ahkLabel",path:"commands/ahkLabel.htm"},
         {label:"ahkPause",path:"commands/ahkPause.htm"},
         {label:"ahkPostFunction",path:"commands/ahkPostFunction.htm"},
-        {label:"ahkReady",path:"commands/ahkReady.htm"},
-        {label:"ahkReload",path:"commands/ahkReload.htm"},
-        {label:"ahkTerminate",path:"commands/ahkTerminate.htm"}
+        {label:"ahkReady",path:"commands/ahkReady.htm"}
       ]}
     ]},
     {label:"Without AutoHotkey.dll",children:
     [
-      {label:"ExeThread",path:"commands/ExeThread.htm"},
-      {label:"ThreadObj",path:"commands/ThreadObj.htm"},
-      {label:"NewThread",path:"commands/NewThread.htm"}
+      {label:"NewThread",path:"commands/NewThread.htm"},
+      {label:"ThreadObj",path:"commands/ThreadObj.htm"}
     ]},
     {label:"Thread Management",children:
     [
@@ -168,6 +167,12 @@ toc = [
   ]},
   {label:"Zip Library",children:
   [
+    {label:"7-zip module",children:
+    [
+    {label:"SevenZip",path:"commands/SevenZip.htm"}
+    ]},
+    {label:"Built-in functions",children:
+    [
     {label:"UnZip",path:"commands/UnZip.htm"},
     {label:"UnZipBuffer",path:"commands/UnZipBuffer.htm"},
     {label:"UnZipRawMemory",path:"commands/UnZipRawMemory.htm"},
@@ -181,6 +186,7 @@ toc = [
     {label:"ZipInfo",path:"commands/ZipInfo.htm"},
     {label:"ZipOptions",path:"commands/ZipOptions.htm"},
     {label:"ZipRawMemory",path:"commands/ZipRawMemory.htm"}
+    ]}
   ]},
   {label:"#Directives",children:
   [
@@ -188,7 +194,9 @@ toc = [
     {label:"#CriticalObjectTimeOut",path:"commands/_CriticalObjectTimeOut.htm"},
     {label:"#DefineDefault[Object/Array/Map]Value",path:"commands/_DefineDefaultObjectValue.htm"},
     {label:"#DllImport",path:"commands/_DllImport.htm"},
-    {label:"#WarnContinuableException",path:"commands/_WarnContinuableException.htm"},
+    {label:"#TargetControlError",path:"commands/_TargetControlError.htm"},
+    {label:"#TargetWindowError",path:"commands/_TargetWindowError.htm"},
+    {label:"#UseStdLib",path:"commands/_UseStdLib.htm"},
     {label:"#WindowClassGui",path:"commands/_WindowClassGui.htm"},
     {label:"#WindowClassMain",path:"commands/_WindowClassMain.htm"}
   ]}

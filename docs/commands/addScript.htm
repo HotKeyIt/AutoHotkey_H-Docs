@@ -40,19 +40,19 @@ end execution).</p>
 </dl>
 <h3>Related</h3>
 <p><a href="ahkFindFunc.htm">ahkFindFunc</a>,
-<a href="ahkFindLabel.htm">addFile</a>,
 <a href="ahkFindLabel.htm">ahkFindLabel</a>,
-<a href="ahkassign.htm">ahkassign</a>
+<a href="ahkassign.htm">ahkassign</a>,
+<a href="NewThread.htm">NewThread</a>
 </p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","","Str","","Cdecl") <em>; start new, empty thread.</em>
-DllCall(dllpath "\addScript","Str","MsgBox 'Hello World!'","Int",1,"CDecl") <em>; add and execute code</em>
+ThreadID:=DllCall(dllpath "\NewThread","Str","","Str","","Str","","Cdecl") <em>; start new, empty thread.</em>
+DllCall(dllpath "\addScript","Str","MsgBox 'Hello World!'","Int",1,"UInt",ThreadID,"CDecl") <em>; add and execute code</em>
 
-<em>; Same example like above using included AutoHotkey.dll</em>
-dll:=AhkThread()
-dll.addScript["MsgBox 'Hello World!'",1]
+<em>; Same example like above using NewThread function.</em>
+dll:=NewThread(,,,,dllpath)
+dll.addScript("MsgBox 'Hello World!'",1)
 
 <em>; Add and execute script in current thread</em>
 addScript("MsgBox 'Test'",1)</pre>

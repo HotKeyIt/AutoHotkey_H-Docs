@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>WinGetPIDList()</title>
+<meta name="description" content="Download any type of file via Download in this free scripting language. e.g. Download, http://www.anyorg.org/File.htm, c:\File.htm">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>WinGetPIDList</h1>
+
+<p>Return Array of PIDs for matching windows.</p>
+
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">WinGetPIDList</span>(<span class="optional">WinTitle, WinText, ExcludeTitle, ExcludeText</span>)
+<pre><em>Function Example:</em> <b>PIDList</b> := WinGetPIDList("ahk_class AutoHotkey")</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+
+  <dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the Array containing found PIDs or empty array if nothing was found.</p></dd>
+  
+  <dt>WinTitle (optional)</dt>
+  <dd><p>A window title or other criteria identifying the target window. You can pass an Array where first item is the Window criteria and second item determines whether invisible windows are considered.<br>E.g. WinGetPIDList(["ahk_class AutoHotkey",true]) to consider hidden windows too.</p></dd>
+  
+  <dt>WinText (optional)</dt>
+  <dd><p>If present, this parameter must be a sub string from a single text element of the target window.<br>You can pass an Array where first item is the WindowText and second item determines whether invisible text is found.<br>E.g. WinGetPIDList(["ahk_class AutoHotkey",1],["Some text",true]) to consider hidden text too.</p></dd>
+  
+  <dt>ExcludeTitle (optional)</dt>
+  <dd><p>Windows whose titles include this value will not be considered.</p></dd>
+  
+  <dt>ExcludeText (optional)</dt>
+  <dd><p>Windows whose text include this value will not be considered.</p></dd>
+</dl>
+
+<h3>Examples</h3>
+<pre class="NoIndent">for ,v in WinGetPIDList(["ahk_class AutoHotkey",true])
+  MsgBox v
+</pre>
+
+</body>
+</html>

@@ -11,7 +11,8 @@
 <h1>Object features</h1>
 <div class="methodShort" id="DefineDefault">
 <h1>DefineDefault()</h1>
-<p>Instead showing an error, define a default value for object, map and array to return when the key / Item / property does not exist.</p>
+<p>Instead showing an error, we can define a default value for object, map and array to return when the key / Item / property does not exist.<br>
+This is similar to defining a value to <em>aMap.Default:=Value</em> or using <em>aMap.Get(key, DefaultValue)</em> but applies to items and properties.</p>
 <pre class="Syntax"><span class="func">ObjMapArray := ObjMapArray.DefineDefault([Value])</span>
 <pre><em>Command  Example:</em> ObjMapArray.DefineDefault ""
 <em>Function Example:</em> ObjMapArray.DefineDefault("")</pre></pre>
@@ -28,31 +29,17 @@
 <dl>
 <dt>Remarks</dt>
 <dd>
-<p>DefaultValue can also be defined globally using #DefineDefaultObjectValue / #DefineDefaultArrayValue / #DefineDefaultMapValue.</p>
+<p>DefaultValue (a string) can also be defined for every object/map/array using #DefineDefaultObjectValue / #DefineDefaultArrayValue / #DefineDefaultMapValue.<br>
+For Map and Array the default value will be applied to properties as well.</p>
 </dd>
 </dl>
 <h3>Examples</h3>
 <pre class="NoIndent">obj:=[].DefineDefault("Item does not exist!")
 MsgBox obj[1] ; Item does not exist!
 obj.DefineDefault ''
-MsgBox obj[2] ; empty
+MsgBox obj[1] ; empty
 obj.DefineDefault ; restore
 MsgBox obj[1] ; Error: invalid Index.</pre>
-</div>
-<div class="methodShort" id="Object__Item">
-<h1>__Item for Objects</h1>
-<p>Objects can read and write properties using . and [] syntax.</p>
-<dl>
-<dt>Remarks</dt>
-<dd>
-<p>Key for properties is always a string. When number is given, it will be converted to string.</p>
-</dd>
-</dl>
-<h3>Examples</h3>
-<pre class="NoIndent">obj:={}
-obj.1:="test"
-obj[2]:="more"
-MsgBox obj.2</pre>
 </div>
 <div class="methodShort" id="UMap">
 <h1>UMap() / UArray() / UObject()</h1>
@@ -69,5 +56,14 @@ for k, v in map
 <pre class="NoIndent">obj:=Map({z:1,a:2,99:3,1:4})
 for k, v in obj
   MsgBox k "=" v</pre>
+</div>
+<div class="methodShort" id="#MapCaseSense">
+<h1>#MapCaseSense On | Off | Locale</h1>
+<p>Default CaseSense for Map.</p>
+<h3>Examples</h3>
+<pre class="NoIndent">#MapCaseSense Off
+obj:=Map()
+obj["A"]:=1,obj["a"]:=2
+MsgBox obj["A"] <em>; shows 2</em></pre>
 </div>
 </body></html>

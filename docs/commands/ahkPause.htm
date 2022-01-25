@@ -35,30 +35,31 @@ Paramenters can be strings only.<br>
 </dl>
 <h3>Related</h3>
 <p><a href="ahkPostFunction.htm">ahkPostFunction</a>,
-<a href="ahkFindFunc.htm">ahkFindFunc</a>
+<a href="ahkFindFunc.htm">ahkFindFunc</a>,
+<a href="NewThread.htm">NewThread</a>
 </p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","
+ThreadID:=DllCall(dllpath "\NewThread","Str","
 (
-#Persistent
+Persistent
 Loop
   ToolTip A_TickCount
-)","Str","","CDecl") <em>; start a new thread, just the function.</em>
+)","Str","","Str","","CDecl") <em>; start a new thread, just the function.</em>
 Sleep 1000
-DllCall(dllpath "\ahkPause","Str","On","CDecl") <em>; Pause thread.</em>
+DllCall(dllpath "\ahkPause","Str","On","Uint",ThreadID,"CDecl") <em>; Pause thread.</em>
 MsgBox "End"
 
-<em>; Same example like above using included AutoHotkey.dll</em>
-dll:=AhkThread("
+<em>; Same example like above using NewThread function.</em>
+dll:=NewThread("
 (
-#Persistent
+Persistent
 Loop
 	ToolTip A_TickCount
-)")
+)",,,,dllpath)
 Sleep 1000
-dll.ahkPause["On"]
+dll.ahkPause("On")
 MsgBox "End"
 </pre>
 </body></html>

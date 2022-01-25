@@ -46,25 +46,26 @@ When this parameter is an object OutputVar will be Lresult value. Otherwise when
 <p><a href="../objects/Object.htm">Object</a>, <a href="CriticalObject.htm">CriticalObject</a></p>
 <h3>Examples</h3>
 <pre class="NoIndent">t:=Test.new(), lresult := ObjShare(t) <em>; Create lresult to use in a different thread</em>
-AhkThread(
+NewThread(
 (
-    "t := ObjShare(" lresult ") <em>; Create IDispatch proxy COM object</em>
+  "t := ObjShare(" lresult ") ; Create IDispatch proxy COM object
 	Loop
-        t.CheckBox(),Sleep(10)"
+    t.CheckBox(),Sleep(100)"
 ))
- 
+
 Loop
   t.Slider(),Sleep(10)
 
 Class Test {
   __New(p*){
-    (MyGui:=this.Gui:=Gui.New()).OnEvent("Close",this.GetMethod("GuiClose"))
-    this.Slider:=MyGui.Add("Slider","vSlider",50)
-    this.CheckBox:=MyGui.Add("CheckBox")
+    (MyGui:=this.Gui:=Gui()).OnEvent("Close",this.GetMethod("GuiClose"))
+    this.CtrlSlider:=MyGui.Add("Slider","vSlider",50)
+    this.CtrlCheckBox:=MyGui.Add("CheckBox")
+	this.test:="hello"
     MyGui.Show("w200 h100")	
   }
   GuiClose(p*) => ExitApp()
-  CheckBox()   => this.CheckBox.value:=this.CheckBox.value?0:1
-  Slider()     => this.Slider.Value:=(value:=this.Slider.value)=100?0:++value
+  CheckBox()   => this.CtrlCheckBox.value:=this.CtrlCheckBox.value?0:1
+  Slider()     => this.CtrlSlider.Value:=(value:=this.CtrlSlider.value)=100?0:++value
 }</pre>
 </body></html>

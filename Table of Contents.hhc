@@ -7,18 +7,16 @@
 </object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="Quick Reference"><param name="Local" value="docs/AutoHotkey.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="AutoHotkey COM Interface"><param name="Local" value="docs/COMInterface.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="AutoHotkey v2 Help"><param name="Local" value="AutoHotkeyV2.chm::/docs/AutoHotkey.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="7-zip Help"><param name="Local" value="docs/7-zip.chm::/cmdline/index.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Recent AutoHotkey_H Changes"><param name="Local" value="docs/ChangeLog.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="AutoHotkey Module"></object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="About AutoHotkey Module"><param name="Local" value="docs/AutoHotkeyDll.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="AutoHotkey COM Interface"><param name="Local" value="docs/COMInterface.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Create Thread"></object>
 <ul>
-<li><object type="text/sitemap"><param name="Name" value="ahkdll"><param name="Local" value="docs/commands/ahkdll.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="ahktextdll"><param name="Local" value="docs/commands/ahktextdll.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="AhkThread"><param name="Local" value="docs/commands/AhkThread.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="AhkExported"><param name="Local" value="docs/commands/AhkExported.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="NewThread"><param name="Local" value="docs/commands/NewThread.htm"></object>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="Working with threads"></object>
 <ul>
@@ -32,14 +30,11 @@
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="ahkExec"><param name="Local" value="docs/commands/ahkExec.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="addScript"><param name="Local" value="docs/commands/addScript.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="addFile"><param name="Local" value="docs/commands/addFile.htm"></object>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="Control Thread"></object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="ahkPause"><param name="Local" value="docs/commands/ahkPause.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ahkReady"><param name="Local" value="docs/commands/ahkReady.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="ahkReload"><param name="Local" value="docs/commands/ahkReload.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="ahkTerminate"><param name="Local" value="docs/commands/ahkTerminate.htm"></object>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="Low Level / Advanced"></object>
 <ul>
@@ -56,7 +51,7 @@
 <li><object type="text/sitemap"><param name="Name" value="ObjDump"><param name="Local" value="docs/commands/ObjDump.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ObjLoad"><param name="Local" value="docs/commands/ObjLoad.htm"></object>
 </ul>
-<li><object type="text/sitemap"><param name="Name" value="Cast"><param name="Local" value="docs/commands/Cast.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="Cast"></object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="Cast"><param name="Local" value="docs/commands/Cast.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ToChar"><param name="Local" value="docs/commands/ToChar.htm"></object>
@@ -112,7 +107,6 @@
 <li><object type="text/sitemap"><param name="Name" value="MemorySizeofResource"><param name="Local" value="docs/commands/MemorySizeofResource.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="MemoryLoadResource"><param name="Local" value="docs/commands/MemoryLoadResource.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="MemoryLoadString"><param name="Local" value="docs/commands/MemoryLoadString.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="ResourceLoadLibrary"><param name="Local" value="docs/commands/ResourceLoadLibrary.htm"></object>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="Misc."></object>
 <ul>
@@ -120,12 +114,24 @@
 <li><object type="text/sitemap"><param name="Name" value="BinRun"><param name="Local" value="docs/commands/BinRun.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="DynaRun"><param name="Local" value="docs/commands/DynaRun.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="EnvUpdate"><param name="Local" value="docs/commands/EnvUpdate.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="GetProcessParameter"><param name="Local" value="docs/commands/GetProcessParameter.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="GetVar"><param name="Local" value="docs/commands/GetVar.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="IsBOM"><param name="Local" value="docs/commands/IsBOM.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="JSON"><param name="Local" value="docs/commands/JSON.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Object features"><param name="Local" value="docs/commands/ObjectExtended.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Macro"><param name="Local" value="docs/commands/Macro.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Swap"><param name="Local" value="docs/commands/Swap.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="WinGetPIDList"><param name="Local" value="docs/commands/WinGetPIDList.htm"></object>
 <li><object type="text/sitemap"></object>
+</ul>
+<li><object type="text/sitemap"><param name="Name" value="Resource"></object>
+<ul>
+<li><object type="text/sitemap"><param name="Name" value="ResDelete"><param name="Local" value="docs/commands/ResDelete.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResDllCreate"><param name="Local" value="docs/commands/ResDllCreate.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResExist"><param name="Local" value="docs/commands/ResExist.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResGet"><param name="Local" value="docs/commands/ResGet.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResPut"><param name="Local" value="docs/commands/ResPut.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ResPutFile"><param name="Local" value="docs/commands/ResPutFile.htm"></object>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="String"></object>
 <ul>
@@ -142,13 +148,9 @@
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="With AutoHotkey.dll"></object>
 <ul>
-<li><object type="text/sitemap"><param name="Name" value="ahkdll"><param name="Local" value="docs/commands/ahkdll.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="ahktextdll"><param name="Local" value="docs/commands/ahktextdll.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="AhkThread"><param name="Local" value="docs/commands/AhkThread.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="AhkExported"><param name="Local" value="docs/commands/AhkExported.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="NewThread"><param name="Local" value="docs/commands/NewThread.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="Methods"></object>
 <ul>
-<li><object type="text/sitemap"><param name="Name" value="addFile"><param name="Local" value="docs/commands/addFile.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="addScript"><param name="Local" value="docs/commands/addScript.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ahkassign"><param name="Local" value="docs/commands/ahkassign.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ahkExec"><param name="Local" value="docs/commands/ahkExec.htm"></object>
@@ -160,15 +162,12 @@
 <li><object type="text/sitemap"><param name="Name" value="ahkPause"><param name="Local" value="docs/commands/ahkPause.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ahkPostFunction"><param name="Local" value="docs/commands/ahkPostFunction.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ahkReady"><param name="Local" value="docs/commands/ahkReady.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="ahkReload"><param name="Local" value="docs/commands/ahkReload.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="ahkTerminate"><param name="Local" value="docs/commands/ahkTerminate.htm"></object>
 </ul>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="Without AutoHotkey.dll"></object>
 <ul>
-<li><object type="text/sitemap"><param name="Name" value="ExeThread"><param name="Local" value="docs/commands/ExeThread.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="ThreadObj"><param name="Local" value="docs/commands/ThreadObj.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="NewThread"><param name="Local" value="docs/commands/NewThread.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="ThreadObj"><param name="Local" value="docs/commands/ThreadObj.htm"></object>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="Thread Management"></object>
 <ul>
@@ -179,6 +178,12 @@
 </ul>
 </ul>
 <li><object type="text/sitemap"><param name="Name" value="Zip Library"></object>
+<ul>
+<li><object type="text/sitemap"><param name="Name" value="7-zip module"></object>
+<ul>
+<li><object type="text/sitemap"><param name="Name" value="SevenZip"><param name="Local" value="docs/commands/SevenZip.htm"></object>
+</ul>
+<li><object type="text/sitemap"><param name="Name" value="Built-in functions"></object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="UnZip"><param name="Local" value="docs/commands/UnZip.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="UnZipBuffer"><param name="Local" value="docs/commands/UnZipBuffer.htm"></object>
@@ -194,13 +199,16 @@
 <li><object type="text/sitemap"><param name="Name" value="ZipOptions"><param name="Local" value="docs/commands/ZipOptions.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="ZipRawMemory"><param name="Local" value="docs/commands/ZipRawMemory.htm"></object>
 </ul>
+</ul>
 <li><object type="text/sitemap"><param name="Name" value="#Directives"></object>
 <ul>
 <li><object type="text/sitemap"><param name="Name" value="#CriticalObjectSleepTime"><param name="Local" value="docs/commands/_CriticalObjectSleepTime.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="#CriticalObjectTimeOut"><param name="Local" value="docs/commands/_CriticalObjectTimeOut.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="#DefineDefault[Object/Array/Map]Value"><param name="Local" value="docs/commands/_DefineDefaultObjectValue.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="#DllImport"><param name="Local" value="docs/commands/_DllImport.htm"></object>
-<li><object type="text/sitemap"><param name="Name" value="#WarnContinuableException"><param name="Local" value="docs/commands/_WarnContinuableException.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="#TargetControlError"><param name="Local" value="docs/commands/_TargetControlError.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="#TargetWindowError"><param name="Local" value="docs/commands/_TargetWindowError.htm"></object>
+<li><object type="text/sitemap"><param name="Name" value="#UseStdLib"><param name="Local" value="docs/commands/_UseStdLib.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="#WindowClassGui"><param name="Local" value="docs/commands/_WindowClassGui.htm"></object>
 <li><object type="text/sitemap"><param name="Name" value="#WindowClassMain"><param name="Local" value="docs/commands/_WindowClassMain.htm"></object>
 </ul>

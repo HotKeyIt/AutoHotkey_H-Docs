@@ -45,8 +45,8 @@
 </dd>
 </dl>
 <h3>Examples</h3>
-<pre class="NoIndent">file:=FileRead(A_AhkPath,"RAW")
-BinRun(file,"`nMsgBox A_Args.a",{a:"Hello World!"})
+<pre class="NoIndent">aFile:=FileRead(A_AhkPath,"RAW")
+BinRun(aFile,"`nMsgBox A_Args.a",{a:"Hello World!"})
 
 <em>; same as above</em>
 BinRun(A_AhkPath,"`nMsgBox A_Args.a",{a:"Hello World!"})</pre>

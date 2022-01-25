@@ -39,17 +39,18 @@ script.
 <h3>Related</h3>
 <p><a href="ahkFindFunc.htm">ahkFindFunc</a>,
 <a href="ahkFindLabel.htm">ahkFindLabel</a>,
-<a href="ahkgetvar.htm">ahkgetvar</a>
+<a href="ahkgetvar.htm">ahkgetvar</a>,
+<a href="NewThread.htm">NewThread</a>
 </p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","","Str","","CDecl") <em>; start a new thread from file.</em>
-DllCall(dllpath "\ahkassign","Str","var","Str","value","CDecl") <em>; assing value to var</em>
-MsgBox DllCall(dllpath "\ahkgetvar","Str","var","UInt",0,"CDecl") <em>; wait for the thread to exit</em>
+ThreadID:=DllCall(dllpath "\NewThread","Str","","Str","","Str","","CDecl") <em>; start a new thread from file.</em>
+DllCall(dllpath "\ahkassign","Str","var","Str","value","Uint",ThreadID,"CDecl") <em>; assing value to var</em>
+MsgBox DllCall(dllpath "\ahkgetvar","Str","var","UInt",0,"Uint",ThreadID,"CDecl") <em>; wait for the thread to exit</em>
 
-<em>; Same example like above using included AutoHotkey.dll</em>
-dll:=AhkThread()
+<em>; Same example like above using NewThread function.</em>
+dll:=NewThread(,,,,dllpath)
 dll.ahkassign("var","value")
 MsgBox dll.ahkgetvar.var</pre>
 </body></html>

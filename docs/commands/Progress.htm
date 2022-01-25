@@ -24,18 +24,18 @@ Progress, Off<pre><em>Command  Example:</em> Progress 50, "copy files...", "Inst
       <p>Otherwise, if <em>Param1</em> is an pure number, its bar's position is changed to that value. If <em>Param1</em> is blank, its bar position will be unchanged but its text will be updated to reflect any new strings provided in <em>SubText</em>, <em>MainText</em>, and <em>WinTitle</em>. In both of these modes, if the window doesn't yet exist, it will be created with the defaults for all options.</p>
       <p><u>If the progress window does not exist</u>: A new progress window is created (replacing any old one), and <em>Param1</em> is a string of zero or more options from the list below.</p></dd>
 
-  <dt>SubText</dt>
+  <dt>SubText (optional)</dt>
   <dd><p>The text to display below the image or bar indicator. Although word-wrapping will occur, to begin a new line explicitly, use linefeed (`n). To set an existing window's text to be blank, specify %A_Space%. For the purpose of auto-calculating the window's height, blank lines can be reserved in a way similar to <em>MainText</em> below.</p></dd>
 
-  <dt>MainText</dt>
+  <dt>MainText (optional)</dt>
   <dd><p>The text to display above the image or bar indicator (its font is semi-bold). Although word-wrapping will occur, to begin a new line explicitly, use linefeed (`n).</p>
       <p>If blank or omitted, no space will be reserved in the window for <em>MainText</em>. To reserve space for single line to be added later, or to set an existing window's text to be blank, specify %A_Space%. To reserve extra lines beyond the first, append one or more linefeeds (`n).</p>
       <p>Once the height of <em>MainText</em>'s control area has been set, it cannot be changed without recreating the window.</p></dd>
 
-  <dt>WinTitle</dt>
+  <dt>WinTitle (optional)</dt>
   <dd><p>The title of the window. If omitted and the window is being newly created, the title defaults to the name of the script (without path). If the <b>B</b> (borderless) option has been specified, there will be no visible title bar but the window can still be referred to by this title in commands such as WinMove.</p></dd>
 
-  <dt>FontName</dt>
+  <dt>FontName (optional)</dt>
   <dd><p>The name of the font to use for both <em>MainText</em> and <em>SubText</em>.  The font table lists the fonts included with the various versions of Windows. If unspecified or if the font cannot be found, the system's default GUI font will be used.</p>
       <p>See the options section below for how to change the size, weight, and color of the font.</p></dd>
 </dl>

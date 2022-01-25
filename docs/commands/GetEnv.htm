@@ -9,14 +9,18 @@
 </head>
 <body>
 <h1>GetEnv</h1>
-<p>Add environment variables to script.</p>
-<pre class="Syntax"><span class="func">GetEnv</span>
-<pre><em>Command  Example:</em> GetEnv
-<em>Function Example:</em> GetEnv()</pre></pre>
-
+<p>Retrieve all environment variables to an object.</p>
+<pre class="Syntax"><span class="func">GetEnv()</span>
+<em>Function Example:</em> OutPutVar:=GetEnv()</pre></pre>
+<h3>Parameters</h3>
+<dl>
+  <dt><b>OutputVar</b></dt>
+    <dd><p>The name of the variable in which to store the object containing all Environment Variables. </p>
+    </dd>
+		
 <h3>Examples</h3>
-<pre class="NoIndent">GetEnv
-ListVars
-Pause
+<pre class="NoIndent">EnvVars:=GetEnv()
+for k,v in EnvVars
+	MsgBox k "=" v
 </pre>
 </body></html>

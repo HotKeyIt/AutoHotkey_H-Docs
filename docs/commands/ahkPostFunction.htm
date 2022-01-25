@@ -47,17 +47,18 @@ otherwise 0 (false).</p>
 <p>Note that Function will not run if <a href="_MaxThreads.htm">#MaxThreads</a> limit is reached.</p>
 <h3>Related</h3>
 <p><a href="ahkFunction.htm">ahkFunction</a>,
-<a href="ahkFindFunc.htm">ahkFindFunc</a>
+<a href="ahkFindFunc.htm">ahkFindFunc</a>,
+<a href="NewThread.htm">NewThread</a>
 </p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","#Persistent`nMyFunc(param){`nSleep 1000`nMsgBox `% param`n}","Str","","CDecl") <em>; start a new thread, just the function.</em>
-DllCall(dllpath "\ahkPostFunction","Str","MyFunc","Str","Hello World!","Str","","Str","","Str","","Str","","Str","","Str","","Str","","Str","","Str","","CDecl") <em>; call the function.</em>
+ThreadID:=DllCall(dllpath "\NewThread","Str","Persistent`nMyFunc(param){`nSleep 1000`nMsgBox `% param`n}","Str","","Str","","CDecl") <em>; start a new thread, just the function.</em>
+DllCall(dllpath "\ahkPostFunction","Str","MyFunc","Str","Hello World!","Ptr",0,"Ptr",0,"Ptr",0,"Ptr",0,"Ptr",0,"Ptr",0,"Ptr",0,"Ptr",0,"Ptr",0,"Uint",ThreadID,"CDecl") <em>; call the function.</em>
 Sleep 2000 <em>; wait 2 seconds and exit</em>
  
- <em>; Same example like above using included AutoHotkey.dll</em>
- dll:=AhkThread("#Persistent`nMyFunc(param){`nSleep 1000`nMsgBox `% param`n}")
- dll.ahkPostFunction["MyFunc","Hello World!"]
+ <em>; Same example like above using NewThread function.</em>
+ dll:=NewThread("Persistent`nMyFunc(param){`nSleep 1000`nMsgBox `% param`n}",,,,dllpath)
+ dll.ahkPostFunction("MyFunc","Hello World!")
  Sleep 2000</pre>
 </body></html>

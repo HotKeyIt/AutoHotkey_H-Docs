@@ -14,7 +14,7 @@ structures and uses Object syntax. It is often faster than DllCall,
 easier to use and it saves a lot of typing and code.</p>
 <pre class="Syntax"><b>OutputVar</b> := <span class="func">DynaCall</span>("<span class="optional">DllFile\</span>Function", "ParameterDefinition", Default1, Default2, Default3, ...)
 <pre><em>Function Example:</em> <b>TrueSleep</b> := DynaCall("kernel32\Sleep", "ui", 100)
-<em>Calling the Func:</em> TrueSleep[1000], %TrueSleep%(1000)</pre></pre>
+<em>Calling the Func:</em> TrueSleep(1000)</pre></pre>
 
 <h3>Parameters</h3>
 <dl>
@@ -90,17 +90,20 @@ function is called.<br>
 Therefore we need to use an object for parameter definition with
 following syntax.
 <ul>
-<span style="font-weight: bold;">[
-definition,
-FirstParam, SecondParam, ...]</span>
+<span style="font-weight: bold;">[ definition, FirstParam, SecondParam, ThirdParam, ...]</span>
 <li>Definition - Same as above</li>
-<li>FirstParam - First parameter to use when function is
-called</li>
-<li>SecondParam - Second parameter to use when function
-is
-called</li>
+<li>FirstParam - Number of actual function parameter that will be used in first place when calling the function</li>
+<li>SecondParam - Second parameter that will be used in second place when function is called</li>
+<li>ThirdParam - ...</li>
+<li>Other parameters will be called in original order</li>
 <p>This is best explained in following example.</p>
-<pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111)<br>MsgBox A_IsSuspended<br>AHKCMD[ 65305 ] <em>; suspend script, following is the same call:<br>; DllCall("SendMessage", "PTR", A_ScriptHwnd, "UInt", 0x111, "PTR", 65305, "PTR", 0)</em><br>MsgBox A_IsSuspended<br></pre>
+<pre>IsSuspended := A_IsSuspended
+AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111)
+<em>; so for AHKCMD, the order of SendMessage usual parameters (HWND hWnd, UINT Msg, WPARAM wParam,LPARAM lParam) is changed to (WPARAM wParam, HWND hWnd, UINT Msg, LPARAM lParam) when calling AHKCMD()</em>
+AHKCMD(65305) <em>; suspend script</em>
+<em>; AHKCMD(65305, A_ScriptHwnd, 0x111, 0) ; same as above</em>
+<em>; DllCall("SendMessage", "PTR", A_ScriptHwnd, "UInt", 0x111, "PTR", 65305, "PTR", 0) ; same as above</em>
+MsgBox IsSuspended " != " A_IsSuspended</pre>
 </ul>
 </ul>
 </dd>
@@ -113,16 +116,16 @@ Note, this will be always the original order of parameters as specified in
 </dl>
 <dl>
 <h3>Remarks</h3>
-<dd><p><b>Base</b> and <b>__Class</b> are properties and DynaCall cannot be invoked using them as parameter with dot (.) syntax, instead use MyDynaCall["base"] syntax!</p>
+<dd><p><b>Base</b> and <b>__Class</b> are reserved properties and DynaCall cannot be invoked using them as parameter with dot (.) syntax, instead use MyDynaCall["base"] syntax!</p>
 </dd>
 </dl>
 <dl>
 <h3>Examples</h3>
-<pre>AHKCMD:=DynaCall("SendMessage", ["t=tuitt", 3], A_ScriptHwnd, 0x111) <em>; define a DynaCall object.</em>
-AHKCMD[ 65305 ] <em>; call the actual function</em>
-AHKCMD.65305
-%AHKCMD%(65305)
-AHKCMD.PTR( 65305 ) <em>; here (PTR) we can specify any AHK return type.</em></pre>
+<pre>Msg:=DynaCall("MessageBox",["ui=tssui",2,3],0,"DefaultText","DefaultTitle") <em>; define the DynaCall object.</em>
+Msg <em>; Call using default parameters</em>
+Msg.NewText <em>; Call passing one parameter</em>
+Msg.NewText("NewTitle") <em>; Call passing 2 parameters</em>
+Msg("NewText","NewTitle") <em>; Call passing 2 parameters, same as above</em></pre>
 </dl>
 <h3><em>Related</em></h3>
 <p><em><a href="_DllImport.htm">#DllImport</a>, <a href="WinApi.htm">WinApi</a></em></p>

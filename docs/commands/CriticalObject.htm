@@ -21,14 +21,14 @@ Such objects can be used from multiple threads without causing a crash.</p>
     <dd><p>The name of the variable in which to store the created object. </p>
     </dd>
 		
-<dt>Object</dt>
+<dt>Object (optional)</dt>
 <dd>
 <p>Existing Object or CriticalObject to use, this can be also a pointer.<br>
 When CriticalObject is given, its <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">CriticalSection</a> 
 will be used and second parameter will be ignored.<br>
 When this parameter is empty new object will be created and used.</p>
 </dd>
-<dt>lpCriticalSection</dt>
+<dt>lpCriticalSection (optional)</dt>
 <dd>
 <p>Pointer to a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682530.aspx">CriticalSection</a>
 to use. When this parameter is omitted new CriticalSection will be created unless CriticalObject was given in first parameter,
@@ -41,23 +41,39 @@ then its CriticalSection will be used.</p>
 <p><span style="font-weight: bold;">How does it work</span>:<br>
 </p>
 <ul>
-<li>First the CriticalSection is locked so the object cannot
-be used in other threads</li>
+<li>First the CriticalSection is locked so the object cannot be used in other threads</li>
 <li>Then the referenced object is invoked</li>
-<li>Afterwards critical section is unlocked so other
-threads can use the object again</li>
+<li>Afterwards critical section is unlocked so other threads can access the object</li>
 </ul>
-<p>To retrieve the original object from CriticalObject use:</p>
+<p>To retrieve the pointer to original object from CriticalObject use:</p>
 <pre>object := CriticalObject(CriticalObject,1)</pre>
 <p>To retrieve the pointer to CriticalSection use:</p>
 <pre>lpCriticalSection := CriticalObject(CriticalObject,2)</pre>
 <p>When last reference to internal object is deleted, CrticalSection is deleted as well.</p>
 </dd>
+<dd><p>Operations like obj.key++ obj.key--, obj.key += 1, obj.key /= 2 and others access the object 2 times, once to get the value and another time to set the value.<br>Those operations will not produce desired result in multi-threaded environment when 2 or more threads change the value of an item.
+<br>To work around that we will need to lock/unlock the CriticalSection manually:</p><pre>obj:=CriticalObject({a:0}) <em>; Create new CriticalObject</em>
+script:="
+(
+  obj:=CriticalObject(a_args[1]) <em>; get CriticalObject from pointer</em>
+  lpCS:=CriticalObject(obj,2) <em>; get CriticalSection</em>
+  loop 1000000
+    EnterCriticalSection(lpCS),obj.a++,LeaveCriticalSection(lpCS) <em>; manually lock and unlock CriticalSection</em>
+)"
+
+threads:=[]
+loop 4
+  threads.Push(TlsThread(script,ObjPtr(obj) "")) <em>; create 4 threads passing the pointer (as string!) to command line parameters</em>
+While threads[1].AhkReady() || threads[2].AhkReady() || threads[3].AhkReady() || threads[4].AhkReady() <em>; wait for threads to finish</em>
+  ToolTip obj.a
+MsgBox obj.a <em>; = 4000000</em></pre>
+</dd>
 </dl>
 <h3>Examples</h3>
 <pre class="NoIndent">obj := CriticalObject() <em>; Create new critical object</em>
-Loop, 4 <em>; Create 4 Threads.</em>
- AhkThread%A_Index% := AhkThread("obj:=CriticalObject(" <span style="font-weight: bold;">ObjPtr(obj)</span> ")`nLoop`nobj[" A_Index "]:= A_Index")
+Threads:=[]
+Loop 4 <em>; Create 4 Threads.</em>
+ threads.Push(NewThread("obj:=CriticalObject(" ObjPtr(obj) ")`nLoop`nobj[" A_Index "]:= A_Index"))
  
 Loop <em>; Show current content of object.</em>
  ToolTip obj.1 "`n" obj.2 "`n" obj.3 "`n" obj.4

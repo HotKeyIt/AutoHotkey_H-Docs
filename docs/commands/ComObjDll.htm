@@ -28,7 +28,7 @@
   <dt>CLSID</dt>
   <dd><p>CLSID or human-readable Prog ID of the COM object to create.</p></dd>
 
-  <dt>IID</dt>
+  <dt>IID (optional)</dt>
   <dd><p>The identifier of an interface the object supports.</p></dd>
 
 </dl>
@@ -37,8 +37,8 @@
 <a href="http://msdn.microsoft.com/en-us/library/dcw63t7z.aspx">CreateObject (MSDN)</a>
 
 <h3>Example</h3>
-<pre class="NoIndent">lib:=LoadLibrary("AutoHotkey.dll")
-dll:=ComObjDll(lib,"{EC81EBBA-6CEE-4363-AB77-C0E57046AA89}") ;  AutoHotkey2.Script.UNICODE 
+<pre class="NoIndent">lib:=LoadLibrary("AutoHotkey.dll") <em>; AutoHotkey v1</em>
+dll:=ComObjDll(lib,"{{C58DCD96-1D6F-4F85-B555-02B7F21F5CAF}}") ;  AutoHotkey.Script.UNICODE 
 dll.ahktextdll("MsgBox from thread")
 while dll.ahkReady
     Sleep 100

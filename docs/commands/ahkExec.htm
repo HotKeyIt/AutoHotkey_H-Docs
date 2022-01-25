@@ -41,17 +41,18 @@ returned, otherwise 0 (false).</p>
 <h3>Related</h3>
 <p><a href="ahkFindFunc.htm">ahkFindFunc</a>,
 <a href="ahkFindLabel.htm">ahkFindLabel</a>,
-<a href="ahkassign.htm">ahkassign</a>
+<a href="ahkassign.htm">ahkassign</a>,
+<a href="NewThread.htm">NewThread</a>
 </p>
 <h3>Examples</h3>
 <pre class="NoIndent">dllpath:=A_AhkDir "\AutoHotkey.dll"
 DllCall("LoadLibrary","Str",dllpath) <em>; Load the AutoHotkey module.</em>
-DllCall(dllpath "\ahktextdll","Str","","Str","","CDecl") <em>; start a new thread, just the function.</em>
-DllCall(dllpath "\ahkExec","Str","MsgBox 'Hello World!'","CDecl") <em>; add and execute code</em>
+ThreadID:=DllCall(dllpath "\NewThread","Str","","Str","","Str","","CDecl") <em>; start a new thread, just the function.</em>
+DllCall(dllpath "\ahkExec","Str","MsgBox 'Hello World!'","Uint",ThreadID,"CDecl") <em>; add and execute code</em>
 
-<em>; Same example like above but using included AutoHotkey.dll</em>
-dll:=AhkThread()
-dll.ahkExec["MsgBox 'Hello World!'"]
+<em>; Same example like above but using NewThread function</em>
+dll:=NewThread(,,,,dllpath)
+dll.ahkExec("MsgBox 'Hello World!'")
 
 <em>; Execute code in current thread</em>
 ahkExec("MsgBox 'Test'")</pre>

@@ -53,7 +53,7 @@ threadScript := "
 <em>; Create and start a thread using AutoHotkey.dll
 ; Command line arguments can only be passed as a string.
 ; To convert the pointer (an integer), concatenate with an empty string.</em>
-AhkDllThread := <a href="AhkThread.htm">AhkThread</a>(threadScript, CriSec . "")
+Thread := <a href="NewThread.htm">NewThread</a>(threadScript, CriSec . "")
 
 <em>; Instructions executed by the main script thread.</em>
 Loop 5
@@ -68,15 +68,15 @@ Loop 5
     <pre class="NoIndent">
 CriSec := <b>CriticalSection</b>()
 
-<em>; Create and start a thread using AutoHotkey.dll</em>
-AhkDllThread := <a href="AhkThread.htm">AhkThread</a>("
+<em>; Create and start a new thread.</em>
+Thread := <a href="DllThread.htm">NewThread</a>("
 (
     CriSec := A_Args[1]
 
     Loop 5
     {
         <b>EnterCriticalSection</b>(CriSec)
-        MsgBox("Critical Section is now owned by AutoHotkey.dll")
+        MsgBox("Critical Section is now owned by the new thread.")
         <b>LeaveCriticalSection</b>(CriSec)
 
         <em>; The thread releases ownership and retakes it as soon as possible, leaving no time for other threads to run.
@@ -84,19 +84,17 @@ AhkDllThread := <a href="AhkThread.htm">AhkThread</a>("
     }
 )", CriSec . "")
 
-<em>; It is very likely that by this point the AhkDllThread has already been created, started,
+<em>; It is very likely that by this point the new thread has already been created, started,
 ; has taken ownership of the Critical Section and the first of five message boxes is currently showing.</em>
 
 Loop 5
 {
     <em>; On the first iteration of the loop, the main script thread tries to take ownership.
-    ; It can't because the AhkDllThread already has ownership.
-    ; The main thread will now block until the AhkDllThread has released its ownership.
-    ; In reality, the main thread will have to wait until the AhkDllThread has finished
-    ; because there won't be enough time to perform a context switch.</em>
+    ; It can't because the new thread already has ownership.
+    ; The main thread will now block and wait until the new Thread has released its ownership.</em>
     <b>EnterCriticalSection</b>(CriSec)
 
-    MsgBox("Critical Section is now owned by AutoHotkey.exe")
+    MsgBox("Critical Section is now owned by main thread.")
     <b>LeaveCriticalSection</b>(CriSec)
 }
 

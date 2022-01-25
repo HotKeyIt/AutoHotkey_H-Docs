@@ -1,0 +1,1774 @@
+﻿<!DOCTYPE HTML> 
+<html>
+<head>
+  <title>SevenZip()</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>SevenZip</h1>
+
+<p><b>SevenZip</b> is an included compression module that can pack and unpack many <a href="7-zip.chm::/general/formats.htm">supported methods:</a> 7z, XZ, BZIP2, GZIP, TAR, ZIP and WIM.<br>Further it can unpack AR, ARJ, CAB, CHM, CPIO, CramFS, DMG, EXT, FAT, GPT, HFS, IHEX, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, QCOW2, RAR, RPM, SquashFS, UDF, UEFI, VDI, VHD, VMDK, WIM, XAR and Z.<br>It can also create a self extracting executable.<br><br>7-zip was created by Igor Pavlov - <a href="www.7-zip.org">www.7-zip.org</a>.<br>Dll version was compiled from <a href="https://github.com/ytakanashi/7-zip32_ungarbled">https://github.com/ytakanashi/7-zip32_ungarbled</a>.</p>
+
+<p><b>SevenZip()</b> loads the dll module from resources and return an object with methods.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">SevenZip</span>(<span class="optional">Hwnd</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the object that will be used for compression, decompression and other 7-zip functions.</p>
+</dd>
+</dl>
+<dl>
+<dt><b>Hwnd (optional)</b></dt>
+<dd>
+<p>Gui hwnd to disable interaction with it while zip is performing compression or decompression..</p>
+</dd>
+</dl>
+
+<h3>General Remarks</h3>
+<p><b>Use -hide for options if you want to hide the progress window!</b></p>
+<h2>Properties</h2>
+<ul>
+<li>lib: 7-zip Memory Module Handle.</li>
+<li>hwnd: Setting hwnd to your gui hwnd will disable interaction with gui while zip is performing compression or decompression.</li>
+</ul>
+
+<h2>Methods</h2>
+<ul>
+<li><a href="#Add">Add</a></li>
+<li><a href="#AutoZip">AutoZip</a></li>
+<li><a href="#Check">Check</a></li>
+<li><a href="#ClearOwnerWindow">ClearOwnerWindow</a></li>
+<li><a href="#Close">CloseArchive</a></li>
+<li><a href="#Cmd">Cmd</a></li>
+<li><a href="#ConfigDialog">ConfigDialog</a></li>
+<li><a href="#Delete">Delete</a></li>
+<li><a href="#Extract">Extract</a></li>
+<li><a href="#ExtractMem">ExtractMem</a></li>
+<li><a href="#ExtractMemEx">ExtractMemEx</a></li>
+<li><a href="#ExtractRoot">ExtractRoot</a></li>
+<li><a href="#FindFirst">FindFirst</a></li>
+<li><a href="#FindNext">FindNext</a></li>
+<li><a href="#GetArcAccessTimeEx">GetArcAccessTimeEx</a></li>
+<li><a href="#GetArcCompressedSize">GetArcCompressedSize</a></li>
+<li><a href="#GetArcCompressedSizeEx">GetArcCompressedSizeEx</a></li>
+<li><a href="#GetArcCreateTimeEx">GetArcCreateTimeEx</a></li>
+<li><a href="#GetArcDate">GetArcDate</a></li>
+<li><a href="#GetArcFileName">GetArcFileName</a></li>
+<li><a href="#GetArcFileSize">GetArcFileSize</a></li>
+<li><a href="#GetArcFileSizeEx">GetArcFileSizeEx</a></li>
+<li><a href="#GetArcOriginalSize">GetArcOriginalSize</a></li>
+<li><a href="#GetArcOriginalSizeEx">GetArcOriginalSizeEx</a></li>
+<li><a href="#GetArcOSType">GetArcOSType</a></li>
+<li><a href="#GetArcRatio">GetArcRatio</a></li>
+<li><a href="#GetArcTime">GetArcTime</a></li>
+<li><a href="#GetArcWriteTimeEx">GetArcWriteTimeEx</a></li>
+<li><a href="#GetAttribute">GetAttribute</a></li>
+<li><a href="#GetBackGroundMode">GetBackGroundMode</a></li>
+<li><a href="#GetCompressedSize">GetCompressedSize</a></li>
+<li><a href="#GetCompressedSizeEx">GetCompressedSizeEx</a></li>
+<li><a href="#GetCP">GetCP</a></li>
+<li><a href="#GetCRC">GetCRC</a></li>
+<li><a href="#GetCursorInterval">GetCursorInterval</a></li>
+<li><a href="#GetCursorMode">GetCursorMode</a></li>
+<li><a href="#GetDate">GetDate</a></li>
+<li><a href="#GetDefaultPassword">GetDefaultPassword</a></li>
+<li><a href="#GetFileCount">GetFileCount</a></li>
+<li><a href="#GetFileName">GetFileName</a></li>
+<li><a href="#GetLastError">GetLastError</a></li>
+<li><a href="#GetMethod">GetMethod</a></li>
+<li><a href="#GetOriginalSize">GetOriginalSize</a></li>
+<li><a href="#GetOriginalSizeEx">GetOriginalSizeEx</a></li>
+<li><a href="#GetOSType">GetOSType</a></li>
+<li><a href="#GetRatio">GetRatio</a></li>
+<li><a href="#GetRunning">GetRunning</a></li>
+<li><a href="#GetSubVersion">GetSubVersion</a></li>
+<li><a href="#GetTime">GetTime</a></li>
+<li><a href="#GetType">GetType</a></li>
+<li><a href="#GetVersion">GetVersion</a></li>
+<li><a href="#GetWriteTime">GetWriteTime</a></li>
+<li><a href="#GetWriteTimeEx">GetWriteTimeEx</a></li>
+<li><a href="#Hash">Hash</a></li>
+<li><a href="#IsSFXFile">IsSFXFile</a></li>
+<li><a href="#KillOwnerWindowEx">KillOwnerWindowEx</a></li>
+<li><a href="#KillOwnerWindowEx64">KillOwnerWindowEx64</a></li>
+<li><a href="#List">List</a></li>
+<li><a href="#Open">Open</a></li>
+<li><a href="#PasswordDialog">PasswordDialog</a></li>
+<li><a href="#Rename">Rename</a></li>
+<li><a href="#SetBackGroundMode">SetBackGroundMode</a></li>
+<li><a href="#SetCP">SetCP</a></li>
+<li><a href="#SetCursorInterval">SetCursorInterval</a></li>
+<li><a href="#SetCursorMode">SetCursorMode</a></li>
+<li><a href="#SetDefaultPassword">SetDefaultPassword</a></li>
+<li><a href="#SetOwnerWindow">SetOwnerWindow</a></li>
+<li><a href="#SetOwnerWindowEx">SetOwnerWindowEx</a></li>
+<li><a href="#SetOwnerWindowEx64">SetOwnerWindowEx64</a></li>
+<li><a href="#SetPriority">SetPriority</a></li>
+<li><a href="#SetUnicodeMode">SetUnicodeMode</a></li>
+<li><a href="#SfxConfigDialog">SfxConfigDialog</a></li>
+<li><a href="#SfxFileStoring">SfxFileStoring</a></li>
+<li><a href="#Test">Test</a></li>
+<li><a href="#Update">Update</a></li>
+<li><a href="#FAQ">Frequently Asked Questions (FAQ)</a></li>
+</ul>
+
+<div class="methodShort" id="Add">
+<h3>Add</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/add.htm">Add</a> file[s] to archive, if archive does not exist, it will be created.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Add(Archive, Files<span class="optional">, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or path where file[s] will be added to.</p>
+</dd>
+<dt>Files</dt>
+<dd>
+<p>One or multiple files, path or file pattern that will be added to archive.<br>When multiple files are passed, they need to be passed in Array or separated by new line, e.g. <b>"C:\File1.txt`nC:\File`nC:\MyDir"</b></p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/add.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="AutoZip">
+<h3>AutoZip</h3>
+
+<p>Automated method to add file[s] to archive
+<br>If archive already exists it will be re-compressed (extracted, deleted and compressed) with given options, it will be also converted if a different method is used, original archive will be deleted!
+<br>If file or path is not an archive or a folder, it will be compressed using same path/name appending method as extension.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.AutoZip(Archive<span class="optional">, Method, CompressionLevel, Threads, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>File name or path of existing archive, file or folder to compress.</p>
+</dd>
+<dt>Method (optional)</dt>
+<dd>
+<p>One of <a href="7-zip.chm::/general/formats.htm">supported methods.</a> The name will also be used for new file extension.<br>Default: zip.</p>
+</dd>
+<dt>CompressionLevel (optional)</dt>
+<dd>
+<p>Compression level 0,1,3,5,7,9 for new archive, see <a href="7-zip.chm::/general/formats.htm">list of supported compression level</a>.<br>Default: level 9 for maximum compression.</a></p>
+</dd>
+<dt>Threads (optional)</dt>
+<dd>
+<p>How many threads to use for compression.<br>Default: 2 threads.</p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>Additional options valid for <a href="7-zip.chm::/cmdline/commands/add.htm">Add command</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Check">
+<h3>Check</h3>
+
+<p>Checks if file is an archive file (check header) and optionally checking the content and CRC for each file.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Check(Archive<span class="optional">, Mode</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 if file is an archive and false / 0 if file is not an archive or archive is corrupted.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>File name or path of existing archive.</p>
+</dd>
+<dt>Mode (optional)</dt>
+<dd>
+<p>Checking mode:</p>
+<UL>
+  <LI>0: check header only.</LI>
+  <LI>1: check additionally if archive is corrupted.</LI>
+  <LI>2: check additionally CRC for all files in archive.</LI>
+</UL>
+<p>Default: 0.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="ClearOwnerWindow">
+<h3>ClearOwnerWindow</h3>
+
+<p>Disable messages to previously defined window by <a href="#SetOwnerWindow">SetOwnerWindow</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.ClearOwnerWindow()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success and false / 0 if no window is set up to receive messages.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Close">
+<h3>Close</h3>
+
+<p>Close archive previously opened by <a href="#Open">Open</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Check(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 if file is an archive and false / 0 if file is not an archive or archive is corrupted.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Cmd">
+<h3>Cmd</h3>
+
+<p>Run 7-zip command line, see <a href="7-zip.chm::/cmdline/syntax.htm">Command line syntax</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Cmd(CommandLine)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>CommandLine</dt>
+<dd>
+<p>All functions can be run via Command Line, see <a href="7-zip.chm::/cmdline/syntax.htm">Command line syntax</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="ConfigDialog">
+<h3>ConfigDialog</h3>
+
+<p>Shows version and copyright information.</p>
+<pre class="Syntax">zip.ConfigDialog()</pre>
+<dl>
+</dl>
+</div>
+
+<div class="methodShort" id="Delete">
+<h3>Delete</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/delete.htm">Delete</a> file[s] from archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Delete(Archive, Files<span class="optional">, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or paths where file[s] will be deleted from.</p>
+</dd>
+<dt>Files</dt>
+<dd>
+<p>One or multiple files, path or file pattern that will be deleted from archive.<br>When multiple files are passed, they need to be passed in Array or separated by new line, e.g. <b>"C:\File1.txt`nC:\File`nC:\MyDir"</b></p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/delete.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Extract">
+<h3>Extract</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/extract_full.htm">Extract</a> file[s] with full path[s] from archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Extract(Archive<span class="optional">, Dir, Files, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or paths where file[s] will be extracted from.</p>
+</dd>
+<dt>Dir (optional)</dt>
+<dd>
+<p>Output directory.</p>
+</dd>
+<dt>Files (optional)</dt>
+<dd>
+<p>One or multiple files, path or file pattern that will be extracted from archive.<br>When multiple files are passed, they need to be passed in Array or separated by new line, e.g. <b>"C:\File1.txt`nC:\File`nC:\MyDir"</b></p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/extract_full.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="ExtractMem">
+<h3>ExtractMem</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/extract_full.htm">Extract</a> file[s] with full path[s] from archive.<br>This command supports extracting files up to 4 GB, use <a href="#ExractMemEx">ExtractMemEx</a> for larger files.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Extract(Archive<span class="optional">, File, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store buffer object.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or paths where file[s] will be extracted from.</p>
+</dd>
+<dt>File (optional)</dt>
+<dd>
+<p>File that will be extracted from archive.</p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/extract_full.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="ExtractMemEx">
+<h3>ExtractMemEx</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/extract_full.htm">Extract</a> file[s] with full path[s] from archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Extract(Archive<span class="optional">, File, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store buffer object.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or paths where file[s] will be extracted from.</p>
+</dd>
+<dt>File (optional)</dt>
+<dd>
+<p>File that will be extracted from archive.</p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/extract_full.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="ExtractRoot">
+<h3>ExtractRoot</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/extract.htm">Extract</a> file[s] with full path[s] from archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.ExtractRoot(Archive<span class="optional">, Dir, Files, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or paths where file[s] will be extracted from.</p>
+</dd>
+<dt>Dir (optional)</dt>
+<dd>
+<p>Output directory.</p>
+</dd>
+<dt>Files (optional)</dt>
+<dd>
+<p>One or multiple files, path or file pattern that will be extracted from archive.<br>When multiple files are passed, they need to be passed in Array or separated by new line, e.g. <b>"C:\File1.txt`nC:\File`nC:\MyDir"</b></p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/extract.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="FindFirst">
+<h3>FindFirst</h3>
+
+<p>Find first file in archive, see also <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.FindFirst(ArchiveHandle<span class="optional">, FilePattern</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store INDIVIDUALINFO structure.<br>
+<pre>typedef struct {
+        DWORD dwOriginalSize;
+        DWORD dwCompressedSize;
+        DWORD dwCRC;
+        UINT uFlag;
+        UINT uOS Type;
+        WORT wRatio;
+        WORT wDate;
+        WORT wTime;
+        char szFileName [FNAME_MAX32 + 1];
+        char dummy1 [3];
+        char szAttribute [8];
+        char szMode [8];
+    } INDIVIDUALINFO;</pre>
+<ul>
+<li>dwOriginalSize: original file size.</li>
+<li>dwCompressedSize: compressed file size.</li>
+<li>dwCRC: file checksum.</li>
+<li>uFlag: always 0.</li>
+<li>uOSType: operation System, currently always 0.</li>
+<li>wRatio: compression ratio. For solid archive always 0.</li>
+<li>wDate: change time.</li>
+<li>wTime: update time.</li>
+<li>szFileName: file name.</li>
+<li>szAttribute: File attributes.</li>
+<li>szMode: compression method.</li>
+</ul>
+</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>FilePattern (optional)</dt>
+<dd>
+<p>File pattern to use for search, FindNext will continue using same file pattern.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="FindNext">
+<h3>FindNext</h3>
+
+<p>Find next file in archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.FindNext(ArchiveHandle, lpINDIVIDUALINFO)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store 0 on success or -1 if no more files could be found.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpINDIVIDUALINFO</dt>
+<dd>
+<p>Pointer to INDIVIDUALINFO structure to use for search.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcAccessTimeEx">
+<h3>GetArcAccessTimeEx</h3>
+
+<p>Get archive access time.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcAccessTimeEx(ArchiveHandle, lpFILETIME)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpFILETIME</dt>
+<dd>
+<p>Pointer to FILETIME structure to receive the result. Pass getvar(time:=0) to save 64-bit value in variable.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcCompressedSize">
+<h3>GetArcCompressedSize</h3>
+
+<p>Get archive compressed size.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcCompressedSize(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store compressed size or -1 if archive is solid archive or <a href="#GetArcCompressedSizeEx"</a>GetArcCompressedSizeEx</a> needs to be used.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcCompressedSizeEx">
+<h3>GetArcCompressedSizeEx</h3>
+
+<p>Get archive compressed size.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcCompressedSizeEx(ArchiveHandle, lpINT64)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 ono success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpINT64</dt>
+<dd>
+<p>Pointer to variable to receive the compressed size. Pass getvar(size:=0) or pointer to buffer.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcCreateTimeEx">
+<h3>GetArcCreateTimeEx</h3>
+
+<p>Get archive created time.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcAccessTimeEx(ArchiveHandle, lpFILETIME)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpFILETIME</dt>
+<dd>
+<p>Pointer to FILETIME structure to receive the result. Pass getvar(time:=0) to save 64-bit value in variable.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcDate">
+<h3>GetArcDate</h3>
+
+<p>Get archive date.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcDate(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store archive date in DOS format or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="methodShort" id="GetArcFileName">
+<h3>GetArcFileName</h3>
+
+<p>Get archive file name.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcDate(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store archive file Name.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcFileSize">
+<h3>GetArcFileSize</h3>
+
+<p>Get archive size.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcFileSize(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store archive size or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcFileSizeEx">
+<h3>GetArcFileSizeEx</h3>
+
+<p>Get archive size.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcFileSizeEx(ArchiveHandle, lpINT64)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpINT64</dt>
+<dd>
+<p>Pointer to buffer to get size. Use getvar(size:=0) or pass a buffer pointer.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcOriginalSize">
+<h3>GetArcOriginalSize</h3>
+
+<p>Get uncompressed archive size.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcOriginalSize(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store archive size or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcOriginalSizeEx">
+<h3>GetArcOriginalSizeEx</h3>
+
+<p>Get uncompressed archive size.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcOriginalSizeEx(ArchiveHandle, lpINT64)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpINT64</dt>
+<dd>
+<p>Pointer to buffer to get size. Use getvar(size:=0) or pass a buffer pointer.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcOSType">
+<h3>GetArcOSType</h3>
+
+<p>Get uncompressed archive size.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcOSType(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store OS type.<br>
+<pre>0 : MS-DOS  1 : PRIMOS  2 : UNIX    3 : AMIGA
+4 : MAC-OS  5 : OS/2    6 : APPLE GS    7 : ATARI ST
+8 : NEXT    9 : VAX VMS 10: In addition.
+11: OS9     12: OS/68K  13: OS/386  14: HUMAN
+15: CP/M    16: FLEX    17: Runser
+18: VM CMS  19: Z SYSTEM    20: TOPS20  21: Windows NTFS
+-1: Error.</pre></p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcRatio">
+<h3>GetArcRatio</h3>
+
+<p>Get compression ratio for archive, 500 means 50% ratio.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcRatio(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store compression ratio (0 for solid archive) or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcTime">
+<h3>GetArcTime</h3>
+
+<p>Get archive time in DOS format.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcTime(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store archive time in MSDOS format or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetArcWriteTimeEx">
+<h3>GetArcWriteTimeEx</h3>
+
+<p>Get archive change time.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcWriteTimeEx(ArchiveHandle, lpFILETIME)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpFILETIME</dt>
+<dd>
+<p>Pointer to FILETIME structure to receive the time. Pass getvar(time:=0) to save 64-bit value in variable.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetAttribute">
+<h3>GetAttribute</h3>
+
+<p>Get current file attribute, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetAttribute(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store archive attribute or -1 on error.<br>
+<pre>    0x01    FA_RDONLY       Reading only file.
+    0x02    FA_HIDDEN       Hidden file.
+    0x04    FA_SYSTEM       System file.
+    0x08    FA_LABEL        Volume label.
+    0x10    FA_DIREC        Directory.
+    0x20    FA_ARCH         Retention bit.
+    0x40    FA_ENCRYPTED    The file is password protected.</pre></p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetBackGroundMode">
+<h3>GetBackGroundMode</h3>
+
+<p>Check if 7-zip is in background mode.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetBackGroundMode()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 if 7-zip is in background mode false / 0 otherwise.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetCompressedSize">
+<h3>GetCompressedSize</h3>
+
+<p>Get compressed size for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetCompressedSize(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store compressed file size or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetCompressedSizeEx">
+<h3>GetCompressedSizeEx</h3>
+
+<p>Get compressed size for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetArcWriteTimeEx(ArchiveHandle, lpINT64)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpINT64</dt>
+<dd>
+<p>Pointer to buffer to receive the compressed size. Pass getvar(size:=0) to save 64-bit value in variable.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetCRC">
+<h3>GetCRC</h3>
+
+<p>Get CRC for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetCRC(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store code page identifier.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetCP">
+<h3>GetCP</h3>
+
+<p>Get code page identifier.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetCP()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store code page identifier.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetCursorInterval">
+<h3>GetCursorInterval</h3>
+
+<p>Get rotary speed of cursor.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetCursorInterval()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the speed of cursor.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetCursorMode">
+<h3>GetCursorMode</h3>
+
+<p>Check if cursor will be visible in 7-zip operation.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetCursorMode()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 if visible or false / 0 if hidden.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetDate">
+<h3>GetDate</h3>
+
+<p>Get date for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetDate(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the date in MSDOS format.</p>
+</dd>
+<dt><b>ArchiveHandle</b></dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetDefaultPassword">
+<h3>GetDefaultPassword</h3>
+
+<p>Get default password that is used if archive is password protected and no password was specified.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetDefaultPassword(<span class="optional">ArchiveHandle</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the password.</p>
+</dd>
+<dt><b>ArchiveHandle (optional)</b></dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.<br>When no handle is given, global password is returned.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetFileCount">
+<h3>GetFileCount</h3>
+
+<p>Get count of files in an archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetFileCount(Archive)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the count of files in archive.</p>
+</dd>
+<dt><b>Archive</b></dt>
+<dd>
+<p>Filename or path to an archive.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetFileName">
+<h3>GetFileName</h3>
+
+<p>Get file name for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetFileName(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the file name.</p>
+</dd>
+<dt><b>ArchiveHandle</b></dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.<br>When no handle is given, global password is returned.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetLastError">
+<h3>GetLastError</h3>
+
+<p>Get file name for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetLastError(<span class="optional">lpINT</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the error code.</p>
+</dd>
+<dt><b>lpINT (optional)</b></dt>
+<dd>
+<p>Pointer to buffer to save error code. Use getvar(err:=0) to save the code in a variable.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetMethod">
+<h3>GetMethod</h3>
+
+<p>Get compression method name for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetMethod(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the compression method.</p>
+</dd>
+<dt><b>ArchiveHandle</b></dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.<br>When no handle is given, global password is returned.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetOriginalSize">
+<h3>GetOriginalSize</h3>
+
+<p>Get uncompressed size for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetOriginalSize(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store uncompressed file size or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetOriginalSizeEx">
+<h3>GetOriginalSizeEx</h3>
+
+<p>Get uncompressed size for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetOriginalSizeEx(ArchiveHandle, lpINT64)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpINT64</dt>
+<dd>
+<p>Pointer to buffer to receive the uncompressed size. Use getvar(size:=0) to save 64-bit value in variable.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetOSType">
+<h3>GetOSType</h3>
+
+<p>Get os type for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.<br>At the moment only 0 is returned unless there was an error.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetOSType(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store 0 on success, any other value means error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetRatio">
+<h3>GetRatio</h3>
+
+<p>Get compression ratio for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.<br>500 means 50% ratio.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetRatio(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store compression ratio (0 for solid archive) or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetRunning">
+<h3>GetRunning</h3>
+
+<p>Check if 7-zip is currently in compression or decompression operation.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetRunning()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 if 7-zip is currently in operation or false / 0 otherwise.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetSubVersion">
+<h3>GetSubVersion</h3>
+
+<p>Get subversion of 7-zip. See also <a href="#GetVersion">GetVersion</a> for main version.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetSubVersion()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the subversion of 7-zip module.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetTime">
+<h3>GetTime</h3>
+
+<p>Get time stamp for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetTime(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store time stamp in MSDOS format or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetType">
+<h3>GetType</h3>
+
+<p>Get archive type for an archive.
+<ul>
+<li>0: No compression available</li>
+<li>1: ZIP-Format</li>
+<li>2: 7z-Format</li>
+</ul></p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetType(Archive)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store archive type or -1 on error.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>File name or path of an archive.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetVersion">
+<h3>GetVersion</h3>
+
+<p>Get main version of 7-zip. See also <a href="#GetSubVersion">GetSubVersion</a> for subversion.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetVersion()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the main version of 7-zip module.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetWriteTime">
+<h3>GetWriteTime</h3>
+
+<p>Get archive time in DOS format for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetWriteTime(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store file time in MSDOS format or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="GetWriteTimeEx">
+<h3>GetWriteTimeEx</h3>
+
+<p>Get archive time in DOS format for current file, found by <a href="#FindFirst">FindFirst</a> or <a href="#FindNext">FindNext</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.GetWriteTimeEx(ArchiveHandle, lpFILETIME)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+<dt>lpFILETIME</dt>
+<dd>
+<p>Pointer to FILETIME structure to receive the time. Pass getvar(time:=0) to save 64-bit value in variable.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Hash">
+<h3>Hash</h3>
+
+<p>Create a <a href="7-zip.chm::/cmdline/commands/hash.htm">Hash</a> for file[s].</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Hash(CRC, Files<span class="optional">, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>CRC</dt>
+<dd>
+<p>CRC method. Supported methods: CRC32, CRC64, SHA1, SHA256, BLAKE2sp. Default method is CRC32</p>
+</dd>
+<dt>Files</dt>
+<dd>
+<p>One or multiple files, path or file pattern to calculate hash for.<br>When multiple files are passed, they need to be passed in Array or separated by new line, e.g. <b>"C:\File1.txt`nC:\File`nC:\MyDir"</b></p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/hash.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="IsSFXFile">
+<h3>IsSFXFile</h3>
+
+<p>Check if archive is a self extracting archive. Currently only 0 is returned unless there is an error.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.IsSFXFile(ArchiveHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store 0 or -1 on error.</p>
+</dd>
+<dt>ArchiveHandle</dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="KillOwnerWindowEx">
+<h3>KillOwnerWindowEx</h3>
+
+<p>Stop watching for messages from 7-zip module. See <a href="SetOwnerWindowEx">SetOwnerWindowEx</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.KillOwnerWindowEx(WindowHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 if handle does not match.</p>
+</dd>
+<dt>WindowHandle</dt>
+<dd>
+<p>Handle of the window currently watching for messages.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="KillOwnerWindowEx64">
+<h3>KillOwnerWindowEx64</h3>
+
+<p>Stop watching for messages from 7-zip module. See <a href="SetOwnerWindowEx64">SetOwnerWindowEx64</a>.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.KillOwnerWindowEx64(WindowHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 if handle does not match.</p>
+</dd>
+<dt>WindowHandle</dt>
+<dd>
+<p>Handle of the window currently watching for messages.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="List">
+<h3>List</h3>
+
+<p>List files and other information in the archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.List(Archive<span class="optional">, FilePattern</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store an array, each element will contain an array with [Date, Time, File Attributes, Uncompressed size, Compressed size, FilePath].</p>
+</dd>
+<dt>FilePattern (optional)</dt>
+<dd>
+<p>File pattern to filter. See <a href="7-zip.chm::/cmdline/syntax.htm">Wildcards</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Open">
+<h3>Open</h3>
+
+<p>Open an archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Open(Archive<span class="optional">, Mode</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the ArchiveHandle.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>File name or path of an archive.</p>
+</dd>
+<dt><b>Mode (optional)</b></dt>
+<dd>
+<p>Following flags are supported:
+<ul><li>M_ERROR_MESSAGE_ON (0x400000): Ask for a password for password protected archive, otherwise password set by <a href="#SetDefaultPassword">SetDefaultPassword</a> will be used.</li>
+<li>M_CHECK_ALL_PATH (0x100): Enable recurse subdirectories for <a href="#FindFirst">FindFirst</a></li>
+<li>M_CHECK_FILENAME_ONLY (0x200): Disable recurse subdirectories. When M_CHECK_ALL_PATH | M_CHECK_FILENAME_ONLY is used, it will enable recurse subdirectories only for wildcard names.</li></ul></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="PasswordDialog">
+<h3>PasswordDialog</h3>
+
+<p>Show password window and return entered password.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.PasswordDialog()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the password.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Rename">
+<h3>Rename</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/rename.htm">Rename</a> file[s] in archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Update(Archive, Files<span class="optional">, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or path where file[s] will be updated.</p>
+</dd>
+<dt>Files</dt>
+<dd>
+<p>One or multiple pair of files or path (nameFrom nameTo) that will be renamed in archive.<br>Files need to be passed in Array or separated by new line, e.g. <b>"File1.txt`nFile2`nMyDir\`nMyDir2\"</b></p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/rename.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetBackGroundMode">
+<h3>SetBackGroundMode</h3>
+
+<p>Set background mode for 7-zip. Currently the value is saved but not used internally.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetBackGroundMode(BackgroundMode)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the background mode.</p>
+</dd>
+<dt><b>BackgroundMode</b></dt>
+<dd>
+<p>1 for background mode or 0 for non-background mode.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetCP">
+<h3>SetCP</h3>
+
+<p>Set code page of archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetCP(CodePage)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 if code page < 1.</p>
+</dd>
+<dt><b>CodePage</b></dt>
+<dd>
+<p>Code page used for <a href="#Open">Open</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetCursorInterval">
+<h3>SetCursorInterval</h3>
+
+<p>Set rotary speed of cursor.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetCursorInterval(Interval)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1.</p>
+</dd>
+<dt><b>Interval</b></dt>
+<dd>
+<p>Rotation speed of cursor in ms.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetCursorMode">
+<h3>SetCursorMode</h3>
+
+<p>Set if cursor will be visible in 7-zip operation.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetCursorMode(CursorMode)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1.</p>
+</dd>
+<dt><b>CursorMode</b></dt>
+<dd>
+<p>True / 1 to show cursor, False / 0 to hide cursor.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetDefaultPassword">
+<h3>SetDefaultPassword</h3>
+
+<p>Set default password that is used if archive is password protected and no password was specified.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetDefaultPassword(<span class="optional">ArchiveHandle, Password</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store 0 on success, other values mean error.</p>
+</dd>
+<dt><b>ArchiveHandle (optional)</b></dt>
+<dd>
+<p>Handle previously returned by <a href="#Open">Open</a>.<br>When no handle is given, global password is set.</p>
+</dd>
+<dt><b>Password (optional)</b></dt>
+<dd>
+<p>Password to use for further operations.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetOwnerWindow">
+<h3>SetOwnerWindow</h3>
+
+<p>Set up messages for a window when 7-zip is in Compression or decompression operation. Use <a href="ClearOwnerWindow">ClearOwnerWindow</a> to stop watching for messages.<br>To watch for messages, call OnMessage with message nummber returned by wm_arcextract:=RegisterWindowMessage("wm_arcextract").</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetOwnerWindow(WindowHandle)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt><b>WindowHandle</b></dt>
+<dd>
+<p>Handle of the window that will receive messages from 7-zip module.<pre>wParam will contain state of operation:
+            0: BEGIN
+            1: INPROCESS
+            2: END
+            3: OPEN
+            4: COPY
+            5: SKIP
+lParam will contain a pointer to EXTRACTINGINFO Structure:
+            typedef struct {
+                    DWORD dwFileSize;                         // Total size of all data to be compressed / decompressed
+                    DWORD dwWriteSize;                        // Processed size of all data to be compressed / decompressed
+                    char szSourceFileName [FNAME_MAX32 + 1];  // Source file name (512 + 1)
+                    char dummy1 [3];                          // padding
+                    char szDestFileName [FNAME_MAX32 + 1];    // Destination file name (512 + 1)
+                    char dummy [3];                           // padding
+                } EXTRACTINGINFO;</pre></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetOwnerWindowEx">
+<h3>SetOwnerWindowEx</h3>
+
+<p>Set up messages for a window when 7-zip is in Compression or decompression operation. Use <a href="KillOwnerWindowEx">KillOwnerWindowEx</a> to stop watching for messages.<br>To watch for messages, call OnMessage with message nummber returned by wm_arcextract:=RegisterWindowMessage("wm_arcextract").</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetOwnerWindowEx(WindowHandle<span class="optional">, LPARCHIVERPROC</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt><b>WindowHandle</b></dt>
+<dd>
+<p>Handle of the window that will receive messages from 7-zip module.</p>
+</dd>
+<dt><b>LPARCHIVERPROC (optinal)</b></dt>
+<dd>
+<p>Callback function created with RegisterCallback with following parameters:<pre>  typedef BOOL CALLBACK ARCHIVERPROC(HWND _hwnd, UINT _uMsg,
+                                     UINT _nState, LPVOID _lpEis);
+
+  hwnd     Window handle.
+  Msg     wm_arcextract.
+  State   Operation mode.
+            0: BEGIN
+            1: INPROCESS
+            2: END
+            3: OPEN
+            4: COPY
+            5: SKIP
+  pEIS    LPEXTRACTINGINFOEX
+          typedef struct {
+              EXTRACTINGINFO exinfo;  // EXTRACTINGINFO structure
+              DWORD dwCompressedSize; // Compressed size
+              DWORD dwCRC;            // CRC Checksum
+              UINT uOS Type;          // Operation system
+              WORD wRatio;            // compression ratio
+              WORD wDate;             // change date in MSDOS format
+              WORD wTime;             // change time in MSDOS format
+              char szAttribute [8];   // file attributes
+              char szMode [8];        // compression mode
+          } EXTRACTINGINFOEX;
+
+ARCHIVERPROC must return true to continue operation or false to cancel.</pre><br>If LPARCHIVERPROC is omitted or 0, Window message mode will be used. (wParam = State, lParam = pEIS, hwnd, Msg)</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetOwnerWindowEx64">
+<h3>SetOwnerWindowEx64</h3>
+
+<p>Set up messages for a window when 7-zip is in Compression or decompression operation. Use <a href="KillOwnerWindowEx64">KillOwnerWindowEx64</a> to stop watching for messages.<br>To watch for messages, call OnMessage with message nummber returned by wm_arcextract:=RegisterWindowMessage("wm_arcextract").</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetOwnerWindowEx64(WindowHandle<span class="optional">, LPARCHIVERPROC</span>, StructSize)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt><b>WindowHandle</b></dt>
+<dd>
+<p>Handle of the window that will receive messages from 7-zip module.</p>
+</dd>
+<dt><b>LPARCHIVERPROC (optinal)</b></dt>
+<dd>
+<p>Callback function created with RegisterCallback with following parameters:<pre>  typedef BOOL CALLBACK ARCHIVERPROC(HWND _hwnd, UINT _uMsg,
+                                     UINT _nState, LPVOID _lpEis);
+
+  hwnd     Window handle.
+  Msg     wm_arcextract.
+  State   Operation mode.
+            0: BEGIN
+            1: INPROCESS
+            2: END
+            3: OPEN
+            4: COPY
+            5: SKIP
+  pEIS    LPEXTRACTINGINFO, LPEXTRACTINGINFOEX, LPEXTRACTINGINFOEX32 or LPEXTRACTINGINFOEX64
+          typedef struct {
+              DWORD dwStructSize;                       // Structure size
+              EXTRACTINGINFO exinfo;                    // EXTRACTINGINFO structure
+              DWORD dwFileSize;                         // Total size of all data to be compressed / decompressed
+              DWORD dwCompressedSize;                   // Total size of compressed archive
+              DWORD dwWriteSize;                        // Processed size of all data to be compressed / decompressed
+              DWORD dwAttributes;                       // File attributes
+              DWORD dwCRC;                              // CRC Checksum
+              UINT uOS Type;                            // Operation system
+              WORD wRatio;                              // compression ratio
+              FILETIME ftCreateTime;                    // Created date and time
+              FILETIME ftAccessTime;                    // Access date and time
+              FILETIME ftWriteTime;                     // Chage date and time
+              char szMode [8];                          // compression mode
+              char szSourceFileName [FNAME_MAX32 + 1];  // Source file name (512 + 1)
+              char dummy1 [3];                          // padding
+              char szDestFileName [FNAME_MAX32 + 1];    // Destination file name (512 + 1)
+              char dummy2 [3];                          // padding
+          } EXTRACTINGINFOEX32;
+          
+          typedef struct {
+              DWORD dwStructSize;                       // Structure size
+              EXTRACTINGINFO exinfo;                    // EXTRACTINGINFO structure
+              ULHA_INT64 llFileSize;                    // Total size of all data to be compressed / decompressed
+              ULHA_INT64 llCompressedSize;              // Total size of compressed archive
+              ULHA_INT64 llWriteSize;                   // Processed size of all data to be compressed / decompressed
+              DWORD dwAttributes;                       // File attributes
+              DWORD dwCRC;                              // CRC Checksum
+              UINT uOS Type;                            // Operation system
+              WORT wRatio;                              // compression ratio
+              FILETIME ftCreateTime;                    // Created date and time
+              FILETIME ftAccessTime;                    // Access date and time
+              FILETIME ftWriteTime;                     // Chage date and time
+              char szMode [8];                          // compression mode
+              char szSourceFileName [FNAME_MAX32 + 1];  // Source file name (512 + 1)
+              char dummy1 [3];                          // padding
+              char szDestFileName [FNAME_MAX32 + 1];    // Destination file name (512 + 1)
+              char dummy2 [3];                          // padding
+          } EXTRACTINGINFOEX64;
+
+ARCHIVERPROC must return true to continue operation or false to cancel.</pre><br>If LPARCHIVERPROC is omitted or 0, Window message mode will be used. (wParam = State, lParam = pEIS, hwnd, Msg)</p>
+</dd>
+<dt><b>StructSize</b></dt>
+<dd>
+<p>The size of structure to use. Based on the size it will be either EXTRACTINGINFO, EXTRACTINGINFOEX, EXTRACTINGINFOEX32 or EXTRACTINGINFOEX64</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetPriority">
+<h3>SetPriority</h3>
+
+<p>Set thread priority.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetPriority(Priority)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt><b>Priority</b></dt>
+<dd>
+<p>Use same values as in <a href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadpriority">SetThreadPriority</a>.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SetUnicodeMode">
+<h3>SetUnicodeMode</h3>
+
+<p>Set thread priority.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SetUnicodeMode(UseUnicode)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt><b>UseUnicode</b></dt>
+<dd>
+<p>True / 1 to use UTF-8 or false / 0 to use OEM code.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SfxConfigDialog">
+<h3>SfxConfigDialog</h3>
+
+<p>Shows Self Extracting dialog and returns entered values.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SfxConfigDialog()</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store entered values.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="SfxFileStoring">
+<h3>SfxFileStoring</h3>
+
+<p>Extract the executable used for Self Extracting archives.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.SfxFileStoring(FilePath)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store true / 1 on success or false / 0 on error.</p>
+</dd>
+<dt><b>FilePath</b></dt>
+<dd>
+<p>Path for SFX module to be extracted to.</p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Update">
+<h3>Update</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/update.htm">Update</a> file[s] in archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Update(Archive, Files<span class="optional">, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or path where file[s] will be updated.</p>
+</dd>
+<dt>Files</dt>
+<dd>
+<p>One or multiple files, path or file pattern that will be updated in archive.<br>When multiple files are passed, they need to be passed in Array or separated by new line, e.g. <b>"C:\File1.txt`nC:\File`nC:\MyDir"</b></p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/update.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<div class="methodShort" id="Test">
+<h3>Test</h3>
+
+<p><a href="7-zip.chm::/cmdline/commands/test.htm">Test</a> archive or file[s] in archive.</p>
+<pre class="Syntax"><b>OutputVar</b> := zip.Test(Archive<span class="optional">, Files, Options</span>)</pre>
+<dl>
+<dt><b>OutputVar</b></dt>
+<dd>
+<p>The name of variable in which to store the result reported by 7-zip.</p>
+</dd>
+<dt>Archive</dt>
+<dd>
+<p>Archive file name or path that will be tested.</p>
+</dd>
+<dt>Files (optional)</dt>
+<dd>
+<p>One or multiple files, path or file pattern that will be tested .<br>When multiple files are passed, they need to be passed in Array or separated by new line, e.g. <b>"C:\File1.txt`nC:\File`nC:\MyDir"</b></p>
+</dd>
+<dt>Options (optional)</dt>
+<dd>
+<p>See supported switches in <a href="7-zip.chm::/cmdline/commands/test.htm">7-zip Add() help.</a></p>
+</dd>
+</dl>
+</div>
+
+<TABLE cellspacing=10 cellpadding=10 border=0 width="100%"><TR>
+<H1 id="FAQ">Frequently Asked Questions (FAQ)</H1>
+
+<H4>Can I use 7-Zip in a commercial organization?</H4>
+<P>Yes, 7-Zip is free software. You can use it on any computer. You don't need to 
+register or pay for 7-Zip.</P>
+
+<H4>Why 7z archives created by new version of 7-Zip can be larger than archives created by old version of 7-Zip?</H4>
+
+<P>New versions of 7-Zip (starting from version 15.06) use another file sorting 
+order by default for solid 7z archives.</P>
+
+<P>Old version of 7-Zip (before version 15.06) used file sorting "by type" ("by extension").</P>
+<P>New version of 7-Zip supports two sorting orders:</P>
+<UL>
+  <LI>sorting by name - default order.</LI>
+  <LI>sorting by type, if '<B>qs</B>' is specified in <B>Parameters</B> field in "Add to archive" window, 
+     (or <B>-mqs</B> switch for command line version).</LI>
+</UL>
+
+<P>You can get big difference in compression ratio for different sorting methods,
+if dictionary size is smaller than total size of files.
+If there are similar files in different folders, the sorting "by type" can provide 
+better compression ratio in some cases.</P>
+
+<P>Note that sorting "by type" has some drawbacks.
+For example, NTFS volumes use sorting order "by name", so if an archive uses 
+another sorting, then the speed of some operations for files with unusual order 
+can fall on HDD devices (HDDs have low speed for "seek" operations).</P>
+
+<P>You can increase compression ratio with the following methods:</P>
+<UL>
+  <LI>Increase dictionary size. It can help when 'qs' is not used.</LI>
+  <LI>Specify '<B>qs</B>' in <B>Parameters</B> field (or use <B>-mqs</B> switch for command line version).</LI>
+</UL>
+
+<P>If you think that unusual file order is not problem for you, 
+and if better compression ratio with small dictionary is more important for you,
+use '<B>qs</B>' mode.</P>
+
+<H4>Why can't 7-Zip open some ZIP archives?</H4>
+<P>In 99% of these cases it means that the archive contains incorrect headers.
+Other ZIP programs can open some archives with incorrect headers, since these programs 
+just ignore errors.</P>
+<P>If you have such archive, please don't call the 7-Zip developers about it.
+Instead try to find the program that was used to create the archive and inform the developers 
+of that program that their software is not ZIP-compatible.</P>
+
+<P>There are also some ZIP archives that were encoded with methods unsupported by 7-Zip,
+for example, WAVPack (WinZip).</P>
+
+<H4>Why doesn't the command line version add files without extensions to an archive?</H4>
+<P>You're probably using a *.* wildcard. 7-Zip doesn't use the operating system's wildcard mask parser, 
+and consequently treats *.* as any file that has an extension. 
+To process all files you must use the * wildcard instead or omit the wildcard altogether.</P>
+
+<H4>Why doesn't -r switch work as expected?</H4>
+<P>In most cases you don't need -r switch.
+7-Zip can compress subfolders even without -r switch.</P>
+<P>Example 1:</P>
+<PRE>  a c:\a.7z "C:\Program Files"</PRE>
+<P>compresses "C:\Program Files" completely, including all subfolders.</P>
+<P>Example 2:</P>
+<PRE>  a -r c:\a.7z "C:\Program Files"</PRE>
+<P>searches and compresses "Program Files" in all subfolders of C:\ (for example, in "C:\WINDOWS").</P>
+If you need to compress only files with some extension, you can use -r switch:
+<PRE>  a -r c:\a.zip c:\dir\*.txt </PRE>
+<P>compresses all *.txt files from folder c:\dir\ and all it's subfolders.</P>
+
+<H4>How can I store full path of file in archive?</H4>
+<P>7-Zip stores only relative paths of files (without drive letter prefix).
+You can change current folder to folder that is common for 
+all files that you want to compress and then you can use relative paths:</P>
+<PRE>
+  cd /D C:\dir1\
+  a c:\a.7z file1.txt dir2\file2.txt
+</PRE>
+
+<H4>Why can't 7-Zip use big dictionary in 32-bit Windows?</H4>
+<P>32-bit Windows allocates only 2 GB of virtual space per one application. 
+Also that block of 2 GB can be fragmented (for example, by some DLL file), 
+so 7-Zip can't allocate one big contiguous block of virtual space.
+There are no such limitations in 64-bit Windows. 
+So you can use any dictionary in Windows x64, if you have required amount of physical RAM.</P>
+
+<H4>How can I recover corrupted 7z archive?</H4>
+
+<P>There are some possible cases when archive is corrupted:
+<UL>
+  <LI>You can open archive and you can see the list of files, but when you press 
+      Extract or Test command, there are some errors: Data Error or CRC Error.
+  <LI>When you open archive, you get message "Can not open file 'a.7z' as archive"
+</UL>
+
+<P>It's possible to recover some data. Read about recovering procedure:
+
+<P><A href="https://www.7-zip.org/recover.html">Recover corrupted 7z archive</A></P>
+
+<BR><BR>
+
+<HR>
+<P><SMALL>Copyright (C) 2021 Igor Pavlov. The site is hosted at <A href="https://m.do.co/c/cab893b82fa8">Digital Ocean</A> </SMALL></P>
+</TD></TR></TABLE>
+</body>
+</html>

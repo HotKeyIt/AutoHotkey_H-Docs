@@ -1,0 +1,33 @@
+<!DOCTYPE HTML> 
+<html><head><title>GetProcessParameter()</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>GetProcessParameter</h1>
+<p>Retrieve command line or working directory of a process.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">GetProcessParameter</span>(ProcessID, CmdOrWorkingDirectory)
+<pre><em>Function Example:</em> <b>CMD</b> := GetProcessParameter(GetCurrentProcessId())</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+<dt><b>OutputVar</b></dt>
+  <dd><p>The name of the variable in which to store the command line string or working directory of target process.</p></dd>
+
+  <dt>ProcessID</dt>
+  <dd>
+  <p>Process id of target process.</p>
+  </dd>
+  
+  <dt>CmdOrWorkingDirectory (optional)</dt>
+  <dd>
+  <p>0 for command line (default) or 1 for working directory.</p>
+  </dd>
+</dl>
+<h3>Examples</h3>
+<pre class="NoIndent">MsgBox "Command line: " GetProcessParameter(GetCurrentProcessId()) "`nWorking Dir: " GetProcessParameter(GetCurrentProcessId(),1)</pre>
+</body></html>

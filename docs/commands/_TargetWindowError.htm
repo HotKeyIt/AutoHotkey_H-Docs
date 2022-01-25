@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>#TargetWindowError</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>#TargetWindowError</h1>
+
+<p>Avoid errors when target window is not found.</p>
+
+<pre class="Syntax"><span class="func">#TargetWindowError</span> <span class="optional">OnOff</span></pre>
+<h3>Parameters</h3>
+<dl>
+
+  <dt>OnOff (optional)</dt>
+  <dd><p>When parameter is omitted, it defaults to Off. On/1 = throw if window not found, Off/0 = don't throw if window not found.</p></dd>
+</dl>
+<h3>Example</h3>
+<pre class="NoIndent">#TargetWindowError
+WinActivate "this window does not exist and no error is shown"
+</pre>
+</body>
+</html>

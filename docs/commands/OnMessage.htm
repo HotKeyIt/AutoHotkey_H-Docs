@@ -1,0 +1,43 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>OnMessage()</title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link href="../static/theme.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>OnMessage</h1>
+
+<p>Additional features for OnMessage function.</p>
+<pre class="Syntax"><b>OutputVar</b> := <span class="func">OnMessage</span>(MsgNumber <span class="optional">, HWND, Function, MaxThreads</span>)
+<pre><em>Command  Example:</em> OnMessage 0x999, A_ScriptHwnd, WatchMessages
+<em>Function Example:</em> OnMessage(0x999, A_ScriptHwnd, WatchMessages)</pre></pre>
+
+<h3>Parameters</h3>
+<dl>
+  <dt>MsgNumber</dt>
+    <dd><p>The number of the message.</p>
+    </dd>
+  <dt>HWND (optional)</dt>
+    <dd><p>The HWND of the window to monitor, use 0 to monitor all windows.</p>
+    </dd>
+  <dt>Function (optional)</dt>
+    <dd><p>The function object to call when the message is received. See AutoHotkey v2 docs.</p>
+    </dd>
+  <dt>MaxThreads (optional)</dt>
+    <dd><p>See AutoHotkey v2 docs.</p>
+    </dd>
+</dl>
+
+
+<h3>Example</h3>
+<pre class="NoIndent">OnMessage 0x0201, MyGui.hwnd, LBUTTONDOWN <em>; register</em>
+OnMessage 0x0201, MyGui.hwnd, LBUTTONDOWN, 0 <em>; delete</em>
+OnMessage 0x0201, MyGui.hwnd, , 0 <em>; same as above, but will delete all registered functions for MsgNumber && HWND combination.</em></pre>
+</body>
+</html>

@@ -19,28 +19,28 @@ SplashImage, Off<pre><em>Command  Example:</em> SplashImage "C:\My Pictures\Comp
 <h3>Parameters</h3>
 <dl>
 
-  <dt>ImageFile</dt>
+  <dt>ImageFile (optional)</dt>
   <dd><p>If this is the word OFF, the window is destroyed. If this is the word SHOW, the window is shown if it is currently hidden.</p>
       <p>Otherwise, this is the file name of the BMP, GIF, or JPG image to display (to display other file formats such as PNG, TIF, and ICO, consider using the <a href="Gui.htm">Gui</a> command to create a window containing a picture control).</p>
       <p><span class="ver">[AHK_L 59+]:</span> Any image format supported by Gui may be used with SplashImage.</p>
       <p><em>ImageFile</em> is assumed to be in <a href="../Variables.htm#WorkingDir">%A_WorkingDir%</a> if an absolute path isn't specified. If <em>ImageFile</em> and <em>Options</em> are blank and the window already exists, its image will be unchanged but its text will be updated to reflect any new strings provided in <em>SubText</em>, <em>MainText</em>, and <em>WinTitle</em>.</p>
       <p>For newly created windows, if <em>ImageFile</em> is blank or there is a problem loading the image, the window will be displayed without the picture.</p></dd>
 
-  <dt>Options</dt>
+  <dt>Options (optional)</dt>
   <dd><p>A string of zero or more  options from the list further below.</p></dd>
 
-  <dt>SubText</dt>
+  <dt>SubText (optional)</dt>
   <dd><p>The text to display below the image or bar indicator. Although word-wrapping will occur, to begin a new line explicitly, use linefeed (`n). To set an existing window's text to be blank, specify <a href="../Variables.htm#Space">%A_Space%</a>. For the purpose of auto-calculating the window's height, blank lines can be reserved in a way similar to <em>MainText</em> below.</p></dd>
 
-  <dt>MainText</dt>
+  <dt>MainText (optional)</dt>
   <dd><p>The text to display above the image or bar indicator (its font is semi-bold). Although word-wrapping will occur, to begin a new line explicitly, use linefeed (`n).</p>
       <p>If blank or omitted, no space will be reserved in the window for <em>MainText</em>. To reserve space for single line to be added later, or to set an existing window's text to be blank, specify <a href="../Variables.htm#Space">%A_Space%</a>. To reserve extra lines beyond the first, append one or more linefeeds (`n).</p>
       <p>Once the height of <em>MainText</em>'s control area has been set, it cannot be changed without recreating the window.</p></dd>
 
-  <dt>WinTitle</dt>
+  <dt>WinTitle (optional)</dt>
   <dd><p>The title of the window. If omitted and the window is being newly created, the title defaults to the name of the script (without path). If the <b>B</b> (borderless) option has been specified, there will be no visible title bar but the window can still be referred to by this title in commands such as WinMove.</p></dd>
 
-  <dt>FontName</dt>
+  <dt>FontName (optional)</dt>
   <dd><p>The name of the font to use for both <em>MainText</em> and <em>SubText</em>.  The <a href="../misc/FontsStandard.htm">font table</a> lists the fonts included with the various versions of Windows. If unspecified or if the font cannot be found, the system's default GUI font will be used.</p>
       <p>See the options section below for how to change the size, weight, and color of the font.</p></dd>
 

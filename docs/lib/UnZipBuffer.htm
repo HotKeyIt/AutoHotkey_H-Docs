@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>UnZipBuffer() - Syntax &amp; Usage | AutoHotkey_H v1</title>
+<meta name="description" content="The UnZipBuffer function extracts one item from a zip archive on disk or in memory into a variable." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>UnZipBuffer() <span class="ver">[AHK_H]</span></h1>
+
+<p>Extracts one item from a zip archive on disk or in memory into a variable.</p>
+
+<pre class="Syntax">Size := <span class="func">UnZipBuffer</span>(ZipFileName, Item <span class="optional">, OutputVar, Password</span>)
+Size := <span class="func">UnZipBuffer</span>(Address, ZipSize, Item <span class="optional">, OutputVar, Password</span>)</pre>
+
+<h2 id="Parameters">Parameters</h2>
+<dl>
+
+  <dt>ZipFileName</dt>
+  <dd><p>The path and name of the zip archive to extract from.</p></dd>
+
+  <dt>Address, ZipSize</dt>
+  <dd><p>Alternatively, the address of a zip archive in memory (a pure integer) followed by its size in bytes. For example, <code>&amp;ZipData, Size</code> where <em>ZipData</em> was filled by <a href="ZipCloseBuffer.htm">ZipCloseBuffer()</a>.</p></dd>
+
+  <dt>Item</dt>
+  <dd><p>The relative path and name of the item within the archive, or its zero-based index. If blank or omitted, the first item (index 0) is extracted.</p></dd>
+
+  <dt>OutputVar</dt>
+  <dd><p>If omitted, only the uncompressed size of the item is returned. Otherwise, specify a variable in which to store the extracted data. Its capacity is adjusted as needed and the data is followed by a binary zero (two bytes), so text can be retrieved with <a href="StrGet.htm">StrGet()</a>.</p></dd>
+
+  <dt>Password</dt>
+  <dd><p>The password of the archive, if it is encrypted.</p></dd>
+
+</dl>
+
+<h2 id="Return_Value">Return Value</h2>
+<p>This function returns the uncompressed size of the item in bytes, or an empty string if no item with the specified name was found.</p>
+
+<h2 id="Error_Handling">Error Handling</h2>
+<p>An exception is thrown if the archive cannot be opened or the item cannot be extracted, or if <em>Address</em> is given but <em>ZipSize</em> is not numeric.</p>
+
+<h2 id="Related">Related</h2>
+<p><a href="ZipCreateBuffer.htm">ZipCreateBuffer()</a>, <a href="ZipAddBuffer.htm">ZipAddBuffer()</a>, <a href="ZipCloseBuffer.htm">ZipCloseBuffer()</a>, <a href="ZipCreateFile.htm">ZipCreateFile()</a>, <a href="ZipAddFile.htm">ZipAddFile()</a>, <a href="ZipCloseFile.htm">ZipCloseFile()</a>, <a href="UnZip.htm">UnZip()</a>, <a href="ZipInfo.htm">ZipInfo()</a>, <a href="ZipRawMemory.htm">ZipRawMemory()</a>, <a href="UnZipRawMemory.htm">UnZipRawMemory()</a></p>
+
+<h2 id="Examples">Examples</h2>
+<div class="ex" id="ExBasic">
+<p><a class="ex_number" href="#ExBasic"></a> Extracts a file from a zip archive on disk.</p>
+<pre>size := UnZipBuffer("C:\Test.zip", "Test.txt", data)
+MsgBox % StrGet(&amp;data, size, "UTF-8")</pre>
+</div>
+<div class="ex" id="ExMemory">
+<p><a class="ex_number" href="#ExMemory"></a> Creates a zip archive in memory and extracts the item again.</p>
+<pre>text := "Hello from a zip archive in memory"
+hZip := ZipCreateBuffer(1024 * 1024)
+ZipAddBuffer(hZip, &amp;text, StrLen(text) * 2, "hello.txt")
+zipSize := ZipCloseBuffer(hZip, zipData)
+UnZipBuffer(&amp;zipData, zipSize, "hello.txt", out)
+MsgBox % StrGet(&amp;out)</pre>
+</div>
+
+</body>
+</html>

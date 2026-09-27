@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>ZipInfo() - Syntax &amp; Usage | AutoHotkey_H v1</title>
+<meta name="description" content="The ZipInfo function return an object with information about all items within a zip archive." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>ZipInfo() <span class="ver">[AHK_H]</span></h1>
+
+<p>Return an object with information about all items within a zip archive.</p>
+
+<pre class="Syntax">OutputVar := <span class="func">ZipInfo</span>(FileNameOrAddress <span class="optional">, Size</span>)</pre>
+
+<h2 id="Parameters">Parameters</h2>
+<dl>
+  
+  <dt>FileNameOrAddress</dt>
+  <dd><p>FileName of zip file or address of zip file in Memory.</p></dd>
+  
+  <dt>Size (optional)</dt>
+  <dd><p>When FileNameOrAddress is an address, this parameter must be the size of zip memory returned by <a href="ZipCloseBuffer.htm">ZipCloseBuffer</a>.</p></dd>
+</dl>
+
+<h2 id="Return_Value">Return Value</h2>
+<p>This function returns the object containing information about all items.<br>Each item contains an object with following information:
+  <b>FileName, Attributes, CompressedSize, UncompressedSize, CreateTime, ModifyTime, AccessTime</b>.</p>
+
+<h2 id="Related">Related</h2>
+<p><a href="ZipCreateFile.htm">ZipCreateFile</a>, <a href="ZipAddFile.htm">ZipAddFile</a>, <a href="ZipCloseFile.htm">ZipCloseFile</a>,
+ <a href="UnZip.htm">UnZip</a>, <a href="ZipCreateBuffer.htm">ZipCreateBuffer</a>, <a href="ZipAddBuffer.htm">ZipAddBuffer</a>,
+ <a href="ZipCloseBuffer.htm">ZipCloseBuffer</a>, <a href="UnZipBuffer.htm">UnZipBuffer</a>, <a href="ZipRawMemory.htm">ZipRawMemory</a>,
+ <a href="UnZipRawMemory.htm">UnZipRawMemory</a>, <a href="ZipOptions.htm">ZipOptions</a>, <a href="ZipAddFolder.htm">ZipAddFolder</a></p>
+<h2 id="Examples">Examples</h2>
+<div class="ex" id="ExBasic">
+<p><a class="ex_number" href="#ExBasic"></a> </p>
+<pre>Gui, Add, ListView,w800 h640, Name|Attributes|CompressedSize|UncompressedSize|CreateTime|ModifyTime|AccessTime
+for k, v in ZipInfo("MyZipFile.zip")
+  LV_Add("",v.Name, v.Attributes, v.CompressedSize, v.UncompressedSize, v.CreateTime, v.ModifyTime, v.AccessTime)
+LV_ModifyCol()
+Gui,Show
+return
+GuiClose:
+ExitApp</pre>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,911 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>GUI Control Types - Syntax &amp; Usage | AutoHotkey v1</title>
+<meta name="description" content="GUI control types are elements of interaction which can be added to a GUI window using the Gui command." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+<style>
+  img {
+    margin: 0 1.5em;
+    border: 1px solid silver;
+  }
+  @media only screen and (max-width: 600px) {
+    img { margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>GUI Control Types</h1>
+
+<p>GUI control types are elements of interaction which can be added to a GUI window using <a href="Gui.htm#Add">Gui Add</a>.</p>
+
+<h2 id="toc">Table of Contents</h2>
+<ul>
+  <li><a href="#ActiveX">ActiveX</a> <span class="ver">[v1.1.03+]</span></li>
+  <li><a href="#Button">Button</a></li>
+  <li><a href="#CheckBox">CheckBox</a></li>
+  <li><a href="#ComboBox">ComboBox</a></li>
+  <li><a href="#Custom">Custom</a> <span class="ver">[v1.1.10+]</span></li>
+  <li><a href="#DateTime">DateTime</a></li>
+  <li><a href="#DropDownList">DropDownList</a></li>
+  <li><a href="#Edit">Edit</a></li>
+  <li><a href="#GroupBox">GroupBox</a></li>
+  <li><a href="#Hotkey">Hotkey</a></li>
+  <li><a href="#Link">Link</a> <span class="ver">[v1.1.06+]</span></li>
+  <li><a href="#ListBox">ListBox</a></li>
+  <li><a href="#ListView">ListView</a></li>
+  <li><a href="#MonthCal">MonthCal</a></li>
+  <li><a href="#Picture">Picture</a></li>
+  <li><a href="#Progress">Progress</a></li>
+  <li><a href="#Radio">Radio</a></li>
+  <li><a href="#Slider">Slider</a></li>
+  <li><a href="#StatusBar">StatusBar</a> <span class="ver">[v1.0.44+]</span></li>
+  <li><a href="#Tab">Tab</a></li>
+  <li><a href="#Text">Text</a></li>
+  <li><a href="#TreeView">TreeView</a></li>
+  <li><a href="#UpDown">UpDown</a></li>
+</ul>
+
+<a id="IE_Control"></a><h2 id="ActiveX">ActiveX <span class="ver">[v1.1.03+]</span></h2>
+<p>Allows embedding ActiveX components such as the MSIE browser control into a GUI window.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, ActiveX, Options, ComponentName</pre>
+<p>Example:</p>
+<pre>Gui, Add, ActiveX, w980 h640 vWB, Shell.Explorer</pre>
+
+<h3 id="ActiveX_Parameters">ActiveX Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the ActiveX object.</p>
+  </dd>
+  <dt>ComponentName</dt>
+  <dd>
+    <p>The name of the ActiveX component.</p>
+  </dd>
+</dl>
+
+<h3 id="ActiveX_Remarks">ActiveX Remarks</h3>
+<p><a href="GuiControlGet.htm">GuiControlGet</a> can also be used to retrieve the ActiveX object.</p>
+<p>To determine the type of the ActiveX object, use <a href="ComObjType.htm">ComObjType()</a>.</p>
+<p>To handle the events exposed by the ActiveX object, use <a href="ComObjConnect.htm">ComObjConnect()</a>.</p>
+<p><a href="Gui.htm#ExWebBrowser">Gui example #10</a> demonstrates a simple web browser created via the <a href="https://learn.microsoft.com/dotnet/desktop/winforms/controls/webbrowser-control-windows-forms">WebBrowser control</a>.</p>
+
+<h2 id="Button">Button</h2>
+<p>A pushbutton, which can be pressed to trigger an action.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Button, Options, Name</pre>
+<p>Example:</p>
+<pre>Gui, Add, Button, Default w80, OK</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_button.png" alt="Button" />
+
+<h3 id="Button_Parameters">Button Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="DefaultButton"><strong>Default:</strong> Makes the button the default button. The default button's action is automatically triggered whenever the user presses <kbd>Enter</kbd>, except when the keyboard focus is on a different button or a multi-line edit control having the <a href="#WantReturn">WantReturn</a> style.</p>
+    <p id="Button_G"><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> or <a href="#Button_Automatic_Label">automatic label</a> launches automatically whenever the user clicks the button or presses <kbd>Space</kbd> or <kbd>Enter</kbd> while it has the focus.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Button">Button styles table</a> for a list.</p>
+  </dd>
+  <dt>Name</dt>
+  <dd>
+    <p>The display name of the button, which may include linefeeds (`n) to start new lines.</p>
+    <p>An ampersand (&amp;) may be used to underline one of the letters, such as the letter P in <code class="no-highlight">&amp;Pause</code>. This allows the user to press <kbd>Alt</kbd>+<kbd>P</kbd> as a <a href="Gui.htm#ShortcutKey">shortcut key</a>. To display a literal ampersand, specify two consecutive ampersands (&amp;&amp;).</p>
+  </dd>
+</dl>
+
+<h3 id="Button_Automatic_Label">Button Automatic Label</h3>
+<p>If a button lacks an explicit <a href="#Button_G">g-label</a>, an automatic label is assumed. For example, if the first GUI window contains an OK button, the ButtonOK label (if it exists) will be launched when the button is pressed. For GUI windows <a href="Gui.htm#MultiWin">other than the first</a>, the window number is included in front of the button's automatic label, e.g. <code class="no-highlight">2ButtonOK</code>.</p>
+<p>If the button's name contains spaces, tabs, linefeeds (`n), carriage returns (`r), ampersands (&amp;), or backticks (`), its automatic label omits those characters. For example, a button titled "&amp;Pause" would have an automatic label of ButtonPause. Similarly, a button titled "Save &amp;&amp; Exit" would have an automatic label of ButtonSaveExit (the double-ampersand is used to display a single, literal ampersand).</p>
+
+<h3 id="Button_Remarks">Button Remarks</h3>
+<p>To later change the <a href="#DefaultButton">default</a> button to another button, follow this example, which makes the Cancel button become the default: <code><a href="GuiControl.htm">GuiControl</a>, +Default, Cancel</code>. To later change the window to have no default button, follow this example: <code>GuiControl, -Default, OK</code>.</p>
+<p>Known limitation: Certain desktop themes might not display a button's text properly. If this occurs, try including <code class="no-highlight">-Wrap</code> (minus Wrap) in <em>Options</em>. However, this also prevents having more than one line of text.</p>
+
+<a id="Checkbox"></a><h2 id="CheckBox">CheckBox</h2>
+<p>A small box that can be checked or unchecked to represent On/Off, Yes/No, and so on.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, CheckBox, Options, Caption</pre>
+<p>Example:</p>
+<pre>Gui, Add, CheckBox, vShipToBillingAddress, Ship to billing address?</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_check.png" alt="CheckBox" />
+
+<h3 id="CheckBox_Parameters">CheckBox Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>Check3:</strong> Enables a third state that indicates the checkbox is neither checked nor unchecked.</p>
+    <p><strong>Checked:</strong> The checkbox starts off with a checkmark. The word Checked may optionally be followed immediately by a 0, 1, or -1 (or the word Gray) to indicate the starting state (unchecked, checked, or indeterminate). In other words, <code class="no-highlight">Checked</code> and <code class="no-highlight">Checked%VarContainingOne%</code> are the same.</p>
+    <p><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the number 1 for checked, 0 for unchecked, and -1 for indeterminate.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user clicks or changes the checkbox.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Button">CheckBox styles table</a> for a list.</p>
+  </dd>
+  <dt>Caption</dt>
+  <dd>
+    <p>The label to display to the right of the box. This label is typically used as a prompt or description, and it may include linefeeds (`n) to start new lines.</p>
+    <p>An ampersand (&amp;) may be used to underline one of the letters, such as the letter P in <code class="no-highlight">&amp;Pause</code>. This allows the user to press <kbd>Alt</kbd>+<kbd>P</kbd> as a <a href="Gui.htm#ShortcutKey">shortcut key</a>. To display a literal ampersand, specify two consecutive ampersands (&amp;&amp;).</p>
+  </dd>
+</dl>
+
+<h3 id="CheckBox_Remarks">CheckBox Remarks</h3>
+<p>If a width (W) is specified in <em>Options</em> but no <a href="Gui.htm#R">rows (R)</a> or height (H), the control's text will be word-wrapped as needed, and the control's height will be set automatically.</p>
+<p>Known limitation: Certain desktop themes might not display a checkbox's text properly. If this occurs, try including <code class="no-highlight">-Wrap</code> (minus Wrap) in <em>Options</em>. However, this also prevents having more than one line of text.</p>
+
+<h2 id="ComboBox">ComboBox</h2>
+<p>A list of choices that is displayed in response to pressing a small button, but also permits free-form text to be entered as an alternative to picking an item from the list.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, ComboBox, Options, Choices</pre>
+<p>Example:</p>
+<pre>Gui, Add, ComboBox, vColorChoice, Red|Green|Blue|Black|White</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_combo.png" alt="ComboBox" />
+
+<h3 id="ComboBox_Parameters">ComboBox Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="ChooseCB"><strong>Choose</strong><em>N</em>: Specify for <em>N</em> the number of an item to be pre-selected. For example, <code class="no-highlight">Choose5</code> would pre-select the fifth item (as with other options, it can also be a variable such as <code class="no-highlight">Choose%Var%</code>). To change the choice or add/remove entries from the list after the control has been created, use <a href="GuiControl.htm">GuiControl</a>.</p>
+    <p><strong>Uppercase</strong> or <strong>Lowercase</strong>: Converts all items in the list to uppercase or lowercase.</p>
+    <p><strong>Sort:</strong> Sorts the contents of the list alphabetically, which also affects any items added later via <a href="GuiControl.htm">GuiControl</a>. The Sort option also enables incremental searching whenever the list is dropped down; this allows an item to be selected by typing the first few characters of its name.</p>
+    <p><strong>Limit:</strong> Restricts the user's input to the visible width of the ComboBox's edit field.</p>
+    <p><strong>Simple:</strong> Makes the ComboBox behave as though it is an edit field with a <a href="#ListBox">ListBox</a> beneath it.</p>
+    <p><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the text of the currently selected item. However, if the control has the <a href="Gui.htm#AltSubmit">AltSubmit</a> option, the variable will receive the item's index instead (the first item is 1, the second is 2, and so on). In either case, if there is no selected item, the variable will be set to the contents of the ComboBox's edit field.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user selects a new item or changes the control's text.</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, the default is 15 times the current font size.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the popup list. For example, specifying <code class="no-highlight">r7</code> would make the list 7 rows tall, while <code class="no-highlight">h400</code> would set the total height of the selection field and list to 400 pixels. If both R and H are omitted, the list will automatically expand to take advantage of the available height of the user's desktop (however, operating systems older than Windows XP will show 3 rows by default).</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#DDL">ComboBox styles table</a> for a list.</p>
+  </dd>
+  <dt>Choices</dt>
+  <dd>
+    <p>A pipe-delimited list of choices such as <code class="no-highlight">Red|Green|Blue</code>. To have one of the items pre-selected when the window first appears, include two pipe characters after it, e.g. <code class="no-highlight">Red|Green||Blue</code>, or use the <a href="#ChooseCB">Choose</a> option.</p>
+  </dd>
+</dl>
+
+<h3 id="ComboBox_Remarks">ComboBox Remarks</h3>
+<p id="ComboBoxHeight">To set the height of the selection field or list items, use the <a href="https://learn.microsoft.com/windows/win32/controls/cb-setitemheight">CB_SETITEMHEIGHT</a> message as in the example below:</p>
+<pre>Gui, Add, ComboBox, vcbx w200 hwndhcbx, One||Two
+<em>; CB_SETITEMHEIGHT = 0x0153</em>
+SendMessage, 0x0153, -1, 50,, ahk_id %hcbx%  <em>; Set height of selection field.</em>
+SendMessage, 0x0153,  0, 50,, ahk_id %hcbx%  <em>; Set height of list items.</em>
+Gui, Show, h70, Test</pre>
+<p>The separator between fields may be changed to something other than pipe by using the GUI option <a href="Gui.htm#Delimiter">+Delimiter</a>. For example, <code>Gui +Delimiter`n</code> would change it to linefeed (`n), and <code>Gui +DelimiterTab</code> would change it to tab (`t).</p>
+<p>On a related note, if you want to automate the process of showing and hiding the popup list later on, use <a href="Control.htm#ShowDropDown">Control ShowDropDown</a> and <a href="Control.htm#HideDropDown">Control HideDropDown</a>.</p>
+
+<h2 id="Custom">Custom <span class="ver">[v1.1.10+]</span></h2>
+<p>Allows embedding controls that are not directly supported by AutoHotkey into a GUI window.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Custom, Options, Text</pre>
+<p>Example:</p>
+<pre>Gui, Add, Custom, ClassComboBoxEx32</pre>
+
+<h3 id="Custom_Parameters">Custom Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>Class</strong><em>Name</em>: Specify for <em>Name</em> the Win32 class name of the desired control. For example, <code class="no-highlight">ClassComboBoxEx32</code> which adds a <a href="https://learn.microsoft.com/windows/win32/controls/comboboxex-control-reference">ComboBoxEx control</a>, or <code class="no-highlight">ClassScintilla</code> which adds a <a href="https://scintilla.org/">Scintilla control</a> (note that the SciLexer.dll library must be loaded beforehand).</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the script captures an event coming from the control. See <a href="#Custom_Notifications">Custom Notifications</a> for details.</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, the default is 30 times the current font size.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make room for 7 rows inside the control, while <code class="no-highlight">h400</code> would set the total height of the control to 400 pixels. If both R and H are omitted, the default is 5 rows.</p>
+  </dd>
+  <dt>Text</dt>
+  <dd>
+    <p>Any text. It may or may not be ignored depending on the nature of the custom control.</p>
+    <p>AutoHotkey uses the standard Windows control text routines when text is to be retrieved/replaced in the control via <a href="Gui.htm#Add">Gui Add</a>, <a href="GuiControl.htm">GuiControl</a> or <a href="GuiControlGet.htm">GuiControlGet</a>.</p>
+  </dd>
+</dl>
+
+<h3 id="Custom_Notifications">Custom Notifications</h3>
+<p>A <a href="Gui.htm#label">g-label</a> such as <code class="no-highlight"><strong>g</strong>MySubroutine</code> may be listed in <em>Options</em> in order to capture events coming from the control. This subroutine may consult the built-in variables <a href="../Variables.htm#Gui">A_Gui</a> and <a href="../Variables.htm#GuiControl">A_GuiControl</a>. More importantly, it may consult <a href="../Variables.htm#GuiEvent">A_GuiEvent</a>, which contains one of the following strings (for compatibility with future versions, a script should not assume these are the only possible values):</p>
+<ul>
+  <li><strong>Normal:</strong> A <a href="https://learn.microsoft.com/windows/win32/menurc/wm-command">WM_COMMAND</a> message was received. The built-in variable <a href="../Variables.htm#EventInfo">A_EventInfo</a> contains a control-defined notification code (equivalent to <code>HIWORD(wParam)</code> in C/C++).</li>
+  <li><strong>N:</strong> A <a href="https://learn.microsoft.com/windows/win32/controls/wm-notify">WM_NOTIFY</a> message was received. The built-in variable <a href="../Variables.htm#EventInfo">A_EventInfo</a> contains a pointer to the control notification structure (NMHDR). A 32-bit signed integer value may be returned to the control by assigning it to <a href="../misc/ErrorLevel.htm">ErrorLevel</a> (by default, the g-label thread's ErrorLevel is set to zero). Invalid values are treated as zero.</li>
+</ul>
+
+<h3 id="Custom_Remarks">Custom Remarks</h3>
+<p><a href="Gui.htm#ExIPAddress">Gui example #11</a> demonstrates how to add and use an <a href="https://learn.microsoft.com/windows/win32/controls/ip-address-control-reference">IP address control</a>.</p>
+
+<h2 id="DateTime">DateTime</h2>
+<p>A box that looks like a single-line edit control but instead accepts a date and/or time. A drop-down calendar is also provided.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, DateTime, Options, Format</pre>
+<p>Example:</p>
+<pre>Gui, Add, DateTime, vMyDateTime, LongDate</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_datetime.png" alt="DateTime" />
+
+<h3 id="DateTime_Parameters">DateTime Parameters</h3>
+<dl>
+  <dt id="DateTime_Options">Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="DateTime_Choose"><strong>Choose</strong><em>Timestamp</em>: Specify for <em>Timestamp</em> a date in <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDD</a> format to have a date other than today pre-selected. For example, <code class="no-highlight">Choose20050531</code> would pre-select May 31, 2005 (as with other options, it can also be a variable such as <code class="no-highlight">Choose%Var%</code>). The time of day may optionally be present (see the remarks below for details). Specify for <em>Timestamp</em> the word None, to have no date/time selected. <code class="no-highlight">ChooseNone</code> also creates a checkbox inside the control that is unchecked whenever the control has no date. Whenever the control has no date, the control's <a href="#DateTime_V">associated variable</a> (if any) receives a blank value (empty string).</p>
+    <p><strong>Range</strong><em>MinMax</em>: Restricts how far back or forward in time the selected date can be. Specify for <em>MinMax</em> the minimum and maximum dates in <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDD</a> format (with a dash between them). For example, <code class="no-highlight">Range20050101-20050615</code> would restrict the date to the first 5.5 months of 2005. Either the minimum or maximum may be omitted to leave the control unrestricted in that direction. For example, <code class="no-highlight">Range20010101</code> would prevent a date prior to 2001 from being selected, and <code class="no-highlight">Range-20091231</code> (leading dash) would prevent a date later than 2009 from being selected. Without the Range option, any date between the years 1601 and 9999 can be selected. The time of day cannot be restricted.</p>
+    <p><strong>Right:</strong> Causes the drop-down calendar to drop down on the right side of the control instead of the left.</p>
+    <p><strong>1:</strong> Provides an up-down control to the right of the control to modify date-time values, which replaces the button of the drop-down month calendar that would otherwise be available. This does not work in conjunction with the <a href="#DateTime_LongDate">LongDate</a> format.</p>
+    <p id="ChooseNone"><strong>2:</strong> Provides a checkbox inside the control that the user may uncheck to indicate that no date/time is selected. Once the control is created, this option cannot be changed.</p>
+    <p id="DateTime_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the selected date and time in <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDDHH24MISS</a> format. Both the date and the time are present regardless of whether they were actually visible in the control.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user changes the date or time. Each launch updates the control's <a href="#DateTime_V">associated variable</a> (if any).</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, the default is 30 times the current font size.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make room for 7 rows inside the control, while <code class="no-highlight">h400</code> would set the total height of the control to 400 pixels. If both R and H are omitted, the default is 1 row.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#DateTime">DateTime styles table</a> for a list.</p>
+  </dd>
+  <dt id="DateTimeFormat">Format</dt>
+  <dd>
+    <p>If blank or omitted, it defaults to the locale's short date format. For example, in some locales, it would look like: 6/1/2005. Otherwise, specify one of the following formats:</p>
+    <p id="DateTime_LongDate"><strong>LongDate:</strong> Uses the locale's long date format. For example, in some locales, it would look like: Wednesday, June 01, 2005</p>
+    <p><strong>Time:</strong> Shows only the time using the locale's time format. Although the date is not shown, it is still present in the control and will be retrieved along with the time in the <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDDHH24MISS</a> format. For example, in some locales, it would look like: 9:37:45 PM</p>
+    <p><strong>(custom format):</strong> Specify any combination of <a href="FormatTime.htm">date and time formats</a>. For example, <code class="no-highlight">M/d/yy HH:mm</code> would look like 6/1/05 21:37. Similarly, <code class="no-highlight">dddd MMMM d, yyyy hh:mm:ss tt</code> would look like Wednesday June 1, 2005 09:37:45 PM. Letters and numbers to be displayed literally should be enclosed in single quotes, as in this example: <code class="no-highlight">'Date:' MM/dd/yy 'Time:' hh:mm:ss tt</code>. By contrast, non-alphanumeric characters such as spaces, tabs, slashes, colons, commas, and other punctuation do not need to be enclosed in single quotes. The exception to this is the single quote character itself: To produce it literally, use four consecutive single quotes (''''), or just two if the quote is already inside an outer pair of quotes.</p>
+  </dd>
+</dl>
+
+<h3 id="DateTime_Remarks">DateTime Remarks</h3>
+<p>The time of day may optionally be present for the <a href="#DateTime_Choose">Choose</a> option. However, it must always be preceded by a date when going into or coming out of the control. The format of the time portion is HH24MISS (hours, minutes, seconds), where HH24 is expressed in 24-hour format; for example, 09 is 9am and 21 is 9pm. Thus, a complete date-time string would have the format <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDDHH24MISS</a>.</p>
+<p>When specifying dates in the YYYYMMDDHH24MISS format, only the leading part needs to be present. Any remaining element that has been omitted will be supplied with the following default values: MM with month 01, DD with day 01, HH24 with hour 00, MI with minute 00 and SS with second 00.</p>
+<p>Within the drop-down calendar, the today-string at the bottom can be clicked to select today's date. In addition, the year and month names are clickable and allow easy navigation to a new month or year.</p>
+<p id="DateTime_Keyboard_Navigation">Keyboard navigation: Use the <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> arrow keys, the <kbd>+</kbd>/<kbd>-</kbd> numpad keys, and <kbd>Home</kbd>/<kbd>End</kbd> to increase or decrease the control's values. Use <kbd>&larr;</kbd> and <kbd>&rarr;</kbd> to move from field to field inside the control. Within the drop-down calendar, use the arrow keys to move from day to day; use <kbd>PgUp</kbd>/<kbd>PgDn</kbd> to move backward/forward by one month; use <kbd>Ctrl</kbd>+<kbd>PgUp</kbd>/<kbd>PgDn</kbd> to move backward/forward by one year (only supported on Win XP and earlier); and use <kbd>Home</kbd>/<kbd>End</kbd> to select the first/last day of the month.</p>
+<p>The colors of the day numbers inside the drop-down calendar obey that set by the <a href="Gui.htm#Font">Gui Font</a> command or the <a href="Gui.htm#OtherOptions">C (Color)</a> option if the drop-down calendar has Classic Theme appearance (which only applies when using Windows XP or earlier; <code class="no-highlight">-Theme</code> does not work here). To change the colors of any part of the drop-down calendar, follow this example:</p>
+<pre>Gui +LastFound
+<a href="PostMessage.htm">SendMessage</a>, 0x1006, 4, 0xFFAA99, SysDateTimePick321 <em>; 0x1006 is DTM_SETMCCOLOR. 4 is MCSC_MONTHBK (background color). The color must be specified in BGR vs. RGB format (red and blue components swapped).</em></pre>
+
+<a id="DDL"></a><h2 id="DropDownList">DropDownList</h2>
+<p>A list of choices that is displayed in response to pressing a small button.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, DropDownList, Options, Choices</pre>
+<p>Example:</p>
+<pre>Gui, Add, DropDownList, vColorChoice, Black|White|Red|Green|Blue</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_ddl.png" alt="DDL" />
+
+<h3 id="DropDownList_Parameters">DropDownList Parameters</h3>
+<dl>
+  <dt>DropDownList</dt>
+  <dd>
+    <p>The control type name can be either DropDownList or DDL.</p>
+  </dd>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="ChooseDDL"><strong>Choose</strong><em>N</em>: Specify for <em>N</em> the number of an item to be pre-selected. For example, <code class="no-highlight">Choose5</code> would pre-select the fifth item (as with other options, it can also be a variable such as <code class="no-highlight">Choose%Var%</code>). To change the choice or add/remove entries from the list after the control has been created, use <a href="GuiControl.htm">GuiControl</a>.</p>
+    <p><strong>Uppercase</strong> or <strong>Lowercase</strong>: Converts all items in the list to uppercase or lowercase.</p>
+    <p><strong>Sort:</strong> Sorts the contents of the list alphabetically, which also affects any items added later via <a href="GuiControl.htm">GuiControl</a>. The Sort option also enables incremental searching whenever the list is dropped down; this allows an item to be selected by typing the first few characters of its name.</p>
+    <p><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the text of the currently selected item. However, if the control has the <a href="Gui.htm#AltSubmit">AltSubmit</a> option, the variable will receive the item's index instead (the first item is 1, the second is 2, and so on).</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user selects a new item.</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, the default is 15 times the current font size.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the popup list. For example, specifying <code class="no-highlight">r7</code> would make the list 7 rows tall, while <code class="no-highlight">h400</code> would set the total height of the selection field and list to 400 pixels. If both R and H are omitted, the list will automatically expand to take advantage of the available height of the user's desktop (however, operating systems older than Windows XP will show 3 rows by default).</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#DDL">DropDownList styles table</a> for a list.</p>
+  </dd>
+  <dt>Choices</dt>
+  <dd>
+    <p>A pipe-delimited list of choices such as <code class="no-highlight">Red|Green|Blue</code>. To have one of the items pre-selected when the window first appears, include two pipe characters after it, e.g. <code class="no-highlight">Red|Green||Blue</code>, or use the <a href="#ChooseDDL">Choose</a> option.</p>
+  </dd>
+</dl>
+
+<h3 id="DropDownList_Remarks">DropDownList Remarks</h3>
+<p>To set the height of the selection field or list items, use the <a href="https://learn.microsoft.com/windows/win32/controls/cb-setitemheight">CB_SETITEMHEIGHT</a> message as in the example below:</p>
+<pre>Gui, Add, DDL, vcbx w200 hwndhcbx, One||Two
+<em>; CB_SETITEMHEIGHT = 0x0153</em>
+SendMessage, 0x0153, -1, 50,, ahk_id %hcbx%  <em>; Set height of selection field.</em>
+SendMessage, 0x0153,  0, 50,, ahk_id %hcbx%  <em>; Set height of list items.</em>
+Gui, Show, h70, Test</pre>
+<p>The separator between fields may be changed to something other than pipe by using the GUI option <a href="Gui.htm#Delimiter">+Delimiter</a>. For example, <code>Gui +Delimiter`n</code> would change it to linefeed (`n), and <code>Gui +DelimiterTab</code> would change it to tab (`t).</p>
+<p>On a related note, if you want to automate the process of showing and hiding the popup list later on, use <a href="Control.htm#ShowDropDown">Control ShowDropDown</a> and <a href="Control.htm#HideDropDown">Control HideDropDown</a>.</p>
+
+<h2 id="Edit">Edit</h2>
+<p>An area where free-form text can be typed by the user.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Edit, Options, Text</pre>
+<p>Example:</p>
+<pre>Gui, Add, Edit, r9 vMyEdit w135, Text to appear inside the edit control (omit this parameter to start off empty).</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_edit.png" alt="Edit" />
+
+<h3 id="Edit_Parameters">Edit Parameters</h3>
+<dl>
+  <dt id="Edit_Options">Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>Limit</strong><em>N</em>: Restricts the user's input. If <em>N</em> is omitted, input is restricted to the visible width of the edit field. Otherwise, specify for <em>N</em> a specific number of characters to limit input. For example, <code class="no-highlight">Limit10</code> would allow no more than 10 characters to be entered.</p>
+    <p><strong>Uppercase</strong> or <strong>Lowercase</strong>: The characters typed by the user are automatically converted to uppercase or lowercase.</p>
+    <p id="EditMulti"><strong>Multi:</strong> Makes it possible to have more than one line of text. However, it is usually not necessary to specify this because the control is auto-detected as multi-line if <em>Text</em> containing multiple lines, its <a href="#Edit_R">height</a> being taller than its default row height, or its <a href="#Edit_R">row-count</a> having been explicitly specified as greater than 1. For example, specifying <code class="no-highlight">r3</code> in <em>Options</em> will create a 3-line edit control with the following default properties: a vertical scroll bar, word-wrapping enabled, and <kbd>Enter</kbd> captured as part of the input rather than triggering the window's <a href="#DefaultButton">default button</a>.</p>
+    <p id="EditNum"><strong>Number:</strong> Prevents the user from typing anything other than digits into the field (however, it is still possible to paste non-digits into it). An alternate way of forcing a numeric entry is to attach an <a href="#UpDown">UpDown</a> control to the Edit.</p>
+    <p><strong>Password:</strong> Hides the user's input (such as for password entry) by substituting masking characters for what the user types. If a non-default masking character is desired, include it immediately after the word Password. For example, <code class="no-highlight">Password*</code> would make the masking character an asterisk rather than the black circle (bullet), which is the default on Windows XP. Note that this option has no effect for <a href="#EditMulti">multi-line</a> edit controls.</p>
+    <p><strong>ReadOnly:</strong> Prevents the user from changing the control's contents. However, the text can still be scrolled, selected, and copied to the clipboard.</p>
+    <p><strong>T</strong><em>n</em>: Sets a tab stop inside a <a href="#EditMulti">multi-line</a> edit control (since tab stops determine the column positions to which literal tab characters will jump, they can be used to format the text into columns). If the T option is not used, tab stops are set at every 32 dialog units (the width of each "dialog unit" is determined by the operating system). If the T option is used only once, tab stops are set at every <em>n</em> units across the entire width of the control. For example, <code class="no-highlight">t64</code> would double the default distance between tab stops. To have custom tab stops, specify the T option multiple times, e.g. <code class="no-highlight">t8 t16 t32 t64 t128</code>. One tab stop is set for each of the absolute column positions in the list, up to a maximum of 50 tab stops.</p>
+    <p><strong>WantCtrlA</strong> <span class="ver">[v1.0.44+]</span>: Specify <code class="no-highlight">-WantCtrlA</code> (minus WantCtrlA) to prevent the user's press of <kbd>Ctrl</kbd>+<kbd>A</kbd> from selecting all text in the edit control.</p>
+    <p id="WantReturn"><strong>WantReturn:</strong> Specify <code class="no-highlight">-WantReturn</code> (minus WantReturn) to prevent a <a href="#EditMulti">multi-line</a> edit control from capturing <kbd>Enter</kbd>. Pressing <kbd>Enter</kbd> will then be the same as pressing the window's <a href="#DefaultButton">default button</a> (if any). In this case, the user may press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to start a new line.</p>
+    <p><strong>WantTab:</strong> Causes <kbd>Tab</kbd> to produce a tab character rather than navigating to the next control. Without this option, the user may press <kbd>Ctrl</kbd>+<kbd>Tab</kbd> to produce a tab character inside a <a href="#EditMulti">multi-line</a> edit control. Note that WantTab also works in a single-line edit control, but in Windows XP and lower each tab character is displayed as an empty-box character (though it is stored as a real tab).</p>
+    <p><strong>Wrap:</strong> Specify <code class="no-highlight">-Wrap</code> (minus Wrap) to turn off word-wrapping in a <a href="#EditMulti">multi-line</a> edit control. Since this style cannot be changed after the control has been created, use one of the following to change it: 1) <a href="Gui.htm#Destroy">Destroy</a> then recreate the window and its control; or 2) Create two overlapping edit controls, one with wrapping enabled and the other without it. The one not currently in use can be kept empty and/or hidden.</p>
+    <p id="Edit_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the contents of the control.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user changes the contents of the control.</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, empty edit controls default to 15 times the current font size. Non-empty edit controls default to the width of the longest line.</p>
+    <p id="Edit_R"><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make room for 7 rows inside the control, while <code class="no-highlight">h400</code> would set the total height of the control to 400 pixels. If both R and H are omitted, single-line edit controls default to 1 row, while empty <a href="#EditMulti">multi-line</a> edit controls default to 3 rows. Non-empty edit controls default to a height based on the number of lines they contain.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Edit">Edit styles table</a> for a list.</p>
+  </dd>
+  <dt>Text</dt>
+  <dd>
+    <p>If blank or omitted, the control starts off empty. Otherwise, specify the text to appear inside the control.</p>
+    <p>To start a new line, include either a solitary linefeed (`n) or a carriage return and linefeed (`r`n). Both methods produce literal `r`n pairs inside the edit control. However, when the control's contents are saved to its <a href="#Edit_V">associated variable</a> (if any), each `r`n in the text is always translated to a plain linefeed (`n). In addition, a single long line can be broken up into several shorter ones by means of a <a href="../Scripts.htm#continuation">continuation section</a>.</p>
+    <p>Since this is the last parameter, literal commas do not need to be escaped. This is also true for the last parameter of all other commands.</p>
+  </dd>
+</dl>
+
+<h3 id="Edit_Remarks">Edit Remarks</h3>
+<p>If the control has word-wrapping enabled (which is the default for <a href="#EditMulti">multi-line</a> edit controls), any wrapping that occurs as the user types will not produce linefeed characters (only <kbd>Enter</kbd> can do that).</p>
+<p>To load a text file into an edit control, use <a href="FileRead.htm">FileRead</a> and <a href="GuiControl.htm">GuiControl</a>:</p>
+<pre>Gui, Add, Edit, R20 vMyEdit
+FileRead, FileContents, C:\My File.txt
+GuiControl,, MyEdit, %FileContents%</pre>
+<p><a href="https://github.com/majkinetor/mm-autohotkey/tree/master/HiEdit">HiEdit</a> is a free, multitabbed, large-file edit control consuming very little memory. It can edit both text and binary files.</p>
+
+<h2 id="GroupBox">GroupBox</h2>
+<p>A rectangular border/frame, often used around other controls to indicate they are related.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, GroupBox, Options, Title</pre>
+<p>Example:</p>
+<pre>Gui, Add, GroupBox, w200 h100, Geographic Criteria</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_group.png" alt="GroupBox" />
+
+<h3 id="GroupBox_Parameters">GroupBox Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>Wrap:</strong> Allows <em>Title</em> to have more than one line of text.</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, the default is 15 times the current font size, plus 2 times the <a href="Gui.htm#Margin">X-margin</a>.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make room for 7 rows inside the control, while <code class="no-highlight">h400</code> would set the total height of the control to 400 pixels. If both R and H are omitted, the default is 2 rows.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Button">GroupBox styles table</a> for a list.</p>
+  </dd>
+  <dt>Title</dt>
+  <dd>
+    <p>The title of the box, which if present is displayed at its upper-left edge.</p>
+    <p>An ampersand (&amp;) may be used to underline one of the letters, such as the letter C in <code class="no-highlight">&amp;Criteria</code>. This allows the user to press the <a href="Gui.htm#ShortcutKey">shortcut key</a> <kbd>Alt</kbd>+<kbd>C</kbd> to set keyboard focus to the first input-capable control that was added after the GroupBox control. To display a literal ampersand, specify two consecutive ampersands (&amp;&amp;).</p>
+  </dd>
+</dl>
+
+<h2 id="Hotkey">Hotkey</h2>
+<p>A box that looks like a single-line edit control but instead accepts a keyboard combination pressed by the user. For example, if the user presses <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>, the box would display "Ctrl + Alt + C".</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Hotkey, Options, KeyName</pre>
+<p>Example:</p>
+<pre>Gui, Add, Hotkey, vChosenHotkey, ^!c</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_hotkey.png" alt="Hotkey" />
+
+<h3 id="Hotkey_Parameters">Hotkey Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>Limit</strong><em>N</em>: Specify for <em>N</em> the sum of one or more of the following numbers to restrict the types of hotkeys the user may enter: 1 to prevent unmodified keys, 2 to prevent <kbd>Shift</kbd>-only keys, 4 to prevent <kbd>Ctrl</kbd>-only keys, 8 to prevent <kbd>Alt</kbd>-only keys, 16 to prevent <kbd>Shift</kbd>+<kbd>Ctrl</kbd> keys, 32 to prevent <kbd>Shift</kbd>+<kbd>Alt</kbd> keys, and 128 to prevent <kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>Alt</kbd> keys (64 is not supported; it will not behave correctly). For example, <code class="no-highlight">Limit1</code> would prevent unmodified hotkeys such as letters and numbers from being entered, and <code class="no-highlight">Limit15</code> would require at least two modifier keys. If the user types a forbidden modifier combination, the <kbd>Ctrl</kbd>+<kbd>Alt</kbd> combination is automatically and visibly substituted.</p>
+    <p id="Hotkey_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the hotkey modifiers and name, which are compatible with the <a href="Hotkey.htm">Hotkey</a> command. Examples: <code class="no-highlight">^!c</code>, <code class="no-highlight">+!Home</code>, <code class="no-highlight">+^Down</code>, <code class="no-highlight">^Numpad1</code>, <code class="no-highlight">!NumpadEnd</code>. If there is no hotkey in the control, the variable is made blank.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user changes the hotkey. Each launch updates the control's <a href="#Hotkey_V">associated variable</a> (if any). Note that the g-label is launched even when an incomplete hotkey is present. For example, if the user holds down <kbd>Ctrl</kbd>, the g-label is launched once and the variable contains only a circumflex (^). When the user completes the hotkey, the label is launched again and the variable contains the complete hotkey.</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, the default is 15 times the current font size.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make room for 7 rows inside the control, while <code class="no-highlight">h400</code> would set the total height of the control to 400 pixels. If both R and H are omitted, the default is 1 row.</p>
+  </dd>
+  <dt>KeyName</dt>
+  <dd>
+    <p>If blank or omitted, the control starts off with no hotkey specified. Otherwise, specify its modifiers and name. For example, <code class="no-highlight">^!p</code> would display "Ctrl + Alt + P". The only modifiers supported are ^ (Control), ! (Alt), and + (Shift). See the <a href="../KeyList.htm">key list</a> for available key names.</p>
+    <p>Some keys are displayed the same even though they are retrieved as different names. For example, both <code class="no-highlight">^Numpad7</code> and <code class="no-highlight">^NumpadHome</code> might be displayed as "Ctrl + Num 7".</p>
+  </dd>
+</dl>
+
+<h3 id="Hotkey_Remarks">Hotkey Remarks</h3>
+<p>The Hotkey control has limited capabilities. For example, it does not support mouse/controller hotkeys or <kbd>Win</kbd> (LWin and RWin). One way to work around this is to provide one or more <a href="#CheckBox">checkboxes</a> as a means for the user to enable extra modifiers such as <kbd>Win</kbd>.</p>
+
+<h2 id="Link">Link <span class="ver">[v1.1.06+]</span></h2>
+<p>A text control that can contain links similar to those found in a web browser.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Link, Options, String</pre>
+<p>Example:</p>
+<pre>Gui, Add, Link,, This is a &lt;a href="https://www.autohotkey.com"&gt;link&lt;/a&gt;
+Gui, Add, Link,, Links may be used anywhere in the text like &lt;a id="A"&gt;this&lt;/a&gt; or &lt;a id="B"&gt;that&lt;/a&gt;</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_link.png" alt="Link" />
+
+<h3 id="Link_Parameters">Link Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever a link without a HREF attribute is clicked, or if the command or URL failed to execute. The g-label may consult the built-in variables <a href="../Variables.htm#GuiEvent">A_GuiEvent</a> which will contain the type of event (currently always the word Normal), <a href="../Variables.htm#EventInfo">A_EventInfo</a> which will contain the 1-based index of the link, and <a href="../misc/ErrorLevel.htm">ErrorLevel</a> which will contain the link's HREF attribute value (if any), otherwise the link's ID attribute value or an empty string.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Link">Link styles table</a> for a list.</p>
+  </dd>
+  <dt>String</dt>
+  <dd>
+    <p>The string to display. Enclose the link text within <code class="no-highlight">&lt;A&gt;</code> and <code class="no-highlight">&lt;/A&gt;</code> to create a clickable link, optionally with an ID and/or HREF attribute. The string may include linefeeds (`n) to start new lines. In addition, a single long line can be broken up into several shorter ones by means of a <a href="../Scripts.htm#continuation">continuation section</a>.</p>
+    <p>An ampersand (&amp;) may be used to underline one of the letters, such as the letter F in <code class="no-highlight">&amp;First Name</code>. This allows the user to press the <a href="Gui.htm#ShortcutKey">shortcut key</a> <kbd>Alt</kbd>+<kbd>F</kbd> to set keyboard focus to the first input-capable control that was added after the Link control. To display a literal ampersand, specify two consecutive ampersands (&amp;&amp;).</p>
+    <p>Since this is the last parameter, literal commas do not need to be escaped. This is also true for the last parameter of all other commands.</p>
+  </dd>
+</dl>
+
+<h3 id="Link_Remarks">Link Remarks</h3>
+<p>Although this looks like HTML, Link controls only support the opening <code class="no-highlight">&lt;A&gt;</code> tag (optionally with an ID and/or HREF attribute) and closing <code class="no-highlight">&lt;/A&gt;</code> tag.</p>
+<p>If the HREF attribute is set and contains a valid executable command or URL, it is executed as if passed to the <a href="Run.htm">Run</a> command. However, an executable command cannot contain double-quote marks. A URL can usually contain percent-encoded characters such as <code class="no-highlight">`%22</code>, but these are interpreted by the user's web browser, not the Link control.</p>
+<p>If a width (W) is specified in <em>Options</em> but no <a href="Gui.htm#R">rows (R)</a> or height (H), the control's text will be word-wrapped as needed, and the control's height will be set automatically.</p>
+
+<h2 id="ListBox">ListBox</h2>
+<p>A relatively tall box containing a list of choices that can be selected.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, ListBox, Options, Choices</pre>
+<p>Example:</p>
+<pre>Gui, Add, ListBox, r5 vColorChoice, Red|Green|Blue|Black|White</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_list.png" alt="ListBox" />
+
+<h3 id="ListBox_Parameters">ListBox Parameters</h3>
+<dl>
+  <dt id="ListBox_Options">Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="ChooseLB"><strong>Choose</strong><em>N</em>: Specify for <em>N</em> the number of an item to be pre-selected. For example, <code class="no-highlight">Choose5</code> would pre-select the fifth item (as with other options, it can also be a variable such as <code class="no-highlight">Choose%Var%</code>). To change the choice or add/remove entries from the list after the control has been created, use <a href="GuiControl.htm">GuiControl</a>.</p>
+    <p id="ListBoxMulti"><strong>Multi</strong> or <strong>0x8</strong>: Allows more than one item to be selected simultaneously via shift-click and control-click. 0x8 allows the same, but without the need for shift/control-click. If this option is present, the control's <a href="#ListBox_V">associated variable</a> (if any) will receive a pipe-delimited list of selected items using each item's text. With <a href="Gui.htm#AltSubmit">AltSubmit</a>, the variable will instead receive a list using each item's index.</p>
+    <p><strong>ReadOnly:</strong> Prevents items from being visibly highlighted when they are selected, but the control's <a href="#ListBox_V">associated variable</a> (if any) will still be updated.</p>
+    <p><strong>Sort:</strong> Sorts the contents of the list alphabetically, which also affects any items added later via <a href="GuiControl.htm">GuiControl</a>. The Sort option also enables incremental searching, which allows an item to be selected by typing the first few characters of its name.</p>
+    <p><strong>T</strong><em>n</em>: Sets a tab stop, which can be used to format the text into columns. If the T option is not used, tab stops are set at every 32 dialog units (the width of each "dialog unit" is determined by the operating system). If the T option is used only once, tab stops are set at every <em>n</em> units across the entire width of the control. For example, <code class="no-highlight">t64</code> would double the default distance between tab stops. To have custom tab stops, specify the T option multiple times, e.g. <code class="no-highlight">t8 t16 t32 t64 t128</code>. One tab stop is set for each of the absolute column positions in the list, up to a maximum of 50 tab stops.</p>
+    <p><strong>0x100:</strong> Applies the LBS_NOINTEGRALHEIGHT style. This forces the ListBox to be exactly the height specified rather than a height that prevents a partial row from appearing at the bottom. This option also prevents the ListBox from shrinking when its font is changed.</p>
+    <p id="ListBox_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the text of the currently selected item. However, if the control has the <a href="Gui.htm#AltSubmit">AltSubmit</a> option, the variable will receive the item's index instead (the first item is 1, the second is 2, and so on). With <a href="#ListBoxMulti">Multi</a>, the variable will receive a pipe-delimited list of items.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user selects a new item. If the user double-clicks an item, the built-in variable <a href="../Variables.htm#GuiEvent">A_GuiEvent</a> will contain the string DoubleClick rather than Normal. Also, the variable <a href="../Variables.htm#EventInfo">A_EventInfo</a> will contain the position of the item that was double-clicked (1 is the first item, 2 is the second, and so on).</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, the default is 15 times the current font size.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make room for 7 rows inside the control, while <code class="no-highlight">h400</code> would set the total height of the control to 400 pixels. If both R and H are omitted, the default is 3 rows.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#ListBox">ListBox styles table</a> for a list.</p>
+  </dd>
+  <dt>Choices</dt>
+  <dd>
+    <p>A pipe-delimited list of choices such as <code class="no-highlight">Red|Green|Blue</code>. To have list item(s) pre-selected when the window first appears, include two pipe characters after each (the <a href="#ListBoxMulti">Multi</a> option is required if more than one item is to be pre-selected), e.g. <code class="no-highlight">Red||Green||Blue</code>, or use the <a href="#ChooseLB">Choose</a> option.</p>
+  </dd>
+</dl>
+
+<h3 id="ListBox_Remarks">ListBox Remarks</h3>
+<p>If the control has the <a href="#ListBoxMulti">Multi</a> and <a href="Gui.htm#AltSubmit">AltSubmit</a> options, the control's <a href="#ListBox_V">associated variable</a> (if any) receives a pipe-delimited list of selected items using each item's index. For example, <code class="no-highlight">1|2|3</code> would indicate that the first three items are selected. To extract the individual items from the string, use a <a href="LoopParse.htm">parsing loop</a> such as this example:</p>
+    <pre>Loop, Parse, MyListBox, |
+{
+    MsgBox Selection number %A_Index% is %A_LoopField%.
+}</pre>
+<p id="LBRedraw">When adding a large number of items to a ListBox, performance may be improved by using <code>GuiControl, -Redraw, MyListBox</code> prior to the operation, and <code>GuiControl, +Redraw, MyListBox</code> afterward.</p>
+<p>The separator between fields may be changed to something other than pipe by using the GUI option <a href="Gui.htm#Delimiter">+Delimiter</a>. For example, <code>Gui +Delimiter`n</code> would change it to linefeed (`n), and <code>Gui +DelimiterTab</code> would change it to tab (`t).</p>
+
+<h2 id="ListView">ListView</h2>
+<p>A ListView is one of the most elaborate controls provided by the operating system. In its most recognizable form, it displays a tabular view of rows and columns, the most common example of which is Explorer's list of files and folders (detail view).</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, ListView, Options, ColumnTitles</pre>
+<p>Example:</p>
+<pre>Gui, Add, ListView, xm r20 w700, Name|In Folder|Size (KB)|Type</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_listview.png" alt="ListView" />
+<p>See the separate <a href="ListView.htm">ListView</a> page for more information.</p>
+
+<h2 id="MonthCal">MonthCal</h2>
+<p>A tall and wide control that displays all the days of the month in calendar format. The user may select a single date or a range of dates.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, MonthCal, Options, Timestamp</pre>
+<p>Example:</p>
+<pre>Gui, Add, MonthCal, vMyCalendar</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_monthcal.png" alt="MonthCal" />
+
+<h3 id="MonthCal_Parameters">MonthCal Parameters</h3>
+<dl>
+  <dt id="MonthCal_Options">Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="MonthCalMulti"><strong>Multi:</strong> Multi-select. Allows the user to shift-click or click-drag to select a range of adjacent dates (the user may still select a single date too). This option may be specified explicitly or put into effect automatically by means of specifying a selection range via the <em>Timestamp</em> parameter. Once the control is created, this option cannot be changed.</p>
+    <p><strong>Range</strong><em>MinMax</em>: Restricts how far back or forward in time the calendar can go. Specify for <em>MinMax</em> the minimum and maximum dates in <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDD</a> format (with a dash between them). For example, <code class="no-highlight">Range20050101-20050615</code> would restrict the selection to the first 5.5 months of 2005. Either the minimum or maximum may be omitted to leave the calendar unrestricted in that direction. For example, <code class="no-highlight">Range20010101</code> would prevent a date prior to 2001 from being selected, and <code class="no-highlight">Range-20091231</code> (leading dash) would prevent a date later than 2009 from being selected. Without the Range option, any date between the years 1601 and 9999 can be selected.</p>
+    <p><strong>4:</strong> Displays week numbers (1-52) to the left of each row of days. Week 1 is defined as the first week that contains at least four days.</p>
+    <p><strong>8:</strong> Prevents the circling of today's date within the control.</p>
+    <p><strong>16:</strong> Prevents the display of today's date at the bottom of the control.</p>
+    <p id="MonthCal_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the selected date in <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDD</a> format (without any time portion). However, when the <a href="#MonthCalMulti">multi-select</a> option is in effect, the minimum and maximum dates are retrieved with a dash between them (e.g. <code class="no-highlight">20050101-20050108</code>). If only a single date was selected in a multi-select calendar, the minimum and maximum are both present but identical.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user changes the selection. Each launch updates the control's <a href="#MonthCal_V">associated variable</a> (if any). On Windows XP and earlier, due to a quirk of the OS, the label is also launched every two minutes for the case a new day has arrived. If the control has the <a href="Gui.htm#AltSubmit">AltSubmit</a> option, the g-label is launched more often; it may consult the built-in variable <a href="../Variables.htm#GuiEvent">A_GuiEvent</a> which will contain the word Normal for a change of the date, the number 1 for a click of a date, or the number 2 when the MonthCal releases "mouse capture". For example, if the user double-clicks a new date, the label would be launched five times: Once with Normal, twice with 1, and twice with 2. This can be used to detect double clicks by <a href="../Variables.htm#TickCount">measuring the time</a> between instances of the number 1.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#MonthCal">MonthCal styles table</a> for a list.</p>
+  </dd>
+  <dt>Timestamp</dt>
+  <dd>
+    <p>If blank or omitted, today's date is pre-selected. Otherwise, specify dates in <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDD</a> format – either a single date, or a range of dates by including a dash between two dates. For example, <code class="no-highlight">20050531</code> selects May 31, 2005, and <code class="no-highlight">20050525-20050531</code> selects each day from May 25 through May 31, 2005.</p>
+  </dd>
+</dl>
+
+<h3 id="MonthCal_Remarks">MonthCal Remarks</h3>
+<p>It is usually best to omit width (W) and height (H) for a MonthCal because it automatically sizes itself to fit exactly one month. To display more than one month vertically, specify <code class="no-highlight">R2</code> or higher in <em>Options</em>. To display more than one month horizontally, specify <code class="no-highlight">W-2</code> (W negative two) or higher. These options may both be present to expand in both directions.</p>
+<p>The today-string at the bottom of the control can be clicked to select today's date. In addition, the year and month names are clickable and allow easy selection of a new year or month.</p>
+<p>On Windows Vista and later, keyboard navigation is fully supported in MonthCal, but only if it has keyboard focus. For supported keyboard shortcuts, see <a href="#DateTime_Keyboard_Navigation">DateTime's keyboard navigation</a> (within the drop-down calendar).</p>
+<p>If the control's <a href="#MonthCal_V">associated variable</a> (if any) receives a range of dates such as <code class="no-highlight">20050101-20050108</code>, <a href="StringSplit.htm">StringSplit</a> or <a href="StrSplit.htm">StrSplit()</a> can be used to separate the dates. For example, the following would put 20050101 in Date1 and 20050108 in Date2: <code>StringSplit, Date, MyMonthCal, -</code>.</p>
+<p>When specifying dates in the <a href="FileSetTime.htm#YYYYMMDD">YYYYMMDD</a> format, the MM and/or DD portions may be omitted, in which case they are assumed to be 1. For example, <code class="no-highlight">200205</code> is seen as 20020501, and <code class="no-highlight">2005</code> is seen as 20050101.</p>
+<p>The colors of the day numbers inside the calendar obey that set by the <a href="Gui.htm#Font">Gui Font</a> command or the <a href="Gui.htm#OtherOptions">C (Color)</a> option if the control has <a href="Gui.htm#Theme">Classic Theme appearance</a>. To change the colors of other parts of the calendar, follow this example:</p>
+<pre>Gui +LastFound
+<a href="PostMessage.htm">SendMessage</a>, 0x100A, 5, 0xFFAA99, SysMonthCal321 <em>; 0x100A is MCM_SETCOLOR. 5 is MCSC_TITLETEXT (color of title text). The color must be specified in BGR vs. RGB format (red and blue components swapped).</em></pre>
+
+<a id="Pic"></a><h2 id="Picture">Picture</h2>
+<p>An area containing an image.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Picture, Options, ImageFile</pre>
+<p>Example:</p>
+<pre>Gui, Add, Picture, w300 h-1, C:\My Pictures\Company Logo.gif</pre>
+
+<h3 id="Picture_Parameters">Picture Parameters</h3>
+<dl>
+  <dt>Picture</dt>
+  <dd>
+    <p>The control type name can be either Picture or Pic.</p>
+  </dd>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="PicAltSubmit"><strong>AltSubmit:</strong> Tells the program to use Microsoft's GDIPlus.dll to load the image, which might result in a different appearance for GIF, BMP, and icon images. For example, it would load an ICO/GIF that has a transparent background as a transparent bitmap, which allows the <a href="Gui.htm#BackgroundTrans">BackgroundTrans</a> option to take effect (but in <span class="ver">[v1.1.23+]</span>, icons support transparency without AltSubmit). If GDIPlus is not available, AltSubmit is ignored and the image is loaded using the normal method.</p>
+    <p><strong>W</strong><em>n</em> and <strong>H</strong><em>n</em>: The width and height used to scale the image, where <em>n</em> is an integer (these dimensions also determine which icon to load from a multi-icon file). If one dimension is omitted or -1, it is calculated automatically based on the other dimension, preserving aspect ratio. If both are omitted, the image's original size is used. If either dimension is 0, the original size is used for that dimension. For example, specifying <code class="no-highlight">w200 h-1</code> would make the image 200 pixels wide and cause its height to be set automatically. If the picture cannot be loaded or displayed (e.g. file not found), the control is left empty and its width and height are set to zero.</p>
+    <p id="Picture_Icon"><strong>Icon</strong><em>N</em>: To use an icon group other than the first one in the file, specify for <em>N</em> the number of the group. For example, <code class="no-highlight">Icon2</code> would load the default icon from the second icon group.</p>
+    <p id="Picture_G"><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user clicks the picture. A double-click can be detected by checking whether <a href="../Variables.htm#GuiEvent">A_GuiEvent</a> contains the word DoubleClick.</p>
+  </dd>
+  <dt id="Picture_ImageFile">ImageFile</dt>
+  <dd>
+    <p>The name of an image or multi-icon file, which is assumed to be in <a href="../Variables.htm#WorkingDir">A_WorkingDir</a> if an absolute path isn't specified, or in <span class="ver">[v1.1.23+]</span> a <a href="../misc/ImageHandles.htm">bitmap or icon handle</a> such as <code class="no-highlight">HBITMAP:%handle%</code>.</p>
+    <p><strong>Image file:</strong> All operating systems support GIF, JPG, BMP, ICO, CUR, and ANI images. On Windows XP or later, additional image formats such as PNG, TIF, Exif, WMF, and EMF are supported. Operating systems older than XP can be given support by copying Microsoft's free GDI+ DLL into the AutoHotkey.exe folder (but in the case of a <a href="../Scripts.htm#ahk2exe">compiled script</a>, copy the DLL into the script's folder). To download the DLL, search for the following phrase at <a href="https://www.microsoft.com">www.microsoft.com</a>: gdi redistributable</p>
+    <p><strong>Multi-icon file:</strong> Icons and cursors may be loaded from the following types of files: ICO, CUR, ANI, EXE, DLL, CPL, SCR, and other types that contain icon resources. To use an icon group other than the first one in the file, use the <a href="#Picture_Icon">Icon</a> option.</p>
+  </dd>
+</dl>
+
+<h3 id="Picture_Remarks">Picture Remarks</h3>
+<p>To use a picture as a background for other controls, the picture should normally be added prior to those controls. However, if those controls are input-capable and the picture has a <a href="#Picture_G">g-label</a>, create the picture after the other controls and include 0x4000000 (which is WS_CLIPSIBLINGS) in the picture's <em>Options</em>. This trick also allows a picture to be the background behind a <a href="#Tab">Tab</a> or <a href="ListView.htm">ListView</a> control.</p>
+<p>Although animated GIF files can be displayed in a Picture control, they will not actually be animated. To solve this, use the AniGIF DLL (which is free for non-commercial use) as demonstrated at the <a href="https://www.autohotkey.com/boards/viewtopic.php?t=6457">AutoHotkey Forums</a>. <span class="ver">[v1.1.03+]</span>: Alternatively, the <a href="#ActiveX">ActiveX</a> control type can be used. For example:</p>
+<pre><em>; Specify below the path to the GIF file to animate (local files are allowed too):</em>
+pic := "http://www.animatedgif.net/cartoons/A_5odie_e0.gif"
+Gui, Add, ActiveX, w100 h150, % "mshtml:&lt;img src='" pic "' /&gt;"
+Gui, Show</pre>
+
+<h2 id="Progress">Progress</h2>
+<p>A dual-color bar typically used to indicate how much progress has been made toward the completion of an operation.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Progress, Options, StartPos</pre>
+<p>Example:</p>
+<pre>Gui, Add, Progress, w200 h20 cBlue vMyProgress, 75</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_progress.png" alt="Progress" />
+
+<h3 id="Progress_Parameters">Progress Parameters</h3>
+<dl>
+  <dt id="Progress_Options">Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>C</strong><em>Color</em>: Changes the bar's color. Specify for <em>Color</em> one of the 16 primary HTML <a href="Progress.htm#colors">color names</a> or a 6-digit RGB color value. Examples: <code class="no-highlight">cRed</code>, <code class="no-highlight">cFFFF33</code>, <code class="no-highlight">cDefault</code>. If the C option is never used (or <code class="no-highlight">cDefault</code> is specified), the system's default bar color will be used.</p>
+    <p><strong>Background</strong><em>Color</em>: Changes the bar's background color. Specify for <em>Color</em> one of the 16 primary HTML <a href="Progress.htm#colors">color names</a> or a 6-digit RGB color value. Examples: <code class="no-highlight">BackgroundGreen</code>, <code class="no-highlight">BackgroundFFFF33</code>, <code class="no-highlight">BackgroundDefault</code>. If the Background option is never used (or <code class="no-highlight">BackgroundDefault</code> is specified), the background color will be that of the window or <a href="#Tab">Tab</a> control behind it.</p>
+    <p><strong>Range</strong><em>MinMax</em>: Sets the range to be something other than 0 to 100. Specify for <em>MinMax</em> the minimum, a dash, and maximum. For example, <code class="no-highlight">Range0-1000</code> would allow numbers between 0 and 1000; <code class="no-highlight">Range-50-50</code> would allow numbers between -50 and 50; and <code class="no-highlight">Range-10--5</code> would allow numbers between -10 and -5.</p>
+    <p><strong>Smooth:</strong> Specify <code class="no-highlight">-Smooth</code> (minus Smooth) to display a length of segments rather than a smooth continuous bar. Specifying <code class="no-highlight">-Smooth</code> is also one of the requirements to show a themed progress bar on Windows XP or later. The other requirement is that the bar not have any custom colors; that is, that the C and Background options be omitted.</p>
+    <p id="Progress_Vertical"><strong>Vertical:</strong> Makes the bar rise or fall vertically rather than move along horizontally.</p>
+    <p id="Progress_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the current numeric position of the bar.</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, horizontal bars default to 15 times the current font size, while <a href="#Progress_Vertical">vertical</a> bars default to 2 times the current font size.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make the control 7 rows tall, while <code class="no-highlight">h400</code> would set its height to 400 pixels. If both R and H are omitted, horizontal bars default to 2 times the current font size, while <a href="#Progress_Vertical">vertical</a> bars default to 5 rows.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Progress">Progress styles table</a> for a list.</p>
+  </dd>
+  <dt>StartPos</dt>
+  <dd>
+    <p>If blank or omitted, the bar starts off at 0 or the number in the allowable range that is closest to 0. Otherwise, specify the starting position of the bar.</p>
+  </dd>
+</dl>
+
+<h3 id="Progress_Remarks">Progress Remarks</h3>
+<p>To later change the position of the bar, follow these examples, all of which operate upon a progress bar whose <a href="#Progress_V">associated variable name</a> is MyProgress:</p>
+<pre><a href="GuiControl.htm">GuiControl</a>,, MyProgress, +20  <em>; Increase the current position by 20.</em>
+<a href="GuiControl.htm">GuiControl</a>,, MyProgress, 50  <em>; Set the current position to 50.</em></pre>
+<p>For horizontal progress bars, the thickness of the bar is equal to the control's height. For <a href="#Progress_Vertical">vertical</a> progress bars it is equal to the control's width.</p>
+
+<h2 id="Radio">Radio</h2>
+<p>A radio button is a small empty circle that can be checked (on) or unchecked (off).</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Radio, Options, Caption</pre>
+<p>Example:</p>
+<pre>Gui, Add, Radio, vMyRadioGroup, Wait for all items to be in stock before shipping.</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_radio.png" alt="Radio" />
+
+<h3 id="Radio_Parameters">Radio Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>Checked:</strong> The button starts off in the "on" state. The word Checked may optionally be followed immediately by a 0 or 1 to indicate the starting state (unchecked or checked). In other words, <code class="no-highlight">Checked</code> and <code class="no-highlight">Checked%VarContainingOne%</code> are the same.</p>
+    <p id="Radio_Group"><strong>Group:</strong> Starts a new <a href="#Radio_Group_Details">radio group</a>.</p>
+    <p><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the number 1 for "on" and 0 for "off". However, if only one button in a <a href="#Radio_Group_Details">radio group</a> has a variable, that variable will instead receive the number of the currently selected button: 1 is the first radio button (according to original creation order), 2 is the second, and so on. If there is no button selected, 0 is stored.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user turns on the button. Specify the g-label for each button in a <a href="#Radio_Group_Details">radio group</a> for which the label should be launched. This allows the flexibility to ignore the clicks of certain buttons. A double-click can be detected by checking whether <a href="../Variables.htm#GuiEvent">A_GuiEvent</a> contains the word DoubleClick.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Button">Radio styles table</a> for a list.</p>
+  </dd>
+  <dt>Caption</dt>
+  <dd>
+    <p>The label to display to the right of the radio button. This label is typically used as a prompt or description, and it may include linefeeds (`n) to start new lines.</p>
+    <p>An ampersand (&amp;) may be used to underline one of the letters, such as the letter P in <code class="no-highlight">&amp;Pause</code>. This allows the user to press <kbd>Alt</kbd>+<kbd>P</kbd> as a <a href="Gui.htm#ShortcutKey">shortcut key</a>. To display a literal ampersand, specify two consecutive ampersands (&amp;&amp;).</p>
+  </dd>
+</dl>
+
+<h3 id="Radio_Remarks">Radio Remarks</h3>
+<p id="Radio_Group_Details">These controls usually appear in <em>radio groups</em>, each of which contains two or more radio buttons. When the user clicks a radio button to turn it on, any others in its radio group are turned off automatically (the user may also navigate inside a group with the arrow keys). A radio group is created automatically around all consecutively added radio buttons. To start a new group, specify the <a href="#Radio_Group">Group</a> option for the first button of the new group -- or simply add a non-radio control in between, since that automatically starts a new group.</p>
+<p>If a width (W) is specified in <em>Options</em> but no <a href="Gui.htm#R">rows (R)</a> or height (H), the control's text will be word-wrapped as needed, and the control's height will be set automatically.</p>
+<p>Known limitation: Certain desktop themes might not display a radio button's text properly. If this occurs, try including <code class="no-highlight">-Wrap</code> (minus Wrap) in <em>Options</em>. However, this also prevents having more than one line of text.</p>
+
+<h2 id="Slider">Slider</h2>
+<p>A sliding bar that the user can move along a vertical or horizontal track. The standard volume control in the taskbar's tray is an example of a slider.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Slider, Options, StartPos</pre>
+<p>Example:</p>
+<pre>Gui, Add, Slider, vMySlider, 50</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_slider.png" alt="Slider" />
+
+<h3 id="Slider_Parameters">Slider Parameters</h3>
+<dl>
+  <dt id="Slider_Options">Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>Buddy1</strong><em>VarName</em> and <strong>Buddy2</strong><em>VarName</em>: Automatically repositions up to two existing controls at the ends of the slider. Buddy1 is displayed at the left or top side (depending on whether the <a href="#Slider_Vertical">Vertical</a> option is present). Buddy2 is displayed at the right or bottom side. Specify for <em>VarName</em> the <a href="Gui.htm#var">associated variable name</a> of an existing control. For example, <code class="no-highlight">Buddy1MyTopText</code> would assign the control whose variable name is MyTopText.</p>
+    <p id="Slider_Center"><strong>Center:</strong> The thumb (the bar moved by the user) will be blunt on both ends rather than pointed at one end.</p>
+    <p><strong>Invert:</strong> Reverses the control so that the lower value is considered to be on the right/bottom rather than the left/top. This is typically used to make a <a href="#Slider_Vertical">vertical</a> slider move in the direction of a traditional volume control. Note that the <a href="#Slider_ToolTip">ToolTip</a> option will not obey the inversion and therefore should not be used in this case.</p>
+    <p><strong>Left:</strong> The thumb (the bar moved by the user) will point to the top rather than the bottom. But if the <a href="#Slider_Vertical">Vertical</a> option is in effect, the thumb will point to the left rather than the right.</p>
+    <p><strong>Line</strong><em>N</em>: Specify for <em>N</em> the number of positions to move when the user presses <kbd>&uarr;</kbd>, <kbd>&rarr;</kbd>, <kbd>&darr;</kbd>, or <kbd>&larr;</kbd>. For example, <code class="no-highlight">Line2</code>.</p>
+    <p><strong>NoTicks:</strong> Omits tickmarks alongside the track.</p>
+    <p><strong>Page</strong><em>N</em>: Specify for <em>N</em> the number of positions to move when the user presses <kbd>PgUp</kbd> or <kbd>PgDn</kbd>. For example, <code class="no-highlight">Page10</code>.</p>
+    <p><strong>Range</strong><em>MinMax</em>: Sets the range to be something other than 0 to 100. Specify for <em>MinMax</em> the minimum, a dash, and maximum. For example, <code class="no-highlight">Range1-1000</code> would allow a number between 1 and 1000 to be selected; <code class="no-highlight">Range-50-50</code> would allow a number between -50 and 50; and <code class="no-highlight">Range-10--5</code> would allow a number between -10 and -5.</p>
+    <p id="Slider_Thick"><strong>Thick</strong><em>N</em>: Specify for <em>N</em> the length of the thumb (the bar moved by the user) in pixels. For example, <code class="no-highlight">Thick30</code>. To go beyond a certain thickness on Windows XP or later, it is probably necessary to either specify the <a href="#Slider_Center">Center</a> option or remove the theme from the control (which can be done by specifying <a href="Gui.htm#Theme">-Theme</a>).</p>
+    <p><strong>TickInterval</strong><em>N</em>: Provides tickmarks alongside the track at the specified interval. Specify for <em>N</em> the interval at which to display additional tickmarks (if the interval is never set, it defaults to 1). For example, <code class="no-highlight">TickInterval10</code> would display a tickmark once every 10 positions.</p>
+    <p id="Slider_ToolTip"><strong>ToolTip:</strong> Creates a <a href="ToolTip.htm">tooltip</a> that reports the numeric position of the slider as the user is dragging it. To have the tooltip appear in a non-default position, specify one of the following instead: <code class="no-highlight">ToolTipLeft</code> or <code class="no-highlight">ToolTipRight</code> (for <a href="#Slider_Vertical">vertical</a> sliders); <code class="no-highlight">ToolTipTop</code> or <code class="no-highlight">ToolTipBottom</code> (for horizontal sliders).</p>
+    <p id="Slider_Vertical"><strong>Vertical:</strong> Makes the control slide up and down rather than left and right.</p>
+    <p id="Slider_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the current numeric position of the slider.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user has stopped moving the slider (such as by releasing the mouse button after having dragged it). Each launch updates the control's <a href="#Slider_V">associated variable</a> (if any). If the control has the <a href="Gui.htm#AltSubmit">AltSubmit</a> option, the g-label is launched more often; it may consult the built-in variable <a href="../Variables.htm#GuiEvent">A_GuiEvent</a> which will contain the word Normal for stopping the slider movement, the number 0 for using <kbd>&larr;</kbd> or <kbd>&uarr;</kbd>, the number 1 for using <kbd>&rarr;</kbd> or <kbd>&darr;</kbd>, the number 2 for using <kbd>PgUp</kbd>, the number 3 for using <kbd>PgDn</kbd>, the number 4 for moving the slider via the mouse wheel or finishing a drag-and-drop to a new position, the number 5 for dragging the slider via the mouse (i.e. the mouse button is currently down), the number 6 for using <kbd>Home</kbd> to send the slider to the left or top side, or the number 7 for using <kbd>End</kbd> to send the slider to the right or bottom side. For example, if the user drags the slider one tick to the right, the g-label would be launched three times: 5, 4, and Normal.</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, horizontal sliders default to 15 times the current font size, while <a href="#Slider_Vertical">vertical</a> sliders default to 30 pixels (except if a <a href="#Slider_Thick">thickness</a> has been specified).</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make the control 7 rows tall, while <code class="no-highlight">h400</code> would set its height to 400 pixels. If both R and H are omitted, horizontal sliders default to 30 pixels (except if a <a href="#Slider_Thick">thickness</a> has been specified), while <a href="#Slider_Vertical">vertical</a> sliders default to 5 rows.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Slider">Slider styles table</a> for a list.</p>
+  </dd>
+  <dt>StartPos</dt>
+  <dd>
+    <p>If blank or omitted, the slider starts off at 0 or the number in the allowable range that is closest to 0. Otherwise, specify the starting position of the slider.</p>
+  </dd>
+</dl>
+
+<h3 id="Slider_Remarks">Slider Remarks</h3>
+<p>The user may slide the control by the following means: 1) dragging the bar with the mouse; 2) clicking inside the bar's track area with the mouse; 3) turning the mouse wheel while the control has focus; or 4) pressing the following keys while the control has focus: <kbd>&uarr;</kbd>, <kbd>&rarr;</kbd>, <kbd>&darr;</kbd>, <kbd>&larr;</kbd>, <kbd>PgUp</kbd>, <kbd>PgDn</kbd>, <kbd>Home</kbd>, and <kbd>End</kbd>.</p>
+
+<h2 id="StatusBar">StatusBar <span class="ver">[v1.0.44+]</span></h2>
+<p>A row of text and/or icons attached to the bottom of a window, which is typically used to report changing conditions.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, StatusBar, Options, Text</pre>
+<p>Example:</p>
+<pre>Gui, Add, StatusBar,, Bar's starting text (omit to start off empty).
+SB_SetText("There are " . RowCount . " rows selected.")</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_status.png" alt="StatusBar" />
+
+<h3 id="StatusBar_Parameters">StatusBar Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="StatusBar_Background"><strong>Background</strong><em>Color</em>: Changes the control's background color. Specify for <em>Color</em> a color name (see <a href="Progress.htm#colors">color chart</a>) or RGB value (the 0x prefix is optional). Examples: <code class="no-highlight">BackgroundSilver</code>, <code class="no-highlight">BackgroundFFDD99</code>, <code class="no-highlight">BackgroundDefault</code>. Note that the control must have <a href="Gui.htm#Theme">Classic Theme appearance</a>.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user clicks on the bar. The g-label may consult the built-in variable <a href="../Variables.htm#GuiEvent">A_GuiEvent</a> which will contain the word Normal for left-clicking the bar, RightClick for right-clicking the bar, DoubleClick for double-clicking the bar, or the letter R for <em>double-right</em>-clicking the bar. It may also consult the variable <a href="../Variables.htm#EventInfo">A_EventInfo</a> which will contain the number of the clicked part. Note that <a href="Gui.htm#GuiContextMenu">GuiContextMenu</a> will not be called for the status bar if it has a g-label; use its RightClick event instead.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#StatusBar">StatusBar styles table</a> for a list.</p>
+  </dd>
+  <dt>Text</dt>
+  <dd>
+    <p>If blank or omitted, the control starts off empty. Otherwise, specify the text to appear inside the control.</p>
+  </dd>
+</dl>
+
+<h3 id="StatusBar_Functions">StatusBar Functions</h3>
+<p>The following functions operate upon the current thread's <a href="Gui.htm#DefaultWin">default GUI window</a> (which can be changed via <a href="Gui.htm#Default">Gui Default</a>). If the default window does not exist or has no status bar, the functions return zero to indicate the problem.</p>
+<p>Overview:</p>
+<ul>
+  <li><a href="#SB_SetText">SB_SetText</a>: Displays new text in the specified part of the status bar.</li>
+  <li><a href="#SB_SetParts">SB_SetParts</a>: Divides the bar into multiple sections according to the specified widths.</li>
+  <li><a href="#SB_SetIcon">SB_SetIcon</a>: Displays a small icon to the left of the text in the specified part.</li>
+</ul>
+
+<h4 id="SB_SetText">SB_SetText</h4>
+<p>Displays new text in the specified part of the status bar.</p>
+<pre class="Syntax"><span class="func">SB_SetText</span>(NewText <span class="optional">, PartNumber, Style</span>)</pre>
+<p><em>NewText:</em> Up to two tab characters (`t) may be present anywhere in the new text: anything to the right of the first tab is centered within the part, and anything to the right of the second tab is right-justified.</p>
+<p><em>PartNumber:</em> If omitted, it defaults to 1. Otherwise, specify an integer between 1 and 256.</p>
+<p><em>Style:</em> If omitted, it defaults to 0, which uses a traditional border that makes that part of the bar look sunken. Otherwise, specify 1 to have no border, or 2 to have border that makes that part of the bar look raised.</p>
+<p>This function returns 1 upon success and 0 upon failure.</p>
+
+<h4 id="SB_SetParts">SB_SetParts</h4>
+<p>Divides the bar into multiple sections according to the specified widths.</p>
+<pre class="Syntax"><span class="func">SB_SetParts</span>(<span class="optional">Width1, Width2, ... Width255</span>)</pre>
+<p><em>WidthN:</em> If all parameters are omitted, the bar is restored to having only a single, long part. Otherwise, specify the width of each part except the last (the last will fill the remaining width of the bar). For example, <code>SB_SetParts(50, 50)</code> would create three parts: the first two of width 50, and the last one of all the remaining width. The numbers are in pixels.</p>
+<p>Upon success, this function returns the status bar's <a href="../misc/ControlID.htm#HWND">window handle (HWND)</a>. Upon failure, it returns 0.</p>
+<p>Any parts "deleted" by this function will start off with no text the next time they are shown. Furthermore, their icons are automatically destroyed.</p>
+
+<h4 id="SB_SetIcon">SB_SetIcon</h4>
+<p>Displays a small icon to the left of the text in the specified part.</p>
+<pre class="Syntax"><span class="func">SB_SetIcon</span>(FileName <span class="optional">, IconNumber, PartNumber</span>)</pre>
+<p><em>FileName:</em> The name of an icon or multi-icon file such as <code>"Shell32.dll"</code>, or in <span class="ver">[v1.1.23+]</span> an <a href="../misc/ImageHandles.htm">icon handle</a> such as <code>"HICON:" handle</code>, or in <span class="ver">[v1.1.27+]</span> a non-icon image file or <a href="../misc/ImageHandles.htm">bitmap handle</a> such as <code>"HBITMAP:" handle</code>. For a list of supported formats, see <a href="#Picture_ImageFile">Picture</a>. The file is assumed to be in <a href="../Variables.htm#WorkingDir">A_WorkingDir</a> if an absolute path isn't specified.</p>
+<p><em>IconNumber:</em> If omitted, it defaults to 1 (the first icon group). Otherwise, specify the number of the icon group to be used in the file. For example, <code>2</code> would use the default icon from the second icon group. If negative, its absolute value is assumed to be the resource ID of an icon within an executable file.</p>
+<p><em>PartNumber:</em> If omitted, it defaults to 1. Otherwise, specify an integer between 1 and 256.</p>
+<p>This function returns the icon's handle (HICON) upon success, and 0 upon failure. The HICON is a system resource that can be safely ignored by most scripts because it is destroyed automatically when the status bar's window is destroyed. Similarly, any old icon is destroyed when this function replaces it with a new one. This can be avoided via:</p>
+<pre>Gui +LastFound
+<a href="PostMessage.htm">SendMessage</a>, 0x040F, PartNumber - 1, HICON, msctls_statusbar321  <em>; 0x040F is SB_SETICON.</em></pre>
+
+<h3 id="StatusBar_Remarks">StatusBar Remarks</h3>
+<p>The simplest use of a status bar is to call <a href="#SB_SetText">SB_SetText()</a> whenever something changes that should be reported to the user. To report more than one piece of information, divide the bar into sections via <a href="#SB_SetParts">SB_SetParts()</a>. To display icon(s) in the bar, call <a href="#SB_SetIcon">SB_SetIcon()</a>.</p>
+<p>Although the font size, face, and style can be set via <a href="Gui.htm#Font">Gui Font</a> (just like normal controls), the text color cannot be changed. Also, <a href="Gui.htm#Color">Gui Color</a> is not obeyed; instead, the status bar's background color may be changed by using the <a href="#StatusBar_Background">Background</a> option.</p>
+<p>Upon creation, the bar can be hidden via <code>Gui, Add, StatusBar, Hidden vMyStatusBar</code>. To hide it sometime after creation, use <code>GuiControl, Hide, MyStatusBar</code>. To show it, use <code>GuiControl, Show, MyStatusBar</code>. Note that hiding the bar does not reduce the height of the window. If that is desired, one easy way is <code>Gui, Show, <a href="Gui.htm#AutoSize">AutoSize</a></code>.</p>
+<p>Known limitations: 1) Any control that overlaps the status bar might sometimes get drawn on top of it.  One way to avoid this is to dynamically shrink such controls via the <a href="Gui.htm#GuiSize">GuiSize label</a>. 2) There is a limit of one status bar per window.</p>
+<p><a href="TreeView.htm#ExAdvanced">TreeView example #1</a> demonstrates a multipart status bar.</p>
+<p id="SB_SetProgress">To create and control a progress bar inside the status bar, see <a href="https://www.autohotkey.com/board/topic/34593-">SB_SetProgress</a> (archived forums).</p>
+
+<a id="Tab3"></a><a id="Tab2"></a><h2 id="Tab">Tab</h2>
+<p>A large control containing multiple pages, each of which contains other controls. From this point forward, these pages are referred to as "tabs".</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Tab, Options, TabNames</pre>
+<p>Example:</p>
+<pre>Gui, Add, Tab,, General|View|Settings</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_tab.png" alt="Tab" />
+
+<h3 id="Tab_Parameters">Tab Parameters</h3>
+<dl>
+  <dt>Tab</dt>
+  <dd>
+    <p>The control type name can be either Tab, Tab2, or Tab3:</p>
+    <p><strong>Tab:</strong> Retained for backward compatibility because of <a href="#Tab_vs">differences in behavior</a> between Tab and Tab2/Tab3.</p>
+    <p><strong>Tab2</strong> <span class="ver">[v1.0.47.05+]</span>: Fixes rare redrawing problems in the original "Tab" control but introduces <a href="#Tab2_Issues">some other problems</a>.</p>
+    <p><strong>Tab3</strong> <span class="ver">[v1.1.24+]</span>: Recommended. Fixes some issues which affect Tab and Tab2. Controls are placed within an invisible "tab dialog" which moves and resizes with the tab control. The tab control is themed by default.</p>
+  </dd>
+  <dt id="Tab_Options">Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="ChooseTab"><strong>Choose</strong><em>N</em>: Specify for <em>N</em> the number of a tab to be pre-selected. For example, <code class="no-highlight">Choose5</code> would pre-select the fifth tab (as with other options, it can also be a variable such as <code class="no-highlight">Choose%Var%</code>). To change the selected tab or add/remove tabs after the control has been created, use <a href="GuiControl.htm">GuiControl</a>.</p>
+    <p><strong>Background:</strong> Specify <code class="no-highlight">-Background</code> (minus Background) to override the <a href="Gui.htm#Color">window's custom background color</a> and use the system's default Tab control color.</p>
+    <p><strong>Theme:</strong> Makes the Tab control conform to the current desktop theme. However, most control types will look strange inside a Tab control because their backgrounds will not match that of the Tab control. This can be fixed for some control types (such as <a href="#Text">Text</a>) by adding <a href="Gui.htm#BackgroundTrans">BackgroundTrans</a> to their options. Tab3 is themed by default and does not require this fix.</p>
+    <p id="Tab_Buttons"><strong>Buttons:</strong> Creates a series of buttons at the top of the control rather than a series of tabs (in this case, there will be no border by default because the display area does not typically contain controls).</p>
+    <p><strong>Left</strong>, <strong>Right</strong>, or <strong>Bottom</strong>: Specify one of these words to have the tabs on the left, right, or bottom side instead of the top. See <a href="../misc/Styles.htm#TCS_VERTICAL">TCS_VERTICAL</a> for limitations on Left and Right.</p>
+    <p><strong>Wrap:</strong> Specify <code class="no-highlight">-Wrap</code> (minus Wrap) to prevent the tabs from taking up more than a single row (in which case, if there are too many tabs to fit, arrow buttons are displayed to allow the user to slide more tabs into view).</p>
+    <p id="Tab_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the name of the currently selected tab. However, if the control has the <a href="Gui.htm#AltSubmit">AltSubmit</a> option, the variable will receive the tab's index instead (the first tab is 1, the second is 2, and so on).</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user changes to a new tab. Each launch updates the control's <a href="#Tab_V">associated variable</a> (if any).</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of the control. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, the default is 30 times the current font size, plus 3 times the <a href="Gui.htm#Margin">X-margin</a>. Tab3 with sub-controls ignores this default.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of the control. For example, specifying <code class="no-highlight">r7</code> would make room for 7 rows inside the control, while <code class="no-highlight">h400</code> would set the total height of the control to 400 pixels. If both R and H are omitted, the default is 10 rows. Tab3 with sub-controls ignores this default.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Tab">Tab styles table</a> for a list.</p>
+  </dd>
+  <dt>TabNames</dt>
+  <dd>
+    <p>A pipe-delimited list of tab names such as <code class="no-highlight">Red|Green|Blue</code>. To have one of the tabs pre-selected when the window first appears, include two pipe characters after it, e.g. <code class="no-highlight">Red|Green||Blue</code>, or use the <a href="#ChooseTab">Choose</a> option.</p>
+  </dd>
+</dl>
+
+<h3 id="Tab_Remarks">Tab Remarks</h3>
+<p id="TabCmd">After creating a Tab control, subsequently added controls automatically belong to its first tab. This can be changed at any time by following these examples:</p>
+<pre>Gui, Tab  <em>; Future controls are not part of any Tab control.</em>
+Gui, Tab, 3  <em>; Future controls are owned by the third tab of the current Tab control.</em>
+Gui, Tab, 3, 2  <em>; Future controls are owned by the third tab of the second Tab control.</em>
+Gui, Tab, Name  <em>; Future controls are owned by the tab whose name starts with <i>Name</i> (not case-sensitive).</em>
+Gui, Tab, Name,, Exact  <em>; Same as above but requires exact match (case-sensitive too).</em></pre>
+<p>It is also possible to use any of the examples above to assign controls to a tab or tab-control that does not yet exist (except in the case of the <em>Name</em> method). But in that case, the relative positioning options described below are not supported.</p>
+<p>When each tab of a Tab control receives its first sub-control, that sub-control will have a special default position under the following conditions: 1) The X and Y coordinates are both omitted, in which case the first sub-control is positioned at the upper-left corner of the Tab control's interior (with a standard <a href="Gui.htm#Margin">margin</a>), and sub-controls beyond the first are positioned beneath the previous control; 2) The <a href="Gui.htm#PosPlus">X+n and/or Y+n</a> positioning options are specified, in which case the sub-control is positioned relative to the upper-left corner of the Tab control's interior. For example, specifying <code class="no-highlight">x+10 y+10</code> would position the control 10 pixels right and 10 pixels down from the upper left corner.</p>
+<p>Keyboard navigation: The user may press <kbd>Ctrl</kbd>+<kbd>PgDn</kbd>/<kbd>PgUp</kbd> to navigate from tab to tab in a Tab control; if the keyboard focus is on a control that does not belong to a Tab control, the window's first Tab control will be navigated. <kbd>Ctrl</kbd>+<kbd>Tab</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd> may also be used, except that they will not work if the currently focused control is a multi-line Edit control.</p>
+<p>Each window may have no more than 255 Tab controls. Each Tab control may have no more than 256 tabs. In addition, a Tab control may not contain other Tab controls.</p>
+<p>An icon may be displayed next to each tab's name/text via <a href="PostMessage.htm">SendMessage</a>. This is demonstrated in the archived forum topic <a href="https://www.autohotkey.com/board/topic/5692-">Icons in tabs</a>.</p>
+
+<h3 id="Tab_vs">Tab vs. Tab2 vs. Tab3</h3>
+<p class="note"><strong>Note:</strong> "Tab control" is a general term for all three types (Tab, Tab2, and Tab3). Whenever this section refers specifically to the original "Tab" control, it is labeled "Tab1" to avoid confusion.</p>
+<p id="Tab_Parent"><strong>Parent window:</strong> The parent window of a control affects the positioning and visibility of the control and tab-key navigation order. If a sub-control is added to an existing Tab3 control, its parent window is the "tab dialog", which fills the Tab3 control's display area. Most other controls, including sub-controls of Tab1 or Tab2 controls, have no parent other than the GUI window itself.</p>
+<p id="Tab_Positioning"><strong>Positioning:</strong> For Tab1 and Tab2, sub-controls do not necessarily need to exist within their Tab control's boundaries: They will still be hidden and shown whenever their tab is selected or de-selected. This behavior is especially appropriate for the <a href="#Tab_Buttons">Buttons</a> option.</p>
+<p>For Tab3, sub-controls assigned to a tab <em>before</em> the Tab3 control is created behave as though added to a Tab1 or Tab2 control. All other sub-controls are visible only within the display area of the Tab3 control.</p>
+<p>If a Tab3 control is moved, its sub-controls are moved with it. Tab1 and Tab2 controls do not have this behavior.</p>
+<p>In the rare case that <a href="WinMove.htm">WinMove</a> (or an equivalent DllCall) is used to move a control, the coordinates must be relative to the parent window of the control, which might not be the GUI (see <a href="#Tab_Parent">above</a>). By contrast, <a href="GuiControl.htm#Move">GuiControl Move</a> takes GUI coordinates and <a href="ControlMove.htm">ControlMove</a> takes window coordinates, regardless of the control's parent window.</p>
+<p id="Tab_Autosize"><strong>Autosizing:</strong> If not specified by the script, the width and/or height of the Tab3 control are automatically calculated at one of the following times (whichever comes first after the control is created):</p>
+<ul>
+  <li>The first time the Tab3 control ceases to be the current Tab control. This can occur as a result of calling <a href="#TabCmd">Gui Tab</a> (with or without parameters) or creating another Tab control.</li>
+  <li>The first time <a href="Gui.htm#Show">Gui Show</a> is called for that particular Gui.</li>
+</ul>
+<p>The calculated size accounts for sub-controls which exist when autosizing occurs, plus the default margins. The size is calculated only once, and will not be recalculated even if controls are added later. If the Tab3 control is empty, it receives the same default size as a Tab1 or Tab2 control.</p>
+<p>Tab1 and Tab2 controls are not autosized; they receive an arbitrary default size.</p>
+<p id="Tab_TabOrder"><strong>Tab-key navigation order:</strong> The navigation order via <kbd>Tab</kbd> usually depends on the order in which the controls are created. When Tab controls are used, the order also depends on the type of Tab control:</p>
+<ul>
+  <li>Tab1 and Tab2 allow their sub-controls to be mixed with other controls within the tab-key order.</li>
+  <li>Tab2 puts its tab buttons after its sub-controls in the tab-key order.</li>
+  <li>Tab3 groups its sub-controls within the tab-key order and puts them after its tab buttons.</li>
+</ul>
+<p id="Tab_Notifs"><strong>Notification messages (Tab3):</strong> Common and <a href="#Custom">Custom</a> controls typically send notification messages to their <a href="#Tab_Parent">parent window</a>. Any WM_COMMAND, WM_NOTIFY, WM_VSCROLL, WM_HSCROLL, or WM_CTLCOLOR' messages received by a Tab3 control's <a href="#Tab_Parent">tab dialog</a> are forwarded to the GUI window and can be detected by using <a href="OnMessage.htm">OnMessage()</a>. If the Tab3 control is themed and the sub-control lacks the <a href="Gui.htm#BackgroundTrans">BackgroundTrans</a> option, WM_CTLCOLORSTATIC is fully handled by the tab dialog and not forwarded. Other notification messages (such as custom messages) are not supported.</p>
+<p id="Tab2_Issues"><strong>Known issues with Tab2:</strong></p>
+<ul>
+  <li><a href="Gui.htm#BackgroundTrans">BackgroundTrans</a> has no effect inside a Tab2 control.</li>
+  <li><a href="#ActiveX">WebBrowser</a> controls do not redraw correctly.</li>
+  <li>AnimateWindow and possibly other Win32 API calls can cause the tab's controls to disappear.</li>
+</ul>
+<p id="Tab1_Issues"><strong>Known issues with Tab1:</strong></p>
+<ul>
+  <li>Activating a GUI window by clicking certain parts of its controls, such as scrollbars, might redraw improperly.</li>
+  <li><a href="Gui.htm#BackgroundTrans">BackgroundTrans</a> has no effect if the Tab1 control contains a ListView.</li>
+  <li><a href="#ActiveX">WebBrowser</a> controls are invisible.</li>
+</ul>
+
+<h2 id="Text">Text</h2>
+<p>A region containing borderless text that the user cannot edit. Often used to label other controls.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, Text, Options, String</pre>
+<p>Example:</p>
+<pre>Gui, Add, Text,, Please enter your name:</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_text.png" alt="Text" />
+
+<h3 id="Text_Parameters">Text Parameters</h3>
+<dl>
+  <dt>Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user clicks the text. A double-click can be detected by checking whether <a href="../Variables.htm#GuiEvent">A_GuiEvent</a> contains the word DoubleClick.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#Text">Text styles table</a> for a list.</p>
+  </dd>
+  <dt>String</dt>
+  <dd>
+    <p>The string to display, which may include linefeeds (`n) to start new lines. In addition, a single long line can be broken up into several shorter ones by means of a <a href="../Scripts.htm#continuation">continuation section</a>.</p>
+    <p>An ampersand (&amp;) may be used to underline one of the letters, such as the letter F in <code class="no-highlight">&amp;First Name</code>. This allows the user to press the <a href="Gui.htm#ShortcutKey">shortcut key</a> <kbd>Alt</kbd>+<kbd>F</kbd> to set keyboard focus to the first input-capable control that was added after the Text control. To display a literal ampersand, specify two consecutive ampersands (&amp;&amp;). To disable all special treatment of ampersands, include <a href="../misc/Styles.htm#SS_NOPREFIX">0x80</a> in <em>Options</em>.</p>
+    <p>Since this is the last parameter, literal commas do not need to be escaped. This is also true for the last parameter of all other commands.</p>
+  </dd>
+</dl>
+
+<h3 id="Text_Remarks">Text Remarks</h3>
+<p>If a width (W) is specified in <em>Options</em> but no <a href="Gui.htm#R">rows (R)</a> or height (H), the control's text will be word-wrapped as needed, and the control's height will be set automatically.</p>
+
+<h2 id="TreeView">TreeView</h2>
+<p>A TreeView displays a hierarchy of items by indenting child items beneath their parents. The most common example is Explorer's tree of drives and folders.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, TreeView, Options</pre>
+<p>Example:</p>
+<pre>Gui, Add, TreeView, r10</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_treeview.png" alt="TreeView" />
+<p>See the separate <a href="TreeView.htm">TreeView</a> page for more information.</p>
+
+<h2 id="UpDown">UpDown</h2>
+<p>A pair of arrow buttons that the user can click to increase or decrease a value. By default, an UpDown control automatically snaps onto the previously added control, which is known as the UpDown's <em>buddy control</em>.</p>
+<p>Syntax:</p>
+<pre class="Syntax Indent"><span class="func">Gui</span>, Add, UpDown, Options, StartPos</pre>
+<p>Example:</p>
+<pre>Gui, Add, Edit
+Gui, Add, UpDown, vMyUpDown Range1-10, 5</pre>
+<p>Appearance:</p>
+<img src="../static/ctrl_updown.png" alt="UpDown" />
+<h3 id="UpDown_Parameters">UpDown Parameters</h3>
+<dl>
+  <dt id="UpDown_Options">Options</dt>
+  <dd>
+    <p>In addition to the <a href="Gui.htm#ControlOptions">general options and styles</a>, the following are supported or noteworthy:</p>
+    <p id="Horz"><strong>Horz:</strong> Makes the control's buttons point left/right rather than up/down. By default, Horz also makes the control isolated (no buddy). This can be overridden by specifying <code class="no-highlight">Horz 16</code>.</p>
+    <p><strong>Left:</strong> Puts the UpDown on the left side of its buddy rather than the right.</p>
+    <p><strong>Range</strong><em>MinMax</em>: Sets the range to be something other than 0 to 100. Specify for <em>MinMax</em> the minimum, a dash, and maximum. For example, <code class="no-highlight">Range1-1000</code> would allow a number between 1 and 1000 to be selected; <code class="no-highlight">Range-50-50</code> would allow a number between -50 and 50; and <code class="no-highlight">Range-10--5</code> would allow a number between -10 and -5. The minimum and maximum may be swapped to cause the arrows to move in the opposite of their normal direction. The broadest allowable range is -2147483648-2147483647. Finally, if the buddy control is a <a href="#ListBox">ListBox</a>, the range defaults to 32767-0 for verticals and the inverse for <a href="#Horz">horizontals</a>.</p>
+    <p><strong>Wrap:</strong> Causes the control to wrap around to the other end of its range when the user attempts to go beyond the minimum or maximum. If omitted, the control stops when the minimum or maximum is reached.</p>
+    <p><strong>16:</strong> Specify -16 (minus 16) to cause a vertical UpDown to be isolated; that is, it will have no buddy. This also causes the control to obey any specified width, height, and position rather than conforming to the size of its buddy control. In addition, an isolated UpDown tracks its own position internally. This position can be retrieved normally by means such as <a href="Gui.htm#Submit">Gui Submit</a>.</p>
+    <p id="UpDownSep"><strong>0x80:</strong> Omits the thousands separator that is normally present between every three decimal digits in the buddy control. However, this style is normally not used because the separators are omitted from the number whenever the script retrieves it from the UpDown control itself (rather than its buddy control).</p>
+    <p id="UpDown_V"><strong>V</strong><em>Name</em>: The <a href="Gui.htm#var">associated variable</a> receives the current numeric position of the UpDown. If the UpDown is attached to an <a href="#Edit">Edit</a> control, and you do not wish to validate the user's input, it is best to use the UpDown's value rather than the Edit's. This is because the UpDown will always yield an in-range number, even when the user has typed something non-numeric or out-of-range in the Edit control. On a related note, numbers with more than three digits get a <a href="../misc/Styles.htm#UpDownSep">thousands separator</a> (such as a comma) by default. These separators are stored in the Edit's associated variable (if any) but not that of the UpDown.</p>
+    <p><strong>G</strong><em>Label</em>: The <a href="Gui.htm#label">g-label</a> launches automatically whenever the user clicks one of the arrow buttons or presses an arrow key on the keyboard. Each launch updates the control's <a href="#UpDown_V">associated variable</a> (if any).</p>
+    <p><strong>W</strong><em>n</em>: Sets the width of an isolated UpDown. For example, specifying <code class="no-highlight">w400</code> would make the control 400 pixels wide. If omitted, vertical UpDowns default to 2 times the current font size, while <a href="#Horz">horizontal</a> UpDowns default to 15 times the current font size.</p>
+    <p><strong>R</strong><em>n</em> or <strong>H</strong><em>n</em>: Sets the height of an isolated UpDown. For example, specifying <code class="no-highlight">r7</code> would make the control 7 rows tall, while <code class="no-highlight">h400</code> would set its height to 400 pixels. If both R and H are omitted, vertical UpDowns default to 5 rows, while <a href="#Horz">horizontal</a> UpDowns default to 2 times the current font size.</p>
+    <p><strong>(Uncommon numeric styles):</strong> See the <a href="../misc/Styles.htm#UpDown">UpDown styles table</a> for a list.</p>
+  </dd>
+  <dt>StartPos</dt>
+  <dd>
+    <p>If blank or omitted, the UpDown starts off at 0 or the number in the allowable range that is closest to 0. Otherwise, specify the UpDown's starting position.</p>
+  </dd>
+</dl>
+
+<h3 id="UpDown_Remarks">UpDown Remarks</h3>
+<p>The most common example is a "spinner", which is an UpDown attached to an <a href="#Edit">Edit</a> control. Whenever the user presses one of the arrow buttons, the number in the Edit control is automatically increased or decreased.</p>
+<p>An UpDown's buddy control can also be a <a href="#Text">Text</a> or <a href="#ListBox">ListBox</a> control. However, due to OS limitations, controls other than these (such as <a href="#ComboBox">ComboBox</a> and <a href="#DropDownList">DropDownList</a>) might not work properly with <a href="Gui.htm#label">g-labels</a> and other features.</p>
+<p>To change an UpDown's increment to a value other than 1 (such as 5 or 0.1), see <a href="../scripts/index.htm#Custom_Increments_for_UpDown_Controls">this script</a>.</p>
+<p>The number format displayed inside the buddy control may be changed from decimal to hexadecimal by following this example:</p>
+<pre>Gui +LastFound
+SendMessage, 0x046D, 16, 0, msctls_updown321 <em>; 0x046D is UDM_SETBASE.</em></pre>
+<p>However, this affects only the buddy control, not the UpDown's reported position.</p>
+
+<h2 id="Related">Related</h2>
+<p><a href="Gui.htm">Gui</a>, <a href="GuiControl.htm">GuiControl</a>, <a href="GuiControlGet.htm">GuiControlGet</a>, <a href="Menu.htm">Menu</a></p>
+
+</body>
+</html>

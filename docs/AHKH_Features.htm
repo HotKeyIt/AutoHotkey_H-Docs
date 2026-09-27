@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>AutoHotkey_H Features | AutoHotkey_H v1</title>
+<meta name="description" content="Learn the features AutoHotkey_H adds to AutoHotkey v1.1: AutoHotkey.dll and multi-threading, structures, DynaCall, MemoryModule, resources, zip compression and more." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<link href="static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="static/content.js" type="text/javascript"></script>
+</head>
+<body><h1>AutoHotkey_H Features</h1>
+
+<p>AutoHotkey_H (by HotKeyIt) is a fork of AutoHotkey v1.1 which adds the features described below. This build is based on AutoHotkey v1.1.37.02, so everything else in this documentation applies as well. Pages which describe AutoHotkey_H features are marked with <span class="ver">[AHK_H]</span>.</p>
+<p>For changes to AutoHotkey_H itself, see the <a href="AHKH_ChangeLog.htm">AutoHotkey_H changelog</a>. For the history of AutoHotkey v1.1, see <a href="AHKL_Features.htm">AutoHotkey_L New Features</a> and the <a href="ChangeLogHelp.htm">changelog</a>.</p>
+
+<h2 id="Binaries">Binaries</h2>
+<table class="info">
+<tr>
+  <th>File</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td>AutoHotkey.exe</td><td>The interpreter. In an AutoHotkey_H release, AutoHotkey.dll, AutoHotkeyMini.dll and the <a href="#Resource_Library">resource library</a> are embedded in its resources, which is what <a href="lib/AhkThread.htm">AhkThread()</a> and the library functions rely on. It also exports the <a href="#Exported">functions</a> which are available in both the exe and the dll.</td></tr>
+<tr><td>AutoHotkey.dll</td><td>The interpreter as a module which can be loaded into any process, one script per loaded instance. See <a href="AutoHotkeyDll.htm">AutoHotkey.dll</a>.</td></tr>
+<tr><td>AutoHotkeyMini.dll</td><td>A version of AutoHotkey.dll intended for lightweight threads. <a href="Variables.htm#IsMini">A_IsMini</a> is 1 if the script is running in it.</td></tr>
+<tr><td>AutoHotkeySC.bin</td><td>The base file for compiled scripts.</td></tr>
+</table>
+
+<h2 id="Directives">Directives</h2>
+<table class="info">
+<tr>
+  <th>Feature</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/_DllImport.htm">#DllImport</a></td><td>Creates a script function for a DLL function, with optional default parameter values. It can also load machine code supplied as a hex string.</td></tr>
+<tr><td><a href="lib/_WarnContinuableException.htm">#WarnContinuableException</a></td><td>Controls whether a warning is shown for a continuable exception (such as an access violation) or execution continues.</td></tr>
+<tr><td><a href="lib/_WindowClassMain.htm">#WindowClassMain</a></td><td>Changes the window class of the script's main window from "AutoHotkey".</td></tr>
+<tr><td><a href="lib/_WindowClassGui.htm">#WindowClassGui</a></td><td>Changes the window class of GUI windows from "AutoHotkeyGUI".</td></tr>
+<tr><td><a href="lib/_NoEnv.htm">#NoEnv</a></td><td>Is the default in AutoHotkey_H: environment variables are not used as script variables unless retrieved with <a href="lib/EnvGet.htm">EnvGet</a> or added with <a href="lib/GetEnv.htm">GetEnv()</a>.</td></tr>
+</table>
+
+<h2 id="Threads">Multi-Threading and AutoHotkey.dll</h2>
+<table class="info">
+<tr>
+  <th>Feature</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/AhkThread.htm">AhkThread()</a></td><td>Starts a new script thread using the AutoHotkey.dll included in the resources of AutoHotkey.exe and returns an object for controlling it.</td></tr>
+<tr><td><a href="lib/AhkExported.htm">AhkExported()</a></td><td>Returns an object for calling the exported functions of the current executable.</td></tr>
+<tr><td><a href="lib/CriticalObject.htm">CriticalObject()</a></td><td>Wraps an object so that it can be used safely from multiple threads.</td></tr>
+<tr><td><a href="lib/CriticalSection.htm">CriticalSection()</a></td><td>Creates a critical section for use with EnterCriticalSection and LeaveCriticalSection.</td></tr>
+<tr><td><a href="lib/ObjShare.htm">ObjShare()</a></td><td>Creates a thread-safe COM IDispatch proxy for an object.</td></tr>
+<tr><td><a href="lib/Alias.htm">Alias()</a></td><td>Makes a variable refer to another variable, for example one in another thread.</td></tr>
+<tr><td><a href="lib/GetVar.htm">GetVar()</a></td><td>Returns a pointer to a variable's internal structure, for use with <a href="lib/Alias.htm">Alias()</a> and <a href="lib/ahkassign.htm">ahkassign</a>.</td></tr>
+<tr><td><a href="lib/CreateScript.htm">CreateScript()</a></td><td>Creates a script from parts of the current script, for use in a new thread or process.</td></tr>
+<tr><td><a href="lib/DynaRun.htm">DynaRun()</a></td><td>Runs code in a new AutoHotkey process.</td></tr>
+<tr><td><a href="lib/BinRun.htm">BinRun()</a></td><td>Runs an executable from memory.</td></tr>
+</table>
+
+<h3 id="Exported">Exported Functions</h3>
+<p>The following functions are exported by AutoHotkey.exe and AutoHotkey.dll. They are called with <a href="lib/DllCall.htm">DllCall</a>, or as methods of the object returned by <a href="lib/AhkThread.htm">AhkThread()</a> or <a href="lib/AhkExported.htm">AhkExported()</a>.</p>
+<table class="info">
+<tr>
+  <th>Function</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/ahkdll.htm">ahkdll</a>, <a href="lib/ahktextdll.htm">ahktextdll</a></td><td>AutoHotkey.dll only: starts a new script from a file or from text. A running script is terminated first.</td></tr>
+<tr><td><a href="lib/ahkReady.htm">ahkReady</a></td><td>AutoHotkey.dll only: returns 1 if a script is running.</td></tr>
+<tr><td><a href="lib/ahkReload.htm">ahkReload</a></td><td>AutoHotkey.dll only: reloads the script with the same parameters.</td></tr>
+<tr><td><a href="lib/ahkTerminate.htm">ahkTerminate</a></td><td>AutoHotkey.dll only: terminates the script.</td></tr>
+<tr><td><a href="lib/addFile.htm">addFile</a>, <a href="lib/addScript.htm">addScript</a></td><td>Adds code from a file or text to the running script and optionally executes it.</td></tr>
+<tr><td><a href="lib/ahkExec.htm">ahkExec</a></td><td>Executes code temporarily.</td></tr>
+<tr><td><a href="lib/ahkassign.htm">ahkassign</a>, <a href="lib/ahkgetvar.htm">ahkgetvar</a></td><td>Assigns or retrieves the value of a variable.</td></tr>
+<tr><td><a href="lib/ahkFunction.htm">ahkFunction</a>, <a href="lib/ahkPostFunction.htm">ahkPostFunction</a></td><td>Calls a function and waits for it to return, or posts the call without waiting.</td></tr>
+<tr><td><a href="lib/ahkLabel.htm">ahkLabel</a></td><td>Gosubs or jumps to a label.</td></tr>
+<tr><td><a href="lib/ahkPause.htm">ahkPause</a></td><td>Pauses or unpauses the script.</td></tr>
+<tr><td><a href="lib/ahkFindFunc.htm">ahkFindFunc</a>, <a href="lib/ahkFindLabel.htm">ahkFindLabel</a>, <a href="lib/ahkExecuteLine.htm">ahkExecuteLine</a></td><td>Low-level access to functions, labels and lines.</td></tr>
+</table>
+<p>See also: <a href="AutoHotkeyDll.htm">AutoHotkey.dll</a>, <a href="COMInterface.htm">COM interface</a>.</p>
+
+<h2 id="DllCall">Structures and Calling Functions</h2>
+<table class="info">
+<tr>
+  <th>Feature</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/Struct.htm">Struct()</a></td><td>Creates a C-like structure object which is accessed using object syntax. See also <a href="StructTypes.htm">built-in data types</a>.</td></tr>
+<tr><td><a href="lib/sizeof.htm">sizeof()</a></td><td>Returns the size of a data type, structure definition or structure object.</td></tr>
+<tr><td><a href="lib/DynaCall.htm">DynaCall()</a></td><td>Creates an object which calls a DLL function with predefined parameter types and defaults. It is often faster than DllCall.</td></tr>
+<tr><td><a href="lib/WinApi.htm">WinApi</a></td><td>Windows API functions can be called directly by name, as if they were built-in functions.</td></tr>
+<tr><td><a href="lib/MCodeH.htm">MCodeH()</a></td><td>Creates a function from machine code.</td></tr>
+<tr><td><a href="lib/ComObjDll.htm">ComObjDll()</a></td><td>Creates a COM object from a COM DLL without registration.</td></tr>
+<tr><td><a href="lib/FindFunc.htm">FindFunc()</a>, <a href="lib/FindLabel.htm">FindLabel()</a></td><td>Return a pointer to a function or label (low level).</td></tr>
+</table>
+
+<h2 id="MemoryModule">MemoryModule</h2>
+<p><a href="MemoryModule.htm">MemoryModule</a> loads DLLs from memory, for example from a resource, and allows the same DLL to be loaded multiple times.</p>
+<table class="info">
+<tr>
+  <th>Function</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/MemoryLoadLibrary.htm">MemoryLoadLibrary()</a></td><td>Loads a DLL from a file or memory.</td></tr>
+<tr><td><a href="lib/MemoryGetProcAddress.htm">MemoryGetProcAddress()</a></td><td>Retrieves the address of a function exported by a DLL loaded from memory.</td></tr>
+<tr><td><a href="lib/MemoryFreeLibrary.htm">MemoryFreeLibrary()</a></td><td>Frees a DLL loaded from memory.</td></tr>
+<tr><td><a href="lib/MemoryFindResource.htm">MemoryFindResource()</a>, <a href="lib/MemorySizeOfResource.htm">MemorySizeOfResource()</a>, <a href="lib/MemoryLoadResource.htm">MemoryLoadResource()</a>, <a href="lib/MemoryLoadString.htm">MemoryLoadString()</a></td><td>Access the resources of a DLL loaded from memory.</td></tr>
+<tr><td><a href="lib/ResourceLoadLibrary.htm">ResourceLoadLibrary()</a></td><td>Loads a DLL from a resource of the current executable.</td></tr>
+</table>
+
+<h2 id="Resources">Resources</h2>
+<table class="info">
+<tr>
+  <th>Function</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/ResGet.htm">ResGet()</a></td><td>Reads a resource of an executable file.</td></tr>
+<tr><td><a href="lib/ResExist.htm">ResExist()</a></td><td>Checks whether a resource exists.</td></tr>
+<tr><td><a href="lib/ResPut.htm">ResPut()</a>, <a href="lib/ResPutFile.htm">ResPutFile()</a></td><td>Adds data or a file to the resources of an executable file.</td></tr>
+<tr><td><a href="lib/ResDelete.htm">ResDelete()</a></td><td>Deletes a resource.</td></tr>
+<tr><td><a href="lib/ResDllCreate.htm">ResDllCreate()</a></td><td>Creates a resource-only DLL.</td></tr>
+</table>
+
+<h2 id="Zip">Compression and Encryption</h2>
+<table class="info">
+<tr>
+  <th>Function</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/ZipCreateFile.htm">ZipCreateFile()</a>, <a href="lib/ZipAddFile.htm">ZipAddFile()</a>, <a href="lib/ZipAddFolder.htm">ZipAddFolder()</a>, <a href="lib/ZipCloseFile.htm">ZipCloseFile()</a></td><td>Create zip archives on disk.</td></tr>
+<tr><td><a href="lib/ZipCreateBuffer.htm">ZipCreateBuffer()</a>, <a href="lib/ZipAddBuffer.htm">ZipAddBuffer()</a>, <a href="lib/ZipCloseBuffer.htm">ZipCloseBuffer()</a></td><td>Create zip archives in memory.</td></tr>
+<tr><td><a href="lib/UnZip.htm">UnZip()</a>, <a href="lib/UnZipBuffer.htm">UnZipBuffer()</a>, <a href="lib/ZipInfo.htm">ZipInfo()</a></td><td>Extract zip archives or list their contents.</td></tr>
+<tr><td><a href="lib/ZipOptions.htm">ZipOptions()</a>, <a href="lib/ZipCompressionLevel.htm">ZipCompressionLevel()</a></td><td>Set zip options and the compression level.</td></tr>
+<tr><td><a href="lib/ZipRawMemory.htm">ZipRawMemory()</a>, <a href="lib/UnZipRawMemory.htm">UnZipRawMemory()</a></td><td>Compress and optionally encrypt a block of memory, and restore it. This is the format used for compressed resources.</td></tr>
+<tr><td><a href="lib/SevenZip.htm">SevenZip()</a></td><td>Creates, updates, tests and extracts archives in 7z, zip and many other formats using the 7-Zip module embedded in AutoHotkey.exe.</td></tr>
+<tr><td><a href="lib/CryptAES.htm">CryptAES()</a></td><td>Encrypts or decrypts data with AES.</td></tr>
+<tr><td><a href="lib/ObjDump.htm">ObjDump()</a>, <a href="lib/ObjLoad.htm">ObjLoad()</a></td><td>Save an object to memory or a file, and restore it.</td></tr>
+</table>
+
+<h2 id="Utility">Utility Functions</h2>
+<table class="info">
+<tr>
+  <th>Function</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/BinToHex.htm">BinToHex()</a>, <a href="lib/HexToBin.htm">HexToBin()</a></td><td>Convert binary data to a hex string and back.</td></tr>
+<tr><td><a href="lib/ToChar.htm">ToChar()</a>, <a href="lib/ToUChar.htm">ToUChar()</a>, <a href="lib/ToShort.htm">ToShort()</a>, <a href="lib/ToUShort.htm">ToUShort()</a>, <a href="lib/ToInt.htm">ToInt()</a>, <a href="lib/ToUInt.htm">ToUInt()</a></td><td>Convert an integer to a signed or unsigned char, short or int.</td></tr>
+<tr><td><a href="lib/HIBYTE.htm">HIBYTE()</a>, <a href="lib/LOBYTE.htm">LOBYTE()</a>, <a href="lib/HIWORD.htm">HIWORD()</a>, <a href="lib/LOWORD.htm">LOWORD()</a>, <a href="lib/MAKEWORD.htm">MAKEWORD()</a>, <a href="lib/MAKELONG.htm">MAKELONG()</a>, <a href="lib/MAKEWPARAM.htm">MAKEWPARAM()</a>, <a href="lib/MAKELPARAM.htm">MAKELPARAM()</a>, <a href="lib/MAKELRESULT.htm">MAKELRESULT()</a>, <a href="lib/MAKELANGID.htm">MAKELANGID()</a>, <a href="lib/MAKELCID.htm">MAKELCID()</a></td><td>Equivalents of the Windows macros of the same names.</td></tr>
+<tr><td><a href="lib/StrPutVar.htm">StrPutVar()</a></td><td>Puts an encoded string into a variable.</td></tr>
+<tr><td><a href="lib/ObjByRef.htm">ObjByRef()</a></td><td>Stores variable references in an object.</td></tr>
+<tr><td><a href="lib/FileReplace.htm">FileReplace()</a></td><td>Like FileAppend, but replaces the file if it exists.</td></tr>
+<tr><td><a href="lib/IsBOM.htm">IsBOM()</a></td><td>Detects the byte order mark of data.</td></tr>
+<tr><td><a href="lib/DirGetParent.htm">DirGetParent()</a></td><td>Returns the parent directory of a path.</td></tr>
+<tr><td><a href="lib/ErrorMessage.htm">ErrorMessage()</a></td><td>Returns the system error message for an error code such as A_LastError.</td></tr>
+<tr><td><a href="lib/GetEnv.htm">GetEnv()</a></td><td>Creates script variables from environment variables.</td></tr>
+</table>
+
+<h2 id="Commands">Changes to Commands and Syntax</h2>
+<table class="info">
+<tr>
+  <th>Feature</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="lib/Send.htm">Send</a> delays</td><td>A number in braces pauses for that many milliseconds. For example, <code>Send 123{100}456</code> sends 123, sleeps 100 ms, then sends 456.</td></tr>
+<tr><td><a href="misc/WinTitle.htm">ahk_parent</a></td><td>In a WinTitle, <code>ahk_parent</code> followed by a space and a window ID identifies a window by its parent, for example <code>WinActivate ahk_class #32770 ahk_parent 0x3F4A5</code>.</td></tr>
+<tr><td>&amp;"String"</td><td>The address operator can be applied to a quoted string, for example <code>StrGet(&amp;"Text")</code>.</td></tr>
+<tr><td><a href="lib/ListVars.htm">ListVars</a></td><td>Static variables are stored separately and shown separately from local variables.</td></tr>
+</table>
+
+<h2 id="GUI">GUI Enhancements</h2>
+<h3 id="Gui_Auto">Automatic positioning and resizing of controls</h3>
+<p>Controls can be moved and resized automatically when the GUI is resized. They are positioned and sized relative to the initial size of the GUI (as shown by <a href="lib/Gui.htm#Show">Gui Show</a>), and a control never shrinks below its initial size. Each value may be followed by a decimal number (e.g. 2 or 0.5) or a fraction (e.g. 1/3); negative values are also supported. If no value is given, it defaults to 1, so <code>ax</code>, <code>ax1</code> and <code>ax1/1</code> are equivalent. The order in which controls are created may matter when the position of a previous control is taken into account.</p>
+<p><strong>AX</strong>, <strong>AY</strong>: Move the control horizontally or vertically by the given proportion of the change in GUI width or height. For example, if the GUI becomes 100 pixels wider, <code>ax1/2</code> moves the control 50 pixels to the right.</p>
+<p><strong>AW</strong>, <strong>AH</strong>: Resize the control by the given proportion of the change in GUI width or height. For example, if the GUI becomes 100 pixels wider, <code>aw0.5</code> makes the control 50 pixels wider.</p>
+<p><strong>AXP</strong>, <strong>AYP</strong>: Move the control by the same amount as the previous control.</p>
+<p><strong>AXA</strong>, <strong>AYA</strong>: Move the control by the same amount the previous control was moved and resized, so that it stays right of or below it.</p>
+<p><strong>AWA</strong>, <strong>AHA</strong>: Resize the control by the same amount as the previous control.</p>
+<p><strong>AXR</strong>, <strong>AWR</strong>, <strong>AYR</strong>, <strong>AHR</strong>: Reset horizontal or vertical repositioning or resizing.</p>
+<h3 id="Gui_Scroll">Scroll bars</h3>
+<p>The GUI options <strong>Scroll</strong>, <strong>VScroll</strong> and <strong>HScroll</strong> enable both, only vertical or only horizontal scroll bars for a GUI window.</p>
+
+<h2 id="Variables">Built-in Variables</h2>
+<table class="info">
+<tr>
+  <th>Variable</th>
+  <th abbr="Descr">Description</th>
+</tr>
+<tr><td><a href="Variables.htm#Null">Null</a></td><td>Contains 0, like False.</td></tr>
+<tr><td><a href="Variables.htm#AhkDir">A_AhkDir</a></td><td>The directory of the current executable.</td></tr>
+<tr><td><a href="Variables.htm#DllPath">A_DllPath</a>, <a href="Variables.htm#DllDir">A_DllDir</a></td><td>The full path and directory of the module the script is running in (AutoHotkey.dll or the exe).</td></tr>
+<tr><td><a href="Variables.htm#IsDll">A_IsDll</a>, <a href="Variables.htm#IsMini">A_IsMini</a></td><td>1 if the script is running in AutoHotkey.dll or in AutoHotkeyMini.dll, otherwise 0.</td></tr>
+<tr><td><a href="Variables.htm#ModuleHandle">A_ModuleHandle</a>, <a href="Variables.htm#MemoryModule">A_MemoryModule</a></td><td>The module handle of the current module, and the MemoryModule handle if it was loaded from memory.</td></tr>
+<tr><td><a href="Variables.htm#ScriptStruct">A_ScriptStruct</a>, <a href="Variables.htm#GlobalStruct">A_GlobalStruct</a></td><td>Pointers to internal structures (low level).</td></tr>
+</table>
+
+<h2 id="Compiling">Compiling and Command Line</h2>
+<p>A script can be compiled with any AutoHotkey_H binary: AutoHotkey.exe, AutoHotkey.dll or AutoHotkeySC.bin. A compiled AutoHotkey.exe or AutoHotkey.dll keeps its full functionality, including running other scripts: the <a href="Scripts.htm#cmd">/E or /Execute switch</a> runs a script file instead of the compiled script. A custom version of Ahk2Exe supports these features.</p>
+<p id="Resource_Library"><strong>Resource library:</strong> Library functions can be stored in the resources of an exe or dll (resource type "LIB", with the upper-case file name as resource name, e.g. <code>LIB\WATCHDIRECTORY.AHK</code>). Scripts running in AutoHotkey.dll also look for library functions in the resources of the exe. This is not supported by AutoHotkeySC.bin.</p>
+<p><strong>Compressed resources:</strong> Resources may be compressed and encrypted with <a href="lib/ZipRawMemory.htm">ZipRawMemory()</a>; AutoHotkey decompresses them automatically, and scripts can use <a href="lib/UnZipRawMemory.htm">UnZipRawMemory()</a>.</p>
+
+<h2 id="Libraries">Function Libraries</h2>
+<p>In addition to the <a href="Functions.htm#lib">local, user and standard libraries</a>, functions may be auto-included from the folder that <code>Lib.lnk</code> in the directory of AutoHotkey.exe points to.</p>
+
+</body>
+</html>

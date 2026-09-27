@@ -1,0 +1,687 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Functions - Definition &amp; Usage | AutoHotkey v1</title>
+<meta name="description" content="Learn details about functions in general, parameters, returning values, built-in functions, variadic functions, etc." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<link href="static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>Functions</h1>
+
+<h2 id="toc">Table of Contents</h2>
+<ul>
+  <li><a href="#intro">Introduction and Simple Examples</a></li>
+  <li><a href="#param">Parameters</a></li>
+  <li><a href="#optional">Optional Parameters</a></li>
+  <li><a href="#return">Returning Values to Caller</a></li>
+  <li><a href="#Variadic">Variadic Functions</a> <span class="ver">[AHK_L 60+]</span>
+    <ul>
+      <li><a href="#VariadicCall">Variadic Function Calls</a></li>
+    </ul>
+  </li>
+  <li><a href="#Locals">Local and Global Variables</a>
+    <ul>
+      <li><a href="#Local">Local Variables</a></li>
+      <li><a href="#Global">Global Variables</a></li>
+      <li><a href="#static">Static Variables</a></li>
+      <li><a href="#More_about_locals_and_globals">More About Locals and Globals</a></li>
+    </ul>
+  </li>
+  <li><a href="#DynCall">Dynamically Calling a Function</a></li>
+  <li><a href="#ShortCircuit">Short-circuit Boolean Evaluation</a></li>
+  <li><a href="#gosub">Using Subroutines Within a Function</a></li>
+  <li><a href="#remarks">Return, Exit, and General Remarks</a></li>
+  <li><a href="#Style_and_Naming_Conventions">Style and Naming Conventions</a></li>
+  <li><a href="#include">Using #Include to Share Functions Among Multiple Scripts</a></li>
+  <li><a href="#lib">Libraries of Functions: Standard Library and User Library</a> <span class="ver">[v1.0.47+]</span></li>
+  <li><a href="#BuiltIn">Built-in Functions</a>
+    <ul>
+      <li><a href="#Frequently-used_Functions">Frequently-used Functions</a></li>
+      <li><a href="#Miscellaneous_Functions">Miscellaneous Functions</a></li>
+      <li><a href="#Math">Math</a></li>
+      <li><a href="#COM">COM</a></li>
+      <li><a href="#Other_Functions">Other Functions</a></li>
+    </ul>
+  </li>
+</ul>
+<h2 id="intro">Introduction and Simple Examples</h2>
+<p id="define">A function is similar to a subroutine (<a href="lib/Gosub.htm">Gosub</a>) except that it can accept parameters (inputs) from its caller. In addition, a function may optionally return a value to its caller. Consider the following simple function that accepts two numbers and returns their sum:</p>
+<pre>Add(x, y)
+{
+    return x + y   <em>; "<a href="lib/Return.htm">Return</a>" expects an <a href="Variables.htm#Expressions">expression</a>.</em>
+}</pre>
+<p>The above is known as a function <em>definition</em> because it creates a function named "Add" (not case-sensitive) and establishes that anyone who calls it must provide exactly two parameters (x and y). To call the function, assign its result to a variable with the <strong><a href="lib/SetExpression.htm">:=</a></strong><a href="lib/SetExpression.htm"> operator</a>. For example:</p>
+<pre>Var := Add(2, 3)  <em>; The number 5 will be stored in Var.</em></pre>
+<p>Also, a function may be called without storing its return value:</p>
+<pre>Add(2, 3)</pre>
+<p>But in this case, any value returned by the function is discarded; so unless the function produces some effect other than its return value, the call would serve no purpose.</p>
+<p>Since a function call is an <a href="Variables.htm#Expressions">expression</a>, any variable names in its parameter list should not be enclosed in percent signs. By contrast, literal strings should be enclosed in double quotes. For example:</p>
+<pre>if <a href="#InStr">InStr</a>(MyVar, "fox")
+    MsgBox The variable MyVar contains the word fox.</pre>
+<p>Finally, functions may be called in the parameters of any command (except OutputVar and InputVar parameters such as those of <a href="lib/StringLen.htm">StringLen</a>). However, parameters that do not support <a href="Variables.htm#Expressions">expressions</a> must use the "% " prefix as in this example:</p>
+<pre>MsgBox % "The answer is: " . Add(3, 2)</pre>
+<p>The "% " prefix is also permitted in parameters that natively support expressions, but it is simply ignored.</p>
+<h2 id="param">Parameters</h2>
+<p>When a function is defined, its parameters are listed in parentheses next to its name (there must be no spaces between its name and the open-parenthesis). If a function does not accept any parameters, leave the parentheses empty; for example: <code>GetCurrentTimestamp()</code>.</p>
+<p id="ByRef"><strong>ByRef Parameters:</strong> From the function's point of view, parameters are essentially the same as <a href="#Local">local variables</a> unless they are defined as <em>ByRef</em> as in this example:</p>
+<pre>Swap(ByRef Left, ByRef Right)
+{
+    temp := Left
+    Left := Right
+    Right := temp
+}</pre>
+<p>In the example above, the use of <em>ByRef</em> causes each parameter to become an alias for the variable passed in from the caller. In other words, the parameter and the caller's variable both refer to the same contents in memory. This allows the Swap function to alter the caller's variables by moving <em>Left</em>'s contents into <em>Right</em> and vice versa.</p>
+<p>By contrast, if <em>ByRef</em> were not used in the example above, <em>Left</em> and <em>Right</em> would be copies of the caller's variables and thus the Swap function would have no external effect.</p>
+<p>Since <a href="lib/Return.htm">return</a> can send back only one value to a function's caller, <em>ByRef</em> can be used to send back extra results. This is achieved by having the caller pass in a variable (usually empty) in which the function stores a value.</p>
+<p>When passing large strings to a function, <em>ByRef</em> enhances performance and conserves memory by avoiding the need to make a copy of the string. Similarly, using <em>ByRef</em> to send a long string back to the caller usually performs better than something like <code>Return HugeString</code>.</p>
+<p><span class="ver">[AHK_L 60+]</span>: If something other than a modifiable variable is passed to a ByRef parameter, the function behaves as though the keyword "ByRef" is absent. For example, <code>Swap(A_Index, i)</code> stores the value of <i>A_Index</i> in <i>i</i>, but the value assigned to <i>Left</i> is discarded once the <i>Swap</i> function returns.</p>
+<p><span class="ver">[v1.1.01+]</span>: The <a href="#IsByRef">IsByRef()</a> function can be used to determine whether the caller supplied a variable for a given ByRef parameter.</p>
+<p>Known limitations:</p>
+<ul>
+  <li>Fields of objects are not considered variables for the purposes of <em>ByRef</em>. For example, if <code>foo.bar</code> is passed to a ByRef parameter, it will behave as though <em>ByRef</em> was omitted.</li>
+  <li>It is not possible to pass <a href="misc/Clipboard.htm">Clipboard</a>, <a href="Variables.htm#BuiltIn">built-in variables</a>, or <a href="Concepts.htm#environment-variables">environment variables</a> to a function's <em>ByRef</em> parameter, even when <a href="lib/_NoEnv.htm">#NoEnv</a> is absent from the script.</li>
+  <li id="recurse">Although a function may call itself recursively, if it passes one of its own <a href="#Local">local variables</a> or non-ByRef parameters to itself <em>ByRef</em>, the new layer's <em>ByRef</em> parameter will refer to its own local variable of that name rather than the previous layer's. However, this issue does not occur when a function passes to itself a <a href="#Global">global variable</a>, <a href="#static">static variable</a>, or <em>ByRef</em> parameter.</li>
+  <li>If a parameter in a function-call resolves to a variable (e.g. <code>Var</code> or <code>++Var</code> or <code>Var*=2</code>), other parameters to its left or right can alter that variable before it is passed to the function. For example, <code>MyFunc(Var, Var++)</code> would unexpectedly pass 1 and 0 when <em>Var</em> is initially 0, even when the function's first parameter is not <em>ByRef</em>. Since this behavior is counterintuitive, it might change in a future release.</li>
+  <li>ByRef is not directly supported in functions called by COM clients, or when calling COM methods. Instead, the script receives or must pass a <a href="lib/ComObjActive.htm#ByRef">wrapper object</a> containing the <a href="lib/ComObjType.htm">VarType</a> and address of the value.</li>
+</ul>
+<h2 id="optional">Optional Parameters</h2>
+<p>When defining a function, one or more of its parameters can be marked as optional. This is done by appending <code>:=</code> (in <span class="ver">[v1.1.09+]</span>) or <code>=</code>, followed by the parameter's default value, which must be one of the following: <code>true</code>, <code>false</code>, a literal integer, a literal floating point number, or a quoted/literal string such as "fox" or "" (but strings in versions prior to <span class="ver">[v1.0.46.13]</span> support only "").</p>
+<p>The use of <code>=</code> (without a colon) is permitted for backward-compatibility, but not recommended, and will not be permitted by AutoHotkey v2. Regardless of which operator is used, default values which are strings must always be enclosed in quote marks.</p>
+<p>The following function has its Z parameter marked optional:</p>
+<pre>Add(X, Y, Z:=0) {
+    return X + Y + Z
+}</pre>
+<p>When the caller passes <strong>three</strong> parameters to the function above, Z's default value is ignored. But when the caller passes only <strong>two</strong> parameters, Z automatically receives the value 0.</p>
+<p id="missing">It is not possible to have optional parameters isolated in the middle of the parameter list. In other words, all parameters that lie to the right of the first optional parameter must also be marked optional. <span class="ver">[AHK_L 31+]</span>: Optional parameters may be omitted from the middle of the parameter list when calling the function, as shown below. For dynamic function calls and method calls, this requires <span class="ver">[v1.1.12+]</span>.</p>
+<pre>MyFunc(1,, 3)
+MyFunc(X, Y:=2, Z:=0) {  <em>; Note that Z must still be optional in this case.</em>
+    MsgBox %X%, %Y%, %Z%
+}</pre>
+<p id="OptionalByRef"><span class="ver">[v1.0.46.13+]</span>: <a href="#ByRef">ByRef parameters</a> also support default values; for example: <code>MyFunc(ByRef p1 = "") {</code>. Whenever the caller omits such a parameter, the function creates a local variable to contain the default value; in other words, the function behaves as though the keyword "ByRef" is absent.</p>
+
+<h2 id="return">Returning Values to Caller</h2>
+<p>As described in <a href="#intro">introduction</a>, a function may optionally <a href="lib/Return.htm">return</a> a value to its caller.</p>
+<pre>
+Test := returnTest()
+MsgBox % Test
+
+returnTest() {
+    return 123
+}
+</pre>
+<p>If you want to return extra results from a function, you may also use <a href="#ByRef">ByRef</a>:</p>
+<pre>
+returnByRef(A,B,C)
+MsgBox % A "," B "," C
+
+returnByRef(ByRef val1, ByRef val2, ByRef val3)
+{
+    val1 := "A"
+    val2 := 100
+    val3 := 1.1
+    return
+}
+</pre>
+<p><span class="ver">[v1.0.97+]</span>: <a href="Objects.htm#Usage_Objects">Objects</a> and <a href="Objects.htm#Usage_Simple_Arrays">Arrays</a> can be used to return multiple values or even named values:</p>
+<pre>
+Test1 := returnArray1()
+MsgBox % Test1[1] "," Test1[2]
+
+Test2 := returnArray2()
+MsgBox % Test2[1] "," Test2[2]
+
+Test3 := returnObject()
+MsgBox % Test3.id "," Test3.val
+
+returnArray1() {
+    Test := [123,"ABC"]
+    return Test
+}
+
+returnArray2() {
+    x := 456
+    y := "EFG"
+    return [x, y]
+}
+
+returnObject() {
+    Test := {id: 789, val: "HIJ"}
+    return Test
+}
+</pre>
+<h2 id="Variadic">Variadic Functions <span class="ver">[AHK_L 60+]</span></h2>
+<p>When defining a function, write an asterisk after the final parameter to mark the function as variadic, allowing it to receive a variable number of parameters:</p>
+<pre>Join(sep, <b class="blue">params*</b>) {
+    for index,param in params
+        str .= param . sep
+    return SubStr(str, 1, -StrLen(sep))
+}
+MsgBox % Join("`n", "one", "two", "three")</pre>
+<p>When a variadic function is called, surplus parameters can be accessed via an object which is stored in the function's final parameter. The first surplus parameter is at <code><i>params</i>[1]</code>, the second at <code><i>params</i>[2]</code> and so on. As with any standard object, <code><i>params</i>.MaxIndex()</code> can be used to determine the highest numeric index (in this case the number of parameters). However, if there are no parameters, MaxIndex returns an empty string.</p>
+<p>Notes:</p>
+<ul>
+  <li>The "variadic" parameter can only appear at the end of the formal parameter list.</li>
+  <li><a href="misc/RegExCallout.htm">RegEx callouts</a> cannot be variadic; the "variadic" parameter is tolerated but left blank.</li>
+  <li><a href="lib/RegisterCallback.htm">Callbacks</a> pass surplus parameters <a href="lib/RegisterCallback.htm#Indirect">by address</a> rather than via an array.</li>
+</ul>
+<h3 id="VariadicCall">Variadic Function Calls</h3>
+<p>While variadic functions can <i>accept</i> a variable number of parameters, an array of parameters can be passed to <i>any</i> function by applying the same syntax to a function-call:</p>
+<pre>substrings := ["one", "two", "three"]
+MsgBox % Join("`n", <b class="blue">substrings*</b>)</pre>
+<p>Notes:</p>
+<ul>
+  <li>Numbering of parameters within the source array begins at 1.</li>
+  <li>Optional parameters may be entirely omitted from the array.</li>
+  <li>The array of parameters may contain named items when calling a user-defined function; in any other case, named items are not supported.</li>
+  <li>The target function may also be variadic, in which case named items are copied even if they have no corresponding formal parameter.</li>
+  <li>This syntax can also be used when calling methods or retrieving properties of objects; for example, <code>Object.Property[Params*]</code>. <span class="ver">[v1.1.12+]</span>: It can also be used for setting properties.</li>
+</ul>
+<p>Known limitations:</p>
+<ul>
+  <li>Only the right-most parameter can be expanded this way. For example, <code>MyFunc(x, y*)</code> is supported but <code>MyFunc(x*, y)</code> is not.</li>
+  <li>There must not be any non-whitespace characters between the asterisk (<code>*</code>) and the symbol which ends the parameter list.</li>
+</ul>
+<h2 id="Locals">Local and Global Variables</h2>
+<h3 id="Local">Local Variables</h3>
+<p>Local variables are specific to a single function and are visible only inside that function. Consequently, a local variable may have the same name as a global variable and both will have separate contents. Separate functions may also safely use the same variable names.</p>
+<p>All local variables which are not <a href="#static">static</a> are automatically freed (made empty) when the function returns.</p>
+<p>Built-in variables such as <a href="misc/Clipboard.htm">Clipboard</a>, <a href="misc/ErrorLevel.htm">ErrorLevel</a>, and <a href="Variables.htm#TimeIdle">A_TimeIdle</a> are never local (they can be accessed from anywhere), and cannot be redeclared.</p>
+<p id="AssumeLocal">Functions are <strong>assume-local</strong> by default. Variables accessed or created inside an assume-local function are local by default, with the following exceptions:</p>
+<ul>
+  <li><a href="#SuperGlobal">Super-global</a> variables, including <a href="Objects.htm#Custom_Classes">classes</a>.</li>
+  <li>A <a href="#DynVar">dynamic variable reference</a> may resolve to an existing global variable if no local variable exists by that name.</li>
+  <li><a href="#PseudoArrays">Commands that create pseudo-arrays</a> may create all elements as global even if only the first element is declared.</li>
+</ul>
+<p>The default may also be overridden as shown below (by declaring the variable or by changing the mode of the function).</p>
+<p id="ForceLocal"><strong>Force-local mode</strong> <span class="ver">[v1.1.27+]</span>: If the function's first line is the word "local", all variable references (even dynamic ones) are assumed to be local unless they are declared as global <em>inside</em> the function. Unlike the default mode, force-local mode has the following behavior:</p>
+<ul>
+  <li>Super-global variables (including classes) cannot be accessed without declaring them inside the function.</li>
+  <li>Dynamic variable references follow the same rules as non-dynamic ones. Only global variables which are declared inside the function can be accessed.</li>
+  <li>StringSplit and other commands which create pseudo-arrays follow the same rules as non-dynamic variable references (avoiding a common source of confusion).</li>
+  <li>The <em>LocalSameAsGlobal</em> <a href="lib/_Warn.htm">warning</a> is never raised for variables within a force-local function.</li>
+</ul>
+
+<h3 id="Global">Global Variables</h3>
+<p>To refer to an existing global variable inside a function (or create a new one), declare the variable as global prior to using it. For example:</p>
+<pre>LogToFile(TextToLog)
+{
+    global LogFileName  <em>; This global variable was previously given a value somewhere outside this function.</em>
+    FileAppend, %TextToLog%`n, %LogFileName%
+}</pre>
+<p id="AssumeGlobal"><strong>Assume-global mode:</strong> If a function needs to access or create a large number of global variables, it can be defined to assume that all its variables are global (except its parameters) by making its first line either the word "global" or the declaration of a local variable. For example:</p>
+<pre>SetDefaults()
+{
+    global  <em>; This word may be omitted if the first line of this function will be something like "local MyVar".</em>
+    MyGlobal := 33  <em>; Assigns 33 to a global variable, first creating the variable if necessary.</em>
+    local x, y:=0, z  <em>; Local variables must be declared in this mode, otherwise they would be assumed global.</em>
+}</pre>
+<p>This assume-global mode can also be used by a function to create a global <a href="misc/Arrays.htm">array</a>, such as a loop that assigns values to <code>Array%A_Index%</code>.</p>
+<p id="SuperGlobal"><strong>Super-global variables</strong> <span class="ver">[v1.1.05+]</span>: If a global declaration appears outside of any function, it takes effect for all functions by default (excluding <a href="#ForceLocal">force-local</a> functions). This avoids the need to redeclare the variable in each function. However, if a function parameter or local variable with the same name is declared, it takes precedence over the global variable. Variables created by the <a href="Objects.htm#Custom_Classes">class</a> keyword are also super-global.</p>
+<h3 id="static">Static Variables</h3>
+<p>Static variables are always implicitly local, but differ from locals because their values are remembered between calls. For example:</p>
+<pre>LogToFile(TextToLog)
+{
+    static LoggedLines := 0
+    LoggedLines += 1  <em>; Maintain a tally locally (its value is remembered between calls).</em>
+    global LogFileName
+    FileAppend, %LoggedLines%: %TextToLog%`n, %LogFileName%
+}</pre>
+<p id="InitStatic"><strong>Static Initializers:</strong> In versions prior to 1.0.46, all static variables started off blank; so the only way to detect that one was being used for the first time was to check whether it was blank. <span class="ver">[v1.0.46+]</span>: A static variable may be initialized to something other than <code>""</code> by following it with <code>:=</code> or <code>=</code> followed by one of the following: <code>true</code>, <code>false</code>, a literal integer, a literal floating point number, or a literal/quoted string such as <code>"fox"</code>. For example: <code>static X:=0, Y:="fox"</code>. Each static variable is initialized only once (before the script begins executing).</p>
+<p><span class="ver">[AHK_L 58+]</span>: <code>Static var := expression</code> is supported. All such expressions are evaluated immediately before the script's <a href="Scripts.htm#auto">auto-execute section</a> in the order they are encountered in the script.</p>
+<p id="AssumeStatic"><strong>Assume-static mode</strong> <span class="ver">[v1.0.48+]</span>: A function may be defined to assume that all its variables are static (except its parameters) by making its first line the word "static". For example:</p>
+<pre>GetFromStaticArray(WhichItemNumber)
+{
+    static
+    static FirstCallToUs := true  <em>; A static declaration's initializer still runs only once (upon startup).</em>
+    if FirstCallToUs  <em>; Create a static array during the first call, but not on subsequent calls.</em>
+    {
+        FirstCallToUs := false
+        Loop 10
+            StaticArray%A_Index% := "Value #" . A_Index
+    }
+    return StaticArray%WhichItemNumber%
+}</pre>
+<p>In assume-static mode, any variable that should not be static must be declared as local or global (with the same exceptions as for <a href="#AssumeLocal">assume-local mode</a>, unless <a href="#ForceLocal">force-local mode</a> is also in effect).</p>
+<p><span class="ver">[v1.1.27+]</span>: <a href="#ForceLocal">Force-local mode</a> can be combined with assume-static mode by specifying <code>local</code> and then <code>static</code>, as shown below. This allows the function to use force-local rules but create variables as static by default.</p>
+<pre>global MyVar := "This is global"
+DemonstrateForceStatic()
+
+DemonstrateForceStatic()
+{
+    local
+    static
+    MyVar := "This is static"
+    ListVars
+    MsgBox
+}
+</pre>
+<h3 id="More_about_locals_and_globals">More About Locals and Globals</h3>
+<p>Multiple variables may be declared on the same line by separating them with commas as in these examples:</p>
+<pre>global LogFileName, MaxRetries := 5
+static TotalAttempts := 0, PrevResult</pre>
+<p id="DeclareInit"><span class="ver">[v1.0.46+]</span>: A local or global variable may be initialized on the same line as its declaration by following it with <code>:=</code> or <code>=</code> followed by any <a href="Variables.htm#Expressions">expression</a> (the <code>=</code> operator behaves the same as <code>:=</code> in declarations). Unlike <a href="#InitStatic">static initializers</a>, the initializers of locals and globals execute every time the function is called, but only if/when the flow of control actually reaches them. In other words, a line like <code>local x := 0</code> has the same effect as writing two separate lines: <code>local x</code> followed by <code>x := 0</code>.</p>
+<p>Because the words <em>local</em>, <em>global</em>, and <em>static</em> are processed immediately when the script launches, a variable cannot be conditionally declared by means of an <a href="lib/IfExpression.htm">IF statement</a>. In other words, a declaration inside an IF's or ELSE's <a href="lib/Block.htm">block</a> takes effect unconditionally for all lines between the declaration and the function's closing brace. Also note that it is not currently possible to declare a dynamic variable such as <code>global Array%i%</code>.</p>
+<p id="PseudoArrays">For commands that create <a href="misc/Arrays.htm">pseudo-arrays</a> (such as <a href="lib/StringSplit.htm">StringSplit</a>), each variable in the resulting pseudo-array is local if the <a href="#AssumeGlobal">assume-global mode</a> is not in effect or if the pseudo-array's first element has been declared as a local variable (this is also true if one of the function's parameters is passed -- even if that parameter is <a href="#ByRef">ByRef</a> -- because parameters are similar to local variables). Conversely, if the first element has been <a href="#Global">declared global</a>, a global array is created. However, the <i>common source of confusion</i> below applies even in these cases. The first element for <a href="lib/StringSplit.htm">StringSplit</a> is ArrayName0. For other array-creating commands such as <a href="lib/WinGet.htm">WinGet List</a>, the first element is ArrayName (i.e. without the number). <span class="ver">[v1.1.27+]</span>: When <a href="#ForceLocal">force-local mode</a> is in effect, these commands follow rules consistent with normal variable references; that is, any pseudo-array element not declared as global will be local even if other elements are declared global.</p>
+<p id="DynVar"><span id="Dynamic"></span>Within a function (unless <a href="#ForceLocal">force-local mode</a> is in effect), any dynamic variable reference such as <code>Array%i%</code> always resolves to a local variable unless no variable of that name exists, in which case a global is used if it exists. If neither exists and the usage requires the variable to be created, it is created as a local variable unless the <a href="#AssumeGlobal">assume-global mode</a> is in effect. Consequently, a function can create a global <a href="misc/Arrays.htm">array</a> manually (by means such as <code>Array%i% := A_Index</code>) only if it has been defined as an <a href="#AssumeGlobal">assume-global</a> function.</p>
+<p id="ArrayConfusion"><strong>Common source of confusion:</strong> Any <em>non</em>-dynamic reference to a variable creates that variable the moment the script launches. For example, when used outside a function, <code>MsgBox %Array1%</code> creates Array1 as a global the moment the script launches. Conversely, when used inside a function <code>MsgBox %Array1%</code> creates Array1 as one of the function's locals the moment the script launches (unless <a href="#AssumeGlobal">assume-global</a> is in effect), even if Array and Array0 are declared global.</p>
+<h2 id="DynCall">Dynamically Calling a Function</h2>
+<p><span class="ver">[v1.0.47.06+]</span>: A function (even a <a href="#BuiltIn">built-in function</a>) may be called dynamically via percent signs. For example, <code>%Var%(x, "fox")</code> would call the function whose name is contained in <em>Var</em>. Similarly, <code>Func%A_Index%()</code> would call Func1() or Func2(), etc., depending on the current value of A_Index.</p>
+<p><span class="ver">[v1.1.07.00+]</span>: <em>Var</em> in <code>%Var%()</code> can contain a function name or a <a href="misc/Functor.htm">function object</a>. If the function does not exist, the <a href="Objects.htm#Default_Base_Object">default base object</a>'s __Call meta-function is invoked instead.</p>
+<p>If the function cannot be called due to one of the reasons below, the evaluation of the expression containing the call stops silently and prematurely, which may lead to inconsistent results:</p>
+<ul>
+  <li>Calling a nonexistent function, which can be avoided by using <code>If <a href="#IsFunc">IsFunc</a>(VarContainingFuncName)</code>. Except for <a href="#BuiltIn">built-in functions</a>, the called function's <a href="#define">definition</a> must exist explicitly in the script by means such as <a href="lib/_Include.htm">#Include</a> or a non-dynamic call to a <a href="#lib">library function</a>.</li>
+  <li>Passing too few parameters, which can be avoided by checking <a href="#IsFunc">IsFunc()</a>'s return value (which is the number of mandatory parameters plus one). <span class="ver">[v1.0.48+]</span>: Note that passing too many parameters is tolerated; each extra parameter is fully evaluated (including any calls to functions) and then discarded.</li>
+</ul>
+<p>Finally, a dynamic call to a function is slightly slower than a normal call because normal calls are resolved (looked up) before the script begins running.</p>
+<h2 id="ShortCircuit">Short-circuit Boolean Evaluation</h2>
+<p>When <em>AND, OR</em>, and the <a href="Variables.htm#ternary">ternary operator</a> are used within an <a href="Variables.htm#Expressions">expression</a>, they short-circuit to enhance performance (regardless of whether any function calls are present). Short-circuiting operates by refusing to evaluate parts of an expression that cannot possibly affect its final result. To illustrate the concept, consider this example:</p>
+<pre>if (ColorName != "" AND not FindColor(ColorName))
+    MsgBox %ColorName% could not be found.</pre>
+<p>In the example above, the FindColor() function never gets called if the <em>ColorName</em> variable is empty. This is because the left side of the <em>AND</em> would be <em>false</em>, and thus its right side would be incapable of making the final outcome <em>true</em>.</p>
+<p>Because of this behavior, it's important to realize that any side-effects produced by a function (such as altering a global variable's contents) might never occur if that function is called on the right side of an <em>AND</em> or <em>OR</em>.</p>
+<p>It should also be noted that short-circuit evaluation cascades into nested <em>AND</em>s and <em>OR</em>s. For example, in the following expression, only the leftmost comparison occurs whenever <em>ColorName</em> is blank. This is because the left side would then be enough to determine the final answer with certainty:</p>
+<pre>if (ColorName = "" OR FindColor(ColorName, Region1) OR FindColor(ColorName, Region2))
+    break   <em>; Nothing to search for, or a match was found.</em></pre>
+<p>As shown by the examples above, any expensive (time-consuming) functions should generally be called on the right side of an <em>AND</em> or <em>OR</em> to enhance performance. This technique can also be used to prevent a function from being called when one of its parameters would be passed a value it considers inappropriate, such as an empty string.</p>
+<p><span class="ver">[v1.0.46+]</span>: The <a href="Variables.htm#ternary">ternary conditional operator (?:)</a> also short-circuits by not evaluating the losing branch.</p>
+<h2 id="gosub">Using Subroutines Within a Function</h2>
+<p>Although a function cannot contain <a href="#define">definitions</a> of other functions, it can contain subroutines. As with other subroutines, use <a href="lib/Gosub.htm">Gosub</a> to launch them and <a href="lib/Return.htm">Return</a> to return (in which case the Return would belong to the Gosub and not the function).</p>
+<p>Known limitation: Currently, the name of each subroutine (label) must be unique among those of the entire script. The program will notify you upon launch if there are duplicate labels.</p>
+<p id="GosubPublic">If a function uses <a href="lib/Gosub.htm">Gosub</a> to jump to a public subroutine (one that lies outside of the function's braces), all variables outside are global and the function's own <a href="#Local">local variables</a> are not accessible until the subroutine returns. However, A_ThisFunc will still contain the name of the function.</p>
+<p>Although <a href="lib/Goto.htm">Goto</a> cannot be used to jump from inside a function to outside, it is possible for a function to <a href="lib/Gosub.htm">Gosub</a> an external/public subroutine and then do a Goto from there.</p>
+<p>Although the use of <a href="lib/Goto.htm">Goto</a> is generally discouraged, it can be used inside a function to jump to another position within the same function. This can help simplify complex functions that have many points of return, all of which need to do some clean-up prior to returning.</p>
+<p>A function may contain externally-called subroutines such as <a href="lib/SetTimer.htm">timer</a>s, <a href="lib/Gui.htm#label">GUI g-labels</a>, and <a href="lib/Menu.htm">menu items</a>. This is generally done to encapsulate them in a separate file for use with <a href="lib/_Include.htm">#Include</a>, which prevents them from interfering with the script's <a href="Scripts.htm#auto">auto-execute section</a>. However, the following limitations apply:</p>
+<ul>
+  <li>Such subroutines should use only <a href="#static">static</a> and <a href="#Global">global</a> variables (not <a href="#Local">locals</a>) if their function is ever called normally. This is because a subroutine <a href="misc/Threads.htm">thread</a> that interrupts a function-call thread (or vice versa) would be able to change the values of local variables seen by the interrupted thread. Furthermore, any time a function returns to its caller, all of its local variables are made blank to free their memory.</li>
+  <li>Such subroutines should use only <a href="#Global">global variables</a> (not <a href="#static">static variables</a>) as <a href="lib/Gui.htm#var">GUI control variables</a>.</li>
+  <li>When a function is entered by a subroutine <a href="misc/Threads.htm">thread</a>, any references to <a href="misc/Arrays.htm">dynamic variables</a> made by that thread are treated as <a href="#Global">globals</a> (including commands that create arrays).</li>
+</ul>
+<h2 id="remarks">Return, Exit, and General Remarks</h2>
+<p>If the flow of execution within a function reaches the function's closing brace prior to encountering a <a href="lib/Return.htm">Return</a>, the function ends and returns a blank value (empty string) to its caller. A blank value is also returned whenever the function explicitly omits <a href="lib/Return.htm">Return</a>'s parameter.</p>
+<p>When a function uses the <a href="lib/Exit.htm">Exit</a> command to terminate the <a href="misc/Threads.htm">current thread</a>, its caller does not receive a return value at all. For example, the statement <code>Var := Add(2, 3)</code> would leave <code>Var</code> unchanged if <code>Add()</code> exits. The same thing happens if a function causes a runtime error such as <a href="lib/Run.htm">running</a> a nonexistent file (when <a href="lib/Run.htm#UseErrorLevel">UseErrorLevel</a> is not in effect).</p>
+<p>A function may alter the value of <a href="misc/ErrorLevel.htm">ErrorLevel</a> for the purpose of returning an extra value that is easy to remember.</p>
+<p>To call a function with one or more blank values (empty strings), use an empty pair of quotes as in this example: <code>FindColor(ColorName, "")</code>.</p>
+<p>Since calling a function does not start a new <a href="misc/Threads.htm">thread</a>, any changes made by a function to settings such as <a href="lib/SendMode.htm">SendMode</a> and <a href="lib/SetTitleMatchMode.htm">SetTitleMatchMode</a> will go into effect for its caller too.</p>
+<p>The caller of a function may pass a nonexistent variable or <a href="misc/Arrays.htm">array</a> element to it, which is useful when the function expects the corresponding parameter to be <a href="#ByRef">ByRef</a>. For example, calling <code>GetNextLine(BlankArray%i%)</code> would create the variable <code>BlankArray%i%</code> automatically as a <a href="#Local">local</a> or global (depending on whether the caller is inside a function and whether it has the <a href="#AssumeGlobal">assume-global mode</a> in effect).</p>
+<p>When used inside a function, <a href="lib/ListVars.htm">ListVars</a> displays a function's <a href="#Local">local variables</a> along with their contents. This can help <a href="Scripts.htm#debug">debug a script</a>.</p>
+<h2 id="Style_and_Naming_Conventions">Style and Naming Conventions</h2>
+<p>You might find that complex functions are more readable and maintainable if their special variables are given a distinct prefix. For example, naming each parameter in a function's parameter list with a leading "p" or "p_" makes their special nature easy to discern at a glance, especially when a function has several dozen <a href="#Local">local variables</a> competing for your attention. Similarly, the prefix "r" or "r_" could be used for <a href="#ByRef">ByRef parameters</a>, and "s" or "s_" could be used for <a href="#static">static variables</a>.</p>
+<p>The <a href="lib/Block.htm#otb">One True Brace (OTB) style</a> may optionally be used to define functions. For example:</p>
+<pre>Add(x, y) {
+    return x + y
+}</pre>
+<h2 id="include">Using #Include to Share Functions Among Multiple Scripts</h2>
+<p>The <a href="lib/_Include.htm">#Include</a> directive may be used (<em>even at the top of a script</em>) to load functions from an external file.</p>
+<p>Explanation: When the script's flow of execution encounters a function definition, it jumps over it (using an instantaneous method) and resumes execution at the line after its closing brace. Consequently, execution can never fall into a function from above, nor does the presence of one or more functions at the very top of a script affect the <a href="Scripts.htm#auto">auto-execute section</a>.</p>
+<h2 id="lib">Libraries of Functions: Standard Library and User Library <span class="ver">[v1.0.47+]</span></h2>
+<p>A script may call a function in an external file without having to use <a href="lib/_Include.htm">#Include</a>. For this to work, a file of the same name as the function must exist in one of the following library directories:</p>
+<pre class="no-highlight"><a href="Variables.htm#ScriptDir">%A_ScriptDir%</a>\Lib\  <em>; Local library - requires <span class="ver">[AHK_L 42+]</span>.</em>
+<a href="Variables.htm#MyDocuments">%A_MyDocuments%</a>\AutoHotkey\Lib\  <em>; User library.</em>
+directory-of-the-currently-running-AutoHotkey.exe\Lib\  <em>; Standard library.</em></pre>
+<p>For example, if a script calls a nonexistent function <code>MyFunc()</code>, the program searches for a file named "MyFunc.ahk" in the user library. If not found there, it searches for it in the standard library. If a match is still not found and the function's name contains an underscore (e.g. <code class="no-highlight">MyPrefix_MyFunc</code>), the program searches both libraries for a file named <code class="no-highlight">MyPrefix.ahk</code> and loads it if it exists. This allows <code class="no-highlight">MyPrefix.ahk</code> to contain both the function <code class="no-highlight">MyPrefix_MyFunc</code> and other related functions whose names start with <code class="no-highlight">MyPrefix_</code>.</p>
+<p><span class="ver">[AHK_L 42+]</span>: The local library is supported and is searched before the user library and standard library.</p>
+<p>Only a direct function call such as <code>MyFunc()</code> can cause a library to be auto-included. If the function is only called dynamically or indirectly, such as by a timer or GUI event, the library must be explicitly included in the script.  For example: <code><a href="lib/_Include.htm">#Include</a> &lt;MyFunc&gt;</code></p>
+<p>Although a library file generally contains only a single function of the same name as its filename, it may also contain private functions and subroutines that are called only by it. However, such functions should have fairly distinct names because they will still be in the global namespace; that is, they will be callable from anywhere in the script.</p>
+<p>If a library file uses <a href="lib/_Include.htm">#Include</a>, the working directory for #Include is the library file's own directory. This can be used to create a redirect to a larger library file that contains that function and others related to it.</p>
+<p>The <a href="Scripts.htm#ahk2exe">script compiler (ahk2exe)</a> also supports library functions. However, it requires that a copy of AutoHotkey.exe exist in the directory above the compiler directory (which is normally the case). If AutoHotkey.exe is absent, the compiler still works but library functions are not automatically included.</p>
+<p>Functions included from a library perform just as well as other functions because they are pre-loaded before the script begins executing.</p>
+<h2 id="BuiltIn">Built-in Functions</h2>
+<p>Any optional parameters at the end of a built-in function's parameter list may be completely omitted. For example, <code>WinExist("Untitled - Notepad")</code> is valid because its other three parameters would be considered blank.</p>
+<p>A built-in function is overridden if the script defines its own function of the same name. For example, a script could have its own custom WinExist() function that is called instead of the standard one. However, the script would then have no way to call the original function.</p>
+<p>External functions that reside in DLL files may be called with <a href="lib/DllCall.htm">DllCall()</a>.</p>
+<p>To get more details about a particular built-in function below, simply click on its name.</p>
+<h3 id="Frequently-used_Functions">Frequently-used Functions</h3>
+<table class="info">
+  <tr>
+    <th style="width:150px">Function</th>
+    <th abbr="Descr">Description</th>
+  </tr>
+  <tr id="FileExist">
+    <td><a href="lib/FileExist.htm">FileExist</a></td>
+    <td>Checks for the existence of a file or folder and returns its attributes.</td>
+  </tr>
+  <tr id="GetKeyState">
+    <td><a href="lib/GetKeyState.htm#function">GetKeyState</a></td>
+    <td>Returns 1 (true) or 0 (false) depending on whether the specified keyboard key or mouse/controller button is down or up.</td>
+  </tr>
+  <tr id="InStr">
+    <td><a href="lib/InStr.htm">InStr</a></td>
+    <td>Searches for a given occurrence of a string, from the left or the right.</td>
+  </tr>
+  <tr id="RegExMatch">
+    <td><a href="lib/RegExMatch.htm">RegExMatch</a></td>
+    <td>Determines whether a string contains a pattern (regular expression).</td>
+  </tr>
+  <tr id="RegExReplace">
+    <td><a href="lib/RegExReplace.htm">RegExReplace</a></td>
+    <td>Replaces occurrences of a pattern (regular expression) inside a string.</td>
+  </tr>
+  <tr id="StrLen">
+    <td><a href="lib/StrLen.htm">StrLen</a></td>
+    <td>Retrieves the count of how many characters are in a string.</td>
+  </tr>
+  <tr id="StrReplace">
+    <td><a href="lib/StrReplace.htm">StrReplace</a></td>
+    <td>Replaces the specified substring with a new string.</td>
+  </tr>
+  <tr id="StrSplit">
+    <td><a href="lib/StrSplit.htm">StrSplit</a></td>
+    <td>Separates a string into an array of substrings using the specified delimiters.</td>
+  </tr>
+  <tr id="SubStr">
+    <td><a href="lib/SubStr.htm">SubStr</a></td>
+    <td>Retrieves one or more characters from the specified position in a string.</td>
+  </tr>
+  <tr id="WinActive">
+    <td><a href="lib/WinActive.htm">WinActive</a></td>
+    <td>Checks if the specified window is active and returns its unique ID (HWND).</td>
+  </tr>
+  <tr id="WinExist">
+    <td><a href="lib/WinExist.htm">WinExist</a></td>
+    <td>Checks if the specified window exists and returns the unique ID (HWND) of the first matching window.</td>
+  </tr>
+</table>
+<h3 id="Miscellaneous_Functions">Miscellaneous Functions</h3>
+<table class="info">
+  <tr>
+    <th style="width:150px">Function</th>
+    <th abbr="Descr">Description</th>
+  </tr>
+  <tr id="Asc">
+    <td><a href="lib/Asc.htm">Asc</a></td>
+    <td>Returns the numeric value of the first byte or UTF-16 code unit in the specified string.</td>
+  </tr>
+  <tr id="Chr">
+    <td><a href="lib/Chr.htm">Chr</a></td>
+    <td>Returns the string (usually a single character) corresponding to the character code indicated by the specified number.</td>
+  </tr>
+  <tr id="DllCall">
+    <td><a href="lib/DllCall.htm">DllCall</a></td>
+    <td>Calls a function inside a DLL, such as a standard Windows API function.</td>
+  </tr>
+  <tr id="Exception">
+    <td><a href="lib/Throw.htm#Exception">Exception</a></td>
+    <td>Creates an object which can be used to throw a custom exception.</td>
+  </tr>
+  <tr id="FileOpen">
+    <td><a href="lib/FileOpen.htm">FileOpen</a></td>
+    <td>Opens a file to read specific content from it and/or to write new content into it.</td>
+  </tr>
+  <tr id="Format">
+    <td><a href="lib/Format.htm">Format</a></td>
+    <td>Formats a variable number of input values according to a format string.</td>
+  </tr>
+  <tr id="Func">
+    <td><a href="lib/Func.htm#Func">Func</a></td>
+    <td>Retrieves a reference to the specified function.</td>
+  </tr>
+  <tr id="GetKeyName">
+    <td><a href="lib/GetKey.htm">GetKeyName/VK/SC</a></td>
+    <td>Retrieves the name/text, virtual key code or scan code of a key.</td>
+  </tr>
+  <tr id="Hotstring">
+    <td><a href="lib/Hotstring.htm">Hotstring</a></td>
+    <td>Creates, modifies, enables, or disables a hotstring while the script is running.</td>
+  </tr>
+  <tr id="ImageList">
+    <td><a href="lib/ListView.htm#IL">IL_XXX</a></td>
+    <td>Functions to add icons/pictures to, create or delete ImageLists used by ListView or TreeView controls.</td>
+  </tr>
+  <tr id="InputHook">
+    <td><a href="lib/InputHook.htm">InputHook</a></td>
+    <td>Creates an object which can be used to collect or intercept keyboard input.</td>
+  </tr>
+  <tr id="IsByRef">
+    <td><a href="lib/IsByRef.htm">IsByRef</a></td>
+    <td>Returns a non-zero number if the specified <a href="#ByRef">ByRef parameter</a> was supplied with a variable.</td>
+  </tr>
+  <tr id="IsFunc">
+    <td><a href="lib/IsFunc.htm">IsFunc</a></td>
+    <td>Returns a non-zero number if the specified function exists in the script.</td>
+  </tr>
+  <tr id="IsLabel">
+    <td><a href="lib/IsLabel.htm">IsLabel</a></td>
+    <td>Returns a non-zero number if the specified label exists in the script.</td>
+  </tr>
+  <tr id="IsObject">
+    <td><a href="lib/IsObject.htm">IsObject</a></td>
+    <td>Returns a non-zero number if the specified value is an object.</td>
+  </tr>
+  <tr id="IsSet">
+    <td><a href="lib/IsSet.htm">IsSet</a></td>
+    <td>Returns a non-zero number if the specified variable has been assigned a value.</td>
+  </tr>
+  <tr id="LoadPicture">
+    <td><a href="lib/LoadPicture.htm">LoadPicture</a></td>
+    <td>Loads a picture from file and returns a bitmap or icon handle.</td>
+  </tr>
+  <tr id="ListView">
+    <td><a href="lib/ListView.htm#BuiltIn">LV_XXX</a></td>
+    <td>Functions to add, insert, modify or delete ListView rows/colums, or to get data from them.</td>
+  </tr>
+  <tr id="MenuGetHandle">
+    <td><a href="lib/MenuGetHandle.htm">MenuGetHandle</a></td>
+    <td>Retrieves the <a href="lib/Menu.htm#Win32_Menus">Win32 menu</a> handle of a menu.</td>
+  </tr>
+  <tr id="MenuGetName">
+    <td><a href="lib/MenuGetName.htm">MenuGetName</a></td>
+    <td>Retrieves the name of a menu given a handle to its underlying <a href="lib/Menu.htm#Win32_Menus">Win32 menu</a>.</td>
+  </tr>
+  <tr id="NumGet">
+    <td><a href="lib/NumGet.htm">NumGet</a></td>
+    <td>Returns the binary number stored at the specified address+offset.</td>
+  </tr>
+  <tr id="NumPut">
+    <td><a href="lib/NumPut.htm">NumPut</a></td>
+    <td>Stores a number in binary format at the specified address+offset.</td>
+  </tr>
+  <tr id="ObjAddRef">
+    <td><a href="lib/ObjAddRef.htm">ObjAddRef / ObjRelease</a></td>
+    <td>Increments or decrements an object's <a href="Objects.htm#Reference_Counting">reference count</a>.</td>
+  </tr>
+  <tr id="ObjBindMethod">
+    <td><a href="lib/ObjBindMethod.htm">ObjBindMethod</a></td>
+    <td>Creates a <a href="misc/Functor.htm#BoundFunc">BoundFunc object</a> which calls a method of a given object.</td>
+  </tr>
+  <tr id="ObjGetBase">
+    <td><a href="lib/Object.htm#GetBase">ObjGetBase</a></td>
+    <td>Retrieves an object's <a href="Objects.htm#Custom_Objects">base object</a>.</td>
+  </tr>
+  <tr>
+    <td><a href="lib/Object.htm#RawGet">ObjRawGet</a></td>
+    <td>Retrieves a key-value pair from an object, bypassing the object's <a href="Objects.htm#Meta_Functions">meta-functions</a>.</td>
+  </tr>
+  <tr>
+    <td><a href="lib/Object.htm#RawSet">ObjRawSet</a></td>
+    <td>Stores or overwrites a key-value pair in an object, bypassing the object's <a href="Objects.htm#Meta_Functions">meta-functions</a>.</td>
+  </tr>
+  <tr>
+    <td><a href="lib/Object.htm#SetBase">ObjSetBase</a></td>
+    <td>Sets an object's <a href="Objects.htm#Custom_Objects">base object</a>.</td>
+  </tr>
+  <tr id="ObjMethod">
+    <td><a href="lib/Object.htm">ObjXXX</a></td>
+    <td>Functions equivalent to the built-in methods of the Object type, such as <a href="lib/Object.htm#InsertAt">ObjInsertAt</a>. It is usually recommended to use the corresponding method instead.</td>
+  </tr>
+  <tr id="OnClipboardChange">
+    <td><a href="lib/OnClipboardChange.htm#function">OnClipboardChange</a></td>
+    <td>Registers a function to be called automatically whenever the clipboard's content changes.</td>
+  </tr>
+  <tr id="OnError">
+    <td><a href="lib/OnError.htm">OnError</a></td>
+    <td>Registers a function to be called automatically whenever an unhandled error occurs.</td>
+  </tr>
+  <tr id="OnExit">
+    <td><a href="lib/OnExit.htm#function">OnExit</a></td>
+    <td>Registers a function to be called automatically whenever the script exits.</td>
+  </tr>
+  <tr id="OnMessage">
+    <td><a href="lib/OnMessage.htm">OnMessage</a></td>
+    <td>Registers a function to be called automatically whenever the script receives the specified message.</td>
+  </tr>
+  <tr id="Ord">
+    <td><a href="lib/Ord.htm">Ord</a></td>
+    <td>Returns the ordinal value (numeric character code) of the first character in the specified string.</td>
+  </tr>
+  <tr id="StatusBar">
+    <td><a href="lib/GuiControls.htm#StatusBar_Functions">SB_XXX</a></td>
+    <td>Functions to add text/icons to or divide the bar of a StatusBar control.</td>
+  </tr>
+  <tr id="StrGet">
+    <td><a href="lib/StrGet.htm">StrGet</a></td>
+    <td>Copies a string from a memory address, optionally converting it from a given code page.</td>
+  </tr>
+  <tr id="StrPut">
+    <td><a href="lib/StrPut.htm">StrPut</a></td>
+    <td>Copies a string to a memory address, optionally converting it to a given code page.</td>
+  </tr>
+  <tr id="RegisterCallback">
+    <td><a href="lib/RegisterCallback.htm">RegisterCallback</a></td>
+    <td>Creates a machine-code address that when called, redirects the call to a function in the script.</td>
+  </tr>
+  <tr id="Trim">
+    <td><a href="lib/Trim.htm">Trim / LTrim / RTrim</a></td>
+    <td>Trims characters from the beginning and/or end of a string.</td>
+  </tr>
+  <tr id="TreeView">
+    <td><a href="lib/TreeView.htm#BuiltIn">TV_XXX</a></td>
+    <td>Functions to add, modify or delete TreeView items, or to get data from them.</td>
+  </tr>
+  <tr id="VarSetCapacity">
+    <td><a href="lib/VarSetCapacity.htm">VarSetCapacity</a></td>
+    <td>Enlarges a variable's holding capacity or frees its memory.</td>
+  </tr>
+  <tr id="VerCompare">
+    <td><a href="lib/VerCompare.htm">VerCompare</a></td>
+    <td>Compares two version strings.</td>
+  </tr>
+</table>
+<h3 id="Math">Math</h3>
+<table class="info">
+  <tr>
+    <th style="width:150px">Function</th>
+    <th abbr="Descr">Description</th>
+  </tr>
+  <tr id="Abs">
+    <td><a href="lib/Math.htm#Abs">Abs</a></td>
+    <td>Returns the absolute value of the specified number.</td>
+  </tr>
+  <tr id="Ceil">
+    <td><a href="lib/Math.htm#Ceil">Ceil</a></td>
+    <td>Returns the specified number rounded up to the nearest integer (without any .00 suffix).</td>
+  </tr>
+  <tr id="Exp">
+    <td><a href="lib/Math.htm#Exp">Exp</a></td>
+    <td>Returns the result of raising e (which is approximately 2.71828182845905) to the <em>N</em>th power.</td>
+  </tr>
+  <tr id="Floor">
+    <td><a href="lib/Math.htm#Floor">Floor</a></td>
+    <td>Returns the specified number rounded down to the nearest integer (without any .00 suffix).</td>
+  </tr>
+  <tr id="Log">
+    <td><a href="lib/Math.htm#Log">Log</a></td>
+    <td>Returns the logarithm (base 10) of the specified number.</td>
+  </tr>
+  <tr id="Ln">
+    <td><a href="lib/Math.htm#Ln">Ln</a></td>
+    <td>Returns the natural logarithm (base e) of the specified number.</td>
+  </tr>
+  <tr>
+    <td><span id="Max"></span><span id="Min"></span><a href="lib/Math.htm#Max">Max</a> / <a href="lib/Math.htm#Min">Min</a></td>
+    <td>Returns the highest/lowest number from a set of numbers.</td>
+  </tr>
+  <tr id="Mod">
+    <td><a href="lib/Math.htm#Mod">Mod</a></td>
+    <td>Modulo. Returns the remainder of a number (dividend) divided by another number (divisor).</td>
+  </tr>
+  <tr id="Round">
+    <td><a href="lib/Math.htm#Round">Round</a></td>
+    <td>Returns the specified number rounded to <em>N</em> decimal places.</td>
+  </tr>
+  <tr id="Sqrt">
+    <td><a href="lib/Math.htm#Sqrt">Sqrt</a></td>
+    <td>Returns the square root of the specified number.</td>
+  </tr>
+  <tr>
+    <td><span id="Sin"></span><span id="Cos"></span><span id="Tan"></span><a href="lib/Math.htm#Sin">Sin</a> / <a href="lib/Math.htm#Cos">Cos</a> / <a href="lib/Math.htm#Tan">Tan</a></td>
+    <td>Returns the trigonometric sine/cosine/tangent of the specified number.</td>
+  </tr>
+  <tr>
+    <td><span id="ASin"></span><span id="ACos"></span><span id="ATan"></span><a href="lib/Math.htm#ASin">ASin</a> / <a href="lib/Math.htm#ACos">ACos</a> / <a href="lib/Math.htm#ATan">ATan</a></td>
+    <td>Returns the arcsine/arccosine/arctangent (the number whose sine/cosine/tangent is the specified number) in radians.</td>
+  </tr>
+</table>
+
+<h3 id="COM">COM</h3>
+<table class="info">
+  <tr>
+    <th style="width:150px">Function</th>
+    <th abbr="Descr">Description</th>
+  </tr>
+  <tr id="ComObjActive">
+    <td><a href="lib/ComObjActive.htm">ComObjActive</a></td>
+    <td>Retrieves a registered COM object.</td>
+  </tr>
+  <tr id="ComObjArray">
+    <td><a href="lib/ComObjArray.htm">ComObjArray</a></td>
+    <td>Creates a SAFEARRAY for use with COM.</td>
+  </tr>
+  <tr id="ComObjConnect">
+    <td><a href="lib/ComObjConnect.htm">ComObjConnect</a></td>
+    <td>Connects a COM object's event sources to functions with a given prefix.</td>
+  </tr>
+  <tr id="ComObjCreate">
+    <td><a href="lib/ComObjCreate.htm">ComObjCreate</a></td>
+    <td>Creates a COM object.</td>
+  </tr>
+  <tr id="ComObject">
+    <td><a href="lib/ComObjActive.htm#ComObject">ComObject</a></td>
+    <td>Creates an object representing a typed value to be passed as a parameter or return value.</td>
+  </tr>
+  <tr id="ComObjEnwrap">
+    <td><a href="lib/ComObjActive.htm#ComObjEnwrap">ComObjEnwrap</a> / <a href="lib/ComObjActive.htm#ComObjUnwrap">ComObjUnwrap</a></td>
+    <td>Wraps/unwraps a COM object.</td>
+  </tr>
+  <tr id="ComObjError">
+    <td><a href="lib/ComObjError.htm">ComObjError</a></td>
+    <td>Enables or disables notification of COM errors.</td>
+  </tr>
+  <tr id="ComObjFlags">
+    <td><a href="lib/ComObjFlags.htm">ComObjFlags</a></td>
+    <td>Retrieves or changes flags which control a COM wrapper object's behaviour.</td>
+  </tr>
+  <tr id="ComObjGet">
+    <td><a href="lib/ComObjGet.htm">ComObjGet</a></td>
+    <td>Returns a reference to an object provided by a COM component.</td>
+  </tr>
+  <tr id="ComObjMissing">
+    <td><a href="lib/ComObjActive.htm#ComObjMissing">ComObjMissing</a></td>
+    <td>Creates a "missing parameter" object to pass to a COM method.</td>
+  </tr>
+  <tr id="ComObjParameter">
+    <td><a href="lib/ComObjActive.htm#ComObjParameter">ComObjParameter</a></td>
+    <td>Wraps a value and type to pass as a parameter to a COM method.</td>
+  </tr>
+  <tr id="ComObjQuery">
+    <td><a href="lib/ComObjQuery.htm">ComObjQuery</a></td>
+    <td>Queries a COM object for an interface or service.</td>
+  </tr>
+  <tr id="ComObjType">
+    <td><a href="lib/ComObjType.htm">ComObjType</a></td>
+    <td>Retrieves type information from a COM object.</td>
+  </tr>
+  <tr id="ComObjValue">
+    <td><a href="lib/ComObjValue.htm">ComObjValue</a></td>
+    <td>Retrieves the value or pointer stored in a COM wrapper object.</td>
+  </tr>
+</table>
+
+<h3 id="Other_Functions">Other Functions</h3>
+<p><a href="https://github.com/polyethene/AutoHotkey-Scripts/blob/master/Functions.ahk">Polyethene's Command Functions</a>: Provides a callable function for each AutoHotkey command that has an OutputVar. This library can be included in any script via <a href="lib/_Include.htm">#Include</a>.</p>
+</body>
+</html>

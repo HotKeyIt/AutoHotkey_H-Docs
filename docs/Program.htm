@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Using the Program | AutoHotkey v1</title>
+<meta name="description" content="Learn details about creating, editing and running a script, the tray icon, the main window, command line usage, portability and installer options." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<link href="static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="static/content.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>Using the Program</h1>
+<p>AutoHotkey doesn't do anything on its own; it needs a script to tell it what to do. A script is simply a plain text file with the <code class="no-highlight">.ahk</code> filename extension containing instructions for the program, like a configuration file, but much more powerful. A script can do as little as performing a single action and then exiting, but most scripts define a number of <a href="Hotkeys.htm">hotkeys</a>, with each hotkey followed by one or more actions to take when the hotkey is pressed.</p>
+<pre>#z::Run https://www.autohotkey.com  <em>; Win+Z</em>
+
+^!n::  <em>; Ctrl+Alt+N</em>
+if WinExist("Untitled - Notepad")
+    WinActivate
+else
+    Run Notepad
+return</pre>
+<p><strong>Tip:</strong> If your browser supports it, you can download any code block (such as the one above) as a script file by clicking the <span style="font-family: icons;">↓</span> button which appears in the top-right of the code block when you hover your mouse over it.</p>
+
+<h2 id="toc">Table of Contents</h2>
+<ul>
+  <li><a href="#create">Create a Script</a></li>
+  <li><a href="#edit">Edit a Script</a></li>
+  <li><a href="#run">Run a Script</a></li>
+  <li><a href="#tray-icon">Tray Icon</a></li>
+  <li><a href="#main-window">Main Window</a></li>
+  <li><a href="#Window_Spy">Window Spy</a></li>
+  <li><a href="#embedded-scripts">Embedded Scripts</a></li>
+  <li><a href="#cmd">Command Line Usage</a></li>
+  <li><a href="#portability">Portability of AutoHotkey.exe</a></li>
+  <li><a href="#install">Installer Options</a>
+  <ul>
+    <li><a href="#Installer_uiAccess">Run with UI Access</a></li>
+  </ul></li>
+</ul>
+
+<h2 id="create">Create a Script</h2>
+<p>There are a couple of common ways to create a script file:</p>
+<ul>
+  <li>In Notepad (or a <a href="lib/Edit.htm#Editors">text editor</a> of your choice), save a file with the <code class="no-highlight">.ahk</code> filename extension. On some systems you may need to enclose the name in quotes to ensure the editor does not add another extension (such as .txt).
+  <p class="note">Be sure to save the file as UTF-8 with BOM if it will contain non-ASCII characters. For details, see the <a href="FAQ.htm#nonascii">FAQ</a>.</p></li>
+  <li>In Explorer, right-click in empty space in the folder where you want to save the script, then select <strong>New</strong> and <strong>AutoHotkey Script</strong>. You can then type a name for the script (taking care not to erase the <code class="no-highlight">.ahk</code> extension if it is visible).</li>
+</ul>
+<p class="note">See <a href="Language.htm">Scripting Language</a> for details about how to write a script.</p>
+
+<h2 id="edit">Edit a Script</h2>
+<p>To open a script for editing, right-click on the script file and select <strong>Edit Script</strong>. If the script is already running, you can use the <a href="lib/Edit.htm">Edit</a> command or right-click the script's <a href="#tray-icon">tray icon</a> and select <strong>Edit This Script</strong>. By default this will open Notepad, but that can be changed by writing to the registry as shown <a href="lib/Edit.htm#Example">here</a>. Of course, you can always open your text editor first and then open the script as you would any other text file.</p>
+<p>After editing a script, you must run or <a href="lib/Reload.htm">reload</a> the script for the changes to take effect. A running script can usually be reloaded via its <a href="#tray-icon">tray menu</a>.</p>
+
+<h2 id="run">Run a Script</h2>
+<p>With AutoHotkey installed, there are several ways to run a script:</p>
+<ul>
+<li>Double-click a script file (or shortcut to a script file) in Explorer.</li>
+<li>Call AutoHotkey.exe on the command line and pass the script's filename as a <a href="Scripts.htm#cmd">command-line parameter</a>.</li>
+<li>After creating <a href="Scripts.htm#defaultfile">the default script</a>, launch AutoHotkey via the shortcut in the Start menu to run it.</li>
+<li>If AutoHotkey is pinned to the taskbar or Start menu on Windows 7 or later, recent or pinned scripts can be launched via the program's Jump List.</li>
+</ul>
+<p>Most scripts have an effect only while they are running. Use the <a href="#tray-icon">tray menu</a> or the <a href="lib/ExitApp.htm">ExitApp</a> command to exit a script. Scripts are also forced to exit when Windows shuts down. To configure a script to start automatically after the user logs in, the easiest way is to place a shortcut to the script file in the <a href="Variables.htm#Startup">Startup</a> folder.</p>
+<p>Scripts can also be <a href="Scripts.htm#ahk2exe">compiled</a>; that is, combined together with an AutoHotkey binary file to form a self-contained executable (.exe) file.</p>
+
+<h2 id="tray-icon">Tray Icon</h2>
+<p>By default, each script adds its own icon to the taskbar notification area (commonly known as the tray).</p>
+<p>The tray icon usually looks like this:</p>
+<style>
+.img_center img {
+display: block;
+margin-right: .2em;
+}
+</style>
+<table style="margin-left: 1em;">
+  <tr>
+    <td class="img_center"><img src="static/ahk16.png" alt="green H icon"></td>
+    <td>The default tray icon.</td>
+  </tr>
+  <tr>
+    <td class="img_center"><img src="static/ahk16_pause.png" alt="red H icon"></td>
+    <td>The script is <a href="lib/Pause.htm">paused</a>.</td>
+  </tr>
+  <tr>
+    <td class="img_center"><img src="static/ahk16_suspend.png" alt="green S icon"></td>
+    <td>The script is <a href="lib/Suspend.htm">suspended</a>.</td>
+  </tr>
+  <tr>
+    <td class="img_center"><img src="static/ahk16_pause_suspend.png" alt="red S icon"></td>
+    <td>The script is <a href="lib/Pause.htm">paused</a> and <a href="lib/Suspend.htm">suspended</a>.</td>
+  </tr>
+</table>
+<p>Right-click the tray icon to show the tray menu, which has the following options by default:</p>
+<ul>
+<li>Open - Open the script's <a href="#main-window">main window</a>.</li>
+<li>Help - Open the AutoHotkey offline help file.</li>
+<li>Window Spy - Launch <a href="#Window_Spy">Window Spy</a> to get various information about a window.</li>
+<li>Reload This Script - See <a href="lib/Reload.htm">Reload</a>.</li>
+<li>Edit This Script - See <a href="lib/Edit.htm">Edit</a>.</li>
+<li>Suspend Hotkeys - <a href="lib/Suspend.htm">Suspend</a> or unsuspend hotkeys.</li>
+<li>Pause Script - <a href="lib/Pause.htm">Pause</a> or unpause the script.</li>
+<li>Exit - Exit the script.</li>
+</ul>
+<p>By default, double-clicking the tray icon shows the script's <a href="#main-window">main window</a>.</p>
+<p>The <a href="lib/Menu.htm">Menu</a> command can be used to customise the tray icon and menu.</p>
+<p>The <a href="lib/_NoTrayIcon.htm">#NoTrayIcon</a> directive can be used to hide the tray icon.</p>
+
+<h2 id="main-window">Main Window</h2>
+<p>The script's main window is usually hidden, but can be shown via the <a href="#tray-icon">tray icon</a> or one of the commands listed below to gain access to information useful for debugging the script. Items under the <strong>View</strong> menu control what the main window displays:</p>
+<ul>
+<li>Lines most recently executed - See <a href="lib/ListLines.htm">ListLines</a>.</li>
+<li>Variables and their contents - See <a href="lib/ListVars.htm">ListVars</a>.</li>
+<li>Hotkeys and their methods - See <a href="lib/ListHotkeys.htm">ListHotkeys</a>.</li>
+<li>Key history and script info - See <a href="lib/KeyHistory.htm">KeyHistory</a>.</li>
+</ul>
+<p><strong>Known issue:</strong> Keyboard shortcuts for menu items do not work while the script is displaying a <a href="lib/MsgBox.htm">message box</a> or other dialog.</p>
+<p>The built-in variable <a href="Variables.htm#ScriptHwnd">A_ScriptHwnd</a> contains the unique ID (HWND) of the script's main window.</p>
+<p>Closing this window with <a href="lib/WinClose.htm">WinClose</a> (even from another script) causes the script to exit, but most other methods just hide the window and leave the script running.</p>
+<p>Minimizing the main window causes it to automatically be hidden. This is done to prevent any owned windows (such as GUI windows or certain dialog windows) from automatically being minimized, but also has the effect of hiding the main window's taskbar button. To instead allow the main window to be minimized normally, override the default handling with <a href="lib/OnMessage.htm">OnMessage()</a>. For example:</p>
+<pre>; This prevents the main window from hiding on minimize:
+OnMessage(0x0112, Func("PreventAutoMinimize")) <em>; WM_SYSCOMMAND = 0x0112</em>
+OnMessage(0x0005, Func("PreventAutoMinimize")) <em>; WM_SIZE = 0x0005
+; This prevents owned GUI windows (but not dialogs) from automatically minimizing:</em>
+OnMessage(0x0018, Func("PreventAutoMinimize"))
+
+PreventAutoMinimize(wParam, lParam, uMsg, hwnd) {
+    if (uMsg = 0x0112 &amp;&amp; wParam = 0xF020 &amp;&amp; hwnd = A_ScriptHwnd) { <em>; SC_MINIMIZE = 0xF020</em>
+        WinMinimize
+        return 0 <em>; Prevent main window from hiding.</em>
+    }
+    if (uMsg = 0x0005 &amp;&amp; wParam = 1 &amp;&amp; hwnd = A_ScriptHwnd) <em>; SIZE_MINIMIZED = 1</em>
+        return 0 <em>; Prevent main window from hiding.</em>
+    if (uMsg = 0x0018 &amp;&amp; lParam = 1) <em>; SW_PARENTCLOSING = 1</em>
+        return 0 <em>; Prevent owned window from minimizing.</em>
+}</pre>
+
+<h3 id="title">Main Window Title</h3>
+<p>The title of the script's main window is used by the <a href="lib/_SingleInstance.htm">#SingleInstance</a> and <a href="lib/Reload.htm">Reload</a> mechanisms to identify other instances of the same script. <a href="lib/WinSetTitle.htm">Changing the title</a> prevents the script from being identified as such. The default title depends on how the script was loaded:</p>
+<table class="info">
+  <tr><th>Loaded From</th><th>Title Expression</th><th>Example</th></tr>
+  <tr><td>.ahk file</td><td><code>A_ScriptFullPath " - AutoHotkey v" A_AhkVersion</code></td><td>E:\My Script.ahk - AutoHotkey v1.1.33.09</td></tr>
+  <tr><td>Main resource (compiled script)</td><td><code>A_ScriptFullPath</code></td><td>E:\My Script.exe</td></tr>
+  <tr><td>Any other resource</td><td><code>A_ScriptFullPath " - " A_LineFile</code></td><td>E:\My AutoHotkey.exe - *BUILTIN-TOOL.AHK</td></tr>
+</table>
+<p>The following code illustrates how the default title could be determined by the script itself (but the actual title can be retrieved with <a href="lib/WinGetTitle.htm">WinGetTitle</a>):</p>
+<pre>
+title := A_ScriptFullPath
+if !A_IsCompiled
+    title .= " - AutoHotkey v" A_AhkVersion
+<em>; For the correct result, this must be evaluated by the resource being executed,
+; not an #include (unless the #include was merged into the script by Ahk2Exe):</em>
+else if SubStr(A_LineFile, 1, 1) = "*" &amp;&amp; A_LineFile != "*#1"
+    title .= " - " A_LineFile
+</pre>
+
+<h2 id="Window_Spy">Window Spy</h2>
+<p>Window Spy is a small utility bundled with AutoHotkey that displays detailed information about a window, such as its title, coordinates, size, and control data. This utility is intended as a quick reference while writing automation scripts and helps you obtain the exact values needed for common commands.</p>
+<p>You can launch Window Spy from the <a href="#tray-icon">tray icon</a>, the Start menu, or the AutoHotkey installation directory.</p>
+<p>By default, information is retrieved from the active window and its focused control. To retrieve information from the window and control under the mouse cursor instead, enable the "Follow Mouse" option in the top right corner.</p>
+<p>You can temporarily suspend information updates by holding <kbd>Ctrl</kbd> or <kbd>Shift</kbd>, by activating Window Spy, or by hovering the mouse cursor over it.</p>
+<p>Window Spy is divided into the following sections using multiple read-only edit controls:</p>
+<dl>
+  <dt>Window Title, Class and Process</dt>
+  <dd>
+    <pre class="no-highlight NoIndent">*Untitled - Notepad
+ahk_class Notepad
+ahk_exe notepad.exe
+ahk_pid 4624</pre>
+    <p>The window's title, and its class, process path, and process ID preceded by an <a href="misc/WinTitle.htm#ahk_">ahk_ keyword</a>. All of them can be specified as criteria (even combined) in the <a href="misc/WinTitle.htm">WinTitle parameter</a> of windowing commands and functions such as <a href="lib/WinActivate.htm">WinActivate</a>, <a href="lib/WinWait.htm">WinWait</a>, and <a href="lib/WinExist.htm">WinExist()</a>.</p>
+  </dd>
+  <dt>Mouse Position</dt>
+  <dd>
+    <pre class="no-highlight NoIndent">Screen:  1017, 714 (less often used)
+Window:  733, 513 (default)
+Client:  724, 450 (recommended)
+Color:   FEFEFE (Red=FE Green=FE Blue=FE)</pre>
+<p>The mouse cursor's coordinates (relative to the entire screen, window, and window's client area), and the 6-digit RGB color of the pixel at these coordinates. Useful for commands such as <a href="lib/Click.htm">Click</a> and <a href="lib/PixelSearch.htm">PixelSearch</a>.</p>
+  </dd>
+  <dt>Focused Control</dt>
+  <dt>Control Under Mouse Position</dt>
+  <dd>
+    <pre class="no-highlight NoIndent">ClassNN: Edit1
+Text:    This is line 1. (...)
+         x: 9    y: 63   w: 997  h: 922
+Client:  x: 0    y: 0    w: 976  h: 922</pre>
+    <p>The control's <a href="misc/ControlID.htm#ClassNN">ClassNN</a>, its text (truncated if necessary), its coordinates (relative to the window) and its size, and the coordinates and size of its client area (which is the area not including scrollbars and borders). Useful for commands with a <a href="misc/ControlID.htm">ControlID parameter</a> such as <a href="lib/ControlClick.htm">ControlClick</a> and <a href="lib/ControlSend.htm">ControlSend</a>. If the control cannot be determined, the edit control will be empty.</p>
+  </dd>
+  <dt>Active Window Position</dt>
+  <dd>
+    <pre class="no-highlight NoIndent">         x: 781  y: 225  w: 1015 h: 1023
+Client:  x: 0    y: 0    w: 997  h: 951</pre>
+    <p>The window's coordinates (relative to the entire screen) and its size, and the coordinates and size of its client area (which is the area not including title bar, menu bar, and borders). Useful for windowing commands such as <a href="lib/WinMove.htm">WinMove</a>.</p>
+  </dd>
+  <dt>Status Bar Text</dt>
+  <dd>
+    <pre class="no-highlight NoIndent">(1):     381 objects (Disk free space: 5.39 GB)
+(2):     15.1 MB
+(3):     My Computer</pre>
+    <p>The text of each part in the window's status bar (if any). Window Spy attempts to read the first <em>standard</em> status bar in the window (Microsoft common control: msctls_statusbar32). Some programs use their own status bars or special versions of the MS common control, in which case the edit control will be empty.</p>
+  </dd>
+  <dt>Visible Text</dt>
+  <dd>
+    <pre class="no-highlight NoIndent">&Yes
+&No
+Do you want to continue?</pre>
+    <p>The window's visible text only. Enable the "Slow TitleMatchMode" option to use an alternative text retrieval mode that works on a broader range of control types.</p>
+  </dd>
+  <dt>All Text</dt>
+  <dd>
+    <p>Similar to above, but the window's both visible and hidden text.</p>
+  </dd>
+</dl>
+
+<h2 id="embedded-scripts">Embedded Scripts <span class="ver">[v1.1.34+]</span></h2>
+<p>Scripts may be embedded into a standard AutoHotkey .exe file by adding them as Win32 (RCDATA) resources using the <a href="Scripts.htm#ahk2exe">Ahk2Exe compiler</a>. To add additional scripts, see the <a href="misc/Ahk2ExeDirectives.htm#AddResource">AddResource</a> compiler directive.</p>
+<p>An embedded script can be specified on the command line or with <a href="lib/_Include.htm">#Include</a> by writing an asterisk (*) followed by the resource name. For an integer ID, the resource name must be a hash sign (#) followed by a decimal number.</p>
+<p>The program may automatically load script code from the following resources, if present in the file:</p>
+<table class="info">
+  <tr><th>ID</th><th>Spec</th><th>Usage</th></tr>
+  <tr>
+    <td>1</td><td>*#1</td>
+    <td>This is the means by which a <a href="Scripts.htm#ahk2exe">compiled script</a> is created from an .exe file. This script is executed automatically and most command line switches are passed to the script instead of being interpreted by the program. External scripts and alternative embedded scripts can be executed by using the <a href="Scripts.htm#SlashScript">/script</a> switch.</td>
+  </tr>
+  <tr>
+    <td>2</td><td>*#2</td>
+    <td>If present, this script is automatically "included" before any script that the program loads, and before any file specified with <a href="Scripts.htm#SlashInclude">/include</a>.</td>
+  </tr>
+</table>
+<p>When the source of the main script is an embedded resource, the program acts in "compiled script" mode, with the exception that <a href="Variables.htm#AhkPath">A_AhkPath</a> always contains the path of the current executable file (the same as <a href="Variables.htm#ScriptFullPath">A_ScriptFullPath</a>). For resources other than *#1, the resource specifier is included in <a href="#title">the main window's title</a> to support <a href="lib/_SingleInstance.htm">#SingleInstance</a> and <a href="lib/Reload.htm">Reload</a>.</p>
+<p>When referenced from code that came from an embedded resource, <a href="Variables.htm#LineFile">A_LineFile</a> contains an asterisk (*) followed by the resource name.</p>
+
+<h2 id="cmd">Command Line Usage</h2>
+<p>See <a href="Scripts.htm#cmd">Passing Command Line Parameters to a Script</a> for command line usage, including a list of command line switches which affect the program's behavior.</p>
+
+<h2 id="portability">Portability of AutoHotkey.exe</h2>
+<p>The file AutoHotkey.exe is all that is needed to launch any .ahk script.</p>
+<p><span class="ver">[AHK_L 51+]</span>: Renaming AutoHotkey.exe also changes which script it runs <a href="Scripts.htm#defaultfile">by default</a>, which can be an alternative to compiling a script for use on a computer without AutoHotkey installed. For instance, <i>MyScript</i>.exe automatically runs <i>MyScript</i>.ahk if a filename is not supplied, but is also capable of running other scripts.</p>
+
+<h2 id="install">Installer Options</h2>
+<p>To silently install AutoHotkey into the default directory (which is the same directory displayed by non-silent mode), pass the parameter /S to the installer. For example:</p>
+<pre class="no-highlight">AutoHotkey_1.1.34.03_setup.exe /S</pre>
+<p>A directory other than the default may be specified via the /D parameter (in the absence of /S, this changes the default directory displayed by the installer). For example:</p>
+<pre class="no-highlight">AutoHotkey_1.1.34.03_setup.exe /S /D=C:\Program Files\AutoHotkey</pre>
+<p><strong>Version:</strong> If AutoHotkey was previously installed, the installer automatically detects which version of AutoHotkey.exe to set as the default. Otherwise, the default is Unicode 32-bit or Unicode 64-bit depending on whether the OS is 64-bit. To override which version of AutoHotkey.exe is set as the default, pass one of the following switches:</p>
+<ul>
+  <li><code class="no-highlight">/A32</code> or <code class="no-highlight">/ANSI</code>: ANSI 32-bit.</li>
+  <li><code class="no-highlight">/U64</code> or <code class="no-highlight">/x64</code>: Unicode 64-bit (only valid on 64-bit systems).</li>
+  <li><code class="no-highlight">/U32</code>: Unicode 32-bit.</li>
+</ul>
+<p>For example, the following installs silently and sets ANSI 32-bit as the default:</p>
+<pre class="no-highlight">AutoHotkey_1.1.34.03_setup.exe /S /A32</pre>
+<p><strong>Uninstall:</strong> To silently uninstall AutoHotkey, pass the <code class="no-highlight">/Uninstall</code> parameter to Installer.ahk. For example:</p>
+<pre class="no-highlight">"C:\Program Files\AutoHotkey\AutoHotkey.exe" "C:\Program Files\AutoHotkey\Installer.ahk" /Uninstall</pre>
+<p>For AutoHotkey versions older than 1.1.08.00, use <code class="no-highlight">uninst.exe /S</code>. For example:</p>
+<pre class="no-highlight">"C:\Program Files\AutoHotkey\uninst.exe" /S</pre>
+<p><strong>Note:</strong> Installer.ahk must be run as admin to work correctly.</p>
+<p><strong>Extract</strong> <span class="ver">[v1.1.09.04+]</span>: A link is present in the bottom-right corner of the installer GUI to extract files without installing, and the <code class="no-highlight">/E</code> switch can be used to invoke it from the command line. For example:</p>
+<pre class="no-highlight">AutoHotkey_1.1.34.03_setup.exe /D=F:\AutoHotkey /E</pre>
+<p><strong>Restart scripts</strong> <span class="ver">[v1.1.19.02+]</span>: In silent install/uninstall mode, running scripts are closed automatically, where necessary. Pass the <code class="no-highlight">/R</code> switch to automatically reload these scripts using whichever EXE they were running on, <strong>without</strong> command line args. Setup will attempt to launch the scripts via Explorer, so they do not run as administrator if UAC is enabled.</p>
+
+<p id="Installer_IsHostApp"><strong>Taskbar buttons</strong> <span class="ver">[v1.1.08+]</span>: On Windows 7 and later, taskbar buttons for multiple scripts are automatically grouped together or combined into one button by default. The <em>Separate taskbar buttons</em> option disables this by registering each AutoHotkey executable as a <a href="https://learn.microsoft.com/windows/win32/shell/app-registration">host app (IsHostApp)</a>.</p>
+<p><span class="ver">[v1.1.24.02+]</span>: For command-line installations, specify <code class="no-highlight">/IsHostApp</code> or <code class="no-highlight">/IsHostApp=1</code> to enable the option and <code class="no-highlight">/IsHostApp=0</code> to disable it.</p>
+
+<h3 id="Installer_uiAccess">Run with UI Access <span class="ver">[v1.1.24.02+]</span></h3>
+<p>The installer GUI has an option "Add 'Run with UI Access' to context menus". This context menu option provides a workaround for common <a href="FAQ.htm#uac">UAC-related issues</a> by allowing the script to automate administrative programs - without the script running as admin. To achieve this, the installer does the following:</p>
+<ul>
+  <li>Copies AutoHotkeyA32.exe, AutoHotkeyU32.exe and (if present) AutoHotkeyU64.exe to AutoHotkey*_UIA.exe.</li>
+  <li>Sets the <a href="https://learn.microsoft.com/windows/win32/winauto/uiauto-securityoverview">uiAccess attribute</a> in each UIA file's embedded manifest.</li>
+  <li>Creates a self-signed digital certificate named "AutoHotkey" and signs each UIA file.</li>
+  <li>Registers the context menu option to run the appropriate exe file.</li>
+</ul>
+<p>If any these UIA files are present before installation, the installer will automatically update them even if the UI Access option is not enabled.</p>
+<p>For command-line installations, specify <code class="no-highlight">/uiAccess</code> or <code class="no-highlight">/uiAccess=1</code> to enable the option and <code class="no-highlight">/uiAccess=0</code> to disable it. By default, the installer will enable the option if UAC is enabled and the UI Access context menu option was present before installation.</p>
+<p>Scripts which need to run other scripts with UI access can simply <a href="lib/Run.htm">Run</a> the appropriate UIA.exe file with the normal <a href="#cmd">command line parameters</a>.</p>
+<p><strong>Known limitations:</strong></p>
+<ul>
+  <li>UIA is only effective if the file is in a trusted location; i.e. a Program Files sub-directory.</li>
+  <li>UIA.exe files created on one computer cannot run on other computers without first installing the digital certificate which was used to sign them.</li>
+  <li>UIA.exe files cannot be started via CreateProcess due to security restrictions. ShellExecute can be used instead. <a href="lib/Run.htm">Run</a> tries both.</li>
+  <li>UIA.exe files cannot be modified, as it would invalidate the file's digital signature.</li>
+  <li>Because UIA programs run at a different "integrity level" than other programs, they can only access objects registered by other UIA programs. For example, <code><a href="lib/ComObjActive.htm">ComObjActive</a>("Word.Application")</code> will fail because Word is not marked for UI Access.</li>
+  <li>The script's own windows can't be automated by non-UIA programs/scripts for security reasons.</li>
+  <li>Running a non-UIA script which uses a mouse hook (even as simple as <code>#InstallMouseHook</code>) may prevent all mouse hotkeys from working when the mouse is pointing at a window owned by a UIA script, even hotkeys implemented by the UIA script itself. A workaround is to ensure UIA scripts are loaded last.</li>
+  <li>UIA prevents the Gui <a href="lib/Gui.htm#Parent">+Parent</a> option from working on an existing window if the new parent is always-on-top and the child window is not.</li>
+</ul>
+<p>For more details, see <a href="https://www.autohotkey.com/board/topic/70449-enable-interaction-with-administrative-programs/">Enable interaction with administrative programs</a> on the archive forum.</p>
+
+</body>
+</html>

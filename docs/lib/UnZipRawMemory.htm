@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>UnZipRawMemory() - Syntax &amp; Usage | AutoHotkey_H v1</title>
+<meta name="description" content="The UnZipRawMemory function decompresses and optionally decrypts raw memory created by ZipRawMemory, for example a resource." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>UnZipRawMemory() <span class="ver">[AHK_H]</span></h1>
+
+<p>Decompresses and optionally decrypts raw memory created by <a href="ZipRawMemory.htm">ZipRawMemory()</a>, for example a resource.</p>
+
+<pre class="Syntax">Size := <span class="func">UnZipRawMemory</span>(Address, Size <span class="optional">, OutputVar, Password</span>)</pre>
+
+<h2 id="Parameters">Parameters</h2>
+<dl>
+
+  <dt>Address</dt>
+  <dd><p>The address of the compressed data, such as <code>&amp;MyVar</code>.</p></dd>
+
+  <dt>Size</dt>
+  <dd><p>The size of the compressed data in bytes.</p></dd>
+
+  <dt>OutputVar</dt>
+  <dd><p>If omitted, the data is decompressed but only its size is returned. Otherwise, specify a variable in which to store the decompressed data, or an address (a number greater than 1024) to copy it to. A variable's capacity is adjusted as needed and the data is followed by a binary zero (two bytes).</p></dd>
+
+  <dt>Password</dt>
+  <dd><p>The password that was used to encrypt the data, if any.</p></dd>
+
+</dl>
+
+<h2 id="Return_Value">Return Value</h2>
+<p>This function returns the size of the decompressed data in bytes, or an empty string on failure (for example, if the data is not in the format produced by <a href="ZipRawMemory.htm">ZipRawMemory()</a>).</p>
+
+<h2 id="Remarks">Remarks</h2>
+<p>Ahk2Exe uses <a href="ZipRawMemory.htm">ZipRawMemory()</a> to compress and encrypt resources in raw mode (only one file, string or block of memory per call). AutoHotkey decompresses such resources automatically (compiled script, AutoHotkey.dll, <a href="WinApi.htm">WinApi</a> and <a href="../AHKH_Features.htm#Resource_Library">library</a> resources). This function can be used by a script to decompress and decrypt raw resources itself.</p>
+
+<h2 id="Related">Related</h2>
+<p><a href="ZipRawMemory.htm">ZipRawMemory()</a>, <a href="CryptAES.htm">CryptAES()</a>, <a href="ResGet.htm">ResGet()</a>, <a href="ZipCreateBuffer.htm">ZipCreateBuffer()</a>, <a href="UnZipBuffer.htm">UnZipBuffer()</a>, <a href="ZipCreateFile.htm">ZipCreateFile()</a>, <a href="UnZip.htm">UnZip()</a></p>
+
+<h2 id="Examples">Examples</h2>
+<div class="ex" id="ExBasic">
+<p><a class="ex_number" href="#ExBasic"></a> Compresses and encrypts a string, then restores it.</p>
+<pre>text := "This is a message from AutoHotkey."
+size := ZipRawMemory(&amp;text, StrLen(text) * 2 + 2, zipped, "password")
+UnZipRawMemory(&amp;zipped, size, restored, "password")
+MsgBox % StrGet(&amp;restored)</pre>
+</div>
+<div class="ex" id="ExResource">
+<p><a class="ex_number" href="#ExResource"></a> Reads a library script from the resources of AutoHotkey.exe (as embedded by the AutoHotkey_H build process) and decompresses it.</p>
+<pre>size := ResGet(res, A_AhkPath, "AHKTHREAD.AHK", "LIB")
+UnZipRawMemory(&amp;res, size, script)
+MsgBox % StrGet(&amp;script, "UTF-8")</pre>
+</div>
+
+</body>
+</html>

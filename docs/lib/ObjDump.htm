@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>ObjDump() - Syntax &amp; Usage | AutoHotkey_H v1</title>
+<meta name="description" content="The ObjDump function dumps an object to a variable or file so that it can be restored later with ObjLoad." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>ObjDump() <span class="ver">[AHK_H]</span></h1>
+
+<p>Dumps an object to a variable or file so that it can be restored later with <a href="ObjLoad.htm">ObjLoad()</a>.</p>
+
+<pre class="Syntax">Size := <span class="func">ObjDump</span>(Object, OutputVar <span class="optional">, Mode, Password</span>)
+Size := <span class="func">ObjDump</span>(FilePath, Object <span class="optional">, Mode, Password</span>)</pre>
+
+<h2 id="Parameters">Parameters</h2>
+<dl>
+
+  <dt>Object</dt>
+  <dd><p>The object to dump. Nested objects are dumped recursively, and an object which is referenced more than once is stored only once.</p></dd>
+
+  <dt>OutputVar</dt>
+  <dd><p>The variable in which to store the dumped data. Pass <code>&amp;OutputVar</code> to <a href="ObjLoad.htm">ObjLoad()</a> to restore the object.</p></dd>
+
+  <dt>FilePath</dt>
+  <dd><p>To write the dump to a file instead, specify the path of the file as the first parameter and the object as the second. An existing file is overwritten.</p></dd>
+
+  <dt>Mode</dt>
+  <dd>
+    <p>If blank or omitted, it defaults to 0. Otherwise, specify the sum of the following values:</p>
+    <p><strong>1</strong>: For each string value, store the full capacity of its field, as set with <a href="Object.htm#SetCapacity">SetCapacity()</a>. Use this to preserve binary data stored in an object.</p>
+    <p><strong>2</strong>: Compress the dumped data, as with <a href="ZipRawMemory.htm">ZipRawMemory()</a>.</p>
+  </dd>
+
+  <dt>Password</dt>
+  <dd><p>If <em>Mode</em> includes 2, the password with which to encrypt the compressed data. Ignored otherwise.</p></dd>
+
+</dl>
+
+<h2 id="Return_Value">Return Value</h2>
+<p>This function returns the size of the dumped data in bytes, or an empty string on failure.</p>
+
+<h2 id="Remarks">Remarks</h2>
+<p>Only keys and values are saved: strings, numbers and nested objects. <a href="Struct.htm">Struct</a> objects are dumped as a plain object of their fields. Other object types, such as COM objects or <a href="Func.htm">function references</a>, are not supported. The object's base is not saved and cannot be restored.</p>
+
+<h2 id="Related">Related</h2>
+<p><a href="ObjLoad.htm">ObjLoad()</a>, <a href="ZipRawMemory.htm">ZipRawMemory()</a>, <a href="../Objects.htm">Objects</a></p>
+
+<h2 id="Examples">Examples</h2>
+<div class="ex" id="ExBasic">
+<p><a class="ex_number" href="#ExBasic"></a> Dumps an object to a variable and restores it.</p>
+<pre>obj := {key: "value", 1: "test", 2: 10, sub: {a: 1}}
+size := ObjDump(obj, dump)
+copy := ObjLoad(&amp;dump)
+MsgBox % copy.key " " copy[1] " " copy.sub.a</pre>
+</div>
+<div class="ex" id="ExFile">
+<p><a class="ex_number" href="#ExFile"></a> Saves an object to a compressed, encrypted file and loads it again.</p>
+<pre>obj := {name: "AutoHotkey_H", list: [1, 2, 3]}
+ObjDump(A_ScriptDir "\obj.bin", obj, 2, "secret")
+copy := ObjLoad(A_ScriptDir "\obj.bin", "secret")
+MsgBox % copy.name " " copy.list.Length()</pre>
+</div>
+
+</body>
+</html>

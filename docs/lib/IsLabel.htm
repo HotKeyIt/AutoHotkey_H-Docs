@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>IsLabel() - Syntax &amp; Usage | AutoHotkey v1</title>
+<meta name="description" content="The IsLabel function returns a non-zero number if the specified label exists in the script." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>IsLabel()</h1>
+
+<p>Returns a non-zero number if the specified label exists in the script.</p>
+
+<pre class="Syntax">Boolean := <span class="func">IsLabel</span>(LabelName)</pre>
+<h2 id="Parameters">Parameters</h2>
+<dl>
+
+  <dt>LabelName</dt>
+  <dd><p>The name of a <a href="Gosub.htm">subroutine</a>, <a href="../Hotkeys.htm">hotkey</a>, or <a href="../Hotstrings.htm">hotstring</a>. The trailing colon(s) should not be included.</p></dd>
+
+</dl>
+
+<h2 id="Return_Value">Return Value</h2>
+<p>This function returns 1 (true) if <em>LabelName</em> exists in the script, otherwise 0 (false).</p>
+
+<h2 id="Remarks">Remarks</h2>
+<p>This function is useful to avoid runtime errors when specifying a dynamic label in commands such as <a href="Gosub.htm">Gosub</a>, <a href="Hotkey.htm">Hotkey</a>, <a href="Menu.htm">Menu</a>, and <a href="Gui.htm">Gui</a>.</p>
+<h2 id="Related">Related</h2>
+<p><a href="../misc/Labels.htm">Labels</a></p>
+<h2 id="Examples">Examples</h2>
+<div class="ex" id="ExSubroutine">
+<p><a class="ex_number" href="#ExSubroutine"></a> Reports "Subroutine exists" because the subroutine does exist.</p>
+<pre>if IsLabel("Label")
+    MsgBox, Subroutine exists
+else
+    MsgBox, Subroutine doesn't exist
+
+Label:
+return</pre>
+</div>
+
+<div class="ex" id="ExHotkey">
+<p><a class="ex_number" href="#ExHotkey"></a> Reports "Hotkey exists" because the hotkey does exist.</p>
+<pre>if IsLabel("^#h")
+    MsgBox, Hotkey exists
+else
+    MsgBox, Hotkey doesn't exist
+
+^#h::return</pre>
+</div>
+
+<div class="ex" id="ExHotstring">
+<p><a class="ex_number" href="#ExHotstring"></a> Reports "Hotstring exists" because the hotstring does exist.</p>
+<pre>if IsLabel("::btw")
+    MsgBox, Hotstring exists
+else
+    MsgBox, Hotstring doesn't exist
+
+::btw::by the way</pre>
+</div>
+
+</body>
+</html>

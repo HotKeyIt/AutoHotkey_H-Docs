@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>ControlGetText - Syntax &amp; Usage | AutoHotkey v1</title>
+<meta name="description" content="The ControlGetText command retrieves text from a control." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>ControlGetText</h1>
+
+<p>Retrieves text from a control.</p>
+
+<pre class="Syntax"><span class="func">ControlGetText</span>, OutputVar <span class="optional">, ControlID, WinTitle, WinText, ExcludeTitle, ExcludeText</span></pre>
+<h2 id="Parameters">Parameters</h2>
+<dl>
+
+  <dt>OutputVar</dt>
+  <dd><p>The name of the output variable in which to store the retrieved text.</p></dd>
+
+  <dt>ControlID</dt>
+  <dd>
+    <p>If blank or omitted, the target window's topmost control will be used. Otherwise, specify the control's ClassNN or text, or leave it blank and specify <code class="no-highlight">ahk_id %ControlHwnd%</code> for the <em>WinTitle</em> parameter to operate upon the control's HWND. For details, see <a href="../misc/ControlID.htm">Control Identifiers</a>.</p>
+  </dd>
+
+  <dt>WinTitle, WinText, ExcludeTitle, ExcludeText</dt>
+  <dd>
+    <p>If each of these is blank or omitted, the <a href="../misc/WinTitle.htm#LastFoundWindow">Last Found Window</a> will be used. Otherwise, specify for <em>WinTitle</em> a <a href="../misc/WinTitle.htm">window title or other criteria</a> to identify the target window and/or for <em>WinText</em> a substring from a single text element of the target window (as revealed by the included <a href="../Program.htm#Window_Spy">Window Spy</a> utility).</p>
+    <p><em>ExcludeTitle</em> and <em>ExcludeText</em> can be used to exclude one or more windows by their title or text. Their specification is similar to <em>WinTitle</em> and <em>WinText</em>, except that <em>ExcludeTitle</em> does not recognize any criteria other than the window title.</p>
+    <p>Window titles and text are case-sensitive. By default, hidden windows are not detected and hidden text elements are detected, unless changed with <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> and <a href="DetectHiddenText.htm">DetectHiddenText</a>. By default, a window title must start with the specified <em>WinTitle</em> or <em>ExcludeTitle</em> to be a match, unless changed with <a href="SetTitleMatchMode.htm">SetTitleMatchMode</a>.</p>
+  </dd>
+
+</dl>
+
+<h2 id="Error_Handling">Error Handling</h2>
+<p><span class="ver">[v1.1.04+]</span>: This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
+<p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
+<h2 id="Remarks">Remarks</h2>
+<p>This command is intended for use with controls in a non-GUI window, i.e. a window that is not created with the <a href="Gui.htm">Gui</a> command. It works best with common or predefined Microsoft controls; some applications use custom or modified controls, in which case the command might not work as expected. For <a href="GuiControls.htm">GUI controls</a>, it is usually more convenient to use <a href="GuiControlGet.htm">GuiControlGet</a>.</p>
+<p>To retrieve text from a list box, combo box, drop-down list, or list-view control, use <a href="ControlGet.htm#List">ControlGet List</a> instead.</p>
+<p>If the retrieved text appears to be truncated (incomplete), try using <code><a href="VarSetCapacity.htm">VarSetCapacity</a>(OutputVar, 55)</code> prior to ControlGetText (replace 55 with a size that is considerably longer than the truncated text). This is necessary because some applications do not respond properly to the WM_GETTEXTLENGTH message, which causes AutoHotkey to make the output variable too small to fit all the text.</p>
+<p>The amount of text retrieved is limited to a variable's maximum capacity (which can be changed via the <a href="_MaxMem.htm">#MaxMem</a> directive). As a result, this command might use a large amount of RAM if the target control (e.g. an editor with a large document open) contains a large quantity of text. However, a variable's memory can be freed after use by assigning it to nothing, i.e. <code>OutputVar := ""</code>.</p>
+<p>Text retrieved from most control types uses carriage return and linefeed (`r`n) rather than a solitary linefeed (`n) to mark the end of each line.</p>
+<p>It is not necessary to do <code>SetTitleMatchMode Slow</code> because ControlGetText always retrieves the text using the slow mode (since it works on a broader range of control types).</p>
+<p>To retrieve a list of all controls in a window, use <a href="WinGet.htm#ControlList">WinGet ControlList</a>.</p>
+
+<h2 id="Related">Related</h2>
+<p><a href="ControlSetText.htm">ControlSetText</a>, <a href="WinGetText.htm">WinGetText</a>, <a href="Control.htm">Control</a>, <a href="ControlGet.htm">ControlGet</a>, <a href="ControlMove.htm">ControlMove</a>, <a href="ControlFocus.htm">ControlFocus</a>, <a href="ControlClick.htm">ControlClick</a>, <a href="ControlSend.htm">ControlSend</a>, <a href="GuiControlGet.htm">GuiControlGet</a>, <a href="_MaxMem.htm">#MaxMem</a></p>
+<h2 id="Examples">Examples</h2>
+<div class="ex" id="ExBasic">
+<p><a class="ex_number" href="#ExBasic"></a> Retrieves the current text from Notepad's edit control and stores it in <var>OutputVar</var>. This example may fail on Windows 11 or later, as it requires the classic version of Notepad.</p>
+<pre>ControlGetText, OutputVar, Edit1, Untitled -</pre>
+</div>
+<div class="ex" id="ExMainWin">
+<p><a class="ex_number" href="#ExMainWin"></a> Retrieves and reports the current text from the <a href="../Program.htm#main-window">main window</a>'s edit control.</p>
+<pre>ListVars
+WinWaitActive ahk_class AutoHotkey
+ControlGetText, OutputVar, Edit1 <em>; Use the window found above.</em>
+MsgBox % OutputVar</pre>
+</div>
+
+</body>
+</html>

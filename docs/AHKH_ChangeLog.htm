@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>AutoHotkey_H Changes | AutoHotkey_H v1</title>
+<meta name="description" content="This page contains changes made to AutoHotkey_H v1." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<link href="static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="static/content.js" type="text/javascript"></script>
+</head>
+
+<body>
+<h1>AutoHotkey_H Changes</h1>
+<p>This page lists changes specific to AutoHotkey_H. For the features AutoHotkey_H adds, see <a href="AHKH_Features.htm">AutoHotkey_H Features</a>. For changes to AutoHotkey v1.1 itself, see <a href="AHKL_ChangeLog.htm">Changes &amp; New Features</a>.</p>
+<p>The complete history of AutoHotkey_H is available on <a href="https://github.com/HotKeyIt/ahkdll/commits">GitHub</a>.</p>
+
+<h2 id="v1.1.37.02-H">1.1.37.02 (AutoHotkey_H)</h2>
+<p>Merged the changes of AutoHotkey v1.1.34 to v1.1.37.02 into AutoHotkey_H (previously based on v1.1.33.10). See <a href="AHKL_ChangeLog.htm">Changes &amp; New Features</a> for details. Among others, this adds <a href="lib/_Requires.htm">#Requires</a>, the <a href="Scripts.htm#cmd">/include</a> command line switch, <a href="Variables.htm#Clipboard">A_Clipboard</a> and <a href="lib/InputHook.htm">InputHook</a> improvements.</p>
+<p>Fixed non-persistent scripts not exiting after the auto-execute section completed.</p>
+<p>Fixed <a href="lib/FileInstall.htm">FileInstall</a> in scripts compiled into the resources of AutoHotkey.exe.</p>
+<p>Fixed the <a href="Scripts.htm#cmd">/iLib</a> switch not writing its output file.</p>
+<p>Fixed <a href="lib/UnZipRawMemory.htm">UnZipRawMemory()</a> and other decompression of password-protected data crashing in scripts which are not compiled.</p>
+<p>Fixed <a href="lib/IsBOM.htm">IsBOM()</a> checking the wrong memory when the BOM parameter is omitted.</p>
+<p>Added <a href="lib/SevenZip.htm">SevenZip()</a>, which uses the 7-Zip module embedded in AutoHotkey.exe. Fixed several of its methods (ExtractMem, ExtractMemEx, FindFirst, List and Hash).</p>
+<p>Fixed AutoHotkey.dll failing to start a script a second time in the same process (<a href="lib/ahkdll.htm">ahkdll</a>, <a href="lib/ahktextdll.htm">ahktextdll</a>, <a href="lib/ahkReload.htm">ahkReload</a>) with a "RegClass" error. This also affected the ANSI build and scripts using <a href="lib/_WindowClassMain.htm">#WindowClassMain</a>.</p>
+<p>Fixed <a href="lib/ResExist.htm">ResExist()</a>, <a href="lib/ResGet.htm">ResGet()</a>, <a href="lib/ResPut.htm">ResPut()</a>, <a href="lib/ResPutFile.htm">ResPutFile()</a> and <a href="lib/ResDelete.htm">ResDelete()</a> failing in ANSI builds.</p>
+<p>Fixed settings of the previous script, such as <a href="lib/SetFormat.htm">SetFormat</a>, leaking into the next script started in the same AutoHotkey.dll.</p>
+<p>Fixed C++ exceptions thrown inside a DLL loaded by <a href="lib/MemoryLoadLibrary.htm">MemoryLoadLibrary()</a> crashing the process on 64-bit (the module's image base is now reported for as long as the module is loaded, not only during its DllMain).</p>
+<p>Fixed memory leaks when a script is terminated in AutoHotkey.dll (tray menu and thread settings) and when reading encrypted lines of compiled scripts.</p>
+<p>Fixed <a href="lib/ahkgetvar.htm">ahkgetvar</a> returning the raw bits of floating-point numbers, overrunning its buffer when a variable held a number but was previously assigned a string, and showing an error dialog for invalid variable names.</p>
+<p>Fixed <a href="lib/ahkassign.htm">ahkassign</a> on read-only variables such as A_TickCount corrupting every empty string of the script. It now returns -1 for read-only variables and invalid names, and when no script is running (as does <a href="lib/ahkPostFunction.htm">ahkPostFunction</a>).</p>
+<p>Fixed <a href="lib/ahkFunction.htm">ahkFunction</a> returning an empty string for floating-point results of user-defined functions, heap corruption when a built-in function returned a long number (which could hang the process), and objects returned by a function (also with <a href="lib/ahkPostFunction.htm">ahkPostFunction</a>) never being released.</p>
+<p>Fixed <a href="lib/ahkPause.htm">ahkPause</a> "On" twice or "Off" while not paused leaving the pause state out of balance. An empty string now only retrieves the state.</p>
+<p>Fixed the <a href="COMInterface.htm">COM interface</a>: ahkgetvar crashed for variables that do not exist, ignored its GetVar parameter and returned nothing for built-in variables; ahkassign did not set its return value, accepted read-only variables and returned -1 as 4294967295.</p>
+<p>Fixed AutoHotkeyMini.dll being built as a nearly complete AutoHotkey.dll: the features it is meant to leave out (such as hotkeys, the keyboard and mouse hook, Gui, menus and InputHook) were included, and <a href="Variables.htm#IsMini">A_IsMini</a> was 0. It is now about 25% smaller.</p>
+<p>Fixed <a href="lib/UnZipRawMemory.htm">UnZipRawMemory()</a> and <a href="lib/ObjLoad.htm">ObjLoad()</a> accepting a wrong password, which returned garbage or crashed the process.</p>
+<p>Fixed <a href="lib/ObjDump.htm">ObjDump()</a> storing negative 32-bit values incorrectly, failing for -2147483648, and leaking the compressed buffer; fixed <a href="lib/ObjLoad.htm">ObjLoad()</a> crashing for more than 16 objects with shared references and leaking memory.</p>
+<p>Fixed <a href="lib/ObjLoad.htm">ObjLoad()</a> never freeing the nested objects it loaded.</p>
+<p>Fixed <a href="lib/CriticalObject.htm">CriticalObject()</a> never deleting the CriticalSection it created; it is now deleted with the last CriticalObject using it. <code>CriticalObject(obj, 1)</code> and <code>CriticalObject(obj, 2)</code> now return 0 for anything other than a CriticalObject instead of reading invalid memory.</p>
+<p><a href="lib/MemoryGetProcAddress.htm">MemoryGetProcAddress()</a> now also accepts an ordinal instead of a function name.</p>
+<p>Fixed scripts compiled into AutoHotkey.dll crashing when the dll started them.</p>
+<p>Fixed <a href="lib/MemoryFreeLibrary.htm">MemoryFreeLibrary()</a> on 64-bit leaving the module's exception handling data registered, which could crash the process at the next exception.</p>
+<p>Fixed <a href="lib/MemoryLoadString.htm">MemoryLoadString()</a> overrunning a buffer and leaking memory. It now supports the documented BufferPointer, Length and Language parameters (a third parameter up to 0xFFFF is still used as the language).</p>
+<p>Fixed <a href="lib/ComObjDll.htm">ComObjDll()</a> ignoring an invalid CLSID and crashing for dlls that are not COM servers. It now supports the documented ProgID and IID parameters, and objects without IDispatch.</p>
+<p>Fixed <a href="lib/_DllImport.htm">#DllImport</a> failing when a comma is followed by spaces (as in the documented syntax) and emptying the default value of the last parameter when a return type follows it. Invalid types are now reported as such instead of "This line does not contain a recognized action".</p>
+<p>Fixed <a href="lib/Struct.htm">Struct()</a> and <a href="lib/sizeof.htm">sizeof()</a> crashing with "division by zero" for structures and unions made only of 1-byte fields, and the sizes of LRESULT and POINTER_32 on 64-bit, POINTER_64 on 32-bit and TBYTE (and TCHAR in ANSI builds).</p>
+<p>Fixed <a href="lib/WinApi.htm">WinApi</a> functions with signed TCHAR parameters (for example IsCharSpace and ChrCmpI) failing to load.</p>
+<p>Fixed <a href="lib/DynaCall.htm">DynaCall()</a> crashing when called with more parameters than defined. Excess parameters are now ignored.</p>
+<p>Fixed SendInput sending the wrong number of events after a <code>{N}</code> sleep: <code>SendInput a{150}bcd</code> sent only part of <code>bcd</code> and could leave a key down, and <code>SendInput abc{100}</code> read past the end of the event list.</p>
+<p><a href="lib/FileInstall.htm">FileInstall</a> now also finds files in a script compiled into AutoHotkey.dll (also when loaded with <a href="lib/MemoryLoadLibrary.htm">MemoryLoadLibrary()</a>) and decrypts files stored with the default password.</p>
+<p>The documentation is now based on the AutoHotkey v1.1 documentation, with the AutoHotkey_H pages added under <a href="AHKH_Features.htm">AutoHotkey_H Features</a>.</p>
+
+</body>
+</html>

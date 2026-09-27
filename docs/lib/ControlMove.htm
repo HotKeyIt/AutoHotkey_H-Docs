@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>ControlMove - Syntax &amp; Usage | AutoHotkey v1</title>
+<meta name="description" content="The ControlMove command moves and/or resizes a control." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>ControlMove</h1>
+
+<p>Moves and/or resizes a control.</p>
+
+<pre class="Syntax"><span class="func">ControlMove</span> <span class="optional">, ControlID, X, Y, Width, Height, WinTitle, WinText, ExcludeTitle, ExcludeText</span></pre>
+
+<h2 id="Parameters">Parameters</h2>
+<dl>
+  <dt>ControlID</dt>
+  <dd>
+    <p>If blank or omitted, the target window's topmost control will be used. Otherwise, specify the control's ClassNN or text, or leave it blank and specify <code class="no-highlight">ahk_id %ControlHwnd%</code> for the <em>WinTitle</em> parameter to operate upon the control's HWND. For details, see <a href="../misc/ControlID.htm">Control Identifiers</a>.</p>
+  </dd>
+  <dt>X, Y</dt>
+  <dd>
+    <p>If either is blank or omitted, the control's position in that dimension will not be changed. Otherwise, specify the X and Y coordinates (in pixels) of the upper left corner of the control's new location, which can be <a href="../Variables.htm#Expressions">expressions</a>. The coordinates are relative to the upper-left corner of the control's parent window; <a href="ControlGetPos.htm">ControlGetPos</a> or <a href="../Program.htm#Window_Spy">Window Spy</a> can be used to determine them.</p>
+  </dd>
+  <dt>Width, Height</dt>
+  <dd>
+    <p>If either is blank or omitted, the control's size in that dimension will not be changed. Otherwise, specify the new width and height of the control (in pixels), which can be <a href="../Variables.htm#Expressions">expressions</a>.</p>
+  </dd>
+  <dt>WinTitle, WinText, ExcludeTitle, ExcludeText</dt>
+  <dd>
+    <p>If each of these is blank or omitted, the <a href="../misc/WinTitle.htm#LastFoundWindow">Last Found Window</a> will be used. Otherwise, specify for <em>WinTitle</em> a <a href="../misc/WinTitle.htm">window title or other criteria</a> to identify the target window and/or for <em>WinText</em> a substring from a single text element of the target window (as revealed by the included Window Spy utility).</p>
+    <p><em>ExcludeTitle</em> and <em>ExcludeText</em> can be used to exclude one or more windows by their title or text. Their specification is similar to <em>WinTitle</em> and <em>WinText</em>, except that <em>ExcludeTitle</em> does not recognize any criteria other than the window title.</p>
+    <p>Window titles and text are case-sensitive. By default, hidden windows are not detected and hidden text elements are detected, unless changed with <a href="DetectHiddenWindows.htm">DetectHiddenWindows</a> and <a href="DetectHiddenText.htm">DetectHiddenText</a>. By default, a window title must start with the specified <em>WinTitle</em> or <em>ExcludeTitle</em> to be a match, unless changed with <a href="SetTitleMatchMode.htm">SetTitleMatchMode</a>.</p>
+  </dd>
+</dl>
+
+<h2 id="Error_Handling">Error Handling</h2>
+<p><span class="ver">[v1.1.04+]</span>: This command is able to throw an exception on failure. For more information, see <a href="Catch.htm#RuntimeErrors">Runtime Errors</a>.</p>
+<p><a href="../misc/ErrorLevel.htm">ErrorLevel</a> is set to 1 if there was a problem or 0 otherwise.</p>
+
+<h2 id="Remarks">Remarks</h2>
+<p>This command is intended for use with controls in a non-GUI window, i.e. a window that is not created with the <a href="Gui.htm">Gui</a> command. It works best with common or predefined Microsoft controls; some applications use custom or modified controls, in which case the command might not work as expected. For <a href="GuiControls.htm">GUI controls</a>, it is usually more convenient to use <a href="GuiControl.htm#Move">GuiControl Move</a>.</p>
+<p>To improve reliability, a delay is done automatically after every use of this command. That delay can be changed via <a href="SetControlDelay.htm">SetControlDelay</a>.</p>
+
+<h2 id="Related">Related</h2>
+<p><a href="ControlGetPos.htm">ControlGetPos</a>, <a href="WinMove.htm">WinMove</a>, <a href="SetControlDelay.htm">SetControlDelay</a>, <a href="GuiControl.htm#Move">GuiControl Move</a>, <a href="Control.htm">Control</a>, <a href="ControlGet.htm">ControlGet</a>, <a href="ControlGetText.htm">ControlGetText</a>, <a href="ControlSetText.htm">ControlSetText</a>, <a href="ControlClick.htm">ControlClick</a>, <a href="ControlFocus.htm">ControlFocus</a>, <a href="ControlSend.htm">ControlSend</a></p>
+
+<h2 id="Examples">Examples</h2>
+<div class="ex" id="ExControlMoveTimer">
+<p><a class="ex_number" href="#ExControlMoveTimer"></a> Demonstrates how to manipulate the OK button of an input box while the script is waiting for user input.</p>
+<pre>SetTimer, ControlMoveTimer
+InputBox, OutputVar, My Input Box
+return
+
+ControlMoveTimer:
+if not WinExist("My Input Box")
+    return
+<em>; Otherwise the above set the "last found" window for us:</em>
+SetTimer, ControlMoveTimer, Off
+WinActivate
+ControlMove, OK, 10, , 200  <em>; Move the OK button to the left and increase its width.</em>
+return</pre>
+</div>
+
+</body>
+</html>

@@ -2,9 +2,8 @@
 Binary Index=No
 Compatibility=1.1 or later
 Compiled file=AutoHotkey_H.chm
-Contents file=Table of Contents.hhc
 Default Window=Contents
-Default topic=docs\AutoHotkey.htm
+Default topic=docs\index.htm
 Display compile progress=No
 Full-text search=Yes
 Index file=Index.hhk
@@ -12,105 +11,29 @@ Language=0x409 English (United States)
 Title=AutoHotkey_H Help
 
 [WINDOWS]
-Contents="AutoHotkey_H Help","Table of Contents.hhc","Index.hhk","docs\AutoHotkey.htm","docs\AutoHotkey.htm",,,,,0x33520,,0x10200e,,,,,,3,,0
+Contents="AutoHotkey_H Help",,,"docs\index.htm","docs\index.htm",,,,,0x73500,,0x10200e,[200,0,1080,700],,,,,3,,0
 
 
 [FILES]
-docs\ChangeLog.htm
-docs\AutoHotkey.htm
-docs\AutoHotkeyDll.htm
-docs\license.htm
-docs\StructTypes.htm
-docs\Welcome.htm
-docs\commands\_DllImport.htm
-docs\commands\_WarnContinuableException.htm
-docs\commands\addFile.htm
-docs\commands\addScript.htm
-docs\commands\ahkassign.htm
-docs\commands\ahkdll.htm
-docs\commands\ahkExec.htm
-docs\commands\ahkExecuteLine.htm
-docs\commands\AhkExported.htm
-docs\commands\ahkFindFunc.htm
-docs\commands\ahkFindLabel.htm
-docs\commands\ahkFunction.htm
-docs\commands\ahkgetvar.htm
-docs\commands\ahkLabel.htm
-docs\commands\ahkPause.htm
-docs\commands\ahkPostFunction.htm
-docs\commands\ahkReady.htm
-docs\commands\ahkReload.htm
-docs\commands\ahkTerminate.htm
-docs\commands\AhkThread.htm
-docs\commands\ahktextdll.htm
-docs\commands\Alias.htm
-docs\commands\BinRun.htm
-docs\commands\BinToHex.htm
-docs\commands\CreateScript.htm
-docs\commands\CriticalObject.htm
-docs\commands\CriticalSection.htm
-docs\commands\CryptAES.htm
-docs\commands\DirGetParent.htm
-docs\commands\DynaCall.htm
-docs\commands\DynaRun.htm
-docs\commands\ErrorMessage.htm
-docs\commands\FileReplace.htm
-docs\commands\FindFunc.htm
-docs\commands\FindLabel.htm
-docs\commands\GetEnv.htm
-docs\commands\GetVar.htm
-docs\commands\HexToBin.htm
-docs\commands\HIBYTE.htm
-docs\commands\HIWORD.htm
-docs\commands\IsBom.htm
-docs\commands\LOBYTE.htm
-docs\commands\LOWORD.htm
-docs\commands\MAKELANGID.htm
-docs\commands\MAKELONG.htm
-docs\commands\MAKELCID.htm
-docs\commands\MAKELPARAM.htm
-docs\commands\MAKELRESULT.htm
-docs\commands\MAKEWORD.htm
-docs\commands\MAKEWPARAM.htm
-docs\commands\MCodeH.htm
-docs\commands\ObjLoad.htm
-docs\commands\ObjDump.htm
-docs\commands\ObjShare.htm
-docs\commands\ResDelete.htm
-docs\commands\ResDllCreate.htm
-docs\commands\ResExist.htm
-docs\commands\ResGet.htm
-docs\commands\ResPut.htm
-docs\commands\ResPutFile.htm
-docs\commands\ResourceLoadLibrary.htm
-docs\commands\SevenZip.htm
-docs\commands\sizeof.htm
-docs\commands\StrPutVar.htm
-docs\commands\Struct.htm
-docs\commands\ToChar.htm
-docs\commands\ToInt.htm
-docs\commands\ToShort.htm
-docs\commands\ToUChar.htm
-docs\commands\ToUInt.htm
-docs\commands\ToUShort.htm
-docs\commands\UnZip.htm
-docs\commands\UnZipBuffer.htm
-docs\commands\UnZipRawMemory.htm
-docs\commands\WinApi.htm
-docs\commands\ZipAddBuffer.htm
-docs\commands\ZipAddFile.htm
-docs\commands\ZipAddFolder.htm
-docs\commands\ZipCloseBuffer.htm
-docs\commands\ZipCloseFile.htm
-docs\commands\ZipCreateBuffer.htm
-docs\commands\ZipCreateFile.htm
-docs\commands\ZipInfo.htm
-docs\commands\ZipOptions.htm
-docs\commands\ZipRawMemory.htm
-docs\misc\Acknowledgements.htm
-
-[MERGE FILES]
-AutoHotkey.chm
+docs\search.htm
+docs\settings.htm
+docs\static\content.css
+docs\static\dark.css
+docs\static\ahk_logo.png
+docs\static\fonts\icons.eot
+docs\static\fonts\icons.svg
+docs\static\fonts\icons.ttf
+docs\static\fonts\icons.woff
+docs\static\highlighter\dark.css
+docs\static\highlighter\highlighter.css
+docs\static\highlighter\highlighter.js
+docs\static\highlighter\light.css
+docs\static\source\data_docs.js
+docs\static\source\data_translate.js
+docs\static\source\data_search.js
+docs\static\source\data_toc.js
+docs\static\source\data_index.js
+docs\static\source\data_deprecate.js
+NUL
 
 [INFOTYPES]
-

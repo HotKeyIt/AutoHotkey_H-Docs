@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Labels - Syntax &amp; Usage | AutoHotkey v1</title>
+<meta name="description" content="Labels identify a line of code, and can be used as Goto targets or to form subroutines." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>Labels</h1>
+
+<h2 id="toc">Table of Contents</h2>
+<ul>
+  <li><a href="#syntax-and-usage">Syntax and Usage</a></li>
+  <li><a href="#subroutines">Subroutines</a></li>
+  <li><a href="#dynamic-labels">Dynamic Labels</a></li>
+  <li><a href="#hotkeys-and-hotstrings">Hotkeys and Hotstrings</a></li>
+  <li><a href="#named-loops">Named Loops</a></li>
+  <li><a href="#Functions">Functions</a></li>
+  <li><a href="#related">Related</a></li>
+</ul>
+
+<h2 id="syntax-and-usage">Syntax and Usage</h2>
+<p>A label identifies a line of code, and can be used as a <a href="../lib/Goto.htm">Goto</a> target or to form a <a href="#subroutines">subroutine</a>. There are three kinds of label: normal named labels, <a href="../Hotkeys.htm">hotkey</a> labels and <a href="../Hotstrings.htm">hotstring</a> labels.</p>
+<p>Normal labels consist of a name followed by a colon:</p>
+<pre>this_is_a_label:</pre>
+<p>Hotkey labels consist of a hotkey followed by double-colon:</p>
+<pre>^a::</pre>
+<p>Hotstring labels consist of a colon, zero or more <a href="../Hotstrings.htm#Options">options</a>, another colon, an abbreviation and double-colon:</p>
+<pre>:*:btw::</pre>
+<p>Generally, aside from whitespace and comments, no other code can be written on the same line as a label. However:</p>
+<ul>
+  <li>A hotkey label can be directly followed by a command or other statement to create a <em>one-line</em> hotkey. In other words, if a command, assignment or expression is present on the same line as a hotkey label, it acts as though followed by <code>return</code>.</li>
+  <li>A hotkey with a <a href="../KeyList.htm">key name</a> written to the right of the double-colon is actually a <a href="Remap.htm"><em>remapping</em></a>, which is shorthand for <a href="Remap.htm#actually">a pair of hotkeys</a>. For example, <code>a::b</code> creates hotkeys and labels for <code class="no-highlight">*a</code> and <code class="no-highlight">*a Up</code>, and does not create a label named <code class="no-highlight">a</code>.</li>
+  <li>A hotstring with text written to the right of the final double-colon is an <em>auto-replace</em> hotstring. Auto-replace hotstrings do not act as labels.</li>
+</ul>
+<p><strong>Names:</strong> Label names are not case-sensitive, and may consist of any characters other than space, tab, comma and the <a href="EscapeChar.htm">escape character</a> (`). However, due to style conventions, it is generally better to use only letters, numbers, and the underscore character (for example: <em>MyListView</em>, <em>Menu_File_Open</em>, and <em>outer_loop</em>). Label names must be unique throughout the whole script.</p>
+<p>Although there are no reserved names, it is strongly recommended that the following names not be used: On, Off, Toggle, AltTab, ShiftAltTab, AltTabAndMenu and AltTabMenuDismiss. These values have special meaning to the <a href="../lib/Hotkey.htm">Hotkey command</a>.</p>
+<p><strong>Target:</strong> The target of a label is the next line of executable code. Executable code includes commands, assignments, <a href="../Variables.htm#Expressions">expressions</a> and <a href="../lib/Block.htm">blocks</a>, but not directives, labels, hotkeys or hotstrings. In the following example, <code class="no-highlight">run_notepad</code> and <code class="no-highlight">#n</code> both point at the <code>Run</code> line:</p>
+<pre>run_notepad:
+#n::
+    Run Notepad
+    return</pre>
+<p><strong>Execution:</strong> Like directives, labels have no effect when reached during normal execution. In the following example, a message box is shown twice - once during execution of the subroutine by <a href="../lib/Gosub.htm">Gosub</a>, and again after the subroutine returns:</p>
+<pre>gosub Label1
+
+Label1:
+MsgBox <a href="../Variables.htm#ThisLabel">%A_ThisLabel%</a>
+return</pre>
+
+<h2 id="subroutines">Subroutines</h2>
+<p>A subroutine is a portion of code which can be <em>called</em> to perform a specific task. Execution of a subroutine begins at the target of a label and continues until a <a href="../lib/Return.htm">Return</a> or <a href="../lib/Exit.htm">Exit</a> is encountered. Since the end of a subroutine depends on flow of control, any label can act as both a Goto target and the beginning of a subroutine.</p>
+
+<h2 id="dynamic-labels">Dynamic Labels</h2>
+<p>Many commands which accept a label name also accept a <a href="../Variables.htm">variable</a> reference such as %MyLabel%, in which case the name stored in the variable is used as the target. However, performance is slightly reduced because the target label must be "looked up" each time rather than only once when the script is first loaded.</p>
+
+<h2 id="hotkeys-and-hotstrings">Hotkeys and Hotstrings</h2>
+<p>Each <a href="../Hotkeys.htm">double-colon hotkey</a> also creates a label, unless it is a <a href="../Hotkeys.htm#Function">function hotkey</a>. The label's name is exactly as written in the script, and can differ from the hotkey's name as reported by <a href="../Variables.htm#ThisHotkey">A_ThisHotkey</a>, such as if the modifiers are written in a different order. The label name includes the hotkey's modifiers but not the final double-colon (<code>::</code>).</p>
+<p>A <a href="../Hotstrings.htm#label">hotstring label</a>'s name includes the leading colon and options, but not the final double-colon (<code>::</code>).</p>
+<p><a href="../Hotkeys.htm">Hotkey</a> and <a href="../Hotstrings.htm#label">hotstring labels</a> are also valid targets for <a href="../lib/Goto.htm">Goto</a>, <a href="../lib/Gosub.htm">Gosub</a> and other commands. However, a hotkey or hotstring label can only be used in this manner if it is the first label with the given name. For example:</p>
+<pre>gosub ^+a  <em>; Example hotkey.</em>
+gosub +^a  <em>; Global hotkey.</em>
+gosub Esc  <em>; Esc label.</em>
+ExitApp
+
+#IfWinActive Example
+^+a::MsgBox Example hotkey.
+Esc:
+    MsgBox Esc label.
+    return
+#If
++^a::MsgBox Global hotkey.
+Esc::MsgBox Esc hotkey.</pre>
+<p>This limitation also applies to the <a href="../lib/Hotkey.htm">Hotkey</a> command's <em>Label</em> parameter.</p>
+
+<h2 id="named-loops">Named Loops</h2>
+<p>A label can also be used to identify a loop for the <a href="../lib/Continue.htm">Continue</a> and <a href="../lib/Break.htm">Break</a> commands. This allows the script to easily continue or break out of any number of nested loops.</p>
+
+<h2 id="Functions">Functions</h2>
+<p><span class="ver">[v1.1.20+]</span>: <a href="../Functions.htm">Functions</a> can be used in place of labels in a number of cases, including:</p>
+<ul>
+  <li><a href="../lib/Gui.htm#Labels">Gui events</a> such as GuiClose</li>
+  <li><a href="../lib/Gui.htm#label">Gui control events</a> (g-labels)</li>
+  <li><a href="../lib/Hotkey.htm#Functor">Hotkey</a></li>
+  <li><a href="../lib/Menu.htm#Functor">Menu</a></li>
+  <li><a href="../lib/SetTimer.htm#Functor">SetTimer</a></li>
+</ul>
+<p>The benefits of functions are that they can use local variables, and in some cases (such as Gui control events) they also accept parameters containing useful information.</p>
+
+<h2 id="related">Related</h2>
+<p><a href="../lib/IsLabel.htm">IsLabel()</a>, <a href="../Variables.htm#ThisLabel">A_ThisLabel</a>, <a href="../lib/Gosub.htm">Gosub</a>, <a href="../lib/Goto.htm">Goto</a>, <a href="../lib/OnExit.htm#command">OnExit</a>, <a href="../lib/SetTimer.htm">SetTimer</a>, <a href="../lib/Hotkey.htm">Hotkey</a>, <a href="../lib/Gui.htm#Labels">Gui Events</a>, <a href="../lib/Gui.htm#label">g-label</a>, <a href="../lib/OnClipboardChange.htm#label">OnClipboardChange Label</a></p>
+
+</body>
+</html>

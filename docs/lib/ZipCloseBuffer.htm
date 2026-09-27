@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>ZipCloseBuffer() - Syntax &amp; Usage | AutoHotkey_H v1</title>
+<meta name="description" content="The ZipCloseBuffer function closes a zip archive created with ZipCreateBuffer, stores it in a variable and returns its size." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<link href="../static/dark.css" rel="stylesheet" type="text/css" media="(prefers-color-scheme: dark)" id="dark_css" />
+<script src="../static/content.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h1>ZipCloseBuffer() <span class="ver">[AHK_H]</span></h1>
+
+<p>Closes a zip archive created with <a href="ZipCreateBuffer.htm">ZipCreateBuffer()</a>, stores it in a variable and returns its size.</p>
+
+<pre class="Syntax">Size := <span class="func">ZipCloseBuffer</span>(ZipHandle, OutputVar)</pre>
+
+<h2 id="Parameters">Parameters</h2>
+<dl>
+
+  <dt>ZipHandle</dt>
+  <dd><p>The zip handle returned by <a href="ZipCreateBuffer.htm">ZipCreateBuffer()</a>.</p></dd>
+
+  <dt>OutputVar</dt>
+  <dd><p>The variable in which to store the zip archive. Its capacity is adjusted as needed. Use <code>&amp;OutputVar</code> to pass the archive to functions which expect an address, such as <a href="UnZipBuffer.htm">UnZipBuffer()</a> or <a href="File.htm#RawWrite">File.RawWrite()</a>.</p></dd>
+
+</dl>
+
+<h2 id="Return_Value">Return Value</h2>
+<p>This function returns the size of the zip archive in bytes.</p>
+
+<h2 id="Error_Handling">Error Handling</h2>
+<p>An exception is thrown if <em>OutputVar</em> is not a variable or the archive could not be finalized.</p>
+
+<h2 id="Related">Related</h2>
+<p><a href="ZipCreateBuffer.htm">ZipCreateBuffer()</a>, <a href="ZipAddBuffer.htm">ZipAddBuffer()</a>, <a href="UnZipBuffer.htm">UnZipBuffer()</a>, <a href="ZipCreateFile.htm">ZipCreateFile()</a>, <a href="ZipAddFile.htm">ZipAddFile()</a>, <a href="ZipCloseFile.htm">ZipCloseFile()</a>, <a href="ZipOptions.htm">ZipOptions()</a>, <a href="UnZip.htm">UnZip()</a>, <a href="ZipInfo.htm">ZipInfo()</a>, <a href="ZipRawMemory.htm">ZipRawMemory()</a></p>
+
+<h2 id="Examples">Examples</h2>
+<div class="ex" id="ExBasic">
+<p><a class="ex_number" href="#ExBasic"></a> Creates a zip archive in memory and saves it to a file.</p>
+<pre>text := "Some text to compress"
+hZip := ZipCreateBuffer(1024 * 1024)
+ZipAddBuffer(hZip, &amp;text, StrLen(text) * 2, "text.txt")
+zipSize := ZipCloseBuffer(hZip, zipData)
+FileOpen(A_Temp "\test.zip", "w").RawWrite(zipData, zipSize)</pre>
+</div>
+
+</body>
+</html>

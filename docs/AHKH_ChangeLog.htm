@@ -24,6 +24,7 @@
 <p>Fixed <a href="lib/IsBOM.htm">IsBOM()</a> checking the wrong memory when the BOM parameter is omitted.</p>
 <p>Added <a href="lib/SevenZip.htm">SevenZip()</a>, which uses the 7-Zip module embedded in AutoHotkey.exe. Fixed several of its methods (ExtractMem, ExtractMemEx, FindFirst, List and Hash).</p>
 <p>Fixed AutoHotkey.dll failing to start a script a second time in the same process (<a href="lib/ahkdll.htm">ahkdll</a>, <a href="lib/ahktextdll.htm">ahktextdll</a>, <a href="lib/ahkReload.htm">ahkReload</a>) with a "RegClass" error. This also affected the ANSI build and scripts using <a href="lib/_WindowClassMain.htm">#WindowClassMain</a>.</p>
+<p>Fixed debuggers (DBGp clients such as SciTE4AutoHotkey and the Notepad++ plugin) showing no global variables. The global context has id 1 again, as in AutoHotkey; the static context of AutoHotkey_H now has id 2.</p>
 <p>Fixed <a href="lib/ResExist.htm">ResExist()</a>, <a href="lib/ResGet.htm">ResGet()</a>, <a href="lib/ResPut.htm">ResPut()</a>, <a href="lib/ResPutFile.htm">ResPutFile()</a> and <a href="lib/ResDelete.htm">ResDelete()</a> failing in ANSI builds.</p>
 <p>Fixed settings of the previous script, such as <a href="lib/SetFormat.htm">SetFormat</a>, leaking into the next script started in the same AutoHotkey.dll.</p>
 <p>Fixed C++ exceptions thrown inside a DLL loaded by <a href="lib/MemoryLoadLibrary.htm">MemoryLoadLibrary()</a> crashing the process on 64-bit (the module's image base is now reported for as long as the module is loaded, not only during its DllMain).</p>
